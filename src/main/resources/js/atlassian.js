@@ -1,5 +1,5 @@
 if (typeof jQuery != "undefined") {
-
+    
     var AJS = (function () {
         var bindings = {click: {}},
             initFunctions = [],
@@ -25,7 +25,7 @@ if (typeof jQuery != "undefined") {
             /**
              * Prevent further handling of an event. Returns false, which you should use as the return value of your event handler:
              *     return AJS.stopEvent(e);
-             * @param e the event
+             * @param e jQuery event
              */
             stopEvent: function(e) {
                 e.stopPropagation();
@@ -140,7 +140,7 @@ if (typeof jQuery != "undefined") {
                 });
                 return this;
             },
-
+            
             /**
             * DEPRECATED instead use AJS.$(element).bind();
             * Binds given function to some object or set of objects as event handlers by class name or id.
@@ -151,7 +151,7 @@ if (typeof jQuery != "undefined") {
             * @return AJS object.
             */
             bind: function () {},
-
+            
             /**
             * Finds the index of an element in the array.
             * @method indexOf
@@ -288,7 +288,7 @@ if (typeof jQuery != "undefined") {
                 });
                 AJS.$("body").append(popup);
                 AJS.dim();
-
+                
                 return popup;
             },
             onTextResize: function (f) {
