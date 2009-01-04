@@ -23,10 +23,10 @@
         <url>https://studio.atlassian.com/svn/AJS/trunk</url>
     </scm>
 
-    <!-- <issueManagement>
-            <system>Jira</system>
-            <url>http://jira.atlassian.com/browse/TODO</url>
-        </issueManagement> -->
+    <issueManagement>
+        <system>Jira</system>
+        <url>https://studio.atlassian.com/browse/AJS</url>
+    </issueManagement>
 
     <dependencies>
         <dependency>
@@ -184,16 +184,6 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>bamboo-firefox</id>
-            <properties>
-                <selenium.browser>*firefox /opt/firefox/firefox-bin</selenium.browser>
-                <selenium.xvfb.skip>false</selenium.xvfb.skip>
-            </properties>
-        </profile>
-    </profiles>
-
     <properties>
         <jetty.port>9999</jetty.port>
         <context.path>ajs</context.path>
@@ -206,21 +196,14 @@
         <jdkLevel>1.5</jdkLevel>
     </properties>
 
-    <!-- <repositories>
-       <repository>
-           <id>openqa</id>
-           <name>OpenQA Repository with Selenium</name>
-           <url>http://archiva.openqa.org/repository/releases/</url>
-           <snapshots><enabled>false</enabled></snapshots>
-           <releases><enabled>true</enabled></releases>
-       </repository>
-   </repositories> -->
-
-    <!-- <distributionManagement>
-       <site>
-           <id>atlassian-documentation</id>
-           <url>dav:https://docs.atlassian.com/${project.artifactId}/${project.version}</url>
-       </site>
-   </distributionManagement> -->
-
+    <profiles>
+        <profile>
+            <id>bamboo-firefox</id>
+            <properties>
+                <selenium.browser>*firefox /usr/bin/firefox/firefox-bin</selenium.browser>
+                <selenium.xvfb.skip>false</selenium.xvfb.skip>
+            </properties>
+        </profile>
+    </profiles>
+    
 </project>
