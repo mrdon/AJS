@@ -189,7 +189,7 @@
         <context.path>ajs</context.path>
         <scan.interval.seconds>10</scan.interval.seconds>
         <selenium.xvfb.skip>true</selenium.xvfb.skip>
-        <selenium.browser>*firefox /Applications/Firefox2.app/Contents/MacOS/firefox-bin</selenium.browser>
+        <selenium.browser>*firefox</selenium.browser>
         <selenium.firefox.profile/>
         <selenium.server.port>4444</selenium.server.port>
         <selenium.server.location>localhost</selenium.server.location>
