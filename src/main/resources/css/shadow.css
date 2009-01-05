@@ -76,7 +76,7 @@
     position: relative;
     font-size: 1.1em;
 }
-.dialog .dialog-menu {
+.dialog .page-menu {
     background: #fff;
     border-right: solid 1px #f0f0f0;
     float: left;
@@ -86,19 +86,19 @@
     padding: 0;
     width: 25%;
 }
-.dialog .dialog-menu li {
+.dialog .page-menu li {
     margin: 0;
     padding: 0;
 }
-.dialog .dialog-menu li.selected {
+.dialog .page-menu li.selected {
     background: #69c;
     color: #fff;
 }
-.dialog .dialog-menu li.selected button {
+.dialog .page-menu li.selected button {
     color: #fff;
     font-weight: 800;
 }
-.dialog .dialog-menu li button {
+.dialog .page-menu li button {
     background: none;
     border: none;
     color: #666;
@@ -108,10 +108,10 @@
     text-align: left;
     width: 100%;
 }
-.dialog .dialog-body {
+.dialog .page-body {
     padding: .5em;
 }
-.dialog .dialog-body p {
+.dialog .page-body p {
     margin: 0;
 }
 .dialog .button-panel {
