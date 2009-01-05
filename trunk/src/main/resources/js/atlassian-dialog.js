@@ -65,27 +65,41 @@ AJS.popup = function (width, height) {
     };
 };
 
+
+
+// Usage:
+// var popup = new AJS.Dialog(860, 530);
+// popup.addHeader("Insert Macro");
+// popup.addPanel("All", "<p></p>");
+// popup.addButton("Next", function (dialog) {dialog.nextPage();});
+// popup.addButton("Cancel", function (dialog) {dialog.hide();});
+// popup.addPage();
+// popup.page[1].addButton("Cancel", function (dialog) {dialog.hide();});
+// somebutton.click(function () {popup.show();});
+
+
+
 (function () {
-    function Button(dialog, label, onclick, className) {
-        if (!dialog.buttonpanel) {
-            dialog.buttonpanel = AJS("div").addClass("button-panel");
-            dialog.popup.element.append(dialog.buttonpanel);
+    function Button(page, label, onclick, className) {
+        if (!page.buttonpanel) {
+            page.buttonpanel = AJS("div").addClass("button-panel");
+            page.element.append(page.buttonpanel);
         }
-        this.dialog = dialog;
+        this.page = page;
         this.onclick = onclick;
         this._onclick = function () {
-            onclick.call(this, dialog);
+            onclick.call(this, page.dialog, page);
         };
-        this.item = AJS("button").html(label);
+        this.item = AJS("button", label);
         if (className) {
             this.item.addClass(className);
         }
         if (typeof onclick == "function") {
             this.item.click(this._onclick);
         }
-        dialog.buttonpanel.append(this.item);
-        this.id = dialog.button.length;
-        dialog.button[this.id] = this;
+        page.buttonpanel.append(this.item);
+        this.id = page.button.length;
+        page.button[this.id] = this;
     }
     function itemMove (leftOrRight, target) {
         var dir = leftOrRight == "left"? -1 : 1;
@@ -130,31 +144,32 @@ AJS.popup = function (width, height) {
         }
     };
 
-    var Panel = function (dialog, title, reference, className) {
+    var Panel = function (page, title, reference, className) {
         if (!(reference instanceof AJS.$)) {
             reference = AJS.$(reference);
         }
-        this.dialog = dialog;
-        this.id = dialog.panel.length;
+        this.dialog = page.dialog;
+        this.page = page;
+        this.id = page.panel.length;
         this.button = AJS("button").html(title);
         this.item = AJS("li").append(this.button);
         this.body = AJS("div").append(reference);
         if (className) {
             this.body.addClass(className);
         }
-        var i = dialog.panel.length,
+        var i = page.panel.length,
             tab = this;
-        dialog.menu.append(this.item);
-        dialog.body.append(this.body);
-        dialog.panel[i] = this;
+        page.menu.append(this.item);
+        page.body.append(this.body);
+        page.panel[i] = this;
         var onclick = function () {
-            if (dialog.curtab + 1) {
-                var cur = dialog.panel[dialog.curtab];
+            if (page.curtab + 1) {
+                var cur = page.panel[page.curtab];
                 cur.body.hide();
                 cur.item.removeClass("selected");
                 (typeof cur.onblur == "function") && cur.onblur.call(tab);
             }
-            dialog.curtab = tab.id;
+            page.curtab = tab.id;
             tab.body.show();
             tab.item.addClass("selected");
             (typeof tab.onselect == "function") && tab.onselect.call(tab);
@@ -162,9 +177,9 @@ AJS.popup = function (width, height) {
         this.button.click(onclick);
         onclick();
         if (i == 0) {
-            dialog.menu.hide();
+            page.menu.hide();
         } else {
-            dialog.menu.show();
+            page.menu.show();
         }
     };
     Panel.prototype.select = function () {
@@ -182,6 +197,49 @@ AJS.popup = function (width, height) {
         }
     };
 
+    var Page = function (dialog, className) {
+        this.dialog = dialog;
+        this.id = dialog.page.length;
+        this.element = AJS("div");
+        this.body = AJS("div").addClass("page-body");
+        this.menu = AJS("ul").addClass("page-menu");
+        this.body.append(this.menu);
+        this.curtab;
+        this.panel = [];
+        this.button = [];
+        if (className) {
+            this.body.addClass(className);
+        }
+        dialog.popup.element.append(this.element.append(this.menu).append(this.body));
+        dialog.page[dialog.page.length] = this;
+    };
+    Page.prototype.addPanel = function (title, reference, className) {
+        new Panel(this, title, reference, className);
+        return this;
+    };
+    Page.prototype.addHeader = function (title, className) {
+        if (this.header) {
+            this.header.remove();
+        }
+        this.header = AJS("h2").html(title);
+        className && this.header.addClass(className);
+        this.element.prepend(this.header);
+        return this;
+    };
+    Page.prototype.addButton = function (label, onclick, className) {
+        new Button(this, label, onclick, className);
+        return this;
+    };
+    Page.prototype.addPanel = function (title, reference, className) {
+        new Panel(this, title, reference, className);
+        return this;
+    };
+    Page.prototype.hide = function () {
+        this.element.hide();
+    };
+    Page.prototype.show = function () {
+        this.element.show();
+    };
 
 
 
@@ -190,32 +248,55 @@ AJS.popup = function (width, height) {
         this.height = height || 480;
         this.width = width || 640;
         this.popup = AJS.popup(this.width, this.height);
-        this.menu = AJS("ul").addClass("dialog-menu");
-        this.body = AJS("div").addClass("dialog-body");
-        this.curtab;
 
-        this.popup.element.addClass("dialog").append(this.menu).append(this.body);
-        this.panel = [];
-        this.button = [];
+        this.popup.element.addClass("dialog");
+        this.page = [];
+        this.curpage = 0;
+        new Page(this);
     };
     AJS.Dialog.prototype.addHeader = function (title, className) {
-        if (this.header) {
-            this.header.remove();
-        }
-        this.header = AJS("h2").html(title);
-        className && this.header.addClass(className);
-        this.popup.element.prepend(this.header);
+        this.page[this.curpage].addHeader(title, className);
         return this;
     };
     AJS.Dialog.prototype.addButton = function (label, onclick, className) {
-        new Button(this, label, onclick, className);
+        this.page[this.curpage].addButton(label, onclick, className);
         return this;
     };
     AJS.Dialog.prototype.addPanel = function (title, reference, className) {
-        new Panel(this, title, reference, className);
+        this.page[this.curpage].addPanel(title, reference, className);
         return this;
     };
-
+    AJS.Dialog.prototype.addPage = function (className) {
+        new Page(this, className);
+        return this;
+    };
+    AJS.Dialog.prototype.nextPage = function () {
+        this.page[this.curpage++].hide();
+        if (this.curpage >= this.page.length) {
+            this.curpage = 0;
+        }
+        this.page[this.curpage].show();
+        return this;
+    };
+    AJS.Dialog.prototype.prevPage = function () {
+        this.page[this.curpage--].hide();
+        if (this.curpage <= 0) {
+            this.curpage = this.page.length - 1;
+        }
+        this.page[this.curpage].show();
+        return this;
+    };
+    AJS.Dialog.prototype.gotoPage = function (num) {
+        this.page[this.curpage].hide();
+        this.curpage = num;
+        if (this.curpage <= 0) {
+            this.curpage = this.page.length - 1;
+        } else if (this.curpage >= this.page.length) {
+            this.curpage = 0;
+        }
+        this.page[this.curpage].show();
+        return this;
+    };
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
         return this;
@@ -228,5 +309,4 @@ AJS.popup = function (width, height) {
         this.popup.hide();
         this.popup.remove();
     };
-
 })();
