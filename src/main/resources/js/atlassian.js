@@ -264,33 +264,6 @@ if (typeof jQuery != "undefined") {
                     AJS.$("body").append(AJS.dim.dim);
                 }
             },
-            popup: function (width, height) {
-                var shadow = AJS.$('<div class="shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>');
-                var popup = AJS("div").css({
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2) + "px",
-                    width: width + "px",
-                    height: height + "px",
-                    background: "#fff",
-                    zIndex: 3000
-                });
-                AJS.$("body").append(shadow);
-                AJS.$(".shadow").css({
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2 + 16) + "px",
-                    width: width + 32 + "px",
-                    height: height + 29 + "px",
-                    zIndex: 2999
-                });
-                AJS.$("body").append(popup);
-                AJS.dim();
-
-                return popup;
-            },
             onTextResize: function (f) {
                 if (typeof f == "function") {
                     if (AJS.onTextResize["on-text-resize"]) {
