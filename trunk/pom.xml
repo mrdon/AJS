@@ -7,13 +7,13 @@
         <version>12</version>
     </parent>
 
-    <groupId>com.atlassian.javscript.ajs</groupId>
+    <groupId>com.atlassian.javascript.ajs</groupId>
     <artifactId>ajs</artifactId>
     <!-- This should really be zip, only apparently that doesn't exist :-( -->
     <packaging>jar</packaging>
     <version>0.1-SNAPSHOT</version>
 
-    <name>Atlassian Javscript</name>
+    <name>Atlassian Javascript</name>
     <description>A library that contains the core javascript files used in Atlassian products.</description>
     <url>https://studio.atlassian.com/svn/AJS/trunk</url>
 
