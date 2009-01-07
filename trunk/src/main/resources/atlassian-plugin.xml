@@ -5,10 +5,8 @@
         <version>${project.version}</version>
     </plugin-info>
 
-
     <resource name="css/" type="download" location="css/" />
     <resource name="js/" type="download" location="js/" />
-
 
     <web-resource key="ajs" name="Atlassian Javascript">
         <resource type="download" name="atlassian.js" location="js/atlassian.js"/>
@@ -17,8 +15,6 @@
     <web-resource key="drop-down" name="Drop Down UI component">
         <resource type="download" name="drop-down.js" location="js/drop-down.js"/>
         <resource type="download" name="drop-down.css" location="css/drop-down.css"/>
-        <context>main</context>
-        <context>admin</context>
     </web-resource>
 
     <web-resource key="dialog" name="Dialog UI Component">
