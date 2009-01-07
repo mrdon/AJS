@@ -7,12 +7,12 @@
         <version>12</version>
     </parent>
 
-    <groupId>com.atlassian.javascript.ajs</groupId>
-    <artifactId>ajs-plugin</artifactId>
+    <groupId>com.atlassian.aui</groupId>
+    <artifactId>auiplugin</artifactId>
     <packaging>jar</packaging>
     <version>0.1-SNAPSHOT</version>
 
-    <name>Atlassian Javascript Plugin</name>
+    <name>Atlassian UI Plugin</name>
     <description>An Atlassian plugin that contains the core javascript files used in Atlassian products.</description>
     <url>https://studio.atlassian.com/svn/AJS/trunk</url>
 
