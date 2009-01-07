@@ -1,14 +1,3 @@
 <web-app>
     <display-name>AJS Test Webapp</display-name>
-
-    <servlet>
-        <servlet-name>ajsservlet</servlet-name>
-        <servlet-class>com.atlassian.javascript.ajs.AjsServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ajsservlet</servlet-name>
-        <url-pattern>/includes/ajs/*</url-pattern>
-    </servlet-mapping>
-
 </web-app>

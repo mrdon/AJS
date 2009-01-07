@@ -8,13 +8,12 @@
     </parent>
 
     <groupId>com.atlassian.javascript.ajs</groupId>
-    <artifactId>ajs</artifactId>
-    <!-- This should really be zip, only apparently that doesn't exist :-( -->
+    <artifactId>ajs-plugin</artifactId>
     <packaging>jar</packaging>
     <version>0.1-SNAPSHOT</version>
 
-    <name>Atlassian Javascript</name>
-    <description>A library that contains the core javascript files used in Atlassian products.</description>
+    <name>Atlassian Javascript Plugin</name>
+    <description>An Atlassian plugin that contains the core javascript files used in Atlassian products.</description>
     <url>https://studio.atlassian.com/svn/AJS/trunk</url>
 
     <scm>
@@ -30,12 +29,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.3</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>com.atlassian.selenium</groupId>
             <artifactId>atlassian-selenium</artifactId>
             <version>1.2</version>
@@ -45,8 +38,19 @@
 
     <build>
         <resources>
+            <!-- This filtering strategy is intentionally weird to trick the IDEA plugin into including the directory in the classpath -->
             <resource>
                 <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>atlassian-plugin.xml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>atlassian-plugin.xml</include>
+                </includes>
             </resource>
         </resources>
         <plugins>
@@ -56,16 +60,14 @@
                 <executions>
                     <execution>
                         <id>copy-src-into-webapp</id>
-                        <phase>pre-integration-test</phase>
+                        <phase>process-test-resources</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
                         <configuration>
                             <tasks>
-                                <copy todir="${project.build.directory}/test-classes/webapp/WEB-INF/lib">
-                                    <fileset dir="${project.build.directory}">
-                                        <include name="*.jar"/>
-                                    </fileset>
+                                <copy todir="${project.build.directory}/test-classes/webapp">
+                                    <fileset dir="${project.build.directory}/classes"/>
                                 </copy>
                             </tasks>
                         </configuration>
