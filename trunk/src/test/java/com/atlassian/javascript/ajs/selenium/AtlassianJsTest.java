@@ -3,25 +3,22 @@ package com.atlassian.javascript.ajs.selenium;
 import junit.framework.TestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import junit.framework.TestResult;
 import com.atlassian.javascript.ajs.selenium.client.Client;
 import com.atlassian.javascript.ajs.selenium.client.Configuration;
 import com.atlassian.selenium.SeleniumAssertions;
-
-import java.io.IOException;
 
 public class AtlassianJsTest extends TestCase
 {
     private static Client client = Client.getInstance();
     private static SeleniumAssertions assertThat = new SeleniumAssertions(client, Configuration.getInstance());
 
-    public static Test suite() throws IOException
+    public static Test suite()
     {
         TestSuite suite = new TestSuite();
         suite.setName(AtlassianJsTest.class.getName());
 
         client.open("ajs/test.html"); //todo fix context path
-        client.waitForPageToLoad(10000); // todo this should be configured
+        client.waitForPageToLoad(10000);
         assertThat.textPresent("Test Page");
 
         String concatenatedTestNames = client.getEval("window.testAjs.getTestNames()");        

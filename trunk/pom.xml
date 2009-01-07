@@ -30,6 +30,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.3</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.atlassian.selenium</groupId>
             <artifactId>atlassian-selenium</artifactId>
             <version>1.2</version>
@@ -50,14 +56,16 @@
                 <executions>
                     <execution>
                         <id>copy-src-into-webapp</id>
-                        <phase>process-test-resources</phase>
+                        <phase>pre-integration-test</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
                         <configuration>
                             <tasks>
-                                <copy todir="${project.build.directory}/test-classes/webapp">
-                                    <fileset dir="${project.build.directory}/classes"/>
+                                <copy todir="${project.build.directory}/test-classes/webapp/WEB-INF/lib">
+                                    <fileset dir="${project.build.directory}">
+                                        <include name="*.jar"/>
+                                    </fileset>
                                 </copy>
                             </tasks>
                         </configuration>
