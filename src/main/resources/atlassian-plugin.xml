@@ -1,10 +1,10 @@
-<atlassian-plugin key="com.atlassian.javascript.ajs" name="AJS Plugin">
+<atlassian-plugin name='Atlassian UI Plugin' key='com.atlassian.auiplugin'>
     <plugin-info>
-        <description>Atlassian Javascript Plugin</description>
+        <description>${project.description}</description>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
         <version>${project.version}</version>
-        <vendor name="Atlassian" url="https://studio.atlassian.com/svn/AJS/trunk"/>
-        <application-version min="3.0" max="3.0"/>
     </plugin-info>
+
 
     <resource name="css/" type="download" location="css/" />
     <resource name="js/" type="download" location="js/" />
