@@ -28,6 +28,12 @@
     <!-- jQuery -->
     <web-resource key="jquery" name="JQuery" i18n-name-key="web.resources.plugin.jquery.name">
         <resource type="download" name="jquery.js" location="js/jquery/jquery-1.2.6.min.js"/>
+    </web-resource>
+
+    <!-- jQuery with other jquery basic files -->
+    <web-resource key="jquery-base" name="JQuery" i18n-name-key="web.resources.plugin.jquery.name">
+        <resource type="download" name="jquery.js" location="js/jquery/jquery-1.2.6.min.js"/>
+        <resource type="download" name="jquery-compatability.js" location="js/jquery/jquery-compatability.js"/>
         <resource type="download" name="jquery.dimensions.js" location="js/jquery/jquery.ui-1.5a/jquery.dimensions.js"/>
     </web-resource>
 
