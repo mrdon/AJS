@@ -19,7 +19,7 @@ AJS.dim = function () {
         AJS.$("html").css("overflow", "hidden");
     }
 };
-AJS.popup = function (width, height) {
+AJS.popup = function (width, height, id) {
     var shadow = AJS.$('<div class="shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>');
     var popup = AJS("div").addClass("popup").css({
         margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2) + "px",
@@ -28,6 +28,9 @@ AJS.popup = function (width, height) {
         background: "#fff",
         zIndex: 3000
     });
+    if (id) {
+        popup.attr("id", id);
+    }
     if (AJS.$.browser.msie) {
         window.msieheight = Math.round(height / 2);
         popup[0].style.marginTop = "";
@@ -200,7 +203,7 @@ AJS.popup = function (width, height) {
     var Page = function (dialog, className) {
         this.dialog = dialog;
         this.id = dialog.page.length;
-        this.element = AJS("div");
+        this.element = AJS("div").addClass("dialog-components");
         this.body = AJS("div").addClass("page-body");
         this.menu = AJS("ul").addClass("page-menu");
         this.body.append(this.menu);
@@ -230,10 +233,6 @@ AJS.popup = function (width, height) {
         new Button(this, label, onclick, className);
         return this;
     };
-    Page.prototype.addPanel = function (title, reference, className) {
-        new Panel(this, title, reference, className);
-        return this;
-    };
     Page.prototype.hide = function () {
         this.element.hide();
     };
@@ -244,10 +243,11 @@ AJS.popup = function (width, height) {
 
 
     // Dialog
-    AJS.Dialog = function (width, height) {
+    AJS.Dialog = function (width, height, id) {
         this.height = height || 480;
         this.width = width || 640;
-        this.popup = AJS.popup(this.width, this.height);
+        this.id = id;
+        this.popup = AJS.popup(this.width, this.height, this.id);
 
         this.popup.element.addClass("dialog");
         this.page = [];
