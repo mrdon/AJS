@@ -132,3 +132,7 @@
     margin: 0 0 0 .5em;
     float: left;
 }
+.page-menu,
+.dialog-components {
+    height: 100%;
+}
