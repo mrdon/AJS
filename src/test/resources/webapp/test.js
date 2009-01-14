@@ -28,6 +28,56 @@ testAjs.addTest("testAjsParamsList", function () {
 testAjs.addTest("testDialog", function () {
     return (typeof AJS.Dialog == "function");
 });
+testAjs.addTest("testDialogPages", function () {
+    var dlg = new AJS.Dialog(640, 480);
+    dlg.addPanel("Test1", "<p>test #1</p>", "panel1");
+    dlg.addButton("btnTest1", function () {alert("test1");}, "button1");
+    dlg.show();
 
+    dlg.addPage();
+
+    dlg.addPanel("Test2", "<p>test #2</p>", "panel2");
+    dlg.addButton("btnTest2", function () {alert("test2");}, "button2");
+
+    var res = !($(".panel1")[0].offsetHeight + $(".button1")[0].offsetHeight);
+    dlg.remove();
+    return res;
+});
+testAjs.addTest("testDialogGotoPage", function () {
+    var dlg = new AJS.Dialog(640, 480);
+    dlg.addPanel("Test1", "<p>test #1</p>", "panel1");
+    dlg.addButton("btnTest1", function () {alert("test1");}, "button1");
+    dlg.show();
+    
+    dlg.addPage();
+    
+    dlg.addPanel("Test2", "<p>test #2</p>", "panel2");
+    dlg.addButton("btnTest2", function () {alert("test2");}, "button2");
+    
+    dlg.gotoPage(0);
+
+    res = !!($(".panel1")[0].offsetHeight + $(".button1")[0].offsetHeight);
+    dlg.remove();
+    return res;
+    
+});
+testAjs.addTest("testDialogPrevPage", function () {
+    var dlg = new AJS.Dialog(640, 480);
+    dlg.addPanel("Test1", "<p>test #1</p>", "panel1");
+    dlg.addButton("btnTest1", function () {alert("test1");}, "button1");
+    dlg.show();
+    
+    dlg.addPage();
+    
+    dlg.addPanel("Test2", "<p>test #2</p>", "panel2");
+    dlg.addButton("btnTest2", function () {alert("test2");}, "button2");
+    
+    dlg.prevPage();
+
+    res = !!($(".panel1")[0].offsetHeight + $(".button1")[0].offsetHeight);
+    dlg.remove();
+    return res;
+    
+});
 // todo - add more tests here
 

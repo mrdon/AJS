@@ -268,6 +268,8 @@ AJS.popup = function (width, height, id) {
     };
     AJS.Dialog.prototype.addPage = function (className) {
         new Page(this, className);
+        this.page[this.curpage].hide();
+        this.curpage = this.page.length - 1;
         return this;
     };
     AJS.Dialog.prototype.nextPage = function () {
@@ -280,7 +282,7 @@ AJS.popup = function (width, height, id) {
     };
     AJS.Dialog.prototype.prevPage = function () {
         this.page[this.curpage--].hide();
-        if (this.curpage <= 0) {
+        if (this.curpage < 0) {
             this.curpage = this.page.length - 1;
         }
         this.page[this.curpage].show();
@@ -289,7 +291,7 @@ AJS.popup = function (width, height, id) {
     AJS.Dialog.prototype.gotoPage = function (num) {
         this.page[this.curpage].hide();
         this.curpage = num;
-        if (this.curpage <= 0) {
+        if (this.curpage < 0) {
             this.curpage = this.page.length - 1;
         } else if (this.curpage >= this.page.length) {
             this.curpage = 0;
