@@ -177,7 +177,13 @@ AJS.popup = function (width, height, id) {
             tab.item.addClass("selected");
             (typeof tab.onselect == "function") && tab.onselect.call(tab);
         };
-        this.button.click(onclick);
+        if (!this.button.click) {
+            AJS.log("atlassian-dialog:Panel:constructor - this.button.click falsy");
+            this.button.onclick = onclick;
+        }
+        else {
+            this.button.click(onclick);
+        }
         onclick();
         if (i == 0) {
             page.menu.hide();
