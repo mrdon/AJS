@@ -21,47 +21,47 @@
     top: 0;
     width: 16px;
     height: 17px;
-    background: url(../images/lt.png);
+    background: url(images/lt.png);
 }
 .shadow .tr {
     right: 0;
     top: 0;
     width: 16px;
     height: 17px;
-    background: url(../images/rt.png);
+    background: url(images/rt.png);
 }
 .shadow .br {
     right: 0;
     bottom: 0;
     width: 29px;
     height: 29px;
-    background: url(../images/rb.png);
+    background: url(images/rb.png);
 }
 .shadow .bl {
     left: 0;
     bottom: 0;
     width: 29px;
     height: 29px;
-    background: url(../images/lb.png);
+    background: url(images/lb.png);
 }
 .shadow .b {
     left: 29px;
     bottom: 0;
     height: 29px;
     width: 29px;
-    background: url(../images/b.png);
+    background: url(images/b.png);
 }
 .shadow .l {
     left: 0;
     top: 17px;
     width: 16px;
-    background: url(../images/l.png);
+    background: url(images/l.png);
 }
 .shadow .r {
     right: 0;
     top: 17px;
     width: 16px;
-    background: url(../images/r.png);
+    background: url(images/r.png);
 }
 /** Dialog  */
 .dialog {
