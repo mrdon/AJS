@@ -107,15 +107,15 @@ AJS.popup = function (width, height, id) {
     function itemMove (leftOrRight, target) {
         var dir = leftOrRight == "left"? -1 : 1;
         return function (step) {
-            var dtarget = this.dialog[target];
+            var dtarget = this.page[target];
             if (this.id != ((dir == 1) ? dtarget.length - 1 : 0)) {
                 dir *= (step || 1);
                 dtarget[this.id + dir].item[(dir < 0 ? "before" : "after")](this.item);
                 dtarget.splice(this.id, 1);
                 dtarget.splice(this.id + dir, 0, this);
                 for (var i = 0, ii = dtarget.length; i < ii; i++) {
-                    if (target == "panel" && this.dialog.curtab == dtarget[i].id) {
-                        this.dialog.curtab = i;
+                    if (target == "panel" && this.page.curtab == dtarget[i].id) {
+                        this.page.curtab = i;
                     }
                     dtarget[i].id = i;
                 }
@@ -125,9 +125,9 @@ AJS.popup = function (width, height, id) {
     };
     function itemRemove(target) {
         return function () {
-            this.dialog[target].splice(this.id, 1);
-            for (var i = 0, ii = this.dialog[target].length; i < ii; i++) {
-                this.dialog[target][i].id = i;
+            this.page[target].splice(this.id, 1);
+            for (var i = 0, ii = this.page[target].length; i < ii; i++) {
+                this.page[target][i].id = i;
             }
             this.item.remove();
         };
@@ -156,7 +156,7 @@ AJS.popup = function (width, height, id) {
         this.id = page.panel.length;
         this.button = AJS("button").html(title);
         this.item = AJS("li").append(this.button);
-        this.body = AJS("div").append(reference);
+        this.body = AJS("div").append(reference).addClass("panel-body").css("height", page.dialog.height + "px");;
         if (className) {
             this.body.addClass(className);
         }
@@ -206,12 +206,13 @@ AJS.popup = function (width, height, id) {
         }
     };
 
+    
     var Page = function (dialog, className) {
         this.dialog = dialog;
         this.id = dialog.page.length;
         this.element = AJS("div").addClass("dialog-components");
         this.body = AJS("div").addClass("page-body");
-        this.menu = AJS("ul").addClass("page-menu");
+        this.menu = AJS("ul").addClass("page-menu").css("height", dialog.height + "px");
         this.body.append(this.menu);
         this.curtab;
         this.panel = [];
@@ -222,6 +223,14 @@ AJS.popup = function (width, height, id) {
         dialog.popup.element.append(this.element.append(this.menu).append(this.body));
         dialog.page[dialog.page.length] = this;
     };
+    Page.prototype.recalcSize = function () {
+        var headerHeight = this.header ? 43 : 0;
+        var panelHeight = this.buttonpanel ? 43 : 0;
+        for (var i = this.panel.length; i--;) {
+            this.panel[i].body.css("height", this.dialog.height - headerHeight - panelHeight - 20 + "px");
+        }
+    };
+    
     Page.prototype.addPanel = function (title, reference, className) {
         new Panel(this, title, reference, className);
         return this;
@@ -230,14 +239,19 @@ AJS.popup = function (width, height, id) {
         if (this.header) {
             this.header.remove();
         }
-        this.header = AJS("h2").html(title);
+            this.header = AJS("h2").html(title);
         className && this.header.addClass(className);
         this.element.prepend(this.header);
+        this.recalcSize();
         return this;
     };
     Page.prototype.addButton = function (label, onclick, className) {
         new Button(this, label, onclick, className);
+        this.recalcSize();
         return this;
+    };
+    Page.prototype.gotoPanel = function (panel) {
+        this.panel[panel.id || panel].select();
     };
     Page.prototype.hide = function () {
         this.element.hide();
@@ -245,6 +259,10 @@ AJS.popup = function (width, height, id) {
     Page.prototype.show = function () {
         this.element.show();
     };
+    Page.prototype.remove = function () {
+        this.element.remove();
+    };
+    
 
 
 
@@ -305,6 +323,22 @@ AJS.popup = function (width, height, id) {
         this.page[this.curpage].show();
         return this;
     };
+    AJS.Dialog.prototype.getPanel = function (panel) {
+        var id = panel.id || panel;
+        return this.page[this.curpage].panel[id];
+    };
+    AJS.Dialog.prototype.getPage = function (pageid) {
+        return this.page[pageid];
+    };
+    
+    AJS.Dialog.prototype.gotoPanel = function (pageorpanel, panel) {
+        if (panel != null) {
+            var pageid = pageorpanel.id || pageorpanel;
+            this.gotoPage(pageid);
+        }
+        this.page[this.curpage].gotoPanel(typeof panel == "undefined" ? pageorpanel : panel);
+    };
+    
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
         return this;
