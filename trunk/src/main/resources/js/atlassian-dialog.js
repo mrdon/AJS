@@ -156,7 +156,7 @@ AJS.popup = function (width, height, id) {
         this.id = page.panel.length;
         this.button = AJS("button").html(title);
         this.item = AJS("li").append(this.button);
-        this.body = AJS("div").append(reference).addClass("panel-body").css("height", page.dialog.height + "px");;
+        this.body = AJS("div").append(reference).addClass("panel-body").css("height", page.dialog.height + "px");
         if (className) {
             this.body.addClass(className);
         }
