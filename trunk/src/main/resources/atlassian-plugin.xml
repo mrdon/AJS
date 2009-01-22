@@ -57,4 +57,8 @@
         <resource type="download" name="jquery.autocomplete.js" location="js/jquery/plugins/jquery.autocompete/jquery.autocomplete.js"/>
     </web-resource>
 
+    <web-resource key="jquery-selection" name="jQuery Text Selection" i18n-name-key="web.resources.plugin.jquery.selection.name">
+        <resource type="download" name="jquery.selection.js" location="js/jquery/plugins/jquery.selection.js"/>
+    </web-resource>
+
 </atlassian-plugin>
