@@ -53,7 +53,7 @@
                     var selection_start = element.selectionStart;
                     element.value = element.value.substring(0, selection_start) + value + element.value.substring(element.selectionEnd);
                     element.selectionStart = selection_start;
-                    element.selectionEnd = selection_start + text.length;
+                    element.selectionEnd = selection_start + value.length;
                 }
                 element.focus();
                 element.scrollTop = scroll_top;
