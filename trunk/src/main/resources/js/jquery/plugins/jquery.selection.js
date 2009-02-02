@@ -2,6 +2,7 @@
     if (document.selection) {
         $.fn.selection = function (value) {
             var element = this[0];
+            this.focus();
             if (!element) {
                 return false;
             }
@@ -9,7 +10,6 @@
                 return document.selection.createRange().text;
             } else {
                 var scroll_top = element.scrollTop;
-                element.focus();
                 var range = document.selection.createRange();
                 range.text = value;
                 range.select();
@@ -18,6 +18,8 @@
             }
         };
         $.fn.selectionRange = function (start, end) {
+            var element = this[0];
+            this.focus();
             var range = document.selection.createRange(),
                 dup = range.duplicate();
             dup.moveToElementText(element);
