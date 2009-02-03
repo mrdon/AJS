@@ -186,7 +186,7 @@ AJS.popup = function (width, height, id) {
         }
         onclick();
         if (i == 0) {
-            page.menu.hide();
+            page.menu.css("display", "none"); // don't use jQuery hide()
         } else {
             page.menu.show();
         }
