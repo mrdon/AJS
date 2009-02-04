@@ -112,5 +112,15 @@ testAjs.addTest("testDialogPrevPage", function () {
     return res;
     
 });
+testAjs.addTest("testDialogMenuHidden", function() {
+    // tests that the dialog menu is hidden when there is only one panel
+    var popup = new AJS.Dialog(860, 530, "test-dialog");
+    popup.addPanel("First", "<p></p>", "panel1").show();
+    
+    var res = $("#test-dialog .page-menu").css("display") == "none";
+    popup.remove();
+    return res;
+});
+
 // todo - add more tests here
 
