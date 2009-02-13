@@ -1,21 +1,17 @@
-* html .blanket {
+.blanket {
     position: absolute;
     filter: alpha(opacity = 50);
     height: 100px;
 }
 body {
     overflow: hidden;
-}
-* html body {
     filter: true;
 }
-* html .dialog {
+.dialog {
     position: absolute;
-    margin-top: expression((document.documentElement.scrollTop - 240) + "px");
-/*    margin-top: 300px;*/
 }
-* html .shadow,
-* html .popup, {
+.shadow,
+.popup, {
     position: absolute;
 }
 * html .shadow .tl {
