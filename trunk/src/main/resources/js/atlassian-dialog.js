@@ -50,11 +50,32 @@ AJS.popup = function (width, height, id) {
 
     return {
         show: function () {
-            this.element.show();
-            shadow.show();
-            AJS.dim();
+            var show = function () {
+                scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
+                document.documentElement.scrollTop = scrollDistance;
+                popup.show();
+                shadow.show();
+                AJS.dim();
+            };
+            show();
+            if (popup.css("position") == "absolute") {
+                // Internet Explorer case
+                var scrollfix = function () {
+                    scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
+                    popup.css("margin-top", scrollDistance - height / 2);
+                };
+                scrollfix();
+                AJS.$(window).load(scrollfix);
+                this.show = function () {
+                    show();
+                    scrollfix();
+                };
+            } else {
+                this.show = show;
+            }
         },
         hide: function () {
+            document.documentElement.scrollTop = scrollDistance;
             this.element.hide();
             shadow.hide();
             AJS.dim();
