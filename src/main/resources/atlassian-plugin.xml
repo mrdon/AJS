@@ -1,4 +1,4 @@
-<atlassian-plugin name='Atlassian UI Plugin' key='com.atlassian.auiplugin'>
+<atlassian-plugin name='${project.name}' key='${atlassian.plugin.key}'>
     <plugin-info>
         <description>${project.description}</description>
         <vendor name="${project.organization.name}" url="${project.organization.url}"/>
