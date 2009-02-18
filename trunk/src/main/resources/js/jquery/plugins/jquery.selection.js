@@ -1,5 +1,8 @@
 (function ($) {
     if (document.selection) {
+        var fixCaretReturn = function (S) {
+            return S.replace(/\u000D/g, "");
+        };
         $.fn.selection = function (value) {
             var element = this[0];
             this.focus();
@@ -24,11 +27,13 @@
                 dup = range.duplicate();
             dup.moveToElementText(element);
             dup.setEndPoint("EndToEnd", range);
-            var res = {
-                start: dup.text.length - range.text.length,
-                end: dup.text.length,
-                text: range.text
-            };
+            var duptext = fixCaretReturn(dup.text),
+                rangetext = fixCaretReturn(range.text),
+                res = {
+                    start: duptext.length - rangetext.length,
+                    end: duptext.length,
+                    text: rangetext
+                };
             if (start == null) {
                 return res;
             } else {
