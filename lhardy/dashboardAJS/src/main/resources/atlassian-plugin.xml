@@ -1,0 +1,64 @@
+<atlassian-plugin name='${project.name}' key='${atlassian.plugin.key}'>
+    <plugin-info>
+        <description>${project.description}</description>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <version>${project.version}</version>
+    </plugin-info>
+
+    <resource name="css/" type="download" location="css/" />
+    <resource name="js/" type="download" location="js/" />
+    <resource name="images/" type="download" location="images/"/>
+
+    <web-resource key="ajs" name="Atlassian Javascript">
+        <resource type="download" name="atlassian.js" location="js/atlassian.js"/>
+        <depends>jquery</depends>
+    </web-resource>
+
+    <web-resource key="drop-down" name="Drop Down UI component">
+        <resource type="download" name="drop-down.js" location="js/drop-down.js"/>
+        <resource type="download" name="drop-down.css" location="css/drop-down.css"/>
+        <depends>ajs</depends>
+    </web-resource>
+
+    <web-resource key="dialog" name="Dialog UI Component">
+        <resource type="download" name="atlassian-dialog.js" location="js/atlassian-dialog.js"/>
+        <resource type="download" name="dialog.css" location="css/dialog.css"/>
+        <resource type="download" name="dialog-ie.css" location="css/dialog-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+        <depends>ajs</depends>
+    </web-resource>
+
+    <!-- jQuery -->
+    <web-resource key="jquery" name="JQuery" i18n-name-key="web.resources.plugin.jquery.name">
+        <resource type="download" name="jquery.js" location="js/jquery/jquery-1.2.6.min.js"/>
+    </web-resource>
+
+    <!-- jQuery with other jquery basic files -->
+    <web-resource key="jquery-base" name="JQuery" i18n-name-key="web.resources.plugin.jquery.name">
+        <resource type="download" name="jquery.js" location="js/jquery/jquery-1.2.6.min.js"/>
+        <resource type="download" name="jquery-compatability.js" location="js/jquery/jquery-compatability.js"/>
+        <resource type="download" name="jquery.dimensions.js" location="js/jquery/jquery.ui-1.5a/jquery.dimensions.js"/>
+    </web-resource>
+
+    <!-- jQuery UI -->
+    <web-resource key="jquery-ui-draggable" name="JQuery UI Draggable" i18n-name-key="web.resources.plugin.jquery.name">
+        <resource type="download" name="ui.mouse.js" location="js/jquery/jquery.ui-1.5a/ui.mouse.js"/>
+        <resource type="download" name="ui.draggable.js" location="js/jquery/jquery.ui-1.5a/ui.draggable.js"/>
+        <resource type="download" name="ui.draggable.ext.js" location="js/jquery/jquery.ui-1.5a/ui.draggable.ext.js"/>
+    </web-resource>
+
+    <!-- jQuery Plugins -->
+    <web-resource key="jquery-progressbar" name="jQuery Progress Bar Plugin" i18n-name-key="web.resources.plugin.jquery.progressbar.name">
+        <resource type="download" name="jquery.progressbar.js" location="js/jquery/jquery.progressbar/jquery.progressbar.js"/>
+    </web-resource>
+
+    <web-resource key="jquery-autocomplete" name="jQuery Autocomplete" i18n-name-key="web.resources.plugin.jquery.autocomplete.name">
+        <resource type="download" name="jquery.autocomplete.js" location="js/jquery/plugins/jquery.autocompete/jquery.autocomplete.js"/>
+    </web-resource>
+
+    <web-resource key="jquery-selection" name="jQuery Text Selection" i18n-name-key="web.resources.plugin.jquery.selection.name">
+        <resource type="download" name="jquery.selection.js" location="js/jquery/plugins/jquery.selection.js"/>
+    </web-resource>
+
+</atlassian-plugin>
