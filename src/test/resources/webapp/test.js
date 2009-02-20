@@ -23,7 +23,16 @@ testAjs.addTest("testAjsParamsList", function () {
     var products = AJS.params.products;
     return AJS.contains(products, "confluence");
 });
-
+testAjs.addTest("testAjsClone", function() {
+    var clonedDiv = AJS.clone("#test-container");
+    $("body").append(clonedDiv);
+    var res = $("#test-container").length == 1 && $("div.test").length == 2;
+    clonedDiv.remove();
+    return res;
+});
+testAjs.addTest("testContainsIgnoreCase", function() {
+    return $("span:containsIgnoreCase(some text)").length == 1;
+});
 // atlassian-dialog.js tests
 testAjs.addTest("testDialog", function () {
     return (typeof AJS.Dialog == "function");

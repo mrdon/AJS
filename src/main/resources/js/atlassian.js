@@ -217,6 +217,13 @@ if (typeof jQuery != "undefined") {
                 })();
             },
             /**
+             * Clones the element specified by the selector and removes the id attribute
+             * @param selector a jQuery selector
+             */
+            clone : function(selector) {
+                return AJS.$(selector).clone().removeAttr("id");
+            },
+            /**
             * Compare two strings in alphanumeric way
             * @method alphanum
             * @param {String} a first string to compare
@@ -338,6 +345,11 @@ if (typeof jQuery != "undefined") {
     })();
 
     AJS.$(function () {AJS.init();});
+
+    // extend jQuery to support contains selector that is case insensitive
+    jQuery.extend(jQuery.expr[':'], {
+        containsIgnoreCase: "(a.textContent||a.innerText||jQuery(a).text()||'').toLowerCase().indexOf((m[3]||'').toLowerCase())>=0"
+    });
 }
 
 if (typeof console == "undefined") {
