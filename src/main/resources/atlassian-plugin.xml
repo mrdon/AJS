@@ -11,6 +11,13 @@
 
     <web-resource key="ajs" name="Atlassian Javascript">
         <resource type="download" name="atlassian.js" location="js/atlassian.js"/>
+        <resource type="download" name="drop-down.js" location="js/drop-down.js"/>
+        <resource type="download" name="drop-down.css" location="css/drop-down.css"/>
+        <resource type="download" name="atlassian-dialog.js" location="js/atlassian-dialog.js"/>
+        <resource type="download" name="dialog.css" location="css/dialog.css"/>
+        <resource type="download" name="dialog-ie.css" location="css/dialog-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
         <depends>com.atlassian.aui:jquery</depends>
     </web-resource>
 
