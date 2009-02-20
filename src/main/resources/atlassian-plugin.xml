@@ -11,6 +11,7 @@
 
     <web-resource key="ajs" name="Atlassian Javascript">
         <resource type="download" name="atlassian.js" location="js/atlassian.js"/>
+        <resource type="download" name="atlassian.css" location="css/atlassian.css"/>
         <resource type="download" name="drop-down.js" location="js/drop-down.js"/>
         <resource type="download" name="drop-down.css" location="css/drop-down.css"/>
         <resource type="download" name="atlassian-dialog.js" location="js/atlassian-dialog.js"/>
