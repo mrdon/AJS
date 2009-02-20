@@ -1,3 +1,4 @@
+
 if (typeof jQuery != "undefined") {
 
     var AJS = (function () {
