@@ -59,6 +59,7 @@
     <web-resource name="jQuery UI" key="jquery-ui">
         <dependency>com.atlassian.aui:jquery</dependency>
         <resource type="download" name="js/jquery/jquery.ui-1.6rc6.min.js" location="js/jquery/jquery-ui-1.6rc6/jquery-ui-personalized-1.6rc6.min.js"/>
+        <resource type="download" name="jquery-ui-themeroller.css" location="css/jquery-ui-themeroller.css"/>
     </web-resource>
 
     <!-- jQuery Plugins -->

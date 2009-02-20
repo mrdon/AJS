@@ -1,5 +1,4 @@
 
-if (!/jwebunit/.test(navigator.userAgent.toLowerCase())) {
 AJS.dropDown = function (obj, isVisibleByDefault) {
     var dd = null,
         result = [],
