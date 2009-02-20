@@ -1,3 +1,4 @@
+
 if (!/jwebunit/.test(navigator.userAgent.toLowerCase())) {
 AJS.dropDown = function (obj, isVisibleByDefault) {
     var dd = null,
@@ -47,6 +48,40 @@ AJS.dropDown = function (obj, isVisibleByDefault) {
     } else {
         throw new Error("AJS.dropDown function was called with illegal parameter. Should be jQuery object, jQuery selector or array.");
     }
+    
+    AJS.dropDown.createShims = function () {
+        var shims = $(".shim");
+        jQuery("iframe").each(function(idx){
+            $this = jQuery(this);
+            var offset = $this.offset();
+            offset.height = $this.height();
+            offset.width = $this.width();
+            jQuery(shims[idx]).css({
+                position: "absolute", 
+                left: offset.left + "px",
+                top: offset.top + "px",
+                height: offset.height + "px",
+                width: offset.width + "px"
+            });
+        });
+    };
+    
+    //shim for iframes
+    var iframes = $("iframe"), loadedIframes = 0, reset = function () {};
+    iframes.each(function (j) {
+        var shim = this.shim = AJS("div").addClass("shim").appendTo("body");
+        var $this = $(this).load(function () {
+            var oldreset = reset;
+            reset = function () {
+                oldreset();
+                AJS.dropDown.createShims();
+            };
+            if (++loadedIframes == iframes.length) {
+                reset();
+            }
+        });
+    });
+    var shims = $(".shim");
 
     var blocker = function (e) {
         var c = e.which;
@@ -90,8 +125,8 @@ AJS.dropDown = function (obj, isVisibleByDefault) {
             cdd.focused = 0;
         }
         if (AJS.dropDown.current.links.length) {
-        	AJS.dropDown.current.links[cdd.focused].focus();
-        	AJS.dropDown.current.links[cdd.focused].pa.addClass("active");
+            AJS.dropDown.current.links[cdd.focused].focus();
+            AJS.dropDown.current.links[cdd.focused].pa.addClass("active");
         }
         e.stopPropagation();
         e.preventDefault();
@@ -107,7 +142,7 @@ AJS.dropDown = function (obj, isVisibleByDefault) {
             var pa = this.parentNode;
             AJS.dropDown.current.cleanFocus();
             pa.originalClass = pa.className;
-            pa.className = "active";
+            AJS.$(pa).addClass = "active";
             AJS.dropDown.current.$[0].focused = i;
         };
     };
@@ -121,7 +156,7 @@ AJS.dropDown = function (obj, isVisibleByDefault) {
                 cleanFocus: function () {
                     if (cdd.focused + 1 && res.links.length) {
                         var pa = res.links[cdd.focused].pa[0];
-                        pa.className = "";
+                        AJS.$(pa).removeClass("active");
                     }
                     cdd.focused = -1;
                 }
@@ -165,6 +200,7 @@ AJS.dropDown = function (obj, isVisibleByDefault) {
                 }, 0);
                 $doc.keydown(movefocus).keypress(blocker);
                 this.onshow();
+                shims && shims.removeClass("hidden");
             };
         res.hide = function (causer) {
                 this.method = this.method || "appear";
@@ -173,6 +209,7 @@ AJS.dropDown = function (obj, isVisibleByDefault) {
                 $doc.unbind("click", hider).unbind("keydown", movefocus).unbind("keypress", blocker);
                 this.onhide(causer);
                 AJS.dropDown.current = null;
+                shims && shims.addClass("hidden");
             };
         res.onshow = res.onhide = function () {};
         if ($cdd.hasClass("hidden")) {
@@ -200,4 +237,28 @@ AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
 AJS.dropDown.removeAllAdditionalProperties = function(item) {
 	AJS.$("i", item).remove();
 };
-}
+
+AJS.$(function ($) {
+    $(".aui-dd-parent ul.aui-dropdown").addClass("hidden");
+    AJS.pageDropDowns = AJS.dropDown(".aui-dd-parent ul.aui-dropdown");
+    console.log($(".aui-dd-parent ul.aui-dropdown").length);
+    $(".aui-dd-parent").each(function (i) {
+        var link = $(".aui-dd-link", this);
+        AJS.pageDropDowns[i].onshow = function () {
+            link.addClass("active");
+        };
+        AJS.pageDropDowns[i].onhide = function () {
+            link.removeClass("active").blur();
+        };
+        link.click(function (e) {
+            if (AJS.pageDropDowns[i] != AJS.dropDown.current) {
+                AJS.pageDropDowns[i].show();
+            } else {
+                AJS.pageDropDowns[i].hide();
+            }
+            e.preventDefault();
+        });
+    });
+});
+
+
