@@ -1,3 +1,8 @@
+/**
+ * Covers screen with semitransparent DIV
+ * @method dim
+ * @namespace AJS
+*/
 AJS.dim = function () {
     if (AJS.dim.dim) {
         AJS.dim.dim.remove();
@@ -19,6 +24,15 @@ AJS.dim = function () {
         AJS.$("html").css("overflow", "hidden");
     }
 };
+/**
+ * Creates a generic popup
+ * @method poup
+ * @namespace AJS
+ * @param width {number} width of the popup
+ * @param height {number} height of the popup
+ * @param id {number} [optional] id of the popup
+ * @return {object} popup object
+*/
 AJS.popup = function (width, height, id) {
     var shadow = AJS.$('<div class="shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>');
     var popup = AJS("div").addClass("popup").css({
@@ -48,7 +62,16 @@ AJS.popup = function (width, height, id) {
     popup.hide();
     shadow.hide();
 
+    /**
+     * Popup object
+     * @class Popup
+     * @static
+    */
     return {
+        /**
+         * Makes popup visible
+         * @method show
+        */
         show: function () {
             var show = function () {
                 scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
@@ -74,13 +97,25 @@ AJS.popup = function (width, height, id) {
                 this.show = show;
             }
         },
+        /**
+         * Makes popup invisible
+         * @method hide
+        */
         hide: function () {
             document.documentElement.scrollTop = scrollDistance;
             this.element.hide();
             shadow.hide();
             AJS.dim();
         },
+        /**
+         * jQuery object, representing popup DOM element
+         * @property element
+        */
         element: popup,
+        /**
+         * Removes popup elements from the DOM
+         * @method remove
+        */
         remove: function () {
             shadow.remove();
             popup.remove();
@@ -102,8 +137,17 @@ AJS.popup = function (width, height, id) {
 // somebutton.click(function () {popup.show();});
 
 
-
+// Scoping function
 (function () {
+    /**
+     * @class Button
+     * @constructor Button
+     * @param page {number} page id
+     * @param label {string} button label
+     * @param onclick {function} [optional] click event handler
+     * @param className {string} [optional] class name
+     * @private
+    */
     function Button(page, label, onclick, className) {
         if (!page.buttonpanel) {
             page.buttonpanel = AJS("div").addClass("button-panel");
@@ -157,9 +201,19 @@ AJS.popup = function (width, height, id) {
     Button.prototype.moveDown = Button.prototype.moveRight = itemMove("right", "button");
     Button.prototype.remove = itemRemove("button");
 
+    /**
+     * Getter and setter for label
+     * @method label
+     * @param label {string} [optional] label of the button
+     * @return {string} label, if nothing is passed in
+     * @return {object} jQuery button object, if label is passed in
+    */
     Button.prototype.label = function (label) {
         return this.button.html(label);
     };
+    /**
+     * Getter and setter of
+    */
     Button.prototype.onclick = function (onclick) {
         if (typeof onclick == "undefined") {
             return this.onclick;
@@ -168,6 +222,15 @@ AJS.popup = function (width, height, id) {
         }
     };
 
+    /**
+     * Class for panels
+     * @class Panel
+     * @constructor
+     * @param page {number} page id
+     * @param title {string} panel title
+     * @param reference {string} or {object} jQuery object or selector for the contents of the Panel
+     * @param className {string} [optional] HTML class name
+    */
     var Panel = function (page, title, reference, className) {
         if (!(reference instanceof AJS.$)) {
             reference = AJS.$(reference);
@@ -178,6 +241,7 @@ AJS.popup = function (width, height, id) {
         this.button = AJS("button").html(title);
         this.item = AJS("li").append(this.button);
         this.body = AJS("div").append(reference).addClass("panel-body").css("height", page.dialog.height + "px");
+        this.padding = 10;
         if (className) {
             this.body.addClass(className);
         }
@@ -212,12 +276,45 @@ AJS.popup = function (width, height, id) {
             page.menu.show();
         }
     };
+    /**
+     * Selects current panel
+     * @method select
+    */
     Panel.prototype.select = function () {
         this.button.click();
     };
+    /**
+     * Moves panel up in the hierarchy
+     * @method moveUp
+     * @return object
+    */
+    /**
+     * Moves panel left in the hierarchy
+     * @method moveLeft
+     * @return object
+    */
     Panel.prototype.moveUp = Panel.prototype.moveLeft = itemMove("left", "panel");
+    /**
+     * Moves panel down in the hierarchy
+     * @method moveDown
+     * @return object
+    */
+    /**
+     * Moves panel right in the hierarchy
+     * @method moveRight
+     * @return object
+    */
     Panel.prototype.moveDown = Panel.prototype.moveRight = itemMove("right", "panel");
+    /**
+     * Removes panel
+     * @method remove
+    */
     Panel.prototype.remove = itemRemove("panel");
+    /**
+     * Getter and setter for HTML contents of the panel
+     * @method html
+     * @return object | string
+    */
     Panel.prototype.html = function (html) {
         if (html) {
             this.body.html(html);
@@ -226,8 +323,23 @@ AJS.popup = function (width, height, id) {
             return this.body.html();
         }
     };
+    /**
+     * Default padding is 10 px. This method gives you ability to overwrite default value. Use it with caution.
+     * @method setPadding
+     * @param padding {number} padding in pixels
+     * @return object
+    */
+    Panel.prototype.setPadding = function (padding) {
+        if (!isNaN(+padding)) {
+            this.body.css("padding", +padding);
+            this.padding = +padding;
+            this.page.recalcSize();
+        }
+        return this;
+    };
 
-    
+
+
     var Page = function (dialog, className) {
         this.dialog = dialog;
         this.id = dialog.page.length;
@@ -248,10 +360,10 @@ AJS.popup = function (width, height, id) {
         var headerHeight = this.header ? 43 : 0;
         var panelHeight = this.buttonpanel ? 43 : 0;
         for (var i = this.panel.length; i--;) {
-            this.panel[i].body.css("height", this.dialog.height - headerHeight - panelHeight - 20 + "px");
+            this.panel[i].body.css("height", this.dialog.height - headerHeight - panelHeight - this.panel[i].padding * 2 + "px");
         }
     };
-    
+
     Page.prototype.addPanel = function (title, reference, className) {
         new Panel(this, title, reference, className);
         return this;
@@ -283,7 +395,7 @@ AJS.popup = function (width, height, id) {
     Page.prototype.remove = function () {
         this.element.remove();
     };
-    
+
 
 
 
@@ -351,7 +463,7 @@ AJS.popup = function (width, height, id) {
     AJS.Dialog.prototype.getPage = function (pageid) {
         return this.page[pageid];
     };
-    
+
     AJS.Dialog.prototype.gotoPanel = function (pageorpanel, panel) {
         if (panel != null) {
             var pageid = pageorpanel.id || pageorpanel;
@@ -359,7 +471,7 @@ AJS.popup = function (width, height, id) {
         }
         this.page[this.curpage].gotoPanel(typeof panel == "undefined" ? pageorpanel : panel);
     };
-    
+
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
         return this;
