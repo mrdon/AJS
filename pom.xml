@@ -66,7 +66,7 @@
         <jetty.port>9999</jetty.port>
         <context.path>ajs</context.path>
         <scan.interval.seconds>10</scan.interval.seconds>
-        <atlassian.plugin.key>com.atlassian.auiplugin</atlassian.plugin.key>
+        <atlassian.plugin.key>com.atlassian.aui</atlassian.plugin.key>
         <jdkLevel>1.5</jdkLevel>
     </properties>
     
