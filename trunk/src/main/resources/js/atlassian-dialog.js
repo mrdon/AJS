@@ -4,6 +4,22 @@
  * @namespace AJS
 */
 AJS.dim = function () {
+    if (!AJS.dim.dim) {
+        AJS.dim.dim = AJS("div").addClass("blanket");
+        if (AJS.$.browser.msie) {
+            AJS.dim.dim.css({width: "200%", height: AJS.$(document).height() + "px"});
+        }
+        AJS.$("body").append(AJS.dim.dim).css("overflow", "hidden");
+        AJS.$("html").css("overflow", "hidden");
+    }
+};
+/**
+ * Removes semitransparent DIV
+ * @method undim
+ * @namespace AJS
+ * @see dim
+*/
+AJS.undim = function () {
     if (AJS.dim.dim) {
         AJS.dim.dim.remove();
         AJS.dim.dim = null;
@@ -15,13 +31,6 @@ AJS.dim = function () {
                 AJS.$("body").css({height: ""});
             }, 0);
         }
-    } else {
-        AJS.dim.dim = AJS("div").addClass("blanket");
-        if (AJS.$.browser.msie) {
-            AJS.dim.dim.css({width: "200%", height: AJS.$(document).height() + "px"});
-        }
-        AJS.$("body").append(AJS.dim.dim).css("overflow", "hidden");
-        AJS.$("html").css("overflow", "hidden");
     }
 };
 /**
@@ -105,7 +114,7 @@ AJS.popup = function (width, height, id) {
             document.documentElement.scrollTop = scrollDistance;
             this.element.hide();
             shadow.hide();
-            AJS.dim();
+            AJS.undim();
         },
         /**
          * jQuery object, representing popup DOM element
