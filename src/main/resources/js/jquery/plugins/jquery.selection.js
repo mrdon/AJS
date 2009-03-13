@@ -34,6 +34,9 @@
                     end: duptext.length,
                     text: rangetext
                 };
+                var elementValue = fixCaretReturn(this.val());
+                res.textBefore = elementValue.substring(0, res.start);
+                res.textAfter = elementValue.substring(res.end);
             if (start == null) {
                 return res;
             } else {
@@ -68,11 +71,15 @@
         };
         $.fn.selectionRange = function (start, end) {
             if (start == null) {
-                return {
+                var res = {
                     start: this[0].selectionStart,
-                    end: this[0].selectionEnd,
-                    text: this.val().substring(this[0].selectionStart, this[0].selectionEnd)
+                    end: this[0].selectionEnd
                 };
+                var elementValue = this.val();
+                res.text = elementValue.substring(res.start, res.end);
+                res.textBefore = elementValue.substring(0, res.start);
+                res.textAfter = elementValue.substring(res.end);
+                return res;
             } else {
                 this[0].selectionStart = start;
                 this[0].selectionEnd = end;
