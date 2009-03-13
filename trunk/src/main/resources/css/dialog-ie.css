@@ -5,7 +5,6 @@
 }
 body {
     overflow: hidden;
-    filter: true;
 }
 .dialog {
     position: absolute;
