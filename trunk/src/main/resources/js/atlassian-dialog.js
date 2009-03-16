@@ -260,16 +260,18 @@ AJS.popup = function (width, height, id) {
         page.body.append(this.body);
         page.panel[i] = this;
         var onclick = function () {
+            var cur;
             if (page.curtab + 1) {
-                var cur = page.panel[page.curtab];
+                cur = page.panel[page.curtab];
                 cur.body.hide();
                 cur.item.removeClass("selected");
-                (typeof cur.onblur == "function") && cur.onblur.call(tab);
+                (typeof cur.onblur == "function") && cur.onblur();
             }
             page.curtab = tab.id;
             tab.body.show();
             tab.item.addClass("selected");
-            (typeof tab.onselect == "function") && tab.onselect.call(tab);
+            (typeof tab.onselect == "function") && tab.onselect();
+            (typeof page.ontabchange == "function") && page.ontabchange(tab, cur);
         };
         if (!this.button.click) {
             AJS.log("atlassian-dialog:Panel:constructor - this.button.click falsy");
@@ -395,6 +397,9 @@ AJS.popup = function (width, height, id) {
     Page.prototype.gotoPanel = function (panel) {
         this.panel[panel.id || panel].select();
     };
+    Page.prototype.getCurrentPanel = function () {
+        return this.panel[this.curtab];
+    };
     Page.prototype.hide = function () {
         this.element.hide();
     };
@@ -465,12 +470,18 @@ AJS.popup = function (width, height, id) {
         this.page[this.curpage].show();
         return this;
     };
-    AJS.Dialog.prototype.getPanel = function (panel) {
-        var id = panel.id || panel;
-        return this.page[this.curpage].panel[id];
+    AJS.Dialog.prototype.getPanel = function (pageorpanelId, panelId) {
+        var pageid = (panelId == null) ? this.curpage : pageorpanelId;
+        if (panelId == null) {
+            panelId = pageorpanelId;
+        }
+        return this.page[pageid].panel[panelId];
     };
     AJS.Dialog.prototype.getPage = function (pageid) {
         return this.page[pageid];
+    };
+    AJS.Dialog.prototype.getCurrentPanel = function () {
+        return this.page[this.curpage].getCurrentPanel();
     };
 
     AJS.Dialog.prototype.gotoPanel = function (pageorpanel, panel) {
