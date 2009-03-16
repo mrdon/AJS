@@ -1,3 +1,17 @@
+/*
+ * Add test functions here. Functions should return true for a passed test; any other value will be converted to a
+ * string for the failure log.
+ *
+ * This means you can write a test line like:
+ *
+ *     return str == "happyFactor" || str;
+ *
+ * and if the str isn't the expected "happyFactor" you can see what it is in the log instead of just "false".
+ *
+ * CAVEAT-EMPTOR : if your alternate return value's toString is *also* equivalent to "true" you'll get false
+ * negatives.
+ */
+
 var testAjs = new AJSTest();
 
 // atlassian.js tests
@@ -33,6 +47,41 @@ testAjs.addTest("testAjsClone", function() {
 testAjs.addTest("testContainsIgnoreCase", function() {
     return $("span:containsIgnoreCase(some text)").length == 1;
 });
+
+(function () {
+    // AJS.filterBySearch tests.
+    var entries = [
+        { id: 1, keywords: "foo bar, foo-bar" },
+        { id: 2, keywords: "faux bar, faux-bar" },
+        { id: 3, keywords: "Foo Bar, fb" },
+        { id: 4, keywords: "Foo bar" }
+    ];
+    testAjs.addTest("testFilterBySearch", function() {
+        var results = AJS.filterBySearch(entries, "bar");
+        return results.length == 4;
+    });
+    testAjs.addTest("testFilterBySearchCamelCase", function() {
+        var results = AJS.filterBySearch(entries, "FoB");
+        return results.length == 1 && results[0].id == 3;
+    });
+    testAjs.addTest("testFilterBySearchCamelCaseIgnoreCase", function() {
+        var results = AJS.filterBySearch(entries, "FoB", { ignoreForCamelCase: true });
+        return results.length == 3 || results;
+    });
+    testAjs.addTest("testFilterBySearchNoMatchBoundary", function() {
+        var results = AJS.filterBySearch(entries, "u");
+        return results.length == 1 && results[0].id == 2;
+    });
+    testAjs.addTest("testFilterBySearchMatchBoundary", function() {
+        var results = AJS.filterBySearch(entries, "u", { matchBoundary: true });
+        return results.length == 0;
+    });
+    testAjs.addTest("testFilterBySearchSplitRegex", function() {
+        var results = AJS.filterBySearch(entries, "fa-b", { splitRegex: /[\s\-]+/ });
+        return results.length == 1 && results[0].id == 2 || results;
+    });
+})();
+
 // atlassian-dialog.js tests
 testAjs.addTest("testDialog", function () {
     return (typeof AJS.Dialog == "function");

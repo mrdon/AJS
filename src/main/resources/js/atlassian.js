@@ -314,6 +314,57 @@ if (typeof jQuery != "undefined") {
                 return escape(string).replace(/%u\w{4}/gi, function (w) {
                     return unescape(w);
                 });
+            },
+
+            /**
+             * Filters a list of entries by a passed search term.
+             *
+             * Options :
+             *   - "keywordsField" - name of entry field containing keywords, default "keywords"
+             *   - "ignoreForCamelCase" - ignore search case for camel case, e.g. CB matches Code Block *and* Code block
+             *   - "matchBoundary" - match words only at boundary, e.g. link matches "linking" but not "hyperlinks"
+             *   - "splitRegex" - regex to split search words, instead of on whitespace
+             *
+             * @param entries an index array of objects with a "keywords" property
+             * @param search one or more words to search on, which may include camel-casing.
+             * @param options - optional - specifiy to override default behaviour
+             */
+            filterBySearch : function(entries, search, options) {
+                if (search == "") return [];   // search for nothing, get nothing - up to calling code to handle.
+
+                var $ = this.$;
+                var keywordsField = (options && options.keywordsField) || "keywords";
+                var camelCaseFlags = (options && options.ignoreForCamelCase) ? "i" : "";
+                var boundaryFlag  = (options && options.matchBoundary) ? "\\b" : "";
+                var splitRegex = (options && options.splitRegex) || /\s+/;
+
+                // each word in the input is considered a distinct filter that has to match a keyword in the record
+                var filterWords = search.split(splitRegex);
+                var filters = [];
+                $.each(filterWords, function () {
+                  if (/^([A-Z][a-z]*){2,}$/.test(this)) { // split camel-case into separate words
+                    filters.push(new RegExp(this.replace(/([A-Z][a-z]*)/g, "\\b$1[^,]*"), camelCaseFlags));
+                  } else {
+                    filters.push(new RegExp(boundaryFlag + this, "i")); // anchor on word boundaries
+                  }
+                });
+                var result = [];
+                $.each(entries, function () {
+                    for (var i = 0; i < filters.length; i++) {
+                        if (!filters[i].test(this[keywordsField])) return;
+                    }
+                    result.push(this);
+                });
+                return result;
+            },
+
+            stringify : function(v) {
+                if (typeof v == "object") {
+                    if (v.constructor == Array) {
+
+                    }
+                }
+
             }
         };
         if (typeof AJS != "undefined") {
