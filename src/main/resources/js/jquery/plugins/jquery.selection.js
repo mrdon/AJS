@@ -23,25 +23,37 @@
         $.fn.selectionRange = function (start, end) {
             var element = this[0];
             this.focus();
-            var range = document.selection.createRange(),
-                dup = range.duplicate();
-            dup.moveToElementText(element);
-            dup.setEndPoint("EndToEnd", range);
-            var duptext = fixCaretReturn(dup.text),
-                rangetext = fixCaretReturn(range.text),
-                res = {
-                    start: duptext.length - rangetext.length,
-                    end: duptext.length,
-                    text: rangetext
-                };
-                var elementValue = fixCaretReturn(this.val());
-                res.textBefore = elementValue.substring(0, res.start);
-                res.textAfter = elementValue.substring(res.end);
+            var range = document.selection.createRange();
+
             if (start == null) {
-                return res;
+                var textAreaVal = this.val(),
+                    len = textAreaVal.length,
+                    dup = range.duplicate();
+                dup.moveToElementText(element);
+                
+                dup.setEndPoint("StartToEnd", range); // move the start of dup to end of range
+                var tEnd = len - fixCaretReturn(dup.text).length;
+                dup.setEndPoint("StartToStart", range); // move to start of dup to start of range
+                var tStart = len - fixCaretReturn(dup.text).length;
+
+                // IE swallows the newline at the end of the selection
+                if (tEnd != tStart && textAreaVal.charAt(tEnd+1) == '\n') {
+                    tEnd += 1;
+                }
+                return {
+                    end: tEnd,
+                    start: tStart,
+                    text: textAreaVal.substring(tStart, tEnd),
+                    textBefore: textAreaVal.substring(0, tStart),
+                    textAfter: textAreaVal.substring(tEnd)
+                };
             } else {
-                range.moveStart("character", start - res.start);
-                range.moveEnd("character", end - res.end);
+                // first reset range to beginning of text area
+                range.moveToElementText(element);
+                range.collapse(true);
+
+                range.moveStart("character", start);
+                range.moveEnd("character", end - start);
                 range.select();
             }
         };
