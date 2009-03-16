@@ -37,7 +37,7 @@
                 var tStart = len - fixCaretReturn(dup.text).length;
 
                 // IE swallows the newline at the end of the selection
-                if (tEnd != tStart && textAreaVal.charAt(tEnd+1) == '\n') {
+                if (tEnd != tStart && textAreaVal.charAt(tEnd + 1) == "\n") {
                     tEnd += 1;
                 }
                 return {
