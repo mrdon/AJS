@@ -356,15 +356,6 @@ if (typeof jQuery != "undefined") {
                     result.push(this);
                 });
                 return result;
-            },
-
-            stringify : function(v) {
-                if (typeof v == "object") {
-                    if (v.constructor == Array) {
-
-                    }
-                }
-
             }
         };
         if (typeof AJS != "undefined") {
