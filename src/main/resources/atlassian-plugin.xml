@@ -61,4 +61,12 @@
         <resource type="download" name="jquery.selection.js" location="js/jquery/plugins/jquery.selection.js"/>
     </web-resource>
 
+    <!-- Forms css -->
+    <web-resource key="aui-forms" name="Atlassian Forms">
+        <resource type="download" name="forms.css" location="css/forms.css"/>
+        <resource type="download" name="forms-ie.css" location="css/forms-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+    </web-resource>
+
 </atlassian-plugin>
