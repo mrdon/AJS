@@ -12,6 +12,7 @@ body {
 .shadow,
 .popup, {
     position: absolute;
+    top: 0;
 }
 * html .shadow .tl {
     background: none;

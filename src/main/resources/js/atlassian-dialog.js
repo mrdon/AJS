@@ -54,10 +54,6 @@ AJS.popup = function (width, height, id) {
     if (id) {
         popup.attr("id", id);
     }
-    if (AJS.$.browser.msie) {
-        window.msieheight = Math.round(height / 2);
-        popup[0].style.marginTop = "";
-    }
     AJS.$("body").append(shadow);
     shadow.css({
         margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2 + 16) + "px",
@@ -84,7 +80,6 @@ AJS.popup = function (width, height, id) {
         show: function () {
             var show = function () {
                 scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
-                document.documentElement.scrollTop = scrollDistance;
                 popup.show();
                 shadow.show();
                 AJS.dim();
@@ -94,7 +89,9 @@ AJS.popup = function (width, height, id) {
                 // Internet Explorer case
                 var scrollfix = function () {
                     scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
-                    popup.css("margin-top", scrollDistance - height / 2);
+                    var marginTop = scrollDistance + (document.documentElement.clientHeight - height)/2;
+                    popup.css("margin-top", marginTop);
+                    shadow.css("margin-top", marginTop);
                 };
                 scrollfix();
                 AJS.$(window).load(scrollfix);
@@ -111,7 +108,6 @@ AJS.popup = function (width, height, id) {
          * @method hide
         */
         hide: function () {
-            document.documentElement.scrollTop = scrollDistance;
             this.element.hide();
             shadow.hide();
             AJS.undim();
