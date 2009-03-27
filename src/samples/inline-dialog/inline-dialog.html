@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Inline Dialog Example</title>
+    <script type="text/javascript" src="../../main/resources/js/jquery/jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/inline-dialog.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/inline-dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/inline-dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/userlink-inline-dialog.css" media="all">
+    <!--[if IE]>
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/userlink-ie.css" media="all">
+    <![endif]-->
+
+    <div><a href="inline-dialog.html#" id="popupLink">A link</a></div>
+
+    <script>
+
+    var postProcess = function(id)
+    {
+        // do nothing;
+    };
+
+
+        AJS.InlineDialog($("#popupLink"), 1, "dialog-content.html", postProcess);
+    </script>
+</head>
+<body>
+</body>
+</html>
