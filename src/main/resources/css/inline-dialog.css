@@ -1,0 +1,21 @@
+.ajs-content-hover .arrow{
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url(../images/arrow.png);
+    background-color: transparent;
+    position:absolute;
+    top:-7px;
+}
+
+#navigation .ajs-menu-bar .ajs-button a{
+    outline:none;
+}
+
+#navigation .ajs-menu-bar .ajs-button a.add-page span {
+    background-image: url(../images/page_bw_16.gif);
+}
+
+#navigation .ajs-menu-bar .ajs-button a.add-blog span {
+    background-image: url(../images/blogentry_bw_16.gif);
+}
