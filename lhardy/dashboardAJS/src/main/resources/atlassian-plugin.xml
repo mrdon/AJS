@@ -19,13 +19,15 @@
         <resource type="download" name="dialog-ie.css" location="css/dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <depends>com.atlassian.aui:jquery</depends>
+        <dependency>com.atlassian.aui:jquery</dependency>
+        <dependency>com.atlassian.aui:jquery-throbber</dependency>
+        <dependency>com.atlassian.aui:jquery-aop</dependency>
     </web-resource>
 
     <web-resource key="drop-down" name="Drop Down UI component">
         <resource type="download" name="drop-down.js" location="js/drop-down.js"/>
         <resource type="download" name="drop-down.css" location="css/drop-down.css"/>
-        <depends>com.atlassian.aui:ajs</depends>
+        <dependency>com.atlassian.aui:ajs</dependency>
     </web-resource>
 
     <web-resource key="dialog" name="Dialog UI Component">
@@ -34,7 +36,7 @@
         <resource type="download" name="dialog-ie.css" location="css/dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <depends>com.atlassian.aui:ajs</depends>
+        <dependency>com.atlassian.aui:ajs</dependency>
     </web-resource>
 
     <!-- jQuery -->
@@ -49,6 +51,14 @@
     </web-resource>
 
     <!-- jQuery Plugins -->
+    <web-resource key="jquery-throbber" name="jQuery Throbber" i18n-name-key="web.resources.plugin.jquery.throbber.name">
+        <resource type="download" name="jquery.throbber.js" location="js/jquery/plugins/jquery.throbber.js"/>
+    </web-resource>
+    
+    <web-resource key="jquery-aop" name="jQuery AOP" i18n-name-key="web.resources.plugin.jquery.aop.name">
+        <resource type="download" name="jquery.aop.js" location="js/jquery/plugins/jquery.aop.js"/>
+    </web-resource>
+    
     <web-resource key="jquery-progressbar" name="jQuery Progress Bar Plugin" i18n-name-key="web.resources.plugin.jquery.progressbar.name">
         <resource type="download" name="jquery.progressbar.js" location="js/jquery/jquery.progressbar/jquery.progressbar.js"/>
     </web-resource>

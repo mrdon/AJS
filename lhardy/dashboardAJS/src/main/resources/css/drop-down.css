@@ -76,3 +76,15 @@ ul.ajs-drop-down label {
     font-weight: 400;
     color: #535353;
 }
+
+/* shadow */
+* html .aui-shadow {display:none!important;}
+.aui-shadow {position:absolute; margin-top:-1px; z-index:2001; display:none;}
+.aui-shadow * {position: absolute;}
+.aui-shadow .tl {left: 0; top: 0; width: 8px; height: 8px; background: url(../../resources/com.atlassian.aui/css/images/dropdown/lt.png );}
+.aui-shadow .tr {right: 0; top: 0; width: 8px; height: 8px; background: url(../../resources/com.atlassian.aui/css/images/dropdown/rt.png );}
+.aui-shadow .br {right: 0; bottom: 0; width: 14px; height: 14px; background: url(../../resources/com.atlassian.aui/css/images/dropdown/rb.png );}
+.aui-shadow .bl {left: 0;bottom: 0;width: 14px;height: 14px;background: url(../../resources/com.atlassian.aui/css/images/dropdown/lb.png );}
+.aui-shadow .b {left: 14px; bottom: 0; height: 14px; width: 14px; background: url(../../resources/com.atlassian.aui/css/images/dropdown/b.png );}
+.aui-shadow .l {left: 0; top: 8px; width: 8px; background: url(../../resources/com.atlassian.aui/css/images/dropdown/l.png );}
+.aui-shadow .r {right: 0; top: 8px; width: 8px; background: url(../../resources/com.atlassian.aui/css/images/dropdown/r.png);}
