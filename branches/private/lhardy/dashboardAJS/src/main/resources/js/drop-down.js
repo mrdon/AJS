@@ -187,9 +187,7 @@ AJS.dropDown = function (obj, options) {
 						if (AJS.dropDown.current) {
 							options.selectionHandler.call(AJS.dropDown.current, $(this));
 						}
-						e.preventDefault();
-						e.stopPropagation();
-					})
+					});
 				});
 				return arguments.callee;
 			}(),
@@ -267,24 +265,33 @@ AJS.dropDown = function (obj, options) {
 		});
         // shadow
         (function () {
-            var refeshShadow = function () {
-
+            var refreshShadow = function () {
+                var alignCSS = {}, ddLeft, ddRight;
                 if (this.$.is(":visible")) {
-
                     if (!this.shadow) {
                         this.shadow = $('<div class="aui-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>').insertBefore(this.$);
                     }
-                    if (parseInt(this.$.outerWidth()) > 14) {
-                        var ddLeft = res.$.css("left"),
-                        ddRight = res.$.css("right");
-                        var left = ddLeft === "auto" ? "auto" : parseInt(ddLeft) - 7 + "px",
-                        right = ddRight === "auto" ? "auto" : parseInt(ddRight) - 7 + "px";
+                    if (parseInt(this.$.outerWidth(), 10) > 14) {
+                        if (options.align) {
+                             if (options.align === "right") {
+                                 alignCSS.right = -7;
+                                 alignCSS.left = "auto";
+                             } else {
+                                 alignCSS.right = "auto";
+                                 alignCSS.left = -7;
+                             }
+                        } else {
+                            ddLeft = res.$.css("left");
+                            ddRight = res.$.css("right");
+                            alignCSS.left = ddLeft === "auto" ? "auto" : parseInt(ddLeft, 10) - 7;
+                            alignCSS.right = right = ddRight === "auto" ? "auto" : parseInt(ddRight, 10) - 7;
+                        }
                         this.shadow.css({
                             display: "block",
-                            left: left,
+                            left: alignCSS.left,
                             top: this.$.css("top"),
-                            right: right,
-                            width: (parseInt(this.$.outerWidth()) + 14) + "px",
+                            right: alignCSS.right,
+                            width: this.$.outerWidth() + 14 + "px",
                             height: this.$.outerHeight() + 14 + "px"
                         })
                         .find(".b").css("width", this.$.outerWidth() - 14 + "px");
@@ -292,8 +299,8 @@ AJS.dropDown = function (obj, options) {
                     }
                 }
             };
-            res.addCallback("reset", refeshShadow);
-            res.addCallback("show", refeshShadow);
+            res.addCallback("reset", refreshShadow);
+            res.addCallback("show", refreshShadow);
             res.addCallback("hide", function () {
                 if (this.shadow) {
                     this.shadow.css({display: "none"});
@@ -335,26 +342,37 @@ AJS.dropDown.removeAllAdditionalProperties = function(item) {
   * @... {String, Object} items - list items, items that you want keyboard navigation applied to.  This can be passed
   * as a jQuery selector or jQuery collection.
   * @.. {Function} selectionHandler - function that is called when an item is selected. Passed the selected item as first argument.
+  @ @.. {String} align - Specify what alignment the dropdown should be, "left or right"
   * @return {Object
   */
  AJS.dropDown.Standard = function (options) {
  	var dropdowns, triggers, defaults = {
-		dropDown: ".atl-dropDown",
-		trigger: ".atl-dd-link",
+		dropDown: ".aui-dropdown",
+		trigger: ".aui-dd-link",
 		activeClass: "active",
 		items: "li",
-		selectionHandler: function (selected) {
+		selectionHandler: function (e, selected) {
 			window.location = selected.find("a").attr("href");
 			this.hide();
+			e.preventDefault();
+			e.stopPropagation();
 		}
 	};
 	options = jQuery.extend(defaults, options);
-    dropdowns = AJS.dropDown(options.dropDown, options);
+    dropdowns = AJS.dropDown(options.dropDown, options);  
 	if (options.trigger) {
         triggers = AJS.$(options.trigger);
         $(dropdowns).each(function(i){
             var cdd = this, trigger;
-
+            cdd.$.addClass("hidden").css(function(){
+                 if (options.align) {
+                     if (options.align === "right") {
+                         return {right: 0, left: "auto"};              
+                     } else {
+                         return {right: "auto", left: 0};  
+                     }
+                }
+            }());
             trigger = jQuery(triggers[i]);
             this.trigger = trigger;
             trigger.click(function(e){
@@ -376,12 +394,12 @@ AJS.dropDown.removeAllAdditionalProperties = function(item) {
                             cdd.shadow.css({top: cdd.$.css("top")});
                         }
                     }
-				}
+				};
 			}(trigger));
 			cdd.addCallback("hide", function(trigger){
 				return function(){
 					trigger.removeClass(options.activeClass).blur();
-				}
+				};
 			}(trigger));
             if (trigger.attr("accesskey")) {
                 jQuery(document).keypress(function(e){
@@ -450,7 +468,7 @@ AJS.dropDown.Ajax = function (options) {
                         }
                     }
                     return opts;
-                }(),
+                }();
 				this.show.options = jQuery.extend({
 					success: function(response){
                         if (options.formatResults) {
