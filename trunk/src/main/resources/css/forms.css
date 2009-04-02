@@ -2,7 +2,7 @@
 form.aui,form.aui p,form.aui div,form.aui h1,form.aui h2,form.aui h3,form.aui h4,form.aui h5,form.aui h6,
 form.aui img,form.aui ul,form.aui ol,form.aui li,form.aui dl,form.aui dt,form.aui dd,form.aui pre,
 form.aui fieldset,form.aui textarea,form.aui input,form.aui select,form.aui button,form.aui optgroup,form.aui option {margin:0;padding:0;}
-form.aui {color:#333;font-family:arial,tahoma,verdana,sans-serif;font-size:13px;line-height:1.4;margin-bottom:15px;padding:0 15px 15px;position:relative;}
+form.aui {color:#333;font-family:arial,tahoma,verdana,sans-serif;font-size:13px;line-height:1.4;position:relative;}
 form.aui textarea,form.aui select,form.aui optgroup,form.aui option,form.aui input.text {color:#000;font-family:arial,tahoma,verdana,sans-serif;font-size:13px;}
 form.aui pre {background-color:#f8f8f8;border:1px solid #ddd;font-family:monospace;font-size:13px;overflow-x:auto;overflow-y:visible;padding:15px;}
 form.aui img,form.aui a img,form.aui fieldset {border:none;}
@@ -24,7 +24,7 @@ form.aui .description {font-size:11px;}
 form.aui .field-value {font-weight:bold;line-height:1;padding-top:4px;}
 
 /* headings */
-form.aui h2 {clear:both;border-bottom:1px solid #ddd;font-size:13px;margin:0 0 10px 0;}
+form.aui h2 {clear:both;border-bottom:1px solid #ddd;font-size:13px;margin:10px 0;}
 /* legend,labels left hand width related items */
 form.aui legend {display:none;}
 form.aui legend span {color:#333;left:0;line-height:1;position:absolute;top:3px;white-space:normal;width:130px;text-align:right;}
