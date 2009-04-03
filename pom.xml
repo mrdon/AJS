@@ -190,6 +190,18 @@
                     </execution>
                 </executions>
             </plugin>
+		 	<!--START - Support Maven CL plugin for rapid development-->
+			<plugin>
+                <groupId>org.twdata.maven</groupId>
+                <artifactId>maven-cli-plugin</artifactId>
+                <configuration>
+                    <commands>
+                        <pi>clean resources compile jar com.atlassian.maven.plugins:atlassian-pdk:install</pi>
+                        <pu>com.atlassian.maven.plugins:atlassian-pdk:uninstall</pu>
+                    </commands>
+                </configuration>
+            </plugin>
+		    <!--END - Support Maven CL plugin for rapid development-->
         </plugins>
     </build>
 

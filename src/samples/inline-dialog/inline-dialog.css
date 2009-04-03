@@ -15,16 +15,6 @@
     overflow: hidden;
 }
 
-.ajs-inline-dialog .contents form.aui {
-    margin-bottom: 0;
-}
-
-.ajs-inline-dialog .contents .submit{
-    margin:0;
-    padding:0;
-    text-align:right;
-}
-
 #inline-dialog-shadow {
     z-index: -1;
     position: absolute;
@@ -94,6 +84,6 @@
     top:-7px;
 }
 
-.ajs-button a{
+#navigation .ajs-menu-bar .ajs-button a{
     outline:none;
 }
