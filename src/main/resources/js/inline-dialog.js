@@ -128,11 +128,20 @@
                     popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
                     beingShown = false;
                     shouldShow = false;
+                    if (!opts.cacheContent)
+                    {
+                        //if not caching the content, then reset the
+                        //flags to false so as to reload the content
+                        //on next mouse hover.
+                        contentLoaded = false;
+                        contentLoading = false;
+                    }
                 }, delay);
             }
         };
 
-        var initPopup = function(e) {
+		// the trigger is the jquery element that is triggering the popup (i.e., the element that the mousemove event is bound to)
+        var initPopup = function(e,trigger) {
             $(".ajs-inline-dialog").each(function()
             {
                 if (typeof this.popup != "undefined")
@@ -150,26 +159,35 @@
             shouldShow = true;
             var doShowPopup = function() {
                 contentLoaded = true;
-                opts.initCallback.call({popup: popup, hide: function () { hidePopup(0); }, id: identifier, show: function () { showPopup(); }});
+                opts.initCallback.call({
+                    popup: popup,
+                    hide: function () {hidePopup(0);},
+                    id: identifier,
+                    show: function () {showPopup();}
+                });
                 showPopup();
             };
 
             // lazy load popup contents
-            if (!contentLoading || !opts.cacheContent)
+            if (!contentLoading)
             {
                 contentLoading = true;
-                if ($.isFunction(url)) {
+                if ($.isFunction(url))
+                {
                     // If the passed in URL is a function, execute it. Otherwise simply load the content.
-                    url(contents, this, doShowPopup);
-                } else {
+                    url(contents, trigger, doShowPopup);
+                }
+                else
+                {
                     contents.load(url, function()
                     {
                         contentLoaded = true;
-                        opts.initCallback.call({popup: popup, hide: function () {
-                            hidePopup(0);
-                        }, id: identifier, show: function () {
-                            showPopup();
-                        }});
+                        opts.initCallback.call({
+                            popup: popup,
+                            hide: function () {hidePopup(0);},
+                            id: identifier,
+                            show: function () {showPopup();}
+                        });
                         showPopup();
                     });
                 }
@@ -182,7 +200,7 @@
                 showPopup();
             }
             return false;
-        }
+        };
 
         popup[0].popup = {popup: popup, hide: function (){
             hidePopup(0);
@@ -192,23 +210,24 @@
         }};
 
         var contentLoading = false;
-        if (opts.onHover) {
+        if (opts.onHover)
+        {
             $(items).mousemove(function(e) {
-                initPopup(e);
+                initPopup(e,this);
             }).mouseout(function() {
                 hidePopup();
             });
         }
         else {
             $(items).click(function(e) {
-                initPopup(e);
+                initPopup(e,this);
                 return false;
             }).mouseout(function(){
                 hidePopup();
             });
         }
 
-        contents.click(function(e){
+        contents.click(function(e) {
             e.stopPropagation();
         });
 
@@ -228,7 +247,7 @@
         offsetX: 0,
         offsetY: 10,
         container: "body",
-        cacheContent : true, 
+        cacheContent : true,
         hideCallback: function(){}, // if defined, this method will be exected after the popup has been faded out.
         initCallback: function(){} // A function called after the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
     };
