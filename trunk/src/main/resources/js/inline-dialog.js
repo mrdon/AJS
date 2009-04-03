@@ -1,20 +1,19 @@
 (function($)
 {
     /**
-     * Creates a new hover popup
+     * Creates a new inline dialog
      *
      * @param items jQuery object - the items that trigger the display of this popup when the user mouses over.
      * @param identifier A unique identifier for this popup. This should be unique across all popups on the page and a valid CSS class.
      * @param url The URL to retrieve popup contents.
-     * @param postProcess A function called after the popup contents are loaded.
-     *                    `this` will be the popup jQuery object, and the first argument is the popup identifier.
-     * @param options Custom options to change default behaviour. See AJS.inlineDialog.opts for default values and valid options.
+     * @param initCallback
+     * @param options Custom options to change default behaviour. See AJS.InlineDialog.opts for default values and valid options.
      *
      * @return jQuery object - the popup that was created
      */
-    AJS.InlineDialog = function(items, identifier, url, postProcess, options)
+    AJS.InlineDialog = function(items, identifier, url, options)
     {
-        var opts = $.extend(AJS.InlineDialog.opts, options);
+        var opts = $.extend(false, AJS.InlineDialog.opts, options);
         var hideDelayTimer;
         var showTimer;
         var beingShown = false;
@@ -22,53 +21,51 @@
         var contentLoaded = false;
         var mousePosition;
         var targetPosition;
-        $(opts.container).append($('<div id="content-hover-' + identifier + '" class="ajs-content-hover"><div class="contents"></div><div id="arrow-' + identifier + '" class="arrow"></div></div>'));
-        var popup = $("#content-hover-" + identifier);
+        $(opts.container).append($('<div id="inline-dialog-' + identifier + '" class="ajs-inline-dialog"><div class="contents"></div><div id="arrow-' + identifier + '" class="arrow"></div></div>'));
+        var popup = $("#inline-dialog-" + identifier);
         var arrow = $("#arrow-" + identifier);
         var contents = popup.find(".contents");
 
-        contents.mouseover(function(e)
-        {
+        AJS.log(opts);
+
+        contents.css("width", opts.width + "px");
+        contents.mouseover(function(e){
             clearTimeout(hideDelayTimer);
             popup.unbind("mouseover");
-            e.stopPropagation();
-
+            //e.stopPropagation();
+        }).mouseout(function(){
+            hidePopup();
         });
 
         var showPopup = function()
         {
-            if (popup.is(":visible"))
-            {
+            if (popup.is(":visible")){
                 return;
             }
-
-            $(items).addClass("active");
             showTimer = setTimeout(function()
             {
                 if (!contentLoaded || !shouldShow)
                 {
                     return;
                 }
+                $(items).addClass("active");
                 beingShown = true;
-                var posx = targetPosition.x - 3;
-                var posy = targetPosition.y + 10;
+                // retrieve the position of the click target. The offsets might be different for different types of targets and therefore
+                // either have to be customisable or we will have to be smarter about calculating the padding and elements around it
 
-                itemWidth = items.width();
-                if (posx + opts.width + 30 > $(window).width())
+                var posx = targetPosition.target.offset().left + opts.offsetX;
+                var posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
+
+                var diff = $(window).width() - (posx + opts.width + 30);
+                if (diff<0)
                 {
                     popup.css({
                         right: "20px",
                         left: "auto"
                     });
-
-//                    console.log("Doc: " + $(document).width());
-//                    console.log("Target: " + targetPosition.x);
-//                    console.log("Width: " + itemWidth);
-//                    alert("Doc: " + $("body").width() + " Target: " + targetPosition.x + " Width: " + itemWidth);
-//                    console.log($("body").width() - targetPosition.x - itemWidth/2 - 20);
                     arrow.css({
-                        right:  $("body").width() - targetPosition.x - itemWidth/2 - 20 + "px",
-                        left: "auto"
+                        left: -diff + (targetPosition.target.width() / 2) + "px",
+                        right: "auto"
                     });
                 }
                 else
@@ -79,7 +76,7 @@
                     });
 
                     arrow.css({
-                        left:itemWidth/2 + "px",
+                        left: targetPosition.target.width() / 2 + "px",
                         right: "auto"
                     });
                 }
@@ -100,15 +97,13 @@
                     top: posy + "px"
                 });
 
-                var shadow = $("#content-hover-shadow").appendTo(popup).show();
+                var shadow = $("#inline-dialog-shadow").appendTo(popup).show();
                 // reset position of popup box
                 popup.fadeIn(opts.fadeTime, function()
                 {
                     // once the animation is complete, set the tracker variables
-                    beingShown = false;
+                    // beingShown = false; // is this necessary? Maybe only the shouldShow will have to be reset?
                 });
-
-                $(contents).css("width", opts.width + "px");
 
                 shadow.css({
                     width: contents.outerWidth() + 32 + "px",
@@ -119,42 +114,65 @@
             }, opts.showDelay);
         };
 
-        var hidePopup = function(delay)
-        {
-            delay = (delay == null) ? opts.hideDelay : delay;
-            beingShown = false;
+        var hidePopup = function(delay) {
             shouldShow = false;
-            clearTimeout(hideDelayTimer);
-            clearTimeout(showTimer);
-            // store the timer so that it can be cleared in the mouseover if required
-            hideDelayTimer = setTimeout(function()
-            {
-                $(items).removeClass("active");
-                popup.fadeOut(opts.fadeTime);
-            }, delay);
+            // only exectute the below if the popup is currently being shown
+            if (beingShown) {
+                delay = (delay == null) ? opts.hideDelay : delay;
+                clearTimeout(hideDelayTimer);
+                clearTimeout(showTimer);
+                // store the timer so that it can be cleared in the mouseover if required
+                hideDelayTimer = setTimeout(function()
+                {
+                    $(items).removeClass("active");
+                    popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
+                    beingShown = false;
+                    shouldShow = false;
+                }, delay);
+            }
         };
 
-        var contentLoading = false;
-        $(items).click(function(e)
-        {
+        var initPopup = function(e) {
+            $(".ajs-inline-dialog").each(function()
+            {
+                if (typeof this.popup != "undefined")
+                    this.popup.hide();
+            });
+
             mousePosition = { x: e.pageX, y: e.pageY };
-            targetPosition = { x: items.offset().left, y: items.offset().top + 20 };
+            var targetOffset = $(e.target).offset();
+            targetPosition = {target: $(e.target) };
 
             if (!beingShown)
             {
                 clearTimeout(showTimer);
             }
             shouldShow = true;
+            var doShowPopup = function() {
+                contentLoaded = true;
+                opts.initCallback.call({popup: popup, hide: function () { hidePopup(0); }, id: identifier, show: function () { showPopup(); }});
+                showPopup();
+            };
+
             // lazy load popup contents
-            if (!contentLoading)
+            if (!contentLoading || !opts.cacheContent)
             {
                 contentLoading = true;
-                contents.load(url, function()
-                {
-                    contentLoaded = true;
-                    postProcess.call({popup: popup, hide: function () { hidePopup(0); }, id: identifier, show: function () { showPopup(); }});
-                    showPopup();
-                });
+                if ($.isFunction(url)) {
+                    // If the passed in URL is a function, execute it. Otherwise simply load the content.
+                    url(contents, this, doShowPopup);
+                } else {
+                    contents.load(url, function()
+                    {
+                        contentLoaded = true;
+                        opts.initCallback.call({popup: popup, hide: function () {
+                            hidePopup(0);
+                        }, id: identifier, show: function () {
+                            showPopup();
+                        }});
+                        showPopup();
+                    });
+                }
             }
             // stops the hide event if we move from the trigger to the popup element
             clearTimeout(hideDelayTimer);
@@ -164,78 +182,60 @@
                 showPopup();
             }
             return false;
-        }).mouseout(function()
-        {
-            hidePopup();
-        });
+        }
 
-        contents.click(function(e)
+        popup[0].popup = {popup: popup, hide: function (){
+            hidePopup(0);
+        }, id: identifier, show: function ()
         {
+            showPopup();
+        }};
+
+        var contentLoading = false;
+        if (opts.onHover) {
+            $(items).mousemove(function(e) {
+                initPopup(e);
+            }).mouseout(function() {
+                hidePopup();
+            });
+        }
+        else {
+            $(items).click(function(e) {
+                initPopup(e);
+                return false;
+            }).mouseout(function(){
+                hidePopup();
+            });
+        }
+
+        contents.click(function(e){
             e.stopPropagation();
         });
 
-        $("body").click(function()
-        {
-           hidePopup(0);
-        }).mouseover(function()
-        {
-            hidePopup();
+        $("body").click(function(){
+            hidePopup(0);
         });
 
         return popup;
     };
 
     AJS.InlineDialog.opts = {
+        onHover: false,
         fadeTime: 100,
-        hideDelay: 500,
+        hideDelay: 1000,
         showDelay: 0,
-        width: 200,
-        container: "body"
+        width: 300,
+        offsetX: 0,
+        offsetY: 10,
+        container: "body",
+        cacheContent : true, 
+        hideCallback: function(){}, // if defined, this method will be exected after the popup has been faded out.
+        initCallback: function(){} // A function called after the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
     };
 
     AJS.toInit(function()
     {
-        $("body").append($('<div id="content-hover-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
-        $("#content-hover-shadow").hide();
+        $("body").append($('<div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
+        $("#inline-dialog-shadow").hide();
     });
 })(jQuery);
-
-// Confluence specific code
-
-var loadTemplates = function(spaceKey)
-{
-    AJS.$.getJSON(contextPath + "/plugins/dashboard/getTemplates.action?spaceKey=" + spaceKey,
-            function(data)
-            {
-                    var templateSelect = AJS.$("#templateId");
-                    templateSelect.empty();
-                    AJS.$.each( data, function (){
-                       var option = AJS.$("<option/>").attr("value", this.id).text(this.name).appendTo(templateSelect);
-                    });
-            });
-};
-
-
-//AJS.toInit(function($)
-//{
-//    var postProcess = function(id)
-//    {
-//        var hider = this.hide;
-//        $(".cancel-link", this.popup).click(function()
-//        {
-//            hider();
-//            return false;
-//        });
-//
-//        var spaceDropdown = $("#spaceKeyPage");
-//        loadTemplates(spaceDropdown.val());
-//
-//        spaceDropdown.change(function(){
-//            loadTemplates($(this).val());
-//        });
-//
-//    };
-//
-//    AJS.inlineDialog($("#addPageLink"), 1, contextPath + "/plugins/dashboard/addpage.action", postProcess);
-//    AJS.inlineDialog($("#addBlogLink"), 2, contextPath + "/plugins/dashboard/addblog.action", postProcess);
-//});
