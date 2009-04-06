@@ -1,5 +1,4 @@
 /* ie6 and 7 */
-form.aui {z-index:-1}
 form.aui span.inline-text {position:relative;top:-4px}
 form.aui .radio input,
 form.aui .checkbox input {margin-top:-2px}
@@ -18,4 +17,3 @@ form.aui .radio .error,
 form.aui .checkbox .error {_margin-left:20px;}
 form.aui .radio .description,
 form.aui .checkbox .description {_margin-left:24px;}
-form.aui pre {_width:95%}
