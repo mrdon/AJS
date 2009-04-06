@@ -11,7 +11,6 @@
 
     <web-resource key="ajs" name="Atlassian Javascript">
         <resource type="download" name="atlassian.js" location="js/atlassian.js"/>
-        <context>dashboard</context>
         <dependency>com.atlassian.auiplugin:jquery</dependency>        
     </web-resource>
 
@@ -36,7 +35,6 @@
         <resource type="download" name="inline-dialog-ie.css" location="css/inline-dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <context>dashboard</context>
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
 
@@ -83,7 +81,6 @@
         <resource type="download" name="forms-ie.css" location="css/forms-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <context>dashboard</context>        
     </web-resource>
 
 </atlassian-plugin>
