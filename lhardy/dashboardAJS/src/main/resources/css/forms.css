@@ -118,36 +118,3 @@ form.aui .icon-users {background-position:0 -100px;}
 form.aui .form-icon, x:-moz-any-link {display:inline;padding:1px 8px;}
 form.aui .form-icon span, x:-moz-any-link {display:none;}
 form.aui .icon-required, x:-moz-any-link {padding:0 4px;}
-
-
-/* Dropdowns */
-li.aui-dd-parent span a {position: absolute; right: 5px; top: 8px;}
-li.aui-dd-parent span a,
-.aui-dd-parent a {border: none; color: #000; height: 13px; padding: 0; text-indent: -9999px; width: 13px;}
-  .aui-dd-parent a:link,
-  .aui-dd-parent a:visited {}
-  .aui-dd-parent a.active,
-  .aui-dd-parent a:hover,
-  .aui-dd-parent a:active,
-  .aui-dd-parent a:focus {border: none; color: #000;}
-
-li.aui-dd-parent ul.aui-dropdown {background: #fff; color: #000; padding: 4px 0 4px 0; right: 5px; top: 1.7em;}
-  li.aui-dd-parent ul.aui-dropdown li {background: #fff; color: #000; margin: 0; position: static;}
-
-  li.aui-dd-parent ul.aui-dropdown a {background: #fff; height: auto; position: static; text-indent: 0; width: auto;}
-    li.aui-dd-parent ul.aui-dropdown a:link,
-    li.aui-dd-parent ul.aui-dropdown a:visited {}
-    li.aui-dd-parent ul.aui-dropdown a:hover,
-    li.aui-dd-parent ul.aui-dropdown a:active,
-    li.aui-dd-parent ul.aui-dropdown a:focus {}
-
-li.aui-dd-parent {position: relative;}
-  li.aui-dd-parent ul.aui-dropdown {background: #fff; border: 1px solid #6A8EB3; right: 0; position: absolute; top: 1.5em; z-index: 50;}
-    li.aui-dd-parent ul.aui-dropdown li {display: block; float: none;}
-      li.aui-dd-parent ul.aui-dropdown li a {background: #fff; color:  #036; text-indent: 0; white-space: nowrap;}
-        li.aui-dd-parent ul.aui-dropdown li a:link,
-        li.aui-dd-parent ul.aui-dropdown li a:visited {background: #fff; color: #036; padding: 0.3em 0.5em;}
-        li.aui-dd-parent ul.aui-dropdown li a:hover,
-        li.aui-dd-parent ul.aui-dropdown li a:active,
-        li.aui-dd-parent ul.aui-dropdown li a:focus {background: #567394; color: #fff; padding: 0.3em 0.5em;}
-
