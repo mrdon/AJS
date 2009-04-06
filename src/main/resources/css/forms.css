@@ -101,7 +101,7 @@ form.aui .inline .form-icon {margin-right:3px;}
 
 
 /* form icons - add form-icon class together with the icon class "form-icon icon-help" */
-form.aui .form-icon {background:transparent url(images/icons_form.gif) no-repeat 0 0;display:inline-block;height:16px;vertical-align:top;width:16px;overflow:hidden;}
+form.aui .form-icon {background:transparent url(./images/icons_form.gif) no-repeat 0 0;display:inline-block;height:16px;vertical-align:top;width:16px;overflow:hidden;}
 form.aui .form-icon span {text-indent:25px;/* this effectively hides the content of the span */}
 form.aui .form-icon img {height:16px;width:16px;}
   /* position icon sprite */
