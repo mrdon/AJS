@@ -190,15 +190,5 @@ testAjs.addTest("testDialogPosition", function() {
     return res;
 });
 
-testAjs.addTest("testInlineDialog", function() {
-    var testContainer = $("#test-container");
-    var link = $("<a>").text("Test Link").appendTo(testContainer);
-    var dlg = new AJS.InlineDialog(link, 1, "content.html", function(id){});  
-    link.click();
-    res = ($("#content-hover-1").length == 1);
-    testContainer.empty();
-    return res;
-});
-
 // todo - add more tests here
 
