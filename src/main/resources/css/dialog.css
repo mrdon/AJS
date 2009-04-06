@@ -6,13 +6,16 @@
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 9997;
 }
 .shadow,
 .popup {
     position: fixed;
     left: 50%;
     top: 50%;
+    z-index: 9999;
 }
+.shadow {z-index: 9998;}
 .shadow * {
     position: absolute;
 }
