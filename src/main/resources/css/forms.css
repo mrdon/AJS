@@ -13,10 +13,11 @@ form.aui p span {display:inline;}
 form.aui textarea {overflow:auto;padding:1px 2px;}
 form.aui option {padding:0 1em}
 form.aui fieldset {border:0;display:block;margin-bottom:10px;padding-bottom:10px;position:relative;}
-form.aui select {background-color:#fff;margin-right:5px;padding:2px;}
+form.aui input,
+form.aui select {margin-right:5px;padding:2px;}
 form.aui select {padding:1px;}
-form.aui button {padding:0 .5em;}
-form.aui .button {background-color:#eee;padding:0 .5em;}
+form.aui button,
+form.aui input.button {padding:0 .5em;}
 form.aui .hidden {display:none;}
 form.aui .error {color:#c00;font-weight:bold;}
 form.aui .description {font-size:11px;}
@@ -36,7 +37,7 @@ form.aui div.matrix div {clear:none;float:left;padding-left:0;width:250px;}
 /* input default and fixed widths */
 form.aui .text,
 form.aui .textarea,
-form.aui .select {border:1px solid #999;width:250px;}
+form.aui .select {background-color:#fff;border:1px solid #999;width:250px;}
 form.aui .short-field {width:75px;}
 form.aui .medium-field {width:165px;}
 form.aui .long-field {width:500px;}
