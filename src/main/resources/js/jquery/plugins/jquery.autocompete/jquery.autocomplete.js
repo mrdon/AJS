@@ -6,6 +6,8 @@ USAGE:
 */
 (function($){
     $.fn.autocomplete = function (url, minlength, callback) {
+        if (!this.length) return null;
+
         callback = typeof minlength == "function" ? minlength : (typeof callback == "function" ? callback : function () {});
         minlength = !isNaN(Number(minlength)) ? minlength : 3;
         var input = this;
@@ -150,5 +152,6 @@ USAGE:
               ol.hide();
             }
         }
+        return this;
     };
 })(jQuery);
