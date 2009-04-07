@@ -15,13 +15,16 @@
     overflow: hidden;
 }
 
-.ajs-inline-dialog .contents form.aui {
-    margin-bottom: 0;
-}
 
-.ajs-inline-dialog .contents .submit{
+form.aui .button-panel{
+    background:#FFF none repeat scroll 0 0;
+    border-top:1px solid #EEEEEE;
+    bottom:0;
+    clear:both;
+    height:23px;
+    left:0;
     margin:0;
-    padding:0;
+    padding:5px 10px;
     text-align:right;
 }
 
