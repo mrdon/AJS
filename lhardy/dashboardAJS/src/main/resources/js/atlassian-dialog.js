@@ -26,8 +26,7 @@ AJS.popup = function (width, height, id) {
         margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2) + "px",
         width: width + "px",
         height: height + "px",
-        background: "#fff",
-        zIndex: 3000
+        background: "#fff"
     });
     if (id) {
         popup.attr("id", id);
