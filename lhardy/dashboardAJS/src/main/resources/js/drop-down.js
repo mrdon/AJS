@@ -362,7 +362,7 @@ AJS.dropDown.removeAllAdditionalProperties = function(item) {
     dropdowns = AJS.dropDown(options.dropDown, options);  
 	if (options.trigger) {
         triggers = AJS.$(options.trigger);
-        $(dropdowns).each(function(i){
+        AJS.$(dropdowns).each(function(i){
             var cdd = this, trigger;
             cdd.$.addClass("hidden").css(function(){
                  if (options.align) {
