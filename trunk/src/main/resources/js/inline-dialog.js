@@ -26,7 +26,7 @@
         var arrow = $("#arrow-" + identifier);
         var contents = popup.find(".contents");
 
-        AJS.log(opts);
+//        AJS.log(opts);
 
         contents.css("width", opts.width + "px");
         contents.mouseover(function(e){
