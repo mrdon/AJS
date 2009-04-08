@@ -72,7 +72,7 @@ AJS.dropDown = function (obj, options) {
                 top: offset.top + "px",
                 height: offset.height + "px",
                 width: offset.width + "px"
-            });
+            }).addClass("hidden");
         });
     };
     //shim for iframes
@@ -89,7 +89,7 @@ AJS.dropDown = function (obj, options) {
             if (++loadedIframes == iframes.length) {
                 reset();
             }
-        });
+        }); 
     });
 
     var shims = AJS.$(".shim");
