@@ -1,0 +1,82 @@
+.user-hover .vcard {
+    padding: 7px;
+    border-bottom: 1px solid #eee;
+}
+
+.user-hover .actions .ajs-menu-bar .section-secondary li a {
+    font-size: .95em;
+    padding-left: 7px;
+}
+.user-hover .actions .ajs-drop-down li a {
+    padding: 0 1em 0 29px;
+}
+.user-hover .actions .ajs-menu-bar .ajs-drop-down a.email-user {
+    background-image: url(./images/mail_content_16.gif);
+    background-position: 8px .3em;
+}
+.user-hover .actions .popup-favourite a,
+.user-hover .actions ul li a.user-popup-more {
+    display: block;
+    text-align: center;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 2;
+}
+.user-hover .actions ul li {
+    width: 50%;
+    float: left;
+}
+
+.user-hover .actions ul li div.ajs-drop-down ul li {
+    width: auto;
+    float: none;
+    text-align: left;
+}
+
+.user-hover .actions .ajs-menu-bar {
+    float: none;
+}
+
+.user-hover .actions ul.ajs-menu-bar .popup-favourite {
+    width: 149px;
+}
+.user-hover .ajs-drop-down {
+    width: 150px;
+    margin-left: -1px;
+}
+
+.user-hover .actions ul.ajs-menu-bar .popup-favourite {
+    border-right: 1px solid #eee;
+}
+
+.user-hover .actions .ajs-button a {
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+.user-hover .actions ul.ajs-menu-bar .ajs-menu-item a span,
+.user-hover .actions ul.ajs-menu-bar .ajs-menu-item a span span {
+    display: inline;
+}
+
+.user-hover .actions ul.ajs-menu-bar .ajs-menu-item.opened a span span {
+    background: none;
+}
+
+.user-hover .popup-icon span {
+    padding-left: 20px;
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+
+.user-hover .favourite-icon span {
+    background-image: url(./images/fav_off_16.png );
+}
+
+.user-hover .unfavourite-icon span {
+    background-image: url(./images/fav_on_16.png );
+}
+
+.user-hover .waiting span {
+    background-image: url(./images/wait.gif);
+}
