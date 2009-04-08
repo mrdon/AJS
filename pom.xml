@@ -52,17 +52,6 @@
                 </includes>
             </resource>
         </resources>
-	<!-- remove this section after relase -->
-	<pluginManagement>
-        <plugins>
-	    <plugin>
-		    <artifactId>maven-release-plugin</artifactId>
-		    <configuration>
-			    <arguments>-Prelease -Dselenium.xvfb.skip -Dmaven.test.skip</arguments>
-		    </configuration>
-	        </plugin>
-        </plugins>
-	</pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
