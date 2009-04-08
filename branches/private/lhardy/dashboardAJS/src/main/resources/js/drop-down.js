@@ -1,4 +1,12 @@
+
+/*global AJS, document, setTimeout */
+
+
+
+
+
 AJS.dropDown = function (obj, options) {
+
     var dd = null,
         result = [],
         $doc = AJS.$(document),
@@ -8,9 +16,11 @@ AJS.dropDown = function (obj, options) {
 
     options = options || {};
 
-    if (obj && obj.jquery) { // if jQuery
+
+    if (obj && obj.jquery) { // if AJS.$
         dd = obj;
-    } else if (typeof obj == "string") { // if jQuery selector
+
+    } else if (typeof obj == "string") { // if AJS.$ selector
         dd = AJS.$(obj);
     } else if (obj && obj.constructor == Array) { // if JSON
         dd = AJS("ul").attr("class", (options.isVisibleByDefault ? "hidden" : "") + "ajs-drop-down");
@@ -23,8 +33,9 @@ AJS.dropDown = function (obj, options) {
                     // i elements with a class name matching their attribute name
                     var additionalVarsText = "";
                     for (var additionalVar in obj[i][j]) {
-                        if (isAdditionalProperty(additionalVar) && obj[i][j][additionalVar] != null)
+                        if (isAdditionalProperty(additionalVar) && !obj[i][j][additionalVar]) {
                             additionalVarsText = additionalVarsText + "<i class='" + additionalVar + "'>" + obj[i][j][additionalVar] + "</i>";
+                        }
                     }
 
                     li.append(AJS("a")
@@ -46,16 +57,16 @@ AJS.dropDown = function (obj, options) {
         }
         AJS.$("body").append(dd);
     } else {
-        throw new Error("AJS.dropDown function was called with illegal parameter. Should be jQuery object, jQuery selector or array.");
+        throw new Error("AJS.dropDown function was called with illegal parameter. Should be AJS.$ object, AJS.$ selector or array.");
     }
     AJS.dropDown.createShims = function () {
-        var shims = $(".shim");
-        jQuery("iframe").each(function(idx){
-            var $this = jQuery(this);
+        var shims = AJS.$(".shim");
+        AJS.$("iframe").each(function(idx){
+            var $this = AJS.$(this);
             var offset = $this.offset();
             offset.height = $this.height();
             offset.width = $this.width();
-            jQuery(shims[idx]).css({
+            AJS.$(shims[idx]).css({
                 position: "absolute",
                 left: offset.left + "px",
                 top: offset.top + "px",
@@ -65,11 +76,11 @@ AJS.dropDown = function (obj, options) {
         });
     };
     //shim for iframes
-    var iframes = $("iframe"), loadedIframes = 0, reset = function () {};
+    var iframes = AJS.$("iframe"), loadedIframes = 0, reset = function () {};
 
     iframes.each(function () {
         this.shim = AJS("div").addClass("shim").appendTo("body");
-        $(this).load(function () {
+        AJS.$(this).load(function () {
             var oldreset = reset;
             reset = function () {
                 oldreset();
@@ -81,22 +92,7 @@ AJS.dropDown = function (obj, options) {
         });
     });
 
-    var shims = $(".shim");
-
-    var tabToDD = function (dir) {
-		if (options.tabbed && result.length > 1) {
-			var activeIdx = AJS.indexOf(result, AJS.dropDown.current) + dir;
-			if (activeIdx === result.length) {
-				activeIdx = 0;
-			} else if (activeIdx === -1) {
-				activeIdx = result.length - 1;
-			}
-			AJS.dropDown.current.hide("escape");
-			result[activeIdx].show();
-		} else {
-			AJS.dropDown.current.hide("escape");
-		}
-	};
+    var shims = AJS.$(".shim");
 
     var movefocus = function (e) {
         if (!AJS.dropDown.current) {
@@ -107,19 +103,16 @@ AJS.dropDown = function (obj, options) {
             focus = (typeof cdd.focused == "number" ? cdd.focused : -1);
 			AJS.dropDown.current.cleanFocus();
        		cdd.focused = focus;
-
         switch (c) {
-			case 40:{
+			case 40: {
 				cdd.focused++;
 				break;
 			}
 			case 9:
 			case 39: {
-				tabToDD(1);
 				return false;
 			}
 			case 37: {
-				tabToDD(-1);
 				return false;
 			}
 			case 38:{
@@ -131,12 +124,12 @@ AJS.dropDown = function (obj, options) {
 				return false;
 			}
 			case 13:{
-				options.selectionHandler.call(AJS.dropDown.current, jQuery(AJS.dropDown.current.links[cdd.focused]));
+				options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(AJS.dropDown.current.links[cdd.focused]));
 				return false;
 			}
 			default:{
 				if (AJS.dropDown.current.links.length) {
-					jQuery(AJS.dropDown.current.links[cdd.focused]).addClass("active");
+					AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
 				}
 				return true;
 			}
@@ -148,7 +141,7 @@ AJS.dropDown = function (obj, options) {
             cdd.focused = 0;
         }
         if (AJS.dropDown.current.links.length) {
-			jQuery(AJS.dropDown.current.links[cdd.focused]).addClass("active");
+			AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
         }
         e.stopPropagation();
         e.preventDefault();
@@ -156,14 +149,16 @@ AJS.dropDown = function (obj, options) {
     };
     var hider = function (e) {
         if (!((e && e.which && (e.which == 3)) || (e && e.button && (e.button == 2)) || false)) { // right click check
-            AJS.dropDown.current && AJS.dropDown.current.hide("click");
+            if (AJS.dropDown.current) {
+                AJS.dropDown.current.hide("click");
+            }
         }
     };
     var active = function (i) {
         return function () {
             AJS.dropDown.current.cleanFocus();
             this.originalClass = this.className;
-			$(this).addClass("active");
+			AJS.$(this).addClass("active");
             AJS.dropDown.current.$[0].focused = i;
         };
     };
@@ -171,21 +166,21 @@ AJS.dropDown = function (obj, options) {
         var cdd = this, $cdd = AJS.$(this), res;
         var methods = {
 			reset: function () {
-				res = jQuery.extend(res || {}, {
+				res = AJS.$.extend(res || {}, {
 					$: $cdd,
-	                links: AJS.$(options.items, cdd),
+	                links: AJS.$(options.item, cdd),
 					cleanFocus: function () {
 		                if (cdd.focused + 1 && res.links.length) {
-							$(res.links[cdd.focused]).removeClass("active");
+							AJS.$(res.links[cdd.focused]).removeClass("active");
 		                }
 		                cdd.focused = -1;
 		            }
 				});
-		        res.links.each(function(i){
-					$(this).hover(active(i), res.cleanFocus);
-					$(this).click(function(e){
+		        res.links.each(function (i) {
+					AJS.$(this).hover(active(i), res.cleanFocus);
+					AJS.$(this).click(function (e) {
 						if (AJS.dropDown.current) {
-							options.selectionHandler.call(AJS.dropDown.current, $(this));
+							options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
 						}
 					});
 				});
@@ -216,14 +211,14 @@ AJS.dropDown = function (obj, options) {
 
         /**
 		 * Uses Aspect Oriented Programming (AOP) to insert callback <em>after</em> the
-		 * specified method has returned @see jQuery.aop
+		 * specified method has returned @see AJS.$.aop
 		 * @method addCallback
 		 * @param {String} methodName - Name of a public method
 		 * @param {Function} callback - Function to be executed
 		 * @return {Array} weaved aspect
 		 */
 		res.addCallback = function (method, callback) {
-			return jQuery.aop.after({target: this, method: method}, callback);
+			return AJS.$.aop.after({target: this, method: method}, callback);
 		};
 
 		res.reset = methods.reset();
@@ -237,28 +232,27 @@ AJS.dropDown = function (obj, options) {
                 $doc.click(hider);
             }, 0);
             $doc.keydown(movefocus);
-            shims && shims.removeClass("hidden");
+            if (shims) {
+                shims.removeClass("hidden");
+            }
 			if (options.firstSelected && this.links[0]) {
 				active(0).call(this.links[0]);
 			}
-            $(cdd.offsetParent).css({zIndex: 2000});
+            AJS.$(cdd.offsetParent).css({zIndex: 2000});
         };
         res.hide = function (causer) {
             this.method = this.method || "appear";
-            $($cdd.get(0).offsetParent).css({zIndex: ""});
+            AJS.$($cdd.get(0).offsetParent).css({zIndex: ""});
             this.cleanFocus();
             methods[this.method](false);
             $doc.unbind("click", hider).unbind("keydown", movefocus);
             AJS.dropDown.current = null;
-            shims && shims.addClass("hidden");
+            if (shims) {
+                shims.addClass("hidden");
+            }
             return causer;
         };
-        if ($cdd.hasClass("hidden")) {
-            res.hide();
-        } else {
-            res.show(); 
-        }
-		res.addCallback("reset", function() {
+		res.addCallback("reset", function () {
 			if (options.firstSelected && this.links[0]) {
 				active(0).call(this.links[0]);
 			}
@@ -266,31 +260,16 @@ AJS.dropDown = function (obj, options) {
         // shadow
         (function () {
             var refreshShadow = function () {
-                var alignCSS = {}, ddLeft, ddRight;
+
                 if (this.$.is(":visible")) {
                     if (!this.shadow) {
-                        this.shadow = $('<div class="aui-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>').insertBefore(this.$);
+                        this.shadow = AJS.$('<div class="aui-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>').insertBefore(this.$);
                     }
                     if (parseInt(this.$.outerWidth(), 10) > 14) {
-                        if (options.align) {
-                             if (options.align === "right") {
-                                 alignCSS.right = -7;
-                                 alignCSS.left = "auto";
-                             } else {
-                                 alignCSS.right = "auto";
-                                 alignCSS.left = -7;
-                             }
-                        } else {
-                            ddLeft = res.$.css("left");
-                            ddRight = res.$.css("right");
-                            alignCSS.left = ddLeft === "auto" ? "auto" : parseInt(ddLeft, 10) - 7;
-                            alignCSS.right = right = ddRight === "auto" ? "auto" : parseInt(ddRight, 10) - 7;
-                        }
                         this.shadow.css({
                             display: "block",
-                            left: alignCSS.left,
                             top: this.$.css("top"),
-                            right: alignCSS.right,
+                            right: "-7px",
                             width: this.$.outerWidth() + 14 + "px",
                             height: this.$.outerHeight() + 14 + "px"
                         })
@@ -316,7 +295,7 @@ AJS.dropDown = function (obj, options) {
 // property with the specified name then null will be returned.
 AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
     var spaceNameElement = AJS.$("i." + name, item);
-    if (spaceNameElement.length == 0) {
+    if (spaceNameElement.length === 0) {
         return null;
     } else {
         return spaceNameElement.text();
@@ -324,10 +303,9 @@ AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
 };
 
 // remove all additional properties
-AJS.dropDown.removeAllAdditionalProperties = function(item) {
+AJS.dropDown.removeAllAdditionalProperties = function (item) {
     AJS.$("i", item).remove();
 };
-
 
  /**
   * Base dropdown control. Enables you to identify triggers that when clicked, display dropdown.
@@ -336,109 +314,148 @@ AJS.dropDown.removeAllAdditionalProperties = function(item) {
   * @contructor
   * @namespace AJS.dropDown
   * @param {Object} options
-  * @... {String, Object} dropDown - dropdown element/s. This can be passed as a jQuery selector or jQuery collection.
-  * @... {String, Object} trigger - trigger element/s. This can be passed as a jQuery selector or jQuery collection.
-  * @... {String, Object} activeClass - Class name that is applied to focused elements. Useful for css styling.
-  * @... {String, Object} items - list items, items that you want keyboard navigation applied to.  This can be passed
-  * as a jQuery selector or jQuery collection.
-  * @.. {Function} selectionHandler - function that is called when an item is selected. Passed the selected item as first argument.
-  @ @.. {String} align - Specify what alignment the dropdown should be, "left or right"
   * @return {Object
   */
- AJS.dropDown.Standard = function (options) {
- 	var dropdowns, triggers, defaults = {
+ AJS.dropDown.Standard = function (usroptions) {
+
+    var res = [], dropdownParents, options = {
+        selector: ".aui-dd-parent",
 		dropDown: ".aui-dropdown",
 		trigger: ".aui-dd-link",
-		activeClass: "active",
-		items: "li",
-		selectionHandler: function (e, selected) {
-			window.location = selected.find("a").attr("href");
-			this.hide();
-			e.preventDefault();
-			e.stopPropagation();
-		}
-	};
-	options = jQuery.extend(defaults, options);
-    dropdowns = AJS.dropDown(options.dropDown, options);  
-	if (options.trigger) {
-        triggers = AJS.$(options.trigger);
-        AJS.$(dropdowns).each(function(i){
-            var cdd = this, trigger;
-            cdd.$.addClass("hidden").css(function(){
-                 if (options.align) {
-                     if (options.align === "right") {
-                         return {right: 0, left: "auto"};              
-                     } else {
-                         return {right: "auto", left: 0};  
-                     }
+		item: "li:has(a)",
+        activeClass: "active",
+        selectionHandler: function (e, selected) {
+            if (selected) {
+                if (selected.get(0).nodeName.toLowerCase() !== "a") {
+                    window.location = selected.find("a").attr("href");
+                } else {
+                    window.location = selected.attr("href");
                 }
-            }());
-            trigger = jQuery(triggers[i]);
-            this.trigger = trigger;
-            trigger.click(function(e){
-                if (cdd != AJS.dropDown.current) {
-                    cdd.show();
-				}
-				else {
-					cdd.hide();
-				}
-				e.stopPropagation();
-				e.preventDefault();
-			});
-			cdd.addCallback("show", function(trigger){
-				return function(){
-					trigger.addClass(options.activeClass);
-					if (cdd.$.css("top") === "auto" || cdd.$.css("top") === "0px") {
-						cdd.$.css({top: trigger.outerHeight()});
-                        if (cdd.shadow) {
-                            cdd.shadow.css({top: cdd.$.css("top")});
-                        }
-                    }
-				};
-			}(trigger));
-			cdd.addCallback("hide", function(trigger){
-				return function(){
-					trigger.removeClass(options.activeClass).blur();
-				};
-			}(trigger));
-            if (trigger.attr("accesskey")) {
-                jQuery(document).keypress(function(e){
-                    if (e.ctrlKey && String.fromCharCode(e.charCode) === trigger.attr("accesskey")) {
-                        if (cdd != AJS.dropDown.current) {
-                            cdd.show();
-                            e.preventDefault();
-                            e.stopPropagation();
-                        }
-                    }
-                });
             }
+        }
+	};
+
+     // extend defaults with user options
+    AJS.$.extend(options, usroptions);
+
+      // handling for jQuery collections
+    if (this instanceof AJS.$) {
+        dropdownParents = this;
+    // handling for selectors
+    } else {
+        dropdownParents = AJS.$(options.selector);
+    }
+
+    // a series of checks to ensure we are dealing with valid dropdowns
+    dropdownParents = dropdownParents
+            .not(".dd-allocated")
+            .filter(":has(" + options.dropDown + ")")
+            .filter(":has(" + options.trigger + ")");
+
+    dropdownParents.each(function () {
+        var
+        $parent = AJS.$(this),
+        $dropdown = AJS.$(options.dropDown, this),
+        $trigger = AJS.$(options.trigger, this),
+        ddcontrol = AJS.dropDown($dropdown, options)[0];
+
+        // extend to control to have any additional properties/methods
+        AJS.$.extend(ddcontrol, {trigger: $trigger});
+
+        // flag it to prevent additional dd controls being applied
+        $parent.addClass("dd-allocated");
+
+        //hide dropdown if not already hidden
+        $dropdown.addClass("hidden");
+
+
+        $trigger.click(function (e) {
+            if (ddcontrol != AJS.dropDown.current) {
+                $dropdown.css({top: $trigger.outerHeight()});
+                ddcontrol.show();
+                e.stopPropagation();
+            }
+            e.preventDefault();
         });
-	}
-    return dropdowns;
- };
+
+        ddcontrol.addCallback("show", function () {
+           $parent.addClass("active");
+        });
+
+        ddcontrol.addCallback("hide", function () {
+           $parent.removeClass("active");
+        });
+
+        // respect access keys
+        if ($trigger.attr("accesskey")) {
+            AJS.$(document).keypress(function (e) {
+                if (e.ctrlKey && String.fromCharCode(e.charCode) === $trigger.attr("accesskey")) {
+                    if (ddcontrol != AJS.dropDown.current) {
+                        ddcontrol.show();
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }
+            });
+        }
+
+        // add control to the response
+        res.push(ddcontrol);
+
+    });
+    return res;
+};
 
 
 /**
- * A standard dropdown, however, with the ability to populate its content's via ajax.
+ * A NewStandard dropdown, however, with the ability to populate its content's via ajax.
  *
  * @class Ajax
  * @contructor
  * @namespace AJS.dropDown
  * @param {Object} options
- * @... {HTMLelement} dropDown
  * @return {Object} dropDown instance
  */
-AJS.dropDown.Ajax = function (options) {
-    var dropdowns, defaults = {trigger: false};
-	dropdowns = AJS.dropDown.Standard(jQuery.extend(defaults, options));
-	jQuery(dropdowns).each(function (){
-		jQuery.extend(this, {
-			refreshSuccess: function (response) {
+AJS.dropDown.Ajax = function (usroptions) {
+
+    var dropdowns, options = {cache: true};
+
+     // extend defaults with user options
+    AJS.$.extend(options, usroptions || {});
+
+    // we call with "this" in case we are called in the context of a jQuery collection
+    dropdowns = AJS.dropDown.Standard.call(this, options);
+
+    AJS.$(dropdowns).each(function () {
+
+        var ddcontrol = this;
+
+        AJS.$.extend(ddcontrol, {
+            getAjaxOptions: function (opts) {
+                var success = function (response) {
+                    if (options.formatResults) {
+                        response = options.formatResults(response);
+                    }
+                    if (options.cache) {
+                        ddcontrol.cache.set(ddcontrol.getAjaxOptions(), response);
+                    }
+                    ddcontrol.refreshSuccess(response);
+                };
+                if (options.ajaxOptions) {
+
+
+                    if (AJS.$.isFunction(options.ajaxOptions)) {
+                        return AJS.$.extend(options.ajaxOptions.call(ddcontrol), {success: success});
+                    } else {
+                        return AJS.$.extend(options.ajaxOptions, {success: success});
+                    }
+                }
+                return AJS.$.extend(opts, {success: success});
+            },
+            refreshSuccess: function (response) {
                 this.$.html(response);
-			}
-		});
-        if (options.cache) {
-            var cache = function (){
+            },
+            cache: function () {
                 var c = {};
                 return {
                     get: function (ajaxOptions) {
@@ -453,54 +470,39 @@ AJS.dropDown.Ajax = function (options) {
                         c = {};
                     }
                 };
-            }();
-        }
-        this.show = function(superMethod) {
-			
-			return function(opts){
-				var that = this;
-				this.show.options = function (){
-                    if (options.ajaxOptions) {
-                        if(jQuery.isFunction(options.ajaxOptions)) {
-                            return options.ajaxOptions.call(that);
-                        } else {
-                            return options.ajaxOptions;
-                        }
+            }(),
+            show: function (superMethod) {
+                return function (opts) {
+                    if (options.cache && !!ddcontrol.cache.get(ddcontrol.getAjaxOptions())) {
+                        ddcontrol.refreshSuccess(ddcontrol.cache.get(ddcontrol.getAjaxOptions()));
+                        superMethod.call(ddcontrol);
+                    } else {
+                        AJS.$(AJS.$.ajax(ddcontrol.getAjaxOptions())).throbber({target: ddcontrol.$,
+                            end: function () {
+                                ddcontrol.reset();
+                            }
+                        });
+                        superMethod.call(ddcontrol);
+                        ddcontrol.shadow.hide();
                     }
-                    return opts;
-                }();
-				this.show.options = jQuery.extend({
-					success: function(response){
-                        if (options.formatResults) {
-							response = options.formatResults(response);
-						}
-
-						if (options.cache) {
-							cache.set(that.show.options, response);
-						}
-						that.refreshSuccess(response);
-					}
-				}, this.show.options);
-				if (options.cache && !!cache.get(this.show.options)) {
-					that.refreshSuccess(cache.get(this.show.options));
-                    superMethod.call(this);
-                } else {
-                    jQuery(jQuery.ajax(this.show.options)).throbber({target: this.$,
-                        end: function () {
-                            that.reset();
-                        }
-                    });
-                    superMethod.call(this);
-                    this.shadow.hide();
-                }
-            };
-		}(this.show);
-        this.resetCache = function () {
-            cache.reset();
-        };
-        this.addCallback("refreshSuccess", function () {
-			this.reset();
+                };
+            }(ddcontrol.show),
+            resetCache: function () {
+                ddcontrol.cache.reset();
+            }
+        });
+        ddcontrol.addCallback("refreshSuccess", function () {
+			ddcontrol.reset();
 		});
-	});
-	return dropdowns;
+    });
+    return dropdowns;
 };
+
+
+AJS.$.fn.dropDown = function (type, options) {
+    type = (type || "Standard").replace(/^([a-z])/, function (match) {
+        return match.toUpperCase();
+    });
+    return AJS.dropDown[type].call(this, options);
+};
+
