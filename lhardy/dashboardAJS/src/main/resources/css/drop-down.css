@@ -4,13 +4,13 @@
 
 .aui-dd-parent span a.aui-dd-trigger {position: absolute; right: 5px; top: 8px;}
 .aui-dd-parent span a.aui-dd-trigger,
-.aui-dd-parent a.aui-dd-trigger {background: transparent url('../../resources/com.atlassian.aui%3Aajs/css/images/aui-sprite-icons.gif') no-repeat -13px 0; border: none; color: #000; height: 13px; padding: 0; text-indent: -9999px; width: 13px;}
+.aui-dd-parent a.aui-dd-trigger {background: transparent url('../../resources/com.atlassian.aui%3Aajs/css/images/aui-icon-tools.gif') no-repeat -13px 0; border: none; color: #000; height: 13px; padding: 0; text-indent: -9999px; width: 13px;}
   .aui-dd-parent a.aui-dd-trigger:link,
   .aui-dd-parent a.aui-dd-trigger:visited {}
   .aui-dd-parent a.aui-dd-trigger.active,
   .aui-dd-parent a.aui-dd-trigger:hover,
   .aui-dd-parent a.aui-dd-trigger:active,
-  .aui-dd-parent a.aui-dd-trigger:focus {background: transparent url('../../resources/com.atlassian.aui%3Aajs/css/images/aui-sprite-icons.gif') no-repeat -26px 0; border: none; color: #000;}
+  .aui-dd-parent a.aui-dd-trigger:focus {background: transparent url('../../resources/com.atlassian.aui%3Aajs/css/images/aui-icon-tools.gif') no-repeat -26px 0; border: none; color: #000;}
 
   .aui-dd-parent .aui-dropdown {background: #fff; border: 1px solid #6A8EB3; color: #000; padding: 4px 0 4px 0; position: absolute; right: 0; z-index: 2003;margin-top:-1px;}
     .aui-dd-parent .aui-dropdown li {background: #fff; color: #000; display: block; float: none; margin: 0; position: static;}
