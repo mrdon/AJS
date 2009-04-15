@@ -26,47 +26,47 @@
     top: 0;
     width: 16px;
     height: 17px;
-    background: url(../images/shadowlt.png);
+    background: url(../../resources/com.atlassian.aui%3Aajs/images/shadowlt.png);
 }
 .shadow .tr {
     right: 0;
     top: 0;
     width: 16px;
     height: 17px;
-    background: url(../images/shadowrt.png);
+    background: url(../../resources/com.atlassian.aui%3Aajs/images/shadowrt.png);
 }
 .shadow .br {
     right: 0;
     bottom: 0;
     width: 29px;
     height: 29px;
-    background: url(../images/shadowrb.png);
+    background: url(../../resources/com.atlassian.aui%3Aajs/images/shadowrb.png);
 }
 .shadow .bl {
     left: 0;
     bottom: 0;
     width: 29px;
     height: 29px;
-    background: url(../images/shadowlb.png);
+    background: url(../../resources/com.atlassian.aui%3Aajs/images/shadowlb.png);
 }
 .shadow .b {
     left: 29px;
     bottom: 0;
     height: 29px;
     width: 29px;
-    background: url(../images/shadowb.png);
+    background: url(../../resources/com.atlassian.aui%3Aajs/images/shadowb.png);
 }
 .shadow .l {
     left: 0;
     top: 17px;
     width: 16px;
-    background: url(../images/shadowl.png);
+    background: url(../../resources/com.atlassian.aui%3Aajs/images/shadowl.png);
 }
 .shadow .r {
     right: 0;
     top: 17px;
     width: 16px;
-    background: url(../images/shadowr.png);
+    background: url(../../resources/com.atlassian.aui%3Aajs/images/shadowr.png);
 }
 /** Dialog  */
 .dialog {
