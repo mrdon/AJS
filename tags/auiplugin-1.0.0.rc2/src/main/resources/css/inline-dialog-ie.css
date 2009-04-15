@@ -1,0 +1,28 @@
+* html #inline-dialog-shadow .tl {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/shadow/lt.png', sizingMethod='scale');
+}
+* html #inline-dialog-shadow .tr {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/shadow/rt.png', sizingMethod='scale');
+}
+* html #inline-dialog-shadow .br {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/shadow/rb.png', sizingMethod='scale');
+}
+* html #inline-dialog-shadow .bl {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/shadow/lb.png', sizingMethod='scale');
+}
+* html #inline-dialog-shadow .b {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/shadow/b.png', sizingMethod='scale');
+}
+* html #inline-dialog-shadow .l {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/shadow/l.png', sizingMethod='scale');
+}
+* html #inline-dialog-shadow .r {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/shadow/r.png', sizingMethod='scale');
+}
