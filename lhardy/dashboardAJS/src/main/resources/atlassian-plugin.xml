@@ -15,9 +15,9 @@
         <resource type="download" name="forms.css" location="css/forms.css"/>
         <resource type="download" name="drop-down.js" location="js/drop-down.js"/>
         <resource type="download" name="drop-down.css" location="css/drop-down.css"/>
-        <resource type="download" name="atlassian-dialog.js" location="js/atlassian-dialog.js"/>
+        <resource type="download" name="dialog.js" location="js/dialog.js"/>
         <resource type="download" name="dialog.css" location="css/dialog.css"/>
-        <resource type="download" name="dialog-ie.css" location="css/dialog-ie.css">
+        <resource type="download" name="dialog-ie.css" location="css/ie/dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
         <dependency>com.atlassian.aui:jquery</dependency>
@@ -32,7 +32,7 @@
     </web-resource>
 
     <web-resource key="dialog" name="Dialog UI Component">
-        <resource type="download" name="atlassian-dialog.js" location="js/atlassian-dialog.js"/>
+        <resource type="download" name="dialog.js" location="js/dialog.js"/>
         <resource type="download" name="dialog.css" location="css/dialog.css"/>
         <resource type="download" name="dialog-ie.css" location="css/dialog-ie.css">
             <param name="ieonly" value="true"/>
@@ -48,7 +48,6 @@
     <web-resource name="jQuery UI" key="jquery-ui">
         <dependency>com.atlassian.aui:jquery</dependency>
         <resource type="download" name="js/jquery/jquery.ui-1.7.1.min.js" location="js/jquery/jquery-ui-1.7.1.min.js"/>
-        <resource type="download" name="jquery-ui-themeroller.css" location="css/jquery-ui-themeroller.css"/>
     </web-resource>
 
     <!-- jQuery Plugins -->
