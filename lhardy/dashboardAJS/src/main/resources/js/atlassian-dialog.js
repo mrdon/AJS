@@ -36,14 +36,14 @@ AJS.popup = function (width, height, id) {
         popup[0].style.marginTop = "";
     }
     AJS.$("body").append(shadow);
-    AJS.$(".shadow").css({
+    shadow.css({
         margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2 + 16) + "px",
         width: width + 32 + "px",
         height: height + 29 + "px",
         zIndex: 2999
     });
-    AJS.$(".shadow .b").css("width", width - 26 + "px");
-    AJS.$(".shadow .l, .shadow .r").css("height", height - 18 + "px");
+    AJS.$(".b", shadow).css("width", width - 26 + "px");
+    AJS.$(".l, .r", shadow).css("height", height - 18 + "px");
     AJS.$("body").append(popup);
     popup.hide();
     shadow.hide();
