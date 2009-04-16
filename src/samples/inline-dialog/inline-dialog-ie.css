@@ -1,28 +1,28 @@
 * html #inline-dialog-shadow .tl {
     background: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/lt.png', sizingMethod='scale');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/lt.png', sizingMethod='scale');
 }
 * html #inline-dialog-shadow .tr {
     background: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/rt.png', sizingMethod='scale');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/rt.png', sizingMethod='scale');
 }
 * html #inline-dialog-shadow .br {
     background: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/rb.png', sizingMethod='scale');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/rb.png', sizingMethod='scale');
 }
 * html #inline-dialog-shadow .bl {
     background: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/lb.png', sizingMethod='scale');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/lb.png', sizingMethod='scale');
 }
 * html #inline-dialog-shadow .b {
     background: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/b.png', sizingMethod='scale');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/b.png', sizingMethod='scale');
 }
 * html #inline-dialog-shadow .l {
     background: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/l.png', sizingMethod='scale');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/l.png', sizingMethod='scale');
 }
 * html #inline-dialog-shadow .r {
     background: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./images/r.png', sizingMethod='scale');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/r.png', sizingMethod='scale');
 }
