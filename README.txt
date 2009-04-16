@@ -1,5 +1,8 @@
 AUI Readme:
 
+Samples:
+Each component should have a basic sample available in the samples folder. Note that due to how the plugin structure works, the CSS images *will not* display on these sample pages. (Yes, this sucks, if you've got a fix, we'd love to hear it.)
+
 
 Tests:
 

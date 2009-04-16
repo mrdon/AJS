@@ -47,54 +47,54 @@
     top: 0;
     width: 16px;
     height: 17px;
-    background: url(../images/shadow/lt.png);
+    background: url(images/shadow/lt.png);
 }
 #inline-dialog-shadow .tr {
     right: 0;
     top: 0;
     width: 16px;
     height: 17px;
-    background: url(../images/shadow/rt.png);
+    background: url(images/shadow/rt.png);
 }
 #inline-dialog-shadow .br {
     right: 0;
     bottom: 0;
     width: 29px;
     height: 29px;
-    background: url(../images/shadow/rb.png);
+    background: url(images/shadow/rb.png);
 }
 #inline-dialog-shadow .bl {
     left: 0;
     bottom: 0;
     width: 29px;
     height: 29px;
-    background: url(../images/shadow/lb.png);
+    background: url(images/shadow/lb.png);
 }
 #inline-dialog-shadow .b {
     left: 29px;
     bottom: 0;
     height: 29px;
     width: 29px;
-    background: url(../images/shadow/b.png);
+    background: url(images/shadow/b.png);
 }
 #inline-dialog-shadow .l {
     left: 0;
     top: 17px;
     width: 16px;
-    background: url(../images/shadow/l.png);
+    background: url(images/shadow/l.png);
 }
 #inline-dialog-shadow .r {
     right: 0;
     top: 17px;
     width: 16px;
-    background: url(../images/shadow/r.png);
+    background: url(images/shadow/r.png);
 }
 
 .ajs-inline-dialog .arrow{
     width: 16px;
     height: 16px;
     background-repeat: no-repeat;
-    background-image: url(../images/arrow.png);
+    background-image: url(images/arrow.png);
     background-color: transparent;
     position:absolute;
     top:-7px;
