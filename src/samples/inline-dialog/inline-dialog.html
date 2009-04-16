@@ -12,16 +12,15 @@
     <![endif]-->
 </head>
 <body>
-    <div><a href="inline-dialog.html#" id="popupLink">Click Link</a></div>
-    <div><a href="inline-dialog.html#" id="hoverLink">Hover Link</a></div>
+    <div><a href="inline-dialog.html" id="popupLink">Click Link</a></div>
+    <div><a href="inline-dialog.html" id="hoverLink">Hover Link</a></div>
     <script>
-    var postProcess = function(id)
-    {
-        // do nothing;
-    };
+        var postProcess = function(id) {
+            alert("That worked.");
+        };
 
-        AJS.InlineDialog($("#popupLink"), 1, "dialog-content.html", postProcess);
-        AJS.InlineDialog($("#hoverLink"), 2, "dialog-content.html", postProcess, {onHover:true});
+        AJS.InlineDialog($("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess});
+        AJS.InlineDialog($("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
     </script>
 </body>
 </html>
