@@ -11,7 +11,7 @@
     padding: 0 1em 0 29px;
 }
 .user-hover .actions .ajs-menu-bar .ajs-drop-down a.email-user {
-    background-image: url(./images/mail_content_16.gif);
+    background-image: url(../images/mail_content_16.gif);
     background-position: 8px .3em;
 }
 .user-hover .actions .popup-favourite a,
@@ -70,13 +70,13 @@
 }
 
 .user-hover .favourite-icon span {
-    background-image: url(./images/fav_off_16.png );
+    background-image: url(../images/fav_off_16.png );
 }
 
 .user-hover .unfavourite-icon span {
-    background-image: url(./images/fav_on_16.png );
+    background-image: url(../images/fav_on_16.png );
 }
 
 .user-hover .waiting span {
-    background-image: url(./images/wait.gif);
+    background-image: url(../images/wait.gif);
 }
