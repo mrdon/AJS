@@ -23,11 +23,6 @@
         <resource type="download" name="dialog-ie.css" location="css/ie/dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="content-hover.js" location="js/content-hover.js"/>
-        <resource type="download" name="content-hover.css" location="css/content-hover.css"/>
-        <resource type="download" name="content-hover-ie.css" location="css/ie/content-hover-ie.css">
-            <param name="ieonly" value="true"/>
-        </resource>
         <resource type="download" name="inline-dialog.js" location="js/inline-dialog.js"/>
         <resource type="download" name="inline-dialog.css" location="css/inline-dialog.css"/>
         <resource type="download" name="inline-dialog-ie.css" location="css/ie/inline-dialog-ie.css">
