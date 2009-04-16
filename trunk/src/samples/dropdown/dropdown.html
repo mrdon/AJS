@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Dropdown Example</title>
+    <script type="text/javascript" src="../../main/resources/js/jquery/jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/drop-down.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/drop-down.css" media="all">
+
+    <script type="text/javascript">
+    AJS.$(document).ready(function() {
+        AJS.$(".ajs-menu-item").each(function () {
+            var dd = AJS.dropDown(AJS.$(".ajs-drop-down", this))[0];
+            AJS.$(".ajs-dd-trigger", this).click(function (e) {
+                if (AJS.dropDown.current == dd) {
+                    dd.hide();
+                } else {
+                    dd.show();
+                    adjustPositionIfRequired(dd.$);
+                }
+                return false;
+            });
+        });
+        
+    });
+    </script>
+
+    <style type="text/css">
+        body {font-family: sans-serif; font-size: 10pt;}
+        .hidden {display: none;}
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="ajs-menu-item">
+            <a href="#" class="ajs-dd-trigger">A Dropdown</a>
+            <ul class="ajs-drop-down hidden">
+                <li><a href="#">A menu item</a></li>
+                <li><a href="#">Another menu item</a></li>
+                <li><a href="#">Third menu item</a></li>
+                <li><a href="#">Menu item 4</a></li>
+            </ul>
+        </li>
+        <li class="ajs-menu-item">
+            <a href="#" class="ajs-dd-trigger">A Second Dropdown</a>
+            <ul class="ajs-drop-down hidden">
+                <li><a href="#">A menu item in the Second Dropdown</a></li>
+                <li><a href="#">Another menu item</a></li>
+                <li><a href="#">Third menu item</a></li>
+                <li><a href="#">Menu item 4</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
