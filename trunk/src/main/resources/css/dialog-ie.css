@@ -17,6 +17,13 @@ body {
     position: absolute;
     top: 0;
 }
+
+.dialog .button-panel {
+    *top: 92%;
+    *bottom: auto;
+    *z-index: 3001;
+}
+
 * html .shadow .tl {
     background: none;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shadow/lt.png', sizingMethod='scale');
