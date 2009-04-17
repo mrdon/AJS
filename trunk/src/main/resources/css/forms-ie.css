@@ -12,7 +12,7 @@ form.aui div {_height:1.6em;}
 form.aui .group .field-value {_width:2em;}
 form.aui .group label,
 form.aui .radio label,
-form.aui .checkbox label {_position:static}
+form.aui .checkbox label {_margin-top:1px; _position:static;}
 form.aui .radio .error,
 form.aui .checkbox .error {_margin-left:20px;}
 form.aui .radio .description,
