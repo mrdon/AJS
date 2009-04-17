@@ -7,7 +7,7 @@ AJS.dim = function () {
     if (!AJS.dim.dim) {
         AJS.dim.dim = AJS("div").addClass("blanket");
         if (AJS.$.browser.msie) {
-            AJS.dim.dim.css({width: "200%", height: AJS.$(document).height() + "px"});
+            AJS.dim.dim.css({width: "200%", height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
         }
         AJS.$("body").append(AJS.dim.dim).css("overflow", "hidden");
         AJS.$("html").css("overflow", "hidden");
