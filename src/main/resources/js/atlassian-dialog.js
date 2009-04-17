@@ -48,8 +48,7 @@ AJS.popup = function (width, height, id) {
         margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2) + "px",
         width: width + "px",
         height: height + "px",
-        background: "#fff",
-        zIndex: 3000
+        background: "#fff"
     });
     if (id) {
         popup.attr("id", id);
@@ -58,8 +57,7 @@ AJS.popup = function (width, height, id) {
     shadow.css({
         margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2 + 16) + "px",
         width: width + 32 + "px",
-        height: height + 29 + "px",
-        zIndex: 2999
+        height: height + 29 + "px"
     });
     AJS.$(".b", shadow).css("width", width - 26 + "px");
     AJS.$(".l, .r", shadow).css("height", height - 18 + "px");
