@@ -37,7 +37,7 @@ form.aui div.matrix div {clear:none;float:left;padding-left:0;width:250px;}
 /* input default and fixed widths */
 form.aui .text,
 form.aui .textarea,
-form.aui .select {background-color:#fff;border:1px solid #999;width:250px;}
+form.aui .select {width:250px;}
 form.aui .short-field {width:75px;}
 form.aui .medium-field {width:165px;}
 form.aui .long-field {width:500px;}
