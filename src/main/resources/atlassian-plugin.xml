@@ -7,6 +7,7 @@
 
     <resource name="css/" type="download" location="css/" />
     <resource name="js/" type="download" location="js/" />
+    <resource name="images/" type="download" location="css/images/" />
 
     <web-resource key="ajs" name="Atlassian Javascript">
         <resource type="download" name="atlassian.js" location="js/atlassian.js"/>
