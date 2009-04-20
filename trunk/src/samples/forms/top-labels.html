@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Atlassian form template</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+<link href="../../main/resources/css/forms.css" media="all" rel="stylesheet" type="text/css">
+<!--[if IE]>
+	<link type="text/css" media="all" rel="stylesheet" href="../../main/resources/css/forms-ie.css">
+<![endif]-->
+</head>
+
+<body>
+<ul>
+    <li><a href="forms.html">Forms Home</a></li>
+    <li><a href="default.html">Default Layout</a></li>
+    <li><a href="long-labels.html">Long Labels</a></li>
+    <li><a href="top-labels.html">Top Labels</a></li>
+    <li><a href="inline-form.html">Inline Form</a></li>
+</ul>
+<h1>Top Labels</h1>
+
+<form action="forms.html#" method="post" id="j" class="aui top-label">
+	<h2>Top Labels - add class top-label to form</h2>
+	<fieldset>
+		<legend><span>New Issue</span></legend>
+		<div>
+			<label for="issueType">Issue Type</label>
+			<select class="select medium-field" id="issueType" name="issueType" title="select issue type">
+				<option>- Select Issue Type -</option>
+				<option>Bug</option>
+			</select>
+		</div>
+        <div>
+			<label for="projectName">Project</label>
+			<select class="select medium-field" id="projectName" name="projectName" title="select project">
+				<option>- Select Project -</option>
+				<option>JIRA</option>
+			</select>
+		</div>
+	</fieldset>
+    <div class="submit">
+		<input class="button" type="submit" value="Save" id="save-new-issue">
+		<input class="button" type="button" value="Cancel" id="cancel-issue-create">
+	</div>
+</form>
+
+</body>
+</html>
