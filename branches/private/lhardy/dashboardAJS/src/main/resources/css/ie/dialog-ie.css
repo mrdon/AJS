@@ -11,8 +11,9 @@
   * eg: .dashboard {margin: 0 0 2px 1px;}
   *
   **/
-  
-  
+  .blanket {filter: alpha(opacity = 50);}
+  .shadow,
+  .popup {position: absolute;}
 
 /** 
   * Fixes for IE7 and IE6
@@ -21,10 +22,9 @@
   *
   **/
   body {*filter: true; *overflow: hidden;}
-  .blanket {*filter: alpha(opacity = 50); *height: 100px; *position: absolute;}
+  .blanket {*height: 100px; *position: absolute;}
   .dialog {*position: absolute;}
-  .shadow,
-  .popup {*position: absolute;}
+  
 
 /** 
   * Fixes for IE6 only
