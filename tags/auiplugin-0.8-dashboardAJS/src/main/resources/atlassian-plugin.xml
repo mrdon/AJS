@@ -1,0 +1,82 @@
+<atlassian-plugin name='${project.name}' key='${atlassian.plugin.key}'>
+    <plugin-info>
+        <description>${project.description}</description>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <version>${project.version}</version>
+    </plugin-info>
+
+    <resource name="css/" type="download" location="css/" />
+    <resource name="images/" type="download" location="css/images/" />
+    <resource name="js/" type="download" location="js/" />
+
+    <web-resource key="ajs" name="Atlassian Javascript">
+        <resource type="download" name="atlassian.js" location="js/atlassian.js"/>
+        <resource type="download" name="icons.css" location="css/icons.css"/>
+        <resource type="download" name="forms.css" location="css/forms.css"/>
+        <resource type="download" name="forms-ie.css" location="css/ie/forms-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+        <resource type="download" name="drop-down.js" location="js/drop-down.js"/>
+        <resource type="download" name="drop-down.css" location="css/drop-down.css"/>
+        <resource type="download" name="dialog.js" location="js/dialog.js"/>
+        <resource type="download" name="dialog.css" location="css/dialog.css"/>
+        <resource type="download" name="dialog-ie.css" location="css/ie/dialog-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+        <resource type="download" name="inline-dialog.js" location="js/inline-dialog.js"/>
+        <resource type="download" name="inline-dialog.css" location="css/inline-dialog.css"/>
+        <resource type="download" name="inline-dialog-ie.css" location="css/ie/inline-dialog-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+        <dependency>com.atlassian.aui:jquery</dependency>
+        <dependency>com.atlassian.aui:jquery-throbber</dependency>
+        <dependency>com.atlassian.aui:jquery-aop</dependency>
+    </web-resource>
+
+    <web-resource key="drop-down" name="Drop Down UI component">
+        <resource type="download" name="drop-down.js" location="js/drop-down.js"/>
+        <resource type="download" name="drop-down.css" location="css/drop-down.css"/>
+        <dependency>com.atlassian.aui:ajs</dependency>
+    </web-resource>
+
+    <web-resource key="dialog" name="Dialog UI Component">
+        <resource type="download" name="dialog.js" location="js/dialog.js"/>
+        <resource type="download" name="dialog.css" location="css/dialog.css"/>
+        <resource type="download" name="dialog-ie.css" location="css/dialog-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+        <dependency>com.atlassian.aui:ajs</dependency>
+    </web-resource>
+
+    <!-- jQuery -->
+    <web-resource key="jquery" name="JQuery" i18n-name-key="web.resources.plugin.jquery.name">
+        <resource type="download" name="jquery.js" location="js/jquery/jquery-1.3.2.min.js"/>
+    </web-resource>
+    
+    <web-resource name="jQuery UI" key="jquery-ui">
+        <dependency>com.atlassian.aui:jquery</dependency>
+        <resource type="download" name="js/jquery/jquery.ui-1.7.1.min.js" location="js/jquery/jquery-ui-1.7.1.min.js"/>
+    </web-resource>
+
+    <!-- jQuery Plugins -->
+    <web-resource key="jquery-throbber" name="jQuery Throbber" i18n-name-key="web.resources.plugin.jquery.throbber.name">
+        <resource type="download" name="jquery.throbber.js" location="js/jquery/plugins/jquery.throbber.js"/>
+    </web-resource>
+    
+    <web-resource key="jquery-aop" name="jQuery AOP" i18n-name-key="web.resources.plugin.jquery.aop.name">
+        <resource type="download" name="jquery.aop.js" location="js/jquery/plugins/jquery.aop.js"/>
+    </web-resource>
+    
+    <web-resource key="jquery-progressbar" name="jQuery Progress Bar Plugin" i18n-name-key="web.resources.plugin.jquery.progressbar.name">
+        <resource type="download" name="jquery.progressbar.js" location="js/jquery/plugins/jquery.progressbar.js"/>
+    </web-resource>
+
+    <web-resource key="jquery-autocomplete" name="jQuery Autocomplete" i18n-name-key="web.resources.plugin.jquery.autocomplete.name">
+        <resource type="download" name="jquery.autocomplete.js" location="js/jquery/plugins/jquery.autocomplete.js"/>
+    </web-resource>
+
+    <web-resource key="jquery-selection" name="jQuery Text Selection" i18n-name-key="web.resources.plugin.jquery.selection.name">
+        <resource type="download" name="jquery.selection.js" location="js/jquery/plugins/jquery.selection.js"/>
+    </web-resource>
+
+</atlassian-plugin>
