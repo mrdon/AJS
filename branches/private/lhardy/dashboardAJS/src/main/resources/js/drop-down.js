@@ -156,6 +156,9 @@ AJS.dropDown = function (obj, options) {
     };
     var active = function (i) {
         return function () {
+            if (!AJS.dropDown.current) {
+                return;
+            }
             AJS.dropDown.current.cleanFocus();
             this.originalClass = this.className;
 			AJS.$(this).addClass("active");
