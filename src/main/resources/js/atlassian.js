@@ -395,11 +395,6 @@ if (typeof jQuery != "undefined") {
     })();
 
     AJS.$(function () {AJS.init();});
-
-    // extend jQuery to support contains selector that is case insensitive
-    jQuery.extend(jQuery.expr[':'], {
-        containsIgnoreCase: "(a.textContent||a.innerText||jQuery(a).text()||'').toLowerCase().indexOf((m[3]||'').toLowerCase())>=0"
-    });
 }
 
 if (typeof console == "undefined") {

@@ -140,7 +140,7 @@
             }
         };
 
-		// the trigger is the jquery element that is triggering the popup (i.e., the element that the mousemove event is bound to)
+        // the trigger is the jquery element that is triggering the popup (i.e., the element that the mousemove event is bound to)
         var initPopup = function(e,trigger) {
             $(".ajs-inline-dialog").each(function()
             {

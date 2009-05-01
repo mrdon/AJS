@@ -44,9 +44,6 @@ testAjs.addTest("testAjsClone", function() {
     clonedDiv.remove();
     return res;
 });
-testAjs.addTest("testContainsIgnoreCase", function() {
-    return $("span:containsIgnoreCase(some text)").length == 1;
-});
 
 (function () {
     // AJS.filterBySearch tests.

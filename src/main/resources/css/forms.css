@@ -1,4 +1,4 @@
-/* CSS Document for form styling - add class aui to form */
+/* CSS Document for form styling - REQUIRES class of 'aui' to form */
 form.aui,form.aui p,form.aui div,form.aui h1,form.aui h2,form.aui h3,form.aui h4,form.aui h5,form.aui h6,
 form.aui img,form.aui ul,form.aui ol,form.aui li,form.aui dl,form.aui dt,form.aui dd,form.aui pre,
 form.aui fieldset,form.aui textarea,form.aui input,form.aui select,form.aui button,form.aui optgroup,form.aui option {margin:0;padding:0;}
@@ -30,7 +30,7 @@ form.aui legend {display:none;}
 form.aui legend span {color:#333;left:0;line-height:1;position:absolute;top:3px;white-space:normal;width:130px;text-align:right;}
 form.aui div {clear:both;display:block;margin-bottom:5px;min-height:1.6em;padding:0 0 5px 140px;}
 form.aui div label {float:left;display:block;left:-140px;line-height:1;margin-right:-130px;padding-top:4px;position:relative;width:130px;text-align:right;}
-	/* could use with text-align:right above (not in ie6) form.aui label .label:after {content:":"} */
+/* could use with text-align:right above (not in ie6) form.aui label .label:after {content:":"} */
 form.aui div.matrix {padding-top:0;width:600px;}
 form.aui div.matrix div {clear:none;float:left;padding-left:0;width:250px;}
 
@@ -101,7 +101,7 @@ form.aui .inline .form-icon {margin-right:3px;}
 
 
 /* form icons - add form-icon class together with the icon class "form-icon icon-help" */
-form.aui .form-icon {background:transparent url(images/icons_form.gif) no-repeat 0 0;display:inline-block;height:16px;vertical-align:top;width:16px;overflow:hidden;}
+form.aui .form-icon {background:transparent url('images/aui-icon-forms.gif') no-repeat 0 0;display:inline-block;height:16px;vertical-align:top;width:16px;overflow:hidden;}
 form.aui .form-icon span {text-indent:25px;/* this effectively hides the content of the span */}
 form.aui .form-icon img {height:16px;width:16px;}
   /* position icon sprite */
@@ -114,13 +114,3 @@ form.aui .icon-users {background-position:0 -100px;}
 form.aui .form-icon, x:-moz-any-link {display:inline;padding:1px 8px;}
 form.aui .form-icon span, x:-moz-any-link {display:none;}
 form.aui .icon-required, x:-moz-any-link {padding:0 4px;}
-
-
-
-
-/* --- Branding --- */
-
-/* Bamboo
-form.aui {background-color:#F5F8FB;padding-top:1em;}
-form.aui h2 {border-color:#BBD0E5;color:#036}
-*/
