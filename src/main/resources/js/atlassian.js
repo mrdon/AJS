@@ -342,16 +342,24 @@ if (typeof jQuery != "undefined") {
                 var filterWords = search.split(splitRegex);
                 var filters = [];
                 $.each(filterWords, function () {
+                  var subfilters = [new RegExp(boundaryFlag + this, "i")]; // anchor on word boundaries
                   if (/^([A-Z][a-z]*){2,}$/.test(this)) { // split camel-case into separate words
-                    filters.push(new RegExp(this.replace(/([A-Z][a-z]*)/g, "\\b$1[^,]*"), camelCaseFlags));
-                  } else {
-                    filters.push(new RegExp(boundaryFlag + this, "i")); // anchor on word boundaries
+                      var camelRegexStr = this.replace(/([A-Z][a-z]*)/g, "\\b$1[^,]*");
+                      subfilters.push(new RegExp(camelRegexStr, camelCaseFlags));
                   }
+                  filters.push(subfilters);
                 });
                 var result = [];
                 $.each(entries, function () {
                     for (var i = 0; i < filters.length; i++) {
-                        if (!filters[i].test(this[keywordsField])) return;
+                        var somethingMatches = false;
+                        for (var j = 0; j < filters[i].length; j++) {
+                            if (filters[i][j].test(this[keywordsField])) {
+                                somethingMatches = true;
+                                break;
+                            }
+                        }
+                        if (!somethingMatches) return;
                     }
                     result.push(this);
                 });
