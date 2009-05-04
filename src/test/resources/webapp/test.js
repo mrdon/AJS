@@ -85,7 +85,7 @@ testAjs.addTest("testAjsClone", function() {
     });
 })();
 
-// atlassian-dialog.js tests
+// dialog.js tests
 testAjs.addTest("testDialog", function () {
     return (typeof AJS.Dialog == "function");
 });
