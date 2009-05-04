@@ -19,7 +19,7 @@
         var contentLoaded = false;
         var mousePosition;
         var targetPosition;
-        $(opts.container).append($('<div id="inline-dialog-' + identifier + '" class="ajs-inline-dialog"><div class="contents"></div><div id="arrow-' + identifier + '" class="arrow"></div></div>'));
+        $(opts.container).append($('<div id="inline-dialog-' + identifier + '" class="aui-inline-dialog"><div class="contents"></div><div id="arrow-' + identifier + '" class="arrow"></div></div>'));
         var popup = $("#inline-dialog-" + identifier);
         var arrow = $("#arrow-" + identifier);
         var contents = popup.find(".contents");
@@ -128,7 +128,7 @@
 
         // the trigger is the jquery element that is triggering the popup (i.e., the element that the mousemove event is bound to)
         var initPopup = function(e,trigger) {
-            $(".ajs-inline-dialog").each(function() {
+            $(".aui-inline-dialog").each(function() {
                 if (typeof this.popup != "undefined")
                     this.popup.hide();
             });

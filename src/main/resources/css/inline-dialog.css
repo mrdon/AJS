@@ -1,11 +1,11 @@
-.ajs-inline-dialog {
+.aui-inline-dialog {
     font-size: 13px;
     position: absolute;
     display: none;
     z-index: 100;
 }
 
-.ajs-inline-dialog .contents {
+.aui-inline-dialog .contents {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -15,11 +15,11 @@
     overflow: hidden;
 }
 
-.ajs-inline-dialog .contents form.aui {
+.aui-inline-dialog .contents form.aui {
     margin-bottom: 0;
 }
 
-.ajs-inline-dialog .contents .submit{
+.aui-inline-dialog .contents .submit{
     margin:0;
     padding:0;
     text-align:right;
@@ -84,7 +84,7 @@
     background: url(images/shadow/r.png);
 }
 
-.ajs-inline-dialog .arrow{
+.aui-inline-dialog .arrow{
     width: 16px;
     height: 16px;
     background-repeat: no-repeat;
@@ -94,6 +94,6 @@
     top:-7px;
 }
 
-.ajs-button a{
+.aui-button a{
     outline:none;
 }
