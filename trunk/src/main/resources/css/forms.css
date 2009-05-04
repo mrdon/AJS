@@ -16,8 +16,12 @@ form.aui select {margin-right:5px;padding:2px;}
 form.aui select {padding:1px;}
 form.aui option {padding:0 1em}
 form.aui textarea {overflow:auto;padding:1px 2px;}
-form.aui button,
-form.aui input.button {line-height:1.2;margin-right:5px;padding:0 .5em;}
+form.aui input.button,
+form.aui button {line-height:1.2; margin-right: 5px; padding: 0 0.5em;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+/* Safari 3.0 and Chrome hacks here */
+form.aui button {padding: 0.1em 0.5em 0.5em;}
+}
 form.aui .hidden {display:none;}
 form.aui .error {color:#c00;font-weight:bold;}
 form.aui .description {font-size:11px;}
