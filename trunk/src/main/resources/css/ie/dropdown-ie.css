@@ -26,4 +26,13 @@
   * eg: .dashboard {_margin: 0 0 0 1px; _padding: 0 0 -3px 0;}
   *
   **/
+  /* IE6 spits out screwy heights on the LIs without the zoom for hasLayout - which then blows out the width unless constrained on the parent - and then the hover effects look lame. This remedies all that - somewhat */
+  .aui-dd-parent .aui-dropdown {_width: 1%;}
+    .aui-dd-parent .aui-dropdown li a {_zoom: 1;}
+    .aui-dd-parent .aui-dropdown li a:hover,
+    .aui-dd-parent .aui-dropdown li a:active,
+    .aui-dd-parent .aui-dropdown li a focus {_background: #fff; _text-decoration: none;}
+  
+  /* IE6 can't handle the shadow mojo */
   .aui-shadow {_display: none !important;}
+  
