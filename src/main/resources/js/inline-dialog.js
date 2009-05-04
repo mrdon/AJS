@@ -1,5 +1,4 @@
-(function($)
-{
+(function($) {
     /**
      * Creates a new inline dialog
      *
@@ -11,8 +10,7 @@
      *
      * @return jQuery object - the popup that was created
      */
-    AJS.InlineDialog = function(items, identifier, url, options)
-    {
+    AJS.InlineDialog = function(items, identifier, url, options) {
         var opts = $.extend(false, AJS.InlineDialog.opts, options);
         var hideDelayTimer;
         var showTimer;
@@ -29,23 +27,20 @@
 //        AJS.log(opts);
 
         contents.css("width", opts.width + "px");
-        contents.mouseover(function(e){
+        contents.mouseover(function(e) {
             clearTimeout(hideDelayTimer);
             popup.unbind("mouseover");
             //e.stopPropagation();
-        }).mouseout(function(){
+        }).mouseout(function() {
             hidePopup();
         });
 
-        var showPopup = function()
-        {
-            if (popup.is(":visible")){
+        var showPopup = function() {
+            if (popup.is(":visible")) {
                 return;
             }
-            showTimer = setTimeout(function()
-            {
-                if (!contentLoaded || !shouldShow)
-                {
+            showTimer = setTimeout(function() {
+                if (!contentLoaded || !shouldShow) {
                     return;
                 }
                 $(items).addClass("active");
@@ -57,8 +52,7 @@
                 var posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
 
                 var diff = $(window).width() - (posx + opts.width + 30);
-                if (diff<0)
-                {
+                if (diff<0) {
                     popup.css({
                         right: "20px",
                         left: "auto"
@@ -67,9 +61,7 @@
                         left: -diff + (targetPosition.target.width() / 2) + "px",
                         right: "auto"
                     });
-                }
-                else
-                {
+                } else {
                     popup.css({
                         left: posx + "px",
                         right: "auto"
@@ -82,14 +74,11 @@
                 }
 
                 var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
-                if ((posy + popup.height()) > bottomOfViewablePage)
-                {
+                if ((posy + popup.height()) > bottomOfViewablePage) {
                     posy = bottomOfViewablePage - popup.height() - 5;
-                    popup.mouseover(function()
-                    {
+                    popup.mouseover(function() {
                         clearTimeout(hideDelayTimer);
-                    }).mouseout(function()
-                    {
+                    }).mouseout(function() {
                         hidePopup();
                     });
                 }
@@ -99,8 +88,7 @@
 
                 var shadow = $("#inline-dialog-shadow").appendTo(popup).show();
                 // reset position of popup box
-                popup.fadeIn(opts.fadeTime, function()
-                {
+                popup.fadeIn(opts.fadeTime, function() {
                     // once the animation is complete, set the tracker variables
                     // beingShown = false; // is this necessary? Maybe only the shouldShow will have to be reset?
                 });
@@ -122,14 +110,12 @@
                 clearTimeout(hideDelayTimer);
                 clearTimeout(showTimer);
                 // store the timer so that it can be cleared in the mouseover if required
-                hideDelayTimer = setTimeout(function()
-                {
+                hideDelayTimer = setTimeout(function() {
                     $(items).removeClass("active");
                     popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
                     beingShown = false;
                     shouldShow = false;
-                    if (!opts.cacheContent)
-                    {
+                    if (!opts.cacheContent) {
                         //if not caching the content, then reset the
                         //flags to false so as to reload the content
                         //on next mouse hover.
@@ -142,18 +128,16 @@
 
         // the trigger is the jquery element that is triggering the popup (i.e., the element that the mousemove event is bound to)
         var initPopup = function(e,trigger) {
-            $(".ajs-inline-dialog").each(function()
-            {
+            $(".ajs-inline-dialog").each(function() {
                 if (typeof this.popup != "undefined")
                     this.popup.hide();
             });
 
             mousePosition = { x: e.pageX, y: e.pageY };
             var targetOffset = $(e.target).offset();
-            targetPosition = {target: $(e.target) };
+            targetPosition = {target: $(e.target)};
 
-            if (!beingShown)
-            {
+            if (!beingShown) {
                 clearTimeout(showTimer);
             }
             shouldShow = true;
@@ -169,18 +153,13 @@
             };
 
             // lazy load popup contents
-            if (!contentLoading)
-            {
+            if (!contentLoading) {
                 contentLoading = true;
-                if ($.isFunction(url))
-                {
+                if ($.isFunction(url)) {
                     // If the passed in URL is a function, execute it. Otherwise simply load the content.
                     url(contents, trigger, doShowPopup);
-                }
-                else
-                {
-                    contents.load(url, function()
-                    {
+                } else {
+                    contents.load(url, function() {
                         contentLoaded = true;
                         opts.initCallback.call({
                             popup: popup,
@@ -195,34 +174,30 @@
             // stops the hide event if we move from the trigger to the popup element
             clearTimeout(hideDelayTimer);
             // don't trigger the animation again if we're being shown
-            if (!beingShown)
-            {
+            if (!beingShown) {
                 showPopup();
             }
             return false;
         };
 
-        popup[0].popup = {popup: popup, hide: function (){
+        popup[0].popup = {popup: popup, hide: function () {
             hidePopup(0);
-        }, id: identifier, show: function ()
-        {
+        }, id: identifier, show: function () {
             showPopup();
         }};
 
         var contentLoading = false;
-        if (opts.onHover)
-        {
+        if (opts.onHover) {
             $(items).mousemove(function(e) {
                 initPopup(e,this);
             }).mouseout(function() {
                 hidePopup();
             });
-        }
-        else {
+        } else {
             $(items).click(function(e) {
                 initPopup(e,this);
                 return false;
-            }).mouseout(function(){
+            }).mouseout(function() {
                 hidePopup();
             });
         }
@@ -231,7 +206,7 @@
             e.stopPropagation();
         });
 
-        $("body").click(function(){
+        $("body").click(function() {
             hidePopup(0);
         });
 
@@ -241,7 +216,7 @@
     AJS.InlineDialog.opts = {
         onHover: false,
         fadeTime: 100,
-        hideDelay: 1000,
+        hideDelay: 5000,
         showDelay: 0,
         width: 300,
         offsetX: 0,
@@ -252,8 +227,7 @@
         initCallback: function(){} // A function called after the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
     };
 
-    AJS.toInit(function()
-    {
+    AJS.toInit(function() {
         $("body").append($('<div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
         $("#inline-dialog-shadow").hide();
     });
