@@ -67,6 +67,10 @@
         <resource type="download" name="jquery.autocomplete.js" location="js/jquery/plugins/jquery.autocomplete.js"/>
     </web-resource>
     
+    <web-resource key="jquery-form" name="jQuery Form" i18n-name-key="web.resources.plugin.jquery.form.name">
+        <resource type="download" name="jquery.form.js" location="js/jquery/plugins/jquery.form.js"/>
+    </web-resource>
+    
     <web-resource key="jquery-progressbar" name="jQuery Progress Bar Plugin" i18n-name-key="web.resources.plugin.jquery.progressbar.name">
         <resource type="download" name="jquery.progressbar.js" location="js/jquery/plugins/jquery.progressbar.js"/>
     </web-resource>
