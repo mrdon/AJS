@@ -216,7 +216,7 @@
     AJS.InlineDialog.opts = {
         onHover: false,
         fadeTime: 100,
-        hideDelay: 5000,
+        hideDelay: 10000,
         showDelay: 0,
         width: 300,
         offsetX: 0,
