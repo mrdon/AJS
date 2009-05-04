@@ -40,12 +40,14 @@
 <script type="text/javascript" src="../../main/resources/js/inline-dialog.js"></script>
 
 <script type="text/javascript">
-    var postProcess = function(id) {
-        alert("That worked.");
-    };
+    AJS.$(document).ready(function() {
+        var postProcess = function(id) {
+            alert("That worked.");
+        };
 
-    AJS.InlineDialog($("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess});
-    AJS.InlineDialog($("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
+        AJS.InlineDialog($("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess});
+        AJS.InlineDialog($("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
+    });
 </script>
 
 </body>
