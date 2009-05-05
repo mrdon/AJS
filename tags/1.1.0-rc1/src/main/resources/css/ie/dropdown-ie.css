@@ -1,0 +1,38 @@
+/**
+  * The structure of this file pre-supposes two conditions:
+  * - That the file is served via a conditional comment of [if IE]
+  * - That de-bugging starts with IE8 and moves down through IE7 to IE6
+  **/
+
+/** 
+  * Fixes for IE8, IE7 and IE6
+  * - each property should be written without CSS hacks
+  * eg: .dashboard {margin: 0 0 2px 1px;}
+  *
+  **/
+
+
+/** 
+  * Fixes for IE7 and IE6
+  * - each property *must* be prefixed with an asterisk (*)
+  * eg: .dashboard {*margin: 0 0 4px 2px;}  
+  *
+  **/
+
+
+/** 
+  * Fixes for IE6 only
+  * - each property *must* be prefixed with an underscore (_)
+  * eg: .dashboard {_margin: 0 0 0 1px; _padding: 0 0 -3px 0;}
+  *
+  **/
+  /* IE6 spits out screwy heights on the LIs without the zoom for hasLayout - which then blows out the width unless constrained on the parent - and then the hover effects look lame. This remedies all that - somewhat */
+  .aui-dd-parent .aui-dropdown {_width: 1%;}
+    .aui-dd-parent .aui-dropdown li a {_zoom: 1;}
+    .aui-dd-parent .aui-dropdown li a:hover,
+    .aui-dd-parent .aui-dropdown li a:active,
+    .aui-dd-parent .aui-dropdown li a focus {_background: #fff; _text-decoration: none;}
+  
+  /* IE6 can't handle the shadow mojo */
+  .aui-shadow {_display: none !important;}
+  
