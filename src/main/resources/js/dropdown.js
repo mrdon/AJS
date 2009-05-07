@@ -1,10 +1,6 @@
 
 /*global AJS, document, setTimeout */
 
-
-
-
-
 AJS.dropDown = function (obj, options) {
 
     var dd = null,
@@ -59,41 +55,11 @@ AJS.dropDown = function (obj, options) {
     } else {
         throw new Error("AJS.dropDown function was called with illegal parameter. Should be AJS.$ object, AJS.$ selector or array.");
     }
-    AJS.dropDown.createShims = function () {
-        var shims = AJS.$(".shim");
-        AJS.$("iframe").each(function(idx){
-            var $this = AJS.$(this);
-            var offset = $this.offset();
-            offset.height = $this.height();
-            offset.width = $this.width();
-            AJS.$(shims[idx]).css({
-                position: "absolute",
-                left: offset.left + "px",
-                top: offset.top + "px",
-                height: offset.height + "px",
-                width: offset.width + "px"
-            }).addClass("hidden");
-        });
-    };
-    //shim for iframes
-    var iframes = AJS.$("iframe"), loadedIframes = 0, reset = function () {};
+    
 
-    iframes.each(function () {
-        this.shim = AJS("div").addClass("shim").appendTo("body");
-        AJS.$(this).load(function () {
-            var oldreset = reset;
-            reset = function () {
-                oldreset();
-                AJS.dropDown.createShims();
-            };
-            if (++loadedIframes == iframes.length) {
-                reset();
-            }
-        }); 
-    });
-
-    var shims = AJS.$(".shim");
-
+    
+    
+    
     var movefocus = function (e) {
         if (!AJS.dropDown.current) {
             return true;
@@ -235,9 +201,6 @@ AJS.dropDown = function (obj, options) {
                 $doc.click(hider);
             }, 0);
             $doc.keydown(movefocus);
-            if (shims) {
-                shims.removeClass("hidden");
-            }
 			if (options.firstSelected && this.links[0]) {
 				active(0).call(this.links[0]);
 			}
@@ -250,9 +213,6 @@ AJS.dropDown = function (obj, options) {
             methods[this.method](false);
             $doc.unbind("click", hider).unbind("keydown", movefocus);
             AJS.dropDown.current = null;
-            if (shims) {
-                shims.addClass("hidden");
-            }
             return causer;
         };
 		res.addCallback("reset", function () {
@@ -260,6 +220,45 @@ AJS.dropDown = function (obj, options) {
 				active(0).call(this.links[0]);
 			}
 		});
+
+		if (!AJS.dropDown.iframes) {
+		    AJS.dropDown.iframes = [];
+		}
+		AJS.dropDown.createShims = function () {       
+            AJS.$("iframe").each(function (idx) {
+               var iframe = this;        
+                if (!iframe.shim) {
+                    iframe.shim = AJS.$("<div />")
+                                                  .addClass("shim hidden")
+                                                  .appendTo("body");            
+                    AJS.dropDown.iframes.push(iframe);
+                }
+            });
+		    return arguments.callee;
+	    }();
+	    
+	    res.addCallback("show", function() {        
+            AJS.$(AJS.dropDown.iframes).each(function(){                     
+                var $this = AJS.$(this); 
+                if ($this.is(":visible")) {
+                    var offset = $this.offset();
+                    offset.height = $this.height();
+                    offset.width = $this.width();
+                    this.shim.css({
+                        left: offset.left + "px",
+                        top: offset.top + "px",
+                        height: offset.height + "px",
+                        width: offset.width + "px"
+                    }).removeClass("hidden");
+                }
+            });
+        });
+        res.addCallback("hide", function () {
+            AJS.$(AJS.dropDown.iframes).each(function(){
+                this.shim.addClass("hidden");
+            });
+        });
+
         // shadow
         (function () {
             var refreshShadow = function () {
