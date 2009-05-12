@@ -381,7 +381,7 @@ AJS.popup = function (width, height, id) {
         this.id = dialog.page.length;
         this.element = AJS("div").addClass("dialog-components");
         this.body = AJS("div").addClass("page-body");
-        this.menu = AJS("ul").addClass("page-menu").css("height", dialog.height + "px");
+        this.menu = AJS("ul").addClass("page-menu").css("height", dialog.height - 45 + "px");
         this.body.append(this.menu);
         this.curtab;
         this.panel = [];
