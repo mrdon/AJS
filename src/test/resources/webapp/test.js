@@ -53,8 +53,10 @@ testAjs.addTest("testContainsIgnoreCase", function() {
     var entries = [
         { id: 1, keywords: "foo bar, foo-bar" },
         { id: 2, keywords: "faux bar, faux-bar" },
-        { id: 3, keywords: "Foo Bar, fb" },
-        { id: 4, keywords: "Foo bar" }
+        { id: 3, keywords: "Foo BAR, fb" },
+        { id: 4, keywords: "Foo bar" },
+        { id: 5, keywords: "JIRA Issues" },
+        { id: 6, keywords: "Just Inother Ranic Aonday" }
     ];
     testAjs.addTest("testFilterBySearch", function() {
         var results = AJS.filterBySearch(entries, "bar");
@@ -69,16 +71,20 @@ testAjs.addTest("testContainsIgnoreCase", function() {
         return results.length == 3 || results;
     });
     testAjs.addTest("testFilterBySearchNoMatchBoundary", function() {
-        var results = AJS.filterBySearch(entries, "u");
+        var results = AJS.filterBySearch(entries, "ux");
         return results.length == 1 && results[0].id == 2;
     });
     testAjs.addTest("testFilterBySearchMatchBoundary", function() {
-        var results = AJS.filterBySearch(entries, "u", { matchBoundary: true });
+        var results = AJS.filterBySearch(entries, "ux", { matchBoundary: true });
         return results.length == 0;
     });
     testAjs.addTest("testFilterBySearchSplitRegex", function() {
         var results = AJS.filterBySearch(entries, "fa-b", { splitRegex: /[\s\-]+/ });
         return results.length == 1 && results[0].id == 2 || results;
+    });
+    testAjs.addTest("testFilterBySearchAllUppercase", function() {
+        var results = AJS.filterBySearch(entries, "JIRA");
+        return results.length == 2 && results[0].id == 5 && results[1].id == 6 || results;
     });
 })();
 
