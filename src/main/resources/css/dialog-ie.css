@@ -4,11 +4,6 @@
     filter: alpha(opacity = 50);
     height: 100px;
 }
-body {
-    overflow: hidden;
-    _height:100%;
-    _overflow-y:auto;
-}
 .dialog {
     position: absolute;
 }
