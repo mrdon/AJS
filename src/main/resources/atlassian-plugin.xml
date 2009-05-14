@@ -72,6 +72,10 @@
     <web-resource name="jQuery UI" key="jquery-ui">
         <resource type="download" name="js/jquery/jquery.ui-1.7.1.min.js" location="js/jquery/jquery-ui-1.7.1.min.js"/>
     </web-resource>
+    
+    <web-resource name="jQuery Compatibility" key="jquery-compatibility">
+        <resource type="download" name="js/jquery/jquery-compatibility.js" location="js/jquery/jquery-compatibility.js"/>
+    </web-resource>
 
     <!-- jQuery Plugins -->
     <web-resource key="jquery-aop" name="jQuery AOP" i18n-name-key="web.resources.plugin.jquery.aop.name">
