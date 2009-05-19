@@ -3,7 +3,7 @@
     <parent>
         <artifactId>atlassian-closedsource-pom</artifactId>
         <groupId>com.atlassian.pom</groupId>
-        <version>12</version>
+        <version>14</version>
     </parent>
 
     <groupId>com.atlassian.aui</groupId>
