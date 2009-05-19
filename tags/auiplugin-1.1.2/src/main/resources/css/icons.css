@@ -1,0 +1,19 @@
+/**
+  * Basic icon styles. Allows you to easily render sprite icons.
+  *
+  * .aui-icon must be present on all iconified elements
+  * All iconified elements must include class names prefixed with 'i-'
+  * Icons assume light backgrounds. Icon classnames for dark backgrounds must be suffixed with '-d'
+  * For elements whose background changes in app, we advise maintaining light/dark state in the app.
+  *
+  */
+
+.aui-icon {background: transparent url(images/icons/aui-icon-tools.gif) no-repeat 0 0; border: none; display: block; height: 13px; padding: 0; text-indent: -9999px; width: 13px;}
+
+.i-move {background-position: 0 0; cursor: move;}
+
+.i-maximize {background-position: -52px 0;}
+
+.i-minimize {background-position: -39px 0;}
+.i-minimize-d {background-position: -39px -13px;}
+
