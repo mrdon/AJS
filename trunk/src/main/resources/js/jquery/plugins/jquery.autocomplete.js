@@ -32,7 +32,7 @@ USAGE:
             var currentTextfieldValue = input.val();
 
             if (currentTextfieldValue.length >= minlength && currentTextfieldValue != input[0].lastQuery && currentTextfieldValue != input[0].lastSelectedValue) {
-                $.getJSON(url + currentTextfieldValue, function (data) {
+                $.getJSON(url + encodeURI(currentTextfieldValue), function (data) {
                     var html = "";
                     currentTextfieldValue = currentTextfieldValue.toLowerCase();
                     var vSplit = currentTextfieldValue.split(" ");
