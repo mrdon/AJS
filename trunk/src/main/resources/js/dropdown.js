@@ -330,8 +330,6 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
             if (selected) {
                 if (selected.get(0).nodeName.toLowerCase() !== "a") {
                     window.location = selected.find("a").attr("href");
-                } else {
-                    window.location = selected.attr("href");
                 }
             }
         }
