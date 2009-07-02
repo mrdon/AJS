@@ -21,7 +21,7 @@
   * eg: .dashboard {*margin: 0 0 4px 2px;}  
   *
   **/
-  body {*filter: true; *overflow: hidden;}
+  body {*overflow: hidden;}
   .blanket {*height: 100px; *position: absolute;}
   .dialog {*position: absolute;}
   .dialog .button-panel {*bottom: auto; *top: 92%; *z-index: 3001;}
