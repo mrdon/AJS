@@ -53,6 +53,57 @@
 		<input class="button" type="submit" value="Save" id="save-new-issue">
 		<input class="button" type="button" value="Cancel" id="cancel-issue-create">
 	</div>
+
+    <h2>Groups (checkboxes and radios)</h2>
+    <fieldset class="group">
+		<p>The Legend is optional - you may not want it for the single checkbox</p>
+		<legend><span>Checkboxes Legend</span></legend>
+		<div class="checkbox">
+			<input type="checkbox"  name="cbOne" id="cbthree">
+			<label for="cbthree">Checkbox One</label>
+            <span class="description">You can have a description here</span>
+		</div>
+		<div class="checkbox">
+			<input type="checkbox"  name="cbTwo" id="cbfour">
+			<label for="cbfour">Checkbox Two</label>
+            <span class="description">You can have a description here</span>
+            <span class="error">and/or an error</span>
+		</div>
+        <div>
+            <p>You can also have a description here if you like</p>
+            <span class="error">and/or errors</span>
+        </div>
+	</fieldset>
+
+    <h2>One Checkbox</h2>
+    <fieldset class="group">
+        <p>The Legend is optional - you may not want it for the single checkbox</p>
+		<div class="checkbox">
+			<input type="checkbox"  name="cbOne" id="cbsingle">
+			<label for="cbsingle">Checkbox Single</label>
+            <span class="description">You can have a description here</span>
+		</div>
+		<div>
+            <p>You can also have a description here if you like</p>
+        </div>
+	</fieldset>
+
+    <h2>Radio Buttons</h2>
+    <fieldset class="group">
+		<legend><span>Radio Buttons</span></legend>
+		<div class="radio">
+			<input type="radio"   checked="checked" name="rads" id="irOne">
+			<label for="irOne">Rad One</label>
+		</div>
+		<div class="radio">
+			<input type="radio"  name="rads" id="irTwo">
+			<label for="irTwo">Rad Two</label>
+		</div>
+		<div class="radio">
+			<input type="radio"  name="rads" id="irThree">
+			<label for="irThree">Rad Three</label>
+		</div>
+	</fieldset>
 </form>
 
 <script type="text/javascript" src="../../main/resources/js/jquery/jquery-1.3.2.min.js"></script>
