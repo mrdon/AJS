@@ -25,10 +25,12 @@ form.aui button {padding: 0.1em 0.5em 0.5em;}
 form.aui .hidden {display:none;}
 form.aui .error {color:#c00;font-weight:bold;}
 form.aui .description {font-size:11px;}
-form.aui .field-value {font-weight:bold;line-height:1;padding-top:4px;}
+form.aui .field-value {color:#000;font-weight:bold;line-height:1;padding-top:4px;}
 
 /* headings */
-form.aui h2 {clear:both;border-bottom:1px solid #ddd;font-size:13px;margin:10px 0;}
+form.aui h2 {border-bottom:1px solid #ddd;clear:both;color:#222;font-size:16px;margin:10px 0;}
+form.aui h3 {clear:both;color:#222;font-size:14px;margin:5px 0;}
+
 /* legend,labels left hand width related items */
 form.aui legend {display:none;}
 form.aui legend span {color:#333;left:0;line-height:1;position:absolute;top:3px;white-space:normal;width:130px;text-align:right;}
