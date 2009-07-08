@@ -1,5 +1,12 @@
-a {outline: none;}
-img {border: none;}
-
-.clear {clear: both;}
-.hidden {display: none;}
+a {
+    outline: none;
+}
+img {
+    border: none;
+}
+.clear {
+    clear: both;
+}
+.hidden {
+    display: none;
+}
