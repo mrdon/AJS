@@ -3,7 +3,8 @@ That the file is served via a conditional comment of [if IE] * - That
 de-bugging starts with IE8 and moves down through IE7 to IE6 **/
 
 /** * Fixes for IE8, IE7 and IE6 * - each property should be written
-without CSS hacks * eg: .dashboard {
+without CSS hacks * eg: 
+.dashboard {
     margin: 0 0 2px 1px;
 }
 * **/
@@ -18,20 +19,29 @@ without CSS hacks * eg: .dashboard {
 }
 
 /** * Fixes for IE7 and IE6 * - each property *must* be prefixed with
-an asterisk (*) * eg: .dashboard {*margin: 0 0 4px 2px;
+an asterisk (*) * eg: 
+.dashboard {
+    *margin: 0 0 4px 2px;
 }
-* **/ body {*overflow: hidden;
+* **/ body {
+    *overflow: hidden;
 }
-.blanket {*height: 100px; *position: absolute;
+.blanket {
+    *height: 100px; 
+    *position: absolute;
 }
-.dialog {*position: absolute;
+.dialog {
+    *position: absolute;
 }
-.dialog .button-panel {*bottom: auto;
-    *top: 92%; *z-index: 3001;
+.dialog .button-panel {
+    *bottom: auto;
+    *top: 92%; 
+    *z-index: 3001;
 }
 
 /** * Fixes for IE6 only * - each property *must* be prefixed with an
-underscore (_) * eg: .dashboard {
+underscore (_) * eg: 
+.dashboard {
     _margin: 0 0 0 1px;
     _padding: 0 0
     -3px 0;

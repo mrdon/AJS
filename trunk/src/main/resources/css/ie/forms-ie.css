@@ -8,7 +8,8 @@
 /**
 * Fixes for IE8, IE7 and IE6
 * - each property should be written without CSS hacks
-* eg: .dashboard {
+* eg: 
+.dashboard {
     margin: 0 0 2px 1px;
 }
 *
@@ -18,28 +19,39 @@
 /**
 * Fixes for IE7 and IE6
 * - each property *must* be prefixed with an asterisk (*)
-* eg: .dashboard {*margin: 0 0 4px 2px;
+* eg: 
+.dashboard {
+    *margin: 0 0 4px 2px;
 }
 *
 **/
-form.aui span.inline-text {*position: relative; *top: -4px
+form.aui span.inline-text {
+    *position: relative; 
+    *top: -4px
 }
 form.aui .radio input,
-form.aui .checkbox input {*margin-top: -2px
+form.aui .checkbox input {
+    *margin-top: -2px
 }
 form.aui .radio .description,
-form.aui .checkbox .description {*clear: both;
+form.aui .checkbox .description {
+    *clear: both;
 }
 form.aui.top-label .group legend span,
-form.aui.top-label .date-select legend span {*left: -9px; *top: -3px;
+form.aui.top-label .date-select legend span {
+    *left: -9px; 
+    *top: -3px;
 }
-form.aui .group .field-value {*padding-top: 3px; *line-height: 1;
+form.aui .group .field-value {
+    *padding-top: 3px; 
+    *line-height: 1;
 }
 
 /**
 * Fixes for IE6 only
 * - each property *must* be prefixed with an underscore (_)
-* eg: .dashboard {
+* eg: 
+.dashboard {
     _margin: 0 0 0 1px;
     _padding: 0 0 -3px 0;
 }
