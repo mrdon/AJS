@@ -1,3 +1,4 @@
+
 /**
  * Covers screen with semitransparent DIV
  * @method dim
@@ -64,13 +65,19 @@ AJS.popup = function (width, height, id) {
     AJS.$("body").append(popup);
     popup.hide();
     shadow.hide();
+    
+    var keypressListener = function (e) {
+      if (e.keyCode === 27 && popup.is(":visible")) {
+        res.hide();
+      }
+    };
 
     /**
      * Popup object
      * @class Popup
      * @static
     */
-    return {
+    var res = {
         /**
          * Makes popup visible
          * @method show
@@ -82,6 +89,7 @@ AJS.popup = function (width, height, id) {
                 shadow.show();
                 AJS.dim();
             };
+            AJS.$(document).keypress(keypressListener);
             show();
             if (popup.css("position") == "absolute") {
                 // Internet Explorer case
@@ -106,6 +114,7 @@ AJS.popup = function (width, height, id) {
          * @method hide
         */
         hide: function () {
+            AJS.$(document).unbind("keypress", keypressListener);
             this.element.hide();
             shadow.hide();
             AJS.undim();
@@ -125,8 +134,9 @@ AJS.popup = function (width, height, id) {
             this.element = null;
         }
     };
+    
+    return res;
 };
-
 
 
 // Usage:
@@ -505,8 +515,12 @@ AJS.popup = function (width, height, id) {
         this.popup.element.addClass("dialog");
         this.page = [];
         this.curpage = 0;
+
         new Page(this);
     };
+    
+    
+    
     /**
      * Method for adding header to the current page
      * @method addHeader
@@ -735,6 +749,5 @@ AJS.popup = function (width, height, id) {
                 }
             }
         }
-        return res;
     };
 })();
