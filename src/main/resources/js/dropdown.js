@@ -1,17 +1,30 @@
 
 /*global AJS, document, setTimeout */
 
-AJS.dropDown = function (obj, options) {
+AJS.dropDown = function (obj, usroptions) {
 
     var dd = null,
         result = [],
         $doc = AJS.$(document),
         isAdditionalProperty = function (name) {
             return !((name == "href") || (name == "name") || (name == "className") || (name == "icon"));
+        },
+        options = {
+            item: "li:has(a)",
+            activeClass: "active",
+            selectionHandler: function (e, selected) {
+                if (selected) {
+                    if (selected.get(0).nodeName.toLowerCase() !== "a") {
+                        window.location = selected.find("a").attr("href");
+                    } else {
+                        window.location = selected.attr("href");
+                    }
+                    e.preventDefault();
+                }
+            }
         };
-
-    options = options || {};
-
+    
+    AJS.$.extend(options, usroptions);
 
     if (obj && obj.jquery) { // if AJS.$
         dd = obj;
@@ -19,25 +32,19 @@ AJS.dropDown = function (obj, options) {
     } else if (typeof obj == "string") { // if AJS.$ selector
         dd = AJS.$(obj);
     } else if (obj && obj.constructor == Array) { // if JSON
-        dd = AJS("ul").attr("class", (options.isVisibleByDefault ? "hidden" : "") + "ajs-drop-down");
+        dd = AJS("div").attr("class", (options.isVisibleByDefault ? "hidden " : "") + "aui-dropdown");
         for (var i = 0, ii = obj.length; i < ii; i++) {
             var ol = AJS("ol");
             for (var j = 0, jj = obj[i].length; j < jj; j++) {
                 var li = AJS("li");
                 if (obj[i][j].href) {
-                    // any additional attributes (beyond those expected) on the JSON objects will be added as
-                    // i elements with a class name matching their attribute name
-                    var additionalVarsText = "";
-                    for (var additionalVar in obj[i][j]) {
-                        if (isAdditionalProperty(additionalVar) && !obj[i][j][additionalVar]) {
-                            additionalVarsText = additionalVarsText + "<i class='" + additionalVar + "'>" + obj[i][j][additionalVar] + "</i>";
-                        }
-                    }
-
                     li.append(AJS("a")
-                        .html("<span>" + obj[i][j].name + additionalVarsText + "</span>")
+                        .html("<span>" + obj[i][j].name + "</span>")
                         .attr({href:  obj[i][j].href})
                         .addClass(obj[i][j].className));
+                    
+                    var properties = obj[i][j];
+                    AJS.$.data(AJS.$("a > span", li)[0], "properties", properties);
                 } else {
                     li.html(obj[i][j].html).addClass(obj[i][j].className);
                 }
@@ -74,13 +81,6 @@ AJS.dropDown = function (obj, options) {
 				cdd.focused++;
 				break;
 			}
-			case 9:
-			case 39: {
-				return false;
-			}
-			case 37: {
-				return false;
-			}
 			case 38:{
 				cdd.focused--;
 				break;
@@ -90,8 +90,11 @@ AJS.dropDown = function (obj, options) {
 				return false;
 			}
 			case 13:{
-				options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(AJS.dropDown.current.links[cdd.focused]));
-				return false;
+                if (cdd.focused >= 0) {
+                    options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(AJS.dropDown.current.links[cdd.focused]));
+                    return false;
+                }
+                return true;
 			}
 			default:{
 				if (AJS.dropDown.current.links.length) {
@@ -137,7 +140,7 @@ AJS.dropDown = function (obj, options) {
 			reset: function () {
 				res = AJS.$.extend(res || {}, {
 					$: $cdd,
-	                links: AJS.$(options.item, cdd),
+	                links: AJS.$(options.item || "li:has(a)", cdd),
 					cleanFocus: function () {
 		                if (cdd.focused + 1 && res.links.length) {
 							AJS.$(res.links[cdd.focused]).removeClass("active");
@@ -296,17 +299,17 @@ AJS.dropDown = function (obj, options) {
 // for each item in the drop down get the value of the named additional property. If there is no
 // property with the specified name then null will be returned.
 AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
-    var spaceNameElement = AJS.$("i." + name, item);
-    if (spaceNameElement.length === 0) {
-        return null;
+    var properties = AJS.$.data(item[0], "properties");
+    if (typeof properties != "undefined") {
+        return properties[name];
     } else {
-        return spaceNameElement.text();
+        return null;
     }
 };
 
 // remove all additional properties
 AJS.dropDown.removeAllAdditionalProperties = function (item) {
-    AJS.$("i", item).remove();
+    // only here for backwards compatibility
 };
 
  /**
@@ -323,19 +326,7 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
     var res = [], dropdownParents, options = {
         selector: ".aui-dd-parent",
 		dropDown: ".aui-dropdown",
-		trigger: ".aui-dd-trigger",
-		item: "li:has(a)",
-        activeClass: "active",
-        selectionHandler: function (e, selected) {
-            if (selected) {
-                if (selected.get(0).nodeName.toLowerCase() !== "a") {
-                    window.location = selected.find("a").attr("href");
-                } else {
-                    window.location = selected.attr("href");
-                }
-                e.preventDefault();
-            }
-        }
+		trigger: ".aui-dd-trigger"
 	};
 
      // extend defaults with user options
