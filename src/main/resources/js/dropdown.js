@@ -74,35 +74,35 @@ AJS.dropDown = function (obj, usroptions) {
         var c = e.which,
             cdd = AJS.dropDown.current.$[0],
             focus = (typeof cdd.focused == "number" ? cdd.focused : -1);
-			AJS.dropDown.current.cleanFocus();
-       		cdd.focused = focus;
+            AJS.dropDown.current.cleanFocus();
+            cdd.focused = focus;
         switch (c) {
-			case 40: {
-				cdd.focused++;
-				break;
-			}
-			case 38:{
-				cdd.focused--;
-				break;
-			}
-			case 27:{
-				AJS.dropDown.current.hide("escape");
-				return false;
-			}
-			case 13:{
+            case 40: {
+                cdd.focused++;
+                break;
+            }
+            case 38:{
+                cdd.focused--;
+                break;
+            }
+            case 27:{
+                AJS.dropDown.current.hide("escape");
+                return false;
+            }
+            case 13:{
                 if (cdd.focused >= 0) {
                     options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(AJS.dropDown.current.links[cdd.focused]));
                     return false;
                 }
                 return true;
-			}
-			default:{
-				if (AJS.dropDown.current.links.length) {
-					AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
-				}
-				return true;
-			}
-		}
+            }
+            default:{
+                if (AJS.dropDown.current.links.length) {
+                    AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
+                }
+                return true;
+            }
+        }
         if (cdd.focused < 0) {
             cdd.focused = AJS.dropDown.current.links.length - 1;
         }
@@ -110,7 +110,7 @@ AJS.dropDown = function (obj, usroptions) {
             cdd.focused = 0;
         }
         if (AJS.dropDown.current.links.length) {
-			AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
+            AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
         }
         e.stopPropagation();
         e.preventDefault();
@@ -130,34 +130,34 @@ AJS.dropDown = function (obj, usroptions) {
             }
             AJS.dropDown.current.cleanFocus();
             this.originalClass = this.className;
-			AJS.$(this).addClass("active");
+            AJS.$(this).addClass("active");
             AJS.dropDown.current.$[0].focused = i;
         };
     };
     dd.each(function () {
         var cdd = this, $cdd = AJS.$(this), res;
         var methods = {
-			reset: function () {
-				res = AJS.$.extend(res || {}, {
-					$: $cdd,
-	                links: AJS.$(options.item || "li:has(a)", cdd),
-					cleanFocus: function () {
-		                if (cdd.focused + 1 && res.links.length) {
-							AJS.$(res.links[cdd.focused]).removeClass("active");
-		                }
-		                cdd.focused = -1;
-		            }
-				});
-		        res.links.each(function (i) {
-					AJS.$(this).hover(active(i), res.cleanFocus);
-					AJS.$(this).click(function (e) {
-						if (AJS.dropDown.current) {
-							options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
-						}
-					});
-				});
-				return arguments.callee;
-			}(),
+            reset: function () {
+                res = AJS.$.extend(res || {}, {
+                    $: $cdd,
+                    links: AJS.$(options.item || "li:has(a)", cdd),
+                    cleanFocus: function () {
+                        if (cdd.focused + 1 && res.links.length) {
+                            AJS.$(res.links[cdd.focused]).removeClass("active");
+                        }
+                        cdd.focused = -1;
+                    }
+                });
+                res.links.each(function (i) {
+                    AJS.$(this).hover(active(i), res.cleanFocus);
+                    AJS.$(this).click(function (e) {
+                        if (AJS.dropDown.current) {
+                            options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
+                        }
+                    });
+                });
+                return arguments.callee;
+            }(),
             appear: function (dir) {
                 if (dir) {
                     $cdd.removeClass("hidden");
@@ -182,18 +182,18 @@ AJS.dropDown = function (obj, usroptions) {
         };
 
         /**
-		 * Uses Aspect Oriented Programming (AOP) to insert callback <em>after</em> the
-		 * specified method has returned @see AJS.$.aop
-		 * @method addCallback
-		 * @param {String} methodName - Name of a public method
-		 * @param {Function} callback - Function to be executed
-		 * @return {Array} weaved aspect
-		 */
-		res.addCallback = function (method, callback) {
-			return AJS.$.aop.after({target: this, method: method}, callback);
-		};
+         * Uses Aspect Oriented Programming (AOP) to insert callback <em>after</em> the
+         * specified method has returned @see AJS.$.aop
+         * @method addCallback
+         * @param {String} methodName - Name of a public method
+         * @param {Function} callback - Function to be executed
+         * @return {Array} weaved aspect
+         */
+        res.addCallback = function (method, callback) {
+            return AJS.$.aop.after({target: this, method: method}, callback);
+        };
 
-		res.reset = methods.reset();
+        res.reset = methods.reset();
 
         res.show = function (method) {
             hider();
@@ -204,9 +204,9 @@ AJS.dropDown = function (obj, usroptions) {
                 $doc.click(hider);
             }, 0);
             $doc.keydown(movefocus);
-			if (options.firstSelected && this.links[0]) {
-				active(0).call(this.links[0]);
-			}
+            if (options.firstSelected && this.links[0]) {
+                active(0).call(this.links[0]);
+            }
             AJS.$(cdd.offsetParent).css({zIndex: 2000});
         };
         res.hide = function (causer) {
@@ -218,16 +218,16 @@ AJS.dropDown = function (obj, usroptions) {
             AJS.dropDown.current = null;
             return causer;
         };
-		res.addCallback("reset", function () {
-			if (options.firstSelected && this.links[0]) {
-				active(0).call(this.links[0]);
-			}
-		});
+        res.addCallback("reset", function () {
+            if (options.firstSelected && this.links[0]) {
+                active(0).call(this.links[0]);
+            }
+        });
 
-		if (!AJS.dropDown.iframes) {
-		    AJS.dropDown.iframes = [];
-		}
-		AJS.dropDown.createShims = function () {       
+        if (!AJS.dropDown.iframes) {
+            AJS.dropDown.iframes = [];
+        }
+        AJS.dropDown.createShims = function () {       
             AJS.$("iframe").each(function (idx) {
                var iframe = this;        
                 if (!iframe.shim) {
@@ -237,10 +237,10 @@ AJS.dropDown = function (obj, usroptions) {
                     AJS.dropDown.iframes.push(iframe);
                 }
             });
-		    return arguments.callee;
-	    }();
-	    
-	    res.addCallback("show", function() {        
+            return arguments.callee;
+        }();
+        
+        res.addCallback("show", function() {        
             AJS.$(AJS.dropDown.iframes).each(function(){                     
                 var $this = AJS.$(this); 
                 if ($this.is(":visible")) {
@@ -325,9 +325,9 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
 
     var res = [], dropdownParents, options = {
         selector: ".aui-dd-parent",
-		dropDown: ".aui-dropdown",
-		trigger: ".aui-dd-trigger"
-	};
+        dropDown: ".aui-dropdown",
+        trigger: ".aui-dd-trigger"
+    };
 
      // extend defaults with user options
     AJS.$.extend(options, usroptions);
@@ -486,8 +486,8 @@ AJS.dropDown.Ajax = function (usroptions) {
             }
         });
         ddcontrol.addCallback("refreshSuccess", function () {
-			ddcontrol.reset();
-		});
+            ddcontrol.reset();
+        });
     });
     return dropdowns;
 };
