@@ -32,7 +32,7 @@ AJS.dropDown = function (obj, usroptions) {
     } else if (typeof obj == "string") { // if AJS.$ selector
         dd = AJS.$(obj);
     } else if (obj && obj.constructor == Array) { // if JSON
-        dd = AJS("div").attr("class", (options.isVisibleByDefault ? "hidden " : "") + "aui-dropdown");
+        dd = AJS("div").addClass("aui-dropdown").toggleClass("hidden", options.isHiddenByDefault);
         for (var i = 0, ii = obj.length; i < ii; i++) {
             var ol = AJS("ol");
             for (var j = 0, jj = obj[i].length; j < jj; j++) {
