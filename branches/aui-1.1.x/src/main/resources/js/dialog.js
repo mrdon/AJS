@@ -270,16 +270,23 @@ AJS.popup = function (width, height, id) {
      * @param title {string} panel title
      * @param reference {string} or {object} jQuery object or selector for the contents of the Panel
      * @param className {string} [optional] HTML class name
+     * @param panelButtonId {string} the unique id that will be put on the button element for this panel.
      * @private
     */
-    var Panel = function (page, title, reference, className) {
+    var Panel = function (page, title, reference, className, panelButtonId) {
         if (!(reference instanceof AJS.$)) {
             reference = AJS.$(reference);
         }
+                
         this.dialog = page.dialog;
         this.page = page;
         this.id = page.panel.length;
         this.button = AJS("button").html(title);
+        
+        if (panelButtonId) {
+            this.button[0].id = panelButtonId;
+        }
+        
         this.item = AJS("li").append(this.button);
         this.body = AJS("div").append(reference).addClass("panel-body").css("height", page.dialog.height + "px");
         this.padding = 10;
@@ -419,10 +426,11 @@ AJS.popup = function (width, height, id) {
      * @param title {string} panel title
      * @param reference {string} or {object} jQuery object or selector for the contents of the Panel
      * @param className {string} [optional] HTML class name
+     * @param panelButtonId {string} [optional] The unique id for the panel's button.
      * @return {object} the page
     */
-    Page.prototype.addPanel = function (title, reference, className) {
-        new Panel(this, title, reference, className);
+    Page.prototype.addPanel = function (title, reference, className, panelButtonId) {
+        new Panel(this, title, reference, className, panelButtonId);
         return this;
     };
     /**
@@ -552,8 +560,8 @@ AJS.popup = function (width, height, id) {
      * @param className {string} [optional] HTML class name
      * @return {object} the dialog
     */
-    AJS.Dialog.prototype.addPanel = function (title, reference, className) {
-        this.page[this.curpage].addPanel(title, reference, className);
+    AJS.Dialog.prototype.addPanel = function (title, reference, className, panelButtonId) {
+        this.page[this.curpage].addPanel(title, reference, className, panelButtonId);
         return this;
     };
     /**
