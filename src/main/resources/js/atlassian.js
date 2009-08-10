@@ -94,11 +94,11 @@ if (typeof jQuery != "undefined") {
             isVisible: function (element) {
                 return !this.$(element).hasClass("hidden");
             },
+            
             /**
-            * Runs functions from list (@see toInit) and attach binded funtions (@see bind)
-            * @method init
+            * Find parameters in the DOM and store them in the ajs.params object.
             */
-            init: function () {
+            populateParameters: function() {
                 var ajs = this;
                 this.$(".parameters input").each(function () {
                     var value = this.value,
@@ -113,6 +113,14 @@ if (typeof jQuery != "undefined") {
                         ajs.params[id] = (value.match(/^(tru|fals)e$/i) ? value.toLowerCase() == "true" : value);
                     }
                 });
+            },
+            
+            /**
+            * Runs functions from list (@see toInit) and attach binded funtions (@see bind)
+            * @method init
+            */
+            init: function () {
+                AJS.populateParameters();
                 isInitialised = true;
                 AJS.initFunctions = initFunctions;
                 for (var i = 0, ii = initFunctions.length; i < ii; i++) {
