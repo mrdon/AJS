@@ -694,11 +694,14 @@ AJS.popup = function (width, height, id) {
      * Gets set of items depending on query
      * @method get
      * @param query {string} query to search for panels, pages, headers or buttons
+     * e.g. 
+     *      '#Name' will find all dialog components with the given name such as panels and buttons, etc
+     *      'panel:#Name' will find only panels with the given name
     */
     AJS.Dialog.prototype.get = function (query) {
         var coll = [],
             dialog = this;
-        (query + "").replace(/(?:,|^)\s*(?:(page|panel|button|header)(?:#([^ ]*)|:(\d+))?|#([^ ]*))(?:\s+(?:(page|panel|button|header)(?:#([^ ]*)|:(\d+))?|#([^ ]*)))?\s*(?=,|$)/ig, function (all, name, title, id, justtitle, name2, title2, id2, justtitle2) {
+        (query + "").replace(/(?:,|^)\s*(?:(page|panel|button|header)(?:#([^"][^ ]*|"[^"]*")|:(\d+))?|#([^"][^ ]*|"[^"]*"))(?:\s+(?:(page|panel|button|header)(?:#([^"][^ ]*|"[^"]*")|:(\d+))?|#([^"][^ ]*|"[^"]*")))?\s*(?=,|$)/ig, function (all, name, title, id, justtitle, name2, title2, id2, justtitle2) {
             name = name && name.toLowerCase();
             var pages = [];
             if (name == "page" && dialog.page[id]) {
@@ -711,6 +714,10 @@ AJS.popup = function (width, height, id) {
             } else {
                 pages = dialog.page;
             }
+            title = title && (title + "").replace(/"/g, "");
+            title2 = title2 && (title2 + "").replace(/"/g, "");
+            justtitle = justtitle && (justtitle + "").replace(/"/g, "");
+            justtitle2 = justtitle2 && (justtitle2 + "").replace(/"/g, "");
             if (name || justtitle) {
                 for (var i = pages.length; i--;) {
                     if (justtitle || (name == "panel" && (title || (!title && id == null)))) {
@@ -757,5 +764,6 @@ AJS.popup = function (width, height, id) {
                 }
             }
         }
+        return res;
     };
 })();
