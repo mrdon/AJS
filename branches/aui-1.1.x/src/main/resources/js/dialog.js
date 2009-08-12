@@ -696,12 +696,25 @@ AJS.popup = function (width, height, id) {
      * @param query {string} query to search for panels, pages, headers or buttons
      * e.g. 
      *      '#Name' will find all dialog components with the given name such as panels and buttons, etc
-     *      'panel:#Name' will find only panels with the given name
-    */
+     *      'panel#Name' will find only panels with the given name
+     *      'panel#"Foo bar"' will find only panels with given name
+     *      'panel:3' will find the third panel
+     */
     AJS.Dialog.prototype.get = function (query) {
         var coll = [],
             dialog = this;
-        (query + "").replace(/(?:,|^)\s*(?:(page|panel|button|header)(?:#([^"][^ ]*|"[^"]*")|:(\d+))?|#([^"][^ ]*|"[^"]*"))(?:\s+(?:(page|panel|button|header)(?:#([^"][^ ]*|"[^"]*")|:(\d+))?|#([^"][^ ]*|"[^"]*")))?\s*(?=,|$)/ig, function (all, name, title, id, justtitle, name2, title2, id2, justtitle2) {
+        var nameExp = '#([^"][^ ]*|"[^"]*")';     // a name is a hash followed by either a bare word or quoted string
+        var indexExp = ":(\\d+)";                 // an index is a colon followed by some digits
+        var typeExp = "page|panel|button|header"; // one of the allowed types
+        var selectorExp = "(?:" +                 // a selector is either ...
+            "(" + typeExp + ")(?:" + nameExp + "|" + indexExp + ")?" + // a type optionally followed by either #name or :index
+            "|" + nameExp +                       // or just a #name
+            ")";                  
+        var queryRE = new RegExp("(?:^|,)" +      // a comma or at the start of the line
+            "\\s*" + selectorExp +                // optional space and a selector
+            "(?:\\s+" + selectorExp + ")?" +      // optionally, followed by some space and a second selector
+            "\\s*(?=,|$)", "ig");                 // followed by, but not including, a comma or the end of the string
+        (query + "").replace(queryRE, function (all, name, title, id, justtitle, name2, title2, id2, justtitle2) {
             name = name && name.toLowerCase();
             var pages = [];
             if (name == "page" && dialog.page[id]) {
