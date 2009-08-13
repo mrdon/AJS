@@ -18,7 +18,7 @@
     <scm>
         <connection>scm:svn:https://studio.atlassian.com/svn/AJS/trunk</connection>
         <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/trunk</developerConnection>
-        <url>https://studio.atlassian.com/svn/AJS/trunk</url>
+        <url>https://studio.atlassian.com/source/browse/AJS</url>
     </scm>
 
     <issueManagement>
