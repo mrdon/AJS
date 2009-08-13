@@ -2,7 +2,7 @@
 
 OPTS="$*"
 VNCSERVER=/usr/bin/vncserver
-MVN=/opt/java/tools/maven2/current/bin/mvn
+MVN=/import/tools/maven/current/bin/mvn
 
 function die() {
     echo "$*"
