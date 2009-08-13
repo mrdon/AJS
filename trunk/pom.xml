@@ -257,7 +257,7 @@
         <profile>
             <id>bamboo-firefox</id>
             <properties>
-                <selenium.browser>*firefox /opt/firefox/firefox-bin</selenium.browser>
+                <selenium.browser>*firefox /import/tools/firefox/2.0/firefox-bin</selenium.browser>
                 <selenium.xvfb.skip>false</selenium.xvfb.skip>
             </properties>
         </profile>
