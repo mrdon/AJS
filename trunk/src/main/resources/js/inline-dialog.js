@@ -99,6 +99,15 @@
                 });
                 $(".b", shadow).css("width", contents.outerWidth() - 26 + "px");
                 $(".l, .r", shadow).css("height", contents.outerHeight() - 21 + "px");
+                
+                // iframeShim
+                var arrowSpace = 7; // the negative space left for .aui-inline-dialog .arrow by its Top property
+                var iframeShim = $("#inline-dialog-shim").appendTo(popup).show();
+                iframeShim.css({
+                    width: contents.outerWidth() + "px",
+                    height: contents.outerHeight() + arrowSpace + "px"
+                });
+                
             }, opts.showDelay);
         };
 
@@ -228,7 +237,8 @@
     };
 
     AJS.toInit(function() {
-        $("body").append($('<div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
+        $("body").append($('<iframe id="inline-dialog-shim" frameBorder="0"></iframe><div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
+        $("#inline-dialog-shim").hide();
         $("#inline-dialog-shadow").hide();
     });
 })(jQuery);
