@@ -11,6 +11,11 @@ AJS.dim = function () {
             AJS.dim.dim.css({width: "200%", height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
         }
         AJS.$("body").append(AJS.dim.dim).css("overflow", "hidden");
+        
+        // Add IFrame shim
+        AJS.dim.shim = AJS.$('<iframe class="blanket-shim"/>');
+        AJS.$("body").append(AJS.dim.shim);
+        
         AJS.$("html").css("overflow", "hidden");
     }
 };
@@ -23,6 +28,7 @@ AJS.dim = function () {
 AJS.undim = function () {
     if (AJS.dim.dim) {
         AJS.dim.dim.remove();
+        AJS.dim.shim.remove();
         AJS.dim.dim = null;
         AJS.$("html, body").css("overflow", "");
         // Safari bug workaround
@@ -66,18 +72,6 @@ AJS.popup = function (width, height, id) {
     popup.hide();
     shadow.hide();
     
-    // Add IFrame shim
-    var iframeShim = AJS.$("<iframe/>")
-                            .attr("id", "shim-" + id)
-                            .addClass("popup-shim")
-                            .css({
-        margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2) + "px",
-        width: width + "px",
-        height: height + "px"
-    });
-    AJS.$("body").append(iframeShim);
-    iframeShim.hide();
-    
     var keypressListener = function (e) {
       if (e.keyCode === 27 && popup.is(":visible")) {
         res.hide();
@@ -99,7 +93,6 @@ AJS.popup = function (width, height, id) {
                 scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
                 popup.show();
                 shadow.show();
-                iframeShim.show();
                 AJS.dim();
             };
             AJS.$(document).keypress(keypressListener);
@@ -111,7 +104,6 @@ AJS.popup = function (width, height, id) {
                     var marginTop = scrollDistance + (document.documentElement.clientHeight - height)/2;
                     popup.css("margin-top", marginTop);
                     shadow.css("margin-top", marginTop);
-                    iframeShim.css("margin-top", marginTop);
                 };
                 scrollfix();
                 AJS.$(window).load(scrollfix);
@@ -131,7 +123,6 @@ AJS.popup = function (width, height, id) {
             AJS.$(document).unbind("keypress", keypressListener);
             this.element.hide();
             shadow.hide();
-            iframeShim.hide();
             AJS.undim();
         },
         /**
@@ -146,7 +137,6 @@ AJS.popup = function (width, height, id) {
         remove: function () {
             shadow.remove();
             popup.remove();
-            iframeShim.remove();
             this.element = null;
         }
     };

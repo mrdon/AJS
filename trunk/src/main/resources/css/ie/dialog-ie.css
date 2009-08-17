@@ -13,8 +13,7 @@ without CSS hacks * eg:
     position: fixed;
 }
 .shadow,
-.popup,
-.popup-shim {
+.popup {
     position: absolute;
     top: 0;
 }
