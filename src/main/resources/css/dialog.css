@@ -8,9 +8,16 @@
     width: 100%;
     z-index: 2500;
 }
+.blanket-shim {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2499;
+}
 .shadow,
-.popup,
-.popup-shim {
+.popup {
     left: 50%;
     position: fixed;
     top: 50%;
@@ -20,10 +27,6 @@
 }
 .shadow {
     z-index: 2999;
-}
-.popup-shim {
-    border: none;
-    z-index: 2998;
 }
 .shadow * {
     position: absolute;
