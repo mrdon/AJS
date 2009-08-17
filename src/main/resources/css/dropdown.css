@@ -133,3 +133,11 @@ div.shim {
     width: 8px;
 }
 
+/* dropdown-shim */
+.dropdown-shim {
+    border: none;
+    display: none;
+    margin-top: -1px;
+    position: absolute;
+    z-index: 2000;
+}
