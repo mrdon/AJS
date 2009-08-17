@@ -240,6 +240,8 @@ if (typeof jQuery != "undefined") {
             * @usage a.sort(AJS.alphanum)
             */
             alphanum: function (a, b) {
+                a = (a + "").toLowerCase();
+                b = (b + "").toLowerCase();
                 var chunks = /(\d+|\D+)/g,
                     am = a.match(chunks),
                     bm = b.match(chunks),
