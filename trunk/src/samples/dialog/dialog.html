@@ -25,10 +25,67 @@
     </style>
 </head>
 <body>
+    <!-- Dialog sample -->
     <form action="" class="aui">
         <fieldset>
             <legend>Dialog</legend>
             <input id="testButton" name="testButton" type="button" class="button" value="Click Me">
+        </fieldset>
+    </form>
+    
+    <!-- Testing iframeShim -->
+    <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
+    
+    <!-- more testing for iframeShim -->
+    <form action="forms.html#" method="post" id="d" class="aui long-label">
+        <h2>Dropdowns and Selects</h2>
+        <fieldset>
+            <legend><span>Dropdowns and Selects</span></legend>
+            <div>
+                <label for="dBase">Database</label>
+                <select class="select medium-field" id="dBase" name="dBase" title="database select">
+                    <option>- Select a Database -</option>
+                    <option>PostgreSQL</option>
+                </select>
+                <span class="description">Medium width select.</span>
+            </div>
+            <div>
+                <label for="multiselect">Multiselect</label>
+                <select class="multi-select" size="4" multiple="multiple" id="multiselect" name="multiselect" title="database select">
+                    <option>option one</option>
+                    <option>option two</option>
+                    <optgroup label="group1">
+                        <option>option three</option>
+                        <option>option four</option>
+                    </optgroup>
+                    <option>option five</option>
+                    <option>option six</option>
+                </select>
+                <span class="description">Multiselect - 250px min width (except ie, variable width).</span>
+            </div>
+        </fieldset>
+        <fieldset class="date-select">
+            <legend><span>Select Date</span></legend>
+            <div>
+                <label for="day">Day</label>
+                <select class="select short-field" id="day" name="day" title="select day">
+                    <option>01</option>
+                    <option>02</option>
+                </select>
+                <label for="month">Month</label>
+                <select class="select short-field" id="month" name="month" title="select month">
+                    <option>Jan</option>
+                    <option>Feb</option>
+                </select>
+                <label for="year">Year</label>
+                <select class="select short-field" id="year" name="year" title="select year">
+                    <option>2008</option>
+                    <option>2007</option>
+                </select>
+                <a class="form-icon icon-range" href="forms.html#" title="pick a date range"><span>pick a date range</span></a>
+                <span class="error">Date out of range</span>
+                <span class="description">Specific date select fieldset to allow for multiple (hidden) labels</span>
+            </div>
         </fieldset>
     </form>
     

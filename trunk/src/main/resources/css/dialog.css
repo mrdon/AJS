@@ -9,7 +9,8 @@
     z-index: 2500;
 }
 .shadow,
-.popup {
+.popup,
+.popup-shim {
     left: 50%;
     position: fixed;
     top: 50%;
@@ -19,6 +20,10 @@
 }
 .shadow {
     z-index: 2999;
+}
+.popup-shim {
+    border: none;
+    z-index: 2998;
 }
 .shadow * {
     position: absolute;
