@@ -101,11 +101,11 @@
                 $(".l, .r", shadow).css("height", contents.outerHeight() - 21 + "px");
                 
                 // iframeShim
-                var arrowSpace = 7; // the negative space left for .aui-inline-dialog .arrow by its Top property
-                var iframeShim = $("#inline-dialog-shim").appendTo(popup).show();
+                var arrowSpace = 7, // the negative space left for .aui-inline-dialog .arrow by its Top property
+                    iframeShim = $("#inline-dialog-shim").appendTo(popup).show();
                 iframeShim.css({
-                    width: contents.outerWidth() + "px",
-                    height: contents.outerHeight() + arrowSpace + "px"
+                    width: contents.outerWidth(),
+                    height: contents.outerHeight() + arrowSpace
                 });
                 
             }, opts.showDelay);
