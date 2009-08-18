@@ -13,8 +13,11 @@ AJS.dim = function () {
         AJS.$("body").append(AJS.dim.dim).css("overflow", "hidden");
         
         // Add IFrame shim
-        AJS.dim.shim = AJS.$('<iframe class="blanket-shim"/>');
-        AJS.$("body").append(AJS.dim.shim);
+        if (AJS.$.browser.msie) {
+            AJS.dim.shim = AJS.$('<iframe class="blanket-shim"/>');
+            AJS.dim.shim.css({height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
+            AJS.$("body").append(AJS.dim.shim);
+        }
         
         AJS.$("html").css("overflow", "hidden");
     }
@@ -28,8 +31,10 @@ AJS.dim = function () {
 AJS.undim = function () {
     if (AJS.dim.dim) {
         AJS.dim.dim.remove();
-        AJS.dim.shim.remove();
         AJS.dim.dim = null;
+        if (AJS.$.browser.msie) {
+            AJS.dim.shim.remove();
+        }
         AJS.$("html, body").css("overflow", "");
         // Safari bug workaround
         if (AJS.$.browser.safari) {
@@ -67,7 +72,7 @@ AJS.popup = function (width, height, id) {
         height: height + 29 + "px"
     });
     AJS.$(".b", shadow).css("width", width - 26 + "px");
-    AJS.$(".l, .r", shadow).css("height", height - 18 + "px");
+    AJS.$(".l, .r", shadow).css("height", height - 17 + "px");
     AJS.$("body").append(popup);
     popup.hide();
     shadow.hide();
