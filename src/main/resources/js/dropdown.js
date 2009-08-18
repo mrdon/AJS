@@ -29,7 +29,6 @@ AJS.dropDown = function (obj, usroptions) {
 
     if (obj && obj.jquery) { // if AJS.$
         dd = obj;
-
     } else if (typeof obj == "string") { // if AJS.$ selector
         dd = AJS.$(obj);
     } else if (obj && obj.constructor == Array) { // if JSON
@@ -63,11 +62,7 @@ AJS.dropDown = function (obj, usroptions) {
     } else {
         throw new Error("AJS.dropDown function was called with illegal parameter. Should be AJS.$ object, AJS.$ selector or array.");
     }
-    
 
-    
-    
-    
     var movefocus = function (e) {
         if (!AJS.dropDown.current) {
             return true;
@@ -292,6 +287,33 @@ AJS.dropDown = function (obj, usroptions) {
                 }
             });
         })();
+        
+        // iframeShim
+        (function () {
+            var refreshIframeShim = function () {
+
+                if (this.$.is(":visible")) {
+                    if (!this.iframeShim) {
+                        this.iframeShim = AJS.$('<iframe class="dropdown-shim">').insertBefore(this.$);
+                    }
+                    this.iframeShim.css({
+                        display: "block",
+                        top: this.$.css("top"),
+                        right: 0,
+                        width: this.$.outerWidth() + "px",
+                        height: this.$.outerHeight() + "px"
+                    });
+                }
+            };
+            res.addCallback("reset", refreshIframeShim);
+            res.addCallback("show", refreshIframeShim);
+            res.addCallback("hide", function () {
+                if (this.iframeShim) {
+                    this.iframeShim.css({display: "none"});
+                }
+            });
+        })();
+        
         result.push(res);
     });
     return result;
@@ -479,6 +501,7 @@ AJS.dropDown.Ajax = function (usroptions) {
                         });
                         superMethod.call(ddcontrol);
                         ddcontrol.shadow.hide();
+                        ddcontrol.iframeShim.hide();
                     }
                 };
             }(ddcontrol.show),

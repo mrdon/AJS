@@ -12,18 +12,27 @@ without CSS hacks * eg:
     filter: alpha(opacity = 50);
     position: fixed;
 }
+.blanket-shim {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2499;
+}
 .shadow,
 .popup {
     position: absolute;
     top: 0;
 }
 
+
 /** * Fixes for IE7 and IE6 * - each property *must* be prefixed with
 an asterisk (*) * eg: 
 .dashboard {
     *margin: 0 0 4px 2px;
 }
-* **/ body {
+* **/ 
+body {
     *overflow: hidden;
 }
 .blanket {
