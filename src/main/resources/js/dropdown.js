@@ -403,19 +403,6 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
            $parent.removeClass("active");
         });
 
-        // respect access keys
-        if ($trigger.attr("accesskey")) {
-            AJS.$(document).keypress(function (e) {
-                if (e.ctrlKey && String.fromCharCode(e.charCode) === $trigger.attr("accesskey")) {
-                    if (ddcontrol != AJS.dropDown.current) {
-                        ddcontrol.show();
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                }
-            });
-        }
-
         // add control to the response
         res.push(ddcontrol);
 
