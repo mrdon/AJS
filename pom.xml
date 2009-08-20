@@ -5,7 +5,6 @@
         <groupId>com.atlassian.pom</groupId>
         <version>14</version>
     </parent>
-
     <groupId>com.atlassian.aui</groupId>
     <artifactId>auiplugin</artifactId>
     <packaging>jar</packaging>
