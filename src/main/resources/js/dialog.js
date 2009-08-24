@@ -45,6 +45,7 @@ AJS.undim = function () {
         }
     }
 };
+
 /**
  * Creates a generic popup
  * @method poup
@@ -56,28 +57,41 @@ AJS.undim = function () {
 */
 AJS.popup = function (width, height, id) {
     var shadow = AJS.$('<div class="shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>');
-    var popup = AJS("div").addClass("popup").css({
-        margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2) + "px",
-        width: width + "px",
-        height: height + "px",
-        background: "#fff"
-    });
+    var popup = AJS("div").addClass("popup");
+
     if (id) {
         popup.attr("id", id);
     }
-    AJS.$("body").append(shadow);
-    shadow.css({
-        margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2 + 16) + "px",
-        width: width + 32 + "px",
-        height: height + 29 + "px"
-    });
-    AJS.$(".b", shadow).css("width", width - 26 + "px");
-    AJS.$(".l, .r", shadow).css("height", height - 17 + "px");
-    AJS.$("body").append(popup);
+
+    var applySize = function (width, height) {
+		
+		width = width || popup.width() || 800;	
+		height = height || popup.height() || 600;
+		
+        popup.css({
+            margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2) + "px",
+            width: width + "px",
+            height: height + "px",
+            background: "#fff"
+        });
+        shadow.css({
+            margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2 + 16) + "px",
+            width: width + 32 + "px",
+            height: height + 29 + "px"
+        });
+        AJS.$(".b", shadow).width(width - 26);
+        AJS.$(".l", shadow).height(height - 17);
+        AJS.$(".r", shadow).height(height - 17);
+        return arguments.callee;
+    }(width, height);
+
+    AJS.$("body").append(shadow).append(popup);
+
     popup.hide();
     shadow.hide();
-    
+
     var keypressListener = function (e) {
+        console.log(e.keyCode);
       if (e.keyCode === 27 && popup.is(":visible")) {
         res.hide();
       }
@@ -89,18 +103,24 @@ AJS.popup = function (width, height, id) {
      * @static
     */
     var res = {
+
+        changeSize: function (w, h) {
+            applySize(w , h);
+            this.show();
+        },
+
         /**
          * Makes popup visible
          * @method show
         */
         show: function () {
             var show = function () {
+                AJS.$(document).keydown(keypressListener);
                 scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
                 popup.show();
                 shadow.show();
                 AJS.dim();
             };
-            AJS.$(document).keypress(keypressListener);
             show();
             if (popup.css("position") == "absolute") {
                 // Internet Explorer case
@@ -125,7 +145,7 @@ AJS.popup = function (width, height, id) {
          * @method hide
         */
         hide: function () {
-            AJS.$(document).unbind("keypress", keypressListener);
+            AJS.$(document).unbind("keydown", keypressListener);
             this.element.hide();
             shadow.hide();
             AJS.undim();
@@ -145,10 +165,9 @@ AJS.popup = function (width, height, id) {
             this.element = null;
         }
     };
-    
+
     return res;
 };
-
 
 // Usage:
 // var popup = new AJS.Dialog(860, 530);
@@ -789,5 +808,5 @@ AJS.popup = function (width, height, id) {
             }
         }
         return res;
-    };
+    };	
 })();
