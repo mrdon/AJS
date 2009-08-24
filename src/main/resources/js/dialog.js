@@ -91,7 +91,6 @@ AJS.popup = function (width, height, id) {
     shadow.hide();
 
     var keypressListener = function (e) {
-        console.log(e.keyCode);
       if (e.keyCode === 27 && popup.is(":visible")) {
         res.hide();
       }
