@@ -809,4 +809,42 @@ AJS.popup = function (width, height, id) {
         }
         return res;
     };	
+	
+	/**
+	 * Updates height of panels, to contain content without the need for scroll bars.
+	 *
+	 * @method updateHeight
+	 */
+	AJS.Dialog.prototype.updateHeight = function () {
+	    var height = 0;
+	    for (var i=0; this.getPanel(i); i++) {
+	        if (this.getPanel(i).body.css({height: "auto", display: "block"}).outerHeight() > height) {
+	            height = this.getPanel(i).body.outerHeight();
+	        }
+	        if (i !== this.page[this.curpage].curtab) {
+	            this.getPanel(i).body.css({display:"none"});
+	        }
+	    }
+	    for (i=0; this.getPanel(i); i++) {
+	        this.getPanel(i).body.css({height: height || this.height});
+	    }
+	    this.page[0].menu.height(height);
+	    this.height = height + 87;
+	    this.popup.changeSize(undefined, height + 87);
+	};
+	
+	/**
+	 * Gets current panel for current page
+	 */
+	AJS.Dialog.prototype.getCurPanel = function () {
+	    return this.getPanel(this.page[this.curpage].curtab);
+	};
+	
+	/**
+	 * Gets current button for current panel of current page
+	 */
+	AJS.Dialog.prototype.getCurPanelButton = function () {
+	    return this.getCurPanel().button;
+	};
+	
 })();
