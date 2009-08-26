@@ -69,6 +69,7 @@ AJS.popup = function (width, height, id) {
         height = newHeight || popup.height() || 600;
 
         popup.css({
+			marginTop: - Math.round(height / 2),
             marginLeft: - Math.round(width / 2),
             width: width + "px",
             height: height + "px",
