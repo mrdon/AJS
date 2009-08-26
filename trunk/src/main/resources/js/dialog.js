@@ -63,25 +63,28 @@ AJS.popup = function (width, height, id) {
         popup.attr("id", id);
     }
 
-    var applySize = function (width, height) {
-		
-		width = width || popup.width() || 800;	
-		height = height || popup.height() || 600;
-		
+    var applySize = function (newWidth, newHeight) {
+
+        width = newWidth || popup.width() || 800;
+        height = newHeight || popup.height() || 600;
+
         popup.css({
-            margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2) + "px",
+            marginLeft: - Math.round(width / 2),
             width: width + "px",
             height: height + "px",
             background: "#fff"
         });
         shadow.css({
-            margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2 + 16) + "px",
+            marginTop: - Math.round(height / 2),
+            marginLeft: - (Math.round(width / 2) + 16),
             width: width + 32 + "px",
             height: height + 29 + "px"
         });
         AJS.$(".b", shadow).width(width - 26);
         AJS.$(".l", shadow).height(height - 17);
         AJS.$(".r", shadow).height(height - 17);
+
+
         return arguments.callee;
     }(width, height);
 
@@ -115,7 +118,6 @@ AJS.popup = function (width, height, id) {
         show: function () {
             var show = function () {
                 AJS.$(document).keydown(keypressListener);
-                scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
                 popup.show();
                 shadow.show();
                 AJS.dim();
@@ -124,7 +126,7 @@ AJS.popup = function (width, height, id) {
             if (popup.css("position") == "absolute") {
                 // Internet Explorer case
                 var scrollfix = function () {
-                    scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
+                    var scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
                     var marginTop = scrollDistance + (document.documentElement.clientHeight - height)/2;
                     popup.css("margin-top", marginTop);
                     shadow.css("margin-top", marginTop);
