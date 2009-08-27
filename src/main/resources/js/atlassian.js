@@ -201,11 +201,23 @@ if (typeof jQuery != "undefined") {
             * @usage AJS.format("This is a {0} test", "simple");
             */
             format: function (message) {
-                var args = arguments;
-                return message.replace(/\{(\d+)\}/g, function (str, i) {
-                    var replacement = args[parseInt(i, 10) + 1];
-                    return replacement != null ? replacement : str;
-                });
+				var escapeMode, args = arguments;				
+				for (var i=0; i < message.length; i++) {
+					if (message.charAt(i) === "'" && message.charAt(i+1) === "'") {
+						message = message.substring(0, i) + message.substring(i+1, message.length);
+					} else if (message.charAt(i) === "'" && escapeMode) {
+						escapeMode = false;
+					} else if (message.charAt(i) === "'") {
+						escapeMode = true;
+					} else if (message.charAt(i) === "{" && !escapeMode) {
+						message = message.substring(0,i) + message.substring(i, message.length).replace(/\{(\d+)\}/, function (match, argIndex) {
+							var replacement = args[parseInt(argIndex) + 1]  || match;
+							i = i + replacement.length-1;
+							return replacement;
+						});
+					}
+				}
+                return message;
             },
             /**
             * Includes firebug lite for debugging in IE. Especially in IE.
