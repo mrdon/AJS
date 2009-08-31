@@ -28,7 +28,8 @@
     border: none;
     color: #000;
 }
-.aui-dd-parent .aui-dropdown {
+.aui-dd-parent .aui-dropdown,
+.aui-dropdown {
     background: #fff;
     border: 1px solid #6A8EB3;
     color: #000;
@@ -38,7 +39,8 @@
     z-index: 2003;
     margin-top: -1px;
 }
-.aui-dd-parent .aui-dropdown li {
+.aui-dd-parent .aui-dropdown li,
+.aui-dropdown li  {
     background: #fff;
     color: #000;
     display: block;
@@ -46,7 +48,8 @@
     margin: 0;
     position: static;
 }
-.aui-dd-parent .aui-dropdown a {
+.aui-dd-parent .aui-dropdown a,
+.aui-dropdown a {
     background: #fff;
     color: #036;
     display: block;
@@ -58,14 +61,19 @@
     width: auto;
 }
 .aui-dd-parent .aui-dropdown a:link,
-.aui-dd-parent .aui-dropdown a:visited {
+.aui-dd-parent .aui-dropdown a:visited,
+.aui-dropdown a:link,
+.aui-dropdown a:visited {
     background: #fff;
     color: #036;
     padding: 0.3em 0.5em;
 }
 .aui-dd-parent .aui-dropdown a:hover,
 .aui-dd-parent .aui-dropdown a:active,
-.aui-dd-parent .aui-dropdown a:focus {
+.aui-dd-parent .aui-dropdown a:focus,
+.aui-dropdown a:hover,
+.aui-dropdown a:active,
+.aui-dropdown a:focus  {
     background: #f2f2f2;
     color: #036;
     padding: 0.3em 0.5em;
