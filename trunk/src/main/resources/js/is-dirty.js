@@ -67,6 +67,7 @@ jQuery.fn.isDirty = function () {
 
         function storeField (e) {
             var $this = jQuery(this);
+			jQuery.fn.isDirty.fieldInFocus = $this;
             if (jQuery.inArray(this, fields) === -1) {
                 this.initVal = $this.val();
                 fields.push(this);
