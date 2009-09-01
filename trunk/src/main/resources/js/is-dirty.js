@@ -74,6 +74,10 @@ jQuery.fn.isDirty = function () {
                 $this.die(e.type, storeField);
             }
         };
+		
+		jQuery(":not(:input)").live("click", function () {
+            delete jQuery.fn.isDirty.fieldInFocus;
+        });
 
         jQuery(":input[type != hidden]", this.selector)
             .bind("keydown", storeField)
