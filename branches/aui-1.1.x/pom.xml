@@ -47,6 +47,7 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>atlassian-plugin.xml</include>
+                    <include>js/atlassian.js</include>
                 </includes>
             </resource>
         </resources>
