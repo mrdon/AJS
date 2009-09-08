@@ -130,6 +130,9 @@ form.aui div {
     min-height: 1.6em;
     padding: 0 0 5px 140px;
 }
+form.aui div div {
+    padding-left: 0;
+}
 form.aui div label {
     float: left;
     display: block;
@@ -152,7 +155,6 @@ form.aui div.matrix {
 form.aui div.matrix div {
     clear: none;
     float: left;
-    padding-left: 0;
     width: 250px;
 }
 
@@ -257,9 +259,6 @@ form.aui.long-label legend span {
 }
 form.aui.long-label div {
     padding-left: 250px;
-}
-form.aui.long-label div.group {
-    padding-left: 0
 }
 form.aui.long-label div label {
     left: -250px;
