@@ -292,31 +292,33 @@ AJS.dropDown = function (obj, usroptions) {
             });
         })();
         
-        // iframeShim
-        (function () {
-            var refreshIframeShim = function () {
+        if (AJS.$.browser.msie) {
+            // iframeShim
+            (function () {
+                var refreshIframeShim = function () {
 
-                if (this.$.is(":visible")) {
-                    if (!this.iframeShim) {
-                        this.iframeShim = AJS.$('<iframe class="dropdown-shim">').insertBefore(this.$);
+                    if (this.$.is(":visible")) {
+                        if (!this.iframeShim) {
+                            this.iframeShim = AJS.$('<iframe class="dropdown-shim">').insertBefore(this.$);
+                        }
+                        this.iframeShim.css({
+                            display: "block",
+                            top: this.$.css("top"),
+                            right: 0,
+                            width: this.$.outerWidth() + 1 + "px",
+                            height: this.$.outerHeight() + "px"
+                        });
                     }
-                    this.iframeShim.css({
-                        display: "block",
-                        top: this.$.css("top"),
-                        right: 0,
-                        width: this.$.outerWidth() + "px",
-                        height: this.$.outerHeight() + "px"
-                    });
-                }
-            };
-            res.addCallback("reset", refreshIframeShim);
-            res.addCallback("show", refreshIframeShim);
-            res.addCallback("hide", function () {
-                if (this.iframeShim) {
-                    this.iframeShim.css({display: "none"});
-                }
-            });
-        })();
+                };
+                res.addCallback("reset", refreshIframeShim);
+                res.addCallback("show", refreshIframeShim);
+                res.addCallback("hide", function () {
+                    if (this.iframeShim) {
+                        this.iframeShim.css({display: "none"});
+                    }
+                });
+            })();
+        }
         
         result.push(res);
     });
@@ -492,7 +494,9 @@ AJS.dropDown.Ajax = function (usroptions) {
                         });
                         superMethod.call(ddcontrol);
                         ddcontrol.shadow.hide();
-                        ddcontrol.iframeShim.hide();
+                        if (AJS.$.browser.msie) {
+                            ddcontrol.iframeShim.hide();
+                        }
                     }
                 };
             }(ddcontrol.show),
