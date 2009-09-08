@@ -88,13 +88,6 @@
     width: 16px;
 }
 
-/* inline-dialog-shim */
 #inline-dialog-shim {
-    border: none;
-    height: 0;
-    left: 0;
-    position: absolute;
-    top: -7px; /* matches .aui-inline-dialog .arrow */
-    width: 0;
-    z-index: -2;
+    display: none;
 }

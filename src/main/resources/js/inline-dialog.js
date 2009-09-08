@@ -100,13 +100,15 @@
                 $(".b", shadow).css("width", contents.outerWidth() - 26 + "px");
                 $(".l, .r", shadow).css("height", contents.outerHeight() - 21 + "px");
                 
-                // iframeShim
-                var arrowSpace = 7, // the negative space left for .aui-inline-dialog .arrow by its Top property
-                    iframeShim = $("#inline-dialog-shim").appendTo(popup).show();
-                iframeShim.css({
-                    width: contents.outerWidth(),
-                    height: contents.outerHeight() + arrowSpace
-                });
+                if (AJS.$.browser.msie) {
+                    // iframeShim
+                    iframeShim = $('#inline-dialog-shim');
+                    iframeShim.appendTo(popup).show();
+                    iframeShim.css({
+                        width: contents.outerWidth(),
+                        height: contents.outerHeight()
+                    });
+                }
                 
             }, opts.showDelay);
         };
@@ -238,7 +240,9 @@
 
     AJS.toInit(function() {
         $("body").append($('<iframe id="inline-dialog-shim" frameBorder="0"></iframe><div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
-        $("#inline-dialog-shim").hide();
+        if (AJS.$.browser.msie) {
+            $("#inline-dialog-shim").hide();
+        }
         $("#inline-dialog-shadow").hide();
     });
 })(jQuery);
