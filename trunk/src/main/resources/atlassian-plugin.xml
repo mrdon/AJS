@@ -23,6 +23,7 @@
 
     <web-resource key="ajs" name="Atlassian Javascript">
         <resource type="download" name="basic.css" location="css/basic.css"/>
+        <resource type="download" name="firebug.css" location="css/firebug.css"/>
         <resource type="download" name="dialog.css" location="css/dialog.css"/>
         <resource type="download" name="dropdown.css" location="css/dropdown.css"/>
         <resource type="download" name="forms.css" location="css/forms.css"/>
@@ -57,6 +58,7 @@
         <resource type="download" name="dialog.js" location="js/dialog.js"/>
         <resource type="download" name="dropdown.js" location="js/dropdown.js"/>
         <resource type="download" name="inline-dialog.js" location="js/inline-dialog.js"/>
+        <resource type="download" name="firebug.js" location="js/firebug.js"/>
     </web-resource>
 
     <!-- jQuery -->
@@ -100,6 +102,7 @@
     
     <web-resource key="aui-css" name="Atlassian UI CSS">
         <resource type="download" name="basic.css" location="css/basic.css"/>
+        <resource type="download" name="firebug.css" location="css/firebug.css"/>
         <resource type="download" name="dialog.css" location="css/dialog.css"/>
         <resource type="download" name="dropdown.css" location="css/dropdown.css"/>
         <resource type="download" name="forms.css" location="css/forms.css"/>
