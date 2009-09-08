@@ -22,7 +22,12 @@ AJS.dropDown = function (obj, usroptions) {
                     }
                     e.preventDefault();
                 }
-            }
+            },
+            escapeHandler: function () {
+                this.hide("escape");
+                return false;
+            },
+            hideHandler: function() {}
         };
     
     AJS.$.extend(options, usroptions);
@@ -82,13 +87,11 @@ AJS.dropDown = function (obj, usroptions) {
                 break;
             }
             case 27:{
-                AJS.dropDown.current.hide("escape");
-                return false;
+                return options.escapeHandler.call(AJS.dropDown.current);
             }
             case 13:{
                 if (cdd.focused >= 0) {
-                    options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(AJS.dropDown.current.links[cdd.focused]));
-                    return false;
+                    return options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(AJS.dropDown.current.links[cdd.focused]));
                 }
                 return true;
             }
@@ -256,6 +259,7 @@ AJS.dropDown = function (obj, usroptions) {
             AJS.$(AJS.dropDown.iframes).each(function(){
                 this.shim.addClass("hidden");
             });
+            options.hideHandler();
         });
 
         // shadow
