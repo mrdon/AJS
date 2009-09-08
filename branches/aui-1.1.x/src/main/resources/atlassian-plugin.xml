@@ -53,6 +53,7 @@
         <resource type="download" name="jquery.throbber.js" location="js/jquery/plugins/jquery.throbber.js"/>
         
         <resource type="download" name="atlassian.js" location="js/atlassian.js"/>
+        <resource type="download" name="cookie.js" location="js/cookie.js"/>
         <resource type="download" name="dialog.js" location="js/dialog.js"/>
         <resource type="download" name="dropdown.js" location="js/dropdown.js"/>
         <resource type="download" name="inline-dialog.js" location="js/inline-dialog.js"/>
