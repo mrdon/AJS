@@ -12,15 +12,14 @@
 */
 
 AJS.warnAboutFirebug = function (message) {
-    if (!AJS.Cookie.read(this.COOKIE_FB_WARNING) && window.console && window.console.firebug) {
+    if (!AJS.Cookie.read("COOKIE_FB_WARNING") && window.console && window.console.firebug) {
         if (!message){
-            var message = "Firebug is known to cause performance problems with Atlassian products. Try disabling it, if you notice any issues.";
+            message = "Firebug is known to cause performance problems with Atlassian products. Try disabling it, if you notice any issues.";
         }
         var $warning = AJS.$("<div id='firebug-warning'><p>" + message + "</p><a class='close'>Close</a></div>");
-        AJS.$("#firebug-warning a.close").live("click", function () {
-            $warning.slideUp('fast', function() {
-                AJS.Cookie.save(this.COOKIE_FB_WARNING, "true");
-            });
+        AJS.$(".close", $warning).click(function () {
+            $warning.slideUp("fast");
+            AJS.Cookie.save("COOKIE_FB_WARNING", "true");
         });
         $warning.prependTo(AJS.$("body"));
     }
