@@ -102,7 +102,7 @@
                 
                 if (AJS.$.browser.msie) {
                     // iframeShim
-                    iframeShim = $('#inline-dialog-shim');
+                    var iframeShim = $('#inline-dialog-shim');
                     iframeShim.appendTo(popup).show();
                     iframeShim.css({
                         width: contents.outerWidth(),
