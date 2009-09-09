@@ -8,7 +8,6 @@ Run the tests with the following maven command (This requires Firefox 2 to be in
 
    mvn integration-test -Dselenium.browser="*firefox /Applications/Firefox2.app/Contents/MacOS/firefox-bin"
 
-
 To debug, use the run profile and navigate to the following page to use Firebug's debug mode:
 
    mvn -Prun -Dselenium.browser="*firefox /Applications/Firefox2.app/Contents/MacOS/firefox-bin"
