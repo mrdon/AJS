@@ -12,4 +12,3 @@ To debug, use the run profile and navigate to the following page to use Firebug'
 
    mvn -Prun -Dselenium.browser="*firefox /Applications/Firefox2.app/Contents/MacOS/firefox-bin"
    http://localhost:9999/ajs/test.html
-
