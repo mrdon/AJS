@@ -55,6 +55,7 @@ jQuery.fn.isDirty = function () {
                     jQuery(document).unbind("mousemove", arguments.callee);
                 });
             }, 1000);
+			pageModified = undefined;
             return AJS.params.dirtyMessage || "";
         }
     };
