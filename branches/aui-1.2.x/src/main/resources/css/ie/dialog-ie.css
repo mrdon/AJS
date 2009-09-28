@@ -56,38 +56,5 @@ underscore (_) * eg:
     _padding: 0 0
     -3px 0;
 }
-* **/ .shadow .tl {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/lt.png',
-    sizingMethod='scale');
-}
-.shadow .tr {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/rt.png',
-    sizingMethod='scale');
-}
-.shadow .br {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/rb.png',
-    sizingMethod='scale');
-}
-.shadow .bl {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/lb.png',
-    sizingMethod='scale');
-}
-.shadow .b {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/b.png',
-    sizingMethod='scale');
-}
-.shadow .l {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/l.png',
-    sizingMethod='scale');
-}
-.shadow .r {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/r.png',
-    sizingMethod='scale');
-}
+* **/
+.shadow {display:none!important;}
