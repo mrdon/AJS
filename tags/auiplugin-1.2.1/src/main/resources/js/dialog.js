@@ -14,7 +14,7 @@ AJS.dim = function () {
         
         // Add IFrame shim
         if (AJS.$.browser.msie) {
-            AJS.dim.shim = AJS.$('<iframe class="blanket-shim" src="java script:false;"/>');
+            AJS.dim.shim = AJS.$('<iframe class="blanket-shim"/>');
             AJS.dim.shim.css({height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
             AJS.$("body").append(AJS.dim.shim);
         }
