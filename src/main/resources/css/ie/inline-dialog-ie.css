@@ -49,31 +49,4 @@
 }
 *
 **/
-#inline-dialog-shadow .tl {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/lt.png', sizingMethod='scale');
-}
-#inline-dialog-shadow .tr {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/rt.png', sizingMethod='scale');
-}
-#inline-dialog-shadow .br {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/rb.png', sizingMethod='scale');
-}
-#inline-dialog-shadow .bl {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/lb.png', sizingMethod='scale');
-}
-#inline-dialog-shadow .b {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/b.png', sizingMethod='scale');
-}
-#inline-dialog-shadow .l {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/l.png', sizingMethod='scale');
-}
-#inline-dialog-shadow .r {
-    _background: none;
-    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/shadow/r.png', sizingMethod='scale');
-}
+#inline-dialog-shadow {display:none!important;}
