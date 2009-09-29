@@ -59,6 +59,7 @@
         <resource type="download" name="dropdown.js" location="js/dropdown.js"/>
         <resource type="download" name="inline-dialog.js" location="js/inline-dialog.js"/>
         <resource type="download" name="firebug.js" location="js/firebug.js"/>
+        <resource type="download" name="namespace.js" location="js/namespace.js"/>
     </web-resource>
 
     <!-- jQuery -->
