@@ -39,7 +39,7 @@ AJS.undim = function () {
         // Safari bug workaround
         if (AJS.$.browser.safari) {
             var top = AJS.$(window).scrollTop();
-            AJS.$(window).scrollTop(10).scrollTop(top);
+            AJS.$(window).scrollTop(10 + 5 * (top == 10)).scrollTop(top);
         }
     }
 };
