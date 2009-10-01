@@ -38,10 +38,8 @@ AJS.undim = function () {
         AJS.$("html, body").css("overflow", "");
         // Safari bug workaround
         if (AJS.$.browser.safari) {
-            AJS.$("body").css({height: "200px"});
-            setTimeout(function () {
-                AJS.$("body").css({height: ""});
-            }, 0);
+            var top = AJS.$(window).scrollTop();
+            AJS.$(window).scrollTop(10).scrollTop(top);
         }
     }
 };
