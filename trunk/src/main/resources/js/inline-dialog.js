@@ -239,7 +239,7 @@
     };
 
     AJS.toInit(function() {
-        $("body").append($('<iframe id="inline-dialog-shim" frameBorder="0" src="java script:false;"></iframe><div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
+        $("body").append($('<iframe id="inline-dialog-shim" frameBorder="0" src="javascript:false;"></iframe><div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
         if (AJS.$.browser.msie) {
             $("#inline-dialog-shim").hide();
         }
