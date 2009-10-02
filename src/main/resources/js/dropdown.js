@@ -299,7 +299,7 @@ AJS.dropDown = function (obj, usroptions) {
 
                     if (this.$.is(":visible")) {
                         if (!this.iframeShim) {
-                            this.iframeShim = AJS.$('<iframe class="dropdown-shim" src="java script:false;">').insertBefore(this.$);
+                            this.iframeShim = AJS.$('<iframe class="dropdown-shim" src="javascript:false;">').insertBefore(this.$);
                         }
                         this.iframeShim.css({
                             display: "block",
