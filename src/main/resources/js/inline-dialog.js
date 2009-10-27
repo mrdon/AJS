@@ -1,4 +1,4 @@
-(function($) {
+(function() {
     /**
      * Creates a new inline dialog
      *
@@ -11,7 +11,7 @@
      * @return jQuery object - the popup that was created
      */
     AJS.InlineDialog = function(items, identifier, url, options) {
-        var opts = $.extend(false, AJS.InlineDialog.opts, options);
+        var opts = AJS.$.extend(false, AJS.InlineDialog.opts, options);
         var hideDelayTimer;
         var showTimer;
         var beingShown = false;
@@ -19,9 +19,9 @@
         var contentLoaded = false;
         var mousePosition;
         var targetPosition;
-        $(opts.container).append($('<div id="inline-dialog-' + identifier + '" class="aui-inline-dialog"><div class="contents"></div><div id="arrow-' + identifier + '" class="arrow"></div></div>'));
-        var popup = $("#inline-dialog-" + identifier);
-        var arrow = $("#arrow-" + identifier);
+        AJS.$(opts.container).append(AJS.$('<div id="inline-dialog-' + identifier + '" class="aui-inline-dialog"><div class="contents"></div><div id="arrow-' + identifier + '" class="arrow"></div></div>'));
+        var popup = AJS.$("#inline-dialog-" + identifier);
+        var arrow = AJS.$("#arrow-" + identifier);
         var contents = popup.find(".contents");
 
 //        AJS.log(opts);
@@ -43,7 +43,7 @@
                 if (!contentLoaded || !shouldShow) {
                     return;
                 }
-                $(items).addClass("active");
+                AJS.$(items).addClass("active");
                 beingShown = true;
                 // retrieve the position of the click target. The offsets might be different for different types of targets and therefore
                 // either have to be customisable or we will have to be smarter about calculating the padding and elements around it
@@ -51,7 +51,7 @@
                 var posx = targetPosition.target.offset().left + opts.offsetX;
                 var posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
 
-                var diff = $(window).width() - (posx + opts.width + 30);
+                var diff = AJS.$(window).width() - (posx + opts.width + 30);
                 if (diff<0) {
                     popup.css({
                         right: "20px",
@@ -73,7 +73,7 @@
                     });
                 }
 
-                var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
+                var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + AJS.$(window).height();
                 if ((posy + popup.height()) > bottomOfViewablePage) {
                     posy = bottomOfViewablePage - popup.height() - 5;
                     popup.mouseover(function() {
@@ -86,7 +86,7 @@
                     top: posy + "px"
                 });
 
-                var shadow = $("#inline-dialog-shadow").appendTo(popup).show();
+                var shadow = AJS.$("#inline-dialog-shadow").appendTo(popup).show();
                 // reset position of popup box
                 popup.fadeIn(opts.fadeTime, function() {
                     // once the animation is complete, set the tracker variables
@@ -97,12 +97,12 @@
                     width: contents.outerWidth() + 32 + "px",
                     height: contents.outerHeight() + 25 + "px"
                 });
-                $(".b", shadow).css("width", contents.outerWidth() - 26 + "px");
-                $(".l, .r", shadow).css("height", contents.outerHeight() - 21 + "px");
+                AJS.$(".b", shadow).css("width", contents.outerWidth() - 26 + "px");
+                AJS.$(".l, .r", shadow).css("height", contents.outerHeight() - 21 + "px");
                 
                 if (AJS.$.browser.msie) {
                     // iframeShim
-                    var iframeShim = $('#inline-dialog-shim');
+                    var iframeShim = AJS.$('#inline-dialog-shim');
                     iframeShim.appendTo(popup).show();
                     iframeShim.css({
                         width: contents.outerWidth(),
@@ -122,7 +122,7 @@
                 clearTimeout(showTimer);
                 // store the timer so that it can be cleared in the mouseover if required
                 hideDelayTimer = setTimeout(function() {
-                    $(items).removeClass("active");
+                    AJS.$(items).removeClass("active");
                     popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
                     beingShown = false;
                     shouldShow = false;
@@ -139,14 +139,14 @@
 
         // the trigger is the jquery element that is triggering the popup (i.e., the element that the mousemove event is bound to)
         var initPopup = function(e,trigger) {
-            $(".aui-inline-dialog").each(function() {
+            AJS.$(".aui-inline-dialog").each(function() {
                 if (typeof this.popup != "undefined")
                     this.popup.hide();
             });
 
             mousePosition = { x: e.pageX, y: e.pageY };
-            var targetOffset = $(e.target).offset();
-            targetPosition = {target: $(e.target)};
+            var targetOffset = AJS.$(e.target).offset();
+            targetPosition = {target: AJS.$(e.target)};
 
             if (!beingShown) {
                 clearTimeout(showTimer);
@@ -166,7 +166,7 @@
             // lazy load popup contents
             if (!contentLoading) {
                 contentLoading = true;
-                if ($.isFunction(url)) {
+                if (AJS.$.isFunction(url)) {
                     // If the passed in URL is a function, execute it. Otherwise simply load the content.
                     url(contents, trigger, doShowPopup);
                 } else {
@@ -199,13 +199,13 @@
 
         var contentLoading = false;
         if (opts.onHover) {
-            $(items).mousemove(function(e) {
+            AJS.$(items).mousemove(function(e) {
                 initPopup(e,this);
             }).mouseout(function() {
                 hidePopup();
             });
         } else {
-            $(items).click(function(e) {
+            AJS.$(items).click(function(e) {
                 initPopup(e,this);
                 return false;
             }).mouseout(function() {
@@ -217,7 +217,7 @@
             e.stopPropagation();
         });
 
-        $("body").click(function() {
+        AJS.$("body").click(function() {
             hidePopup(0);
         });
 
@@ -239,10 +239,10 @@
     };
 
     AJS.toInit(function() {
-        $("body").append($('<iframe id="inline-dialog-shim" frameBorder="0" src="javascript:false;"></iframe><div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
+        AJS.$("body").append(AJS.$('<iframe id="inline-dialog-shim" frameBorder="0" src="javascript:false;"></iframe><div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
         if (AJS.$.browser.msie) {
-            $("#inline-dialog-shim").hide();
+            AJS.$("#inline-dialog-shim").hide();
         }
-        $("#inline-dialog-shadow").hide();
+        AJS.$("#inline-dialog-shadow").hide();
     });
 })(jQuery);

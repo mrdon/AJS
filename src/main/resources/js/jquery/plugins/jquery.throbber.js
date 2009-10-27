@@ -8,7 +8,7 @@
  * @.. {String} loadingClass - className applied to target element
  * @return {Object} jQuery object that has new hideThrobber & showThrobber methods
  */
-jQuery.fn.throbber = function($) {
+jQuery.fn.throbber = function() {
 
     return function() {
 
@@ -17,8 +17,8 @@ jQuery.fn.throbber = function($) {
         var instances = [], defaults = {isLatentThreshold: 100, minThrobberDisplay: 200, loadingClass: "loading"};
 
         // global definition
-        $().ajaxComplete(function(jObj, response){
-            $(instances).each(function(idx){
+        AJS.$().ajaxComplete(function(jObj, response){
+            AJS.$(instances).each(function(idx){
                 // make sure we are dealing with the right request
                 if (response === this.get(0)) {
                     this.hideThrobber();
@@ -47,7 +47,7 @@ jQuery.fn.throbber = function($) {
                 }, l);
             };
 
-            settings = $.extend(defaults, settings || {});
+            settings = AJS.$.extend(defaults, settings || {});
 
 			if (!settings.target) {
                 return this;
@@ -56,7 +56,7 @@ jQuery.fn.throbber = function($) {
 			// make sure we are dealing with a jquery object
             target = jQuery(settings.target);
 			
-            instances.push($.extend(this, {
+            instances.push(AJS.$.extend(this, {
                 /**
                  * Adds loadingClass to target htmlElement after the request appears to be latent
                  * @function {Public} showThrobber
