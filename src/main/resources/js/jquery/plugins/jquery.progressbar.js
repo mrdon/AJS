@@ -14,17 +14,17 @@ Set up a <div> with an id:
 
 and add the following JS:
 
-    AJS.$("#progressBarContainer").progressBar(50);
-    AJS.$("#progressBarContainer").progressBar(50, {height: "12px", showPercentage: false});
+    $("#progressBarContainer").progressBar(50);
+    $("#progressBarContainer").progressBar(50, {height: "12px", showPercentage: false});
 
 STYLING:
 
 You must also set up a style for the 'complete' class.
 
 */
-(function() {
+(function($) {
 
-    AJS.$.fn.progressBar = function (percentComplete, options) {
+    $.fn.progressBar = function (percentComplete, options) {
 
         var $progressBarContainer = this;
 
@@ -33,25 +33,25 @@ You must also set up a style for the 'complete' class.
             showPercentage: true
         };
 
-        var opts = AJS.$.extend(defaults, options);
+        var opts = $.extend(defaults, options);
 
         var incompleteBarId = $progressBarContainer.attr("id") + "-incomplete-bar";
         var completeBarId = $progressBarContainer.attr("id") + "-complete-bar";
         var percentCompleteTextId = $progressBarContainer.attr("id") + "-percent-complete-text";
 
-        if (AJS.$("#" + incompleteBarId).length == 0) {
+        if ($("#" + incompleteBarId).length == 0) {
 
-            var $incompleteBar = AJS.$(document.createElement("div"));
+            var $incompleteBar = $(document.createElement("div"));
             $incompleteBar.attr("id", incompleteBarId);
             $incompleteBar.css({width: "90%", border: "solid 1px #ccc", float: "left", "margin-right": "0.5em"});
             $incompleteBar.addClass("progress-background-color");
 
-            var $completeBar = AJS.$(document.createElement("div"));
+            var $completeBar = $(document.createElement("div"));
             $completeBar.attr("id", completeBarId);
             $completeBar.addClass("progress-fill-color");
             $completeBar.css({height: opts.height, width: percentComplete + "%"});
 
-            var $percentCompleteText = AJS.$(document.createElement("span"));
+            var $percentCompleteText = $(document.createElement("span"));
             $percentCompleteText.attr("id", percentCompleteTextId);
             $percentCompleteText.addClass("percent-complete-text");
             $percentCompleteText.html(percentComplete + "%");
@@ -64,8 +64,8 @@ You must also set up a style for the 'complete' class.
             }
 
         } else {
-            AJS.$("#" + completeBarId).css("width", percentComplete + "%");
-            AJS.$("#" + percentCompleteTextId).html(percentComplete + "%");
+            $("#" + completeBarId).css("width", percentComplete + "%");
+            $("#" + percentCompleteTextId).html(percentComplete + "%");
         }
     }
 
