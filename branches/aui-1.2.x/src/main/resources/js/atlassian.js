@@ -66,13 +66,14 @@ if (typeof jQuery != "undefined") {
                 if (!(element = this.$(element))) {
                     return;
                 }
-                AJS.$(element).each(function () {
-                    var isHidden = AJS.$(this).hasClass("hidden");
+                var $ = this.$; // aliased for use inside function below
+                $(element).each(function () {
+                    var isHidden = $(this).hasClass("hidden");
                     if (isHidden && show) {
-                        AJS.$(this).removeClass("hidden");
+                        $(this).removeClass("hidden");
                     }
                     else if (!isHidden && !show) {
-                        AJS.$(this).addClass("hidden");
+                        $(this).addClass("hidden");
                     }
                 });
             },
@@ -355,7 +356,7 @@ if (typeof jQuery != "undefined") {
                 // each word in the input is considered a distinct filter that has to match a keyword in the record
                 var filterWords = search.split(splitRegex);
                 var filters = [];
-                AJS.$.each(filterWords, function () {
+                $.each(filterWords, function () {
                   var subfilters = [new RegExp(boundaryFlag + this, "i")]; // anchor on word boundaries
                   if (/^([A-Z][a-z]*){2,}$/.test(this)) { // split camel-case into separate words
                       var camelRegexStr = this.replace(/([A-Z][a-z]*)/g, "\\b$1[^,]*");
@@ -364,7 +365,7 @@ if (typeof jQuery != "undefined") {
                   filters.push(subfilters);
                 });
                 var result = [];
-                AJS.$.each(entries, function () {
+                $.each(entries, function () {
                     for (var i = 0; i < filters.length; i++) {
                         var somethingMatches = false;
                         for (var j = 0; j < filters[i].length; j++) {
