@@ -45,26 +45,48 @@ AJS.undim = function () {
 };
 
 /**
- * Creates a generic popup
- * @method poup
+ * Creates a generic popup. Usage:
+ * new AJS.popup({
+ *     width: 800,
+ *     height: 400,
+ *     id: "image-dialog"
+ * });
+ * @method popup
  * @namespace AJS
- * @param width {number} width of the popup
- * @param height {number} height of the popup
- * @param id {number} [optional] id of the popup
+ * @param options {object} [optional] Permitted options and defaults are as follows: width (800), height (600), keypressListener (closes dialog on ESC).
  * @return {object} popup object
 */
-AJS.popup = function (width, height, id) {
+AJS.popup = function (options) {
+    var defaults = {
+        width: 800,
+        height: 600,
+        keypressListener: function (e) {
+            if (e.keyCode === 27 && popup.is(":visible")) {
+                res.hide();
+            }
+        }
+    };
+    // for backwards-compatibility
+    if (typeof options != "object") {
+        options = {
+            width: arguments[0],
+            height: arguments[1],
+            id: arguments[2]
+        };
+    }
+
+    options = AJS.$.extend({}, defaults, options);
+
     var shadow = AJS.$('<div class="shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>');
     var popup = AJS("div").addClass("popup");
 
-    if (id) {
-        popup.attr("id", id);
+    if (options.id) {
+        popup.attr("id", options.id);
     }
 
     var applySize = function (newWidth, newHeight) {
-
-        width = newWidth || popup.width() || 800;
-        height = newHeight || popup.height() || 600;
+        var width = newWidth || popup.width() || defaults.width;
+        var height = newHeight || popup.height() || defaults.height;
 
         popup.css({
 			marginTop: - Math.round(height / 2),
@@ -83,20 +105,13 @@ AJS.popup = function (width, height, id) {
         AJS.$(".l", shadow).height(height - 17);
         AJS.$(".r", shadow).height(height - 17);
 
-
         return arguments.callee;
-    }(width, height);
+    } (options.width, options.height);
 
     AJS.$("body").append(shadow).append(popup);
 
     popup.hide();
     shadow.hide();
-
-    var keypressListener = function (e) {
-      if (e.keyCode === 27 && popup.is(":visible")) {
-        res.hide();
-      }
-    };
 
     /**
      * Popup object
@@ -116,7 +131,7 @@ AJS.popup = function (width, height, id) {
         */
         show: function () {
             var show = function () {
-                AJS.$(document).keydown(keypressListener);
+                AJS.$(document).keydown(options.keypressListener);
                 popup.show();
                 shadow.show();
                 AJS.dim();
@@ -145,7 +160,7 @@ AJS.popup = function (width, height, id) {
          * @method hide
         */
         hide: function () {
-            AJS.$(document).unbind("keydown", keypressListener);
+            AJS.$(document).unbind("keydown", options.keypressListener);
             this.element.hide();
             shadow.hide();
             AJS.undim();
@@ -548,7 +563,11 @@ AJS.popup = function (width, height, id) {
         this.height = height || 480;
         this.width = width || 640;
         this.id = id;
-        this.popup = AJS.popup(this.width, this.height, this.id);
+        this.popup = AJS.popup({
+            width: this.width,
+            height: this.height,
+            id: this.id
+        });
 
         this.popup.element.addClass("dialog");
         this.page = [];
