@@ -33,6 +33,12 @@
             <version>1.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -49,7 +55,7 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>atlassian-plugin.xml</include>
-                    <include>js/atlassian.js</include>
+                    <include>js/atlassian/atlassian.js</include>
                 </includes>
             </resource>
         </resources>
