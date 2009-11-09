@@ -150,6 +150,9 @@ AJS.dropDown = function (obj, usroptions) {
                 res.links.each(function (i) {
                     AJS.$(this).hover(active(i), res.cleanFocus);
                     AJS.$(this).click(function (e) {
+                        if (e.button || e.metaKey || e.ctrlKey || e.shiftKey) {
+                            return true;
+                        }
                         if (AJS.dropDown.current) {
                             options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
                         }
