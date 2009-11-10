@@ -216,9 +216,9 @@ if (typeof jQuery != "undefined") {
 						escapeMode = true;
 					} else if (message.charAt(i) === "{" && !escapeMode) {
 						message = message.substring(0,i) + message.substring(i, message.length).replace(/\{(\d+)\}/, function (match, argIndex) {
-							var replacement = args[parseInt(argIndex) + 1]  || match;
+							var replacement = args[parseInt(argIndex) + 1].toString()  || match;
 							i = i + replacement.length-1;
-							return replacement;
+							return replacement.toString();
 						});
 					}
 				}
