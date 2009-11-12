@@ -358,7 +358,7 @@ AJS.popup = function (options) {
             (typeof page.ontabchange == "function") && page.ontabchange(tab, cur);
         };
         if (!this.button.click) {
-            AJS.log("atlassian-dialog:Panel:constructor - this.button.click falsy");
+            AJS.log("atlassian-dialog:Panel:constructor - this.button.click false");
             this.button.onclick = onclick;
         }
         else {
