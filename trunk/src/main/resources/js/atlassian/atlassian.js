@@ -206,23 +206,21 @@ if (typeof jQuery != "undefined") {
             * @usage AJS.format("This is a {0} test", "simple");
             */
             format: function (message) {
-				var escapeMode, args = arguments;				
-				for (var i=0; i < message.length; i++) {
-					if (message.charAt(i) === "'" && message.charAt(i+1) === "'") {
-						message = message.substring(0, i) + message.substring(i+1, message.length);
-					} else if (message.charAt(i) === "'" && escapeMode) {
-						escapeMode = false;
-					} else if (message.charAt(i) === "'") {
-						escapeMode = true;
-					} else if (message.charAt(i) === "{" && !escapeMode) {
-						message = message.substring(0,i) + message.substring(i, message.length).replace(/\{(\d+)\}/, function (match, argIndex) {
-							var replacement = args[parseInt(argIndex) + 1].toString()  || match;
-							i = i + replacement.length-1;
-							return replacement;
-						});
-					}
-				}
-                return message;
+                var token = /^((?:(?:[^']*'){2})*?[^']*?)\{(\d+)\}/, // founds numbers in curly braces that are not surrounded by apostrophes
+                    apos = /'(?!')/g; // founds "'", bot not "''"
+                // we are caching RegExps, so will not spend time on recreating them on each call
+                AJS.format = function (message) {
+                    var args = arguments,
+                        res = "",
+                        match = message.match(token);
+                    while (match) {
+                         message = message.substring(match[0].length);
+                         res += match[1].replace(apos, "") + (args.length > ++match[2] ? args[match[2]] : "");
+                         match = message.match(token);
+                    }
+                    return res += message.replace(apos, "");
+                };
+                return AJS.format.apply(AJS, arguments);
             },
             /**
             * Includes firebug lite for debugging in IE. Especially in IE.
@@ -363,7 +361,7 @@ if (typeof jQuery != "undefined") {
                 var keywordsField = (options && options.keywordsField) || "keywords";
                 var camelCaseFlags = (options && options.ignoreForCamelCase) ? "i" : "";
                 var boundaryFlag  = (options && options.matchBoundary) ? "\\b" : "";
-                var splitRegex = (options && options.splitRegex) || /\s+/;
+                var splitRegex = (options && options.splitRegex) || (/\s+/);
 
                 // each word in the input is considered a distinct filter that has to match a keyword in the record
                 var filterWords = search.split(splitRegex);
