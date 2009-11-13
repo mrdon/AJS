@@ -85,8 +85,8 @@ AJS.popup = function (options) {
     }
 
     var applySize = (function (width, height) {
-        options.width = width = width || options.width;
-        options.height = height = height || options.height;
+        options.width = (width = (width || options.width));
+        options.height = (height = (height || options.height));
 
         popup.css({
             marginTop: - Math.round(height / 2),
