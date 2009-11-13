@@ -11,7 +11,7 @@ AJS.dim = function () {
             AJS.dim.dim.css({width: "200%", height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
         }
         AJS.$("body").append(AJS.dim.dim).css("overflow", "hidden");
-        
+
         // Add IFrame shim
         if (AJS.$.browser.msie) {
             AJS.dim.shim = AJS.$('<iframe frameBorder="0" class="blanket-shim" src="javascript:false;"/>');
@@ -141,7 +141,7 @@ AJS.popup = function (options) {
                 // Internet Explorer case
                 var scrollfix = function () {
                     var scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
-                    var marginTop = scrollDistance + (document.documentElement.clientHeight - height)/2;
+                    var marginTop = scrollDistance + (document.documentElement.clientHeight - options.height)/2;
                     popup.css("margin-top", marginTop);
                     shadow.css("margin-top", marginTop);
                 };
