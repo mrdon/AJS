@@ -84,29 +84,29 @@ AJS.popup = function (options) {
         popup.attr("id", options.id);
     }
 
-    var applySize = function (newWidth, newHeight) {
-        var width = newWidth || popup.width() || defaults.width;
-        var height = newHeight || popup.height() || defaults.height;
+    var applySize = (function (width, height) {
+        options.width = width = width || options.width;
+        options.height = height = height || options.height;
 
         popup.css({
-			marginTop: - Math.round(height / 2),
+            marginTop: - Math.round(height / 2),
             marginLeft: - Math.round(width / 2),
-            width: width + "px",
-            height: height + "px",
+            width: width,
+            height: height,
             background: "#fff"
         });
         shadow.css({
             marginTop: - Math.round(height / 2),
             marginLeft: - (Math.round(width / 2) + 16),
-            width: width + 32 + "px",
-            height: height + 29 + "px"
+            width: width + 32,
+            height: height + 29
         });
         AJS.$(".b", shadow).width(width - 26);
         AJS.$(".l", shadow).height(height - 17);
         AJS.$(".r", shadow).height(height - 17);
 
         return arguments.callee;
-    } (options.width, options.height);
+    })(options.width, options.height);
 
     AJS.$("body").append(shadow).append(popup);
 
@@ -121,7 +121,9 @@ AJS.popup = function (options) {
     var res = {
 
         changeSize: function (w, h) {
-            applySize(w , h);
+            if ((w && w != options.width) || (h && h != options.height)) {
+                applySize(w, h);
+            }
             this.show();
         },
 
@@ -827,43 +829,43 @@ AJS.popup = function (options) {
             }
         }
         return res;
-    };	
-	
-	/**
-	 * Updates height of panels, to contain content without the need for scroll bars.
-	 *
-	 * @method updateHeight
-	 */
-	AJS.Dialog.prototype.updateHeight = function () {
-	    var height = 0;
-	    for (var i=0; this.getPanel(i); i++) {
-	        if (this.getPanel(i).body.css({height: "auto", display: "block"}).outerHeight() > height) {
-	            height = this.getPanel(i).body.outerHeight();
-	        }
-	        if (i !== this.page[this.curpage].curtab) {
-	            this.getPanel(i).body.css({display:"none"});
-	        }
-	    }
-	    for (i=0; this.getPanel(i); i++) {
-	        this.getPanel(i).body.css({height: height || this.height});
-	    }
-	    this.page[0].menu.height(height);
-	    this.height = height + 87;
-	    this.popup.changeSize(undefined, height + 87);
-	};
-	
-	/**
-	 * Gets current panel for current page
-	 */
-	AJS.Dialog.prototype.getCurPanel = function () {
-	    return this.getPanel(this.page[this.curpage].curtab);
-	};
-	
-	/**
-	 * Gets current button for current panel of current page
-	 */
-	AJS.Dialog.prototype.getCurPanelButton = function () {
-	    return this.getCurPanel().button;
-	};
-	
+    };  
+    
+    /**
+     * Updates height of panels, to contain content without the need for scroll bars.
+     *
+     * @method updateHeight
+     */
+    AJS.Dialog.prototype.updateHeight = function () {
+        var height = 0;
+        for (var i=0; this.getPanel(i); i++) {
+            if (this.getPanel(i).body.css({height: "auto", display: "block"}).outerHeight() > height) {
+                height = this.getPanel(i).body.outerHeight();
+            }
+            if (i !== this.page[this.curpage].curtab) {
+                this.getPanel(i).body.css({display:"none"});
+            }
+        }
+        for (i=0; this.getPanel(i); i++) {
+            this.getPanel(i).body.css({height: height || this.height});
+        }
+        this.page[0].menu.height(height);
+        this.height = height + 87;
+        this.popup.changeSize(undefined, height + 87);
+    };
+    
+    /**
+     * Gets current panel for current page
+     */
+    AJS.Dialog.prototype.getCurPanel = function () {
+        return this.getPanel(this.page[this.curpage].curtab);
+    };
+    
+    /**
+     * Gets current button for current panel of current page
+     */
+    AJS.Dialog.prototype.getCurPanelButton = function () {
+        return this.getCurPanel().button;
+    };
+    
 })();
