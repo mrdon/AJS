@@ -87,7 +87,7 @@ AJS.dropDown = function (obj, usroptions) {
                 break;
             }
             case 27:{
-                return options.escapeHandler.call(AJS.dropDown.current);
+                return options.escapeHandler.call(AJS.dropDown.current, e);
             }
             case 13:{
                 if (cdd.focused >= 0) {
