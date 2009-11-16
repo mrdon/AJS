@@ -10,7 +10,7 @@ AJS.dim = function () {
         if (AJS.$.browser.msie) {
             AJS.dim.dim.css({width: "200%", height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
         }
-        AJS.$("body").append(AJS.dim.dim).css("overflow", "hidden");
+        AJS.$("body").append(AJS.dim.dim);
 
         // Add IFrame shim
         if (AJS.$.browser.msie) {
@@ -35,7 +35,7 @@ AJS.undim = function () {
         if (AJS.$.browser.msie) {
             AJS.dim.shim.remove();
         }
-        AJS.$("html, body").css("overflow", "");
+        AJS.$("html").css("overflow", "");
         // Safari bug workaround
         if (AJS.$.browser.safari) {
             var top = AJS.$(window).scrollTop();
