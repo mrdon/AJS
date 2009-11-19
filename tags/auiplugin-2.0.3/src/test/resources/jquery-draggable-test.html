@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Testing draggable in IE</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(function () {
+      $.extend($.ui.draggable.prototype, (function (orig) {
+        return {
+          _mouseCapture: function (event) {
+            var result = orig.call(this, event);
+            if (result && $.browser.msie) event.stopPropagation();
+            return result;
+          }
+        };
+      })($.ui.draggable.prototype["_mouseCapture"]));
+      $("li").draggable({'helper': 'clone'});
+    });
+  </script>
+  <style type="text/css" media="screen">
+    ul, li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul {
+      margin: .5em 0 .5em 1em;
+    }
+    li {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<p>This page demonstrates the bug (and the fix) for the <a href="http://dev.jqueryui.com/ticket/4333">nested draggables problem</a> with jQuery UI in Internet Explorer.</p>
+<ul>
+  <li>First item
+    <ul>
+      <li>First first item</li>
+      <li>Second first item</li>
+    </ul>
+  </li>
+  <li>Second item
+    <ul>
+      <li>First second item</li>
+      <li>Second second item</li>
+    </ul>
+  </li>
+  <li>Third item</li>
+  <li>Fourth item</li>
+</ul>
+</body>
+</html>
