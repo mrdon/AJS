@@ -2,20 +2,20 @@
 Note: Please ensure that the data in your JSON url is properly HTML encoded.
 
 USAGE:
-    AJS.$("#autocompleteTextField").autocomplete("/confluence/json/search.action?q=foobar", 2);
+    $("#autocompleteTextField").autocomplete("/confluence/json/search.action?q=foobar", 2);
 */
-(function(){
-    AJS.$.fn.autocomplete = function (url, minlength, callback) {
+(function($){
+    $.fn.autocomplete = function (url, minlength, callback) {
         callback = typeof minlength == "function" ? minlength : (typeof callback == "function" ? callback : function () {});
         minlength = !isNaN(Number(minlength)) ? minlength : 3;
         var input = this;
         input[0].lastSelectedValue = input.val();
         // add autocomplete results
-        var ol = AJS.$(document.createElement("ol"));
+        var ol = $(document.createElement("ol"));
         var offSet = input.offset();
 
         // In Confluence, our body element has a border left width that needs to be accounted for in offset calculations
-        var confluencesBodyBorderLeftWidth = parseInt(AJS.$("body").css("border-left-width")); // border-left-width returns a "px" value so we need parseInt to extract out the value
+        var confluencesBodyBorderLeftWidth = parseInt($("body").css("border-left-width")); // border-left-width returns a "px" value so we need parseInt to extract out the value
         ol.css({
             position: "absolute",
             width: input.outerWidth() - 2 + "px"
@@ -32,7 +32,7 @@ USAGE:
             var currentTextfieldValue = input.val();
 
             if (currentTextfieldValue.length >= minlength && currentTextfieldValue != input[0].lastQuery && currentTextfieldValue != input[0].lastSelectedValue) {
-                AJS.$.getJSON(url + encodeURI(currentTextfieldValue), function (data) {
+                $.getJSON(url + encodeURI(currentTextfieldValue), function (data) {
                     var html = "";
                     currentTextfieldValue = currentTextfieldValue.toLowerCase();
                     var vSplit = currentTextfieldValue.split(" ");
@@ -74,12 +74,12 @@ USAGE:
                         }
                     }
                     ol.html(html);
-                    AJS.$("li", ol).click(function () {
-                    	var value = AJS.$("i.fullDetails", this).html();                    	
+                    $("li", ol).click(function () {
+                    	var value = $("i.fullDetails", this).html();                    	
                     	select(value);
                     }).hover(function () {
-                        AJS.$(".focused").removeClass("focused");
-                        AJS.$(this).addClass("focused");
+                        $(".focused").removeClass("focused");
+                        $(this).addClass("focused");
                     }, function () {});
 
                     ol.show();
@@ -99,26 +99,26 @@ USAGE:
             }
             var actions = {
                 "40": function () { // down key
-                    var li = AJS.$(".focused").removeClass("focused").next();
+                    var li = $(".focused").removeClass("focused").next();
                     if (li.length) {
                         li.addClass("focused");
                     } else {
-                        AJS.$(".autocompleter li:first").addClass("focused");
+                        $(".autocompleter li:first").addClass("focused");
                     }
                 },
                 "38": function () { // up key
-                    var li = AJS.$(".focused").removeClass("focused").prev();
+                    var li = $(".focused").removeClass("focused").prev();
                     if (li.length) {
                         li.addClass("focused");
                     } else {
-                        AJS.$("li:last", ol).addClass("focused");
+                        $("li:last", ol).addClass("focused");
                     }
                 },
                 "27": function () { // escape key
                     ol.hide();
                 },
                 "13": function () { // enter key
-                	var value = AJS.$(".focused i.fullDetails").html();
+                	var value = $(".focused i.fullDetails").html();
                     select(value);
                 },
                 "9": function () { // tab key
@@ -145,7 +145,7 @@ USAGE:
         	if (value) {
               input[0].lastSelectedValue = value;
               input.val(value);
-              var callbackData = {input: input, originalValue: originalValue, value: value, fullName: AJS.$(".focused i.fullName").text(), username: AJS.$(".focused i.username").text()};
+              var callbackData = {input: input, originalValue: originalValue, value: value, fullName: $(".focused i.fullName").text(), username: $(".focused i.username").text()};
               callback(callbackData);
               ol.hide();
             }
