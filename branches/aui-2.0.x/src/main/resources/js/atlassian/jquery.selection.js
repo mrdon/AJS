@@ -1,9 +1,9 @@
-(function () {
+(function ($) {
     if (document.selection) {
         var fixCaretReturn = function (S) {
             return S.replace(/\u000D/g, "");
         };
-        AJS.$.fn.selection = function (value) {
+        $.fn.selection = function (value) {
             var element = this[0];
             this.focus();
             if (!element) {
@@ -20,7 +20,7 @@
                 element.scrollTop = scroll_top;
             }
         };
-        AJS.$.fn.selectionRange = function (start, end) {
+        $.fn.selectionRange = function (start, end) {
             var element = this[0];
             this.focus();
             var range = document.selection.createRange();
@@ -58,7 +58,7 @@
             }
         };
     } else {
-        AJS.$.fn.selection = function (value) {
+        $.fn.selection = function (value) {
             var element = this[0];
             if (!element) {
                 return false;
@@ -81,7 +81,7 @@
                 element.scrollTop = scroll_top;
             }
         };
-        AJS.$.fn.selectionRange = function (start, end) {
+        $.fn.selectionRange = function (start, end) {
             if (start == null) {
                 var res = {
                     start: this[0].selectionStart,
@@ -98,7 +98,7 @@
             }
         };
     }
-    AJS.$.fn.wrapSelection = function (before, after) {
+    $.fn.wrapSelection = function (before, after) {
         this.selection(before + this.selection() + (after || ""));
     };
 })(jQuery);
