@@ -39,8 +39,8 @@ testAjs.addTest("testAjsParamsList", function () {
 });
 testAjs.addTest("testAjsClone", function() {
     var clonedDiv = AJS.clone("#test-container");
-    $("body").append(clonedDiv);
-    var res = $("#test-container").length == 1 && $("div.test").length == 2;
+    AJS.$("body").append(clonedDiv);
+    var res = AJS.$("#test-container").length == 1 && AJS.$("div.test").length == 2;
     clonedDiv.remove();
     return res;
 });
@@ -100,7 +100,7 @@ testAjs.addTest("testDialogPages", function () {
     dlg.addPanel("Test2", "<p>test #2</p>", "panel2");
     dlg.addButton("btnTest2", function () {alert("test2");}, "button2");
 
-    var res = !($(".panel1")[0].offsetHeight + $(".button1")[0].offsetHeight);
+    var res = !(AJS.$(".panel1")[0].offsetHeight + AJS.$(".button1")[0].offsetHeight);
     dlg.remove();
     return res;
 });
@@ -117,7 +117,7 @@ testAjs.addTest("testDialogGotoPage", function () {
     
     dlg.gotoPage(0);
 
-    res = !!($(".panel1")[0].offsetHeight + $(".button1")[0].offsetHeight);
+    res = !!(AJS.$(".panel1")[0].offsetHeight + AJS.$(".button1")[0].offsetHeight);
     dlg.remove();
     return res;    
 });
@@ -131,7 +131,7 @@ testAjs.addTest("testDialogGotoPanel", function () {
     popup.addPanel("Test2", "<p>Test2 text</p>");
     popup.gotoPanel(0, 0);
     popup.show();
-    res = ($("li.selected", popup.page[0].element).text() == "First" && $("h2", popup.page[0].element).text() == "Insert Macro");
+    res = (AJS.$("li.selected", popup.page[0].element).text() == "First" && AJS.$("h2", popup.page[0].element).text() == "Insert Macro");
 
     popup.remove();
     return res;
@@ -142,7 +142,7 @@ testAjs.addTest("testDialogRemovePanel", function () {
     .addPanel("First", "<p></p>")
     .addPanel("Second", "<p></p>")
     .getPanel(0).remove();
-    res = ($("ul.page-menu li").length == 1);
+    res = (AJS.$("ul.page-menu li").length == 1);
     popup.remove();
     return res;    
 });
@@ -151,7 +151,7 @@ testAjs.addTest("testDialogRemovePage", function () {
     popup.addPage();
     popup.addPage();
     popup.getPage(0).remove();
-    res = ($(".dialog-components").length == 2);
+    res = (AJS.$(".dialog-components").length == 2);
     popup.remove();
     return res;    
 });
@@ -168,7 +168,7 @@ testAjs.addTest("testDialogPrevPage", function () {
     
     dlg.prevPage();
 
-    res = !!($(".panel1")[0].offsetHeight + $(".button1")[0].offsetHeight);
+    res = !!(AJS.$(".panel1")[0].offsetHeight + AJS.$(".button1")[0].offsetHeight);
     dlg.remove();
     return res;
     
@@ -178,7 +178,7 @@ testAjs.addTest("testDialogMenuHidden", function() {
     var popup = new AJS.Dialog(860, 530, "test-dialog");
     popup.addPanel("First", "<p></p>", "panel1").show();
     
-    var res = $("#test-dialog .page-menu").css("display") == "none";
+    var res = AJS.$("#test-dialog .page-menu").css("display") == "none";
     popup.remove();
     return res;
 });
@@ -188,7 +188,7 @@ testAjs.addTest("testDialogPosition", function() {
     var popup = new AJS.Dialog(860, 530, "test-dialog");
     popup.addPanel("First", "<p></p>", "panel1").show();
     
-    var res = $("#test-dialog").offset().top > document.documentElement.scrollTop;
+    var res = AJS.$("#test-dialog").offset().top > document.documentElement.scrollTop;
     popup.remove();
     return res;
 });
