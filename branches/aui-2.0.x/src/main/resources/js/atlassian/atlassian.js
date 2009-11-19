@@ -438,6 +438,3 @@ else {
     console.show = function(){};
 }
 
-// ensure $ gets namespaced with AJS.$
-window.$ == window.jQuery && (window.$ = 0);
-
