@@ -53,9 +53,9 @@
     
     <web-resource name="jQuery Compatibility" key="jquery-compatibility">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        <resource type="download" name="js/jquery/jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <resource type="download" name="js/external/jquery/jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
     </web-resource>
-    
+
     <!-- Every part of jQuery UI JS that we don't offer by default -->
     <web-resource name="jQuery UI Other" key="jquery-ui-other">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
