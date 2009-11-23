@@ -33,7 +33,7 @@
         
         <resource type="download" name="raphael.js" location="js/external/raphael/raphael-1.2.1.min.js"/>
         <resource type="download" name="jquery.js" location="js/external/jquery/jquery-1.3.2.min.js"/>
-        <resource type="download" name="js/external/jquery-compatibility.js" location="js/external/jquery-compatibility.js"/>
+        <resource type="download" name="js/external/jquery/jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
         <resource type="download" name="js/external/jquery/jquery.ui-1.7.2.min.js" location="js/external/jquery/jquery-ui-1.7.2.min.js"/>
         <resource type="download" name="js/external/jquery/jquery-ui-1.7-bug-fixes.js" location="js/external/jquery/jquery-ui-1.7-bug-fixes.js"/>
         <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
@@ -54,7 +54,7 @@
     
     <web-resource name="jQuery Compatibility" key="jquery-compatibility">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        <resource type="download" name="js/jquery/jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <resource type="download" name="js/external/jquery/jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
     </web-resource>
     
     <!-- Every part of jQuery UI JS that we don't offer by default -->
