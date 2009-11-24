@@ -556,20 +556,28 @@ AJS.popup = function (options) {
      * @class Dialog
      * @namespace AJS
      * @constructor
-     * @param width {number} dialog width in pixels
+     * @param width {number} dialog width in pixels, or an object containing the Dialog parameters
      * @param height {number} dialog height in pixels
      * @param id {number} [optional] dialog id
      * @private
     */
     AJS.Dialog = function (width, height, id) {
+        var options = {};
+        if (!+width) {
+            options = Object(width);
+            width = options.width;
+            height = options.height;
+            id = options.id;
+        }
         this.height = height || 480;
         this.width = width || 640;
         this.id = id;
-        this.popup = AJS.popup({
+        options = AJS.$.extend({}, options, {
             width: this.width,
             height: this.height,
             id: this.id
         });
+        this.popup = AJS.popup(options);
 
         this.popup.element.addClass("dialog");
         this.page = [];
