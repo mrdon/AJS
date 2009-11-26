@@ -45,7 +45,6 @@ body {
 }
 .dialog .button-panel {
     *bottom: auto;
-    *top: 92%; 
     *z-index: 3001;
 }
 
