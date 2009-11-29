@@ -33,9 +33,6 @@ an asterisk (*) * eg:
     *margin: 0 0 4px 2px;
 }
 * **/ 
-body {
-    *overflow: hidden;
-}
 .blanket {
     *height: 100px; 
     *position: absolute;
