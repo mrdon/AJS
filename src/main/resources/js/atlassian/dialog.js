@@ -454,6 +454,7 @@ AJS.popup = function (options) {
         dialog.popup.element.append(this.element.append(this.menu).append(this.body));
         dialog.page[dialog.page.length] = this;
     };
+
     /**
      * Size updater for contents of the page. For internal use
      * @method recalcSize
@@ -729,6 +730,11 @@ AJS.popup = function (options) {
     */
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
+        if (AJS.$.browser.msie) {
+            var buttonpanel = AJS.$(".button-panel", this.popup.element);
+            buttonpanel.css("top", this.popup.element.height() - buttonpanel.outerHeight());
+        }
+        
         return this;
     };
     /**
