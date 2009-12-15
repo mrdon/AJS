@@ -10,11 +10,11 @@ AJS.dim = function () {
         if (AJS.$.browser.msie) {
             AJS.dim.dim.css({width: "200%", height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
         }
-        AJS.$("body").append(AJS.dim.dim).css("overflow", "hidden");
-        
+        AJS.$("body").append(AJS.dim.dim);
+
         // Add IFrame shim
         if (AJS.$.browser.msie) {
-            AJS.dim.shim = AJS.$('<iframe class="blanket-shim" src="javascript:false;"/>');
+            AJS.dim.shim = AJS.$('<iframe frameBorder="0" class="blanket-shim" src="javascript:false;"/>');
             AJS.dim.shim.css({height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
             AJS.$("body").append(AJS.dim.shim);
         }
@@ -35,7 +35,7 @@ AJS.undim = function () {
         if (AJS.$.browser.msie) {
             AJS.dim.shim.remove();
         }
-        AJS.$("html, body").css("overflow", "");
+        AJS.$("html").css("overflow", "");
         // Safari bug workaround
         if (AJS.$.browser.safari) {
             var top = AJS.$(window).scrollTop();
@@ -43,43 +43,75 @@ AJS.undim = function () {
         }
     }
 };
+
 /**
- * Creates a generic popup
- * @method poup
+ * Creates a generic popup. Usage:
+ * new AJS.popup({
+ *     width: 800,
+ *     height: 400,
+ *     id: "image-dialog"
+ * });
+ * @method popup
  * @namespace AJS
- * @param width {number} width of the popup
- * @param height {number} height of the popup
- * @param id {number} [optional] id of the popup
+ * @param options {object} [optional] Permitted options and defaults are as follows: width (800), height (600), keypressListener (closes dialog on ESC).
  * @return {object} popup object
 */
-AJS.popup = function (width, height, id) {
-    var shadow = AJS.$('<div class="shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>');
-    var popup = AJS("div").addClass("popup").css({
-        margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2) + "px",
-        width: width + "px",
-        height: height + "px",
-        background: "#fff"
-    });
-    if (id) {
-        popup.attr("id", id);
+AJS.popup = function (options) {
+    var defaults = {
+        width: 800,
+        height: 600,
+        keypressListener: function (e) {
+            if (e.keyCode === 27 && popup.is(":visible")) {
+                res.hide();
+            }
+        }
+    };
+    // for backwards-compatibility
+    if (typeof options != "object") {
+        options = {
+            width: arguments[0],
+            height: arguments[1],
+            id: arguments[2]
+        };
     }
-    AJS.$("body").append(shadow);
-    shadow.css({
-        margin: "-" + Math.round(height / 2) + "px 0 0 -" + Math.round(width / 2 + 16) + "px",
-        width: width + 32 + "px",
-        height: height + 29 + "px"
-    });
-    AJS.$(".b", shadow).css("width", width - 26 + "px");
-    AJS.$(".l, .r", shadow).css("height", height - 17 + "px");
-    AJS.$("body").append(popup);
+
+    options = AJS.$.extend({}, defaults, options);
+
+    var shadow = AJS.$('<div class="shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>');
+    var popup = AJS("div").addClass("popup");
+
+    if (options.id) {
+        popup.attr("id", options.id);
+    }
+
+    var applySize = function (newWidth, newHeight) {
+        var width = newWidth || popup.width() || defaults.width;
+        var height = newHeight || popup.height() || defaults.height;
+
+        popup.css({
+			marginTop: - Math.round(height / 2),
+            marginLeft: - Math.round(width / 2),
+            width: width + "px",
+            height: height + "px",
+            background: "#fff"
+        });
+        shadow.css({
+            marginTop: - Math.round(height / 2),
+            marginLeft: - (Math.round(width / 2) + 16),
+            width: width + 32 + "px",
+            height: height + 29 + "px"
+        });
+        AJS.$(".b", shadow).width(width - 26);
+        AJS.$(".l", shadow).height(height - 17);
+        AJS.$(".r", shadow).height(height - 17);
+
+        return arguments.callee;
+    } (options.width, options.height);
+
+    AJS.$("body").append(shadow).append(popup);
+
     popup.hide();
     shadow.hide();
-    
-    var keypressListener = function (e) {
-      if (e.keyCode === 27 && popup.is(":visible")) {
-        res.hide();
-      }
-    };
 
     /**
      * Popup object
@@ -87,24 +119,29 @@ AJS.popup = function (width, height, id) {
      * @static
     */
     var res = {
+
+        changeSize: function (w, h) {
+            applySize(w , h);
+            this.show();
+        },
+
         /**
          * Makes popup visible
          * @method show
         */
         show: function () {
             var show = function () {
-                scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
+                AJS.$(document).keydown(options.keypressListener);
                 popup.show();
                 shadow.show();
                 AJS.dim();
             };
-            AJS.$(document).keypress(keypressListener);
             show();
             if (popup.css("position") == "absolute") {
                 // Internet Explorer case
                 var scrollfix = function () {
-                    scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
-                    var marginTop = scrollDistance + (document.documentElement.clientHeight - height)/2;
+                    var scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
+                    var marginTop = scrollDistance + (document.documentElement.clientHeight - options.height)/2;
                     popup.css("margin-top", marginTop);
                     shadow.css("margin-top", marginTop);
                 };
@@ -123,7 +160,7 @@ AJS.popup = function (width, height, id) {
          * @method hide
         */
         hide: function () {
-            AJS.$(document).unbind("keypress", keypressListener);
+            AJS.$(document).unbind("keydown", options.keypressListener);
             this.element.hide();
             shadow.hide();
             AJS.undim();
@@ -143,10 +180,9 @@ AJS.popup = function (width, height, id) {
             this.element = null;
         }
     };
-    
+
     return res;
 };
-
 
 // Usage:
 // var popup = new AJS.Dialog(860, 530);
@@ -322,7 +358,7 @@ AJS.popup = function (width, height, id) {
             (typeof page.ontabchange == "function") && page.ontabchange(tab, cur);
         };
         if (!this.button.click) {
-            AJS.log("atlassian-dialog:Panel:constructor - this.button.click falsy");
+            AJS.log("atlassian-dialog:Panel:constructor - this.button.click false");
             this.button.onclick = onclick;
         }
         else {
@@ -418,7 +454,6 @@ AJS.popup = function (width, height, id) {
         dialog.popup.element.append(this.element.append(this.menu).append(this.body));
         dialog.page[dialog.page.length] = this;
     };
-
     /**
      * Size updater for contents of the page. For internal use
      * @method recalcSize
@@ -519,16 +554,28 @@ AJS.popup = function (width, height, id) {
      * @class Dialog
      * @namespace AJS
      * @constructor
-     * @param width {number} dialog width in pixels
+     * @param width {number} dialog width in pixels, or an object containing the Dialog parameters
      * @param height {number} dialog height in pixels
      * @param id {number} [optional] dialog id
      * @private
     */
     AJS.Dialog = function (width, height, id) {
+        var options = {};
+        if (!+width) {
+            options = Object(width);
+            width = options.width;
+            height = options.height;
+            id = options.id;
+        }
         this.height = height || 480;
         this.width = width || 640;
         this.id = id;
-        this.popup = AJS.popup(this.width, this.height, this.id);
+        options = AJS.$.extend({}, options, {
+            width: this.width,
+            height: this.height,
+            id: this.id
+        });
+        this.popup = AJS.popup(options);
 
         this.popup.element.addClass("dialog");
         this.page = [];
@@ -682,11 +729,6 @@ AJS.popup = function (width, height, id) {
     */
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
-        if (AJS.$.browser.msie) {
-            var buttonpanel = AJS.$(".button-panel", this.popup.element);
-            buttonpanel.css("top", this.popup.element.height() - buttonpanel.outerHeight());
-        }
-        
         return this;
     };
     /**
@@ -793,5 +835,43 @@ AJS.popup = function (width, height, id) {
             }
         }
         return res;
-    };
+    };	
+	
+	/**
+	 * Updates height of panels, to contain content without the need for scroll bars.
+	 *
+	 * @method updateHeight
+	 */
+	AJS.Dialog.prototype.updateHeight = function () {
+	    var height = 0;
+	    for (var i=0; this.getPanel(i); i++) {
+	        if (this.getPanel(i).body.css({height: "auto", display: "block"}).outerHeight() > height) {
+	            height = this.getPanel(i).body.outerHeight();
+	        }
+	        if (i !== this.page[this.curpage].curtab) {
+	            this.getPanel(i).body.css({display:"none"});
+	        }
+	    }
+	    for (i=0; this.getPanel(i); i++) {
+	        this.getPanel(i).body.css({height: height || this.height});
+	    }
+	    this.page[0].menu.height(height);
+	    this.height = height + 87;
+	    this.popup.changeSize(undefined, height + 87);
+	};
+	
+	/**
+	 * Gets current panel for current page
+	 */
+	AJS.Dialog.prototype.getCurPanel = function () {
+	    return this.getPanel(this.page[this.curpage].curtab);
+	};
+	
+	/**
+	 * Gets current button for current panel of current page
+	 */
+	AJS.Dialog.prototype.getCurPanelButton = function () {
+	    return this.getCurPanel().button;
+	};
+	
 })();
