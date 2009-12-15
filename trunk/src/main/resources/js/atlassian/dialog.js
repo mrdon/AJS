@@ -465,7 +465,9 @@ AJS.popup = function (options) {
         var headerHeight = this.header ? 43 : 0;
         var panelHeight = this.buttonpanel ? 43 : 0;
         for (var i = this.panel.length; i--;) {
-            this.panel[i].body.css("height", this.dialog.height - headerHeight - panelHeight - this.panel[i].padding * 2 + "px");
+            var newHeight = this.dialog.height - headerHeight - panelHeight - this.panel[i].padding * 2;
+            this.panel[i].body.css("height", newHeight);
+            this.menu.css("height", newHeight - parseFloat(this.menu.css("padding-top")));
         }
     };
     /**
@@ -732,11 +734,6 @@ AJS.popup = function (options) {
     */
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
-        if (AJS.$.browser.msie) {
-            var buttonpanel = AJS.$(".button-panel", this.popup.element);
-            buttonpanel.css("top", this.popup.element.height() - buttonpanel.outerHeight());
-        }
-        
         return this;
     };
     /**
