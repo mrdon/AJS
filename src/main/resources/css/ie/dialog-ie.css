@@ -41,11 +41,6 @@ an asterisk (*) * eg:
     *position: absolute;
 }
 
-.dialog .button-panel {
-    *bottom: auto;
-    *z-index: 3001;
-}
-
 
 /** * Fixes for IE6 only * - each property *must* be prefixed with an
 underscore (_) * eg: 
