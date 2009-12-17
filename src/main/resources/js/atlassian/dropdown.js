@@ -133,10 +133,21 @@ AJS.dropDown = function (obj, usroptions) {
             AJS.dropDown.current.$[0].focused = i;
         };
     };
+
+    var handleClickSelection = function (e) {
+        if (e.button || e.metaKey || e.ctrlKey || e.shiftKey) {
+            return true;
+        }
+        if (AJS.dropDown.current) {
+            options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
+        }
+    };
+
     dd.each(function () {
         var cdd = this, $cdd = AJS.$(this), res;
         var methods = {
             reset: function () {
+                var oldLinks = res && res.links || [];
                 res = AJS.$.extend(res || {}, {
                     $: $cdd,
                     links: AJS.$(options.item || "li:has(a)", cdd),
@@ -148,15 +159,11 @@ AJS.dropDown = function (obj, usroptions) {
                     }
                 });
                 res.links.each(function (i) {
-                    AJS.$(this).hover(active(i), res.cleanFocus);
-                    AJS.$(this).click(function (e) {
-                        if (e.button || e.metaKey || e.ctrlKey || e.shiftKey) {
-                            return true;
-                        }
-                        if (AJS.dropDown.current) {
-                            options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
-                        }
-                    });
+                    if (AJS.$.inArray(this, oldLinks) === -1) {
+                        $this = AJS.$(this);
+                        $this.hover(active(i), res.cleanFocus);
+                        $this.unbind("click", handleClickSelection).click(handleClickSelection);
+                    }
                 });
                 return arguments.callee;
             }(),
