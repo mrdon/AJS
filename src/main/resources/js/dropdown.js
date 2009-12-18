@@ -160,7 +160,7 @@ AJS.dropDown = function (obj, usroptions) {
                 });
                 res.links.each(function (i) {
                     if (AJS.$.inArray(this, oldLinks) === -1) {
-                        $this = AJS.$(this);
+                        var $this = AJS.$(this);
                         $this.hover(active(i), res.cleanFocus);
                         $this.unbind("click", handleClickSelection).click(handleClickSelection);
                     }
