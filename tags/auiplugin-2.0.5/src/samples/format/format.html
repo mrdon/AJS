@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Untitled Document</title>
+		<script src="../../main/resources/js/external/jquery/jquery-1.3.2.js"></script>
+		<script src="../../main/resources/js/atlassian/atlassian.js"></script>
+	</head>
+	<body>
+		
+		<p><code>AJS.format("{0} {1} {0}", 1, "test")</code></p>
+		<p><code>AJS.format("{0} {1} {0}", "1", "test");</code></p>
+		
+		<script>
+			jQuery("code").each(function () {
+				var result = eval(jQuery(this).text());
+				jQuery("<strong>").text(" = " + result).insertAfter(jQuery(this));
+			})
+		</script>
+		
+	</body>
+</html>
