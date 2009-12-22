@@ -216,7 +216,31 @@
                     </commands>
                 </configuration>
             </plugin>
-		    <!--END - Support Maven CL plugin for rapid development-->
+            <!--END - Support Maven CL plugin for rapid development-->
+            <!--START - Minification -->
+            <plugin>
+                <groupId>net.sf.alchim</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compress</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Everything on one line -->
+                    <linebreakpos>-1</linebreakpos>
+                    <!-- Turning off JSlint warnings -->
+                    <jswarn>false</jswarn>
+                    <excludes>
+                        <exclude>*.xml</exclude>
+                        <exclude>**/src/test/*</exclude>
+                        <exclude>**/src/samples/*</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <!--END - Minification -->
         </plugins>
         <pluginManagement>
             <plugins>
