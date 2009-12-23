@@ -1,4 +1,5 @@
-/* jQuery UI Droppable 1.7.2
+/*
+ * jQuery UI Droppable 1.7.2
  *
  * Copyright (c) 2009 AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)

@@ -43,7 +43,7 @@ You must also set up a style for the 'complete' class.
 
             var $incompleteBar = $(document.createElement("div"));
             $incompleteBar.attr("id", incompleteBarId);
-            $incompleteBar.css({width: "90%", border: "solid 1px #ccc", float: "left", "margin-right": "0.5em"});
+            $incompleteBar.css({width: "90%", border: "solid 1px #ccc", "float": "left", "margin-right": "0.5em"});
             $incompleteBar.addClass("progress-background-color");
 
             var $completeBar = $(document.createElement("div"));
