@@ -219,7 +219,6 @@ AJS.dropDown = function (obj, usroptions) {
         };
 
         res.reset = methods.reset();
-		console.log("KEYDOWN");
         res.show = function (method) {
             hider();
             AJS.dropDown.current = this;
