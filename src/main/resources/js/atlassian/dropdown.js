@@ -108,9 +108,11 @@ AJS.dropDown = function (obj, usroptions) {
         if (cdd.focused > AJS.dropDown.current.links.length - 1) {
             cdd.focused = 0;
         }
+		
         if (AJS.dropDown.current.links.length) {
             AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
         }
+		
         e.stopPropagation();
         e.preventDefault();
         return false;
@@ -142,12 +144,26 @@ AJS.dropDown = function (obj, usroptions) {
             options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
         }
     };
+	
+	var isEventsBound = function (el) {
+        var bound = false;
+        if (el.data("events")) {
+            jQuery.each(el.data("events"), function(i, handler){
+                jQuery.each(handler, function (type, handler) {
+                    if (handleClickSelection === handler) {
+                        bound = true;
+                        return false;
+                    }
+                });
+            });
+        }
+        return bound;
+    };
 
     dd.each(function () {
         var cdd = this, $cdd = AJS.$(this), res;
         var methods = {
             reset: function () {
-                var oldLinks = res && res.links || [];
                 res = AJS.$.extend(res || {}, {
                     $: $cdd,
                     links: AJS.$(options.item || "li:has(a)", cdd),
@@ -159,10 +175,10 @@ AJS.dropDown = function (obj, usroptions) {
                     }
                 });
                 res.links.each(function (i) {
-                    if (AJS.$.inArray(this, oldLinks) === -1) {
-                        var $this = AJS.$(this);
+                    var $this = AJS.$(this);
+                    if (!isEventsBound($this)) {
                         $this.hover(active(i), res.cleanFocus);
-                        $this.unbind("click", handleClickSelection).click(handleClickSelection);
+                        $this.click(handleClickSelection);
                     }
                 });
                 return arguments.callee;
@@ -203,7 +219,7 @@ AJS.dropDown = function (obj, usroptions) {
         };
 
         res.reset = methods.reset();
-
+		console.log("KEYDOWN");
         res.show = function (method) {
             hider();
             AJS.dropDown.current = this;
@@ -212,6 +228,7 @@ AJS.dropDown = function (obj, usroptions) {
             this.timer = setTimeout(function () {
                 $doc.click(hider);
             }, 0);
+			
             $doc.keydown(movefocus);
             if (options.firstSelected && this.links[0]) {
                 active(0).call(this.links[0]);
