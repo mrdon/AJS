@@ -23,7 +23,7 @@ USAGE:
         ol.addClass("autocompleter");
         this.after(ol);
         ol.css({
-            margin: (Math.abs(this.offset().left - ol.offset().left) >= Math.abs(this.offset().top - ol.offset().top)) ? 
+            margin: (Math.abs(this.offset().left - ol.offset().left) >= Math.abs(this.offset().top - ol.offset().top)) ?
                         input.outerHeight() + "px 0 0 -" + input.outerWidth() + "px" :
                         "-1px 0 0 0"
         });
@@ -34,8 +34,7 @@ USAGE:
         }
         function suggest() {
             var currentTextfieldValue = input.val();
-
-            if (currentTextfieldValue.length >= minlength && currentTextfieldValue != input[0].lastQuery && currentTextfieldValue != input[0].lastSelectedValue) {
+            if (currentTextfieldValue.length >= minlength && currentTextfieldValue != input[0].lastSelectedValue) {
                 $.getJSON(url + encodeURI(currentTextfieldValue), function (data) {
                     var html = "";
                     currentTextfieldValue = currentTextfieldValue.toLowerCase();
