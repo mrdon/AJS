@@ -28,6 +28,10 @@ USAGE:
                         "-1px 0 0 0"
         });
         ol.hide();
+        function hideDropDown() {
+            ol.hide();
+            $(document).unbind("click", hideDropDown);
+        }
         function suggest() {
             var currentTextfieldValue = input.val();
 
@@ -74,14 +78,17 @@ USAGE:
                         }
                     }
                     ol.html(html);
-                    $("li", ol).click(function () {
-                    	var value = $("i.fullDetails", this).html();                    	
+                    $("li", ol).click(function (e) {
+                        e.stopPropagation();
+                    	var value = $("i.fullDetails", this).html();
                     	select(value);
                     }).hover(function () {
                         $(".focused").removeClass("focused");
                         $(this).addClass("focused");
                     }, function () {});
 
+                    $(document).click(hideDropDown);
+                    
                     ol.show();
                 });
 
@@ -89,7 +96,7 @@ USAGE:
                 // this is outside of the asynchronous block intentionally (so are we not at the mercy of async requests coming back out of order)
                 input[0].lastQuery = currentTextfieldValue;
             } else if (currentTextfieldValue.length < minlength) {
-                ol.hide();
+                hideDropDown();
             }
         };
         input.keydown(function (e) {
@@ -115,7 +122,7 @@ USAGE:
                     }
                 },
                 "27": function () { // escape key
-                    ol.hide();
+                    hideDropDown();
                 },
                 "13": function () { // enter key
                 	var value = $(".focused i.fullDetails").html();
@@ -133,8 +140,6 @@ USAGE:
                 actions[e.keyCode]();
             }
             this.timer = setTimeout(suggest, 300);
-        }).blur(function (e) {
-            setTimeout(function () {ol.hide();}, 100);
         });
 
         // value has been introduced as a parameter due to inexplicable behaviour using the same value
@@ -147,7 +152,7 @@ USAGE:
               input.val(value);
               var callbackData = {input: input, originalValue: originalValue, value: value, fullName: $(".focused i.fullName").text(), username: $(".focused i.username").text()};
               callback(callbackData);
-              ol.hide();
+              hideDropDown();
             }
         }
     };
