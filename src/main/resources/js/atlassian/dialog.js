@@ -154,6 +154,7 @@ AJS.popup = function (options) {
             } else {
                 this.show = show;
             }
+			AJS.popup.current = this;
         },
         /**
          * Makes popup invisible
@@ -164,6 +165,7 @@ AJS.popup = function (options) {
             this.element.hide();
             shadow.hide();
             AJS.undim();
+			AJS.popup.current = null;
         },
         /**
          * jQuery object, representing popup DOM element
