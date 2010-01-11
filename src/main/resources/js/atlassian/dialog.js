@@ -212,8 +212,7 @@ AJS.popup = function (options) {
     */
     function Button(page, label, onclick, className) {
         if (!page.buttonpanel) {
-            page.buttonpanel = AJS("div").addClass("button-panel");
-            page.element.append(page.buttonpanel);
+            page.addButtonPanel();
         }
         this.page = page;
         this.onclick = onclick;
@@ -472,6 +471,16 @@ AJS.popup = function (options) {
             this.menu.css("height", newHeight - parseFloat(this.menu.css("padding-top")));
         }
     };
+	
+	/**
+     * Adds a button panel to the bottom of dialog
+     * @method addButtonPanel
+    */
+	Page.prototype.addButtonPanel = function () {
+		this.buttonpanel = AJS("div").addClass("button-panel");
+        this.element.append(this.buttonpanel);
+	};
+	
     /**
      * Method for adding new panel to the page
      * @method addPanel
@@ -616,6 +625,17 @@ AJS.popup = function (options) {
         this.page[this.curpage].addButton(label, onclick, className);
         return this;
     };
+	
+	/**
+     * Method for adding new button panel to the current page
+     * @return {object} the dialog
+    */
+    AJS.Dialog.prototype.addButtonPanel = function () {
+        this.page[this.curpage].addButtonPanel();
+        return this;
+    };
+	
+	
     /**
      * Method for adding new panel to the current page
      * @method addPanel
