@@ -77,7 +77,6 @@ AJS.popup = function (options) {
 
     options = AJS.$.extend({}, defaults, options);
 
-    var shadow = AJS.$('<div class="shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>');
     var popup = AJS("div").addClass("popup");
 
     if (options.id) {
@@ -95,23 +94,13 @@ AJS.popup = function (options) {
             height: height,
             background: "#fff"
         });
-        shadow.css({
-            marginTop: - Math.round(height / 2),
-            marginLeft: - (Math.round(width / 2) + 16),
-            width: width + 32,
-            height: height + 29
-        });
-        AJS.$(".b", shadow).width(width - 26);
-        AJS.$(".l", shadow).height(height - 17);
-        AJS.$(".r", shadow).height(height - 17);
 
         return arguments.callee;
     })(options.width, options.height);
 
-    AJS.$("body").append(shadow).append(popup);
+    AJS.$("body").append(popup);
 
     popup.hide();
-    shadow.hide();
 
     /**
      * Popup object
@@ -135,7 +124,6 @@ AJS.popup = function (options) {
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
                 popup.show();
-                shadow.show();
                 AJS.dim();
             };
             show();
@@ -145,7 +133,6 @@ AJS.popup = function (options) {
                     var scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
                     var marginTop = scrollDistance + (document.documentElement.clientHeight - options.height)/2;
                     popup.css("margin-top", marginTop);
-                    shadow.css("margin-top", marginTop);
                 };
                 scrollfix();
                 AJS.$(window).load(scrollfix);
@@ -156,6 +143,8 @@ AJS.popup = function (options) {
             } else {
                 this.show = show;
             }
+            var offset = popup.offset();
+            AJS.popup.shadow = Raphael.shadow(offset.left, offset.top, options.width, options.height);
 			AJS.popup.current = this;
         },
         /**
@@ -165,7 +154,7 @@ AJS.popup = function (options) {
         hide: function () {
             AJS.$(document).unbind("keydown", options.keypressListener);
             this.element.hide();
-            shadow.hide();
+            AJS.popup.shadow.remove();
             AJS.undim();
 			AJS.popup.current = null;
         },
@@ -179,7 +168,7 @@ AJS.popup = function (options) {
          * @method remove
         */
         remove: function () {
-            shadow.remove();
+            AJS.popup.shadow.remove();
             popup.remove();
             this.element = null;
         }

@@ -8,67 +8,11 @@
     width: 100%;
     z-index: 2500;
 }
-.shadow,
 .popup {
     left: 50%;
     position: fixed;
     top: 50%;
-}
-.popup {
     z-index: 3000;
-}
-.shadow {
-    z-index: 2999;
-}
-.shadow * {
-    position: absolute;
-}
-.shadow .tl {
-    background: url(images/shadow/lt.png);
-    height: 17px;
-    left: 0;
-    top: 0;
-    width: 16px;
-}
-.shadow .tr {
-    background: url(images/shadow/rt.png);
-    height: 17px;
-    right: 0;
-    top: 0;
-    width: 16px;
-}
-.shadow .br {
-    background: url(images/shadow/rb.png);
-    bottom: 0;
-    height: 29px;
-    right: 0;
-    width: 29px;
-}
-.shadow .bl {
-    background: url(images/shadow/lb.png);
-    bottom: 0;
-    height: 29px;
-    left: 0;
-    width: 29px;
-}
-.shadow .b {
-    background: url(images/shadow/b.png);
-    bottom: 0;
-    height: 29px;
-    left: 29px;
-    width: 29px;
-}
-.shadow .l {
-    background: url(images/shadow/l.png);
-    left: 0;
-    top: 17px;
-    width: 16px;
-}
-.shadow .r {
-    background: url(images/shadow/r.png);
-    right: 0;
-    top: 17px;
-    width: 16px;
 }
 .dialog {
     border: 1px solid #666;
