@@ -124,6 +124,20 @@ AJS.popup = function (options) {
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
                 popup.show();
+
+                // add Raphaël shadow
+                if (AJS.popup.shadow) {
+                    AJS.popup.shadow.remove();
+                }
+                AJS.popup.shadow = Raphael.shadow(0, 0, options.width, options.height);
+                AJS.$(AJS.popup.shadow.canvas).css({
+                    left: "50%",
+                    position: "absolute",
+                    marginLeft: - Math.round(options.width / 2 + 10),
+                    marginTop: - Math.round(options.height / 2 ),
+                    top: "50%"
+                });
+
                 AJS.dim();
             };
             show();
@@ -143,8 +157,6 @@ AJS.popup = function (options) {
             } else {
                 this.show = show;
             }
-            var offset = popup.offset();
-            AJS.popup.shadow = Raphael.shadow(offset.left, offset.top, options.width, options.height);
 			AJS.popup.current = this;
         },
         /**
