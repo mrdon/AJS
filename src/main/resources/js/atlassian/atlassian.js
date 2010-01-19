@@ -336,9 +336,7 @@ if (typeof jQuery != "undefined") {
                 };
             },
             escape: function (string) {
-                return escape(string).replace(/%u\w{4}/gi, function (w) {
-                    return unescape(w);
-                });
+                return encodeURIComponent(string);
             },
 
             /**
