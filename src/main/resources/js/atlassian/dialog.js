@@ -1,4 +1,3 @@
-
 /**
  * Covers screen with semitransparent DIV
  * @method dim
@@ -18,7 +17,7 @@ AJS.dim = function () {
             AJS.dim.shim.css({height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
             AJS.$("body").append(AJS.dim.shim);
         }
-        
+
         AJS.$("html").css("overflow", "hidden");
     }
 };
@@ -123,6 +122,7 @@ AJS.popup = function (options) {
         show: function () {
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
+                AJS.popup.current = this;
                 popup.show();
 
                 // add Raphaël shadow
@@ -140,7 +140,7 @@ AJS.popup = function (options) {
 
                 AJS.dim();
             };
-            show();
+            show.call(this);
             if (popup.css("position") == "absolute") {
                 // Internet Explorer case
                 var scrollfix = function () {
@@ -151,13 +151,12 @@ AJS.popup = function (options) {
                 scrollfix();
                 AJS.$(window).load(scrollfix);
                 this.show = function () {
-                    show();
+                    show.call(this);
                     scrollfix();
                 };
             } else {
                 this.show = show;
             }
-			AJS.popup.current = this;
         },
         /**
          * Makes popup invisible
@@ -260,7 +259,7 @@ AJS.popup = function (options) {
         };
     }
     /**
-     * Moves item left in the hierarchy 
+     * Moves item left in the hierarchy
      * @method moveUp
      * @method moveLeft
      * @param step {number} how many items to move, default is 1
@@ -268,7 +267,7 @@ AJS.popup = function (options) {
     */
     Button.prototype.moveUp = Button.prototype.moveLeft = itemMove("left", "button");
     /**
-     * Moves item right in the hierarchy 
+     * Moves item right in the hierarchy
      * @method moveDown
      * @method moveRight
      * @param step {number} how many items to move, default is 1
@@ -326,16 +325,16 @@ AJS.popup = function (options) {
         if (!(reference instanceof AJS.$)) {
             reference = AJS.$(reference);
         }
-                
+
         this.dialog = page.dialog;
         this.page = page;
         this.id = page.panel.length;
         this.button = AJS("button").html(title);
-        
+
         if (panelButtonId) {
             this.button[0].id = panelButtonId;
         }
-        
+
         this.item = AJS("li").append(this.button);
         this.body = AJS("div").append(reference).addClass("panel-body").css("height", page.dialog.height + "px");
         this.padding = 10;
@@ -383,7 +382,7 @@ AJS.popup = function (options) {
         this.button.click();
     };
     /**
-     * Moves item left in the hierarchy 
+     * Moves item left in the hierarchy
      * @method moveUp
      * @method moveLeft
      * @param step {number} how many items to move, default is 1
@@ -391,7 +390,7 @@ AJS.popup = function (options) {
     */
     Panel.prototype.moveUp = Panel.prototype.moveLeft = itemMove("left", "panel");
     /**
-     * Moves item right in the hierarchy 
+     * Moves item right in the hierarchy
      * @method moveDown
      * @method moveRight
      * @param step {number} how many items to move, default is 1
@@ -433,7 +432,7 @@ AJS.popup = function (options) {
         return this;
     };
 
-    
+
     /**
      * Class for pages
      * @class Page
@@ -472,7 +471,7 @@ AJS.popup = function (options) {
             this.menu.css("height", newHeight - parseFloat(this.menu.css("padding-top")));
         }
     };
-	
+
 	/**
      * Adds a button panel to the bottom of dialog
      * @method addButtonPanel
@@ -481,7 +480,7 @@ AJS.popup = function (options) {
 		this.buttonpanel = AJS("div").addClass("button-panel");
         this.element.append(this.buttonpanel);
 	};
-	
+
     /**
      * Method for adding new panel to the page
      * @method addPanel
@@ -600,9 +599,9 @@ AJS.popup = function (options) {
 
         new Page(this);
     };
-    
-    
-    
+
+
+
     /**
      * Method for adding header to the current page
      * @method addHeader
@@ -626,7 +625,7 @@ AJS.popup = function (options) {
         this.page[this.curpage].addButton(label, onclick, className);
         return this;
     };
-	
+
 	/**
      * Method for adding new button panel to the current page
      * @return {object} the dialog
@@ -635,8 +634,8 @@ AJS.popup = function (options) {
         this.page[this.curpage].addButtonPanel();
         return this;
     };
-	
-	
+
+
     /**
      * Method for adding new panel to the current page
      * @method addPanel
@@ -779,7 +778,7 @@ AJS.popup = function (options) {
      * Gets set of items depending on query
      * @method get
      * @param query {string} query to search for panels, pages, headers or buttons
-     * e.g. 
+     * e.g.
      *      '#Name' will find all dialog components with the given name such as panels and buttons, etc
      *      'panel#Name' will find only panels with the given name
      *      'panel#"Foo bar"' will find only panels with given name
@@ -794,7 +793,7 @@ AJS.popup = function (options) {
         var selectorExp = "(?:" +                 // a selector is either ...
             "(" + typeExp + ")(?:" + nameExp + "|" + indexExp + ")?" + // a type optionally followed by either #name or :index
             "|" + nameExp +                       // or just a #name
-            ")";                  
+            ")";
         var queryRE = new RegExp("(?:^|,)" +      // a comma or at the start of the line
             "\\s*" + selectorExp +                // optional space and a selector
             "(?:\\s+" + selectorExp + ")?" +      // optionally, followed by some space and a second selector
@@ -863,8 +862,8 @@ AJS.popup = function (options) {
             }
         }
         return res;
-    };  
-    
+    };
+
     /**
      * Updates height of panels, to contain content without the need for scroll bars.
      *
@@ -887,19 +886,19 @@ AJS.popup = function (options) {
         this.height = height + 87;
         this.popup.changeSize(undefined, height + 87);
     };
-    
+
     /**
      * Gets current panel for current page
      */
     AJS.Dialog.prototype.getCurPanel = function () {
         return this.getPanel(this.page[this.curpage].curtab);
     };
-    
+
     /**
      * Gets current button for current panel of current page
      */
     AJS.Dialog.prototype.getCurPanelButton = function () {
         return this.getCurPanel().button;
     };
-    
+
 })();
