@@ -17,7 +17,7 @@
 
     <scm>
         <connection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-2.1-beta2x</connection>
-        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-2.1-beta2</developerConnection>
+        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-2.1-beta2x</developerConnection>
         <url>https://studio.atlassian.com/source/browse/AJS/branches/auiplugin-2.1-beta2x</url>
     </scm>
 
