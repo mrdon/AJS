@@ -137,8 +137,9 @@ AJS.popup = function (options) {
                 popup.show();
                 shadow.show();
                 AJS.dim();
+				AJS.popup.current = this;
             };
-            show();
+            show.call(this);
             if (popup.css("position") == "absolute") {
                 // Internet Explorer case
                 var scrollfix = function () {
@@ -150,13 +151,12 @@ AJS.popup = function (options) {
                 scrollfix();
                 AJS.$(window).load(scrollfix);
                 this.show = function () {
-                    show();
+                    show.call(this);
                     scrollfix();
                 };
             } else {
                 this.show = show;
             }
-			AJS.popup.current = this;
         },
         /**
          * Makes popup invisible
