@@ -96,7 +96,7 @@
                 popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
                     shadow: "#333",
                     size: 0.5,
-                    target: popup
+                    target: popup[0]
                 });
                 AJS.$(popup.shadow.canvas).css({
                     position: "absolute",

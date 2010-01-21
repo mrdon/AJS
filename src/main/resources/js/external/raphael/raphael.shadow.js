@@ -31,7 +31,7 @@ Raphael.shadow = function (x, y, w, h, options) {
         set;
 
         if (target) {
-            res = this(target[0], w + (x = s) * 2, h + (y = t) + b);
+            res = this(target, w + (x = s) * 2, h + (y = t) + b);
         } else {
             res = this(x - s, y - t, w + (x = s) * 2, h + (y = t) + b);
         }

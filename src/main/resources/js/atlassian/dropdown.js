@@ -309,7 +309,7 @@ AJS.dropDown = function (obj, usroptions) {
                         r: 0.2,
                         shadow: "#333",
                         size: 0.6,
-                        target: this.shadowParent
+                        target: this.shadowParent[0]
                     });
                 }
             };
