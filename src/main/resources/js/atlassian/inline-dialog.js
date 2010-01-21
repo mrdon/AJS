@@ -1,3 +1,4 @@
+
 (function($) {
     /**
      * Creates a new inline dialog
@@ -86,19 +87,23 @@
                     top: posy + "px"
                 });
 
-                var shadow = $("#inline-dialog-shadow").appendTo(popup).show();
                 // reset position of popup box
                 popup.fadeIn(opts.fadeTime, function() {
                     // once the animation is complete, set the tracker variables
                     // beingShown = false; // is this necessary? Maybe only the shouldShow will have to be reset?
                 });
 
-                shadow.css({
-                    width: contents.outerWidth() + 32 + "px",
-                    height: contents.outerHeight() + 25 + "px"
+                popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
+                    shadow: "#333",
+                    size: 0.5,
+                    target: popup
                 });
-                $(".b", shadow).css("width", contents.outerWidth() - 26 + "px");
-                $(".l, .r", shadow).css("height", contents.outerHeight() - 21 + "px");
+                AJS.$(popup.shadow.canvas).css({
+                    position: "absolute",
+                    top: 0,
+                    left: -5,
+                    "z-index": -1
+                })
                 
                 if (AJS.$.browser.msie) {
                     // iframeShim
@@ -124,6 +129,7 @@
                 hideDelayTimer = setTimeout(function() {
                     $(items).removeClass("active");
                     popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
+                    popup.shadow.remove();
                     beingShown = false;
                     shouldShow = false;
                     if (!opts.cacheContent) {
@@ -239,8 +245,6 @@
     };
 
     AJS.toInit(function() {
-        $("body").append($('<div id="inline-dialog-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>'));
-        $("#inline-dialog-shadow").hide();
         if (AJS.$.browser.msie) {
             $("body").append($('<iframe id="inline-dialog-shim" frameBorder="0" src="javascript:false;"></iframe>'));
             $("#inline-dialog-shim").hide();
