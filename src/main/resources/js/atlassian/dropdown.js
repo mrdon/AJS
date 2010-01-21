@@ -29,7 +29,7 @@ AJS.dropDown = function (obj, usroptions) {
             },
             hideHandler: function() {}
         };
-    
+
     AJS.$.extend(options, usroptions);
 
     if (obj && obj.jquery) { // if AJS.$
@@ -47,7 +47,7 @@ AJS.dropDown = function (obj, usroptions) {
                         .html("<span>" + obj[i][j].name + "</span>")
                         .attr({href:  obj[i][j].href})
                         .addClass(obj[i][j].className));
-                    
+
                     var properties = obj[i][j];
                     AJS.$.data(AJS.$("a > span", li)[0], "properties", properties);
                 } else {
@@ -108,11 +108,11 @@ AJS.dropDown = function (obj, usroptions) {
         if (cdd.focused > AJS.dropDown.current.links.length - 1) {
             cdd.focused = 0;
         }
-		
+
         if (AJS.dropDown.current.links.length) {
             AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
         }
-		
+
         e.stopPropagation();
         e.preventDefault();
         return false;
@@ -144,7 +144,7 @@ AJS.dropDown = function (obj, usroptions) {
             options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
         }
     };
-	
+
 	var isEventsBound = function (el) {
         var bound = false;
         if (el.data("events")) {
@@ -227,12 +227,13 @@ AJS.dropDown = function (obj, usroptions) {
             this.timer = setTimeout(function () {
                 $doc.click(hider);
             }, 0);
-			
+
             $doc.keydown(movefocus);
             if (options.firstSelected && this.links[0]) {
                 active(0).call(this.links[0]);
             }
             AJS.$(cdd.offsetParent).css({zIndex: 2000});
+            jQuery(document).trigger("showDropdown", [AJS.dropDown.current]);
         };
         res.hide = function (causer) {
             this.method = this.method || "appear";
@@ -240,6 +241,7 @@ AJS.dropDown = function (obj, usroptions) {
             this.cleanFocus();
             methods[this.method](false);
             $doc.unbind("click", hider).unbind("keydown", movefocus);
+            jQuery(document).trigger("hideDropdown", [AJS.dropDown.current]);
             AJS.dropDown.current = null;
             return causer;
         };
@@ -252,22 +254,22 @@ AJS.dropDown = function (obj, usroptions) {
         if (!AJS.dropDown.iframes) {
             AJS.dropDown.iframes = [];
         }
-        AJS.dropDown.createShims = function () {       
+        AJS.dropDown.createShims = function () {
             AJS.$("iframe").each(function (idx) {
-               var iframe = this;        
+               var iframe = this;
                 if (!iframe.shim) {
                     iframe.shim = AJS.$("<div />")
                                                   .addClass("shim hidden")
-                                                  .appendTo("body");            
+                                                  .appendTo("body");
                     AJS.dropDown.iframes.push(iframe);
                 }
             });
             return arguments.callee;
         }();
-        
-        res.addCallback("show", function() {        
-            AJS.$(AJS.dropDown.iframes).each(function(){                     
-                var $this = AJS.$(this); 
+
+        res.addCallback("show", function() {
+            AJS.$(AJS.dropDown.iframes).each(function(){
+                var $this = AJS.$(this);
                 if ($this.is(":visible")) {
                     var offset = $this.offset();
                     offset.height = $this.height();
@@ -317,7 +319,7 @@ AJS.dropDown = function (obj, usroptions) {
                 }
             });
         })();
-        
+
         if (AJS.$.browser.msie) {
             // iframeShim
             (function () {
@@ -345,7 +347,7 @@ AJS.dropDown = function (obj, usroptions) {
                 });
             })();
         }
-        
+
         result.push(res);
     });
     return result;
@@ -417,13 +419,19 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
         //hide dropdown if not already hidden
         $dropdown.addClass("hidden");
 
+        $trigger.focus(function (e) {
+            // for some reason we need this otherwise mulitiple click handlers do not work on $trigger
+            e.stopPropagation();
+        });
 
         $trigger.click(function (e) {
             if (ddcontrol != AJS.dropDown.current) {
                 $dropdown.css({top: $trigger.outerHeight()});
                 ddcontrol.show();
+                $trigger.focus();
                 e.stopPropagation();
             }
+
             e.preventDefault();
         });
 
@@ -537,11 +545,9 @@ AJS.dropDown.Ajax = function (usroptions) {
     return dropdowns;
 };
 
-
 AJS.$.fn.dropDown = function (type, options) {
     type = (type || "Standard").replace(/^([a-z])/, function (match) {
         return match.toUpperCase();
     });
     return AJS.dropDown[type].call(this, options);
 };
-
