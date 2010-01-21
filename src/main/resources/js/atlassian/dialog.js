@@ -127,8 +127,9 @@ AJS.popup = function (options) {
 
                 // add Raphaël shadow
                 if (AJS.popup.shadow) {
-                    AJS.popup.shadow.remove();
-                }
+                      AJS.popup.shadow.remove();
+                      AJS.popup.shadow = null;
+                  }
                 AJS.popup.shadow = Raphael.shadow(0, 0, options.width, options.height);
                 AJS.$(AJS.popup.shadow.canvas).css({
                     left: "50%",
@@ -166,6 +167,7 @@ AJS.popup = function (options) {
             AJS.$(document).unbind("keydown", options.keypressListener);
             this.element.hide();
             AJS.popup.shadow.remove();
+            AJS.popup.shadow = null;
             AJS.undim();
 			AJS.popup.current = null;
         },

@@ -57,8 +57,3 @@
     _background: #fff;
     _text-decoration: none;
 }
-
-/* IE6 can't handle the shadow mojo */
-.aui-shadow {
-    _display: none !important;
-}

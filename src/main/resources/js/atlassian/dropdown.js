@@ -291,29 +291,28 @@ AJS.dropDown = function (obj, usroptions) {
         // shadow
         (function () {
             var refreshShadow = function () {
-
+                if (this.shadowParent) {
+                    this.shadowParent.remove();
+                }
                 if (this.$.is(":visible")) {
-                    if (!this.shadow) {
-                        this.shadow = AJS.$('<div class="aui-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div>').insertBefore(this.$);
-                    }
-                    if (parseInt(this.$.outerWidth(), 10) > 14) {
-                        this.shadow.css({
-                            display: "block",
-                            top: this.$.css("top"),
-                            right: "-7px",
-                            width: this.$.outerWidth() + 14 + "px",
-                            height: this.$.outerHeight() + 14 + "px"
-                        })
-                        .find(".b").css("width", this.$.outerWidth() - 14 + "px");
-                        this.shadow.find(".l, .r").css("height", this.$.outerHeight() - 8 + "px");
-                    }
+                    this.shadowParent = AJS.$('<div class="aui-shadow-parent"></div>').css({
+                        top: this.$.css("top"),
+                        width: this.$.width(),
+                        height: this.$.height()
+                    }).insertBefore(this.$);
+                    this.shadow = Raphael.shadow(0, 0, this.$.width(), this.$.height() + 8, {
+                        r: 0.2,
+                        shadow: "#333",
+                        size: 0.6,
+                        target: this.shadowParent
+                    });
                 }
             };
             res.addCallback("reset", refreshShadow);
             res.addCallback("show", refreshShadow);
             res.addCallback("hide", function () {
-                if (this.shadow) {
-                    this.shadow.css({display: "none"});
+                if (this.shadowParent) {
+                    this.shadowParent.remove();
                 }
             });
         })();
