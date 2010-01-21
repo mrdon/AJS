@@ -233,6 +233,7 @@ AJS.dropDown = function (obj, usroptions) {
                 active(0).call(this.links[0]);
             }
             AJS.$(cdd.offsetParent).css({zIndex: 2000});
+			jQuery(document).trigger("showDropdown", [AJS.dropDown.current]);
         };
         res.hide = function (causer) {
             this.method = this.method || "appear";
@@ -240,6 +241,7 @@ AJS.dropDown = function (obj, usroptions) {
             this.cleanFocus();
             methods[this.method](false);
             $doc.unbind("click", hider).unbind("keydown", movefocus);
+			jQuery(document).trigger("hideDropdown", [AJS.dropDown.current]);
             AJS.dropDown.current = null;
             return causer;
         };
@@ -416,11 +418,16 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
         //hide dropdown if not already hidden
         $dropdown.addClass("hidden");
 
-
+		$trigger.focus(function (e) {
+            // for some reason we need this otherwise mulitiple click handlers do not work on $trigger
+            e.stopPropagation();
+        });
+		
         $trigger.click(function (e) {
             if (ddcontrol != AJS.dropDown.current) {
                 $dropdown.css({top: $trigger.outerHeight()});
                 ddcontrol.show();
+				$trigger.focus();
                 e.stopPropagation();
             }
             e.preventDefault();
