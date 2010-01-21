@@ -302,6 +302,9 @@ AJS.dropDown = function (obj, usroptions) {
                         width: this.$.width(),
                         height: this.$.height()
                     }).insertBefore(this.$);
+                    if (AJS.$.browser.msie) {
+                        this.shadowParent.css({right: -5})
+                    }
                     this.shadow = Raphael.shadow(0, 0, this.$.width(), this.$.height() + 8, {
                         r: 0.2,
                         shadow: "#333",
