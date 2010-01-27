@@ -36,10 +36,25 @@
             hidePopup();
         });
 
+		var getHash = function () {
+			return {
+				popup: popup,
+				hide: function(){
+					hidePopup(0);
+				},
+				id: identifier,
+				show: function(){
+					showPopup();
+				}
+			};	
+		}
+	
         var showPopup = function() {
             if (popup.is(":visible")) {
                 return;
             }
+			AJS.InlineDialog.current = getHash();
+			
             showTimer = setTimeout(function() {
                 if (!contentLoaded || !shouldShow) {
                     return;
@@ -119,9 +134,10 @@
         };
 
         var hidePopup = function(delay) {
-            shouldShow = false;
+            
+			shouldShow = false;
             // only exectute the below if the popup is currently being shown
-            if (beingShown) {
+            if (beingShown) {				
                 delay = (delay == null) ? opts.hideDelay : delay;
                 clearTimeout(hideDelayTimer);
                 clearTimeout(showTimer);
@@ -132,6 +148,7 @@
                     popup.shadow.remove();
                     beingShown = false;
                     shouldShow = false;
+					AJS.InlineDialog.current = null;
                     if (!opts.cacheContent) {
                         //if not caching the content, then reset the
                         //flags to false so as to reload the content
@@ -196,12 +213,8 @@
             }
             return false;
         };
-
-        popup[0].popup = {popup: popup, hide: function () {
-            hidePopup(0);
-        }, id: identifier, show: function () {
-            showPopup();
-        }};
+		
+        popup[0].popup = getHash();
 
         var contentLoading = false;
         if (opts.onHover) {
