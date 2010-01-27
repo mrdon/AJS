@@ -34,6 +34,19 @@
         }).mouseout(function() {
             hidePopup();
         });
+		
+		var getHash = function () {
+			return {
+				popup: popup,
+				hide: function(){
+					hidePopup(0);
+				},
+				id: identifier,
+				show: function(){
+					showPopup();
+				}
+			};	
+		}
 
         var showPopup = function() {
             if (popup.is(":visible")) {
@@ -44,6 +57,7 @@
                     return;
                 }
                 $(items).addClass("active");
+				AJS.InlineDialog.current = getHash();
                 beingShown = true;
                 // retrieve the position of the click target. The offsets might be different for different types of targets and therefore
                 // either have to be customisable or we will have to be smarter about calculating the padding and elements around it
@@ -126,6 +140,7 @@
                     popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
                     beingShown = false;
                     shouldShow = false;
+					AJS.InlineDialog.current = null;
                     if (!opts.cacheContent) {
                         //if not caching the content, then reset the
                         //flags to false so as to reload the content
@@ -191,11 +206,7 @@
             return false;
         };
 
-        popup[0].popup = {popup: popup, hide: function () {
-            hidePopup(0);
-        }, id: identifier, show: function () {
-            showPopup();
-        }};
+        popup[0].popup = getHash();
 
         var contentLoading = false;
         if (opts.onHover) {
