@@ -58,6 +58,7 @@
                 }
                 $(items).addClass("active");
 				AJS.InlineDialog.current = getHash();
+				AJS.$(document).trigger("showLayer", ["inlineDialog", getHash()]);
                 beingShown = true;
                 // retrieve the position of the click target. The offsets might be different for different types of targets and therefore
                 // either have to be customisable or we will have to be smarter about calculating the padding and elements around it
@@ -140,6 +141,7 @@
                     popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
                     beingShown = false;
                     shouldShow = false;
+					AJS.$(document).trigger("hideLayer", ["inlineDialog", getHash()]);
 					AJS.InlineDialog.current = null;
                     if (!opts.cacheContent) {
                         //if not caching the content, then reset the
