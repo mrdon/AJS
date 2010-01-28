@@ -137,6 +137,7 @@ AJS.popup = function (options) {
                 popup.show();
                 shadow.show();
                 AJS.dim();
+				AJS.$.trigger("showLayer", ["popup", this]);
 				AJS.popup.current = this;
             };
             show.call(this);
@@ -167,6 +168,7 @@ AJS.popup = function (options) {
             this.element.hide();
             shadow.hide();
             AJS.undim();
+			AJS.$.trigger("hideLayer", ["popup", this]);
 			AJS.popup.current = null;
         },
         /**
