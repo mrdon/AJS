@@ -138,7 +138,7 @@ AJS.popup = function (options) {
                 shadow.show();
                 AJS.dim();
 				AJS.popup.current = this;
-				AJS.$.trigger("showLayer", ["popup", this]);
+				AJS.$(document).trigger("showLayer", ["popup", this]);
             };
             show.call(this);
             if (popup.css("position") == "absolute") {
@@ -168,7 +168,7 @@ AJS.popup = function (options) {
             this.element.hide();
             shadow.hide();
             AJS.undim();
-			AJS.$.trigger("hideLayer", ["popup", this]);
+			AJS.$(document).trigger("hideLayer", ["popup", this]);
 			AJS.popup.current = null;
         },
         /**
