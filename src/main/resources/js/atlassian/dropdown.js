@@ -233,7 +233,7 @@ AJS.dropDown = function (obj, usroptions) {
                 active(0).call(this.links[0]);
             }
             AJS.$(cdd.offsetParent).css({zIndex: 2000});
-			jQuery(document).trigger("showDropdown", [AJS.dropDown.current]);
+			jQuery(document).trigger("showLayer", ["dropdown", AJS.dropDown.current]);
         };
         res.hide = function (causer) {
             this.method = this.method || "appear";
@@ -241,7 +241,7 @@ AJS.dropDown = function (obj, usroptions) {
             this.cleanFocus();
             methods[this.method](false);
             $doc.unbind("click", hider).unbind("keydown", movefocus);
-			jQuery(document).trigger("hideDropdown", [AJS.dropDown.current]);
+			jQuery(document).trigger("hideLayer", ["dropdown", AJS.dropDown.current]);
             AJS.dropDown.current = null;
             return causer;
         };

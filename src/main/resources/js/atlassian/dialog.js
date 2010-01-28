@@ -122,7 +122,6 @@ AJS.popup = function (options) {
         show: function () {
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
-                AJS.popup.current = this;
                 popup.show();
 
                 // add Raphaël shadow
@@ -138,8 +137,9 @@ AJS.popup = function (options) {
                     marginTop: - Math.round(options.height / 2 ),
                     top: "50%"
                 });
-
                 AJS.dim();
+				AJS.popup.current = this;
+				AJS.$.trigger("showLayer", ["popup", this]);
             };
             show.call(this);
             if (popup.css("position") == "absolute") {
@@ -169,6 +169,7 @@ AJS.popup = function (options) {
             AJS.popup.shadow.remove();
             AJS.popup.shadow = null;
             AJS.undim();
+			AJS.$.trigger("hideLayer", ["popup", this]);
 			AJS.popup.current = null;
         },
         /**
