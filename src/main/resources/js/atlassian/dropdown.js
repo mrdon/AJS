@@ -420,11 +420,6 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
 
         //hide dropdown if not already hidden
         $dropdown.addClass("hidden");
-
-		$trigger.focus(function (e) {
-            // for some reason we need this otherwise mulitiple click handlers do not work on $trigger
-            e.stopPropagation();
-        });
 		
         $trigger.click(function (e) {
             if (ddcontrol != AJS.dropDown.current) {
