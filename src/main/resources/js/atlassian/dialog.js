@@ -128,7 +128,7 @@ AJS.popup = function (options) {
                 if (AJS.popup.shadow) {
                       AJS.popup.shadow.remove();
                       AJS.popup.shadow = null;
-                  }
+                }
                 AJS.popup.shadow = Raphael.shadow(0, 0, options.width, options.height);
                 AJS.$(AJS.popup.shadow.canvas).css({
                     left: "50%",
@@ -166,8 +166,10 @@ AJS.popup = function (options) {
         hide: function () {
             AJS.$(document).unbind("keydown", options.keypressListener);
             this.element.hide();
-            AJS.popup.shadow.remove();
-            AJS.popup.shadow = null;
+            if (AJS.popup.shadow) {
+                  AJS.popup.shadow.remove();
+                  AJS.popup.shadow = null;
+            }
             AJS.undim();
 			AJS.$(document).trigger("hideLayer", ["popup", this]);
 			AJS.popup.current = null;
@@ -182,7 +184,10 @@ AJS.popup = function (options) {
          * @method remove
         */
         remove: function () {
-            AJS.popup.shadow.remove();
+            if (AJS.popup.shadow) {
+                  AJS.popup.shadow.remove();
+                  AJS.popup.shadow = null;
+            }
             popup.remove();
             this.element = null;
         }
