@@ -1,3 +1,9 @@
+// Tests for inline-dialog.js
+
+testAjs.addTest("testAJSInlineDialogExists", function () {
+    return (typeof AJS.InlineDialog != "undefined" && AJS.InlineDialog != null);
+});
+
 testAjs.addTest("testInlineDialog", function() {
     var testContainer = AJS.$("#test-container");
     var link = AJS.$("<a>").text("Test Link").appendTo(testContainer);

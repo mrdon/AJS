@@ -12,3 +12,5 @@ AJSTest.prototype.addTest = function (name, test) {
 AJSTest.prototype.getTestNames = function () {
     return this.names;
 };
+
+var testAjs = new AJSTest();

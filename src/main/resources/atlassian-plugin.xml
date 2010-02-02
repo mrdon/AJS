@@ -47,6 +47,7 @@
         <resource type="download" name="firebug.js" location="js/atlassian/firebug.js"/>
         
         <resource type="download" name="jquery.autocomplete.js" location="js/atlassian/jquery.autocomplete.js"/>
+        <resource type="download" name="jquery.is-dirty.js" location="js/atlassian/jquery.is-dirty.js"/>
         <resource type="download" name="jquery.progressbar.js" location="js/atlassian/jquery.progressbar.js"/>
         <resource type="download" name="jquery.selection.js" location="js/atlassian/jquery.selection.js"/>        
         <resource type="download" name="jquery.throbber.js" location="js/atlassian/jquery.throbber.js"/>
