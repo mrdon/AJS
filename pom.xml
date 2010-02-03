@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>atlassian-closedsource-pom</artifactId>
@@ -27,6 +28,69 @@
     </issueManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.plugins.rest</groupId>
+            <artifactId>atlassian-rest-common</artifactId>
+            <version>1.0.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.sal</groupId>
+            <artifactId>sal-api</artifactId>
+            <version>2.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>2.5.6</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atlassian.plugins</groupId>
+            <artifactId>atlassian-plugins-webresource</artifactId>
+            <version>2.4.3</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>gwtpectin</groupId>
+            <artifactId>gwtpectin</artifactId>
+            <version>0.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Optional since product may not use rpc or form validation -->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-servlet</artifactId>
+            <version>${gwt.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>gwt-validation</groupId>
+            <artifactId>get-validation</artifactId>
+            <version>1.0.1c</version>
+            <optional>true</optional>
+        </dependency>
+
+
         <dependency>
             <groupId>com.atlassian.selenium</groupId>
             <artifactId>atlassian-selenium</artifactId>
@@ -39,6 +103,8 @@
             <version>1.4</version>
             <scope>test</scope>
         </dependency>
+
+
     </dependencies>
 
     <build>
@@ -58,16 +124,23 @@
                     <include>js/atlassian/atlassian.js</include>
                 </includes>
             </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.java</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
         </resources>
         <plugins>
-	    <plugin>
-		<artifactId>maven-release-plugin</artifactId>
-		<version>2.0-beta-9</version>
-		<configuration>
-		   <remoteTagging>true</remoteTagging>
-		</configuration>
-	    </plugin>
-	    
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.0-beta-9</version>
+                <configuration>
+                    <remoteTagging>true</remoteTagging>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -81,7 +154,7 @@
                         <configuration>
                             <tasks>
                                 <copy todir="${project.build.directory}/test-classes/webapp">
-                                    <fileset dir="${project.build.directory}/classes" />
+                                    <fileset dir="${project.build.directory}/classes"/>
                                 </copy>
                             </tasks>
                         </configuration>
@@ -205,8 +278,8 @@
                     </execution>
                 </executions>
             </plugin>
-		 	<!--START - Support Maven CL plugin for rapid development-->
-			<plugin>
+            <!--START - Support Maven CL plugin for rapid development-->
+            <plugin>
                 <groupId>org.twdata.maven</groupId>
                 <artifactId>maven-cli-plugin</artifactId>
                 <configuration>
@@ -264,11 +337,12 @@
         <scan.interval.seconds>10</scan.interval.seconds>
         <selenium.xvfb.skip>true</selenium.xvfb.skip>
         <selenium.browser>*firefox</selenium.browser>
-        <selenium.firefox.profile />
+        <selenium.firefox.profile/>
         <selenium.server.port>4444</selenium.server.port>
         <selenium.server.location>localhost</selenium.server.location>
         <atlassian.plugin.key>com.atlassian.auiplugin</atlassian.plugin.key>
         <jdkLevel>1.5</jdkLevel>
+        <gwt.version>2.0.0</gwt.version>
     </properties>
 
     <profiles>
@@ -314,5 +388,5 @@
             </properties>
         </profile>
     </profiles>
-    
+
 </project>

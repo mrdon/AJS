@@ -1,0 +1,19 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:aui='urn:import:com.atlassian.labs.githost.ui.gwt'
+             xmlns:adm='urn:import:com.atlassian.labs.githost.ui.admin.client'>
+
+    <g:HTMLPanel>
+            <h3 ui:field="title"/>
+            <g:HorizontalPanel>
+                <g:HTMLPanel>
+                    <div ui:field="addLabel">
+                        Add Group:
+                    </div>
+                </g:HTMLPanel>
+                <g:SuggestBox ui:field="suggestBox"/>
+                <g:Button ui:field="addButton" text="Add"/>
+            </g:HorizontalPanel>
+
+            <g:VerticalPanel ui:field="list"/>
+    </g:HTMLPanel>
+</ui:UiBinder>

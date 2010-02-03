@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='aui'>
+     
+    <inherits name='com.google.gwt.user.User'/>
+     
+    <inherits name="com.google.gwt.i18n.I18N"/>
+     
+    <inherits name="com.google.gwt.resources.Resources"/>
+    <inherits name='com.pietschy.gwt.pectin.Pectin'/>
+    <inherits name="com.google.gwt.validation.Validation"/>
+    <inherits name="com.google.gwt.json.JSON"/>
+    <inherits name="com.google.gwt.http.HTTP"/>
+     
+    <source path='util/client'/>
+    <source path='component/form/client'/>
+    <source path='component/input/client'/>
+    <source path='rpc/client'/>
+    <source path='validation/client'/>
+    <source path='display/client'/>
+
+</module>
