@@ -308,6 +308,7 @@
                     <jswarn>false</jswarn>
                     <excludes>
                         <exclude>*.xml</exclude>
+                        <exclude>**/com/atlassian/aui/gwt/**</exclude>
                         <exclude>**/src/test/*</exclude>
                         <exclude>**/src/samples/*</exclude>
                         <!-- exclude external libraries which have their own minified versions -->
