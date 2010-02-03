@@ -1,4 +1,4 @@
-Add tests functions here. Functions should return true for a passed test; any other value will be converted to string for the failure log.
+Add test functions here. Functions should return true for a passed test; any other value will be converted to string for the failure log.
 
 This means you can write a test line like:
     return str == "happyFactor" || str;
