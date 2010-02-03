@@ -82,19 +82,18 @@ public abstract class AuiField<T> extends Composite implements ValidationDisplay
         super.onAttach();
         if (id == null && name != null)
         {
-            String formId = getParent().getParent().getElement().getId();
+            String formId = ((AuiForm)getParent().getParent().getParent()).getId();
             if (formId != null)
             {
-                setId(getNamespacedId(name));
+                setId(getNamespacedId(formId, name));
             }
         }
     }
 
     protected abstract Widget createAndBindUi();
 
-    protected String getNamespacedId(String name)
+    protected String getNamespacedId(String formId, String name)
     {
-        String formId = getParent().getParent().getElement().getId();
         return (formId != null && formId.length() > 0 ? formId + "-" : "") + name;
     }
 

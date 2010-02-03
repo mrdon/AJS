@@ -1,10 +1,10 @@
-package com.atlassian.javascript.ajs.selenium;
+package com.atlassian.aui.ajs.selenium;
 
 import junit.framework.TestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import com.atlassian.javascript.ajs.selenium.client.Client;
-import com.atlassian.javascript.ajs.selenium.client.Configuration;
+import com.atlassian.aui.ajs.selenium.client.Client;
+import com.atlassian.aui.ajs.selenium.client.Configuration;
 import com.atlassian.selenium.SeleniumAssertions;
 
 public class AtlassianJsTest extends TestCase

@@ -1,4 +1,4 @@
-package com.atlassian.javascript.ajs.selenium;
+package com.atlassian.aui.ajs.selenium;
 
 import junit.framework.TestCase;
 

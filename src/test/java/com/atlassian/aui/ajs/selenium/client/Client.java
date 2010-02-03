@@ -1,4 +1,4 @@
-package com.atlassian.javascript.ajs.selenium.client;
+package com.atlassian.aui.ajs.selenium.client;
 
 import com.atlassian.selenium.SeleniumClient;
 import com.atlassian.selenium.SeleniumConfiguration;

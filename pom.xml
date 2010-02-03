@@ -92,6 +92,13 @@
 
 
         <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.atlassian.selenium</groupId>
             <artifactId>atlassian-selenium</artifactId>
             <version>1.2</version>
@@ -106,6 +113,15 @@
 
 
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.4</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <resources>
@@ -132,6 +148,16 @@
                 </includes>
             </resource>
         </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/java</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.java</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
@@ -241,25 +267,9 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <skip>true</skip>
-                    <systemProperties>
-                        <property>
-                            <name>baseurl</name>
-                            <value>http://localhost:${jetty.port}/${context.path}</value>
-                        </property>
-                        <property>
-                            <name>selenium.location</name>
-                            <value>${selenium.server.location}</value>
-                        </property>
-                        <property>
-                            <name>selenium.port</name>
-                            <value>${selenium.server.port}</value>
-                        </property>
-                        <property>
-                            <name>selenium.browser</name>
-                            <value>${selenium.browser}</value>
-                        </property>
-                    </systemProperties>
+                    <excludes>
+                        <exclude>com/atlassian/aui/ajs/**</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
@@ -269,11 +279,31 @@
                             <goal>test</goal>
                         </goals>
                         <configuration>
-                            <skip>false</skip>
+                            <systemProperties>
+                                <property>
+                                    <name>baseurl</name>
+                                    <value>http://localhost:${jetty.port}/${context.path}</value>
+                                </property>
+                                <property>
+                                    <name>selenium.location</name>
+                                    <value>${selenium.server.location}</value>
+                                </property>
+                                <property>
+                                    <name>selenium.port</name>
+                                    <value>${selenium.server.port}</value>
+                                </property>
+                                <property>
+                                    <name>selenium.browser</name>
+                                    <value>${selenium.browser}</value>
+                                </property>
+                            </systemProperties>
                             <includes>
-                                <include>com/atlassian/**/*Test.java</include>
+                                <include>com/atlassian/aui/ajs/**/*Test.java</include>
                                 <!-- todo why does /javascript not work????? -->
                             </includes>
+                            <excludes>
+                                <exclude>com/atlassian/aui/gwt/**/*.java</exclude>
+                            </excludes>
                         </configuration>
                     </execution>
                 </executions>

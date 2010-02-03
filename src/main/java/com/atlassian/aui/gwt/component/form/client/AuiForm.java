@@ -271,6 +271,16 @@ public class AuiForm<T> extends ComplexPanel
         }
     }
 
+    public void setId(String id)
+    {
+        this.formElement.setAttribute("id", id);
+    }
+
+    public String getId()
+    {
+        return this.formElement.getAttribute("id");
+    }
+
     private AuiField getField(String name)
     {
         for (AuiFieldSet fs : fieldSets)
