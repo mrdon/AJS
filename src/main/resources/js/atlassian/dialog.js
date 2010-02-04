@@ -481,6 +481,7 @@ AJS.popup = function (options) {
     */
     Page.prototype.addPanel = function (title, reference, className, panelButtonId) {
         new Panel(this, title, reference, className, panelButtonId);
+		this.recalcSize();
         return this;
     };
     /**
