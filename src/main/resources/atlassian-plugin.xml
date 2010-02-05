@@ -44,8 +44,9 @@
         <resource type="download" name="dialog.js" location="js/atlassian/dialog.js"/>
         <resource type="download" name="dropdown.js" location="js/atlassian/dropdown.js"/>
         <resource type="download" name="inline-dialog.js" location="js/atlassian/inline-dialog.js"/>
-        <resource type="download" name="firebug.js" location="js/atlassian/firebug.js"/>
-        
+		<resource type="download" name="firebug.js" location="js/atlassian/firebug.js"/>
+		<resource type="download" name="forms.js" location="js/atlassian/forms.js"/>
+
         <resource type="download" name="jquery.autocomplete.js" location="js/atlassian/jquery.autocomplete.js"/>
         <resource type="download" name="jquery.is-dirty.js" location="js/atlassian/jquery.is-dirty.js"/>
         <resource type="download" name="jquery.progressbar.js" location="js/atlassian/jquery.progressbar.js"/>

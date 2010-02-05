@@ -95,6 +95,7 @@ form.aui .field-value {
     font-weight: bold;
     line-height: 1;
     padding-top: 4px;
+	display:inline-block;
 }
 
 /* headings */
@@ -360,17 +361,13 @@ form.aui .icon-required {
 form.aui .icon-users {
     background-position: 0 -100px;
 }
-/* FFX2 hack for icons - requirement to support FFX 2? */
-form.aui .form-icon, 
-x:-moz-any-link {
-    display: inline;
-    padding: 1px 8px;
+form.aui .icon-inline-help {
+    background-position: 0 -60px;
+	cursor:help;
 }
-form.aui .form-icon span, 
-x:-moz-any-link {
-    display: none;
+
+/* inline help - add class to a span wrapping help content placed immediately after form-icon icon-help spans */
+form.aui span.field-help {
+	display:none;
 }
-form.aui .icon-required, 
-x:-moz-any-link {
-    padding: 0 4px;
-}
+/* //inline help */
