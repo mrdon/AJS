@@ -363,11 +363,14 @@ form.aui .icon-users {
 }
 form.aui .icon-inline-help {
     background-position: 0 -60px;
-	cursor:help;
+    cursor:help;
 }
 
 /* inline help - add class to a span wrapping help content placed immediately after form-icon icon-help spans */
 form.aui span.field-help {
-	display:none;
+    display:block;
+}
+form.aui span.field-help.hidden {
+    display:none;
 }
 /* //inline help */

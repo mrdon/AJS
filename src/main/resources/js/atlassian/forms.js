@@ -11,14 +11,14 @@
 */
 
 AJS.inlineHelp = function () {
-	AJS.$('.icon-inline-help').click(function(){
-		if(AJS.$(this).next().hasClass('field-help')){
-			if (AJS.$(this).next().is(':visible')){
-				AJS.$(this).next().css({'display':'none'});
-			}
-			else {
-				AJS.$(this).next().css({'display':'block'});
-			}
-		};
-	});
-}();      /* TODO check if this is ok */
+    AJS.$(".icon-inline-help").click(function(){
+        var $next = AJS.$(this).next();
+        if($next.hasClass("field-help")){
+            if ($next.hasClass("hidden")){
+                $next.removeClass("hidden");
+            } else {
+                $next.addClass("hidden");
+            }
+        }
+    });
+};
