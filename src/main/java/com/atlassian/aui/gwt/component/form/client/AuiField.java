@@ -28,7 +28,7 @@ public abstract class AuiField<T> extends Composite implements ValidationDisplay
     @UiField
     SpanElement description;
 
-    private String name;
+    String name;
     private String id;
 
     protected AuiField()
@@ -99,11 +99,21 @@ public abstract class AuiField<T> extends Composite implements ValidationDisplay
 
     public abstract HasValue<T> getInputWidget();
 
+    public String getDescription()
+    {
+        return this.description.getInnerText();
+    }
+
 
     public void setDescription(final String descriptionText)
     {
         this.description.setInnerHTML(descriptionText);
         this.description.removeClassName("hidden");
+    }
+
+    public String getError()
+    {
+        return this.error.getInnerText();
     }
 
     public void setError(final String errorText)

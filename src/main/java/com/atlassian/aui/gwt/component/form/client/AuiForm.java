@@ -25,6 +25,7 @@ import com.pietschy.gwt.pectin.client.FieldModel;
 import com.pietschy.gwt.pectin.client.FieldModelImpl;
 import com.pietschy.gwt.pectin.client.FormModel;
 import com.pietschy.gwt.pectin.client.bean.BeanModelProvider;
+import com.pietschy.gwt.pectin.client.bean.UnknownPropertyException;
 import com.pietschy.gwt.pectin.client.binding.WidgetBinder;
 import com.atlassian.aui.gwt.util.client.WidgetFinder;
 
@@ -51,8 +52,14 @@ public class AuiForm<T> extends ComplexPanel
     InternalFormPanel form;
 
     final List<AuiFieldSet> fieldSets = new ArrayList<AuiFieldSet>();
+
     private IValidator validator;
     private BeanModelProvider<T> provider;
+
+    public Anchor getResetLink()
+    {
+        return cancelLink;
+    }
 
     public static interface ResetHandler extends EventHandler
     {
@@ -132,7 +139,10 @@ public class AuiForm<T> extends ComplexPanel
             public void onClick(ClickEvent event)
             {
                 form.reset();
-                provider.revert();
+                if (provider != null)
+                {
+                    provider.revert();
+                }
                 clearErrors();
                 fireResetEvent();
             }
@@ -179,8 +189,16 @@ public class AuiForm<T> extends ComplexPanel
                 {
                     HasValue field = (HasValue) widget;
                     Class inputWidgetDataClass = guessInputWidgetDataType(field);
-                    FieldModel fieldModel = new FieldModelImpl(formModel, provider.getValueModel(inputName, inputWidgetDataClass), inputWidgetDataClass);
-                    binder.bind(fieldModel).to(field);
+                    try
+                    {
+                        FieldModel fieldModel = new FieldModelImpl(formModel, provider.getValueModel(inputName, inputWidgetDataClass), inputWidgetDataClass);
+                        binder.bind(fieldModel).to(field);
+                    }
+                    catch (UnknownPropertyException ex)
+                    {
+                        // The property doesn't exist on the model bean, which we'll allow
+                        // TODO: log this somehow
+                    }
 
                     // Don't examine this fields' widgets
                     return false;
@@ -188,6 +206,11 @@ public class AuiForm<T> extends ComplexPanel
                 return true;
             }
         });
+    }
+
+    public Button getSubmitButton()
+    {
+        return submitButton;
     }
 
     private String guessInputName(Widget widget)
