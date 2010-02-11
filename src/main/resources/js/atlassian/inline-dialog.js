@@ -72,7 +72,14 @@
                     popup.css({
                         right: "20px",
                         left: "auto"
-                    });
+                    }); 
+                    popup.arrowCanvas = Raphael("arrow-" + identifier, "16", "16")  //create canvas using arrow element
+                    popup.arrowCanvas.path("M 0 8 L 8 0 L 16 8 C").attr({
+                        fill : "#fff",
+                        stroke : "#bbb"
+                        }); //draw arrow using path and attributes.
+                        popup.arrowCanvas.path("M16 8L0 8").attr({stroke:"#fff"});  //draw a white line to cover the popup border under the arrow.    
+                    }
                     arrow.css({
                         left: -diff + (targetPosition.target.width() / 2) + "px",
                         right: "auto"
@@ -82,12 +89,18 @@
                         left: posx + "px",
                         right: "auto"
                     });
-
+                    //Raphael arrow
+                    popup.arrowCanvas = Raphael("arrow-" + identifier, "16", "16")  //create canvas using arrow element
+                    popup.arrowCanvas.path("M 0 8 L 8 0 L 16 8 C").attr({
+                        fill : "#fff",
+                        stroke : "#bbb"
+                        }); //draw arrow using path and attributes.
+                        popup.arrowCanvas.path("M16 8L0 8").attr({stroke:"#fff"});  //draw a white line to cover the popup border under the arrow.    
+                    }        
                     arrow.css({
                         left: targetPosition.target.width() / 2 + "px",
                         right: "auto"
                     });
-                }
 
                 var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
                 if ((posy + popup.height()) > bottomOfViewablePage) {
@@ -119,7 +132,7 @@
                     left: -5,
                     "z-index": -1
                 })
-                
+
                 if (AJS.$.browser.msie) {
                     // iframeShim
                     var iframeShim = $('#inline-dialog-shim');
@@ -146,6 +159,7 @@
                     $(items).removeClass("active");
                     popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
                     popup.shadow.remove();
+                    popup.arrowCanvas.remove();
                     beingShown = false;
                     shouldShow = false;
 					AJS.$(document).trigger("hideLayer", ["inlineDialog", getHash()]);

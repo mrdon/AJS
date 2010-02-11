@@ -22,10 +22,9 @@
     text-align: right;
 }
 .aui-inline-dialog .arrow {
-    background: transparent url(images/arrow.png) no-repeat 0 0;
-    height: 16px;
     position: absolute;
-    top: -7px; /* matches #inline-dialog-shim */
+    height: 16px;
+    top: -8px; /* matches #inline-dialog-shim */
     width: 16px;
 }
 #inline-dialog-shim {
