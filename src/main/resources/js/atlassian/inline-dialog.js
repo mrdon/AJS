@@ -75,11 +75,10 @@
                     }); 
                     popup.arrowCanvas = Raphael("arrow-" + identifier, "16", "16")  //create canvas using arrow element
                     popup.arrowCanvas.path("M 0 8 L 8 0 L 16 8 C").attr({
-                        fill : "#fff",
-                        stroke : "#bbb"
-                        }); //draw arrow using path and attributes.
-                        popup.arrowCanvas.path("M16 8L0 8").attr({stroke:"#fff"});  //draw a white line to cover the popup border under the arrow.    
-                    }
+                         fill : "#fff",
+                         stroke : "#bbb"
+                    }); //draw arrow using path and attributes.
+                    popup.arrowCanvas.rect(0, 8, 16, 2).attr({fill: "#fff", stroke: "#fff"}); //draw a white rectangle to cover the popup border under the arrow.     
                     arrow.css({
                         left: -diff + (targetPosition.target.width() / 2) + "px",
                         right: "auto"
@@ -94,13 +93,13 @@
                     popup.arrowCanvas.path("M 0 8 L 8 0 L 16 8 C").attr({
                         fill : "#fff",
                         stroke : "#bbb"
-                        }); //draw arrow using path and attributes.
-                        popup.arrowCanvas.path("M16 8L0 8").attr({stroke:"#fff"});  //draw a white line to cover the popup border under the arrow.    
-                    }        
+                        }); //draw arrow using path and attributes.  
+                    popup.arrowCanvas.rect(0, 8, 16, 2).attr({fill: "#fff", stroke: "#fff"}); //draw a white rectangle to cover the popup border under the arrow.               
                     arrow.css({
                         left: targetPosition.target.width() / 2 + "px",
                         right: "auto"
                     });
+                }
 
                 var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
                 if ((posy + popup.height()) > bottomOfViewablePage) {
