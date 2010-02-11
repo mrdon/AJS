@@ -108,22 +108,17 @@
 
     <script type="text/javascript">
         AJS.$(document).ready(function() {
+            var postProcess = function(id) {
+                alert("That worked.");
+            };
+
+            AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess});
+            AJS.InlineDialog(AJS.$("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
 
             // Testing AJS.inlineHelp
             AJS.inlineHelp();
         });
     </script>
-    
-<script type="text/javascript">
-    AJS.$(document).ready(function() {
-        var postProcess = function(id) {
-            alert("That worked.");
-        };
-
-        AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess});
-        AJS.InlineDialog(AJS.$("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
-    });
-</script>
 
 </body>
 </html>
