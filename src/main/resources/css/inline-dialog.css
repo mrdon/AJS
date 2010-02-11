@@ -24,7 +24,7 @@
 .aui-inline-dialog .arrow {
     position: absolute;
     height: 16px;
-    top: -8px; /* matches #inline-dialog-shim */
+    top: -7px; /* matches #inline-dialog-shim */
     width: 16px;
 }
 #inline-dialog-shim {

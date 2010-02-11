@@ -73,12 +73,13 @@
                         right: "20px",
                         left: "auto"
                     }); 
-                    popup.arrowCanvas = Raphael("arrow-" + identifier, "16", "16")  //create canvas using arrow element
-                    popup.arrowCanvas.path("M 0 8 L 8 0 L 16 8 C").attr({
-                         fill : "#fff",
-                         stroke : "#bbb"
-                    }); //draw arrow using path and attributes.
-                    popup.arrowCanvas.rect(0, 8, 16, 2).attr({fill: "#fff", stroke: "#fff"}); //draw a white rectangle to cover the popup border under the arrow.     
+                    if(window.Raphael){
+                        popup.arrowCanvas = Raphael("arrow-" + identifier, "16", "16")  //create canvas using arrow element
+                        popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
+                            fill : "#fff",
+                            stroke : "#bbb"
+                            }); //draw arrow using path and attributes.                               
+                    }     
                     arrow.css({
                         left: -diff + (targetPosition.target.width() / 2) + "px",
                         right: "auto"
@@ -89,12 +90,14 @@
                         right: "auto"
                     });
                     //Raphael arrow
-                    popup.arrowCanvas = Raphael("arrow-" + identifier, "16", "16")  //create canvas using arrow element
-                    popup.arrowCanvas.path("M 0 8 L 8 0 L 16 8 C").attr({
-                        fill : "#fff",
-                        stroke : "#bbb"
-                        }); //draw arrow using path and attributes.  
-                    popup.arrowCanvas.rect(0, 8, 16, 2).attr({fill: "#fff", stroke: "#fff"}); //draw a white rectangle to cover the popup border under the arrow.               
+                    if(window.Raphael){
+                        popup.arrowCanvas = Raphael("arrow-" + identifier, "16", "16")  //create canvas using arrow element
+                        popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
+                            fill : "#fff",
+                            stroke : "#bbb"
+                            }); //draw arrow using path and attributes.                
+                    }
+         
                     arrow.css({
                         left: targetPosition.target.width() / 2 + "px",
                         right: "auto"
