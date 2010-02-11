@@ -74,7 +74,7 @@
                         left: "auto"
                     }); 
                     if(window.Raphael){
-                        popup.arrowCanvas = Raphael("arrow-" + identifier, "16", "16")  //create canvas using arrow element
+                        popup.arrowCanvas = Raphael("arrow-" + identifier, 16, 16);  //create canvas using arrow element
                         popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
                             fill : "#fff",
                             stroke : "#bbb"
@@ -91,7 +91,7 @@
                     });
                     //Raphael arrow
                     if(window.Raphael){
-                        popup.arrowCanvas = Raphael("arrow-" + identifier, "16", "16")  //create canvas using arrow element
+                        popup.arrowCanvas = Raphael("arrow-" + identifier, 16, 16);  //create canvas using arrow element
                         popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
                             fill : "#fff",
                             stroke : "#bbb"
