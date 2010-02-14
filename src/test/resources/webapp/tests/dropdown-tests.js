@@ -6,8 +6,8 @@ testAjs.addTest("testAJSdropdownExists", function () {
 
 testAjs.addTest("testAJSdropdownShows", function () {
 	var ddParent = AJS.$(".aui-dd-parent"),
-		trigger = AJS.$(".aui-dd-trigger:first"),
-		res;
+        trigger = AJS.$(".aui-dd-trigger:first"),
+        res;
 		
 	ddParent.dropDown();
 	trigger.click(function () {
