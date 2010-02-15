@@ -15,5 +15,4 @@ public class AJSVersionTest extends TestCase {
 
         assertFalse("Should not contain maven expression", FileUtils.readFileToString(file).contains("${project.version}"));
     }
-
 }
