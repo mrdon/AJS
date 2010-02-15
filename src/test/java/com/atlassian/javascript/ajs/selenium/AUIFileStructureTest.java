@@ -87,7 +87,8 @@ public class AUIFileStructureTest extends TestCase {
         @Override
         protected void handleFile(File file, int depth, Collection results) throws IOException {
             if (!file.getName().equals(".DS_Store"))
-                results.add(file.getPath().substring(RESOURCE_PREFIX.length() + 1));
+                if (!file.getName().contains("/.svn/"))
+                    results.add(file.getPath().substring(RESOURCE_PREFIX.length() + 1));
         }
     }
 }
