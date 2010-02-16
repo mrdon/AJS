@@ -90,7 +90,7 @@ public class AUIFileStructureTest extends TestCase {
             String filePath= file.getPath().substring(RESOURCE_PREFIX.length() + 1);
             if (!file.getName().equals(".DS_Store"))
             {
-                if (!filePath.contains("/.svn/"))
+                if (!filePath.contains(".svn/"))
                 {
                     results.add(filePath);
                 }
