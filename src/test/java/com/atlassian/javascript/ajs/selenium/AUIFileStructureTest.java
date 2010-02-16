@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class AUIFileStructureTest extends TestCase {
-
     private static final String[] PROJ_STRUCTURE = new String[]{
             "atlassian-plugin.xml",
             "css/basic.css",
@@ -84,11 +84,17 @@ public class AUIFileStructureTest extends TestCase {
             return paths;
         }
 
+        // Allow exception for .svn/ files
         @Override
         protected void handleFile(File file, int depth, Collection results) throws IOException {
+            String filePath= file.getPath().substring(RESOURCE_PREFIX.length() + 1);
             if (!file.getName().equals(".DS_Store"))
-                if (!file.getName().contains("/.svn/"))
-                    results.add(file.getPath().substring(RESOURCE_PREFIX.length() + 1));
+            {
+                if (!filePath.contains("/.svn/"))
+                {
+                    results.add(filePath);
+                }
+            }
         }
     }
 }
