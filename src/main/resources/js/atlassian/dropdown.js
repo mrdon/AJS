@@ -241,7 +241,7 @@ AJS.dropDown = function (obj, usroptions) {
             this.cleanFocus();
             methods[this.method](false);
             $doc.unbind("click", hider).unbind("keydown", movefocus);
-            AJS.$(document).trigger("showLayer", ["dropdown", AJS.dropDown.current]);
+            AJS.$(document).trigger("hideLayer", ["dropdown", AJS.dropDown.current]);
             AJS.dropDown.current = null;
             return causer;
         };
