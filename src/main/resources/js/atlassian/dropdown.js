@@ -28,11 +28,10 @@ AJS.dropDown = function (obj, usroptions) {
                 this.hide("escape");
                 return false;
             },
-            hideHandler: function() {},
+            hideHandler: function() {}
         };
-    
     AJS.$.extend(options, usroptions);
-
+    options.alignment = {left:"left",right:"right"}[options.alignment.toLowerCase()]  || "left"; 
     if (obj && obj.jquery) { // if AJS.$
         dd = obj;
     } else if (typeof obj == "string") { // if AJS.$ selector
@@ -189,11 +188,7 @@ AJS.dropDown = function (obj, usroptions) {
                 if (dir) {
                     $cdd.removeClass("hidden");
                     //handle left or right alignment
-                    if(options.alignment == "left"){
-                        $cdd.addClass("aui-dropdown-left");
-                    } else if (options.alignment == "right"){
-                        $cdd.addClass("aui-dropdown-right");
-                    }
+                    $cdd.addClass("aui-dropdown-" + options.alignment);
                 } else {
                     $cdd.addClass("hidden");
                 }   
@@ -307,7 +302,7 @@ AJS.dropDown = function (obj, usroptions) {
                 if (this.$.is(":visible")) {
                     this.shadowParent = AJS.$('<div class="aui-shadow-parent"></div>').css({
                         top: this.$.css("top"),
-                        left: (this.$.position().left - 7) + "px",
+                        left: (this.$.position().left - 7), //make sure shadow follows dropdown when alignment changes
                         width: this.$.width(),
                         height: this.$.height()
                     }).insertBefore(this.$);
