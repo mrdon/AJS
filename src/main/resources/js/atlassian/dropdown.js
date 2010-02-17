@@ -13,6 +13,7 @@ AJS.dropDown = function (obj, usroptions) {
             isHiddenByDefault: false,
             item: "li:has(a)",
             activeClass: "active",
+            alignment: "left",
             selectionHandler: function (e, selected) {
                 if (selected) {
                     if (selected.get(0).nodeName.toLowerCase() !== "a") {
@@ -27,7 +28,7 @@ AJS.dropDown = function (obj, usroptions) {
                 this.hide("escape");
                 return false;
             },
-            hideHandler: function() {}
+            hideHandler: function() {},
         };
     
     AJS.$.extend(options, usroptions);
@@ -117,6 +118,7 @@ AJS.dropDown = function (obj, usroptions) {
         e.preventDefault();
         return false;
     };
+    
     var hider = function (e) {
         if (!((e && e.which && (e.which == 3)) || (e && e.button && (e.button == 2)) || false)) { // right click check
             if (AJS.dropDown.current) {
@@ -186,9 +188,15 @@ AJS.dropDown = function (obj, usroptions) {
             appear: function (dir) {
                 if (dir) {
                     $cdd.removeClass("hidden");
+                    //handle left or right alignment
+                    if(options.alignment == "left"){
+                        $cdd.addClass("aui-dropdown-left");
+                    } else if (options.alignment == "right"){
+                        $cdd.addClass("aui-dropdown-right");
+                    }
                 } else {
                     $cdd.addClass("hidden");
-                }
+                }   
             },
             fade: function (dir) {
                 if (dir) {
@@ -233,7 +241,7 @@ AJS.dropDown = function (obj, usroptions) {
                 active(0).call(this.links[0]);
             }
             AJS.$(cdd.offsetParent).css({zIndex: 2000});
-			 AJS.$(document).trigger("showLayer", ["dropdown", AJS.dropDown.current]);
+			AJS.$(document).trigger("showLayer", ["dropdown", AJS.dropDown.current]);
         };
         res.hide = function (causer) {
             this.method = this.method || "appear";
@@ -299,6 +307,7 @@ AJS.dropDown = function (obj, usroptions) {
                 if (this.$.is(":visible")) {
                     this.shadowParent = AJS.$('<div class="aui-shadow-parent"></div>').css({
                         top: this.$.css("top"),
+                        left: (this.$.position().left - 7) + "px",
                         width: this.$.width(),
                         height: this.$.height()
                     }).insertBefore(this.$);

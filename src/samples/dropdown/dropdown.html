@@ -24,8 +24,11 @@
     <style type="text/css">
         body {font-family: sans-serif; font-size: 10pt;}
         .hidden {display: none;}
-        .positioning {background: #036; float: right; list-style-type: none; padding: 1em; width: auto;}
+        .positioning {background: #036; list-style-type: none; padding: 1em; float:right; border:1px solid;}
+        .alignmentPositioning {background: #036; list-style-type: none; padding: 1em; float:left;margin-left: 200px; border:1px solid;}
         .aui-dd-parent {float: left; margin: 0 0 0 2em; width: auto;}
+        #dropDown-left {float: left; margin: 0 0 0 2em; width: auto;}
+        #dropDown-right {float: left; margin: 0 0 0 2em; width: auto;}
         
         #testing {clear: right; float: right; width: 500px;}
             #testing object,
@@ -33,50 +36,76 @@
     </style>
 </head>
 <body>
+    <ul class="alignmentPositioning">
+        <div id = "dropDown-left">
+            <li class="aui-dd-parent">
+                <a href="#" class="aui-dd-trigger">A Dropdown</a>
+                <ul class="aui-dropdown">
+                    <li><a href="#">Left alignment</a></li>
+                    <li><a href="#">Left alignment</a></li>
+                    <li><a href="#">Left alignment</a></li>
+                    <li><a href="#">Left alignment</a></li>
+                </ul>
+            </li>
+        </div>
+        <div id = "dropDown-right">
+            <li class="aui-dd-parent">
+                <a href="#" class="aui-dd-trigger">A Dropdown</a>
+                <ul class="aui-dropdown">
+                    <li><a href="#">Right Alignment</a></li>
+                    <li><a href="#">Right Alignment</a></li>
+                    <li><a href="#">Right Alignment</a></li>
+                    <li><a href="#">Right Alignment</a></li>
+                </ul>
+            </li>
+        </div>
+    </ul>
     <ul class="positioning">
-        <li class="aui-dd-parent">
-            <a href="#" class="aui-dd-trigger">A Dropdown</a>
-            <ul class="aui-dropdown">
-                <li><a href="#">A menu item</a></li>
-                <li><a href="#">Another menu item</a></li>
-                <li><a href="#">Third menu item</a></li>
-                <li><a href="#">Menu item 4</a></li>
-                <li><a href="#">A menu item</a></li>
-                <li><a href="#">Another menu item</a></li>
-                <li><a href="#">Third menu item</a></li>
-                <li><a href="#">Menu item 4</a></li>
-                <li><a href="#">A menu item</a></li>
-                <li><a href="#">Another menu item</a></li>
-                <li><a href="#">Third menu item</a></li>
-                <li><a href="#">Menu item 4</a></li>
-                <li><a href="#">A menu item</a></li>
-                <li><a href="#">Another menu item</a></li>
-                <li><a href="#">Third menu item</a></li>
-                <li><a href="#">Menu item 4</a></li>
-                <li><a href="#">A menu item</a></li>
-                <li><a href="#">Another menu item</a></li>
-                <li><a href="#">Third menu item</a></li>
-                <li><a href="#">Menu item 4</a></li>
-                <li><a href="#">A menu item</a></li>
-                <li><a href="#">Another menu item</a></li>
-                <li><a href="#">Third menu item</a></li>
-                <li><a href="#">Menu item 4</a></li>
-                <li><a href="#">A menu item</a></li>
-                <li><a href="#">Another menu item</a></li>
-                <li><a href="#">Third menu item</a></li>
-                <li><a href="#">Menu item 4</a></li>
-                
-            </ul>
-        </li>
-        <li class="aui-dd-parent">
-            <a href="#" class="aui-dd-trigger">A Second Dropdown</a>
-            <ul class="aui-dropdown">
-                <li><a href="#">A menu item in the Second Dropdown</a></li>
-                <li><a href="#">Another menu item</a></li>
-                <li><a href="#">Third menu item</a></li>
-                <li><a href="#">Menu item 4</a></li>
-            </ul>
-        </li>
+        <div id="dropDownTest">
+            <li class="aui-dd-parent">
+                <a href="#" class="aui-dd-trigger">A Dropdown</a>
+                <ul class="aui-dropdown">
+                    <li><a href="#">A menu item</a></li>
+                    <li><a href="#">Another menu item</a></li>
+                    <li><a href="#">Third menu item</a></li>
+                    <li><a href="#">Menu item 4</a></li>
+                    <li><a href="#">A menu item</a></li>
+                    <li><a href="#">Another menu item</a></li>
+                    <li><a href="#">Third menu item</a></li>
+                    <li><a href="#">Menu item 4</a></li>
+                    <li><a href="#">A menu item</a></li>
+                    <li><a href="#">Another menu item</a></li>
+                    <li><a href="#">Third menu item</a></li>
+                    <li><a href="#">Menu item 4</a></li>
+                    <li><a href="#">A menu item</a></li>
+                    <li><a href="#">Another menu item</a></li>
+                    <li><a href="#">Third menu item</a></li>
+                    <li><a href="#">Menu item 4</a></li>
+                    <li><a href="#">A menu item</a></li>
+                    <li><a href="#">Another menu item</a></li>
+                    <li><a href="#">Third menu item</a></li>
+                    <li><a href="#">Menu item 4</a></li>
+                    <li><a href="#">A menu item</a></li>
+                    <li><a href="#">Another menu item</a></li>
+                    <li><a href="#">Third menu item</a></li>
+                    <li><a href="#">Menu item 4</a></li>
+                    <li><a href="#">A menu item</a></li>
+                    <li><a href="#">Another menu item</a></li>
+                    <li><a href="#">Third menu item</a></li>
+                    <li><a href="#">Menu item 4</a></li>
+
+                </ul>
+            </li>
+            <li class="aui-dd-parent">
+                <a href="#" class="aui-dd-trigger">A Second Dropdown</a>
+                <ul class="aui-dropdown">
+                    <li><a href="#">A menu item in the Second Dropdown</a></li>
+                    <li><a href="#">Another menu item</a></li>
+                    <li><a href="#">Third menu item</a></li>
+                    <li><a href="#">Menu item 4</a></li>
+                </ul>
+            </li>
+        </div>
     </ul>
     
     <div id="testing">
@@ -165,7 +194,11 @@
         AJS.warnAboutFirebug("A different sample message warning about Firebug.");
         
         // Testing AJS.dropDown
-        AJS.$(".aui-dd-parent").dropDown();
+        AJS.$("#dropDownTest").dropDown("Standard", {alignment: "right"});
+        
+        //Testing dropDown alignment options
+         AJS.$("#dropDown-left").dropDown("Standard", {alignment: "left"});
+         AJS.$("#dropDown-right").dropDown("Standard", {alignment: "right"});
 
         // Testing AJS.inlineHelp
         AJS.inlineHelp();
