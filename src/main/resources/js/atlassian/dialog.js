@@ -171,6 +171,15 @@ AJS.popup = function (options) {
 			AJS.$(document).trigger("hideLayer", ["popup", this]);
 			AJS.popup.current = null;
         },
+
+        /**
+         * jQuery object, representing popup DOM element. Container is used in as a generic name when referencing
+         * popup from the showLayer, hideLayer events
+         *
+         * @property container
+        */
+        container: popup,
+
         /**
          * jQuery object, representing popup DOM element
          * @property element

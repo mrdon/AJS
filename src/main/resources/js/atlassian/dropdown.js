@@ -166,6 +166,14 @@ AJS.dropDown = function (obj, usroptions) {
             reset: function () {
                 res = AJS.$.extend(res || {}, {
                     $: $cdd,
+
+                    /**
+                     * jQuery object, representing dropdown DOM element. Container is used in as a generic name when referencing
+                     * popup from the showLayer, hideLayer events
+                     *
+                     * @property container
+                    */
+                    container: $cdd,
                     links: AJS.$(options.item || "li:has(a)", cdd),
                     cleanFocus: function () {
                         if (cdd.focused + 1 && res.links.length) {

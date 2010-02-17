@@ -18,6 +18,7 @@
         var shouldShow = false;
         var contentLoaded = false;
         var mousePosition;
+        var hash;
         var targetPosition;
         $(opts.container).append($('<div id="inline-dialog-' + identifier + '" class="aui-inline-dialog"><div class="contents"></div><div id="arrow-' + identifier + '" class="arrow"></div></div>'));
         var popup = $("#inline-dialog-" + identifier);
@@ -35,31 +36,37 @@
             hidePopup();
         });
 		
-		var getHash = function () {
-			return {
-				popup: popup,
-				hide: function(){
-					hidePopup(0);
-				},
-				id: identifier,
-				show: function(){
-					showPopup();
-				}
-			};	
-		}
+		hash = {
+            /**
+             * jQuery object, representing popup DOM element. Container is used in as a generic name when referencing
+             * popup from the showLayer, hideLayer events
+             *
+             * @property container
+            */
+            container: popup,
+            popup: popup,
+            hide: function(){
+                hidePopup(0);
+            },
+            id: identifier,
+            show: function(){
+                showPopup();
+            }
+        };
 
         var showPopup = function() {
             if (popup.is(":visible")) {
                 return;
             }
             showTimer = setTimeout(function() {
-                if (!contentLoaded || !shouldShow) {
+                if (!contentLoaded || !shouldShow || beingShown) {
                     return;
                 }
                 $(items).addClass("active");
-				AJS.InlineDialog.current = getHash();
-				AJS.$(document).trigger("showLayer", ["inlineDialog", getHash()]);
+				AJS.InlineDialog.current = hash;
+				
                 beingShown = true;
+                AJS.$(document).trigger("showLayer", ["inlineDialog", hash]);
                 // retrieve the position of the click target. The offsets might be different for different types of targets and therefore
                 // either have to be customisable or we will have to be smarter about calculating the padding and elements around it
 
@@ -141,7 +148,7 @@
                     popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
                     beingShown = false;
                     shouldShow = false;
-					AJS.$(document).trigger("hideLayer", ["inlineDialog", getHash()]);
+					AJS.$(document).trigger("hideLayer", ["inlineDialog", hash]);
 					AJS.InlineDialog.current = null;
                     if (!opts.cacheContent) {
                         //if not caching the content, then reset the
@@ -208,7 +215,7 @@
             return false;
         };
 
-        popup[0].popup = getHash();
+        popup[0].popup = hash;
 
         var contentLoading = false;
         if (opts.onHover) {
