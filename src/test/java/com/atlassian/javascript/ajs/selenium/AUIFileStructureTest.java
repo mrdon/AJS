@@ -1,18 +1,21 @@
 package com.atlassian.javascript.ajs.selenium;
 
 import com.atlassian.core.util.ClassLoaderUtils;
-import junit.framework.TestCase;
-import junit.framework.AssertionFailedError;
 import org.apache.commons.io.DirectoryWalker;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
-public class AUIFileStructureTest extends TestCase {
+import static junit.framework.Assert.assertTrue;
+
+public class AUIFileStructureTest
+{
     private static final String[] PROJ_STRUCTURE = new String[]{
             "atlassian-plugin.xml",
             "css/basic.css",
@@ -60,40 +63,64 @@ public class AUIFileStructureTest extends TestCase {
             "js/external/raphael/raphael.js",
             "js/external/raphael/raphael.shadow.js"
     };
+    private Collection<String> knownPaths = null;
 
-    public void testProjectContents() throws Exception {
-        final Collection<String> knownPaths = Arrays.asList(PROJ_STRUCTURE);
-        final Collection<String> foundPaths = new ProjectChecker().start();
 
+    @After
+    public void tearDown()
+    {
+        knownPaths = null;
+    }
+
+    @Before
+    public void setUp()
+    {
+        knownPaths = Arrays.asList(PROJ_STRUCTURE);
+    }
+
+    @Test
+    public void testProjectContents() throws Exception
+    {
         // Check that all known files exist in the correct location
-        for (String knownPath : knownPaths) {
+        for (String knownPath : knownPaths)
+        {
             assertTrue("File does not exist <" + knownPath + ">", ClassLoaderUtils.getResource(knownPath, this.getClass()) != null);
         }
+    }
+
+    @Test
+    public void testForUnwantedFiles() throws Exception
+    {
+        final Collection<String> foundPaths = new ProjectChecker().start();
 
         // Check that all found files are on the known list (eg: alert for new files that have been created (or moved) but not yet listed as 'known')
         foundPaths.removeAll(knownPaths);
         assertTrue("Files exist that are not on the known files list: " + foundPaths, foundPaths.isEmpty());
     }
 
-    class ProjectChecker extends DirectoryWalker {
+    private class ProjectChecker extends DirectoryWalker
+    {
+
         private static final String RESOURCE_PREFIX = "src/main/resources";
 
-        public Collection<String> start() throws Exception {
+        public Collection<String> start() throws Exception
+        {
             ArrayList<String> paths = new ArrayList<String>();
             walk(new File(RESOURCE_PREFIX), paths);
             return paths;
         }
 
-        // Allow exception for .svn/ files
-        @Override
-        protected void handleFile(File file, int depth, Collection results) throws IOException {
-            String filePath= file.getPath().substring(RESOURCE_PREFIX.length() + 1);
-            if (!file.getName().equals(".DS_Store"))
+        protected boolean handleDirectory(File directory, int depth, Collection results) throws IOException
+        {
+            return !directory.isHidden();
+        }
+
+        protected void handleFile(File file, int depth, Collection results) throws IOException
+        {
+            if (!file.isHidden())
             {
-                if (!filePath.contains(".svn/"))
-                {
-                    results.add(filePath);
-                }
+                String filePath = file.getPath().substring(RESOURCE_PREFIX.length() + 1);
+                results.add(filePath);
             }
         }
     }
