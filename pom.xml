@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.atlassian.selenium</groupId>
             <artifactId>atlassian-selenium</artifactId>
-            <version>1.2</version>
+            <version>1.6.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -208,7 +208,7 @@
                             <goal>test</goal>
                         </goals>
                         <configuration>
-                            <skip>false</skip>
+                            <skip>true</skip>
                             <includes>
                                 <include>com/atlassian/**/*Test.java</include>
                                 <!-- todo why does /javascript not work????? -->
