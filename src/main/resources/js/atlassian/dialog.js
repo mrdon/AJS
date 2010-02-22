@@ -19,7 +19,7 @@ AJS.dim = function () {
             AJS.$("body").append(AJS.dim.shim);
         }
         
-        AJS.$("html").css("overflow", "hidden");
+        AJS.$("body").css("overflow", "hidden");
     }
 };
 /**
@@ -35,7 +35,7 @@ AJS.undim = function () {
         if (AJS.$.browser.msie) {
             AJS.dim.shim.remove();
         }
-        AJS.$("html").css("overflow", "");
+        AJS.$("body").css("overflow", "");
         // Safari bug workaround
         if (AJS.$.browser.safari) {
             var top = AJS.$(window).scrollTop();
