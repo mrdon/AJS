@@ -17,8 +17,8 @@ AJS.dim = function () {
             AJS.dim.shim.css({height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
             AJS.$("body").append(AJS.dim.shim);
         }
-
-        AJS.$("html").css("overflow", "hidden");
+        
+        AJS.$("body").css("overflow", "hidden");
     }
 };
 /**
@@ -34,7 +34,7 @@ AJS.undim = function () {
         if (AJS.$.browser.msie) {
             AJS.dim.shim.remove();
         }
-        AJS.$("html").css("overflow", "");
+        AJS.$("body").css("overflow", "");
         // Safari bug workaround
         if (AJS.$.browser.safari) {
             var top = AJS.$(window).scrollTop();
