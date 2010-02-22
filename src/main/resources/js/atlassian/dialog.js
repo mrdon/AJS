@@ -18,7 +18,12 @@ AJS.dim = function () {
             AJS.$("body").append(AJS.dim.shim);
         }
         
-        AJS.$("body").css("overflow", "hidden");
+        // IE needs the overflow on the HTML element so scrollbars are hidden
+        if (AJS.$.browser.msie && parseInt(AJS.$.browser.version) < 8) {
+            AJS.$("html").css("overflow", "hidden");
+        } else {
+            AJS.$("body").css("overflow", "hidden");
+        }
     }
 };
 /**
@@ -34,7 +39,14 @@ AJS.undim = function () {
         if (AJS.$.browser.msie) {
             AJS.dim.shim.remove();
         }
-        AJS.$("body").css("overflow", "");
+
+        // IE needs the overflow on the HTML element so scrollbars are hidden
+        if (AJS.$.browser.msie && parseInt(AJS.$.browser.version) < 8) {
+            AJS.$("html").css("overflow", "");
+        } else {
+            AJS.$("body").css("overflow", "");
+        }
+
         // Safari bug workaround
         if (AJS.$.browser.safari) {
             var top = AJS.$(window).scrollTop();
