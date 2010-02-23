@@ -1,6 +1,8 @@
 
 /*global AJS, document, setTimeout */
 
+
+
 AJS.dropDown = function (obj, usroptions) {
 
     var dd = null,
@@ -356,6 +358,13 @@ AJS.dropDown = function (obj, usroptions) {
             })();
         }
 
+        // make sure shadow images are preloaded
+        if (!AJS.dropDown.preloaded && res.$.children().size() > 0) {
+            res.show();
+            res.hide();
+            AJS.dropDown.preloaded = true;
+        }
+
         result.push(res);
     });
     return result;
@@ -427,14 +436,15 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
         //hide dropdown if not already hidden
         $dropdown.addClass("hidden");
 
-        $trigger.click(function (e) {
-            if (ddcontrol != AJS.dropDown.current) {
-                $dropdown.css({top: $trigger.outerHeight()});
-                ddcontrol.show();
-                e.stopPropagation();
+        $trigger[options.triggerEvent || "click"](function (e) {
+            if (!options.triggerEval || options.triggerEval.call(this, e)) {
+                if (ddcontrol != AJS.dropDown.current) {
+                    $dropdown.css({top: $trigger.outerHeight()});
+                    ddcontrol.show();
+                    e.stopPropagation();
+                }
+                e.preventDefault();
             }
-
-            e.preventDefault();
         });
 
         ddcontrol.addCallback("show", function () {
