@@ -386,16 +386,7 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
     // only here for backwards compatibility
 };
 
- /**
-  * Base dropdown control. Enables you to identify triggers that when clicked, display dropdown.
-  *
-  * @class Standard
-  * @contructor
-  * @namespace AJS.dropDown
-  * @param {Object} options
-  * @return {Object
-  */
- AJS.dropDown.Standard = function (usroptions) {
+AJS.dropDown.Standard = function (usroptions) {
 
     var res = [], dropdownParents, options = {
         selector: ".aui-dd-parent",
@@ -416,35 +407,44 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
 
     // a series of checks to ensure we are dealing with valid dropdowns
     dropdownParents = dropdownParents
-            .not(".dd-allocated")
             .filter(":has(" + options.dropDown + ")")
             .filter(":has(" + options.trigger + ")");
 
     dropdownParents.each(function () {
-        var
-        $parent = AJS.$(this),
+
+        var $parent = AJS.$(this), $dropdown, $trigger, ddcontrol;
+
+        if ($parent.data("dd-allocated")) {
+             return;
+        } else {
+            $parent.data("dd-allocated", true);
+        }
+
         $dropdown = AJS.$(options.dropDown, this),
         $trigger = AJS.$(options.trigger, this),
+        ddcontrol;
+
+        // ie6 is doing some strange things when I add any class for some reason
+        if (!jQuery.browser.msie || jQuery.browser.version > 7) {
+            // flag it to prevent additional dd controls being applied
+            $parent.addClass("dd-allocated");
+        }
+
         ddcontrol = AJS.dropDown($dropdown, options)[0];
 
         // extend to control to have any additional properties/methods
         AJS.$.extend(ddcontrol, {trigger: $trigger});
 
-        // flag it to prevent additional dd controls being applied
-        $parent.addClass("dd-allocated");
-
         //hide dropdown if not already hidden
         $dropdown.addClass("hidden");
 
-        $trigger[options.triggerEvent || "click"](function (e) {
-            if (!options.triggerEval || options.triggerEval.call(this, e)) {
-                if (ddcontrol != AJS.dropDown.current) {
-                    $dropdown.css({top: $trigger.outerHeight()});
-                    ddcontrol.show();
-                    e.stopPropagation();
-                }
-                e.preventDefault();
+        $trigger.click(function (e) {
+            if (ddcontrol != AJS.dropDown.current) {
+                $dropdown.css({top: $trigger.outerHeight()});
+                ddcontrol.show();
+                e.stopPropagation();
             }
+            e.preventDefault();
         });
 
         ddcontrol.addCallback("show", function () {
