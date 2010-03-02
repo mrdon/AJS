@@ -82,10 +82,12 @@ AJS.dropDown = function (obj, usroptions) {
             }
             case 13:{
                 if (cdd.focused >= 0) {
-                    if(!options.selectionHandler && options.item != "a"){ 
-                        return AJS.$("a", links[cdd.focused]).trigger("focus");    //focus on the "a" within the parent item elements
-                    } else if (options.item =="a" && !options.selectionHandler){
-                         return AJS.$(links[cdd.focused]).trigger("focus");     //focus on the "a"  
+                    if(!options.selectionHandler){ 
+                        if(AJS.$(AJS.dropDown.current.links[cdd.focused]).attr("nodeName")!='a'){
+                            return AJS.$("a", links[cdd.focused]).trigger("focus");    //focus on the "a" within the parent item elements
+                        } else {
+                            return AJS.$(links[cdd.focused]).trigger("focus");     //focus on the "a"  
+                        }
                     } else {
                         return options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(links[cdd.focused]));   //call the selection handler
                     }
