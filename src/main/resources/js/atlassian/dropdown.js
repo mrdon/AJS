@@ -14,16 +14,6 @@ AJS.dropDown = function (obj, usroptions) {
             item: "li:has(a)",
             activeClass: "active",
             alignment: "left",
-            selectionHandler: function (e, selected) {
-                if (selected) {
-                    if (selected.get(0).nodeName.toLowerCase() !== "a") {
-                        window.location = selected.find("a").attr("href");
-                    } else {
-                        window.location = selected.attr("href");
-                    }
-                    e.preventDefault();
-                }
-            },
             escapeHandler: function () {
                 this.hide("escape");
                 return false;
@@ -75,6 +65,7 @@ AJS.dropDown = function (obj, usroptions) {
         var c = e.which,
             cdd = AJS.dropDown.current.$[0],
             focus = (typeof cdd.focused == "number" ? cdd.focused : -1);
+            links = AJS.dropDown.current.links;
             AJS.dropDown.current.cleanFocus();
             cdd.focused = focus;
         switch (c) {
@@ -91,26 +82,32 @@ AJS.dropDown = function (obj, usroptions) {
             }
             case 13:{
                 if (cdd.focused >= 0) {
-                    return options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(AJS.dropDown.current.links[cdd.focused]));
+                    if(!options.selectionHandler && options.item != "a"){ 
+                        return AJS.$("a", links[cdd.focused]).trigger("focus");    //focus on the "a" within the parent item elements
+                    } else if (options.item =="a" && !options.selectionHandler){
+                         return AJS.$(links[cdd.focused]).trigger("focus");     //focus on the "a"  
+                    } else {
+                        return options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(links[cdd.focused]));   //call the selection handler
+                    }
                 }
                 return true;
             }
             default:{
-                if (AJS.dropDown.current.links.length) {
-                    AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
+                if (links.length) {
+                    AJS.$(links[cdd.focused]).addClass("active");
                 }
                 return true;
             }
         }
         if (cdd.focused < 0) {
-            cdd.focused = AJS.dropDown.current.links.length - 1;
+            cdd.focused = links.length - 1;
         }
-        if (cdd.focused > AJS.dropDown.current.links.length - 1) {
+        if (cdd.focused > links.length - 1) {
             cdd.focused = 0;
         }
 		
-        if (AJS.dropDown.current.links.length) {
-            AJS.$(AJS.dropDown.current.links[cdd.focused]).addClass("active");
+        if (links.length) {
+            AJS.$(links[cdd.focused]).addClass("active");
         }
 		
         e.stopPropagation();
@@ -141,7 +138,7 @@ AJS.dropDown = function (obj, usroptions) {
         if (e.button || e.metaKey || e.ctrlKey || e.shiftKey) {
             return true;
         }
-        if (AJS.dropDown.current) {
+        if (AJS.dropDown.current) { 
             options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
         }
     };
