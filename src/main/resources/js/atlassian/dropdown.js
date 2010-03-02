@@ -330,7 +330,7 @@ AJS.dropDown = function (obj, usroptions) {
             });
         })();
 
-        if (AJS.$.browser.msie) {
+        if (AJS.$.browser.msie && parseInt(AJS.$.browser.version, 10) < 7) {
             // iframeShim
             (function () {
                 var refreshIframeShim = function () {
