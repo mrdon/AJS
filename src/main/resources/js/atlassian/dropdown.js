@@ -64,7 +64,7 @@ AJS.dropDown = function (obj, usroptions) {
         }
         var c = e.which,
             cdd = AJS.dropDown.current.$[0],
-            focus = (typeof cdd.focused == "number" ? cdd.focused : -1);
+            focus = (typeof cdd.focused == "number" ? cdd.focused : -1),
             links = AJS.dropDown.current.links;
             AJS.dropDown.current.cleanFocus();
             cdd.focused = focus;
