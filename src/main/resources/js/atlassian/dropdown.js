@@ -13,7 +13,7 @@ AJS.dropDown = function (obj, usroptions) {
             isHiddenByDefault: false,
             item: "li:has(a)",
             activeClass: "active",
-            alignment: "left",
+            alignment: "right",
             escapeHandler: function () {
                 this.hide("escape");
                 return false;
