@@ -20,9 +20,8 @@
         var contentLoaded = false;
         var mousePosition;
         var targetPosition;
-        $(opts.container).append($('<div id="inline-dialog-' + identifier + '" class="aui-inline-dialog"><div class="contents"></div><div id="arrow-' + identifier + '" class="arrow"></div></div>'));
-        var popup = $("#inline-dialog-" + identifier);
-        var arrow = $("#arrow-" + identifier);
+        var popup  = $('<div id="inline-dialog-' + identifier + '" class="aui-inline-dialog"><div class="contents"></div><div id="arrow-' + identifier + '" class="arrow"></div></div>');
+        var arrow = $("#arrow-" + identifier, popup);
         var contents = popup.find(".contents");
 
 //        AJS.log(opts);
@@ -66,20 +65,20 @@
 
                 var posx = targetPosition.target.offset().left + opts.offsetX;
                 var posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
-
                 var diff = $(window).width() - (posx + opts.width + 30);
+
                 if (diff<0) {
                     popup.css({
                         right: "20px",
                         left: "auto"
-                    }); 
+                    });
                     if(window.Raphael){
-                        popup.arrowCanvas = Raphael("arrow-" + identifier, 16, 16);  //create canvas using arrow element
+                        popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
                         popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
                             fill : "#fff",
                             stroke : "#bbb"
-                            }); //draw arrow using path and attributes.                               
-                    }     
+                            }); //draw arrow using path and attributes.
+                    }
                     arrow.css({
                         left: -diff + (targetPosition.target.width() / 2) + "px",
                         right: "auto"
@@ -91,13 +90,13 @@
                     });
                     //Raphael arrow
                     if(window.Raphael){
-                        popup.arrowCanvas = Raphael("arrow-" + identifier, 16, 16);  //create canvas using arrow element
+                        popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
                         popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
                             fill : "#fff",
                             stroke : "#bbb"
-                            }); //draw arrow using path and attributes.                
+                            }); //draw arrow using path and attributes.
                     }
-         
+
                     arrow.css({
                         left: targetPosition.target.width() / 2 + "px",
                         right: "auto"
@@ -179,9 +178,10 @@
 
         // the trigger is the jquery element that is triggering the popup (i.e., the element that the mousemove event is bound to)
         var initPopup = function(e,trigger) {
-            $(".aui-inline-dialog").each(function() {
-                if (typeof this.popup != "undefined")
+            popup.each(function() {
+                if (typeof this.popup != "undefined") {
                     this.popup.hide();
+                }
             });
 
             mousePosition = { x: e.pageX, y: e.pageY };
@@ -234,14 +234,23 @@
         popup[0].popup = getHash();
 
         var contentLoading = false;
+        var added  = false;
+        var appendPopup = function () {
+            if (!added) {
+                $(opts.container).append(popup);
+                added = true;
+            }
+        };
         if (opts.onHover) {
             $(items).mousemove(function(e) {
+                appendPopup();
                 initPopup(e,this);
             }).mouseout(function() {
                 hidePopup();
             });
         } else {
             $(items).click(function(e) {
+                appendPopup();
                 initPopup(e,this);
                 return false;
             }).mouseout(function() {
@@ -273,11 +282,4 @@
         hideCallback: function(){}, // if defined, this method will be exected after the popup has been faded out.
         initCallback: function(){} // A function called after the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
     };
-
-    AJS.toInit(function() {
-        if (AJS.$.browser.msie) {
-            $("body").append($('<iframe id="inline-dialog-shim" frameBorder="0" src="javascript:false;"></iframe>'));
-            $("#inline-dialog-shim").hide();
-        }
-    });
 })(jQuery);
