@@ -540,7 +540,7 @@ AJS.dropDown.Ajax = function (usroptions) {
                         });
                         superMethod.call(ddcontrol);
                         ddcontrol.shadow.hide();
-                        if (AJS.$.browser.msie) {
+                        if (AJS.$.browser.msie && parseInt(AJS.$.browser.version, 10) < 7) {
                             ddcontrol.iframeShim.hide();
                         }
                     }
