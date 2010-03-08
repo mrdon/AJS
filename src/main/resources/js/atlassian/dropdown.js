@@ -526,7 +526,7 @@ AJS.dropDown.Ajax = function (usroptions) {
                         });
                         superMethod.call(ddcontrol);
                         ddcontrol.shadow.hide();
-                        if (AJS.$.browser.msie) {
+                        if (ddcontrol.iframeShim) {
                             ddcontrol.iframeShim.hide();
                         }
                     }
