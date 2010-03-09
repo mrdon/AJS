@@ -58,6 +58,16 @@
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <resource type="download" name="js/external/jquery/jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
     </web-resource>
+	
+	<web-resource name="stalker" key="stalker">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+		<resource type="download" name="jquery.os.js" location="js/atlassian/jquery.os.js"/>
+		<resource type="download" name="jquery.getdocheight.js" location="js/atlassian/jquery.getdocheight.js"/>
+        <resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery.hotkeys.js"/>
+		<resource type="download" name="jquery.offsetanchors.js" location="js/atlassian/jquery.offsetanchors.js"/>
+		<resource type="download" name="jquery.stalker.js" location="js/atlassian/jquery.stalker.js"/>
+		<resource type="download" name="containdropdown.js" location="js/atlassian/containdropdown.js"/>
+    </web-resource>
     
     <!-- Every part of jQuery UI JS that we don't offer by default -->
     <web-resource name="jQuery UI Other" key="jquery-ui-other">
