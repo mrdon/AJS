@@ -249,13 +249,15 @@
                 hidePopup();
             });
         } else {
-            $(items).click(function(e) {
-                appendPopup();
-                initPopup(e,this);
-                return false;
-            }).mouseout(function() {
-                hidePopup();
-            });
+            if(!opts.noBind){   //Check if the noBind option is turned on
+                $(items).click(function(e) {
+                    appendPopup();
+                    initPopup(e,this);
+                    return false;
+                }).mouseout(function() {
+                    hidePopup();
+                });
+            }
         }
 
         contents.click(function(e) {
@@ -271,6 +273,7 @@
 
     AJS.InlineDialog.opts = {
         onHover: false,
+        noBind: false,
         fadeTime: 100,
         hideDelay: 10000,
         showDelay: 0,

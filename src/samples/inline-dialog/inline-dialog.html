@@ -26,6 +26,7 @@
 <body>
     <div><a href="inline-dialog.html" id="popupLink">Click Link</a></div>
     <div><a href="inline-dialog.html" id="hoverLink">Hover Link</a></div>
+    <div><a href="inline-dialog.html" id="noBind">noBind Test Link</a></div>
     
     <div id="testing">
         <!-- Testing iframeShim -->
@@ -122,6 +123,7 @@
 
             AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess});
             AJS.InlineDialog(AJS.$("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
+            AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess, noBind:true});
 
             // Testing AJS.inlineHelp
             AJS.inlineHelp();
