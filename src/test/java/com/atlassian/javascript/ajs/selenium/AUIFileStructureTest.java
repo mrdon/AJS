@@ -17,6 +17,9 @@ import static junit.framework.Assert.assertTrue;
 public class AUIFileStructureTest
 {
     private static final String[] PROJ_STRUCTURE = new String[]{
+
+        // If you're adding files here, make you've added them to all sample and test pages too!
+
             "atlassian-plugin.xml",
             "css/basic.css",
             "css/dialog.css",
@@ -48,6 +51,12 @@ public class AUIFileStructureTest
             "js/atlassian/jquery.is-dirty.js",
             "js/atlassian/jquery.progressbar.js",
             "js/atlassian/jquery.selection.js",
+            "js/atlassian/jquery.os.js",
+            "js/atlassian/jquery.offsetanchors.js",
+            "js/atlassian/jquery.hotkeys.js",
+            "js/atlassian/containdropdown.js",
+            "js/atlassian/jquery.getdocheight.js",
+            "js/atlassian/jquery.stalker.js",
             "js/atlassian/jquery.throbber.js",
             "js/external/jquery/jquery-1.3.2.js",
             "js/external/jquery/jquery-1.3.2-min.js",
