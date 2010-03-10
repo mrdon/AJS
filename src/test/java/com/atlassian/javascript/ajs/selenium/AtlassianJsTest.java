@@ -31,8 +31,6 @@ public class AtlassianJsTest extends AUISeleniumTestCase {
         String concatenatedTestNames = client.getEval("window.testAjs.getTestNames()");
         String[] methodNames = concatenatedTestNames.split(",");
 
-        System.out.println(concatenatedTestNames);
-
         for (String methodName : methodNames) {
             suite.addTest(new JavaScriptTest(methodName));
         }
