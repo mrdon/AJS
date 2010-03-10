@@ -24,3 +24,10 @@ If you're running Windows:
 
    Why FF2? FF3.5 didn't work, FF2 did.
 
+
+Skipping tests
+
+    Just add the '-Dmaven.test.skip' flag, eg:
+        mvn clean install -Dmaven.test.skip
+
+

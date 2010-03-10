@@ -48,13 +48,13 @@ public class AUIDropDownTest extends AUISeleniumTestCase
         setUpTest();
 
         client.click("css=div#dropDown1 .aui-dd-trigger");    //click on a dropdown
-        client.click("dom=document");   //click on the body element of the page to hide the dropdown
+        client.click("css=body");   //click on the body element of the page to hide the dropdown
 
         assertThat.elementNotVisible("css=div#dropDown1 .aui-dropdown");
         assertThat.elementNotVisible("css=div#dropDown2 .aui-dropdown");
 
         client.click("css=div#dropDown2 .aui-dd-trigger");    //click on a dropdown
-        client.click("dom=document");   //click on the body element of the page to hide the dropdown
+        client.click("css=body");   //click on the body element of the page to hide the dropdown
 
         assertThat.elementNotVisible("css=div#dropDown1 .aui-dropdown");
         assertThat.elementNotVisible("css=div#dropDown2 .aui-dropdown");

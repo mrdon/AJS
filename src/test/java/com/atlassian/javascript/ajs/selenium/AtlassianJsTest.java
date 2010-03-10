@@ -1,52 +1,53 @@
 package com.atlassian.javascript.ajs.selenium;
 
-import junit.framework.TestCase;
 import junit.framework.Test;
+import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import com.atlassian.javascript.ajs.selenium.client.Client;
-import com.atlassian.javascript.ajs.selenium.client.Configuration;
-import com.atlassian.selenium.SeleniumAssertions;
 
-public class AtlassianJsTest extends TestCase
-{
-    private static Client client = Client.getInstance();
-    private static SeleniumAssertions assertThat = new SeleniumAssertions(client, Configuration.getInstance());
+import java.util.Enumeration;
 
-    public static Test suite()
-    {
+public class AtlassianJsTest extends AUISeleniumTestCase {
+
+    public void testAtlassianJs() throws Throwable {
+        TestSuite testSuite = buildTestSuite();
+
+        Enumeration<Test> testEnumeration = testSuite.tests();
+        while (testEnumeration.hasMoreElements()) {
+
+            TestCase test = (TestCase) testEnumeration.nextElement();
+            test.runBare();
+        }
+    }
+
+    private TestSuite buildTestSuite() {
         TestSuite suite = new TestSuite();
+
         suite.setName(AtlassianJsTest.class.getName());
 
-        client.open("ajs/test.html"); //todo fix context path
+        openTestPage("test.html");
         client.waitForPageToLoad(10000);
         assertThat.textPresent("Test Page");
 
-        String concatenatedTestNames = client.getEval("window.testAjs.getTestNames()");        
+        String concatenatedTestNames = client.getEval("window.testAjs.getTestNames()");
         String[] methodNames = concatenatedTestNames.split(",");
-        for (String methodName : methodNames)
-        {
-            suite.addTest(new AtlassianJsTest(methodName)); // run one test method
+
+        System.out.println(concatenatedTestNames);
+
+        for (String methodName : methodNames) {
+            suite.addTest(new JavaScriptTest(methodName));
         }
 
         return suite;
     }
 
-    private String methodName;
+    private class JavaScriptTest extends TestCase {
+        private JavaScriptTest(String methodName) {
+            setName(methodName);
+        }
 
-    public AtlassianJsTest(String methodName)
-    {
-        super();
-        this.methodName = methodName;
-    }
+        protected void runTest() throws Throwable {
 
-    public String getName()
-    {
-        return methodName;
-    }
-
-    protected void runTest() throws Throwable
-    {
-        // todo extract out context path
-        assertEquals("true", client.getEval("window.testAjs." + methodName + "()"));
+            assertEquals("true", client.getEval("window.testAjs." + getName() + "()"));
+        }
     }
 }

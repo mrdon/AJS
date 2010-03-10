@@ -184,7 +184,7 @@
                     <systemProperties>
                         <property>
                             <name>baseurl</name>
-                            <value>http://localhost:${jetty.port}/${context.path}</value>
+                            <value>http://localhost:${jetty.port}/${context.path}/</value>
                         </property>
                         <property>
                             <name>selenium.location</name>
@@ -208,7 +208,7 @@
                             <goal>test</goal>
                         </goals>
                         <configuration>
-                            <skip>true</skip>
+                            <skip>${maven.test.skip}</skip>
                             <includes>
                                 <include>com/atlassian/**/*Test.java</include>
                                 <!-- todo why does /javascript not work????? -->
