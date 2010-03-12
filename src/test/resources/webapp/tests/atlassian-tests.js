@@ -30,6 +30,14 @@ testAjs.addTest("testAjsClone", function() {
     return res;
 });
 
+// Tests for presence of Raphaël
+testAjs.addTest("testAjsExists", function () {
+    return (typeof Raphael != "undefined" && Raphael != null);
+});
+testAjs.addTest("testAjsExists", function () {
+    return (typeof Raphael.shadow != "undefined" && Raphael.shadow != null);
+});
+
 (function () {
     // AJS.filterBySearch tests.
     var entries = [
