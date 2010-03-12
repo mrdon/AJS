@@ -17,6 +17,7 @@
         <resource type="download" name="forms.css" location="css/forms.css"/>
         <resource type="download" name="icons.css" location="css/icons.css"/>
         <resource type="download" name="inline-dialog.css" location="css/inline-dialog.css"/>
+        <resource type="download" name="tables.css" location="css/tables.css"/>
 
         <resource type="download" name="dialog-ie.css" location="css/ie/dialog-ie.css">
             <param name="ieonly" value="true"/>

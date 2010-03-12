@@ -1,0 +1,31 @@
+table.aui {
+    border-collapse: collapse;
+    min-width: 45em;
+    width: 100%;
+}
+    table.aui tr {
+        background: #fff;
+        color: #111;
+    }
+    table.aui tr.odd {
+        background: #fafafa;
+        color: #111;
+    }
+        table.aui th,
+        table.aui td {padding: 0.5em 0.4em 0.5em 0.6em;}
+    table.aui thead {border-bottom: 2px solid #D2D2D2;}
+        table.aui th {
+            background: #f0f0f0;
+            color: #333;
+            text-align: left;
+        }
+        table.aui ul.menu {
+            list-style-type: none;
+            margin: 0; 
+            padding: 0;
+        }
+        table.aui ul.menu li {
+            float: left;
+            margin: 0 0 0 0.5em;
+            width: auto;
+        }
