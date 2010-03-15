@@ -1,4 +1,5 @@
 
+
 /*global AJS, document, setTimeout */
 
 AJS.dropDown = function (obj, usroptions) {
@@ -148,8 +149,8 @@ AJS.dropDown = function (obj, usroptions) {
 	var isEventsBound = function (el) {
         var bound = false;
         if (el.data("events")) {
-            jQuery.each(el.data("events"), function(i, handler){
-                jQuery.each(handler, function (type, handler) {
+            AJS.$.each(el.data("events"), function(i, handler){
+                AJS.$.each(handler, function (type, handler) {
                     if (handleClickSelection === handler) {
                         bound = true;
                         return false;
@@ -525,7 +526,7 @@ AJS.dropDown.Ajax = function (usroptions) {
                             }
                         });
                         superMethod.call(ddcontrol);
-                        ddcontrol.shadow.hide();
+                        ddcontrol.shadowParent.hide();
                         if (ddcontrol.iframeShim) {
                             ddcontrol.iframeShim.hide();
                         }
