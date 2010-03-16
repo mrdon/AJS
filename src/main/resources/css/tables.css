@@ -4,7 +4,9 @@ table.aui {
     min-width: 45em;
     width: 100%;
 }
-    table.aui caption {padding: 0.5em;}
+    table.aui caption {
+        padding: 0.5em;
+    }
     table.aui tr {
         background: #fff;
         color: #111;
@@ -22,8 +24,12 @@ table.aui {
         color: #111;
     }
         table.aui th,
-        table.aui td {padding: 0.5em 0.4em 0.5em 0.6em;}
-    table.aui thead {border-bottom: 2px solid #D2D2D2;}
+        table.aui td {
+            padding: 0.5em 0.4em 0.5em 0.6em;
+        }
+    table.aui thead {
+        border-bottom: 2px solid #d2d2d2;
+    }
         table.aui th {
             background: #f0f0f0;
             color: #333;
@@ -31,7 +37,9 @@ table.aui {
         }
     /* Borders on TBODY and TFOOT don't work in IE - whereas these at least work in IE7 & IE8 */
     table.aui tbody tr:first-child td,
-    table.aui tfoot tr:first-child td {border-top: 2px solid #d2d2d2;}
+    table.aui tfoot tr:first-child td {
+        border-top: 2px solid #d2d2d2;
+    }
         table.aui ul.menu {
             list-style-type: none;
             margin: 0; 
