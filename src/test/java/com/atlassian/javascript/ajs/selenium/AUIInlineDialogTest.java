@@ -36,16 +36,6 @@ public class AUIInlineDialogTest extends AUISeleniumTestCase
 
     }
 
-    public void testAUIInlineDialogClick()
-    {
-        openTestPage("test.html");  //open test page
-        createInlineDialog("#inlineDialog1","1","'dialog-content.html'", null);    //create inline-dialog 1
-
-        client.click("inlineDialog1");
-        client.waitForCondition("selenium.isElementPresent('testFunction')");
-        assertThat.elementPresent("testFunction");
-    }
-
     private String createInlineDialog(String element, String number, String contents, String arguments)
     {
         String runString = "window.AJS.InlineDialog(window.AJS.$('"+element+"'), "+number+","+contents;
