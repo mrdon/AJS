@@ -1,4 +1,3 @@
-
 (function($) {
     /**
      * Creates a new inline dialog
@@ -11,8 +10,10 @@
      *
      * @return jQuery object - the popup that was created
      */
+
     AJS.InlineDialog = function(items, identifier, url, options) {
         var opts = $.extend(false, AJS.InlineDialog.opts, options);
+        var hash;
         var hideDelayTimer;
         var showTimer;
         var beingShown = false;
@@ -36,18 +37,113 @@
         });
 
 		var getHash = function () {
-			return {
-				popup: popup,
-				hide: function(){
-					hidePopup(0);
-				},
-				id: identifier,
-				show: function(){
-					showPopup();
-				}
-			};	
-		}
-	
+			if (!hash) {
+                hash = {
+                    popup: popup,
+                    hide: function(){
+                        hidePopup(0);
+                    },
+                    id: identifier,
+                    show: function(){
+                        showPopup();
+                    },
+                    reset: function () {
+
+
+                        var posx = targetPosition.target.offset().left + opts.offsetX;
+                        var posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
+                        var diff = $(window).width() - (posx + opts.width + 30);
+
+                        if (diff<0) {
+                            popup.css({
+                                right: "20px",
+                                left: "auto"
+                            });
+                            if(window.Raphael){
+                                if (!popup.arrowCanvas) {
+                                    popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
+                                }
+                                popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
+                                    fill : "#fff",
+                                    stroke : "#bbb"
+                                    }); //draw arrow using path and attributes.
+                            }
+                            arrow.css({
+                                left: -diff + (targetPosition.target.width() / 2) + "px",
+                                right: "auto"
+                            });
+                        } else {
+                            popup.css({
+                                left: posx + "px",
+                                right: "auto"
+                            });
+                            //Raphael arrow
+                            if(window.Raphael){
+                                if (!popup.arrowCanvas) {
+                                    popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
+                                }
+                                popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
+                                    fill : "#fff",
+                                    stroke : "#bbb"
+                                    }); //draw arrow using path and attributes.
+                            }
+
+                            arrow.css({
+                                left: targetPosition.target.width() / 2 + "px",
+                                right: "auto"
+                            });
+                        }
+
+                        var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
+                        if ((posy + popup.height()) > bottomOfViewablePage) {
+                            posy = bottomOfViewablePage - popup.height() - 5;
+                            popup.mouseover(function() {
+                                clearTimeout(hideDelayTimer);
+                            }).mouseout(function() {
+                                hidePopup();
+                            });
+                        }
+                        popup.css({
+                            top: posy + "px"
+                        });
+
+                        // reset position of popup box
+                        popup.fadeIn(opts.fadeTime, function() {
+                            // once the animation is complete, set the tracker variables
+                            // beingShown = false; // is this necessary? Maybe only the shouldShow will have to be reset?
+                        });
+
+                        if (popup.shadow) {
+                            popup.shadow.remove();
+                        }
+                        popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
+                            shadow: "#333",
+                            size: 0.5,
+                            target: popup[0]
+                        });
+
+                        AJS.$(popup.shadow.canvas).css({
+                            position: "absolute",
+                            top: 0,
+                            left: -5,
+                            "z-index": -1
+                        });
+
+                        if (AJS.$.browser.msie) {
+                            // iframeShim
+                            var iframeShim = $('#inline-dialog-shim');
+                            iframeShim.appendTo(popup).show();
+                            iframeShim.css({
+                                width: contents.outerWidth(),
+                                height: contents.outerHeight()
+                            });
+                        }
+                    }
+                };
+            }
+            return hash;
+		};
+
         var showPopup = function() {
             if (popup.is(":visible")) {
                 return;
@@ -63,95 +159,16 @@
                 // retrieve the position of the click target. The offsets might be different for different types of targets and therefore
                 // either have to be customisable or we will have to be smarter about calculating the padding and elements around it
 
-                var posx = targetPosition.target.offset().left + opts.offsetX;
-                var posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
-                var diff = $(window).width() - (posx + opts.width + 30);
+                getHash().reset();
 
-                if (diff<0) {
-                    popup.css({
-                        right: "20px",
-                        left: "auto"
-                    });
-                    if(window.Raphael){
-                        popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
-                        popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
-                            fill : "#fff",
-                            stroke : "#bbb"
-                            }); //draw arrow using path and attributes.
-                    }
-                    arrow.css({
-                        left: -diff + (targetPosition.target.width() / 2) + "px",
-                        right: "auto"
-                    });
-                } else {
-                    popup.css({
-                        left: posx + "px",
-                        right: "auto"
-                    });
-                    //Raphael arrow
-                    if(window.Raphael){
-                        popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
-                        popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
-                            fill : "#fff",
-                            stroke : "#bbb"
-                            }); //draw arrow using path and attributes.
-                    }
-
-                    arrow.css({
-                        left: targetPosition.target.width() / 2 + "px",
-                        right: "auto"
-                    });
-                }
-
-                var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
-                if ((posy + popup.height()) > bottomOfViewablePage) {
-                    posy = bottomOfViewablePage - popup.height() - 5;
-                    popup.mouseover(function() {
-                        clearTimeout(hideDelayTimer);
-                    }).mouseout(function() {
-                        hidePopup();
-                    });
-                }
-                popup.css({
-                    top: posy + "px"
-                });
-
-                // reset position of popup box
-                popup.fadeIn(opts.fadeTime, function() {
-                    // once the animation is complete, set the tracker variables
-                    // beingShown = false; // is this necessary? Maybe only the shouldShow will have to be reset?
-                });
-
-                popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
-                    shadow: "#333",
-                    size: 0.5,
-                    target: popup[0]
-                });
-                AJS.$(popup.shadow.canvas).css({
-                    position: "absolute",
-                    top: 0,
-                    left: -5,
-                    "z-index": -1
-                })
-
-                if (AJS.$.browser.msie) {
-                    // iframeShim
-                    var iframeShim = $('#inline-dialog-shim');
-                    iframeShim.appendTo(popup).show();
-                    iframeShim.css({
-                        width: contents.outerWidth(),
-                        height: contents.outerHeight()
-                    });
-                }
-                
             }, opts.showDelay);
         };
 
         var hidePopup = function(delay) {
-            
+
 			shouldShow = false;
             // only exectute the below if the popup is currently being shown
-            if (beingShown) {				
+            if (beingShown) {
                 delay = (delay == null) ? opts.hideDelay : delay;
                 clearTimeout(hideDelayTimer);
                 clearTimeout(showTimer);
@@ -160,7 +177,9 @@
                     $(items).removeClass("active");
                     popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
                     popup.shadow.remove();
+                    popup.shadow = null;
                     popup.arrowCanvas.remove();
+                    popup.arrowCanvas = null;
                     beingShown = false;
                     shouldShow = false;
 					AJS.$(document).trigger("hideLayer", ["inlineDialog", getHash()]);
@@ -230,7 +249,7 @@
             }
             return false;
         };
-		
+
         popup[0].popup = getHash();
 
         var contentLoading = false;

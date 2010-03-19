@@ -141,7 +141,7 @@ AJS.dropDown = function (obj, usroptions) {
         if (e.button || e.metaKey || e.ctrlKey || e.shiftKey) {
             return true;
         }
-        if (AJS.dropDown.current) { 
+        if (AJS.dropDown.current && options.selectionHandler) { 
             options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
         }
     };
