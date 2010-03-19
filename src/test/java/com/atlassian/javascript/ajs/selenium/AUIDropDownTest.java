@@ -14,7 +14,6 @@ public class AUIDropDownTest extends AUISeleniumTestCase
      }
 
     //Test to make sure dropdowns can be created correctly
-    @Test
     public void testAUIDropDownCreate()
     {
         openTestPage("test.html");  //open test page
@@ -26,7 +25,6 @@ public class AUIDropDownTest extends AUISeleniumTestCase
     }
 
     //Test to make sure dropdowns show correctly after being clicked, will fail if other dropdown is also showing while the other one is
-    @Test
     public void testAUIDropDownShow()
     {
         setUpTest();
@@ -42,7 +40,6 @@ public class AUIDropDownTest extends AUISeleniumTestCase
         assertThat.elementNotVisible("css=div#dropDown1 .aui-dropdown");
     }
 
-    @Test
     public void testAUIDropDownHide()
     {
         setUpTest();

@@ -26,7 +26,6 @@
         var contents = popup.find(".contents");
 
 //        AJS.log(opts);
-
         contents.css("width", opts.width + "px");
         contents.mouseover(function(e) {
             clearTimeout(hideDelayTimer);
@@ -221,7 +220,6 @@
                 });
                 showPopup();
             };
-
             // lazy load popup contents
             if (!contentLoading) {
                 contentLoading = true;

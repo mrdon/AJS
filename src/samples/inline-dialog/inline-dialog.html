@@ -28,6 +28,8 @@
     <div><a href="inline-dialog.html" id="popupLink">Click Link</a></div>
     <div><a href="inline-dialog.html" id="hoverLink">Hover Link</a></div>
     <div><a href="inline-dialog.html" id="noBind">noBind Test Link</a></div>
+    <div><a href="#" id="functionPass">Function Argument Test Link</a></div>
+    <div><a href="inline-dialog.html" id="testFloat" style="float:right;">Test</a></div>
     
     <div id="testing">
         <!-- Testing iframeShim -->
@@ -125,7 +127,14 @@
 
             AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess});
             AJS.InlineDialog(AJS.$("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
-            AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess, noBind:true});
+            AJS.InlineDialog(AJS.$("#popupLink"), 3, "dialog-content.html", {noBind:true});
+            AJS.InlineDialog(AJS.$("#functionPass"), 4, function(content, trigger, showPopup){
+                console.log(content);
+                console.log(trigger);
+                console.log(showPopup);
+                AJS.$(trigger).append("<div id='testFunction'> </div>");
+            });
+            AJS.InlineDialog(AJS.$("#testFloat"), 5, "dialog-content.html");
 
             // Testing AJS.inlineHelp
             AJS.inlineHelp();
