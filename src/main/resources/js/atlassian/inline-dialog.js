@@ -52,11 +52,10 @@
                         var posx = targetPosition.target.offset().left + opts.offsetX;
                         var posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
                         var diff = $(window).width() - (posx + opts.width + 30);
-
                         if (diff<0) {
                             popup.css({
-                                right: "20px",
-                                left: "auto"
+                                left: posx - opts.width + targetPosition.target.width() + "px",
+                                right: "auto"
                             });
                             if(window.Raphael){
                                 if (!popup.arrowCanvas) {
@@ -68,8 +67,8 @@
                                     }); //draw arrow using path and attributes.
                             }
                             arrow.css({
-                                left: -diff + (targetPosition.target.width() / 2) + "px",
-                                right: "auto"
+                                left: "auto",
+                                right: (targetPosition.target.width() / 2) + "px"
                             });
                         } else {
                             popup.css({

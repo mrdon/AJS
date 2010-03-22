@@ -27,9 +27,10 @@
 <body>
     <div><a href="inline-dialog.html" id="popupLink">Click Link</a></div>
     <div><a href="inline-dialog.html" id="hoverLink">Hover Link</a></div>
-    <div><a href="inline-dialog.html" id="noBind">noBind Test Link</a></div>
-    <div><a href="#" id="functionPass">Function Argument Test Link</a></div>
-    <div><a href="inline-dialog.html" id="testFloat" style="float:right;">Test</a></div>
+    <div><a href="inline-dialog.html" id="noBind">noBind Test Link (This Link Should Do NOTHING)</a></div>
+    <div><a href="#" id="functionPass">Function Argument Test Link (Check Console!)</a></div>
+    <div><a href="inline-dialog.html" id="testFloat" style="float:right;">T</a></div>
+    <div><a href="inline-dialog.html" id="testFloat2" style="float:right; clear: both;">TestingLongLinkPositioning</a></div>
     
     <div id="testing">
         <!-- Testing iframeShim -->
@@ -122,19 +123,22 @@
     <script type="text/javascript">
         AJS.$(document).ready(function() {
             var postProcess = function(id) {
-                alert("That worked.");
+                console.log("That worked!");
             };
 
             AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess});
             AJS.InlineDialog(AJS.$("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
             AJS.InlineDialog(AJS.$("#popupLink"), 3, "dialog-content.html", {noBind:true});
             AJS.InlineDialog(AJS.$("#functionPass"), 4, function(content, trigger, showPopup){
+                console.log("Content: "); 
                 console.log(content);
+                console.log("Trigger:");
                 console.log(trigger);
-                console.log(showPopup);
+                console.log("showPopup: " + showPopup);
                 AJS.$(trigger).append("<div id='testFunction'> </div>");
             });
             AJS.InlineDialog(AJS.$("#testFloat"), 5, "dialog-content.html");
+            AJS.InlineDialog(AJS.$("#testFloat2"), 6, "dialog-content.html");
 
             // Testing AJS.inlineHelp
             AJS.inlineHelp();
