@@ -34,7 +34,7 @@
         
         <resource type="download" name="raphael.js" location="js/external/raphael/raphael.js"/>
         <resource type="download" name="raphael.shadow.js" location="js/external/raphael/raphael.shadow.js"/>
-        <resource type="download" name="jquery.js" location="js/external/jquery/jquery-1.3.2.js"/>
+        <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
         <resource type="download" name="js/external/jquery/jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
         <resource type="download" name="js/external/jquery/jquery.ui-1.7.2.js" location="js/external/jquery/jquery-ui-1.7.2.js"/>
         <resource type="download" name="js/external/jquery/jquery-ui-1.7-bug-fixes.js" location="js/external/jquery/jquery-ui-1.7-bug-fixes.js"/>
