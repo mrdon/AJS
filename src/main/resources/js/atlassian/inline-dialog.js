@@ -35,8 +35,8 @@
             hidePopup();
         });
 
-		var getHash = function () {
-			if (!hash) {
+        var getHash = function () {
+            if (!hash) {
                 hash = {
                     popup: popup,
                     hide: function(){
@@ -140,7 +140,7 @@
                 };
             }
             return hash;
-		};
+        };
 
         var showPopup = function() {
             if (popup.is(":visible")) {
@@ -152,8 +152,8 @@
                 }
                 $(items).addClass("active");
                 beingShown = true;
-				AJS.InlineDialog.current = getHash();
-				AJS.$(document).trigger("showLayer", ["inlineDialog", getHash()]);
+                AJS.InlineDialog.current = getHash();
+                AJS.$(document).trigger("showLayer", ["inlineDialog", getHash()]);
                 // retrieve the position of the click target. The offsets might be different for different types of targets and therefore
                 // either have to be customisable or we will have to be smarter about calculating the padding and elements around it
 
@@ -164,7 +164,7 @@
 
         var hidePopup = function(delay) {
 
-			shouldShow = false;
+            shouldShow = false;
             // only exectute the below if the popup is currently being shown
             if (beingShown) {
                 delay = (delay == null) ? opts.hideDelay : delay;
@@ -180,8 +180,8 @@
                     popup.arrowCanvas = null;
                     beingShown = false;
                     shouldShow = false;
-					AJS.$(document).trigger("hideLayer", ["inlineDialog", getHash()]);
-					AJS.InlineDialog.current = null;
+                    AJS.$(document).trigger("hideLayer", ["inlineDialog", getHash()]);
+                    AJS.InlineDialog.current = null;
                     if (!opts.cacheContent) {
                         //if not caching the content, then reset the
                         //flags to false so as to reload the content
