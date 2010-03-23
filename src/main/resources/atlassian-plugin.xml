@@ -35,9 +35,9 @@
         <resource type="download" name="raphael.js" location="js/external/raphael/raphael.js"/>
         <resource type="download" name="raphael.shadow.js" location="js/external/raphael/raphael.shadow.js"/>
         <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
-        <resource type="download" name="js/external/jquery/jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
-        <resource type="download" name="js/external/jquery/jquery.ui-1.7.2.js" location="js/external/jquery/jquery-ui-1.7.2.js"/>
-        <resource type="download" name="js/external/jquery/jquery-ui-1.7-bug-fixes.js" location="js/external/jquery/jquery-ui-1.7-bug-fixes.js"/>
+        <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <resource type="download" name="jquery-ui.js" location="js/external/jquery/jquery-ui.js"/>
+        <resource type="download" name="jquery-ui-1.7-bug-fixes.js" location="js/external/jquery/jquery-ui-1.7-bug-fixes.js"/>
         <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
         <resource type="download" name="jquery.form.js" location="js/external/jquery/plugins/jquery.form.js"/>
         
@@ -59,7 +59,7 @@
     
     <web-resource name="jQuery Compatibility" key="jquery-compatibility">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        <resource type="download" name="js/external/jquery/jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
     </web-resource>
 	
 	<web-resource name="stalker" key="stalker">
@@ -75,11 +75,8 @@
     <!-- Every part of jQuery UI JS that we don't offer by default -->
     <web-resource name="jQuery UI Other" key="jquery-ui-other">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        <resource type="download" name="js/jquery/jquery.ui-1.7.2-other.js" location="js/external/jquery/jquery-ui-1.7.2-other.js"/>
+        <resource type="download" name="jquery-ui-other.js" location="js/external/jquery/jquery-ui-other.js"/>
     </web-resource>
-
-
-
 
 <!-- Most individual resource keys were made obsolete in AUI 2.0. To provide backwards compatibility, they've been redirected below to call the whole library -->
     <web-resource key="jquery-all" name="All JQuery">

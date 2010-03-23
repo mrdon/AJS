@@ -254,7 +254,10 @@
                         <exclude>**/raphael-min.js</exclude>
                         <exclude>**/jquery.js</exclude>
                         <exclude>**/jquery-min.js</exclude>
-                        <exclude>**/jquery-ui-1.7.2*</exclude>
+                        <exclude>**/jquery-ui.js</exclude>
+                        <exclude>**/jquery-ui-min.js</exclude>
+                        <exclude>**/jquery-ui-other.js</exclude>
+                        <exclude>**/jquery-ui-other-min.js</exclude>
                     </excludes>
                 </configuration>
             </plugin>
