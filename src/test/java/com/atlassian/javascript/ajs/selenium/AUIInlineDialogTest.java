@@ -26,15 +26,15 @@ public class AUIInlineDialogTest extends AUISeleniumTestCase
         assertTrue("InlineDialog1 not created successfully: " + creationString, !creationString.isEmpty());
     }
 
-    public void testAUIInlineDialogFunctionPass()
-    {
-        openTestPage("test.html");  //open test page
-        createInlineDialog("#inlineDialog1","1","function(content, trigger, showPopup){window.AJS.$(trigger).append('<div id= \"testFunction\"></div>');}", null);    //create inline-dialog 1
-        client.click("inlineDialog1");
-        client.waitForCondition("selenium.isElementPresent('testFunction')");
-        assertThat.elementPresent("testFunction");
-
-    }
+//    public void testAUIInlineDialogFunctionPass()
+//    {
+//        openTestPage("test.html");  //open test page
+//        createInlineDialog("#inlineDialog1","1","function(content, trigger, showPopup){window.AJS.$(trigger).append('<div id= \"testFunction\"></div>');}", null);    //create inline-dialog 1
+//        client.click("inlineDialog1");
+//        client.waitForCondition("selenium.isElementPresent('testFunction')");
+//        assertThat.elementPresent("testFunction");
+//
+//    }
 
     private String createInlineDialog(String element, String number, String contents, String arguments)
     {
