@@ -302,7 +302,7 @@ AJS.dropDown = function (obj, usroptions) {
                 if (this.$.is(":visible")) {
                     this.shadowParent = AJS.$('<div class="aui-shadow-parent"></div>').css({
                         top: this.$.css("top"),
-                        left: (this.$.position().left - 7), //make sure shadow follows dropdown when alignment changes
+                        left: (this.$.position().left - 6), //make sure shadow follows dropdown when alignment changes
                         width: this.$.width(),
                         height: this.$.height()
                     }).insertBefore(this.$);
