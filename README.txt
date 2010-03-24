@@ -31,3 +31,7 @@ Skipping tests
         mvn clean install -Dmaven.test.skip
 
 
+When writing Selenium tests, you need to spin up both Jetty and Selenium so you can run individual tests in an IDE:
+    mvn jetty:run-exploded
+    mvn selenium:start-server
+

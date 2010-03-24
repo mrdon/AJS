@@ -18,6 +18,7 @@
         <resource type="download" name="icons.css" location="css/icons.css"/>
         <resource type="download" name="inline-dialog.css" location="css/inline-dialog.css"/>
         <resource type="download" name="tables.css" location="css/tables.css"/>
+        <resource type="download" name="tabs.css" location="css/tabs.css"/>
 
         <resource type="download" name="dialog-ie.css" location="css/ie/dialog-ie.css">
             <param name="ieonly" value="true"/>
@@ -29,6 +30,9 @@
             <param name="ieonly" value="true"/>
         </resource>
         <resource type="download" name="inline-dialog-ie.css" location="css/ie/inline-dialog-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+        <resource type="download" name="tabs-ie.css" location="css/ie/tabs-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
         
@@ -49,6 +53,7 @@
         <resource type="download" name="firebug.js" location="js/atlassian/firebug.js"/>
         <resource type="download" name="forms.js" location="js/atlassian/forms.js"/>
         <resource type="download" name="tables.js" location="js/atlassian/tables.js"/>
+        <resource type="download" name="tabs.js" location="js/atlassian/tabs.js"/>
 
         <resource type="download" name="jquery.autocomplete.js" location="js/atlassian/jquery.autocomplete.js"/>
         <resource type="download" name="jquery.is-dirty.js" location="js/atlassian/jquery.is-dirty.js"/>

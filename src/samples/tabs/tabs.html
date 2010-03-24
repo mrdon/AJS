@@ -1,94 +1,32 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-    "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-au">
 <head>
-    <title>AUI Tests</title>
-
-    <!-- AUI library code -->
-    <link type="text/css" rel="stylesheet" href="css/basic-min.css" media="all">
-    <link type="text/css" rel="stylesheet" href="css/firebug-min.css" media="all">
-    <link type="text/css" rel="stylesheet" href="css/dialog-min.css" media="all">
-    <link type="text/css" rel="stylesheet" href="css/dropdown-min.css" media="all">
-    <link type="text/css" rel="stylesheet" href="css/forms-min.css" media="all">
-    <link type="text/css" rel="stylesheet" href="css/icons-min.css" media="all">
-    <link type="text/css" rel="stylesheet" href="css/inline-dialog-min.css" media="all">
-    <link type="text/css" rel="stylesheet" href="css/tables-min.css" media="all">
-    <link type="text/css" rel="stylesheet" href="css/tabs-min.css" media="all">
-
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Tabs Example</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/basic.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/firebug.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/dropdown.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/forms.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/icons.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/inline-dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/tables.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/tabs.css" media="all">
     <!--[if IE]>
-        <link type="text/css" rel="stylesheet" href="css/ie/dialog-ie-min.css" media="all">
-        <link type="text/css" rel="stylesheet" href="css/ie/dropdown-ie-min.css" media="all">
-        <link type="text/css" rel="stylesheet" href="css/ie/forms-ie-min.css" media="all">
-        <link type="text/css" rel="stylesheet" href="css/ie/inline-dialog-ie-min.css" media="all">
-        <link type="text/css" rel="stylesheet" href="css/ie/tabs-ie-min.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/ie/dialog-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/ie/dropdown-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/ie/forms-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/ie/inline-dialog-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/ie/tabs-ie.css" media="all">
     <![endif]-->
 
+    <style type="text/css">
+        body {font-family: sans-serif; font-size: 10pt;}
+    </style>
 </head>
 <body>
-    <h1>AUI Test Page</h1>
-    <p>This page loads the required CSS &amp; JS files for testing.</p>
-
-    <fieldset class="hidden parameters">
-        <input type="hidden" id="company" value="atlassian">
-        <input type="hidden" title="products" value="jira" class="list">
-        <input type="hidden" title="products" value="confluence" class="list">
-        <input type="hidden" title="products" value="bamboo" class="list">
-    </fieldset>
-    <div id="test-container" class="test">
-        <span>Some Text With Casing.</span>
-    </div>
-
-	<!-- HTML for testing AJS.dropDown -->
-	<ul class="positioning">
-        <div id= "dropDown1">
-            <li class="aui-dd-parent">
-                <a href="#" class="aui-dd-trigger">A Dropdown</a>
-                <ul class="aui-dropdown">
-                    <li><a href="#">A menu item</a></li>
-                    <li><a href="#">Another menu item</a></li>
-                    <li><a href="#">Third menu item</a></li>
-                    <li><a href="#">Menu item 4</a></li>
-                    <li><a href="#">A menu item</a></li>
-                    <li><a href="#">Another menu item</a></li>
-                    <li><a href="#">Third menu item</a></li>
-                    <li><a href="#">Menu item 4</a></li>
-                    <li><a href="#">A menu item</a></li>
-                    <li><a href="#">Another menu item</a></li>
-                    <li><a href="#">Third menu item</a></li>
-                    <li><a href="#">Menu item 4</a></li>
-                    <li><a href="#">A menu item</a></li>
-                    <li><a href="#">Another menu item</a></li>
-                    <li><a href="#">Third menu item</a></li>
-                    <li><a href="#">Menu item 4</a></li>
-                    <li><a href="#">A menu item</a></li>
-                    <li><a href="#">Another menu item</a></li>
-                    <li><a href="#">Third menu item</a></li>
-                    <li><a href="#">Menu item 4</a></li>
-                    <li><a href="#">A menu item</a></li>
-                    <li><a href="#">Another menu item</a></li>
-                    <li><a href="#">Third menu item</a></li>
-                    <li><a href="#">Menu item 4</a></li>
-                    <li><a href="#">A menu item</a></li>
-                    <li><a href="#">Another menu item</a></li>
-                    <li><a href="#">Third menu item</a></li>
-                    <li><a href="#">Menu item 4</a></li>
-
-                </ul>
-            </li>
-        </div>
-        <div id = "dropDown2">
-            <li class="aui-dd-parent">
-                <a href="#" class="aui-dd-trigger">A Second Dropdown</a>
-                <ul class="aui-dropdown">
-                    <li><a href="#">A menu item in the Second Dropdown</a></li>
-                    <li><a href="#">Another menu item</a></li>
-                    <li><a href="#">Third menu item</a></li>
-                    <li><a href="#">Menu item 4</a></li>
-                </ul>
-            </li>
-        </div>
-    </ul>
-    
+    <h1>Tabs example</h1>
     <!-- Change h-tabs to v-tabs for vertical tab structure -->
     <div class="aui-tabs h-tabs">
         <ul class="tabs">
@@ -163,56 +101,39 @@
         </div>
     </div> <!-- // .aui-tabs -->
     
-    
-    
+    <script type="text/javascript" src="../../main/resources/js/external/raphael/raphael.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/external/raphael/raphael.shadow.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/external/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/external/jquery/jquery-compatibility.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/external/jquery/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/external/jquery/plugins/jquery.aop.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/external/jquery/plugins/jquery.form.js"></script>
 
-    <div style="float:right;"><a href="test.html" id="inlineDialog1">Click Link</a></div>
-    <div><a href="test.html" id="inlineDialog2">Hover Link</a></div>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/atlassian.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/cookie.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/dialog.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/dropdown.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/inline-dialog.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/firebug.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/forms.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/tables.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/tabs.js"></script>
 
-    <!-- AUI library code -->
-    <script type="text/javascript" src="js/external/raphael/raphael-min.js"></script>
-    <script type="text/javascript" src="js/external/raphael/raphael.shadow-min.js"></script>
-    <script type="text/javascript" src="js/external/jquery/jquery-min.js"></script>
-    <script type="text/javascript" src="js/external/jquery/jquery-compatibility-min.js"></script>
-    <script type="text/javascript" src="js/external/jquery/jquery-ui-min.js"></script>
-    <script type="text/javascript" src="js/external/jquery/plugins/jquery.aop-min.js"></script>
-    <script type="text/javascript" src="js/external/jquery/plugins/jquery.form-min.js"></script>
-
-    <script type="text/javascript" src="js/atlassian/atlassian-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/cookie-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/dialog-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/dropdown-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/inline-dialog-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/firebug-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/forms-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/tables-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/tabs-min.js"></script>
-
-    <script type="text/javascript" src="js/atlassian/jquery.autocomplete-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/jquery.is-dirty-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/jquery.progressbar-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/jquery.selection-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/jquery.os-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/jquery.offsetanchors-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/jquery.hotkeys-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/jquery.getdocheight-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/containdropdown-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/jquery.stalker-min.js"></script>
-    <script type="text/javascript" src="js/atlassian/jquery.throbber-min.js"></script>
-
-    <!-- AUI testing code -->
-    <script src="ajstest.js" type="text/javascript"></script>
-    <script src="tests/atlassian-tests.js" type="text/javascript"></script>
-    <script src="tests/cookie-tests.js" type="text/javascript"></script>
-    <script src="tests/dialog-tests.js" type="text/javascript"></script>
-    <script src="tests/dropdown-tests.js" type="text/javascript"></script>
-    <script src="tests/firebug-tests.js" type="text/javascript"></script>
-    <script src="tests/inline-dialog-tests.js" type="text/javascript"></script>
-    <script src="tests/jquery.autocomplete-tests.js" type="text/javascript"></script>
-    <script src="tests/jquery.is-dirty-tests.js" type="text/javascript"></script>
-    <script src="tests/jquery.progressbar-test.js" type="text/javascript"></script>
-    <script src="tests/jquery.selection-tests.js" type="text/javascript"></script>
-    <script src="tests/jquery.throbber-tests.js" type="text/javascript"></script>
-
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.is-dirty.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.progressbar.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.selection.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.os.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.offsetanchors.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.getdocheight.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/containdropdown.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.stalker.js"></script>
+    <script type="text/javascript" src="../../main/resources/js/atlassian/jquery.throbber.js"></script>
+<script type="text/javascript">
+    AJS.$(document).ready(function() {
+        // No JS yet
+    });
+</script>
 </body>
 </html>
