@@ -341,7 +341,7 @@ AJS.dropDown = function (obj, usroptions) {
                             right: 0,
                             width: this.$.outerWidth() + 1 + "px",
                             height: this.$.outerHeight() + "px"
-                        });proj
+                        });
                     }
                 };
                 res.addCallback("reset", refreshIframeShim);
