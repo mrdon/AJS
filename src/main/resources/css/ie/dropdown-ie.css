@@ -33,6 +33,9 @@
 *
 **/
 
+.aui-dd-parent .aui-dropdown {
+    *margin: 0;
+}
 
 /**
 * Fixes for IE6 only
