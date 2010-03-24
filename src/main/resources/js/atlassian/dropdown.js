@@ -325,15 +325,15 @@ AJS.dropDown = function (obj, usroptions) {
                 }
             });
         })();
-        
-        if (AJS.$.browser.msie && parseInt(AJS.$.browser.version, 10) < 7) {
-            // iframeShim
+
+        // shim to sit over flash and select boxes
+        if (AJS.$.browser.msie) {
             (function () {
                 var refreshIframeShim = function () {
 
                     if (this.$.is(":visible")) {
                         if (!this.iframeShim) {
-                            this.iframeShim = AJS.$('<iframe class="dropdown-shim" src="javascript:false;" frameBorder="0">>').insertBefore(this.$);
+                            this.iframeShim = AJS.$('<iframe class="dropdown-shim" src="javascript:false;" frameBorder="0" />').insertBefore(this.$);
                         }
                         this.iframeShim.css({
                             display: "block",
@@ -341,7 +341,7 @@ AJS.dropDown = function (obj, usroptions) {
                             right: 0,
                             width: this.$.outerWidth() + 1 + "px",
                             height: this.$.outerHeight() + "px"
-                        });
+                        });proj
                     }
                 };
                 res.addCallback("reset", refreshIframeShim);

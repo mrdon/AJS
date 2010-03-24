@@ -38,6 +38,7 @@
     position: absolute;
     z-index: 2003;  
     margin-top: -1px;
+	margin-left: 0;
 }
 
 .aui-dd-parent  .aui-dropdown-left{
