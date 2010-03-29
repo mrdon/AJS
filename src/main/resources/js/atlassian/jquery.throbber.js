@@ -17,7 +17,7 @@ jQuery.fn.throbber = function($) {
         var instances = [], defaults = {isLatentThreshold: 100, minThrobberDisplay: 200, loadingClass: "loading"};
 
         // global definition
-        $().ajaxComplete(function(jObj, response){
+        $(document).ajaxComplete(function(jObj, response){
             $(instances).each(function(idx){
                 // make sure we are dealing with the right request
                 if (response === this.get(0)) {
