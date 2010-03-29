@@ -1,0 +1,92 @@
+.blanket {
+    background: #000;
+    height: 100%;
+    left: 0;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2500;
+}
+.popup {
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    z-index: 3000;
+}
+.dialog {
+    border: 1px solid #666;
+    font-size: 1.2em;
+    overflow: hidden;
+}
+.dialog h2 {
+    background: #f0f0f0;
+    color: #666;
+    font-size: 1.1em;
+    height: 43px;
+    line-height: 43px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 1em;
+    position: relative;
+}
+.dialog .page-menu {
+    background: #fff;
+    border-right: 1px solid #f0f0f0;
+    float: left;
+    height: 100%;
+    list-style: none;
+    margin: 0 1.17em 0 0;
+    padding: 10px 0 0 0;
+    width: 25%;
+}
+.dialog .page-menu li {
+    margin: 0;
+    padding: 0;
+}
+.dialog .page-menu li.selected {
+    background: #69c;
+    color: #fff;
+}
+.dialog .page-menu li.selected button {
+    color: #fff;
+    font-weight: 800;
+}
+.dialog .page-menu li button {
+    background: none;
+    border: none;
+    color: #666;
+    font-family: "segoe ui", helvetica, arial, sans-serif;
+    font-size: .8em;
+    padding: .4em 1.2em;
+    text-align: left;
+    width: 100%;
+}
+.dialog .panel-body {
+    overflow: auto;
+    padding: 10px;
+}
+.dialog .page-body {
+}
+.dialog .page-body p {
+    margin: 0;
+}
+.dialog .button-panel {
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+    clear: both;
+    height: 23px;
+    overflow: hidden;
+    padding: 10px 0 10px 0;
+    text-align: right;
+    width: 100%;
+}
+.dialog .button-panel button {
+    font-size: 0.75em;
+    margin-right: 1.65em;
+    margin-top: 2px;
+}
+.dialog .button-panel button.left {
+    float: left;
+    margin: 0 0 0 0.5em;
+}

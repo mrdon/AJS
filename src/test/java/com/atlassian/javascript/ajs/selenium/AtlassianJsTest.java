@@ -3,10 +3,13 @@ package com.atlassian.javascript.ajs.selenium;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.apache.log4j.Logger;
 
 import java.util.Enumeration;
 
 public class AtlassianJsTest extends AUISeleniumTestCase {
+
+    private static final Logger logger = Logger.getLogger(AtlassianJsTest.class);
 
     public void testAtlassianJs() throws Throwable {
         TestSuite testSuite = buildTestSuite();
@@ -44,7 +47,7 @@ public class AtlassianJsTest extends AUISeleniumTestCase {
         }
 
         protected void runTest() throws Throwable {
-
+            logger.info(">>>>>>>>>>>>>>>>>> Running: " + getName());
             assertEquals("true", client.getEval("window.testAjs." + getName() + "()"));
         }
     }

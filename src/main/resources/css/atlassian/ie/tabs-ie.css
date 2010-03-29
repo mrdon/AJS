@@ -1,0 +1,62 @@
+/** * The structure of this file pre-supposes two conditions: * -
+That the file is served via a conditional comment of [if IE] * - That
+de-bugging starts with IE8 and moves down through IE7 to IE6 **/
+
+/** * Fixes for IE8, IE7 and IE6 * - each property should be written
+without CSS hacks * eg:
+.dashboard {
+    margin: 0 0 2px 1px;
+}
+* **/
+
+
+/** * Fixes for IE7 and IE6 * - each property *must* be prefixed with
+an asterisk (*) * eg:
+.dashboard {
+    *margin: 0 0 4px 2px;
+}
+* **/
+
+
+/** * Fixes for IE6 only * - each property *must* be prefixed with an
+underscore (_) * eg:
+.dashboard {
+    _margin: 0 0 0 1px;
+    _padding: 0 0
+    -3px 0;
+}
+* **/
+
+.aui-tabs {
+    _padding: 1.85em 0 0 0;
+}
+    .aui-tabs ul.tabs li.active-tab a:active,
+    .aui-tabs ul.tabs li.active-tab a:visited {
+        _background-color: #fff;
+        _color: #000;
+    }
+    .h-tabs ul.tabs {
+        _top: -1.85em;
+    }
+        .h-tabs ul.tabs li {
+            _position: relative;
+        }
+            .h-tabs ul.tabs li.active-tab a:active {
+                _background-color: #fff;
+                _color: #000;
+            }
+    .v-tabs ul.tabs {
+        _overflow: hidden;
+    }
+        .v-tabs ul.tabs li {
+            _left: 1em;
+            _margin: -1px 0 0 0;
+            _position: relative;
+            _top: -1px;
+        }
+        .v-tabs ul.tabs li.active-tab {
+            _left: 0;
+        }
+        .v-tabs .active-pane {
+            _background: #fff;
+        }

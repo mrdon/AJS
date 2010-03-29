@@ -5,34 +5,34 @@
         <version>${project.version}</version>
     </plugin-info>
 
-    <resource name="css/" type="download" location="css/" />
-    <resource name="images/" type="download" location="css/images/" />
+    <resource name="css/" type="download" location="css/atlassian/" />
+    <resource name="images/" type="download" location="css/atlassian/images/" />
     <resource name="js/" type="download" location="js/" />
 
     <web-resource key="ajs" name="Atlassian Javascript">
-        <resource type="download" name="basic.css" location="css/basic.css"/>
-        <resource type="download" name="firebug.css" location="css/firebug.css"/>
-        <resource type="download" name="dialog.css" location="css/dialog.css"/>
-        <resource type="download" name="dropdown.css" location="css/dropdown.css"/>
-        <resource type="download" name="forms.css" location="css/forms.css"/>
-        <resource type="download" name="icons.css" location="css/icons.css"/>
-        <resource type="download" name="inline-dialog.css" location="css/inline-dialog.css"/>
-        <resource type="download" name="tables.css" location="css/tables.css"/>
-        <resource type="download" name="tabs.css" location="css/tabs.css"/>
+        <resource type="download" name="basic.css" location="css/atlassian/basic.css"/>
+        <resource type="download" name="firebug.css" location="css/atlassian/firebug.css"/>
+        <resource type="download" name="dialog.css" location="css/atlassian/dialog.css"/>
+        <resource type="download" name="dropdown.css" location="css/atlassian/dropdown.css"/>
+        <resource type="download" name="forms.css" location="css/atlassian/forms.css"/>
+        <resource type="download" name="icons.css" location="css/atlassian/icons.css"/>
+        <resource type="download" name="inline-dialog.css" location="css/atlassian/inline-dialog.css"/>
+        <resource type="download" name="tables.css" location="css/atlassian/tables.css"/>
+        <resource type="download" name="tabs.css" location="css/atlassian/tabs.css"/>
 
-        <resource type="download" name="dialog-ie.css" location="css/ie/dialog-ie.css">
+        <resource type="download" name="dialog-ie.css" location="css/atlassian/ie/dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="dropdown-ie.css" location="css/ie/dropdown-ie.css">
+        <resource type="download" name="dropdown-ie.css" location="css/atlassian/ie/dropdown-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="forms-ie.css" location="css/ie/forms-ie.css">
+        <resource type="download" name="forms-ie.css" location="css/atlassian/ie/forms-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="inline-dialog-ie.css" location="css/ie/inline-dialog-ie.css">
+        <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/ie/inline-dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="tabs-ie.css" location="css/ie/tabs-ie.css">
+        <resource type="download" name="tabs-ie.css" location="css/atlassian/ie/tabs-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
         
