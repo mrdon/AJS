@@ -47,10 +47,18 @@
                         showPopup();
                     },
                     reset: function () {
-
-
-                        var posx = targetPosition.target.offset().left + opts.offsetX;
-                        var posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
+                        var pos;
+                        var posy;
+                        var arrowOffset = targetPosition.target.width()/2;
+                        if(opts.mousePosition){
+                            posx = mousePosition.x + opts.offsetX - arrowOffset ;
+                            posy = mousePosition.y + targetPosition.target.height() + opts.offsetY;
+                            opts.offsetY = 0;
+                        } else {
+                            posx = targetPosition.target.offset().left + opts.offsetX;
+                            posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
+                            triggerWidth=targetPosition.target.width();
+                        }
                         var diff = $(window).width() - (posx + opts.width + 30);
                         if (diff<0) {
                             popup.css({
@@ -68,7 +76,7 @@
                             }
                             arrow.css({
                                 left: "auto",
-                                right: (targetPosition.target.width() / 2) + "px"
+                                right: arrowOffset + "px"
                             });
                         } else {
                             popup.css({
@@ -87,7 +95,7 @@
                             }
 
                             arrow.css({
-                                left: targetPosition.target.width() / 2 + "px",
+                                left: arrowOffset + "px",
                                 right: "auto"
                             });
                         }
@@ -288,6 +296,7 @@
     };
 
     AJS.InlineDialog.opts = {
+        mousePosition: true,
         onHover: false,
         noBind: false,
         fadeTime: 100,
