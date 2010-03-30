@@ -330,7 +330,6 @@ AJS.dropDown = function (obj, usroptions) {
         if (AJS.$.browser.msie) {
             (function () {
                 var refreshIframeShim = function () {
-
                     if (this.$.is(":visible")) {
                         if (!this.iframeShim) {
                             this.iframeShim = AJS.$('<iframe class="dropdown-shim" src="javascript:false;" frameBorder="0" />').insertBefore(this.$);
@@ -338,10 +337,14 @@ AJS.dropDown = function (obj, usroptions) {
                         this.iframeShim.css({
                             display: "block",
                             top: this.$.css("top"),
-                            right: 0,
                             width: this.$.outerWidth() + 1 + "px",
-                            height: this.$.outerHeight() + "px"
+                            height: this.$.outerHeight() + 1 + "px"
                         });
+                        if(options.alignment=="left"){
+                            this.iframeShim.css({left:"0px"});
+                        } else {
+                            this.iframeShim.css({right:"0px"});
+                        }
                     }
                 };
                 res.addCallback("reset", refreshIframeShim);
@@ -353,7 +356,6 @@ AJS.dropDown = function (obj, usroptions) {
                 });
             })();
         }
-        
         result.push(res);
     });
     return result;
