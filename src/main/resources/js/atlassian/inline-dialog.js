@@ -47,7 +47,7 @@
                         showPopup();
                     },
                     reset: function () {
-                        var pos;
+                        var posx;
                         var posy;
                         var arrowOffset = targetPosition.target.width()/2;
                         if(opts.mousePosition){
