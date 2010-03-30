@@ -296,7 +296,7 @@
     };
 
     AJS.InlineDialog.opts = {
-        mousePosition: true,
+        mousePosition: false,
         onHover: false,
         noBind: false,
         fadeTime: 100,
