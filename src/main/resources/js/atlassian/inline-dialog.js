@@ -50,54 +50,49 @@
                         var posx;
                         var posy;
                         var arrowOffset = targetPosition.target.width()/2;
-                        if(opts.mousePosition){
+                        var targetOffset = targetPosition.target.offset();
+                        
+                        function drawArrow(left, right) {
+                            if(window.Raphael){
+                                if (!popup.arrowCanvas) {
+                                    popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
+                                }
+                                popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
+                                    fill : "#fff",
+                                    stroke : "#bbb"
+                                    }); //draw arrow using path and attributes.
+                            }
+                            arrow.css({
+                                left: left,
+                                right: right
+                            });
+                        }
+                        
+                        if (opts.isRelativeToMouse) {
                             posx = mousePosition.x + opts.offsetX - arrowOffset ;
                             posy = mousePosition.y + targetPosition.target.height() + opts.offsetY;
                             opts.offsetY = 0;
                         } else {
-                            posx = targetPosition.target.offset().left + opts.offsetX;
-                            posy = targetPosition.target.offset().top + targetPosition.target.height() + opts.offsetY;
+                            posx = targetOffset.left + opts.offsetX;
+                            posy = targetOffset.top + targetPosition.target.height() + opts.offsetY;
                             triggerWidth=targetPosition.target.width();
                         }
+                        
                         var diff = $(window).width() - (posx + opts.width + 30);
+                        
+                        //Check if dialog would be offscreen on the right
                         if (diff<0) {
                             popup.css({
-                                left: posx - opts.width + targetPosition.target.width() + "px",
+                                left: posx - opts.width + targetPosition.target.width(),
                                 right: "auto"
                             });
-                            if(window.Raphael){
-                                if (!popup.arrowCanvas) {
-                                    popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
-                                }
-                                popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
-                                    fill : "#fff",
-                                    stroke : "#bbb"
-                                    }); //draw arrow using path and attributes.
-                            }
-                            arrow.css({
-                                left: "auto",
-                                right: arrowOffset + "px"
-                            });
+                            drawArrow("auto", arrowOffset);
                         } else {
                             popup.css({
-                                left: posx + "px",
+                                left: posx,
                                 right: "auto"
                             });
-                            //Raphael arrow
-                            if(window.Raphael){
-                                if (!popup.arrowCanvas) {
-                                    popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
-                                }
-                                popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
-                                    fill : "#fff",
-                                    stroke : "#bbb"
-                                    }); //draw arrow using path and attributes.
-                            }
-
-                            arrow.css({
-                                left: arrowOffset + "px",
-                                right: "auto"
-                            });
+                            drawArrow(arrowOffset, "auto");
                         }
 
                         var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
@@ -110,7 +105,7 @@
                             });
                         }
                         popup.css({
-                            top: posy + "px"
+                            top: posy
                         });
 
                         // reset position of popup box
@@ -296,7 +291,7 @@
     };
 
     AJS.InlineDialog.opts = {
-        mousePosition: false,
+        isRelativeToMouse: false,
         onHover: false,
         noBind: false,
         fadeTime: 100,
