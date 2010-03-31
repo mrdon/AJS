@@ -97,7 +97,7 @@ AJS.dropDown = function (obj, usroptions) {
             }
             default:{
                 if (links.length) {
-                    AJS.$(links[cdd.focused]).addClass("active");
+                    AJS.$(links[cdd.focused]).addClass(options.activeClass);
                 }
                 return true;
             }
@@ -110,7 +110,7 @@ AJS.dropDown = function (obj, usroptions) {
         }
 		
         if (links.length) {
-            AJS.$(links[cdd.focused]).addClass("active");
+            AJS.$(links[cdd.focused]).addClass(options.activeClass);
         }
 		
         e.stopPropagation();
@@ -132,7 +132,7 @@ AJS.dropDown = function (obj, usroptions) {
             }
             AJS.dropDown.current.cleanFocus();
             this.originalClass = this.className;
-            AJS.$(this).addClass("active");
+            AJS.$(this).addClass(options.activeClass);
             AJS.dropDown.current.$[0].focused = i;
         };
     };
@@ -170,7 +170,7 @@ AJS.dropDown = function (obj, usroptions) {
                     links: AJS.$(options.item || "li:has(a)", cdd),
                     cleanFocus: function () {
                         if (cdd.focused + 1 && res.links.length) {
-                            AJS.$(res.links[cdd.focused]).removeClass("active");
+                            AJS.$(res.links[cdd.focused]).removeClass(options.activeClass);
                         }
                         cdd.focused = -1;
                     }
@@ -391,7 +391,7 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
     var res = [], dropdownParents, options = {
         selector: ".aui-dd-parent",
         dropDown: ".aui-dropdown",
-        trigger: ".aui-dd-trigger"
+        trigger: ".aui-dd-trigger",
     };
 
      // extend defaults with user options
