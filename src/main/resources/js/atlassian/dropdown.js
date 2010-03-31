@@ -391,7 +391,7 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
     var res = [], dropdownParents, options = {
         selector: ".aui-dd-parent",
         dropDown: ".aui-dropdown",
-        trigger: ".aui-dd-trigger",
+        trigger: ".aui-dd-trigger"
     };
 
      // extend defaults with user options
