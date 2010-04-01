@@ -54,6 +54,7 @@
         <resource type="download" name="forms.js" location="js/atlassian/forms.js"/>
         <resource type="download" name="tables.js" location="js/atlassian/tables.js"/>
         <resource type="download" name="tabs.js" location="js/atlassian/tabs.js"/>
+        <resource type="download" name="template.js" location="js/atlassian/template.js"/>
 
         <resource type="download" name="jquery.autocomplete.js" location="js/atlassian/jquery.autocomplete.js"/>
         <resource type="download" name="jquery.is-dirty.js" location="js/atlassian/jquery.is-dirty.js"/>
