@@ -95,13 +95,13 @@ testAjs.addTest("testDialogMenuHidden", function() {
     popup.remove();
     return res;
 });
-testAjs.addTest("testDialogPosition", function() {
-    document.documentElement.scrollTop = 10000;
-    // tests that the dialog menu is hidden when there is only one panel
-    var popup = new AJS.Dialog(860, 530, "test-dialog");
-    popup.addPanel("First", "<p></p>", "panel1").show();
-
-    var res = AJS.$("#test-dialog").offset().top > document.documentElement.scrollTop;
-    popup.remove();
-    return res;
-});
+//testAjs.addTest("testDialogPosition", function() {
+//    document.documentElement.scrollTop = 10000;
+//    // tests that the dialog menu is hidden when there is only one panel
+//    var popup = new AJS.Dialog(860, 530, "test-dialog");
+//    popup.addPanel("First", "<p></p>", "panel1").show();
+//
+//    var res = AJS.$("#test-dialog").offset().top > document.documentElement.scrollTop;
+//    popup.remove();
+//    return res;
+//});
