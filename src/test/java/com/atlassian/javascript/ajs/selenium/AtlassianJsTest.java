@@ -48,7 +48,9 @@ public class AtlassianJsTest extends AUISeleniumTestCase {
 
         protected void runTest() throws Throwable {
             logger.info(">>>>>>>>>>>>>>>>>> Running: " + getName());
-            assertEquals("true", client.getEval("window.testAjs." + getName() + "()"));
+            String eval = "window.testAjs." + getName() + "()";
+            String value = client.getEval(eval);
+            assertEquals("[ " + eval + " == " + value + " ] should be [ true ]", "true", value);
         }
     }
 }

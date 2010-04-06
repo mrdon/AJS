@@ -6,6 +6,7 @@ AJS.dropDown = function (obj, usroptions) {
 
     var dd = null,
         result = [],
+        anchor = this,
         $doc = AJS.$(document),
         isAdditionalProperty = function (name) {
             return !((name == "href") || (name == "name") || (name == "className") || (name == "icon"));
@@ -22,7 +23,7 @@ AJS.dropDown = function (obj, usroptions) {
             hideHandler: function() {}
         };
     AJS.$.extend(options, usroptions);
-    options.alignment = {left:"left",right:"right"}[options.alignment.toLowerCase()]  || "left"; 
+    options.alignment = {left:"left",right:"right"}[options.alignment.toLowerCase()]  || "left";
     if (obj && obj.jquery) { // if AJS.$
         dd = obj;
     } else if (typeof obj == "string") { // if AJS.$ selector
@@ -38,7 +39,7 @@ AJS.dropDown = function (obj, usroptions) {
                         .html("<span>" + obj[i][j].name + "</span>")
                         .attr({href:  obj[i][j].href})
                         .addClass(obj[i][j].className));
-                    
+
                     var properties = obj[i][j];
                     AJS.$.data(AJS.$("a > span", li)[0], "properties", properties);
                 } else {
@@ -59,6 +60,35 @@ AJS.dropDown = function (obj, usroptions) {
         throw new Error("AJS.dropDown function was called with illegal parameter. Should be AJS.$ object, AJS.$ selector or array.");
     }
 
+    var moveDown = function() {
+        if (!AJS.dropDown.current) {
+            return true;
+        }
+        var cdd = AJS.dropDown.current.$[0],
+            links = AJS.dropDown.current.links,
+            oldFocus = cdd.focused;
+        cdd.focused++;
+        if (cdd.focused > links.length - 1) {
+            cdd.focused = 0;
+        }
+        AJS.trigger("selection-change-" + anchor.id, [dd, cdd, "down", oldFocus]);
+    };
+
+     var moveUp = function() {
+        if (!AJS.dropDown.current) {
+            return true;
+        }
+        var cdd = AJS.dropDown.current.$[0],
+            links = AJS.dropDown.current.links,
+            oldFocus = cdd.focused;
+
+        cdd.focused--;
+        if (cdd.focused < 0) {
+            cdd.focused = links.length - 1;
+        }
+        AJS.trigger("selection-change-" + anchor.id, [dd, cdd, "up", oldFocus]);
+    };
+
     var movefocus = function (e) {
         if (!AJS.dropDown.current) {
             return true;
@@ -67,15 +97,15 @@ AJS.dropDown = function (obj, usroptions) {
             cdd = AJS.dropDown.current.$[0],
             focus = (typeof cdd.focused == "number" ? cdd.focused : -1),
             links = AJS.dropDown.current.links;
-            AJS.dropDown.current.cleanFocus();
-            cdd.focused = focus;
+        AJS.dropDown.current.cleanFocus();
+        cdd.focused = focus;
         switch (c) {
             case 40: {
-                cdd.focused++;
+                moveDown();
                 break;
             }
             case 38:{
-                cdd.focused--;
+                moveUp();
                 break;
             }
             case 27:{
@@ -83,11 +113,11 @@ AJS.dropDown = function (obj, usroptions) {
             }
             case 13:{
                 if (cdd.focused >= 0) {
-                    if(!options.selectionHandler){ 
+                    if(!options.selectionHandler){
                         if(AJS.$(links[cdd.focused]).attr("nodeName")!='a'){
                             return AJS.$("a", links[cdd.focused]).trigger("focus");    //focus on the "a" within the parent item elements
                         } else {
-                            return AJS.$(links[cdd.focused]).trigger("focus");     //focus on the "a"  
+                            return AJS.$(links[cdd.focused]).trigger("focus");     //focus on the "a"
                         }
                     } else {
                         return options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(links[cdd.focused]));   //call the selection handler
@@ -102,22 +132,16 @@ AJS.dropDown = function (obj, usroptions) {
                 return true;
             }
         }
-        if (cdd.focused < 0) {
-            cdd.focused = links.length - 1;
-        }
-        if (cdd.focused > links.length - 1) {
-            cdd.focused = 0;
-        }
-		
+
         if (links.length) {
             AJS.$(links[cdd.focused]).addClass(options.activeClass);
         }
-		
+
         e.stopPropagation();
         e.preventDefault();
         return false;
     };
-    
+
     var hider = function (e) {
         if (!((e && e.which && (e.which == 3)) || (e && e.button && (e.button == 2)) || false)) { // right click check
             if (AJS.dropDown.current) {
@@ -141,11 +165,11 @@ AJS.dropDown = function (obj, usroptions) {
         if (e.button || e.metaKey || e.ctrlKey || e.shiftKey) {
             return true;
         }
-        if (AJS.dropDown.current && options.selectionHandler) { 
+        if (AJS.dropDown.current && options.selectionHandler) {
             options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
         }
     };
-	
+
 	var isEventsBound = function (el) {
         var bound = false;
         if (el.data("events")) {
@@ -173,7 +197,9 @@ AJS.dropDown = function (obj, usroptions) {
                             AJS.$(res.links[cdd.focused]).removeClass(options.activeClass);
                         }
                         cdd.focused = -1;
-                    }
+                    },
+                    moveDown: moveDown,
+                    moveUp: moveUp
                 });
                 res.links.each(function (i) {
                     var $this = AJS.$(this);
@@ -191,7 +217,7 @@ AJS.dropDown = function (obj, usroptions) {
                     $cdd.addClass("aui-dropdown-" + options.alignment);
                 } else {
                     $cdd.addClass("hidden");
-                }   
+                }
             },
             fade: function (dir) {
                 if (dir) {
@@ -230,7 +256,7 @@ AJS.dropDown = function (obj, usroptions) {
             this.timer = setTimeout(function () {
                 $doc.click(hider);
             }, 0);
-			
+
             $doc.keydown(movefocus);
             if (options.firstSelected && this.links[0]) {
                 active(0).call(this.links[0]);
@@ -257,22 +283,22 @@ AJS.dropDown = function (obj, usroptions) {
         if (!AJS.dropDown.iframes) {
             AJS.dropDown.iframes = [];
         }
-        AJS.dropDown.createShims = function () {       
+        AJS.dropDown.createShims = function () {
             AJS.$("iframe").each(function (idx) {
-               var iframe = this;        
+               var iframe = this;
                 if (!iframe.shim) {
                     iframe.shim = AJS.$("<div />")
                                                   .addClass("shim hidden")
-                                                  .appendTo("body");            
+                                                  .appendTo("body");
                     AJS.dropDown.iframes.push(iframe);
                 }
             });
             return arguments.callee;
         }();
-        
-        res.addCallback("show", function() {        
-            AJS.$(AJS.dropDown.iframes).each(function(){                     
-                var $this = AJS.$(this); 
+
+        res.addCallback("show", function() {
+            AJS.$(AJS.dropDown.iframes).each(function(){
+                var $this = AJS.$(this);
                 if ($this.is(":visible")) {
                     var offset = $this.offset();
                     offset.height = $this.height();
@@ -426,7 +452,7 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
 
         //hide dropdown if not already hidden
         $dropdown.addClass("hidden");
-		
+
         $trigger.click(function (e) {
             if (ddcontrol != AJS.dropDown.current) {
                 $dropdown.css({top: $trigger.outerHeight()});

@@ -48,6 +48,7 @@ public class AUIFileStructureTest
             "js/atlassian/cookie.js",
             "js/atlassian/dialog.js",
             "js/atlassian/dropdown.js",
+            "js/atlassian/event.js",
             "js/atlassian/firebug.js",
             "js/atlassian/forms.js",
             "js/atlassian/inline-dialog.js",
