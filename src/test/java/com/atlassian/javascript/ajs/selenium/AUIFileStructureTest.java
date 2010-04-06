@@ -63,6 +63,7 @@ public class AUIFileStructureTest
             "js/atlassian/jquery.throbber.js",
             "js/atlassian/tables.js",
             "js/atlassian/tabs.js",
+            "js/atlassian/template.js",
             "js/external/jquery/jquery.js",
             "js/external/jquery/jquery-min.js",
             "js/external/jquery/jquery-compatibility.js",
