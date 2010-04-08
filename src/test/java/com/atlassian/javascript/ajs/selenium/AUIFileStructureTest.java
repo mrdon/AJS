@@ -136,6 +136,7 @@ public class AUIFileStructureTest
             if (!file.isHidden())
             {
                 String filePath = file.getPath().substring(RESOURCE_PREFIX.length() + 1);
+                filePath = filePath.replaceAll("\\\\", "/");
                 results.add(filePath);
             }
         }
