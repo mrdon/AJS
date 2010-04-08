@@ -2,17 +2,13 @@
 * The Atlassian Event System
 */
 AJS.bind = function (eventType, eventData, handler) {
-    var win = window;
-    while (win.top != win) {
-        win = win.top;
-    }
-    return jQuery(win).bind(eventType, eventData, handler);
+    return jQuery(window.top).bind(eventType, eventData, handler);
+};
+
+AJS.unbind = function (eventType, handler) {
+    return jQuery(window.top).unbind(eventType, handler);
 };
 
 AJS.trigger = function(eventType, extraParameters) {
-    var win = window;
-    while (win.top != win) {
-        win = win.top;
-    }
-    return jQuery(win).trigger(eventType, extraParameters);
+    return jQuery(window.top).trigger(eventType, extraParameters);
 };
