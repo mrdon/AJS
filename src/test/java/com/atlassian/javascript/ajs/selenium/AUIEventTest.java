@@ -16,7 +16,7 @@ public class AUIEventTest extends AUISeleniumTestCase
     public void testAJSeventBindsAndTriggers()
     {
         client.getEval("window.AJS.bind('abc-event', {}, function(data) { testResult = true; });");
-        client.getEval("window.AJS.trigger('abc-event');");
+        client.getEval("window.AJS.trigger('abc-event', {});");
         assertEquals("Trigger should be fired", "true", client.getEval("testResult"));
     }
     
