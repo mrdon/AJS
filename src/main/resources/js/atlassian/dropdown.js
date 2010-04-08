@@ -391,11 +391,7 @@ AJS.dropDown = function (obj, usroptions) {
 // property with the specified name then null will be returned.
 AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
     var properties = AJS.$.data(item[0], "properties");
-    if (typeof properties != "undefined") {
-        return properties[name];
-    } else {
-        return null;
-    }
+    return properties ? properties[name] : null;
 };
 
 // remove all additional properties
