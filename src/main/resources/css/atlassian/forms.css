@@ -17,7 +17,7 @@ form.aui textarea,form.aui select,form.aui optgroup,form.aui option,form.aui inp
     font-family: arial,tahoma,verdana,sans-serif;
     font-size: 13px;
 }
-form.aui pre {
+form.aui pre.aui-form {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     font-family: monospace;
@@ -26,7 +26,7 @@ form.aui pre {
     overflow-y: visible;
     padding: 15px;
 }
-form.aui img,form.aui a img,form.aui fieldset {
+form.aui img.aui-form,form.aui a img.aui-form,form.aui fieldset {
     border: none;
 }
 form.aui span {
@@ -83,11 +83,11 @@ form.aui button {
 form.aui .hidden {
     display: none;
 }
-form.aui .error {
+form.aui div.error {
     color: #c00;
     font-weight: bold;
 }
-form.aui .description {
+form.aui div.description {
     font-size: 11px;
 }
 form.aui .field-value {
@@ -119,7 +119,8 @@ form.aui legend {
 }
 form.aui legend span {
     color: #333;
-    left: 0;
+    display: block;
+    left: -140px;
     line-height: 1;
     position: absolute;
     top: 3px;
@@ -127,17 +128,17 @@ form.aui legend span {
     width: 130px;
     text-align: right;
 }
-form.aui div {
+form.aui div.section {
     clear: both;
     display: block;
     margin-bottom: 5px;
     min-height: 1.6em;
     padding: 0 0 5px 140px;
 }
-form.aui div div {
+form.aui .group div.section {
     padding-left: 0;
 }
-form.aui div label {
+form.aui div.section label {
     float: left;
     display: block;
     left: -140px;
@@ -156,7 +157,8 @@ form.aui div.matrix {
     padding-top: 0;
     width: 600px;
 }
-form.aui div.matrix div {
+form.aui div.matrix div.checkbox,
+form.aui div.matrix div.radio {
     clear: none;
     float: left;
     width: 250px;
@@ -195,7 +197,10 @@ form.aui .multi-select optgroup option {
 form.aui .date-select legend {
     display: block;
 }
-form.aui .date-select label {
+form.aui .date-select legend span {
+    left: 0;
+}
+form.aui .date-select div.section label {
     display: none;
 }
 /* submit div - outside the fieldsets */
@@ -223,6 +228,11 @@ form.aui .checkbox input {
 /* groups */
 form.aui .group {
     position: relative;
+    clear: both;
+    display: block;
+    margin-bottom: 5px;
+    min-height: 1.6em;
+    padding: 0 0 5px 140px;
 }
 form.aui .group .field-value {
     float: left;
@@ -258,16 +268,21 @@ form.aui .checkbox .description {
 
 
 /* long labels - add long-label class to form "aui long-label" */
-form.aui.long-label legend span {
-    width: 240px;
-}
-form.aui.long-label div {
+form.aui.long-label div.section,
+form.aui.long-label .group {
     padding-left: 250px;
 }
-form.aui.long-label div label {
+form.aui.long-label div.section label,
+form.aui.long-label legend span {
     left: -250px;
     margin-right: -240px;
     width: 240px;
+}
+form.aui.long-label legend span {
+    left: 0;
+}
+form.aui.long-label .group div.section {
+    padding-left: 0;
 }
 form.aui.long-label .group label,
 form.aui.long-label .radio label,
@@ -280,13 +295,15 @@ form.aui.long-label .group label {
     left: 0;
     margin: 0;
 }
+
+
 /* //long labels */
 
 /* labels on top - add top-label class to form "aui top-label" */
 form.aui.top-label fieldset {
     margin-bottom: 0;
 }
-form.aui.top-label div {
+form.aui.top-label div.section {
     padding-left: 0;
 }
 form.aui.top-label div label {
@@ -297,12 +314,13 @@ form.aui.top-label div label {
     text-align: left;
 }
 form.aui.top-label .group {
-    padding-top: .5em;
+    padding-left: 0;
+    padding-top: 0.5em;
 }
 /* date selects and checkbox / radio groups */
 form.aui.top-label .group legend span,
 form.aui.top-label .date-select legend span {
-    display: block;
+    left: 0;
     position: relative;
     top: 0;
     text-align: left;
@@ -326,7 +344,6 @@ form.aui .inline .form-icon {
 /* //inline */
 
 
-
 /* form icons - add form-icon class together with the icon class "form-icon icon-help" */
 form.aui .form-icon {
     background: transparent url(images/icons/aui-icon-forms.gif) no-repeat 0 0;
@@ -336,7 +353,8 @@ form.aui .form-icon {
     width: 16px;
     overflow: hidden;
 }
-form.aui .form-icon span {
+form.aui .form-icon span.content {
+    display: block;
     text-indent: 25px;/* this effectively hides the content of the span */
 }
 form.aui .form-icon img {
@@ -366,11 +384,8 @@ form.aui .icon-inline-help {
     cursor:help;
 }
 
-/* inline help - add class to a span wrapping help content placed immediately after form-icon icon-help spans */
-form.aui span.field-help {
-    display:block;
+
+html:first-child form.aui .radio input,
+html:first-child form.aui .checkbox input {
+    margin-top: -2px
 }
-form.aui span.field-help.hidden {
-    display:none;
-}
-/* //inline help */

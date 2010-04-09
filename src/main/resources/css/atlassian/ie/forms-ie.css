@@ -15,6 +15,10 @@
 *
 **/
 
+form.aui .radio input,
+form.aui .checkbox input {
+    margin-top: -2px
+}
 
 /**
 * Fixes for IE7 and IE6
@@ -25,14 +29,7 @@
 }
 *
 **/
-form.aui span.inline-text {
-    *position: relative; 
-    *top: -4px
-}
-form.aui .radio input,
-form.aui .checkbox input {
-    *margin-top: -2px
-}
+
 form.aui .radio .description,
 form.aui .checkbox .description {
     *clear: both;
@@ -57,7 +54,7 @@ form.aui .group .field-value {
 }
 *
 **/
-form.aui div {
+form.aui div.section {
     _height: 1.6em;
 }
 form.aui .group .field-value {
@@ -77,7 +74,7 @@ form.aui .radio .description,
 form.aui .checkbox .description {
     _margin-left: 24px;
 }
-form.aui pre {
+form.aui pre.aui-form {
     _width: 95%;
 }
 

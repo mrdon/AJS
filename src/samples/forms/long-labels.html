@@ -41,44 +41,44 @@
 	<h2>Default - Edit State</h2>
 	<fieldset>
 		<legend><span>Text Entry</span></legend>
-		<div>
-			<label for="fname" accesskey="e">First Name<span class="form-icon icon-required"><span>required</span></span></label>
+		<div class="section">
+			<label for="fname" accesskey="e">First Name<span class="form-icon icon-required"><span class="content">required</span></span></label>
 			<input class="text" type="text" id="fname" name="fname" title="first name">
-			<span class="description">Default width input.</span>
+			<div class="description">Default width input.</div>
 		</div>
-        <div>
-			<label for="lname" accesskey="e">Last Name<span class="form-icon icon-required"><span>required</span></span></label>
+        <div class="section">
+			<label for="lname" accesskey="e">Last Name<span class="form-icon icon-required"><span class="content">required</span></span></label>
 			<input class="text long-field" type="text" id="lname" name="lname" title="last name">
-			<span class="error">Error message here</span>
-			<span class="description">Long width input.</span>
+			<div class="error">Error message here</div>
+			<div class="description">Long width input.</div>
 		</div>
-		<div>
+		<div class="section">
 			<label for="email1" accesskey="e">Email</label>
 			<input class="text medium-field" type="text" id="email1" name="email" title="email">
-			<a class="form-icon icon-help" href="forms.html#" title="what's this"><span>help</span></a>
-			<span class="description">Medium width input.</span>
+			<a class="form-icon icon-help" href="forms.html#" title="what's this"><span class="content">help</span></a>
+			<div class="description">Medium width input.</div>
 		</div>
-        <div>
+        <div class="section">
 			<label for="timetestmins">Time</label>
 			<input class="text short-field" type="text" id="timetestmins" name="timetestmins" title="first name"><span class="inline-text">mins</span>
 			<input class="text short-field" type="text" id="timetestsecs" name="timetestsecs" title="last name"><span class="inline-text">seconds</span>
-			<a class="form-icon icon-users" href="forms.html#" title="select user"><span>select user</span></a>
-			<span class="description">Small width input.</span>
+			<a class="form-icon icon-users" href="forms.html#" title="select user"><span class="content">select user</span></a>
+			<div class="description">Small width input.</div>
 		</div>
-		<div>
+		<div class="section">
 			<label for="password1" accesskey="p">Password</label>
-			<input class="text" type="password" id="password1" name="password" title="password">
+			<input class="text" class="password" type="password" id="password1" name="password" title="password">
 		</div>
-		<div>
+		<div class="section">
 			<label for="confirm1" accesskey="c">Confirm Password with a really long label, far too long</label>
-			<input class="text" type="password" id="confirm1" name="confirm" title="confirm password">
+			<input class="text" class="password" type="password" id="confirm1" name="confirm" title="confirm password">
 		</div>
 	</fieldset>
 
     <h2>File Upload</h2>
 	<fieldset>
 		<legend><span>File Upload/</span></legend>
-		<div>
+		<div class="section">
 			<label for="uploadFile">Upload file</label>
 			<input class="upfile" type="file" id="uploadFile" name="uploadFile" title="upload file">
 		</div>
@@ -87,15 +87,15 @@
 	<h2>Dropdowns and Selects</h2>
 	<fieldset>
 		<legend><span>Dropdowns and Selects</span></legend>
-		<div>
+		<div class="section">
 			<label for="dBase">Database</label>
 			<select class="select medium-field" id="dBase" name="dBase" title="database select">
 				<option>- Select a Database -</option>
 				<option>PostgreSQL</option>
 			</select>
-			<span class="description">Medium width select.</span>
+			<div class="description">Medium width select.</div>
 		</div>
-		<div>
+		<div class="section">
 			<label for="multiselect">Multiselect</label>
 			<select class="multi-select" size="4" multiple="multiple" id="multiselect" name="multiselect" title="database select">
 				<option>option one</option>
@@ -107,13 +107,13 @@
 				<option>option five</option>
 				<option>option six</option>
 			</select>
-			<span class="description">Multiselect - 250px min width (except ie, variable width).</span>
+			<div class="description">Multiselect - 250px min width (except ie, variable width).</div>
 		</div>
 	</fieldset>
 
 	<fieldset class="date-select">
 		<legend><span>Select Date</span></legend>
-		<div>
+		<div class="section">
 			<label for="day">Day</label>
 			<select class="select short-field" id="day" name="day" title="select day">
 				<option>01</option>
@@ -129,19 +129,19 @@
 				<option>2008</option>
 				<option>2007</option>
 			</select>
-			<a class="form-icon icon-range" href="forms.html#" title="pick a date range"><span>pick a date range</span></a>
-			<span class="error">Date out of range</span>
-			<span class="description">Specific date select fieldset to allow for multiple (hidden) labels</span>
+			<a class="form-icon icon-range" href="forms.html#" title="pick a date range"><span class="content">pick a date range</span></a>
+			<div class="error">Date out of range</div>
+			<div class="description">Specific date select fieldset to allow for multiple (hidden) labels</div>
 		</div>
 	</fieldset>
 
     <h2>Textarea</h2>
 	<fieldset>
 		<legend><span>Textarea Legend</span></legend>
-		<div>
+		<div class="section">
 			<label for="licenseKey">License Key</label>
 			<textarea class="textarea" rows="6" cols="10" name="licenseKey" id="licenseKey"></textarea>
-			<a class="form-icon icon-users" href="forms.html#" title="select user"><span>select user</span></a>
+			<a class="form-icon icon-users" href="forms.html#" title="select user"><span class="content">select user</span></a>
 			<span class="description">Enter your commercial or evaluation license key.<br>
 			Not got a license? <a href="//TODO">Generate an evaluation license</a></span>
 		</div>
@@ -151,15 +151,15 @@
     <fieldset class="group">
 		<legend><span>Checkboxes Edit</span></legend>
 		<div class="checkbox">
-			<input type="checkbox"  name="cbOne" id="cbOne">
+			<input class="checkbox" type="checkbox"  name="cbOne" id="cbOne">
 			<label for="cbOne">Checkbox One</label>
 		</div>
 		<div class="checkbox">
-			<input type="checkbox"  name="cbTwo" id="cbTwo">
+			<input class="checkbox" type="checkbox"  name="cbTwo" id="cbTwo">
 			<label for="cbTwo">Checkbox Two</label>
 		</div>
-        <div>
-            <span class="error">You must select one option</span>
+        <div class="section">
+            <div class="error">You must select one option</div>
         </div>
 	</fieldset>
 
@@ -167,19 +167,19 @@
     <fieldset class="group">
 		<legend><span>Checkboxes Legend</span></legend>
 		<div class="checkbox">
-			<input type="checkbox"  name="cbOne" id="cbthree">
+			<input class="checkbox" type="checkbox"  name="cbOne" id="cbthree">
 			<label for="cbthree">Checkbox One</label>
-            <span class="description">You can have a description here</span>
+            <div class="description">You can have a description here</div>
 		</div>
 		<div class="checkbox">
-			<input type="checkbox"  name="cbTwo" id="cbfour">
+			<input class="checkbox" type="checkbox"  name="cbTwo" id="cbfour">
 			<label for="cbfour">Checkbox Two</label>
-            <span class="description">You can have a description here</span>
-            <span class="error">and/or an error</span>
+            <div class="description">You can have a description here</div>
+            <div class="error">and/or an error</div>
 		</div>
-        <div>
+        <div class="section">
             <p>You can also have a description here if you like</p>
-            <span class="error">and/or errors</span>
+            <div class="error">and/or errors</div>
         </div>
 	</fieldset>
 
@@ -187,11 +187,11 @@
     <fieldset class="group">
         <p>The Legend is optional - you may not want it for the single checkbox</p>
 		<div class="checkbox">
-			<input type="checkbox"  name="cbOne" id="cbsingle">
+			<input class="checkbox" type="checkbox"  name="cbOne" id="cbsingle">
 			<label for="cbsingle">Checkbox Single</label>
-            <span class="description">You can have a description here</span>
+            <div class="description">You can have a description here</div>
 		</div>
-		<div>
+		<div class="section">
             <p>You can also have a description here if you like</p>
         </div>
 	</fieldset>
@@ -201,19 +201,19 @@
 		<legend><span>Checkbox Matrix</span></legend>
 		<div class="matrix">
 			<div class="checkbox">
-			    <input type="checkbox"  name="cb1" id="cb1">
+			    <input class="checkbox" type="checkbox"  name="cb1" id="cb1">
 				<label for="cb1">Checkbox One</label>
 			</div>
 			<div class="checkbox">
-			    <input type="checkbox"  name="cb2" id="cb2">
+			    <input class="checkbox" type="checkbox"  name="cb2" id="cb2">
 				<label for="cb2">Checkbox Two</label>
 			</div>
 			<div class="checkbox">
-			    <input type="checkbox"  name="cb3" id="cb3">
+			    <input class="checkbox" type="checkbox"  name="cb3" id="cb3">
 				<label for="cb3">Checkbox Three</label>
 			</div>
 			    <div class="checkbox">
-			    <input type="checkbox"  name="cb4" id="cb4">
+			    <input class="checkbox" type="checkbox"  name="cb4" id="cb4">
 				<label for="cb4">Checkbox Four</label>
 			</div>
 		</div>
@@ -224,15 +224,15 @@
     <fieldset class="group">
 		<legend><span>Radio Buttons</span></legend>
 		<div class="radio">
-			<input type="radio"   checked="checked" name="rads" id="irOne">
+			<input class="radio" type="radio"   checked="checked" name="rads" id="irOne">
 			<label for="irOne">Rad One</label>
 		</div>
 		<div class="radio">
-			<input type="radio"  name="rads" id="irTwo">
+			<input class="radio" type="radio"  name="rads" id="irTwo">
 			<label for="irTwo">Rad Two</label>
 		</div>
 		<div class="radio">
-			<input type="radio"  name="rads" id="irThree">
+			<input class="radio" type="radio"  name="rads" id="irThree">
 			<label for="irThree">Rad Three</label>
 		</div>
 	</fieldset>
@@ -241,26 +241,26 @@
 		<legend><span>Radio Matrix</span></legend>
 		<div class="matrix">
 			<div class="radio">
-                <input type="radio" name="rads" id="irmOne" checked="checked" >
+                <input class="radio" type="radio" name="rads" id="irmOne" checked="checked" >
                 <label for="irmOne">Rad One</label>
             </div>
             <div class="radio">
-                <input type="radio" name="rads" id="irmTwo">
+                <input class="radio" type="radio" name="rads" id="irmTwo">
                 <label for="irmTwo">Rad Two</label>
             </div>
             <div class="radio">
-                <input type="radio" name="rads" id="irmThree">
+                <input class="radio" type="radio" name="rads" id="irmThree">
                 <label for="irmThree">Rad Three</label>
             </div>
             <div class="radio">
-                <input type="radio" name="rads" id="irmFour">
+                <input class="radio" type="radio" name="rads" id="irmFour">
                 <label for="irmFour">Rad Four</label>
             </div>
 		</div>
 	</fieldset>
 
     <div class="submit">
-		<input class="button" type="submit" value="Save" id="save-btn1">
+		<input class="button submit" type="submit" value="Save" id="save-btn1">
 		<input class="button" type="button" value="Cancel" id="cancel-btn1">
         <a href="forms.html#">Cancel</a>
 	</div>
@@ -271,22 +271,22 @@
 	<h2>Field Value State</h2>
 	<fieldset>
 		<legend><span>Text Entry</span></legend>
-		<div>
-			<label for="fname" accesskey="e">First Name<span class="form-icon icon-required"><span>required</span></span></label>
+		<div class="section">
+			<label for="fname" accesskey="e">First Name<span class="form-icon icon-required"><span class="content">required</span></span></label>
 			<span class="field-value">My First Name</span>
-			<span class="description">Descriptive text here.</span>
+			<div class="description">Descriptive text here.</div>
 		</div>
-        <div>
-			<label for="lname" accesskey="e">Last Name<span class="form-icon icon-required"><span>required</span></span></label>
+        <div class="section">
+			<label for="lname" accesskey="e">Last Name<span class="form-icon icon-required"><span class="content">required</span></span></label>
 			<span class="field-value">My Last Name</span>
-			<span class="description">Descriptive text here.</span>
+			<div class="description">Descriptive text here.</div>
 		</div>
-		<div>
+		<div class="section">
 			<label for="email1" accesskey="e">Email</label>
 			<span class="field-value">my@email.com</span>
-			<span class="description">Descriptive text here.</span>
+			<div class="description">Descriptive text here.</div>
 		</div>
-        <div>
+        <div class="section">
 			<label>Testing empty field</label>
 			<span class="field-value"> </span>
 		</div>
@@ -295,11 +295,11 @@
     <fieldset class="group">
 		<legend><span>Checkboxes View</span></legend>
 		<div class="checkbox">
-			<input type="checkbox" checked="checked" disabled  name="cbOne" id="cbOned">
+			<input class="checkbox" type="checkbox" checked="checked" disabled  name="cbOne" id="cbOned">
 			<label for="cbOned">Checkbox One</label>
 		</div>
 		<div class="checkbox">
-			<input type="checkbox" disabled  name="cbTwo" id="cbTwod">
+			<input class="checkbox" type="checkbox" disabled  name="cbTwo" id="cbTwod">
 			<label for="cbTwod">Checkbox Two</label>
 		</div>
 	</fieldset>
@@ -307,15 +307,15 @@
     <fieldset class="group">
 		<legend><span>Radio Buttons</span></legend>
 		<div class="radio">
-			<input type="radio" disabled  checked="checked" name="rads" id="irOned">
+			<input class="radio" type="radio" disabled  checked="checked" name="rads" id="irOned">
 			<label for="irOned">Rad One</label>
 		</div>
 		<div class="radio">
-			<input type="radio" disabled name="rads" id="irTwod">
+			<input class="radio" type="radio" disabled name="rads" id="irTwod">
 			<label for="irTwod">Rad Two</label>
 		</div>
 		<div class="radio">
-			<input type="radio" disabled name="rads" id="irThreed">
+			<input class="radio" type="radio" disabled name="rads" id="irThreed">
 			<label for="irThreed">Rad Three</label>
 		</div>
 	</fieldset>
@@ -349,8 +349,8 @@
 	</div>
 
     <h2>Pre text area</h2>
-    <div>
-        <pre>
+    <div class="section">
+        <pre class="aui-form">
 BAM2573-BAMFUNC-18
 Dependant of BAM2573-HEAD-40
 ** LONG STRING **
@@ -362,13 +362,13 @@ failedAM2573-BAMFUNC-16Dependant of BAM2573-HEAD-252 months ago (06:08 PM, Thu, 
         </pre>
     </div>
 
-    <div>
+    <div class="section">
 	    <p>Paragraph: <span><strong>span text, in a paragraph the inline-text class is not required</strong></span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
 	</div>
 
 	<div class="submit">
         <h4>input class="button" vs HTML button</h4>
-		<input class="button" type="submit" value="input" id="edit-btn">
+		<input class="button submit" type="submit" value="input" id="edit-btn">
         <button>Button</button>
         <a href="forms.html#">Cancel</a>
 	</div>
