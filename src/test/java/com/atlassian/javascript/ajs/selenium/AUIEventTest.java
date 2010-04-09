@@ -17,7 +17,7 @@ public class AUIEventTest extends AUISeleniumTestCase
     {
         client.getEval("window.AJS.bind('abc-event', function(data) { testResult = true; });");
         client.getEval("window.AJS.trigger('abc-event');");
-        assertEquals("Trigger should be fired", "true", client.getEval("testResult"));
+        assertEquals("Trigger should be fired", "true", client.getEval("window.testResult"));
     }
     
     /**
@@ -25,12 +25,12 @@ public class AUIEventTest extends AUISeleniumTestCase
      */
     public void testAJSeventBindsAndTriggersWithUnbind()
     {
-        client.getEval("testResult = 0; window.AJS.bind('abc-event', function(data) { testResult++; });");
+        client.getEval("window.testResult = 0; window.AJS.bind('abc-event', function(data) { testResult++; });");
         client.getEval("window.AJS.trigger('abc-event');");
-        assertEquals("Trigger should be fired", "1", client.getEval("testResult"));
+        assertEquals("Trigger should be fired", "1", client.getEval("window.testResult"));
         client.getEval("window.AJS.unbind('abc-event');");
         client.getEval("window.AJS.trigger('abc-event');");
-        assertEquals("Trigger should be fired only once", "1", client.getEval("testResult"));
+        assertEquals("Trigger should be fired only once", "1", client.getEval("window.testResult"));
     }
 
 
