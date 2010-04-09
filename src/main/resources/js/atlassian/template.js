@@ -21,11 +21,19 @@ AJS.template = (function ($) {
                     } else if (name in res) {
                         res = res[name];
                     }
-                    isFunc && typeof res == "function" && (res = res());
+                    if (isFunc && typeof res == "function") {
+                        res = res();
+                    }
                 }
             });
-            res = (res == null || res == obj ? all : res) + "";
-            !isHTML && (res = T.escape(res));
+            // if not found restore original value
+            if (res == null || res == obj) {
+                res = all;
+            }
+            res = String(res);
+            if (!isHTML) {
+                res = T.escape(res);
+            }
             return res;
         },
         // internal function
@@ -56,7 +64,7 @@ AJS.template = (function ($) {
         function res() {
             return res.template;
         }
-        res.template = s + "";
+        res.template = String(s);
         res.toString = res.valueOf = toString;
         res.fill = fill;
         res.fillHtml = fillHtml;
@@ -65,7 +73,7 @@ AJS.template = (function ($) {
     cache = {};
     // returns template taken form the script tag with given title. Type agnostic, but better put type="text/x-template"
     T.load = function (title) {
-        title = title + "";
+        title = String(title);
         if (cache[title]) {
             return cache[title];
         }
@@ -73,7 +81,7 @@ AJS.template = (function ($) {
     };
     // escape HTML dangerous characters
     T.escape = function (s) {
-        return (s + "").replace(escapingRegex, escaper);
+        return String(s).replace(escapingRegex, escaper);
     };
     return T;
 })(window.jQuery);
