@@ -213,7 +213,7 @@
             });
             
             //Close all other popups if neccessary
-            if(opts.closeOthers){
+            if (opts.closeOthers) {
                 AJS.$(".aui-inline-dialog").each(function() {
                     this.popup.hide();
                 });
