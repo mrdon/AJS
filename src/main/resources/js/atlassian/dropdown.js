@@ -6,7 +6,7 @@ AJS.dropDown = function (obj, usroptions) {
 
     var dd = null,
         result = [],
-        anchor = this,
+        moving = false,
         $doc = AJS.$(document),
         isAdditionalProperty = function (name) {
             return !((name == "href") || (name == "name") || (name == "className") || (name == "icon"));
@@ -20,7 +20,8 @@ AJS.dropDown = function (obj, usroptions) {
                 this.hide("escape");
                 return false;
             },
-            hideHandler: function() {}
+            hideHandler: function() {},
+            moveHandler: function(selection,dir) {}
         };
     AJS.$.extend(options, usroptions);
     options.alignment = {left:"left",right:"right"}[options.alignment.toLowerCase()]  || "left";
@@ -34,20 +35,22 @@ AJS.dropDown = function (obj, usroptions) {
             var ol = AJS("ol");
             for (var j = 0, jj = obj[i].length; j < jj; j++) {
                 var li = AJS("li");
-                if (obj[i][j].href) {
+                var properties = obj[i][j];
+                if (properties.href) {
                     li.append(AJS("a")
-                        .html("<span>" + obj[i][j].name + "</span>")
-                        .attr({href:  obj[i][j].href})
-                        .addClass(obj[i][j].className));
+                        .html("<span>" + properties.name + "</span>")
+                        .attr({href:  properties.href})
+                        .addClass(properties.className));
 
-                    var properties = obj[i][j];
+                    // deprecated - use the properties on the li, not the span
                     AJS.$.data(AJS.$("a > span", li)[0], "properties", properties);
                 } else {
-                    li.html(obj[i][j].html).addClass(obj[i][j].className);
+                    li.html(properties.html).addClass(properties.className);
                 }
-                if (obj[i][j].icon) {
-                    li.prepend(AJS("img").attr("src", obj[i][j].icon));
+                if (properties.icon) {
+                    li.prepend(AJS("img").attr("src", properties.icon));
                 }
+                AJS.$.data(li[0], "properties", properties);
                 ol.append(li);
             }
             if (i == ii - 1) {
@@ -61,44 +64,56 @@ AJS.dropDown = function (obj, usroptions) {
     }
 
     var moveDown = function() {
-        if (!AJS.dropDown.current) {
-            return true;
-        }
-        var cdd = AJS.dropDown.current.$[0],
-            links = AJS.dropDown.current.links,
-            oldFocus = cdd.focused;
-        cdd.focused++;
-        if (cdd.focused > links.length - 1) {
-            cdd.focused = 0;
-        }
-        AJS.trigger("selection-change-" + anchor.id, [dd, cdd, "down", oldFocus]);
+        move(+1);
     };
 
      var moveUp = function() {
-        if (!AJS.dropDown.current) {
-            return true;
-        }
-        var cdd = AJS.dropDown.current.$[0],
+        move(-1);
+    };
+
+    var move = function(dir) {
+        var trigger = !moving,
+            cdd = AJS.dropDown.current.$[0],
             links = AJS.dropDown.current.links,
             oldFocus = cdd.focused;
+        moving = true;
 
-        cdd.focused--;
+        cdd.focused = (typeof cdd.focused == "number" ? cdd.focused : -1);
+        AJS.log("move - " + cdd.focused + " " + dir);
+
+        if (!AJS.dropDown.current) {
+            AJS.log("move - not current, aborting");
+            return true;
+        }
+
+        cdd.focused = cdd.focused + dir;
         if (cdd.focused < 0) {
             cdd.focused = links.length - 1;
         }
-        AJS.trigger("selection-change-" + anchor.id, [dd, cdd, "up", oldFocus]);
+        if (cdd.focused > links.length - 1) {
+            cdd.focused = 0;
+        }
+
+        options.moveHandler(AJS.$(links[cdd.focused]), dir < 0 ? "up" : "down");
+        if (trigger && links.length) {
+            AJS.$(links[cdd.focused]).addClass(options.activeClass);
+            moving = false;
+        } else if(!links.length) {
+            moving = false;
+        }
     };
 
-    var movefocus = function (e) {
+    var moveFocus = function (e) {
         if (!AJS.dropDown.current) {
             return true;
         }
         var c = e.which,
             cdd = AJS.dropDown.current.$[0],
-            focus = (typeof cdd.focused == "number" ? cdd.focused : -1),
             links = AJS.dropDown.current.links;
-        AJS.dropDown.current.cleanFocus();
-        cdd.focused = focus;
+
+        AJS.log("moveFocus - " + cdd.focused);
+
+        AJS.dropDown.current.cleanActive();
         switch (c) {
             case 40: {
                 moveDown();
@@ -131,10 +146,6 @@ AJS.dropDown = function (obj, usroptions) {
                 }
                 return true;
             }
-        }
-
-        if (links.length) {
-            AJS.$(links[cdd.focused]).addClass(options.activeClass);
         }
 
         e.stopPropagation();
@@ -192,14 +203,21 @@ AJS.dropDown = function (obj, usroptions) {
                 res = AJS.$.extend(res || {}, {
                     $: $cdd,
                     links: AJS.$(options.item || "li:has(a)", cdd),
-                    cleanFocus: function () {
+                    cleanActive: function () {
                         if (cdd.focused + 1 && res.links.length) {
                             AJS.$(res.links[cdd.focused]).removeClass(options.activeClass);
                         }
+                    },
+                    cleanFocus: function () {
+                        this.cleanActive();
                         cdd.focused = -1;
                     },
                     moveDown: moveDown,
-                    moveUp: moveUp
+                    moveUp: moveUp,
+                    moveFocus: moveFocus,
+                    getFocusIndex: function () {
+                        return (typeof cdd.focused == "number") ? cdd.focused : -1;
+                    }
                 });
                 res.links.each(function (i) {
                     var $this = AJS.$(this);
@@ -257,7 +275,7 @@ AJS.dropDown = function (obj, usroptions) {
                 $doc.click(hider);
             }, 0);
 
-            $doc.keydown(movefocus);
+            $doc.keydown(moveFocus);
             if (options.firstSelected && this.links[0]) {
                 active(0).call(this.links[0]);
             }
@@ -269,7 +287,7 @@ AJS.dropDown = function (obj, usroptions) {
             AJS.$($cdd.get(0).offsetParent).css({zIndex: ""});
             this.cleanFocus();
             methods[this.method](false);
-            $doc.unbind("click", hider).unbind("keydown", movefocus);
+            $doc.unbind("click", hider).unbind("keydown", moveFocus);
 			 AJS.$(document).trigger("hideLayer", ["dropdown", AJS.dropDown.current]);
             AJS.dropDown.current = null;
             return causer;
@@ -390,7 +408,13 @@ AJS.dropDown = function (obj, usroptions) {
 // for each item in the drop down get the value of the named additional property. If there is no
 // property with the specified name then null will be returned.
 AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
-    var properties = AJS.$.data(item[0], "properties");
+    var el = item[0];
+    if ( !el || (typeof el.tagName != "string") || el.tagName.toLowerCase() != "li" ) {
+        // we are moving the location of the properties and want to deprecate the attachement to the span
+        // but are unsure where and how its being called so for now we just log
+        AJS.log("AJS.dropDown.getAdditionalPropertyValue : item passed in should be an LI element wrapped by jQuery");
+    }
+    var properties = AJS.$.data(el, "properties");
     return properties ? properties[name] : null;
 };
 
