@@ -47,11 +47,15 @@
                         showPopup();
                     },
                     reset: function () {
-                        var posx;
-                        var posy;
-                        var arrowOffset = targetPosition.target.width()/2;
+                        var posx;   //position left edge of popup box
+                        var posy;   //position top edge of popup box
+                        var arrowOffset;    //the x offset of the arrow from the left edge of the popup
                         var targetOffset = targetPosition.target.offset();
+                        var padding = parseInt(targetPosition.target.css("padding-left")) + parseInt(targetPosition.target.css("padding-right"));
+                        var triggerWidth=targetPosition.target.width() + padding;      //The total width of the trigger (including padding);
+                        var middleOfTrigger = targetOffset.left + triggerWidth/2;   //The absolute x position of the middle of the Trigger
                         
+                        //draw popup arrow
                         function drawArrow(left, right) {
                             if(window.Raphael){
                                 if (!popup.arrowCanvas) {
@@ -68,25 +72,29 @@
                             });
                         }
                         
+                        //detect if position of popup should be relative to mouse
                         if (opts.isRelativeToMouse) {
                             posx = mousePosition.x + opts.offsetX - arrowOffset ;
                             posy = mousePosition.y + targetPosition.target.height() + opts.offsetY;
+                            arrowOffset = triggerWidth/2;
                             opts.offsetY = 0;
                         } else {
                             posx = targetOffset.left + opts.offsetX;
                             posy = targetOffset.top + targetPosition.target.height() + opts.offsetY;
-                            triggerWidth=targetPosition.target.width();
+                            arrowOffset = middleOfTrigger - posx;
                         }
                         
-                        var diff = $(window).width() - (posx + opts.width + 30);
+                        var diff = $(window).width() - (posx  + opts.width + 10);
                         
+                        //DRAW POPUP
                         //Check if dialog would be offscreen on the right
                         if (diff<0) {
                             popup.css({
-                                left: posx - opts.width + targetPosition.target.width(),
-                                right: "auto"
+                                left: "auto",
+                                right: 10
                             });
-                            drawArrow("auto", arrowOffset);
+                            var leftEdge = $(window).width() - opts.width;
+                            drawArrow(middleOfTrigger-leftEdge, "auto");    //use width of popup to calculate arrow position since 'right'position is static
                         } else {
                             popup.css({
                                 left: posx,
@@ -203,6 +211,13 @@
                     this.popup.hide();
                 }
             });
+            
+            //Close all other popups if neccessary
+            if(opts.closeOthers){
+                AJS.$(".aui-inline-dialog").each(function() {
+                    this.popup.hide();
+                });
+            }
 
             mousePosition = { x: e.pageX, y: e.pageY };
             var targetOffset = $(e.target).offset();
@@ -291,6 +306,7 @@
     };
 
     AJS.InlineDialog.opts = {
+        closeOthers: true,
         isRelativeToMouse: false,
         onHover: false,
         noBind: false,
