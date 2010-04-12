@@ -244,17 +244,20 @@
                     // If the passed in URL is a function, execute it. Otherwise simply load the content.
                     url(contents, trigger, doShowPopup);
                 } else {
-                    //Handle the response
-                    opts.responseHandler.call(this, url, contents);
-                    //Show the popup
-                    contentLoaded = true;
-                    opts.initCallback.call({
-                        popup: popup,
-                        hide: function () {hidePopup(0);},
-                        id: identifier,
-                        show: function () {showPopup();}
+                    //Retrive response from server
+                    AJS.$.get(url, function (data, status, xhr) {
+                        //Load HTML contents into the popup
+                        contents.html(opts.responseHandler(data, status, xhr));
+                        //Show the popup
+                        contentLoaded = true;
+                        opts.initCallback.call({
+                            popup: popup,
+                            hide: function () {hidePopup(0);},
+                            id: identifier,
+                            show: function () {showPopup();}
+                        });
+                        showPopup();
                     });
-                    showPopup();
                 }
             }
             // stops the hide event if we move from the trigger to the popup element
@@ -307,8 +310,9 @@
     };
 
     AJS.InlineDialog.opts = {
-        responseHandler: function(url, contents) {
-            contents.load(url);
+        responseHandler: function(data, status, xhr) {
+            //assume data is html
+            return data;
         },
         closeOthers: true,
         isRelativeToMouse: false,
