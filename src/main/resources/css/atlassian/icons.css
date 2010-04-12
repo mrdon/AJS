@@ -18,19 +18,54 @@
     width: 13px;
 }
 
-.i-move {
+.icon-move {
     background-position: 0 0;
     cursor: move;
 }
-
-.i-maximize {
+.icon-maximize {
     background-position: -52px 0;
 }
-
-.i-minimize {
+.icon-minimize {
     background-position: -39px 0;
 }
-.i-minimize-d {
+.icon-minimize-d {
     background-position: -39px -13px;
 }
+
+/* form icons - add aui-icon class together with the icon class "aui-icon icon-help" */
+form.aui .aui-icon {
+    background: transparent url(images/icons/aui-icon-forms.gif) no-repeat 0 0;
+    display: inline-block;
+    height: 16px;
+    margin: 0 1px 0 1px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 16px;
+}
+
+/* position icon sprite */
+form.aui .icon-date {
+    background-position: 0 -20px;
+}
+form.aui .icon-range {
+    background-position: 0 -40px;
+}
+form.aui .icon-help {
+    background-position: 0 -60px;
+}
+form.aui .icon-required {
+    background-position: 0 -80px;
+    height: 13px;
+    width: 8px;
+    vertical-align: top;
+}
+form.aui .icon-users {
+    background-position: 0 -100px;
+}
+form.aui .icon-inline-help {
+    background-position: 0 -60px;
+    cursor:help;
+}
+
+
 
