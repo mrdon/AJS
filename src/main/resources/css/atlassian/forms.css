@@ -54,7 +54,7 @@ form.aui select {
     padding: 1px;
 }
 form.aui option {
-    padding: 0 1em
+    padding: 0 1em;
 }
 form.aui textarea {
     overflow: auto;
@@ -63,7 +63,7 @@ form.aui textarea {
 form.aui input.button,
 form.aui button {
     line-height: 1.2;
-    margin-right: 5px;
+    margin: 10px 10px 0 0;
     padding: 0 0.5em;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -82,10 +82,10 @@ form.aui div.description {
 }
 form.aui .field-value {
     color: #000;
+    display: inline-block;
     font-weight: bold;
     line-height: 1;
     padding-top: 4px;
-    display:inline-block;
 }
 
 /* headings */
@@ -139,10 +139,6 @@ form.aui .field-group label {
     width: 130px;
     text-align: right;
 }
-/* could use with text-align:right above (not in ie6) form.aui label .label:after {
-    content: ":"
-}
-*/
 form.aui div.matrix {
     padding-top: 0;
     width: 600px;
@@ -196,9 +192,6 @@ form.aui .date-select .field-group label {
 /* submit div - outside the fieldsets */
 form.aui .buttons {
     border-top: 1px solid #ddd;
-}
-form.aui .buttons input {
-    margin: 10px 10px 0 0;
 }
 /* radios and checkboxes */
 form.aui .radios div {
