@@ -6,17 +6,70 @@ import org.junit.Test;
 
 public class AUIDropDownTest extends AUISeleniumTestCase
 {
-     public void setUpTest()
+     public void setUpTest(boolean needToCreateObjects)
      {
         openTestPage("test.html");  //open test page
-        client.getEval("window.AJS.$('#dropDown1').dropDown('Standard');");    //create dropdown 1
-        client.getEval("window.AJS.$('#dropDown2').dropDown('Standard');");    //create dropdown 2
+        addHTMLtoElement("body", "" +
+                "    <div id= \"dropDown1\">\n" +
+                "        <li class=\"aui-dd-parent\">\n" +
+                "            <a href=\"#\" class=\"aui-dd-trigger\">A Dropdown</a>\n" +
+                "            <ul class=\"aui-dropdown\">\n" +
+                "                <li><a href=\"#\">A menu item</a></li>\n" +
+                "                <li><a href=\"#\">Another menu item</a></li>\n" +
+                "                <li><a href=\"#\">Third menu item</a></li>\n" +
+                "                <li><a href=\"#\">Menu item 4</a></li>\n" +
+                "                <li><a href=\"#\">A menu item</a></li>\n" +
+                "                <li><a href=\"#\">Another menu item</a></li>\n" +
+                "                <li><a href=\"#\">Third menu item</a></li>\n" +
+                "                <li><a href=\"#\">Menu item 4</a></li>\n" +
+                "                <li><a href=\"#\">A menu item</a></li>\n" +
+                "                <li><a href=\"#\">Another menu item</a></li>\n" +
+                "                <li><a href=\"#\">Third menu item</a></li>\n" +
+                "                <li><a href=\"#\">Menu item 4</a></li>\n" +
+                "                <li><a href=\"#\">A menu item</a></li>\n" +
+                "                <li><a href=\"#\">Another menu item</a></li>\n" +
+                "                <li><a href=\"#\">Third menu item</a></li>\n" +
+                "                <li><a href=\"#\">Menu item 4</a></li>\n" +
+                "                <li><a href=\"#\">A menu item</a></li>\n" +
+                "                <li><a href=\"#\">Another menu item</a></li>\n" +
+                "                <li><a href=\"#\">Third menu item</a></li>\n" +
+                "                <li><a href=\"#\">Menu item 4</a></li>\n" +
+                "                <li><a href=\"#\">A menu item</a></li>\n" +
+                "                <li><a href=\"#\">Another menu item</a></li>\n" +
+                "                <li><a href=\"#\">Third menu item</a></li>\n" +
+                "                <li><a href=\"#\">Menu item 4</a></li>\n" +
+                "                <li><a href=\"#\">A menu item</a></li>\n" +
+                "                <li><a href=\"#\">Another menu item</a></li>\n" +
+                "                <li><a href=\"#\">Third menu item</a></li>\n" +
+                "                <li><a href=\"#\">Menu item 4</a></li>\n" +
+                "\n" +
+                "            </ul>\n" +
+                "        </li>\n" +
+                "    </div>\n" +
+                "    <div id = \"dropDown2\">\n" +
+                "        <li class=\"aui-dd-parent\">\n" +
+                "            <a href=\"#\" class=\"aui-dd-trigger\">A Second Dropdown</a>\n" +
+                "            <ul class=\"aui-dropdown\">\n" +
+                "                <li><a href=\"#\">A menu item in the Second Dropdown</a></li>\n" +
+                "                <li><a href=\"#\">Another menu item</a></li>\n" +
+                "                <li><a href=\"#\">Third menu item</a></li>\n" +
+                "                <li><a href=\"#\">Menu item 4</a></li>\n" +
+                "            </ul>\n" +
+                "        </li>\n" +
+                "    </div>");
+
+        if(needToCreateObjects){
+            client.getEval("window.AJS.$('#dropDown1').dropDown('Standard');");    //create dropdown 1
+            client.getEval("window.AJS.$('#dropDown2').dropDown('Standard');");    //create dropdown 2
+        }
+
      }
+
 
     //Test to make sure dropdowns can be created correctly
     public void testAUIDropDownCreate()
     {
-        openTestPage("test.html");  //open test page
+        setUpTest(false);
         String creationString1 = client.getEval("window.AJS.$('#dropDown1').dropDown('Standard');");    //create dropdown 1
         String creationString2 = client.getEval("window.AJS.$('#dropDown2').dropDown('Standard');");    //create dropdown 2
 
@@ -27,7 +80,7 @@ public class AUIDropDownTest extends AUISeleniumTestCase
     //Test to make sure dropdowns show correctly after being clicked, will fail if other dropdown is also showing while the other one is
     public void testAUIDropDownShow()
     {
-        setUpTest();
+        setUpTest(true);
 
         client.click("css=div#dropDown1 .aui-dd-trigger");  //click on dropdown 1
 
@@ -42,7 +95,7 @@ public class AUIDropDownTest extends AUISeleniumTestCase
 
     public void testAUIDropDownHide()
     {
-        setUpTest();
+        setUpTest(true);
 
         client.click("css=div#dropDown1 .aui-dd-trigger");    //click on a dropdown
         client.click("css=body");   //click on the body element of the page to hide the dropdown

@@ -15,4 +15,9 @@ public class AUISeleniumTestCase extends SeleniumTest
         client.open(filename);
     }
 
+    public void addHTMLtoElement(String element, String html){
+        html = html.replaceAll("\n", "");
+        client.getEval("window.AJS.$('"+element+"').append('"+ html + "')");
+    }
+
 }
