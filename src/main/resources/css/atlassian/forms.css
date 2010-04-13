@@ -209,7 +209,7 @@ form.aui .radio input,
 form.aui .checkbox input {
     border: none;
     float: left;
-/*     margin-top: 2px; */
+    margin-top: 2px;
     width: 15px;
 }
 form.aui .checkbox input {
