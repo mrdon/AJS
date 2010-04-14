@@ -79,7 +79,6 @@ AJS.dropDown = function (obj, usroptions) {
         moving = true;
 
         cdd.focused = (typeof cdd.focused == "number" ? cdd.focused : -1);
-        AJS.log("move - " + cdd.focused + " " + dir);
 
         if (!AJS.dropDown.current) {
             AJS.log("move - not current, aborting");
@@ -110,8 +109,6 @@ AJS.dropDown = function (obj, usroptions) {
         var c = e.which,
             cdd = AJS.dropDown.current.$[0],
             links = AJS.dropDown.current.links;
-
-        AJS.log("moveFocus - " + cdd.focused);
 
         AJS.dropDown.current.cleanActive();
         switch (c) {
