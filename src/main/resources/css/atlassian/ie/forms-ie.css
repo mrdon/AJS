@@ -15,8 +15,8 @@
 *
 **/
 
-form.aui .radio input,
-form.aui .checkbox input {
+form.aui .radio input.radio,
+form.aui .checkbox input.checkbox {
     margin-top: -2px
 }
 
@@ -54,7 +54,7 @@ form.aui .group .field-value {
 }
 *
 **/
-form.aui div.section {
+form.aui .field-group {
     _height: 1.6em;
 }
 form.aui .group .field-value {

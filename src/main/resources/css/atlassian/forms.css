@@ -198,14 +198,14 @@ form.aui .radios div {
     padding-top: 0;
     padding-bottom: 0;
 }
-form.aui .radio input,
-form.aui .checkbox input {
+form.aui .radio input.radio,
+form.aui .checkbox input.checkbox {
     border: none;
     float: left;
     margin-top: 2px;
     width: 15px;
 }
-form.aui .checkbox input {
+form.aui .checkbox input.checkbox {
     margin-top: 1px;
 }
 /* groups */
