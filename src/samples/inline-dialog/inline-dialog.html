@@ -34,6 +34,7 @@
     <div><a href="inline-dialog.html" id="testFloat2" style="float:right; clear: both;">TestingVeryVeryVeryVeryVeryVeryVeryLongLinkPositioning</a></div>
     
     <div><a href="inline-dialog.html" id="testFloat3" style="float:right; clear: both;">TestingMedLengthLink</a></div>
+     <div><a href="inline-dialog.html" id="testMouse" style="float:right; clear: both;">TestingMouseRelativePos</a></div>
     <div><a href="inline-dialog.html" id="testMiddle" style="left:500px; position:absolute;">TestingMiddle</a></div>
     
     <div id="testing">
@@ -117,6 +118,7 @@
             AJS.InlineDialog(AJS.$("#testFloat2"), 6, "dialog-content.html");
             AJS.InlineDialog(AJS.$("#testFloat3"), 7, "dialog-content.html");
             AJS.InlineDialog(AJS.$("#testMiddle"), 8, "dialog-content.html");
+            AJS.InlineDialog(AJS.$("#testMouse"), 9, "dialog-content.html", {isRelativeToMouse: true});
 
             // Testing AJS.inlineHelp
             AJS.inlineHelp();

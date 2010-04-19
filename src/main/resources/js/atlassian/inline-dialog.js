@@ -47,60 +47,62 @@
                         showPopup();
                     },
                     reset: function () {
-                        var posx;   //position left edge of popup box
-                        var posy;   //position top edge of popup box
+                        var posx;   //position of the left edge of popup box
+                        var posy;   //position of the top edge of popup box
                         var arrowOffset;    //the x offset of the arrow from the left edge of the popup
                         var targetOffset = targetPosition.target.offset();
                         var padding = parseInt(targetPosition.target.css("padding-left")) + parseInt(targetPosition.target.css("padding-right"));
                         var triggerWidth=targetPosition.target.width() + padding;      //The total width of the trigger (including padding);
                         var middleOfTrigger = targetOffset.left + triggerWidth/2;   //The absolute x position of the middle of the Trigger
                         
-                        //draw popup arrow
-                        function drawArrow(left, right) {
+                        //DRAW POPUP
+                        function drawPopup (popup, left, right, arrowOffset) {
+                            //Position the popup using the left and right parameters
+                            popup.css({
+                                left: left,
+                                right: right
+                            });
+                            //Only draw arrow if raphael exists
                             if(window.Raphael){
                                 if (!popup.arrowCanvas) {
                                     popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
                                 }
+                                //draw arrow
                                 popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
                                     fill : "#fff",
                                     stroke : "#bbb"
-                                    }); //draw arrow using path and attributes.
+                                }); 
                             }
+                            //apply positioning to arrow
                             arrow.css({
-                                left: left,
-                                right: right
-                            });
-                        }
-                        
-                        //detect if position of popup should be relative to mouse
-                        if (opts.isRelativeToMouse) {
-                            posx = mousePosition.x + opts.offsetX - arrowOffset ;
-                            posy = mousePosition.y + targetPosition.target.height() + opts.offsetY;
-                            arrowOffset = triggerWidth/2;
-                            opts.offsetY = 0;
-                        } else {
-                            posx = targetOffset.left + opts.offsetX;
-                            posy = targetOffset.top + targetPosition.target.height() + opts.offsetY;
-                            arrowOffset = middleOfTrigger - posx;
-                        }
-                        
-                        var diff = $(window).width() - (posx  + opts.width + 10);
-                        
-                        //DRAW POPUP
-                        //Check if dialog would be offscreen on the right
-                        if (diff<0) {
-                            popup.css({
-                                left: "auto",
-                                right: 10
-                            });
-                            var leftEdge = $(window).width() - opts.width;
-                            drawArrow(middleOfTrigger-leftEdge, "auto");    //use width of popup to calculate arrow position since 'right'position is static
-                        } else {
-                            popup.css({
-                                left: posx,
+                                left: arrowOffset,
                                 right: "auto"
                             });
-                            drawArrow(arrowOffset, "auto");
+                        }
+                        
+                        //detect if position of popup should be relative to mouse and calculate the position of the box accordingly
+                        if (opts.isRelativeToMouse) {
+                            //Use position of mouse to calculate position of popup
+                            posx = mousePosition.x + opts.offsetX
+                            posy = mousePosition.y + targetPosition.target.height() + opts.offsetY;
+                        } else {
+                            //use position of trigger to calculate position of popup
+                            posx = targetOffset.left + opts.offsetX;
+                            posy = targetOffset.top + targetPosition.target.height() + opts.offsetY;
+                        }
+                        //calculate if the popup will be offscreen (considered offscreen if within 10px of the edge)
+                        var diff = $(window).width() - (posx  + opts.width + 10);
+                        //Check if dialog would be offscreen on the right
+                        if (diff<0) {
+                            var leftEdge = $(window).width() - opts.width;  
+                            //determine where the arrow should be drawn
+                            if(opts.isRelativeToMouse){
+                                drawPopup (popup, "auto", 10, mousePosition.x-leftEdge);    //Calculate arrow position based on mouse position
+                            } else {
+                                drawPopup (popup, "auto", 10, middleOfTrigger-leftEdge);    //Calculate arrow position based on middle of trigger
+                            }
+                        } else {
+                            drawPopup (popup, posx, "auto" , middleOfTrigger-posx);    //Calculate arrow position baesd on middle of trigger
                         }
 
                         var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
