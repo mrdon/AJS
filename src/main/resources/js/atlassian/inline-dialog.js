@@ -315,6 +315,7 @@
             hidePopup(0);
         });
         
+        //Exposed functions
         popup.show = function () {
             appendPopup();
             initPopup(null, this);
@@ -322,6 +323,12 @@
         
         popup.hide = function () {
             hidePopup(0);
+        }
+        
+        popup.refresh = function () {
+            if (beingShown) {
+               getHash().reset(); 
+            }
         }
         
         return popup;
