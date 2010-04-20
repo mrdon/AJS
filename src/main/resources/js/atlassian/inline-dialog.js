@@ -54,7 +54,7 @@
                         var padding = parseInt(targetPosition.target.css("padding-left")) + parseInt(targetPosition.target.css("padding-right"));
                         var triggerWidth = targetPosition.target.width() + padding; //The total width of the trigger (including padding)
                         var middleOfTrigger = targetOffset.left + triggerWidth/2;    //The absolute x position of the middle of the Trigger
-                        var screen  Padding = 10; //determines how close to the edge the dialog needs to be before it is considered offscreen
+                        var SCREEN_PADDING = 10; //determines how close to the edge the dialog needs to be before it is considered offscreen
                         
                         //DRAW POPUP
                         function drawPopup (popup, left, right, arrowOffset) {
@@ -92,15 +92,15 @@
                             posy = targetOffset.top + targetPosition.target.height() + opts.offsetY;
                         }
                         //calculate if the popup will be offscreen
-                        var diff = $(window).width() - (posx  + opts.width + screenPadding);
+                        var diff = $(window).width() - (posx  + opts.width + SCREEN_PADDING);
                         //Check if dialog would be offscreen on the right
                         if (diff<0) {
                             var leftEdge = $(window).width() - opts.width;  
                             //determine where the arrow should be drawn
                             if(opts.isRelativeToMouse){
-                                drawPopup (popup, "auto", screenPadding, mousePosition.x-leftEdge);    //Calculate arrow position based on mouse position
+                                drawPopup (popup, "auto", SCREEN_PADDING, mousePosition.x-leftEdge);    //Calculate arrow position based on mouse position
                             } else {
-                                drawPopup (popup, "auto", screenPadding, middleOfTrigger-leftEdge);    //Calculate arrow position based on middle of trigger
+                                drawPopup (popup, "auto", SCREEN_PADDING, middleOfTrigger-leftEdge);    //Calculate arrow position based on middle of trigger
                             }
                         } else {
                             drawPopup (popup, posx, "auto" , middleOfTrigger-posx);    //Calculate arrow position baesd on middle of trigger
