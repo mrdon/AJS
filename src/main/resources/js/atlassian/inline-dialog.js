@@ -52,8 +52,8 @@
                         var arrowOffset;    //the x offset of the arrow from the left edge of the popup
                         var targetOffset = targetPosition.target.offset();
                         var padding = parseInt(targetPosition.target.css("padding-left")) + parseInt(targetPosition.target.css("padding-right"));
-                        var triggerWidth=targetPosition.target.width() + padding;      //The total width of the trigger (including padding);
-                        var middleOfTrigger = targetOffset.left + triggerWidth/2;   //The absolute x position of the middle of the Trigger
+                        var triggerWidth = targetPosition.target.width() + padding; //The total width of the trigger (including padding)
+                        var middleOfTrigger = targetOffset.left + triggerWidth/2;    //The absolute x position of the middle of the Trigger
                         
                         //DRAW POPUP
                         function drawPopup (popup, left, right, arrowOffset) {
@@ -220,10 +220,17 @@
                     this.popup.hide();
                 });
             }
+            
+            //handle programmatic showing where there is no event
+            if (!e) {
+                mousePosition = { x: items.offset().left, y: items.offset().top };
+                targetPosition = {target: items};
+            } else {
+                mousePosition = { x: e.pageX, y: e.pageY };
+                targetPosition = {target: $(e.target)};  
+            }
+            
 
-            mousePosition = { x: e.pageX, y: e.pageY };
-            var targetOffset = $(e.target).offset();
-            targetPosition = {target: $(e.target)};
 
             if (!beingShown) {
                 clearTimeout(showTimer);
@@ -289,7 +296,7 @@
                 hidePopup();
             });
         } else {
-            if(!opts.noBind){   //Check if the noBind option is turned on
+            if (!opts.noBind) {   //Check if the noBind option is turned on
                 $(items).click(function(e) {
                     appendPopup();
                     initPopup(e,this);
@@ -299,7 +306,7 @@
                 });
             }
         }
-
+        
         contents.click(function(e) {
             e.stopPropagation();
         });
@@ -307,7 +314,16 @@
         $("body").click(function() {
             hidePopup(0);
         });
-
+        
+        popup.show = function () {
+            appendPopup();
+            initPopup(null, this);
+        }
+        
+        popup.hide = function () {
+            hidePopup(0);
+        }
+        
         return popup;
     };
 
