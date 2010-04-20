@@ -46,6 +46,7 @@
         <resource type="download" name="jquery.form.js" location="js/external/jquery/plugins/jquery.form.js"/>
         
         <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
+        <resource type="download" name="atlassian.overrides.js" location="js/atlassian/atlassian.overrides.js"/>        
         <resource type="download" name="event.js" location="js/atlassian/event.js"/>
         <resource type="download" name="cookie.js" location="js/atlassian/cookie.js"/>
         <resource type="download" name="dialog.js" location="js/atlassian/dialog.js"/>
