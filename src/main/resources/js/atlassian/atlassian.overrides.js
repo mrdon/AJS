@@ -5,25 +5,26 @@
 
     var HIDDEN_CLASS = "hidden";
 
-    var addOrRemoveHiddenClass = function(add){
-        if (add)
-            $(this).addClass(HIDDEN_CLASS);
-        else
-            $(this).removeClass(HIDDEN_CLASS);
+    var addHiddenClass = function(){
+        $(this).addClass(HIDDEN_CLASS);
     };
 
-    var addOrRemoveBefore = function(fnName, add){
+    var removeHiddenClass = function(){
+        $(this).removeClass(HIDDEN_CLASS);
+    };
+    
+    var runBefore = function(fnName, fnToRun){
         $.aop.around({target: $, method: fnName}, function(invocation){
-            addOrRemoveHiddenClass.call(this, add);
+            fnToRun.call(this);
             return invocation.proceed();
         });
     };
 
-    var addOrRemoveInCallback = function(fnName, add){
+    var runInCallback = function(fnName, fnToRun){
         $.aop.around({target: $, method: fnName}, function(invocation){
             var originalCallback = invocation.arguments[1];
             invocation.arguments[1] = function(){
-                addOrRemoveHiddenClass.call(this, add);
+                fnToRun.call(this);
                 if (originalCallback)
                     originalCallback();
             };
@@ -32,13 +33,13 @@
         });
     };
 
-    addOrRemoveBefore("show", false);
-    addOrRemoveBefore("hide", true);
+    runBefore("show", removeHiddenClass);
+    runBefore("hide", addHiddenClass);
 
-    addOrRemoveInCallback("slideDown", false);
-    addOrRemoveInCallback("slideUp", true);
+    runInCallback("slideDown", removeHiddenClass);
+    runInCallback("slideUp", addHiddenClass);
 
-    addOrRemoveInCallback("fadeIn", false);
-    addOrRemoveInCallback("fadeOut", true);
+    runInCallback("fadeIn", removeHiddenClass);
+    runInCallback("fadeOut", addHiddenClass);
 
 })(AJS.$);
