@@ -37,7 +37,10 @@
      <div><a href="inline-dialog.html" id="testMouse" style="float:right; clear: both;">TestingMouseRelativePos</a></div>
     <div><a href="inline-dialog.html" id="testMiddle" style="left:500px; position:absolute;">TestingMiddle</a></div>
     <div><a href="inline-dialog.html" id="testExposed" style="left:800px; position:absolute;">TestingExposedFunctions(object is 'test')</a></div>
-    
+    <div><a href="inline-dialog.html" id="testBottom1" style="bottom:20px; position:absolute;">TestingBottom</a></div>
+    <div><a href="inline-dialog.html" id="testBottom2" style="bottom:20px; right:1px; position:absolute;">TestingBottomRight</a></div>
+    <div><a href="inline-dialog.html" id="testBottom3" style="bottom:20px; left: 500px; position:absolute;">TestingBottomHeight</a></div>
+    <div><a href="inline-dialog.html" id="testBottom4" style="bottom:20px; left: 800px; position:absolute;">TestingBottomHeight2</a></div>
     <div id="testing">
         <!-- Testing iframeShim -->
         <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
@@ -121,6 +124,10 @@
             AJS.InlineDialog(AJS.$("#testMiddle"), 8, "dialog-content.html");
             AJS.InlineDialog(AJS.$("#testMouse"), 9, "dialog-content.html", {isRelativeToMouse: true});
             test = AJS.InlineDialog(AJS.$("#testExposed"), 10, "dialog-content.html");
+            AJS.InlineDialog(AJS.$("#testBottom1"), 11, "dialog-content.html");
+            AJS.InlineDialog(AJS.$("#testBottom2"), 12, "dialog-content.html");
+            AJS.InlineDialog(AJS.$("#testBottom3"), 13, "dialog-content-tall.html");
+            AJS.InlineDialog(AJS.$("#testBottom4"), 14, "dialog-content-tall2.html");
 
             // Testing AJS.inlineHelp
             AJS.inlineHelp();

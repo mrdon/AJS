@@ -49,38 +49,47 @@
                     reset: function () {
                         var posx;   //position of the left edge of popup box
                         var posy;   //position of the top edge of popup box
-                        var arrowOffset;    //the x offset of the arrow from the left edge of the popup
+                        var arrowOffsetY= -7;    //the offsets of the arrow from the top edge of the popup, default is the height of the arrow above the popup
                         var targetOffset = targetPosition.target.offset();
                         var padding = parseInt(targetPosition.target.css("padding-left")) + parseInt(targetPosition.target.css("padding-right"));
                         var triggerWidth = targetPosition.target.width() + padding; //The total width of the trigger (including padding)
                         var middleOfTrigger = targetOffset.left + triggerWidth/2;    //The absolute x position of the middle of the Trigger
+                        var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
                         var SCREEN_PADDING = 10; //determines how close to the edge the dialog needs to be before it is considered offscreen
+                        var shouldFlip;
                         
                         //DRAW POPUP
-                        function drawPopup (popup, left, right, arrowOffset) {
+                        function drawPopup (popup, left, right, top, arrowOffsetX, arrowOffsetY, flip) {
                             //Position the popup using the left and right parameters
                             popup.css({
                                 left: left,
-                                right: right
+                                right: right,
+                                top: top
                             });
                             //Only draw arrow if raphael exists
                             if(window.Raphael){
                                 if (!popup.arrowCanvas) {
                                     popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
                                 }
-                                //draw arrow
-                                popup.arrowCanvas.path("M0,8L8,0,16,8").attr({
+                                var arrowPath = "M0,8L8,0,16,8";
+                                //Detect if arrow should be flipped
+                                if(flip){
+                                    arrowPath = "M0,8L8,16,16,8";
+                                }
+                                //draw the arrow
+                                popup.arrowCanvas.path(arrowPath).attr({
                                     fill : "#fff",
                                     stroke : "#bbb"
-                                }); 
+                                });
                             }
                             //apply positioning to arrow
                             arrow.css({
-                                left: arrowOffset,
-                                right: "auto"
+                                left: arrowOffsetX,
+                                right: "auto",
+                                top: arrowOffsetY
                             });
                         }
-                        
+    
                         //detect if position of popup should be relative to mouse and calculate the position of the box accordingly
                         if (opts.isRelativeToMouse) {
                             //Use position of mouse to calculate position of popup
@@ -91,40 +100,35 @@
                             posx = targetOffset.left + opts.offsetX;
                             posy = targetOffset.top + targetPosition.target.height() + opts.offsetY;
                         }
+                        var shouldFlip = (((posy + popup.height()) > bottomOfViewablePage && $(window).height() > popup.height()) || opts.onTop);
+                        //check if popup will be drawn offscreen and if there is enough room above the trigger to flip (or if the user wants to flip)
+                        if (shouldFlip) {
+                            posy = targetOffset.top - popup.height() - 8; //calculate the flipped position of the popup (the 8 allows for room for the arrow)
+                            arrowOffsetY = popup.height() - 10; //calculate new offset for the arrow, 10 is the height of the shadow
+                            if (AJS.$.browser.msie){
+                                arrowOffsetY = popup.height() - 17; //calculate new offset for the arrow, 17 is the height of the shadow in IE
+                            }
+                        }
                         //calculate if the popup will be offscreen
                         var diff = $(window).width() - (posx  + opts.width + SCREEN_PADDING);
                         //Check if dialog would be offscreen on the right
                         if (diff<0) {
-                            var leftEdge = $(window).width() - opts.width;  
+                            var leftEdge = $(window).width() - opts.width; 
                             //determine where the arrow should be drawn
                             if(opts.isRelativeToMouse){
-                                drawPopup (popup, "auto", SCREEN_PADDING, mousePosition.x-leftEdge);    //Calculate arrow position based on mouse position
+                                drawPopup (popup, "auto", SCREEN_PADDING, posy, mousePosition.x-leftEdge, arrowOffsetY, shouldFlip);    //Calculate arrow position based on mouse position
                             } else {
-                                drawPopup (popup, "auto", SCREEN_PADDING, middleOfTrigger-leftEdge);    //Calculate arrow position based on middle of trigger
+                                drawPopup (popup, "auto", SCREEN_PADDING, posy, middleOfTrigger-leftEdge, arrowOffsetY, shouldFlip);    //Calculate arrow position based on middle of trigger
                             }
                         } else {
-                            drawPopup (popup, posx, "auto" , middleOfTrigger-posx);    //Calculate arrow position baesd on middle of trigger
+                            drawPopup (popup, posx, "auto", posy, middleOfTrigger-posx, arrowOffsetY, shouldFlip);    //Calculate arrow position baesd on middle of trigger
                         }
-
-                        var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
-                        if ((posy + popup.height()) > bottomOfViewablePage) {
-                            posy = bottomOfViewablePage - popup.height() - 5;
-                            popup.mouseover(function() {
-                                clearTimeout(hideDelayTimer);
-                            }).mouseout(function() {
-                                hidePopup();
-                            });
-                        }
-                        popup.css({
-                            top: posy
-                        });
 
                         // reset position of popup box
                         popup.fadeIn(opts.fadeTime, function() {
                             // once the animation is complete, set the tracker variables
                             // beingShown = false; // is this necessary? Maybe only the shouldShow will have to be reset?
                         });
-
                         if (popup.shadow) {
                             popup.shadow.remove();
                         }
@@ -133,7 +137,7 @@
                             size: 0.5,
                             target: popup[0]
                         });
-
+                        
                         AJS.$(popup.shadow.canvas).css({
                             position: "absolute",
                             top: 0,
@@ -336,6 +340,7 @@
     };
 
     AJS.InlineDialog.opts = {
+        onTop: false,
         responseHandler: function(data, status, xhr) {
             //assume data is html
             return data;
