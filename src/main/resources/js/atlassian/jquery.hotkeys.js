@@ -1,313 +1,174 @@
-/*
-!!!!!!!!!!IMPORTANT!!!!!!!!!
-This has version has been branched by Atlassian to give support to sequential key combinations. I.E a + b.
-Any updating of hot keys will need to merge across this functionality.
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/**
+ * @module jQuery
+ * @namespace jQuery.fn
+ */
+
+/**
+ * A plugin that let you easily add and remove handlers for keyboard events anywhere in your code supporting any key combination.
+ *
+ * Original idea from: http://code.google.com/p/js-hotkeys/wiki/about
+ *
+ * <strong>Usage:</strong>
+ * <pre>
+ * jQuery(document).bind('keypress', keys, function () {
+ *      // code here
+ * });
+ * </pre>
+ *
+ * @class bind
+ * @since 3.0
+ * @constructor
+ * @requires jQuery 1.4.2 or greater
+ * @param {String} event type - either "keydown, keyup or keypress". <strong>HIGHLY ADVISE keypress, "<", ">", "?"  do not fire on gecko.</strong>
+ * @param {String} keys - combination of keys to trigger your function.
+ *
+ * <dl>
+ * <dt>Examples</dt>
+ * <dd>"abc" - <strong>a</strong> then <strong>b</strong> then <strong>c</strong></dd>
+ * <dd>"alt+c" - <strong>alt</strong> then (or at the same time) <strong>c</strong></dd>
+ * <dd>"meta+." - <strong>command</strong> then (or at the same time) <strong>.</strong></dd>
+ * </dl>
+ * @param {Function} callback - function to execute after command has been typed
+ * @return {jQuery} element - jQuery wrapped HTMLelement that event is bound to
 */
 
+(function( jQuery ) {
 
-/*
-(c) Copyrights 2007 - 2008
+    function loadChar (c, elem) {
 
-Original idea by by Binny V A, http://www.openjs.com/scripts/events/keyboard_shortcuts/
-
-jQuery Plugin by Tzury Bar Yochay
-tzury.by@gmail.com
-http://evalinux.wordpress.com
-http://facebook.com/profile.php?id=513676303
-
-Project's sites:
-http://code.google.com/p/js-hotkeys/
-http://github.com/tzuryby/hotkeys/tree/master
-
-License: same as jQuery license.
-
-USAGE:
-    // simple usage
-    $(document).bind('keydown', 'Ctrl+c', function(){ alert('copy anyone?');});
-
-    // special options such as disableInIput
-    $(document).bind('keydown', {combi:'Ctrl+x', disableInInput: true} , function() {});
-
-Note:
-    This plugin wraps the following jQuery methods: $.fn.find, $.fn.bind and $.fn.unbind
-*/
-
-(function (jQuery){
-    // keep reference to the original $.fn.bind, $.fn.unbind and $.fn.find
-    jQuery.fn.__bind__ = jQuery.fn.bind;
-    jQuery.fn.__unbind__ = jQuery.fn.unbind;
-    jQuery.fn.__find__ = jQuery.fn.find;
-
-    var loadedChar, loadedModifier ;
-
-    var hotkeys = {
-        version: '0.7.9',
-        override: /keypress|keydown|keyup/g,
-        triggersMap: {},
-
-        specialKeys: { 27: 'esc', 9: 'tab', 32:'space', 13: 'return', 8:'backspace', 145: 'scroll',
-            20: 'capslock', 144: 'numlock', 19:'pause', 45:'insert', 36:'home', 46:'del',
-            35:'end', 33: 'pageup', 34:'pagedown', 37:'left', 38:'up', 39:'right',40:'down',
-            109: '-',
-            112:'f1',113:'f2', 114:'f3', 115:'f4', 116:'f5', 117:'f6', 118:'f7', 119:'f8',
-            120:'f9', 121:'f10', 122:'f11', 123:'f12', 191: '/'},
-
-        shiftNums: { "`":"~", "1":"!", "2":"@", "3":"#", "4":"$", "5":"%", "6":"^", "7":"&",
-            "8":"*", "9":"(", "0":")", "-":"_", "=":"+", ";":":", "'":"\"", ",":"<",
-            ".":">",  "/":"?",  "\\":"|" },
-
-        shiftNumsKeyup: ["`","1","2","3","4","5","6","7","8","9","0","-","=",";","\"","<",">","?","|"],
-
-        newTrigger: function (type, combi, callback) {
-            // i.e. {'keyup': {'ctrl': {cb: callback, disableInInput: false}}}
-            var result = {};
-            result[type] = {};
-            result[type][combi] = {cb: callback, disableInInput: true};
-            return result;
+        function createTimeout () {
+            elem.tm = window.setTimeout(function () {
+                elem.loadedChars = "";
+            }, 700);
         }
-    };
-    // add firefox num pad char codes
-    //if (jQuery.browser.mozilla){
-    // add num pad char codes
-    hotkeys.specialKeys = jQuery.extend(hotkeys.specialKeys, { 96: '0', 97:'1', 98: '2', 99:
-        '3', 100: '4', 101: '5', 102: '6', 103: '7', 104: '8', 105: '9', 106: '*',
-        107: '+', 109: '-', 110: '.', 111 : '/'
-        });
-    //}
 
-    function loadModifier (c) {
-        loadedModifier = c;
-        window.setTimeout(function () {
-            loadedModifier = null;
-        }, 200);
+        elem.loadedChars = elem.loadedChars + c;
+
+        if (!elem.tm) {
+            createTimeout();
+        } else {
+            clearTimeout(elem.tm);
+            createTimeout();
+        }
     }
 
-
-    jQuery(document).keyup(function (e) {
-        if (e.keyCode === 17 || e.keyCode === 224) {
-            loadModifier("ctrl+");
-        } else if (e.keyCode === 18) {
-            loadModifier("alt+");
-        } else if (e.keyCode === 16) {
-            loadModifier("shift+");
-        }
-    });
-
-    function loadChar (c) {
-        loadedChar = c;
-        window.setTimeout(function () {
-            loadedChar = null;
-        }, 1000);
+    function isValidField (event) {
+        return !(this !== event.target && (/textarea|select/i.test(event.target.nodeName) ||
+                                           event.target.type === "text" || event.target.type === "password"));
     }
 
-    // a wrapper around of $.fn.find
-    // see more at: http://groups.google.com/group/jquery-en/browse_thread/thread/18f9825e8d22f18d
-    jQuery.fn.find = function( selector ) {
-        this.query = selector;
-        return jQuery.fn.__find__.apply(this, arguments);
+	jQuery.hotKeys = {
+
+		version: "0.8",
+
+		specialKeys: {
+			8: "backspace", 9: "tab", 13: "return", 16: "shift", 17: "ctrl", 18: "alt", 19: "pause",
+			20: "capslock", 27: "esc", 32: "space", 33: "pageup", 34: "pagedown", 35: "end", 36: "home",
+			37: "left", 38: "up", 39: "right", 40: "down", 45: "insert", 46: "del",
+			96: "0", 97: "1", 98: "2", 91: "meta", 99: "3", 100: "4", 101: "5", 102: "6", 103: "7",
+			104: "8", 105: "9", 106: "*", 107: "+", 109: "-", 110: ".", 111 : "/",
+			112: "f1", 113: "f2", 114: "f3", 115: "f4", 116: "f5", 117: "f6", 118: "f7", 119: "f8",
+			120: "f9", 121: "f10", 122: "f11", 123: "f12", 144: "numlock", 145: "scroll",
+            188: ",", 190: ".", 191: "/", 224: "meta", 219: '[', 221: ']'
+		},
+
+        // These only work under Mac Gecko when using keypress (see http://unixpapa.com/js/key.html).
+        keypressKeys: [ "<", ">", "?" ],
+
+		shiftNums: {
+			"`": "~", "1": "!", "2": "@", "3": "#", "4": "$", "5": "%", "6": "^", "7": "&",
+			"8": "*", "9": "(", "0": ")", "-": "_", "=": "+", ";": ":", "'": "\"", ",": "<",
+			".": ">",  "/": "?",  "\\": "|"
+		}
 	};
 
-    jQuery.fn.unbind = function (type, combi, fn){
-        if (jQuery.isFunction(combi)){
-            fn = combi;
-            combi = null;
-        }
-        if (combi && typeof combi === 'string'){
-            var selectorId = ((this.prevObject && this.prevObject.query) || (this[0].id && this[0].id) || this[0]).toString();
-            var hkTypes = type.split(' ');
-            for (var x=0; x<hkTypes.length; x++){
-                delete hotkeys.triggersMap[selectorId][hkTypes[x]][combi];
-            }
-        }
-        // call jQuery original unbind
-        return  this.__unbind__(type, fn);
-    };
+    jQuery.each(jQuery.hotKeys.keypressKeys, function (_, key) {
+        jQuery.hotKeys.shiftNums[ key ] = key;
+    });
 
-    jQuery.fn.bind = function(type, data, fn){
-        // grab keyup,keydown,keypress
-        var handle = type.match(hotkeys.override);
 
-        if (jQuery.isFunction(data) || !handle){
-            // call jQuery.bind only
-            return this.__bind__(type, data, fn);
-        }
-        else {
-            // split the job
-            var result = null,
-            // pass the rest to the original $.fn.bind
-            pass2jq = jQuery.trim(type.replace(hotkeys.override, ''));
+	function keyHandler( handleObj ) {
 
-            // see if there are other types, pass them to the original $.fn.bind
-            if (pass2jq){
-                result = this.__bind__(pass2jq, data, fn);
+        var origHandler,
+            keys;
+
+		// Only care when a possible input has been specified
+		if ( typeof handleObj.data !== "string" ) {
+			return;
+		}
+
+		origHandler = handleObj.handler;
+        keys = handleObj.data.toLowerCase().split(" ");
+
+        handleObj.loadedChars = "";
+
+        jQuery(this).bind("keydown", function (event) {
+
+            var special;
+
+			// Don't fire in text-accepting inputs that we didn't directly bind to
+            if (!isValidField(event)) {
+                return;
             }
 
-            if (typeof data === "string"){
-                data = {'combi': data};
+			// Keypress represents characters, not special keys
+			special = jQuery.hotKeys.specialKeys[ event.which ];
+
+            if ((special === "alt" || event.altKey)) {
+                loadChar("alt+", handleObj);
             }
-            if(data.combi){
-                for (var x=0; x < handle.length; x++){
-                    var eventType = handle[x];
-                    var combi = data.combi.toLowerCase(),
-                        trigger = hotkeys.newTrigger(eventType, combi, fn),
-                        selectorId = ((this.prevObject && this.prevObject.query) || (this[0].id && this[0].id) || this[0]).toString();
 
-                    //trigger[eventType][combi].propagate = data.propagate;
-                    trigger[eventType][combi].disableInInput = data.disableInInput;
+            if ((special === "ctrl" || event.ctrlKey) && !/ctrl\+/.test(handleObj.loadedChars)) {
+                loadChar("ctrl+", handleObj);
+            }
 
-                    // first time selector is bounded
-                    if (!hotkeys.triggersMap[selectorId]) {
-                        hotkeys.triggersMap[selectorId] = trigger;
-                    }
-                    // first time selector is bounded with this type
-                    else if (!hotkeys.triggersMap[selectorId][eventType]) {
-                        hotkeys.triggersMap[selectorId][eventType] = trigger[eventType];
-                    }
-                    // make trigger point as array so more than one handler can be bound
-                    var mapPoint = hotkeys.triggersMap[selectorId][eventType][combi];
-                    if (!mapPoint){
-                        hotkeys.triggersMap[selectorId][eventType][combi] = [trigger[eventType][combi]];
-                    }
-                    else if (mapPoint.constructor !== Array){
-                        hotkeys.triggersMap[selectorId][eventType][combi] = [mapPoint];
-                    }
-                    else {
-                        hotkeys.triggersMap[selectorId][eventType][combi][mapPoint.length] = trigger[eventType][combi];
-                    }
+            if (((special !== "ctrl" && !event.ctrlKey) && (special === "meta" || event.metaKey)) &&
+                !/meta\+/.test(handleObj.loadedChars)) {
+                loadChar("meta+", handleObj);
+            }
+        });
 
-                    // add attribute and call $.event.add per matched element
-                    this.each(function(){
-                        // jQuery wrapper for the current element
-                        var jqElem = jQuery(this);
+        handleObj.handler = function( event ) {
 
-                        // element already associated with another collection
-                        if (jqElem.attr('hkId') && jqElem.attr('hkId') !== selectorId){
-                            selectorId = jqElem.attr('hkId') + ";" + selectorId;
-                        }
-                        jqElem.attr('hkId', selectorId);
-                    });
-                    result = this.__bind__(handle.join(' '), data, hotkeys.handler)
+            var i,
+                special,
+                character,
+                possible;
+
+			// Don't fire in text-accepting inputs that we didn't directly bind to
+			if (!isValidField(event)) {
+                return;
+            }
+
+			// Keypress represents characters, not special keys
+			special = jQuery.hotKeys.specialKeys[ event.which ];
+            character = String.fromCharCode( event.which ).toLowerCase();
+            possible = {};
+
+            if (special) {
+                possible[special] = true;
+            }
+
+            // "$" can be triggered as "shift+4" or "$"
+            if (event.shiftKey) {
+                possible [handleObj.loadedChars + jQuery.hotKeys.shiftNums[character] || special] = true;
+            } else {
+                possible[handleObj.loadedChars + character] = true;
+            }
+
+			for (i = 0, l = keys.length; i < l; i++ ) {
+                if ( possible[ keys[i] ]) {
+                    handleObj.loadedChars = "";
+					return origHandler.apply( this, arguments );
+				} else if (keys[i].charAt(handleObj.loadedChars.length) === character) {
+                    loadChar(character, handleObj);
                 }
-            }
-            return result;
-        }
-    };
-    // work-around for opera and safari where (sometimes) the target is the element which was last
-    // clicked with the mouse and not the document event it would make sense to get the document
-    hotkeys.findElement = function (elem){
-        if (!jQuery(elem).attr('hkId')){
-            if (jQuery.browser.opera || jQuery.browser.safari){
-                while (!jQuery(elem).attr('hkId') && elem.parentNode){
-                    elem = elem.parentNode;
-                }
-            }
-        }
-        return elem;
-    };
+			}
+		};
+	}
 
-    // the event handler
-    hotkeys.handler = function(event) {
+	jQuery.each([ "keydown", "keyup", "keypress" ], function() {
+		jQuery.event.special[ this ] = { add: keyHandler };
+	});
 
-        var target = hotkeys.findElement(event.currentTarget),
-            jTarget = jQuery(target),
-            ids = jTarget.attr('hkId');
-
-        if(ids){
-            ids = ids.split(';');
-            var code = event.which,
-                type = event.type;
-
-            if (type === "keypress" && code === 0) {
-                code = event.keyCode;
-            }
-
-            var special = hotkeys.specialKeys[code],
-                // prevent f5 overlapping with 't' (or f4 with 's', etc.)
-                character = !special && String.fromCharCode(code).toLowerCase(),
-                shift = event.shiftKey,
-                ctrl = event.ctrlKey,
-                // patch for jquery 1.2.5 && 1.2.6 see more at:
-                // http://groups.google.com/group/jquery-en/browse_thread/thread/83e10b3bb1f1c32b
-                alt = event.altKey || event.originalEvent.altKey,
-                mapPoint = null;
-
-            for (var x=0; x < ids.length; x++){
-                if (hotkeys.triggersMap[ids[x]][type]){
-                    mapPoint = hotkeys.triggersMap[ids[x]][type];
-                    break;
-                }
-            }
-
-            //find by: id.type.combi.options
-            if (mapPoint){
-                var trigger;
-                // event type is associated with the hkId
-                if(!shift && !ctrl && !alt && !loadedModifier) { // No Modifiers
-
-
-                    if (!loadedChar) {
-                        jQuery.each(mapPoint, function (name) {
-                            if (name.length > 1 && name.charAt(0) === character) {
-                                loadChar(character);
-                            }
-                        });
-                    } else {
-                        jQuery.each(mapPoint, function (name) {
-                            if (name.length > 1 && name.charAt(0) === loadedChar && name.charAt(1) === character) {
-                                trigger = this;
-                            }
-                        });
-                    }
-
-                    if (!trigger) {
-                        trigger = mapPoint[special] ||  (character && mapPoint[character]);
-                    }
-
-                }
-                else {
-                    // check combinations (alt|ctrl|shift+anything)
-                    var modif = '';
-
-                    if (loadedModifier) {
-                        modif = loadedModifier;
-                    } else {
-                        if(alt) modif +='alt+';
-                        if(ctrl) modif+= 'ctrl+';
-                        if(shift) modif += 'shift+';
-                    }
-                    // modifiers + special keys or modifiers + character or modifiers + shift character or just shift character
-                    trigger = mapPoint[modif+special];
-                    if (!trigger){
-                        if (character){
-                            trigger = mapPoint[modif+character]
-                                || mapPoint[modif+hotkeys.shiftNums [character]]
-                                // '$' can be triggered as 'Shift+4' or 'Shift+$' or just '$'
-                                || (modif === 'shift+' && mapPoint[hotkeys.shiftNums[character]])
-                                || (modif === 'shift+' && jQuery.inArray(character, hotkeys.shiftNumsKeyup) !== -1 && mapPoint[character]);
-                        }
-                    }
-                }
-                if (trigger){
-                    var result = false;
-                    for (x=0; x < trigger.length; x++){
-                        if(trigger[x].disableInInput){
-                            // double check event.currentTarget and event.target
-                            var elem = jQuery(event.target);
-                            if (jTarget.is("input") || jTarget.is("textarea") || jTarget.is("select")
-                                || elem.is("input") || elem.is("textarea") || elem.is("select")) {
-                                return true;
-                            }
-                        }
-                        // call the registered callback function
-                        result = result || trigger[x].cb.apply(this, [event]);
-                    }
-                    return result;
-                }
-            }
-        }
-    };
-    // place it under window so it can be extended and overridden by others
-    window.hotkeys = hotkeys;
-    return jQuery;
-})(jQuery);
+})( jQuery );
