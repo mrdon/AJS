@@ -439,3 +439,7 @@ else {
     console.show = function(){};
 }
 
+// Setting Traditional to handle our default param serialisation
+// See http://api.jquery.com/jQuery.param/ for more
+AJS.$.ajaxSettings.traditional = true;
+
