@@ -12,8 +12,8 @@ public class AUITabsTest extends AUISeleniumTestCase
                         "        <li class=\"active-tab first\">\n" +
                         "            <a href=\"#first\"><strong>Tab 1 - Active</strong></a>\n" +
                         "        </li>\n" +
-                        "        <li  class=\"nothing\" id=\"hello\">\n" +
-                        "            <a href=\"#second\"><strong>Tab 2</strong></a>\n" +
+                        "        <li  class=\"nothing\">\n" +
+                        "            <a href=\"#second\" id=\"menuSecond\"><strong>Tab 2</strong></a>\n" +
                         "        </li>\n" +
                         "        <li  class=\"nothing\">\n" +
                         "            <a href=\"#third\"><strong>Tab 3 has a very long tab name</strong></a>\n" +
@@ -178,7 +178,7 @@ public class AUITabsTest extends AUISeleniumTestCase
     {
         setUpTest(true);
 
-        client.click("css=div.h-tabs ul.tabs li:nth-child(2) > a");
+        client.click("css=div.h-tabs ul.tabs #menuSecond");
 
         assertThat.elementVisible("css=div.h-tabs #second");
         assertThat.elementNotVisible("css=div.h-tabs #first");
