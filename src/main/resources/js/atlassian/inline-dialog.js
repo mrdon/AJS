@@ -146,10 +146,12 @@
                         });
 
                         if (AJS.$.browser.msie) {
-                            // iframeShim
-                            var iframeShim = $('#inline-dialog-shim');
-                            iframeShim.appendTo(popup).show();
-                            iframeShim.css({
+                            // iframeShim, append if it doesnt exist
+                            if($('#inline-dialog-shim-'+identifier).length ==0){
+                                $(popup).append($('<iframe class = "inline-dialog-shim" id="inline-dialog-shim-'+identifier+'" frameBorder="0" src="javascript:false;"></iframe>'));
+                            }
+                            //addjust height and width of shim according to the popup
+                            $('#inline-dialog-shim-'+identifier).css({
                                 width: contents.outerWidth(),
                                 height: contents.outerHeight()
                             });

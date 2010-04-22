@@ -16,7 +16,7 @@
 **/
 
 /* inline-dialog-shim */
-#inline-dialog-shim {
+.inline-dialog-shim {
     border: none;
     display: block;
     height: 0;

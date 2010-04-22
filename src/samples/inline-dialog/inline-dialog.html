@@ -107,7 +107,7 @@
                 console.log("That worked!");
             };
 
-            AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess});
+            AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess, hideDelay: 99999});
             AJS.InlineDialog(AJS.$("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
             AJS.InlineDialog(AJS.$("#popupLink"), 3, "dialog-content.html", {noBind:true});
             AJS.InlineDialog(AJS.$("#functionPass"), 4, function(content, trigger, showPopup){
