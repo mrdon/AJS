@@ -49,17 +49,17 @@
                     reset: function () {
                         var posx;   //position of the left edge of popup box
                         var posy;   //position of the top edge of popup box
-                        var arrowOffsetY= -7;    //the offsets of the arrow from the top edge of the popup, default is the height of the arrow above the popup
+                        var arrowOffsetY = -7;    //the offsets of the arrow from the top edge of the popup, default is the height of the arrow above the popup
                         var targetOffset = targetPosition.target.offset();
                         var padding = parseInt(targetPosition.target.css("padding-left")) + parseInt(targetPosition.target.css("padding-right"));
                         var triggerWidth = targetPosition.target.width() + padding; //The total width of the trigger (including padding)
                         var middleOfTrigger = targetOffset.left + triggerWidth/2;    //The absolute x position of the middle of the Trigger
                         var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
                         var SCREEN_PADDING = 10; //determines how close to the edge the dialog needs to be before it is considered offscreen
-                        var shouldFlip;
+                        var displayAbove;
                         
                         //DRAW POPUP
-                        function drawPopup (popup, left, right, top, arrowOffsetX, arrowOffsetY, flip) {
+                        function drawPopup (popup, left, right, top, arrowOffsetX, arrowOffsetY, displayAbove) {
                             //Position the popup using the left and right parameters
                             popup.css({
                                 left: left,
@@ -67,13 +67,13 @@
                                 top: top
                             });
                             //Only draw arrow if raphael exists
-                            if(window.Raphael){
+                            if (window.Raphael) {
                                 if (!popup.arrowCanvas) {
                                     popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
                                 }
                                 var arrowPath = "M0,8L8,0,16,8";
                                 //Detect if arrow should be flipped
-                                if(flip){
+                                if (displayAbove) {
                                     arrowPath = "M0,8L8,16,16,8";
                                 }
                                 //draw the arrow
@@ -100,9 +100,14 @@
                             posx = targetOffset.left + opts.offsetX;
                             posy = targetOffset.top + targetPosition.target.height() + opts.offsetY;
                         }
-                        var shouldFlip = (((posy + popup.height()) > bottomOfViewablePage && $(window).height() > popup.height()) || opts.onTop);
-                        //check if popup will be drawn offscreen and if there is enough room above the trigger to flip (or if the user wants to flip)
-                        if (shouldFlip) {
+
+                        var enoughRoomAbove = targetOffset.top > popup.height();
+                        var enoughRoomBelow = (posy + popup.height()) < bottomOfViewablePage;
+
+                        //Check if the popup should be displayed above the trigger or not (if the user has set opts.onTop to true and if theres enough room)
+                        displayAbove =  (!enoughRoomBelow && enoughRoomAbove) || (opts.onTop && enoughRoomAbove);
+                        //make calculations if dialog is to be displayed above the trigger
+                        if (displayAbove) {
                             posy = targetOffset.top - popup.height() - 8; //calculate the flipped position of the popup (the 8 allows for room for the arrow)
                             arrowOffsetY = popup.height() - 10; //calculate new offset for the arrow, 10 is the height of the shadow
                             if (AJS.$.browser.msie){
@@ -116,12 +121,12 @@
                             var leftEdge = $(window).width() - opts.width; 
                             //determine where the arrow should be drawn
                             if(opts.isRelativeToMouse){
-                                drawPopup (popup, "auto", SCREEN_PADDING, posy, mousePosition.x-leftEdge, arrowOffsetY, shouldFlip);    //Calculate arrow position based on mouse position
+                                drawPopup (popup, "auto", SCREEN_PADDING, posy, mousePosition.x-leftEdge, arrowOffsetY, displayAbove);    //Calculate arrow x position based on mouse position
                             } else {
-                                drawPopup (popup, "auto", SCREEN_PADDING, posy, middleOfTrigger-leftEdge, arrowOffsetY, shouldFlip);    //Calculate arrow position based on middle of trigger
+                                drawPopup (popup, "auto", SCREEN_PADDING, posy, middleOfTrigger-leftEdge, arrowOffsetY, displayAbove);    //Calculate arrow x position based on middle of trigger
                             }
                         } else {
-                            drawPopup (popup, posx, "auto", posy, middleOfTrigger-posx, arrowOffsetY, shouldFlip);    //Calculate arrow position baesd on middle of trigger
+                            drawPopup (popup, posx, "auto", posy, middleOfTrigger-posx, arrowOffsetY, displayAbove);    //Calculate arrow x position baesd on middle of trigger
                         }
 
                         // reset position of popup box

@@ -41,6 +41,7 @@
     <div><a href="inline-dialog.html" id="testBottom2" style="bottom:20px; right:1px; position:absolute;">TestingBottomRight</a></div>
     <div><a href="inline-dialog.html" id="testBottom3" style="bottom:20px; left: 500px; position:absolute;">TestingBottomHeight</a></div>
     <div><a href="inline-dialog.html" id="testBottom4" style="bottom:20px; left: 800px; position:absolute;">TestingBottomHeight2</a></div>
+     <div><a href="inline-dialog.html" id="testReverseFlip" style="left: 1200px; position:absolute;">TestingReverseFlip</a></div>
     <div id="testing">
         <!-- Testing iframeShim -->
         <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
@@ -128,6 +129,7 @@
             AJS.InlineDialog(AJS.$("#testBottom2"), 12, "dialog-content.html");
             AJS.InlineDialog(AJS.$("#testBottom3"), 13, "dialog-content-tall.html");
             AJS.InlineDialog(AJS.$("#testBottom4"), 14, "dialog-content-tall2.html");
+            AJS.InlineDialog(AJS.$("#testReverseFlip"), 15, "dialog-content-tall2.html", {onTop: true});
 
             // Testing AJS.inlineHelp
             AJS.inlineHelp();
