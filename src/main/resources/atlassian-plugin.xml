@@ -87,7 +87,7 @@
 	<web-resource name="keyboardshortcuts" key="keyboardshortcuts">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
 		<dependency>com.atlassian.auiplugin:hotkeys</dependency>
-		<resource type="download" name="whenitype.js" location="js/atlassian/jquery.moveto.js"/>
+		<resource type="download" name="moveto.js" location="js/atlassian/jquery.moveto.js"/>
 		<resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>
     </web-resource>
     
