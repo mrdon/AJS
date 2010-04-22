@@ -120,7 +120,7 @@
                         if (diff<0) {
                             var leftEdge = $(window).width() - opts.width; 
                             //determine where the arrow should be drawn
-                            if(opts.isRelativeToMouse){
+                            if (opts.isRelativeToMouse) {
                                 drawPopup (popup, "auto", SCREEN_PADDING, posy, mousePosition.x-leftEdge, arrowOffsetY, displayAbove);    //Calculate arrow x position based on mouse position
                             } else {
                                 drawPopup (popup, "auto", SCREEN_PADDING, posy, middleOfTrigger-leftEdge, arrowOffsetY, displayAbove);    //Calculate arrow x position based on middle of trigger
