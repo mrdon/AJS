@@ -25,8 +25,9 @@
             var originalCallback = invocation.arguments[1];
             invocation.arguments[1] = function(){
                 fnToRun.call(this);
-                if (originalCallback)
+                if (originalCallback){
                     originalCallback();
+                }
             };
 
             return invocation.proceed();
