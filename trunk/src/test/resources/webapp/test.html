@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>AUI Tests</title>
+
+    <!-- AUI library code -->
+    <link type="text/css" rel="stylesheet" href="css/atlassian/basic-min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/atlassian/firebug-min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/atlassian/dialog-min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/atlassian/dropdown-min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/atlassian/forms-min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/atlassian/icons-min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/atlassian/inline-dialog-min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/atlassian/tables-min.css" media="all">
+    <link type="text/css" rel="stylesheet" href="css/atlassian/tabs-min.css" media="all">
+
+    <!--[if IE]>
+        <link type="text/css" rel="stylesheet" href="css/ie/dialog-ie-min.css" media="all">
+        <link type="text/css" rel="stylesheet" href="css/ie/dropdown-ie-min.css" media="all">
+        <link type="text/css" rel="stylesheet" href="css/ie/forms-ie-min.css" media="all">
+        <link type="text/css" rel="stylesheet" href="css/ie/inline-dialog-ie-min.css" media="all">
+        <link type="text/css" rel="stylesheet" href="css/ie/tabs-ie-min.css" media="all">
+    <![endif]-->
+
+    <script type="text/javascript">
+        var testResult = 0;
+        var registerTest = function () {
+            testResult++;
+        }
+    </script>
+
+</head>
+<body>
+    <h1>AUI Test Page</h1>
+    <p>This page loads the required CSS &amp; JS files for testing.</p>
+
+    <fieldset class="hidden parameters">
+        <input type="hidden" id="company" value="atlassian">
+        <input type="hidden" title="products" value="jira" class="list">
+        <input type="hidden" title="products" value="confluence" class="list">
+        <input type="hidden" title="products" value="bamboo" class="list">
+    </fieldset>
+    <div id="test-container" class="test">
+        <span>Some Text With Casing.</span>
+    </div>
+
+
+
+    <!-- AUI library code -->
+    <script type="text/javascript" src="js/external/raphael/raphael-min.js"></script>
+    <script type="text/javascript" src="js/external/raphael/raphael.shadow-min.js"></script>
+    <script type="text/javascript" src="js/external/jquery/jquery.js"></script>
+    <script type="text/javascript" src="js/external/jquery/jquery-compatibility-min.js"></script>
+    <script type="text/javascript" src="js/external/jquery/jquery-ui-min.js"></script>
+    <script type="text/javascript" src="js/external/jquery/plugins/jquery.aop-min.js"></script>
+    <script type="text/javascript" src="js/external/jquery/plugins/jquery.form-min.js"></script>
+
+    <script type="text/javascript" src="js/atlassian/atlassian-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/atlassian.overrides-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/cookie-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/dialog-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/dropdown-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/event-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/inline-dialog-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/firebug-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/forms-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/tables-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/tabs-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/template-min.js"></script>
+
+    <script type="text/javascript" src="js/atlassian/jquery.autocomplete-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/jquery.is-dirty-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/jquery.progressbar-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/jquery.selection-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/jquery.os-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/jquery.offsetanchors-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/jquery.hotkeys-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/jquery.getdocheight-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/containdropdown-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/jquery.stalker-min.js"></script>
+    <script type="text/javascript" src="js/atlassian/jquery.throbber-min.js"></script>
+
+    <!-- AUI testing code -->
+    <script src="ajstest.js" type="text/javascript"></script>
+    <script src="tests/atlassian-tests.js" type="text/javascript"></script>
+    <script src="tests/atlassian.overrides-tests.js" type="text/javascript"></script>
+    <script src="tests/cookie-tests.js" type="text/javascript"></script>
+    <script src="tests/dialog-tests.js" type="text/javascript"></script>
+    <script src="tests/dropdown-tests.js" type="text/javascript"></script>
+    <script src="tests/firebug-tests.js" type="text/javascript"></script>
+    <script src="tests/inline-dialog-tests.js" type="text/javascript"></script>
+    <script src="tests/jquery.autocomplete-tests.js" type="text/javascript"></script>
+    <script src="tests/jquery.is-dirty-tests.js" type="text/javascript"></script>
+    <script src="tests/jquery.progressbar-test.js" type="text/javascript"></script>
+    <script src="tests/jquery.selection-tests.js" type="text/javascript"></script>
+    <script src="tests/jquery.throbber-tests.js" type="text/javascript"></script>
+
+</body>
+</html>
