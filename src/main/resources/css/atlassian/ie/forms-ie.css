@@ -15,9 +15,9 @@
 *
 **/
 
-form.aui .radio input.radio,
-form.aui .checkbox input.checkbox {
-    margin-top: -2px
+form.aui div.radio input.radio,
+form.aui div.checkbox input.checkbox {
+    margin-top: 0;
 }
 
 /**
@@ -30,10 +30,11 @@ form.aui .checkbox input.checkbox {
 *
 **/
 
-form.aui .radio .description,
-form.aui .checkbox .description {
-    *clear: both;
+form.aui div.radio input.radio,
+form.aui div.checkbox input.checkbox {
+    *margin-top: -2px;
 }
+
 form.aui.top-label .group legend span,
 form.aui.top-label .date-select legend span {
     *left: -9px; 
@@ -61,17 +62,17 @@ form.aui .group .field-value {
     _width: 2em;
 }
 form.aui .group label,
-form.aui .radio label,
-form.aui .checkbox label {
+form.aui div.radio label,
+form.aui div.checkbox label {
     _margin-top: 1px;
     _position: static;
 }
-form.aui .radio .error,
-form.aui .checkbox .error {
+form.aui div.radio .error,
+form.aui div.checkbox .error {
     _margin-left: 20px;
 }
-form.aui .radio .description,
-form.aui .checkbox .description {
+form.aui div.radio .description,
+form.aui div.checkbox .description {
     _margin-left: 24px;
 }
 form.aui pre.aui-form {
