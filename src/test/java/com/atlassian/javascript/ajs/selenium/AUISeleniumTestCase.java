@@ -19,7 +19,8 @@ public class AUISeleniumTestCase extends SeleniumTest
     public void addHTMLtoElement(String element, String html)
     {
         html = html.replaceAll("\n", "");
-        client.getEval("window.AJS.$('" + element + "').append('" + html + "')");
+        String runString = "window.AJS.$('" + element + "').append('" + html + "')";
+        client.getEval(runString);
     }
 
     public void runMultiLineJavascript(String runString)
