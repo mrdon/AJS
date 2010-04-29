@@ -1,6 +1,7 @@
 .clear {
     clear: both;
 }
-.hidden {
+.hidden,
+form.aui .hidden {
     display: none;
 }
