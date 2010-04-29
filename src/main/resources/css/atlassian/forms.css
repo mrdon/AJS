@@ -10,6 +10,7 @@ form.aui {
     font-family: arial,tahoma,verdana,sans-serif;
     font-size: 13px;
     line-height: 1.4;
+    margin: 0 0 1em 0;
     position: relative;
 }
 form.aui textarea,form.aui select,form.aui optgroup,form.aui option,form.aui input.text {
@@ -89,7 +90,8 @@ form.aui .field-value {
 }
 
 /* headings */
-form.aui h2 {
+form.aui h2,
+form.aui h3 {
     border-bottom: 1px solid #ddd;
     clear: both;
     color: #222;
@@ -97,10 +99,7 @@ form.aui h2 {
     margin: 10px 0;
 }
 form.aui h3 {
-    clear: both;
-    color: #222;
     font-size: 14px;
-    margin: 5px 0;
 }
 
 /* legend,labels left hand width related items */
