@@ -102,6 +102,12 @@ form.aui h3 {
     font-size: 14px;
 }
 
+form.aui.unsectioned h2,
+form.aui.unsectioned h3 {
+    border: none;
+}
+
+
 /* legend,labels left hand width related items */
 form.aui legend {
     display: none;
@@ -188,6 +194,9 @@ form.aui .date-select .field-group label {
 /* submit div - outside the fieldsets */
 form.aui .buttons {
     border-top: 1px solid #ddd;
+}
+form.aui.unsectioned .buttons{
+    border: none;
 }
 /* radios and checkboxes */
 form.aui div.radio input.radio,
