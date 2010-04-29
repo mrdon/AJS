@@ -332,3 +332,7 @@ form.aui span.content {
     top: -9999px;
 }
 
+/* necessary for specifity overrides */
+form.aui .hidden {
+    display: none;
+}
