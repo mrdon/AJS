@@ -55,9 +55,11 @@
                         var triggerWidth = targetPosition.target.width() + padding; //The total width of the trigger (including padding)
                         var middleOfTrigger = targetOffset.left + triggerWidth/2;    //The absolute x position of the middle of the Trigger
                         var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
+                        var displayAbove;   //determines if popup should be displayed above the the trigger or not
+
+                        //CONSTANTS
                         var SCREEN_PADDING = 10; //determines how close to the edge the dialog needs to be before it is considered offscreen
-                        var displayAbove;
-                        
+
                         //DRAW POPUP
                         function drawPopup (popup, left, right, top, arrowOffsetX, arrowOffsetY, displayAbove) {
                             //Position the popup using the left and right parameters

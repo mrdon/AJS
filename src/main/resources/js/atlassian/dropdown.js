@@ -350,7 +350,8 @@ AJS.dropDown = function (obj, usroptions) {
                     if (AJS.$.browser.msie) {
                         this.shadowParent.css({right: -5})
                     }
-                    this.shadow = Raphael.shadow(0, 0, this.$.width(), this.$.height() + 8, {
+                    var totalHeight = this.$.height() +  parseInt(this.$.css("padding-top")) + parseInt(this.$.css("padding-bottom"));
+                    this.shadow = Raphael.shadow(0, 0, this.$.width(), totalHeight, {
                         r: 0.2,
                         shadow: "#333",
                         size: 0.6,
