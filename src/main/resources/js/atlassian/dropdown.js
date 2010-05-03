@@ -353,7 +353,7 @@ AJS.dropDown = function (obj, usroptions) {
                         this.shadowParent.css({right: - shadowXOffset})
                     }
 
-                    this.shadow = Raphael.shadow(0, 0, this.$.outerWidth(), this.$.outerHeight(true), {
+                    this.shadow = Raphael.shadow(0, 0, this.$.outerWidth(true), this.$.outerHeight(true), {
                         r: 0.2,
                         shadow: "#333",
                         size: shadowSize,
