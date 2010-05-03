@@ -340,21 +340,24 @@ AJS.dropDown = function (obj, usroptions) {
                 if (this.shadowParent) {
                     this.shadowParent.remove();
                 }
+                var shadowSize = 0.6;
+                var shadowXOffset = shadowSize * 10;    //offset the shadow layer to account for the width of the actual shadow
                 if (this.$.is(":visible")) {
                     this.shadowParent = AJS.$('<div class="aui-shadow-parent"></div>').css({
                         top: this.$.css("top"),
-                        left: (this.$.position().left - 6), //make sure shadow follows dropdown when alignment changes
+                        left: (this.$.position().left - shadowXOffset), //make sure shadow follows dropdown when alignment changes
                         width: this.$.width(),
                         height: this.$.height()
                     }).insertBefore(this.$);
                     if (AJS.$.browser.msie) {
-                        this.shadowParent.css({right: -5})
+                        this.shadowParent.css({right: - shadowXOffset})
                     }
-                    var totalHeight = this.$.height() +  parseInt(this.$.css("padding-top")) + parseInt(this.$.css("padding-bottom"));
-                    this.shadow = Raphael.shadow(0, 0, this.$.width(), totalHeight, {
+
+                    this.shadow = Raphael.shadow(0, 0, this.$.outerWidth(), this.$.outerHeight(true), {
                         r: 0.2,
                         shadow: "#333",
-                        size: 0.6,
+                        size: shadowSize,
+                        stroke: "none",
                         target: this.shadowParent[0]
                     });
                 }
