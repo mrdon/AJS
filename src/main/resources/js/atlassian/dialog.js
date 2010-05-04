@@ -135,7 +135,6 @@ AJS.popup = function (options) {
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
                 popup.show();
-
                 // add Raphaël shadow
                 if (AJS.popup.shadow) {
                       AJS.popup.shadow.remove();
@@ -147,7 +146,7 @@ AJS.popup = function (options) {
                     position: "absolute",
                     marginLeft: - Math.round(options.width / 2 + 10),
                     marginTop: - Math.round(options.height / 2 ),
-                    top: "50%"
+                    top: "50%",
                 });
                 AJS.dim();
 				AJS.popup.current = this;
@@ -182,7 +181,12 @@ AJS.popup = function (options) {
                   AJS.popup.shadow.remove();
                   AJS.popup.shadow = null;
             }
-            AJS.undim();
+
+            //only undim if no other dialogs are visible
+            if (AJS.$(".dialog:visible").size()==0) {
+                AJS.undim();
+            }
+
 			AJS.$(document).trigger("hideLayer", ["popup", this]);
 			AJS.popup.current = null;
         },

@@ -244,6 +244,16 @@
                 dialog.hide();
             });
 
+            popup.addButton("testStackingDialogs", function (dialog) {
+                var popup2 = new AJS.Dialog(300, 300);
+                popup2.addPage();
+                popup2.addPanel("PanelStack1", "PanelStack1");
+                popup2.addButton("close", function(dialog){
+                    dialog.hide();
+                })
+                popup2.show();
+            });
+
             // PAGE 1 (second page)
 
             // adds a new page to dialog
