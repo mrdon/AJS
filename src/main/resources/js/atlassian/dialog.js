@@ -146,7 +146,7 @@ AJS.popup = function (options) {
                     position: "absolute",
                     marginLeft: - Math.round(options.width / 2 + 10),
                     marginTop: - Math.round(options.height / 2 ),
-                    top: "50%",
+                    top: "50%"
                 });
                 AJS.dim();
 				AJS.popup.current = this;
