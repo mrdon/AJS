@@ -198,25 +198,30 @@
                 clearTimeout(hideDelayTimer);
                 clearTimeout(showTimer);
                 // store the timer so that it can be cleared in the mouseover if required
-                hideDelayTimer = setTimeout(function() {
-                    $(items).removeClass("active");
-                    popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
-                    popup.shadow.remove();
-                    popup.shadow = null;
-                    popup.arrowCanvas.remove();
-                    popup.arrowCanvas = null;
-                    beingShown = false;
-                    shouldShow = false;
-                    AJS.$(document).trigger("hideLayer", ["inlineDialog", getHash()]);
-                    AJS.InlineDialog.current = null;
-                    if (!opts.cacheContent) {
-                        //if not caching the content, then reset the
-                        //flags to false so as to reload the content
-                        //on next mouse hover.
-                        contentLoaded = false;
-                        contentLoading = false;
-                    }
-                }, delay);
+                //disable auto-hide if user passes null for hideDelay
+                if (delay != null) {
+                    hideDelayTimer = setTimeout(function() {
+                        $(items).removeClass("active");
+                        popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
+                        popup.shadow.remove();
+                        popup.shadow = null;
+                        popup.arrowCanvas.remove();
+                        popup.arrowCanvas = null;
+                        beingShown = false;
+                        shouldShow = false;
+                        AJS.$(document).trigger("hideLayer", ["inlineDialog", getHash()]);
+                        AJS.InlineDialog.current = null;
+                        if (!opts.cacheContent) {
+                            //if not caching the content, then reset the
+                            //flags to false so as to reload the content
+                            //on next mouse hover.
+                            contentLoaded = false;
+                            contentLoading = false;
+                        }
+
+                    }, delay);
+                }
+
             }
         };
 
