@@ -56,8 +56,13 @@ form.aui .icon-help {
 form.aui .icon-required {
     background-position: 0 -80px;
     height: 13px;
-    width: 8px;
     vertical-align: top;
+    width: 8px;
+}
+form.aui legend span.icon-required {
+    left: auto;
+    position: relative;
+    top: auto;
 }
 form.aui .icon-users {
     background-position: 0 -100px;
