@@ -217,77 +217,79 @@
         AJS.inlineHelp();
         
         // Testing AJS.dialog
-        AJS.$("#testButton").click(function() {
+
         // create a dialog 860px wide x 530px high
-            var popup = new AJS.Dialog(860, 530);
+        var popup = new AJS.Dialog(860, 530),
+            popup2 = new AJS.Dialog(1000, 300), 
+            popup3 = new AJS.Dialog(100, 600);
 
-            // PAGE 0 (first page)
+        // PAGE 0 (first page)
 
-            // adds header for first page
-            popup.addHeader("Dialog - Page 0");
+        // adds header for first page
+        popup.addHeader("Dialog - Page 0");
 
-            // add panel 1
-            popup.addPanel("Panel 1", "panel1");
-            popup.getCurrentPanel().html("Some content for panel 1");
+        // add panel 1
+        popup.addPanel("Panel 1", "panel1");
+        popup.getCurrentPanel().html("Some content for panel 1");
 
-            // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
-            popup.addPanel("Panel 2", "panel1");
-            popup.getCurrentPanel().html("Some content for panel 2");
+        // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
+        popup.addPanel("Panel 2", "panel1");
+        popup.getCurrentPanel().html("Some content for panel 2");
 
-            // add a "Next" button on page 0 (current page)
-            popup.addButton("Next", function (dialog) {
-                dialog.nextPage();
-            });
+        // add a "Next" button on page 0 (current page)
+        popup.addButton("Next", function (dialog) {
+            dialog.nextPage();
+        });
 
-            // add "Cancel" button on page 0 (current page)
-            popup.addButton("Cancel", function (dialog) {
-                dialog.hide();
-            });
+        // add "Cancel" button on page 0 (current page)
+        popup.addButton("Cancel", function (dialog) {
+            dialog.hide();
+        });
 
-            popup.addButton("testStackingDialogs", function (dialog) {
-                var popup2 = new AJS.Dialog(1000, 300);
-                popup2.addPage();
-                popup2.addPanel("PanelStack1", "PanelStack1");
-                popup2.addButton("close", function(dialog){
-                    dialog.hide();
-                })
-                popup2.addButton("testStackingDialogs2", function (dialog) {
-                        var popup3 = new AJS.Dialog(100, 600);
-                        popup3.addPage();
-                        popup3.addPanel("PanelStack1", "PanelStack1");
-                        popup3.addButton("close", function(dialog){
-                            dialog.hide();
-                        })
-                        popup3.show();
-                    });
+        popup.addButton("testStackingDialogs", function (dialog) {
+            popup2.show();
+        });
 
-                popup2.show();
-            });
+        // PAGE 1 (second page)
+        // adds a new page to dialog
+        popup.addPage();
 
-            // PAGE 1 (second page)
+        // adds header for second page
+        popup.page[1].addHeader("Dialog - Page 1");
 
-            // adds a new page to dialog
-            popup.addPage();
+        // adds a single panel on second page (as there is only one panel, no menu will appear on the left side)
+        popup.page[1].addPanel("SinglePanel", "singlePanel");
+        popup.getCurrentPanel().html("Some content for the only panel on Page 1");
 
-            // adds header for second page
-            popup.page[1].addHeader("Dialog - Page 1");
+        // add "Previous" button to page 1
+        popup.page[1].addButton("Previous", function(dialog) {
+           dialog.prevPage();
+        });
 
-            // adds a single panel on second page (as there is only one panel, no menu will appear on the left side)
-            popup.page[1].addPanel("SinglePanel", "singlePanel");
-            popup.getCurrentPanel().html("Some content for the only panel on Page 1");
+        // adds "Cancel" button to page 1
+        popup.page[1].addButton("Cancel", function (dialog) {
+            dialog.hide();
+        });
 
-            // add "Previous" button to page 1
-            popup.page[1].addButton("Previous", function(dialog) {
-               dialog.prevPage();
-            });
+        //Create first stackable Dialog
+        popup2.addPage();
+        popup2.addPanel("PanelStack1", "PanelStack1");
+        popup2.addButton("close", function(dialog){
+            dialog.hide();
+        })
+        popup2.addButton("testStackingDialogs2", function (dialog) {
+            popup3.show();
+        });
+        //Create second stackable dialog
+        popup3.addPage();
+        popup3.addPanel("PanelStack1", "PanelStack1");
+        popup3.addButton("close", function(dialog){
+            dialog.hide();
+        })
 
-            // adds "Cancel" button to page 1
-            popup.page[1].addButton("Cancel", function (dialog) {
-                dialog.hide();
-            });
+        AJS.$("#testButton").click(function() {
 
             // PREPARE FOR DISPLAY
-
             // start first page, first panel
             popup.gotoPage(0);
             popup.gotoPanel(0);

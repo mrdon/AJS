@@ -93,6 +93,10 @@ AJS.popup = function (options) {
     if (options.id) {
         popup.attr("id", options.id);
     }
+    var highestZIndex = 3000;
+    AJS.$(".dialog").each(function() {
+        highestZIndex = (AJS.$(this).css("z-index") > highestZIndex) ? AJS.$(this).css("z-index") : highestZIndex;
+    });
 
     var applySize = (function (width, height) {
         options.width = (width = (width || options.width));
@@ -103,7 +107,8 @@ AJS.popup = function (options) {
             marginLeft: - Math.round(width / 2),
             width: width,
             height: height,
-            background: "#fff"
+            background: "#fff",
+            "z-index": parseInt(highestZIndex) + 2
         });
 
         return arguments.callee;
@@ -137,31 +142,20 @@ AJS.popup = function (options) {
                 AJS.$(document).keydown(options.keypressListener);
                 AJS.dim();
                 popup.show();
-                // add Raphaël shadow
-                if (this.shadow) {
-                      this.shadow.remove();
-                      this.shadow = null;
-                }
-                var shadowSize = 1,
-                    highestZIndex = 0;
+                if (!this.shadow && !this.shadowParent) {
+                    var shadowSize = 1;
+                    this.shadowParent = AJS.$("<div class='aui-shadow-parent> </div>").css({
+                        marginTop: AJS.$(popup).css("margin-top"),
+                        marginLeft: AJS.$(popup).css("margin-left"),
+                        "z-index": (AJS.$(popup).css("z-index") - 1)
+                    }).insertBefore(popup);
 
-                    AJS.$(".dialog").each(function() {
-                        highestZIndex = (AJS.$(this).css("z-index") > highestZIndex) ? AJS.$(this).css("z-index") : highestZIndex;
+                    this.shadow = Raphael.shadow(0, 0, options.width - shadowSize * 10, options.height, {
+                        size: shadowSize,
+                        stroke: "none",
+                        target: this.shadowParent[0]
                     });
-
-                    popup.css({"z-index": parseInt(highestZIndex) + 2});
-
-                this.shadowParent = AJS.$("<div class='aui-shadow-parent> </div>").css({
-                    marginTop: AJS.$(popup).css("margin-top"),
-                    marginLeft: AJS.$(popup).css("margin-left"),
-                    "z-index": (AJS.$(popup).css("z-index") - 1)
-                }).insertBefore(popup);
-
-                this.shadow = Raphael.shadow(0, 0, options.width - shadowSize * 10, options.height, {
-                    size: shadowSize,
-                    stroke: "none",
-                    target: this.shadowParent[0]
-                });
+                }
 
 				AJS.popup.current = this;
 				AJS.$(document).trigger("showLayer", ["popup", this]);
@@ -192,8 +186,10 @@ AJS.popup = function (options) {
             AJS.$(document).unbind("keydown", options.keypressListener);
             this.element.hide();
             if (this.shadow) {
-                  this.shadow.remove();
-                  this.shadow = null;
+                this.shadow.remove();
+                this.shadow = null;
+                this.shadowParent.remove();
+                this.shadowParent = null;
             }
 
             //only undim if no other dialogs are visible
@@ -214,9 +210,11 @@ AJS.popup = function (options) {
          * @method remove
         */
         remove: function () {
-            if (AJS.popup.shadow) {
-                  AJS.popup.shadow.remove();
-                  AJS.popup.shadow = null;
+            if (this.shadow) {
+                this.shadow.remove();
+                this.shadow = null;
+                this.shadowParent.remove();
+                this.shadowParent = null;
             }
             popup.remove();
             this.element = null;
