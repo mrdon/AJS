@@ -18,6 +18,7 @@
         "atlassian/dialog.js",
         "atlassian/dropdown.js",
         "atlassian/event.js",
+        "atlassian/icons.js",
         "atlassian/inline-dialog.js",
         "atlassian/firebug.js",
         "atlassian/forms.js",
