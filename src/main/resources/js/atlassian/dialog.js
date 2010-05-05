@@ -132,23 +132,37 @@ AJS.popup = function (options) {
          * @method show
         */
         show: function () {
+
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
+                AJS.dim();
                 popup.show();
                 // add Raphaël shadow
-                if (AJS.popup.shadow) {
-                      AJS.popup.shadow.remove();
-                      AJS.popup.shadow = null;
+                if (this.shadow) {
+                      this.shadow.remove();
+                      this.shadow = null;
                 }
-                AJS.popup.shadow = Raphael.shadow(0, 0, options.width, options.height);
-                AJS.$(AJS.popup.shadow.canvas).css({
-                    left: "50%",
-                    position: "absolute",
-                    marginLeft: - Math.round(options.width / 2 + 10),
-                    marginTop: - Math.round(options.height / 2 ),
-                    top: "50%"
+                var shadowSize = 1,
+                    highestZIndex = 0;
+
+                    AJS.$(".dialog").each(function() {
+                        highestZIndex = (AJS.$(this).css("z-index") > highestZIndex) ? AJS.$(this).css("z-index") : highestZIndex;
+                    });
+
+                    popup.css({"z-index": parseInt(highestZIndex) + 2});
+
+                this.shadowParent = AJS.$("<div class='aui-shadow-parent> </div>").css({
+                    marginTop: AJS.$(popup).css("margin-top"),
+                    marginLeft: AJS.$(popup).css("margin-left"),
+                    "z-index": (AJS.$(popup).css("z-index") - 1)
+                }).insertBefore(popup);
+
+                this.shadow = Raphael.shadow(0, 0, options.width - shadowSize * 10, options.height, {
+                    size: shadowSize,
+                    stroke: "none",
+                    target: this.shadowParent[0]
                 });
-                AJS.dim();
+
 				AJS.popup.current = this;
 				AJS.$(document).trigger("showLayer", ["popup", this]);
             };
@@ -177,9 +191,9 @@ AJS.popup = function (options) {
         hide: function () {
             AJS.$(document).unbind("keydown", options.keypressListener);
             this.element.hide();
-            if (AJS.popup.shadow) {
-                  AJS.popup.shadow.remove();
-                  AJS.popup.shadow = null;
+            if (this.shadow) {
+                  this.shadow.remove();
+                  this.shadow = null;
             }
 
             //only undim if no other dialogs are visible

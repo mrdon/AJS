@@ -1,12 +1,18 @@
 .blanket {
     background: #000;
     height: 100%;
-    left: 0;
+    left: 0px;
     opacity: 0.5;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 2500;
+}
+.aui-shadow-parent {
+    position: fixed;
+    overflow: hidden;
+    left:50%;
+    top:50%;
 }
 .popup {
     left: 50%;
