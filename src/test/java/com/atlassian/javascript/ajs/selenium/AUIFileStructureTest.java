@@ -52,6 +52,7 @@ public class AUIFileStructureTest
             "js/atlassian/event.js",
             "js/atlassian/firebug.js",
             "js/atlassian/forms.js",
+            "js/atlassian/icons.js",
             "js/atlassian/inline-dialog.js",
             "js/atlassian/jquery.autocomplete.js",
             "js/atlassian/jquery.getdocheight.js",
