@@ -29,6 +29,9 @@
         <resource type="download" name="forms-ie.css" location="css/atlassian/ie/forms-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
+        <resource type="download" name="icons-ie.css" location="css/atlassian/ie/icons-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
         <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/ie/inline-dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
@@ -51,6 +54,7 @@
         <resource type="download" name="cookie.js" location="js/atlassian/cookie.js"/>
         <resource type="download" name="dialog.js" location="js/atlassian/dialog.js"/>
         <resource type="download" name="dropdown.js" location="js/atlassian/dropdown.js"/>
+        <resource type="download" name="icons.js" location="js/atlassian/icons.js"/>
         <resource type="download" name="inline-dialog.js" location="js/atlassian/inline-dialog.js"/>
         <resource type="download" name="firebug.js" location="js/atlassian/firebug.js"/>
         <resource type="download" name="forms.js" location="js/atlassian/forms.js"/>

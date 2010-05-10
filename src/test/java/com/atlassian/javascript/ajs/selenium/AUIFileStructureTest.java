@@ -33,6 +33,7 @@ public class AUIFileStructureTest
             "css/atlassian/ie/dialog-ie.css",
             "css/atlassian/ie/dropdown-ie.css",
             "css/atlassian/ie/forms-ie.css",
+            "css/atlassian/ie/icons-ie.css",
             "css/atlassian/ie/inline-dialog-ie.css",
             "css/atlassian/ie/tabs-ie.css",
             "css/atlassian/images/arrow.png",
