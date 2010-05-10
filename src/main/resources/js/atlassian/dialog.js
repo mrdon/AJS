@@ -93,9 +93,11 @@ AJS.popup = function (options) {
     if (options.id) {
         popup.attr("id", options.id);
     }
+    //find the highest z-index on the page to ensure any new popup that is shown is shown on top
     var highestZIndex = 3000;
     AJS.$(".dialog").each(function() {
-        highestZIndex = (AJS.$(this).css("z-index") > highestZIndex) ? AJS.$(this).css("z-index") : highestZIndex;
+        var currentPopup = AJS.$(this);
+        highestZIndex = (currentPopup.css("z-index") > highestZIndex) ? currentPopup.css("z-index") : highestZIndex;
     });
 
     var applySize = (function (width, height) {
@@ -108,7 +110,7 @@ AJS.popup = function (options) {
             width: width,
             height: height,
             background: "#fff",
-            "z-index": parseInt(highestZIndex) + 2
+            "z-index": parseInt(highestZIndex) + 2  //+ 2 so that the shadow can be shown on +1 (underneath the popup but above everything else)
         });
 
         return arguments.callee;
@@ -145,9 +147,9 @@ AJS.popup = function (options) {
                 if (!this.shadow && !this.shadowParent) {
                     var shadowSize = 1;
                     this.shadowParent = AJS.$("<div class='aui-shadow-parent> </div>").css({
-                        marginTop: AJS.$(popup).css("margin-top"),
-                        marginLeft: AJS.$(popup).css("margin-left"),
-                        "z-index": (AJS.$(popup).css("z-index") - 1)
+                        marginTop: popup.css("margin-top"),
+                        marginLeft: popup.css("margin-left"),
+                        "z-index": popup.css("z-index") - 1 //show the shadow directly below the popup
                     }).insertBefore(popup);
 
                     this.shadow = Raphael.shadow(0, 0, options.width - shadowSize * 10, options.height, {
