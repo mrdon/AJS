@@ -2,10 +2,10 @@
 <html lang="en-au">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    
+
     <title>Atlassian form template</title>
     <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
-    
+
     <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/basic.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/firebug.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/dialog.css" media="all">
@@ -36,79 +36,79 @@
 <h1>Top Labels</h1>
 
 <form action="forms.html#" method="post" id="j" class="aui top-label">
-	<h2>Top Labels - add class top-label to form</h2>
-	<fieldset>
-		<legend><span>New Issue</span></legend>
-		<div class="field-group">
-			<label for="issueType">Issue Type</label>
-			<select class="select medium-field" id="issueType" name="issueType" title="select issue type">
-				<option>- Select Issue Type -</option>
-				<option>Bug</option>
-			</select>
-		</div>
+    <h2>Top Labels - add class top-label to form</h2>
+    <fieldset>
+        <legend><span>New Issue</span></legend>
         <div class="field-group">
-			<label for="projectName">Project</label>
-			<select class="select medium-field" id="projectName" name="projectName" title="select project">
-				<option>- Select Project -</option>
-				<option>JIRA</option>
-			</select>
-		</div>
-	</fieldset>
+            <label for="issueType">Issue Type</label>
+            <select class="select medium-field" id="issueType" name="issueType" title="select issue type">
+                <option>- Select Issue Type -</option>
+                <option>Bug</option>
+            </select>
+        </div>
+        <div class="field-group">
+            <label for="projectName">Project</label>
+            <select class="select medium-field" id="projectName" name="projectName" title="select project">
+                <option>- Select Project -</option>
+                <option>JIRA</option>
+            </select>
+        </div>
+    </fieldset>
     <div class="buttons">
-		<input class="button submit" type="submit" value="Save" id="save-new-issue">
-		<input class="button" type="button" value="Cancel" id="cancel-issue-create">
-	</div>
+        <input class="button submit" type="submit" value="Save" id="save-new-issue">
+        <input class="button" type="button" value="Cancel" id="cancel-issue-create">
+    </div>
 
     <h2>Groups (checkboxes and radios)</h2>
     <fieldset class="group">
-		<p>The Legend is optional - you may not want it for the single checkbox</p>
-		<legend><span>Checkboxes Legend</span></legend>
-		<div class="checkbox">
-			<input class="checkbox" type="checkbox"  name="cbOne" id="cbthree">
-			<label for="cbthree">Checkbox One</label>
+        <p>The Legend is optional - you may not want it for the single checkbox</p>
+        <legend><span>Checkboxes Legend</span></legend>
+        <div class="checkbox">
+            <input class="checkbox" type="checkbox"  name="cbOne" id="cbthree">
+            <label for="cbthree">Checkbox One</label>
             <div class="description">You can have a description here</div>
-		</div>
-		<div class="checkbox">
-			<input class="checkbox" type="checkbox"  name="cbTwo" id="cbfour">
-			<label for="cbfour">Checkbox Two</label>
+        </div>
+        <div class="checkbox">
+            <input class="checkbox" type="checkbox"  name="cbTwo" id="cbfour">
+            <label for="cbfour">Checkbox Two</label>
             <div class="description">You can have a description here</div>
             <div class="error">and/or an error</div>
-		</div>
+        </div>
         <div class="field-group">
             <p>You can also have a description here if you like</p>
             <div class="error">and/or errors</div>
         </div>
-	</fieldset>
+    </fieldset>
 
     <h2>One Checkbox</h2>
     <fieldset class="group">
         <p>The Legend is optional - you may not want it for the single checkbox</p>
-		<div class="checkbox">
-			<input class="checkbox" type="checkbox"  name="cbOne" id="cbsingle">
-			<label for="cbsingle">Checkbox Single</label>
+        <div class="checkbox">
+            <input class="checkbox" type="checkbox"  name="cbOne" id="cbsingle">
+            <label for="cbsingle">Checkbox Single</label>
             <div class="description">You can have a description here</div>
-		</div>
-		<div class="field-group">
+        </div>
+        <div class="field-group">
             <p>You can also have a description here if you like</p>
         </div>
-	</fieldset>
+    </fieldset>
 
     <h2>Radio Buttons</h2>
     <fieldset class="group">
-		<legend><span>Radio Buttons</span></legend>
-		<div class="radio">
-			<input class="radio" type="radio"   checked="checked" name="rads" id="irOne">
-			<label for="irOne">Rad One</label>
-		</div>
-		<div class="radio">
-			<input class="radio" type="radio"  name="rads" id="irTwo">
-			<label for="irTwo">Rad Two</label>
-		</div>
-		<div class="radio">
-			<input class="radio" type="radio"  name="rads" id="irThree">
-			<label for="irThree">Rad Three</label>
-		</div>
-	</fieldset>
+        <legend><span>Radio Buttons</span></legend>
+        <div class="radio">
+            <input class="radio" type="radio"   checked="checked" name="rads" id="irOne">
+            <label for="irOne">Rad One</label>
+        </div>
+        <div class="radio">
+            <input class="radio" type="radio"  name="rads" id="irTwo">
+            <label for="irTwo">Rad Two</label>
+        </div>
+        <div class="radio">
+            <input class="radio" type="radio"  name="rads" id="irThree">
+            <label for="irThree">Rad Three</label>
+        </div>
+    </fieldset>
 </form>
 
 <script type="text/javascript" src="../common.js"></script>
