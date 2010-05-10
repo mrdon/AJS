@@ -146,7 +146,7 @@ AJS.popup = function (options) {
                 popup.show();
                 if (!this.shadow && !this.shadowParent) {
                     var shadowSize = 1;
-                    this.shadowParent = AJS.$("<div class='aui-shadow-parent> </div>").css({
+                    this.shadowParent = AJS.$("<div class='aui-shadow-parent'></div>").css({
                         marginTop: popup.css("margin-top"),
                         marginLeft: popup.css("margin-left"),
                         "z-index": popup.css("z-index") - 1 //show the shadow directly below the popup
