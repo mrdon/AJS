@@ -130,6 +130,11 @@ form.aui .field-group {
     min-height: 1.6em;
     padding: 0 0 5px 140px;
 }
+form.aui .field-group:last-child,
+form.aui fieldset fieldset:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
 form.aui .field-group label {
     float: left;
     display: block;
