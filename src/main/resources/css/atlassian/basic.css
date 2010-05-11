@@ -2,6 +2,8 @@
     clear: both;
 }
 .hidden,
-form.aui .hidden {
+form.aui .hidden,
+form.aui .field-group.hidden,
+form.aui fieldset.hidden {
     display: none;
 }
