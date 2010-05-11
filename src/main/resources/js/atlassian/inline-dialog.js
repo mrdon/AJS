@@ -113,7 +113,7 @@
                             posy = targetOffset.top - popup.height() - 8; //calculate the flipped position of the popup (the 8 allows for room for the arrow)
                             arrowOffsetY = popup.height() - 9; //calculate new offset for the arrow, 10 is the height of the shadow
                             if (AJS.$.browser.msie){
-                                arrowOffsetY = popup.height() - 17; //calculate new offset for the arrow, 17 is the height of the shadow in IE
+                                arrowOffsetY = popup.height() - 10; //calculate new offset for the arrow, 11 is the height of the shadow in IE
                             }
                         }
                         //calculate if the popup will be offscreen
