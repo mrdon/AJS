@@ -145,14 +145,15 @@ AJS.popup = function (options) {
                 AJS.dim();
                 popup.show();
                 if (!this.shadow && !this.shadowParent) {
-                    var shadowSize = 1;
+                    var shadowSize = 0.5;
                     this.shadowParent = AJS.$("<div class='dialog-shadow-parent'></div>").css({
                         marginTop: popup.css("margin-top"),
-                        marginLeft: popup.css("margin-left"),
+                        //shadow div will be the width of the box + the shadow so we need to offset by the shadow size to place it under the dialog
+                        marginLeft: parseInt(popup.css("margin-left")) - (shadowSize * 10)  + "px",
                         "z-index": popup.css("z-index") - 1 //show the shadow directly below the popup
                     }).insertBefore(popup);
 
-                    this.shadow = Raphael.shadow(0, 0, options.width - shadowSize * 10, options.height, {
+                    this.shadow = Raphael.shadow(0, 0, options.width, options.height, {
                         size: shadowSize,
                         stroke: "none",
                         target: this.shadowParent[0]
