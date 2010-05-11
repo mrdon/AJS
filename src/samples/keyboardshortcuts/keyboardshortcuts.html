@@ -64,9 +64,8 @@
         <div class="example">
             <div class="content">
                 <h1>method: execute</h1>
-                <p><strong>Beware!</strong> XSS vulnerability (uses eval)</p>
                 <code>
-                    AJS.whenIType("alt+e").execute("alert('I have executed')");
+                    AJS.whenIType("ctrl+e").execute(function () {alert("I have executed");});
                 </code>
             </div>
         </div>
