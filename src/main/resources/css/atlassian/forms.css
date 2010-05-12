@@ -67,6 +67,10 @@ form.aui button {
     margin: 10px 10px 0 0;
     padding: 0 0.5em;
 }
+form.aui .buttons a.cancel {
+    line-height: 1.2;
+    margin: 10px 10px 0 0;
+}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     /* Safari 3.0 and Chrome hacks here */
     form.aui button {
@@ -197,12 +201,29 @@ form.aui .date-select .field-group label {
     display: none;
 }
 /* submit div - outside the fieldsets */
-form.aui .buttons {
+form.aui .buttons-container {
     border-top: 1px solid #ddd;
+    clear: both;
+    margin-bottom: 5px;
+    min-height: 2.7em;
+    overflow: auto;
 }
-form.aui.unsectioned .buttons{
+form.aui.unsectioned .buttons-container {
     border: none;
 }
+form.aui .buttons {
+    padding: 0 0 5px 140px;
+}
+form.aui .buttons-container.right .buttons {
+    clear: both;
+    float: right;
+    padding: 0 5px 5px 0;
+    width: auto;
+}
+form.aui .buttons-container.left .buttons {
+    padding: 0 5px 5px 0;
+}
+
 /* radios and checkboxes */
 form.aui div.radio input.radio,
 form.aui div.checkbox input.checkbox {
@@ -260,7 +281,8 @@ form.aui div.checkbox .description {
 
 /* long labels - add long-label class to form "aui long-label" */
 form.aui.long-label .field-group,
-form.aui.long-label .group {
+form.aui.long-label .group,
+form.aui.long-label .buttons {
     padding-left: 250px;
 }
 form.aui.long-label .field-group label,
@@ -324,6 +346,9 @@ form.aui.top-label .date-select legend span {
 }
 form.aui.top-label .date-select label {
     display: none;
+}
+form.aui.top-label .buttons {
+    padding: 0 0 5px 0;
 }
 /* //labels on top */
 
