@@ -25,7 +25,7 @@
     font-size: 1.2em;
     overflow: hidden;
 }
-.dialog h2 {
+.dialog h2.dialog-title {
     background: #f0f0f0;
     color: #666;
     font-size: 1.1em;
@@ -46,19 +46,19 @@
     padding: 10px 0 0 0;
     width: 25%;
 }
-.dialog .page-menu li {
+.dialog .page-menu li.page-menu-item {
     margin: 0;
     padding: 0;
 }
-.dialog .page-menu li.selected {
+.dialog .page-menu li.page-menu-item.selected {
     background: #69c;
     color: #fff;
 }
-.dialog .page-menu li.selected button {
+.dialog .page-menu li.page-menu-item.selected button.item-button {
     color: #fff;
     font-weight: 800;
 }
-.dialog .page-menu li button {
+.dialog .page-menu li.page-menu-item button.item-button {
     background: none;
     border: none;
     color: #666;
@@ -87,12 +87,12 @@
     text-align: right;
     width: 100%;
 }
-.dialog .button-panel button {
+.dialog .button-panel button.button-panel-button {
     font-size: 0.75em;
     margin-right: 1.65em;
     margin-top: 2px;
 }
-.dialog .button-panel button.left {
+.dialog .button-panel button.button-panel-button.left {
     float: left;
     margin: 0 0 0 0.5em;
 }

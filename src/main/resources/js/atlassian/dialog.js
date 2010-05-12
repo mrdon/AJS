@@ -258,7 +258,7 @@ AJS.popup = function (options) {
         this._onclick = function () {
             onclick.call(this, page.dialog, page);
         };
-        this.item = AJS("button", label);
+        this.item = AJS("button", label).addClass("button-panel-button");
         if (className) {
             this.item.addClass(className);
         }
@@ -368,13 +368,13 @@ AJS.popup = function (options) {
         this.dialog = page.dialog;
         this.page = page;
         this.id = page.panel.length;
-        this.button = AJS("button").html(title);
+        this.button = AJS("button").html(title).addClass("item-button");
 
         if (panelButtonId) {
             this.button[0].id = panelButtonId;
         }
 
-        this.item = AJS("li").append(this.button);
+        this.item = AJS("li").append(this.button).addClass("page-menu-item");
         this.body = AJS("div").append(reference).addClass("panel-body").css("height", page.dialog.height + "px");
         this.padding = 10;
         if (className) {
@@ -545,7 +545,7 @@ AJS.popup = function (options) {
         if (this.header) {
             this.header.remove();
         }
-        this.header = AJS("h2").html(title);
+        this.header =  AJS("h2").html(title).addClass("dialog-title");
         className && this.header.addClass(className);
         this.element.prepend(this.header);
         this.recalcSize();
