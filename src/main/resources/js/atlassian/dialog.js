@@ -5,7 +5,7 @@
 */
 AJS.dim = function () {
     if (!AJS.dim.dim) {
-        AJS.dim.dim = AJS("div").addClass("blanket");
+        AJS.dim.dim = AJS("div").addClass("aui-blanket");
         if (AJS.$.browser.msie) {
             AJS.dim.dim.css({width: "200%", height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
         }
@@ -88,14 +88,14 @@ AJS.popup = function (options) {
 
     options = AJS.$.extend({}, defaults, options);
 
-    var popup = AJS("div").addClass("popup");
+    var popup = AJS("div").addClass("aui-popup");
 
     if (options.id) {
         popup.attr("id", options.id);
     }
     //find the highest z-index on the page to ensure any new popup that is shown is shown on top
     var highestZIndex = 3000;
-    AJS.$(".dialog").each(function() {
+    AJS.$(".aui-dialog").each(function() {
         var currentPopup = AJS.$(this);
         highestZIndex = (currentPopup.css("z-index") > highestZIndex) ? currentPopup.css("z-index") : highestZIndex;
     });
@@ -146,7 +146,7 @@ AJS.popup = function (options) {
                 popup.show();
                 if (!this.shadow && !this.shadowParent) {
                     var shadowSize = 0.5;
-                    this.shadowParent = AJS.$("<div class='dialog-shadow-parent'></div>").css({
+                    this.shadowParent = AJS.$("<div class='aui-dialog-shadow-parent'></div>").css({
                         marginTop: popup.css("margin-top"),
                         //shadow div will be the width of the box + the shadow so we need to offset by the shadow size to place it under the dialog
                         marginLeft: parseInt(popup.css("margin-left")) - (shadowSize * 10)  + "px",
@@ -375,7 +375,7 @@ AJS.popup = function (options) {
         }
 
         this.item = AJS("li").append(this.button).addClass("page-menu-item");
-        this.body = AJS("div").append(reference).addClass("panel-body").css("height", page.dialog.height + "px");
+        this.body = AJS("div").append(reference).addClass("dialog-panel-body").css("height", page.dialog.height + "px");
         this.padding = 10;
         if (className) {
             this.body.addClass(className);
@@ -484,8 +484,8 @@ AJS.popup = function (options) {
         this.dialog = dialog;
         this.id = dialog.page.length;
         this.element = AJS("div").addClass("dialog-components");
-        this.body = AJS("div").addClass("page-body");
-        this.menu = AJS("ul").addClass("page-menu").css("height", dialog.height + "px");
+        this.body = AJS("div").addClass("dialog-page-body");
+        this.menu = AJS("ul").addClass("dialog-page-menu").css("height", dialog.height + "px");
         this.body.append(this.menu);
         this.curtab;
         this.panel = [];
@@ -516,7 +516,7 @@ AJS.popup = function (options) {
      * @method addButtonPanel
     */
 	Page.prototype.addButtonPanel = function () {
-		this.buttonpanel = AJS("div").addClass("button-panel");
+		this.buttonpanel = AJS("div").addClass("dialog-button-panel");
         this.element.append(this.buttonpanel);
 	};
 
@@ -633,7 +633,7 @@ AJS.popup = function (options) {
         });
         this.popup = AJS.popup(options);
 
-        this.popup.element.addClass("dialog");
+        this.popup.element.addClass("aui-dialog");
         this.page = [];
         this.curpage = 0;
 

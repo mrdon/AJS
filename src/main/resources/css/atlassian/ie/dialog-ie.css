@@ -8,11 +8,11 @@ without CSS hacks * eg:
     margin: 0 0 2px 1px;
 }
 * **/
-.blanket {
+.aui-blanket {
     filter: alpha(opacity = 50);
     position: fixed;
 }
-.blanket-shim {
+.aui-blanket-shim {
     filter: alpha(opacity = 0);
     left: 0;
     position: absolute;
@@ -20,7 +20,7 @@ without CSS hacks * eg:
     width: 100%;
     z-index: 2499;
 }
-.popup {
+.aui-popup {
     position: absolute;
     top: 0;
 }
@@ -32,11 +32,11 @@ an asterisk (*) * eg:
     *margin: 0 0 4px 2px;
 }
 * **/ 
-.blanket {
+.aui-blanket {
     *height: 100px; 
     *position: absolute;
 }
-.dialog {
+.aui-dialog {
     *position: absolute;
 }
 
