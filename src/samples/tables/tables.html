@@ -28,27 +28,27 @@
 <body>
     <h1>AUI Tables</h1>
     <h2>Basic <code>table</code>.</h2>
-    <table class="aui">
+    <table class="aui" id="basic">
         <thead>
             <tr>
-                <th id="name" scope="col">Name</th>
-                <th id="type" scope="col">Type</th>
-                <th id="order" scope="col">Order</th>
-                <th id="action" scope="col">Action</th>
+                <th id="basic-name">Name</th>
+                <th id="basic-type">Type</th>
+                <th id="basic-order">Order</th>
+                <th id="basic-action">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td headers="name">Default</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="basic-name">Default</td>
+                <td headers="basic-type">Internal Directory</td>
+                <td headers="basic-order">
                     <ul class="menu">
                         <li>
                             <a class="down" href="#">Down</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="basic-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -57,9 +57,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="basic-name">Corporate LDAP</td>
+                <td headers="basic-type">Microsoft Active Directory</td>
+                <td headers="basic-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -69,31 +69,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
-                    <ul class="menu">
-                        <li>
-                            <a href="#">An Action</a>
-                        </li>
-                        <li>
-                            <a href="#">Another Action</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
-                    <ul class="menu">
-                        <li>
-                            <a class="up" href="#">Up</a>
-                        </li>
-                        <li>
-                            <a class="down" href="#">Down</a>
-                        </li>
-                    </ul>
-                </td>
-                <td headers="action">
+                <td headers="basic-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -105,9 +81,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="basic-name">Corporate LDAP</td>
+                <td headers="basic-type">Microsoft Active Directory</td>
+                <td headers="basic-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -117,7 +93,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="basic-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -129,16 +105,40 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Contractor Directory</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="basic-name">Corporate LDAP</td>
+                <td headers="basic-type">Microsoft Active Directory</td>
+                <td headers="basic-order">
+                    <ul class="menu">
+                        <li>
+                            <a class="up" href="#">Up</a>
+                        </li>
+                        <li>
+                            <a class="down" href="#">Down</a>
+                        </li>
+                    </ul>
+                </td>
+                <td headers="basic-action">
+                    <ul class="menu">
+                        <li>
+                            <a href="#">An Action</a>
+                        </li>
+                        <li>
+                            <a href="#">Another Action</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td headers="basic-name">Contractor Directory</td>
+                <td headers="basic-type">Internal Directory</td>
+                <td headers="basic-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="basic-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -149,27 +149,27 @@
         </tbody>
     </table>
     <h2><code>Table</code> with two <code>tbody</code> elements.</h2>
-    <table class="aui">
+    <table class="aui" id="tbody-double">
         <thead>
             <tr>
-                <th id="name" scope="col">Name</th>
-                <th id="type" scope="col">Type</th>
-                <th id="order" scope="col">Order</th>
-                <th id="action" scope="col">Action</th>
+                <th id="tbody-double-name">Name</th>
+                <th id="tbody-double-type">Type</th>
+                <th id="tbody-double-order">Order</th>
+                <th id="tbody-double-action">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td headers="name">Default</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="tbody-double-name">Default</td>
+                <td headers="tbody-double-type">Internal Directory</td>
+                <td headers="tbody-double-order">
                     <ul class="menu">
                         <li>
                             <a class="down" href="#">Down</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="tbody-double-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -178,9 +178,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="tbody-double-name">Corporate LDAP</td>
+                <td headers="tbody-double-type">Microsoft Active Directory</td>
+                <td headers="tbody-double-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -190,31 +190,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
-                    <ul class="menu">
-                        <li>
-                            <a href="#">An Action</a>
-                        </li>
-                        <li>
-                            <a href="#">Another Action</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
-                    <ul class="menu">
-                        <li>
-                            <a class="up" href="#">Up</a>
-                        </li>
-                        <li>
-                            <a class="down" href="#">Down</a>
-                        </li>
-                    </ul>
-                </td>
-                <td headers="action">
+                <td headers="tbody-double-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -226,9 +202,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="tbody-double-name">Corporate LDAP</td>
+                <td headers="tbody-double-type">Microsoft Active Directory</td>
+                <td headers="tbody-double-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -238,7 +214,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="tbody-double-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -250,16 +226,40 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Contractor Directory</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="tbody-double-name">Corporate LDAP</td>
+                <td headers="tbody-double-type">Microsoft Active Directory</td>
+                <td headers="tbody-double-order">
+                    <ul class="menu">
+                        <li>
+                            <a class="up" href="#">Up</a>
+                        </li>
+                        <li>
+                            <a class="down" href="#">Down</a>
+                        </li>
+                    </ul>
+                </td>
+                <td headers="tbody-double-action">
+                    <ul class="menu">
+                        <li>
+                            <a href="#">An Action</a>
+                        </li>
+                        <li>
+                            <a href="#">Another Action</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td headers="tbody-double-name">Contractor Directory</td>
+                <td headers="tbody-double-type">Internal Directory</td>
+                <td headers="tbody-double-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="tbody-double-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -270,9 +270,9 @@
         </tbody>
         <tbody>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="tbody-double-name">Corporate LDAP</td>
+                <td headers="tbody-double-type">Microsoft Active Directory</td>
+                <td headers="tbody-double-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -282,7 +282,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="tbody-double-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -294,16 +294,16 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Default</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="tbody-double-name">Default</td>
+                <td headers="tbody-double-type">Internal Directory</td>
+                <td headers="tbody-double-order">
                     <ul class="menu">
                         <li>
                             <a class="down" href="#">Down</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="tbody-double-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -312,9 +312,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="tbody-double-name">Corporate LDAP</td>
+                <td headers="tbody-double-type">Microsoft Active Directory</td>
+                <td headers="tbody-double-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -324,7 +324,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="tbody-double-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -336,16 +336,16 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Contractor Directory</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="tbody-double-name">Contractor Directory</td>
+                <td headers="tbody-double-type">Internal Directory</td>
+                <td headers="tbody-double-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="tbody-double-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -356,14 +356,14 @@
         </tbody>
     </table>
     <h2><code>Table</code> with a <code>caption</code> and a <code>tfoot</code>.</h2>
-    <table class="aui">
+    <table class="aui" id="has-caption">
         <caption>This is a CAPTION. It's super cool.</caption>
         <thead>
             <tr>
-                <th id="name" scope="col">Name</th>
-                <th id="type" scope="col">Type</th>
-                <th id="order" scope="col">Order</th>
-                <th id="action" scope="col">Action</th>
+                <th id="has-caption-name">Name</th>
+                <th id="has-caption-type">Type</th>
+                <th id="has-caption-order">Order</th>
+                <th id="has-caption-action">Action</th>
             </tr>
         </thead>
         <tfoot>
@@ -380,16 +380,16 @@
         </tfoot>
         <tbody>
             <tr>
-                <td headers="name">Default</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="has-caption-name">Default</td>
+                <td headers="has-caption-type">Internal Directory</td>
+                <td headers="has-caption-order">
                     <ul class="menu">
                         <li>
                             <a class="down" href="#">Down</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="has-caption-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -398,9 +398,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="has-caption-name">Corporate LDAP</td>
+                <td headers="has-caption-type">Microsoft Active Directory</td>
+                <td headers="has-caption-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -410,31 +410,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
-                    <ul class="menu">
-                        <li>
-                            <a href="#">An Action</a>
-                        </li>
-                        <li>
-                            <a href="#">Another Action</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
-                    <ul class="menu">
-                        <li>
-                            <a class="up" href="#">Up</a>
-                        </li>
-                        <li>
-                            <a class="down" href="#">Down</a>
-                        </li>
-                    </ul>
-                </td>
-                <td headers="action">
+                <td headers="has-caption-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -446,9 +422,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="has-caption-name">Corporate LDAP</td>
+                <td headers="has-caption-type">Microsoft Active Directory</td>
+                <td headers="has-caption-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -458,7 +434,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="has-caption-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -470,16 +446,40 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Contractor Directory</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="has-caption-name">Corporate LDAP</td>
+                <td headers="has-caption-type">Microsoft Active Directory</td>
+                <td headers="has-caption-order">
+                    <ul class="menu">
+                        <li>
+                            <a class="up" href="#">Up</a>
+                        </li>
+                        <li>
+                            <a class="down" href="#">Down</a>
+                        </li>
+                    </ul>
+                </td>
+                <td headers="has-caption-action">
+                    <ul class="menu">
+                        <li>
+                            <a href="#">An Action</a>
+                        </li>
+                        <li>
+                            <a href="#">Another Action</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td headers="has-caption-name">Contractor Directory</td>
+                <td headers="has-caption-type">Internal Directory</td>
+                <td headers="has-caption-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="has-caption-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -490,9 +490,9 @@
         </tbody>
         <tbody>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="has-caption-name">Corporate LDAP</td>
+                <td headers="has-caption-type">Microsoft Active Directory</td>
+                <td headers="has-caption-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -502,7 +502,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="has-caption-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -514,16 +514,16 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Default</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="has-caption-name">Default</td>
+                <td headers="has-caption-type">Internal Directory</td>
+                <td headers="has-caption-order">
                     <ul class="menu">
                         <li>
                             <a class="down" href="#">Down</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="has-caption-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -532,9 +532,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="has-caption-name">Corporate LDAP</td>
+                <td headers="has-caption-type">Microsoft Active Directory</td>
+                <td headers="has-caption-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -544,7 +544,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="has-caption-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -556,16 +556,16 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Contractor Directory</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="has-caption-name">Contractor Directory</td>
+                <td headers="has-caption-type">Internal Directory</td>
+                <td headers="has-caption-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="has-caption-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -576,29 +576,29 @@
         </tbody>
     </table>
     <h2>A complex <code>table</code>.</h2>
-    <table class="aui">
+    <table class="aui" id="complex">
         <thead>
             <tr>
                 <th></th>
-                <th id="name" scope="col">Name</th>
-                <th id="type" scope="col">Type</th>
-                <th id="order" scope="col">Order</th>
-                <th id="action" scope="col">Action</th>
+                <th id="complex-name">Name</th>
+                <th id="complex-type">Type</th>
+                <th id="complex-order">Order</th>
+                <th id="complex-action">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <th>First Row</th>
-                <td headers="name">Default</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="complex-name">Default</td>
+                <td headers="complex-type">Internal Directory</td>
+                <td headers="complex-order">
                     <ul class="menu">
                         <li>
                             <a class="down" href="#">Down</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="complex-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -607,9 +607,9 @@
                 </td>
             </tr>
             <tr><th>Second Row</th>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="complex-name">Corporate LDAP</td>
+                <td headers="complex-type">Microsoft Active Directory</td>
+                <td headers="complex-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -619,7 +619,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="complex-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -632,9 +632,9 @@
             </tr>
             <tr>
                 <th>Third Row</th>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="complex-name">Corporate LDAP</td>
+                <td headers="complex-type">Microsoft Active Directory</td>
+                <td headers="complex-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -644,7 +644,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="complex-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -657,9 +657,9 @@
             </tr>
             <tr>
                 <th>Fourth Row</th>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="complex-name">Corporate LDAP</td>
+                <td headers="complex-type">Microsoft Active Directory</td>
+                <td headers="complex-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -669,7 +669,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="complex-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -682,16 +682,16 @@
             </tr>
             <tr>
                 <th>Fifth Row</th>
-                <td headers="name">Contractor Directory</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="complex-name">Contractor Directory</td>
+                <td headers="complex-type">Internal Directory</td>
+                <td headers="complex-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="complex-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -704,27 +704,27 @@
 
     <h2>Nested <code>table</code> example</h2>
 
-    <table class="aui">
+    <table class="aui" id="nested">
         <thead>
             <tr>
-                <th id="name" scope="col">Name</th>
-                <th id="type" scope="col">Type</th>
-                <th id="order" scope="col">Order</th>
-                <th id="action" scope="col">Action</th>
+                <th id="nested-name">Name</th>
+                <th id="nested-type">Type</th>
+                <th id="nested-order">Order</th>
+                <th id="nested-action">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td headers="name">Default</td>
-                <td headers="type">Internal Directory</td>
-                <td class="order" headers="order">
+                <td headers="nested-name">Default</td>
+                <td headers="nested-type">Internal Directory</td>
+                <td headers="nested-order">
                     <ul class="menu">
                         <li>
                             <a class="down" href="#">Down</a>
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="nested-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -733,9 +733,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="nested-name">Corporate LDAP</td>
+                <td headers="nested-type">Microsoft Active Directory</td>
+                <td headers="nested-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -745,7 +745,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="nested-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -761,24 +761,24 @@
                     <table class="">
                         <thead>
                             <tr>
-                                <th id="name" scope="col">Name</th>
-                                <th id="type" scope="col">Type</th>
-                                <th id="order" scope="col">Order</th>
-                                <th id="action" scope="col">Action</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Order</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td headers="name">Default</td>
-                                <td headers="type">Internal Directory</td>
-                                <td class="order" headers="order">
+                                <td>Default</td>
+                                <td>Internal Directory</td>
+                                <td>
                                     <ul class="menu">
                                         <li>
                                             <a class="down" href="#">Down</a>
                                         </li>
                                     </ul>
                                 </td>
-                                <td headers="action">
+                                <td>
                                     <ul class="menu">
                                         <li>
                                             <a href="#">An Action</a>
@@ -787,9 +787,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td headers="name">Corporate LDAP</td>
-                                <td headers="type">Microsoft Active Directory</td>
-                                <td class="order" headers="order">
+                                <td>Corporate LDAP</td>
+                                <td>Microsoft Active Directory</td>
+                                <td>
                                     <ul class="menu">
                                         <li>
                                             <a class="up" href="#">Up</a>
@@ -799,31 +799,7 @@
                                         </li>
                                     </ul>
                                 </td>
-                                <td headers="action">
-                                    <ul class="menu">
-                                        <li>
-                                            <a href="#">An Action</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Another Action</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td headers="name">Corporate LDAP</td>
-                                <td headers="type">Microsoft Active Directory</td>
-                                <td class="order" headers="order">
-                                    <ul class="menu">
-                                        <li>
-                                            <a class="up" href="#">Up</a>
-                                        </li>
-                                        <li>
-                                            <a class="down" href="#">Down</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td headers="action">
+                                <td>
                                     <ul class="menu">
                                         <li>
                                             <a href="#">An Action</a>
@@ -835,9 +811,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td headers="name">Corporate LDAP</td>
-                                <td headers="type">Microsoft Active Directory</td>
-                                <td class="order" headers="order">
+                                <td>Corporate LDAP</td>
+                                <td>Microsoft Active Directory</td>
+                                <td>
                                     <ul class="menu">
                                         <li>
                                             <a class="up" href="#">Up</a>
@@ -847,7 +823,7 @@
                                         </li>
                                     </ul>
                                 </td>
-                                <td headers="action">
+                                <td>
                                     <ul class="menu">
                                         <li>
                                             <a href="#">An Action</a>
@@ -859,16 +835,40 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td headers="name">Contractor Directory</td>
-                                <td headers="type">Internal Directory</td>
-                                <td class="order" headers="order">
+                                <td>Corporate LDAP</td>
+                                <td>Microsoft Active Directory</td>
+                                <td>
+                                    <ul class="menu">
+                                        <li>
+                                            <a class="up" href="#">Up</a>
+                                        </li>
+                                        <li>
+                                            <a class="down" href="#">Down</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="menu">
+                                        <li>
+                                            <a href="#">An Action</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Another Action</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Contractor Directory</td>
+                                <td>Internal Directory</td>
+                                <td>
                                     <ul class="menu">
                                         <li>
                                             <a class="up" href="#">Up</a>
                                         </li>
                                     </ul>
                                 </td>
-                                <td headers="action">
+                                <td>
                                     <ul class="menu">
                                         <li>
                                             <a href="#">An Action</a>
@@ -881,9 +881,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="nested-name">Corporate LDAP</td>
+                <td headers="nested-type">Microsoft Active Directory</td>
+                <td headers="nested-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -893,7 +893,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="nested-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -905,9 +905,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="nested-name">Corporate LDAP</td>
+                <td headers="nested-type">Microsoft Active Directory</td>
+                <td headers="nested-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -917,7 +917,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="nested-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
@@ -929,9 +929,9 @@
                 </td>
             </tr>
             <tr>
-                <td headers="name">Corporate LDAP</td>
-                <td headers="type">Microsoft Active Directory</td>
-                <td class="order" headers="order">
+                <td headers="nested-name">Corporate LDAP</td>
+                <td headers="nested-type">Microsoft Active Directory</td>
+                <td headers="nested-order">
                     <ul class="menu">
                         <li>
                             <a class="up" href="#">Up</a>
@@ -941,7 +941,7 @@
                         </li>
                     </ul>
                 </td>
-                <td headers="action">
+                <td headers="nested-action">
                     <ul class="menu">
                         <li>
                             <a href="#">An Action</a>
