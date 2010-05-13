@@ -51,12 +51,12 @@
 .aui-dd-parent .aui-dropdown {
     _width: 1%;
 }
-.aui-dd-parent .aui-dropdown li a {
+.aui-dd-parent .aui-dropdown li.dropdown-item a.item-link {
     _zoom: 1;
 }
-.aui-dd-parent .aui-dropdown li a:hover,
-.aui-dd-parent .aui-dropdown li a:active,
-.aui-dd-parent .aui-dropdown li a focus {
+.aui-dd-parent .aui-dropdown li.dropdown-item a.item-link:hover,
+.aui-dd-parent .aui-dropdown li.dropdown-item a.item-link:active,
+.aui-dd-parent .aui-dropdown li.dropdown-item a.item-link focus {
     _background: #fff;
     _text-decoration: none;
 }
