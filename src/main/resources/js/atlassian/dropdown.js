@@ -23,24 +23,35 @@ AJS.dropDown = function (obj, usroptions) {
             hideHandler: function() {},
             moveHandler: function(selection,dir) {}
         };
+    var appendClasses = function() {
+        AJS.$(".aui-dropdown li").each(function(){
+            AJS.$(this).addClass("dropdown-item");
+        });
+
+        AJS.$(".aui-dropdown li.dropdown-item a").each(function(){
+            AJS.$(this).addClass("item-link");
+        });
+    }
     AJS.$.extend(options, usroptions);
     options.alignment = {left:"left",right:"right"}[options.alignment.toLowerCase()]  || "left";
     if (obj && obj.jquery) { // if AJS.$
         dd = obj;
+        appendClasses();
     } else if (typeof obj == "string") { // if AJS.$ selector
         dd = AJS.$(obj);
+        appendClasses();
     } else if (obj && obj.constructor == Array) { // if JSON
         dd = AJS("div").addClass("aui-dropdown").toggleClass("hidden", !!options.isHiddenByDefault);
         for (var i = 0, ii = obj.length; i < ii; i++) {
             var ol = AJS("ol");
             for (var j = 0, jj = obj[i].length; j < jj; j++) {
-                var li = AJS("li");
+                var li = AJS("li").addClass("dropdown-item");
                 var properties = obj[i][j];
                 if (properties.href) {
                     li.append(AJS("a")
                         .html("<span>" + properties.name + "</span>")
                         .attr({href:  properties.href})
-                        .addClass(properties.className));
+                        .addClass(properties.className + " item-link"));
 
                     // deprecated - use the properties on the li, not the span
                     AJS.$.data(AJS.$("a > span", li)[0], "properties", properties);

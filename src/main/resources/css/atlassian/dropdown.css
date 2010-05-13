@@ -55,8 +55,8 @@
     padding: 0;
     right: 7px;
 }
-.aui-dd-parent .aui-dropdown li,
-.aui-dropdown li  {
+.aui-dd-parent .aui-dropdown li.dropdown-item,
+.aui-dropdown li.dropdown-item  {
     background: #fff;
     color: #000;
     display: block;
@@ -65,8 +65,8 @@
     position: static;
 }
 
-.aui-dd-parent .aui-dropdown a,
-.aui-dropdown a {
+.aui-dd-parent .aui-dropdown a.item-link,
+.aui-dropdown a.item-link {
     background: #fff;
     color: #036;
     display: block;
@@ -77,21 +77,21 @@
     white-space: nowrap;
     width: auto;
 }
-.aui-dd-parent .aui-dropdown a:link,
-.aui-dd-parent .aui-dropdown a:visited,
-.aui-dropdown a:link,
-.aui-dropdown a:visited {
+.aui-dd-parent .aui-dropdown a.item-link:link,
+.aui-dd-parent .aui-dropdown a.item-link:visited,
+.aui-dropdown a.item-link:link,
+.aui-dropdown a.item-link:visited {
     background: #fff;
     color: #036;
     padding: 0.3em 0.5em;
 }
-.aui-dd-parent .aui-dropdown li.active a,
-.aui-dd-parent .aui-dropdown a:hover,
-.aui-dd-parent .aui-dropdown a:active,
-.aui-dd-parent .aui-dropdown a:focus,
-.aui-dropdown a:hover,
-.aui-dropdown a:active,
-.aui-dropdown a:focus  {
+.aui-dd-parent .aui-dropdown li.dropdown-item.active a.item-link,
+.aui-dd-parent .aui-dropdown a.item-link:hover,
+.aui-dd-parent .aui-dropdown a.item-link:active,
+.aui-dd-parent .aui-dropdown a.item-link:focus,
+.aui-dropdown a.item-link:hover,
+.aui-dropdown a.item-link:active,
+.aui-dropdown a.item-link:focus  {
     background: #f2f2f2;
     color: #036;
     padding: 0.3em 0.5em;
