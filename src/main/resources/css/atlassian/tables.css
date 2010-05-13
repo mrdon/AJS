@@ -4,48 +4,65 @@ table.aui {
     min-width: 45em;
     width: 100%;
 }
-    table.aui caption {
+    table.aui table.aui {
+        margin: 0;
+    }
+    table.aui > caption {
         padding: 0.5em;
     }
-    table.aui tr {
+    table.aui > thead > tr,
+    table.aui > tbody > tr,
+    table.aui > tfoot > tr {
         background: #fff;
         color: #111;
     }
-    table.aui tr.odd {
+    table.aui > thead > tr.odd,
+    table.aui > tbody > tr.odd,
+    table.aui > tfoot > tr.odd {
         background: #fafafa;
         color: #111;
     }
-    table.aui tr.odd th {
+    table.aui > thead > tr.odd > th,
+    table.aui > tbody > tr.odd > th {
         background: #eee;
         color: #111;
     }
-    table.aui tbody th {
+    table.aui > tbody > tr > th {
         background: #fafafa;
         color: #111;
     }
-        table.aui th,
-        table.aui td {
+        table.aui > thead > tr > th,
+        table.aui > tbody > tr > th,
+        table.aui > thead > tr > td,
+        table.aui > tbody > tr > td,
+        table.aui > tfoot > tr > td {
             padding: 0.5em 0.4em 0.5em 0.6em;
-        }
-    table.aui thead {
-        border-bottom: 2px solid #d2d2d2;
-    }
-        table.aui th {
-            background: #f0f0f0;
-            color: #333;
             text-align: left;
         }
+    table.aui > thead {
+        border-bottom: 2px solid #d2d2d2;
+    }
+        table.aui > thead > tr > th {
+            background: #f0f0f0;
+            color: #333;
+        }
     /* Borders on TBODY and TFOOT don't work in IE - whereas these at least work in IE7 & IE8 */
-    table.aui tbody tr:first-child td,
-    table.aui tfoot tr:first-child td {
+    table.aui > tbody > tr:first-child > td,
+    table.aui > tfoot > tr:first-child > td {
         border-top: 2px solid #d2d2d2;
     }
-        table.aui ul.menu {
+        table.aui > thead > tr > th > ul.menu,
+        table.aui > tbody > tr > th > ul.menu,
+        table.aui > tbody > tr > td > ul.menu,
+        table.aui > tfoot > tr > td > ul.menu {
             list-style-type: none;
             margin: 0; 
             padding: 0;
         }
-        table.aui ul.menu li {
+        table.aui > thead > tr > th > ul.menu > li,
+        table.aui > tbody > tr > th > ul.menu > li,
+        table.aui > tbody > tr > td > ul.menu > li,
+        table.aui > tfoot > tr > td > ul.menu > li {
             float: left;
             margin: 0 0.5em 0 0;
             width: auto;
