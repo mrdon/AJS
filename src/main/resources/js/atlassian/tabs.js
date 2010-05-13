@@ -1,32 +1,32 @@
 (function (){
-    AJS.Tabs = AJS.Tabs || {};
-
     var $tabs,
-        $tabMenu;
+        $tabMenu,
+        ACTIVE_TAB = "active-tab",
+        ACTIVE_PANE = "active-pane";
 
     AJS.Tabs = {
         setup: function () {
             $tabs = AJS.$("div.aui-tabs");
             for (var i=0, ii = $tabs.length; i < ii; i++) {
-                $tabMenu = AJS.$("ul.tabs", $tabs[i]);
+                $tabMenu = AJS.$("ul.tabs-menu", $tabs[i]);
 
                 // Set up click event for tabs
                 AJS.$("a", $tabMenu).click(function (e) {
                     AJS.Tabs.change(AJS.$(this).attr("href"), e);
+                    e && e.preventDefault();
                 });
 
             };
         },
         change: function (pane, e) {
-            AJS.$(pane.match(/#.*/)[0]).addClass("active-pane")
+            AJS.$(pane.match(/#.*/)[0]).addClass(ACTIVE_PANE)
                        .siblings()
-                       .removeClass("active-pane");
+                       .removeClass(ACTIVE_PANE);
 
-            AJS.$("a[href=" + pane + "]").parent("li")
-                                     .addClass("active-tab")
+            AJS.$("a[href=" + pane + "]").parent("li.menu-item")
+                                     .addClass(ACTIVE_TAB)
                                      .siblings()
-                                     .removeClass("active-tab");
-            e && e.preventDefault();
+                                     .removeClass(ACTIVE_TAB);
         }
     };
     AJS.$(AJS.Tabs.setup);

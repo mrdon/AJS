@@ -2,20 +2,20 @@
 /* AUI Tabs */
 .aui-tabs {
     margin: 0 0 1em 0;
-} /* IE */
-    .aui-tabs ul.tabs {
+}
+    .aui-tabs ul.tabs-menu {
         list-style-type: none;
         margin: 0;
         padding: 0;
         z-index: 5;
     }
-    .aui-tabs ul.tabs li {
+    .aui-tabs ul.tabs-menu li.menu-item {
         border: 1px solid #bbb;
         display: block;
         margin: -1px -1px 0 0;
         padding: 0;
     }
-        .aui-tabs ul.tabs li a {
+        .aui-tabs ul.tabs-menu li.menu-item a {
             background-color: #f0f0f0;
             color: #535353;
             display: block;
@@ -25,80 +25,80 @@
             text-decoration: none;
             white-space: nowrap;
         }
-        .aui-tabs ul.tabs li a:active,
-        .aui-tabs ul.tabs li a:visited {
+        .aui-tabs ul.tabs-menu li.menu-item a:active,
+        .aui-tabs ul.tabs-menu li.menu-item a:visited {
             background-color: #f0f0f0;
             color: #535353;
         }
-        .aui-tabs ul.tabs li a:hover,
-        .aui-tabs ul.tabs li a:active,
-        .aui-tabs ul.tabs li a:focus {
+        .aui-tabs ul.tabs-menu li.menu-item a:hover,
+        .aui-tabs ul.tabs-menu li.menu-item a:active,
+        .aui-tabs ul.tabs-menu li.menu-item a:focus {
             background-color: #fff;
             color: #535353;
         }
-    .aui-tabs ul.tabs li.active-tab {
+    .aui-tabs ul.tabs-menu li.menu-item.active-tab {
         background-color: #fff;
     }
-        .aui-tabs ul.tabs li.active-tab a {
+        .aui-tabs ul.tabs-menu li.menu-item.active-tab a {
             background-color: #fff;
             color: #000;
-        } /* IE */
-        .aui-tabs ul.tabs .active-tab a:focus {
+        }
+        .aui-tabs ul.tabs-menu  li.menu-item.active-tab a:focus {
             outline: none;
         }
-.aui-tabs ul.tabs li.active-tab strong {
+.aui-tabs ul.tabs-menu li.menu-item.active-tab strong {
     background-color: transparent;
     color: #000;
 }
-    .aui-tabs .pane {
+    .aui-tabs .tabs-pane {
         border: 1px solid #bbb;
         display: none;
         padding: 1em;
     }
-    .aui-tabs .active-pane {
+    .aui-tabs .tabs-pane.active-pane {
         display: block;
     }
 
 /* vertical tabs
 - as used on browse projects */
-.v-tabs ul.tabs {
+.vertical-tabs ul.tabs-menu {
     float: left;
     width: 11.1em;
-} /* IE */
-    .v-tabs ul.tabs li {
+}
+    .vertical-tabs ul.tabs-menu li.menu-item {
         margin: -1px 0 0 1em;
-    } /* IE */
-    .v-tabs ul.tabs li.first {
+    }
+    .vertical-tabs ul.tabs-menu li.menu-item.first {
         margin-top: 1em;
         padding: 0;
     }
-    .v-tabs ul.tabs li.active-tab {
+    .vertical-tabs ul.tabs-menu li.menu-item.active-tab {
         background-color: #fff;
-        border-right: none;
+        border-right-color: #fff;
         margin-left: 0;
-    } /* IE */
-    .v-tabs .pane {
+    }
+    .vertical-tabs .tabs-pane {
         margin: 0 0 0 11em;
         position: relative;
         z-index: 1;
     }
 
 /* horizontal tabs*/
-.h-tabs ul.tabs {
+.horizontal-tabs ul.tabs-menu {
     overflow: hidden;
     position: relative;
     top: 1px;
-} /* IE */
-    .h-tabs ul.tabs li {
+}
+    .horizontal-tabs ul.tabs-menu li.menu-item {
         float: left;
         margin: 0 -1px 0 0;
         width: auto;
         white-space: nowrap;
-    } /* IE */
-    .h-tabs ul.tabs li.first {
+    }
+    .horizontal-tabs ul.tabs-menu li.menu-item.first {
         margin-left: 1em;
     }
-    .h-tabs ul.tabs li.active-tab {
+    .horizontal-tabs ul.tabs-menu li.menu-item.active-tab {
         border-bottom-color: #fff;
         color: #000;
     }

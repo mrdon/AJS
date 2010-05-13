@@ -35,7 +35,6 @@ public class AUIFileStructureTest
             "css/atlassian/ie/forms-ie.css",
             "css/atlassian/ie/icons-ie.css",
             "css/atlassian/ie/inline-dialog-ie.css",
-            "css/atlassian/ie/tabs-ie.css",
             "css/atlassian/images/arrow.png",
             "css/atlassian/images/fav_off_16.png",
             "css/atlassian/images/fav_on_16.png",

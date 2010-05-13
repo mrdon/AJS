@@ -35,10 +35,7 @@
         <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/ie/inline-dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="tabs-ie.css" location="css/atlassian/ie/tabs-ie.css">
-            <param name="ieonly" value="true"/>
-        </resource>
-        
+
         <resource type="download" name="raphael.js" location="js/external/raphael/raphael.js"/>
         <resource type="download" name="raphael.shadow.js" location="js/external/raphael/raphael.shadow.js"/>
         <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
@@ -47,7 +44,7 @@
         <resource type="download" name="jquery-ui-1.7-bug-fixes.js" location="js/external/jquery/jquery-ui-1.7-bug-fixes.js"/>
         <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
         <resource type="download" name="jquery.form.js" location="js/external/jquery/plugins/jquery.form.js"/>
-        
+
         <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
         <resource type="download" name="atlassian.overrides.js" location="js/atlassian/atlassian.overrides.js"/>        
         <resource type="download" name="event.js" location="js/atlassian/event.js"/>
