@@ -16,14 +16,14 @@ table.aui {
         background: #fff;
         color: #111;
     }
-    table.aui > thead > tr.odd,
-    table.aui > tbody > tr.odd,
-    table.aui > tfoot > tr.odd {
+    table.aui > thead > tr.zebra,
+    table.aui > tbody > tr.zebra,
+    table.aui > tfoot > tr.zebra {
         background: #fafafa;
         color: #111;
     }
-    table.aui > thead > tr.odd > th,
-    table.aui > tbody > tr.odd > th {
+    table.aui > thead > tr.zebra > th,
+    table.aui > tbody > tr.zebra > th {
         background: #eee;
         color: #111;
     }
