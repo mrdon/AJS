@@ -56,7 +56,7 @@ testAjs.addTest("testDialogRemovePanel", function () {
     .addPanel("First", "<p></p>")
     .addPanel("Second", "<p></p>")
     .getPanel(0).remove();
-    res = (AJS.$("ul.page-menu li").length == 1);
+    res = (AJS.$("ul.dialog-page-menu li").length == 1);
     popup.remove();
     return res;
 });
@@ -91,7 +91,7 @@ testAjs.addTest("testDialogMenuHidden", function() {
     var popup = new AJS.Dialog(860, 530, "test-dialog");
     popup.addPanel("First", "<p></p>", "panel1").show();
 
-    var res = AJS.$("#test-dialog .page-menu").css("display") == "none";
+    var res = AJS.$("#test-dialog .dialog-page-menu").css("display") == "none";
     popup.remove();
     return res;
 });
