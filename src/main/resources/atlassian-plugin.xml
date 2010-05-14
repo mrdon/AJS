@@ -17,6 +17,7 @@
         <resource type="download" name="forms.css" location="css/atlassian/forms.css"/>
         <resource type="download" name="icons.css" location="css/atlassian/icons.css"/>
         <resource type="download" name="inline-dialog.css" location="css/atlassian/inline-dialog.css"/>
+        <resource type="download" name="messages.css" location="css/atlassian/messages.css"/>
         <resource type="download" name="tables.css" location="css/atlassian/tables.css"/>
         <resource type="download" name="tabs.css" location="css/atlassian/tabs.css"/>
 
@@ -55,6 +56,7 @@
         <resource type="download" name="inline-dialog.js" location="js/atlassian/inline-dialog.js"/>
         <resource type="download" name="firebug.js" location="js/atlassian/firebug.js"/>
         <resource type="download" name="forms.js" location="js/atlassian/forms.js"/>
+        <resource type="download" name="messages.js" location="js/atlassian/messages.js"/>
         <resource type="download" name="tables.js" location="js/atlassian/tables.js"/>
         <resource type="download" name="tabs.js" location="js/atlassian/tabs.js"/>
         <resource type="download" name="template.js" location="js/atlassian/template.js"/>

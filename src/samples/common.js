@@ -22,6 +22,7 @@
         "atlassian/inline-dialog.js",
         "atlassian/firebug.js",
         "atlassian/forms.js",
+        "atlassian/messages.js",
         "atlassian/tables.js",
         "atlassian/tabs.js",
         "atlassian/template.js",

@@ -5,16 +5,7 @@
             return draw(ro, context, size);
         };
     };
-    function draw(ro, context, size) {
-        size = size || 24;
-        var r = Raphael([context, size + 1, size + 1].concat(ro));
-        r.scale(size / 24, size / 24, 0, 0);
-    }
-})();
-
-/* Set up icons automatically based on class names*/
-AJS.$(function () {
-    AJS.$(".svg-icon").each(function () {
+    AJS.Icons.addIcon.init = function () {
         var classes = this.className.split(" "),
             len = classes.length,
             size = this.className.match(/(^|\s)size-(\d+)(\s|$)/);
@@ -24,7 +15,17 @@ AJS.$(function () {
                 AJS.Icons[classes[len]](this, size);
             }
         }
-    });
+    };
+    function draw(ro, context, size) {
+        size = size || 24;
+        var r = Raphael([context, size + 1, size + 1].concat(ro));
+        r.scale(size / 24, size / 24, 0, 0);
+    }
+})();
+
+/* Set up icons automatically based on class names*/
+AJS.$(function () {
+    AJS.$(".svg-icon").each(AJS.Icons.addIcon.init);
 });
 
 /* -- Icon Descriptions -- */
@@ -178,5 +179,19 @@ AJS.Icons.addIcon("warning", [{
         path: "M11.177,15.171l-0.798-7.984h3.194l-0.8,7.984H11.177z M11.976,16.368c-0.882,0-1.597,0.716-1.597,1.597c0,0.883,0.715,1.598,1.597,1.598c0.881,0,1.598-0.715,1.598-1.598C13.573,17.084,12.856,16.368,11.976,16.368z",
         stroke: "none",
         fill: "#fff"
+    }
+]);
+
+/* Close Icon */
+AJS.Icons.addIcon("close", [{
+        type: "path",
+        path: "M15.535,12l4.95-4.95c0.977-0.977,0.977-2.559,0-3.536s-2.56-0.977-3.536,0L12,8.464l-4.95-4.95c-0.977-0.977-2.559-0.977-3.536,0s-0.977,2.559,0,3.536L8.464,12l-4.95,4.95c-0.977,0.977-0.977,2.559,0,3.535s2.559,0.977,3.536,0L12,15.535l4.949,4.949c0.977,0.977,2.56,0.977,3.536,0s0.977-2.559,0-3.535L15.535,12z",
+        stroke: "none",
+        fill: "#999"
+    }, {
+        type: "path",
+        path: "M18.718,20.217c-0.401,0-0.777-0.156-1.062-0.439L12,14.121l-5.657,5.656c-0.284,0.283-0.66,0.439-1.061,0.439c-0.4,0-0.777-0.156-1.061-0.439c-0.283-0.283-0.439-0.66-0.439-1.061s0.156-0.777,0.439-1.061L9.878,12L4.222,6.343c-0.283-0.284-0.439-0.66-0.439-1.061c0-0.4,0.156-0.777,0.439-1.061c0.284-0.283,0.66-0.439,1.061-0.439c0.401,0,0.777,0.156,1.061,0.439L12,9.878l5.656-5.657c0.284-0.283,0.66-0.439,1.062-0.439c0.4,0,0.776,0.156,1.061,0.439c0.283,0.284,0.439,0.66,0.439,1.061c0,0.401-0.156,0.777-0.439,1.061L14.121,12l5.657,5.657c0.283,0.283,0.439,0.66,0.439,1.061s-0.156,0.777-0.439,1.061C19.494,20.061,19.118,20.217,18.718,20.217L18.718,20.217z",
+        stroke: "none",
+        fill: "90-#999996-#a1a19f-#b8b8b7-#ccc"
     }
 ]);
