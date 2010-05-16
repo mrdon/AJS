@@ -73,8 +73,8 @@ public class AUIDropDownTest extends AUISeleniumTestCase
         String creationString1 = client.getEval("window.AJS.$('#dropDown1').dropDown('Standard');");    //create dropdown 1
         String creationString2 = client.getEval("window.AJS.$('#dropDown2').dropDown('Standard');");    //create dropdown 2
 
-        assertTrue("Dropdown1 not created successfully: " + creationString1 , !creationString1.isEmpty());
-        assertTrue("Dropdown2 not created successfully: " + creationString2 , !creationString2.isEmpty());
+        assertTrue("Dropdown1 not created successfully: " + creationString1 , creationString1.length() != 0);
+        assertTrue("Dropdown2 not created successfully: " + creationString2 , creationString2.length() != 0);
     }
 
     //Test to make sure dropdowns show correctly after being clicked, will fail if other dropdown is also showing while the other one is

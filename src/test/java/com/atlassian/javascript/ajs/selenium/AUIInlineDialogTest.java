@@ -26,8 +26,8 @@ public class AUIInlineDialogTest extends AUISeleniumTestCase
         String creationString1 = createInlineDialog("#inlineDialog1", "1", "'dialog-content.html'", null);    //create inline-dialog 1
         String creationString2 = createInlineDialog("#inlineDialog2", "2", "'dialog-content.html'", null);    //create inline-dialog 2
 
-        assertTrue("InlineDialog1 not created successfully: " + creationString1, !creationString1.isEmpty());
-        assertTrue("InlineDialog2 not created successfully: " + creationString2, !creationString2.isEmpty());
+        assertTrue("InlineDialog1 not created successfully: " + creationString1, creationString1.length() != 0);
+        assertTrue("InlineDialog2 not created successfully: " + creationString2, creationString2.length() != 0);
     }
 
     public void testAUIInlineDialogNoBind()
@@ -35,7 +35,7 @@ public class AUIInlineDialogTest extends AUISeleniumTestCase
         setUpTest(false);
         String creationString = createInlineDialog("#inlineDialog1", "1", "'dialog-content.html'", "{noBind:'true'}");    //create inline-dialog 1
 
-        assertTrue("InlineDialog1 not created successfully: " + creationString, !creationString.isEmpty());
+        assertTrue("InlineDialog1 not created successfully: " + creationString, creationString.length() != 0);
     }
 
     public void testAUIInlineDialogNoBindClick()
