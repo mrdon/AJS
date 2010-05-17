@@ -1,6 +1,7 @@
 (function (){
     var $tabs,
         $tabMenu,
+        REGEX = /#.*/,
         ACTIVE_TAB = "active-tab",
         ACTIVE_PANE = "active-pane";
 
@@ -19,7 +20,7 @@
             };
         },
         change: function ($a, e) {
-            var $pane = AJS.$($a.attr("href").match(/#.*/)[0]);
+            var $pane = AJS.$($a.attr("href").match(REGEX)[0]);
             $pane.addClass(ACTIVE_PANE).siblings()
                                        .removeClass(ACTIVE_PANE);
             $a.parent("li.menu-item").addClass(ACTIVE_TAB)
