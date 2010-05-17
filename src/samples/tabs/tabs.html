@@ -105,7 +105,10 @@
     
 <script type="text/javascript">
     AJS.$(document).ready(function() {
-        // No JS yet
+        // example of listening for tabSelect event
+        AJS.$(document).bind("tabSelect", function () {
+            AJS.log(arguments);
+        });
     });
 </script>
 </body>

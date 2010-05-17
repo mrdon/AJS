@@ -19,13 +19,16 @@
             };
         },
         change: function ($a, e) {
-            var tabId = $a.attr("href");
-            AJS.$(tabId.match(/#.*/)[0]).addClass(ACTIVE_PANE)
-                                        .siblings()
-                                        .removeClass(ACTIVE_PANE);
+            var $pane = AJS.$($a.attr("href").match(/#.*/)[0]);
+            $pane.addClass(ACTIVE_PANE).siblings()
+                                       .removeClass(ACTIVE_PANE);
             $a.parent("li.menu-item").addClass(ACTIVE_TAB)
                                      .siblings()
                                      .removeClass(ACTIVE_TAB);
+            $a.trigger("tabSelect", {
+                tab: $a,
+                pane: $pane
+            });
         }
     };
     AJS.$(AJS.Tabs.setup);
