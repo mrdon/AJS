@@ -335,7 +335,10 @@
         });
         
         //Exposed functions
-        popup.show = function () {
+        popup.show = function (e) {
+            if(e){
+                e.stopPropagation();
+            }
             appendPopup();
             initPopup(null, this);
         }

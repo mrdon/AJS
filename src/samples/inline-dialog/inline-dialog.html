@@ -29,6 +29,7 @@
     <div><a href="inline-dialog.html" id="popupLink">Click Link</a></div>
     <div><a href="inline-dialog.html" id="hoverLink">Hover Link</a></div>
     <div><a href="inline-dialog.html" id="noBind">noBind Test Link (This Link Should Do NOTHING)</a></div>
+    <div><a href="inline-dialog.html" id="testNoBind2">noBind Test Link (tests manual binding, should show a dialog)</a></div>
     <div><a href="#" id="functionPass">Function Argument Test Link (Check Console!)</a></div>
     <div><a href="inline-dialog.html" id="testFloat" style="float:right;">T</a></div>
     <div><a href="inline-dialog.html" id="testFloat2" style="float:right; clear: both;">TestingVeryVeryVeryVeryVeryVeryVeryLongLinkPositioning</a></div>
@@ -42,6 +43,7 @@
     <div><a href="inline-dialog.html" id="testBottom3" style="bottom:20px; left: 500px; position:absolute;">TestingBottomHeight (shouldn't flip if dialog is taller than screen)</a></div>
     <div><a href="inline-dialog.html" id="testBottom4" style="bottom:20px; left: 1000px; position:absolute;">TestingBottomHeight2</a></div>
      <div><a href="inline-dialog.html" id="testReverseFlip" style="left: 1200px; position:absolute;">TestingReverseFlip</a></div>
+
     <div id="testing">
         <!-- Testing iframeShim -->
         <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
@@ -110,7 +112,8 @@
 
             AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html", {initCallback: postProcess, hideDelay: 99999});
             AJS.InlineDialog(AJS.$("#hoverLink"), 2, "dialog-content.html", {initCallback: postProcess, onHover:true});
-            AJS.InlineDialog(AJS.$("#popupLink"), 3, "dialog-content.html", {noBind:true});
+            AJS.InlineDialog(AJS.$("#noBind"), 3, "dialog-content.html", {noBind:true});
+            test2 = AJS.InlineDialog(AJS.$("#testNoBind2"), 16, "dialog-content.html", {noBind:true});
             AJS.InlineDialog(AJS.$("#functionPass"), 4, function(content, trigger, showPopup){
                 console.log("Content: "); 
                 console.log(content);
@@ -130,6 +133,12 @@
             AJS.InlineDialog(AJS.$("#testBottom3"), 13, "dialog-content-tall.html");
             AJS.InlineDialog(AJS.$("#testBottom4"), 14, "dialog-content-tall2.html");
             AJS.InlineDialog(AJS.$("#testReverseFlip"), 15, "dialog-content-tall2.html", {onTop: true});
+
+            // test2.show();
+            AJS.$("#testNoBind2").click(function(e) {
+                e.preventDefault();
+                test2.show(e);
+            });
 
             // Testing AJS.inlineHelp
             AJS.inlineHelp();
