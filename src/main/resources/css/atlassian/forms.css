@@ -35,6 +35,7 @@ form.aui span.aui-form {
 }
 form.aui p {
     margin-bottom: 5px;
+    padding: 5px 0 5px 0;
 }
 form.aui fieldset {
     border: 0;
