@@ -11,9 +11,9 @@ AJS.containDropdown = function (dropdown, containerSelector, dynamic) {
 
     if (dropdown.$.parents(containerSelector).length !== -1) {
 
-        container = jQuery(containerSelector),
-        ddOffset = getDropdownOffset(),
-        shadowOffset = 30,
+        container = jQuery(containerSelector);
+        ddOffset = getDropdownOffset();
+        shadowOffset = 30;
         availableArea = container.outerHeight() - ddOffset - shadowOffset;
 
         if (availableArea <= parseInt(dropdown.$.attr("scrollHeight"), 10)) {
