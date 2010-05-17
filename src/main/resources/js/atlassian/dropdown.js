@@ -358,6 +358,7 @@ AJS.dropDown = function (obj, usroptions) {
                         shadow: "#333",
                         size: shadowSize,
                         stroke: "none",
+                        color: "none",
                         target: this.shadowParent[0]
                     });
                 }
