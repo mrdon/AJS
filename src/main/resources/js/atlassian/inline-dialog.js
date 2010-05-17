@@ -336,7 +336,7 @@
         
         //Exposed functions
         popup.show = function (e) {
-            if(e){
+            if (e) {
                 e.stopPropagation();
             }
             appendPopup();
