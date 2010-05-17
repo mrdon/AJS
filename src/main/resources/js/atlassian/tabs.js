@@ -12,19 +12,18 @@
 
                 // Set up click event for tabs
                 AJS.$("a", $tabMenu).click(function (e) {
-                    AJS.Tabs.change(AJS.$(this).attr("href"), e);
+                    AJS.Tabs.change(AJS.$(this), e);
                     e && e.preventDefault();
                 });
 
             };
         },
-        change: function (pane, e) {
-            AJS.$(pane.match(/#.*/)[0]).addClass(ACTIVE_PANE)
-                       .siblings()
-                       .removeClass(ACTIVE_PANE);
-
-            AJS.$("a[href=" + pane + "]").parent("li.menu-item")
-                                     .addClass(ACTIVE_TAB)
+        change: function ($a, e) {
+            var tabId = $a.attr("href");
+            AJS.$(tabId.match(/#.*/)[0]).addClass(ACTIVE_PANE)
+                                        .siblings()
+                                        .removeClass(ACTIVE_PANE);
+            $a.parent("li.menu-item").addClass(ACTIVE_TAB)
                                      .siblings()
                                      .removeClass(ACTIVE_TAB);
         }
