@@ -52,16 +52,16 @@
         font-weight: bold;
     }
     .aui-message p {
-        margin: 0 0 0.5em 0;
+        margin: 0.5em 0 0 0;
     }
-    .aui-message p:last-child {
+    .aui-message p:first-child {
         margin: 0;
     }
     .aui-message ul {
-        margin: 0 0 0.5em 0;
+        margin: 0.5em 0 0 0;
         padding: 0 0 0 1em;
     }
-    .aui-message ul:last-child {
+    .aui-message ul:first-child {
         margin: 0;
     }
         .aui-message ul li {
