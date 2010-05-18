@@ -286,31 +286,21 @@ form.aui.long-label .group,
 form.aui.long-label .buttons {
     padding-left: 250px;
 }
-form.aui.long-label .field-group label,
-form.aui.long-label legend span {
-    left: -250px;
-    margin-right: -240px;
-    width: 240px;
-}
-form.aui.long-label .group .field-group {
-    padding-left: 0;
-}
+form.aui.long-label .group label,
+form.aui.long-label .group .field-group,
 form.aui.long-label div.checkbox,
 form.aui.long-label div.radio {
     padding: 0 0 5px 0;
 }
-form.aui.long-label .group label,
-form.aui.long-label div.radio label,
-form.aui.long-label div.checkbox label {
-    left: 0;
-    margin: 0;
-    width: auto;
-}
-form.aui.long-label .group label {
-    left: 0;
-    margin: 0;
+form.aui.long-label legend span {
+    left: 110px;
 }
 
+@-moz-document url-prefix() { /* hacking for firefox */
+    form.aui.long-label .group legend span {
+        left: -140px;
+    }
+}
 
 /* //long labels */
 
