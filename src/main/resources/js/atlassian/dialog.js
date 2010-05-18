@@ -105,14 +105,13 @@ AJS.popup = function (options) {
         options.height = (height = (height || options.height));
 
         popup.css({
-            marginTop: - Math.round(height / 2),
-            marginLeft: - Math.round(width / 2),
+            marginTop: - Math.round(height / 2) +"px",
+            marginLeft: - Math.round(width / 2) + "px",
             width: width,
             height: height,
             background: "#fff",
             "z-index": parseInt(highestZIndex) + 2  //+ 2 so that the shadow can be shown on +1 (underneath the popup but above everything else)
         });
-
         return arguments.callee;
     })(options.width, options.height);
 
@@ -164,22 +163,7 @@ AJS.popup = function (options) {
 				AJS.$(document).trigger("showLayer", ["popup", this]);
             };
             show.call(this);
-            if (popup.css("position") == "absolute") {
-                // Internet Explorer case
-                var scrollfix = function () {
-                    var scrollDistance = document.documentElement.scrollTop || document.body.scrollTop;
-                    var marginTop = scrollDistance + (document.documentElement.clientHeight - options.height)/2;
-                    popup.css("margin-top", marginTop);
-                };
-                scrollfix();
-                AJS.$(window).load(scrollfix);
-                this.show = function () {
-                    show.call(this);
-                    scrollfix();
-                };
-            } else {
-                this.show = show;
-            }
+            this.show = show;
         },
         /**
          * Makes popup invisible

@@ -20,11 +20,6 @@ without CSS hacks * eg:
     width: 100%;
     z-index: 2499;
 }
-.aui-popup {
-    position: absolute;
-    top: 0;
-}
-
 
 /** * Fixes for IE7 and IE6 * - each property *must* be prefixed with
 an asterisk (*) * eg: 
@@ -36,10 +31,6 @@ an asterisk (*) * eg:
     *height: 100px; 
     *position: absolute;
 }
-.aui-dialog {
-    *position: absolute;
-}
-
 
 /** * Fixes for IE6 only * - each property *must* be prefixed with an
 underscore (_) * eg: 
