@@ -180,7 +180,7 @@ AJS.popup = function (options) {
             }
 
             //only undim if no other dialogs are visible
-            if (AJS.$(".dialog:visible").size()==0) {
+            if (AJS.$(".aui-dialog:visible").size()==0) {
                 AJS.undim();
             }
 
