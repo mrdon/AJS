@@ -350,7 +350,7 @@ AJS.dropDown = function (obj, usroptions) {
                         height: this.$.height()
                     }).insertBefore(this.$);
                     if (AJS.$.browser.msie) {
-                        this.shadowParent.css({right: - shadowXOffset})
+                        this.shadowParent.css({right: - shadowXOffset});
                     }
 
                     this.shadow = Raphael.shadow(0, 0, this.$.outerWidth(true), this.$.outerHeight(true), {
@@ -383,8 +383,8 @@ AJS.dropDown = function (obj, usroptions) {
                         this.iframeShim.css({
                             display: "block",
                             top: this.$.css("top"),
-                            width: this.$.outerWidth() + 1 + "px",
-                            height: this.$.outerHeight() + 1 + "px"
+                            width: this.$.outerWidth() + "px",
+                            height: this.$.outerHeight() + "px"
                         });
                         if(options.alignment=="left"){
                             this.iframeShim.css({left:"0px"});
