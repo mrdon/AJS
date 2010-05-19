@@ -127,7 +127,7 @@
                                 arrowOffsetX = mousePosition.x-leftEdge;
                                 drawPopup (popup, "auto", SCREEN_PADDING, posy, arrowOffsetX, arrowOffsetY, displayAbove);    //Calculate arrow x position based on mouse position
                             } else {
-                                if (triggerWidth < SCREEN_PADDING*2) {
+                                if (triggerWidth < 15) {
                                     arrowOffsetX = middleOfTrigger-leftEdge-SCREEN_PADDING/2;
                                 } else {
                                     arrowOffsetX = middleOfTrigger-leftEdge;
