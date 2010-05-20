@@ -155,17 +155,6 @@ if (typeof jQuery != "undefined") {
             },
 
             /**
-            * DEPRECATED instead use AJS.$(element).bind();
-            * Binds given function to some object or set of objects as event handlers by class name or id.
-            * @method bind
-            * @param {String} reference Element or name of the element class. Put "#" in the beginning od the string to use it as id.
-            * @param {String} handlerName (optional) Name of the event i.e. "click", "mouseover", etc.
-            * @param {Function} func Function to be attached.
-            * @return AJS object.
-            */
-            bind: function () {},
-
-            /**
             * Finds the index of an element in the array.
             * @method indexOf
             * @param item Array element which will be searched.
