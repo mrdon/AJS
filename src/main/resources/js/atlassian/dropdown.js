@@ -1,21 +1,33 @@
-
-
-/*global AJS, document, setTimeout */
-
+/**
+ * Displays a drop down, typically used for menus.
+ * 
+ * @class dropDown
+ * @namespace AJS
+ * @constructor
+ * @param obj {jQuery Object|String|Array} object to populate the drop down from.
+ * @param usroptions optional dropdown configuration. Supported properties are:
+ * <li>alignment - "left" or "right" alignment of the drop down</li>
+ * <li>escapeHandler - function to handle on escape key presses</li>
+ * <li>activeClass - class name to be added to drop down items when 'active' ie. hover over</li>
+ * <li>selectionHandler - function to handle when drop down items are selected on</li>
+ * <li>hideHandler - function to handle when the drop down is hidden</li>
+ * When an object of type Array is passed in, you can also configure:
+ * <li>isHiddenByDefault - set to true if you would like to hide the drop down on initialisation</li>
+ * <li>displayHandler - function to display text in the drop down</li>
+ * @return {Array} an array of jQuery objects, referring to the drop down container elements
+ */
 AJS.dropDown = function (obj, usroptions) {
 
     var dd = null,
         result = [],
         moving = false,
         $doc = AJS.$(document),
-        isAdditionalProperty = function (name) {
-            return !((name == "href") || (name == "name") || (name == "className") || (name == "icon"));
-        },
         options = {
             isHiddenByDefault: false,
             item: "li:has(a)",
             activeClass: "active",
             alignment: "right",
+            displayHandler: function(obj) {return obj.name;},
             escapeHandler: function () {
                 this.hide("escape");
                 return false;
@@ -38,7 +50,7 @@ AJS.dropDown = function (obj, usroptions) {
                 var properties = obj[i][j];
                 if (properties.href) {
                     li.append(AJS("a")
-                        .html("<span>" + properties.name + "</span>")
+                        .html("<span>" + options.displayHandler(properties) + "</span>")
                         .attr({href:  properties.href})
                         .addClass(properties.className));
 
@@ -429,7 +441,7 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
   * Base dropdown control. Enables you to identify triggers that when clicked, display dropdown.
   *
   * @class Standard
-  * @contructor
+  * @constructor
   * @namespace AJS.dropDown
   * @param {Object} options
   * @return {Object
@@ -504,7 +516,7 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
  * A NewStandard dropdown, however, with the ability to populate its content's via ajax.
  *
  * @class Ajax
- * @contructor
+ * @constructor
  * @namespace AJS.dropDown
  * @param {Object} options
  * @return {Object} dropDown instance

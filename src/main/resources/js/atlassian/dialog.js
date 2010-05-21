@@ -597,7 +597,6 @@ AJS.popup = function (options) {
      * @param width {number} dialog width in pixels, or an object containing the Dialog parameters
      * @param height {number} dialog height in pixels
      * @param id {number} [optional] dialog id
-     * @private
     */
     AJS.Dialog = function (width, height, id) {
         var options = {};

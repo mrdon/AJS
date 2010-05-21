@@ -37,7 +37,7 @@ jQuery.fn.throbber = function($) {
              * Runs a callback after specified delay
              * @method {private} delay
              * @param {Integer} l - length of delay (ms)
-             * @param [Function} callback - function to run after delay
+             * @param {Function} callback - function to run after delay
              */
             delay = function(callback, l) {
                 delay.t = setTimeout(function(){
