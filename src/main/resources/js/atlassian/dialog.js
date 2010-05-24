@@ -491,7 +491,7 @@ AJS.popup = function (options) {
         for (var i = this.panel.length; i--;) {
             var newHeight = this.dialog.height - headerHeight - panelHeight - this.panel[i].padding * 2;
             this.panel[i].body.css("height", newHeight);
-            this.menu.css("height", newHeight - parseFloat(this.menu.css("padding-top")));
+            this.menu.css("height", newHeight + parseFloat(this.menu.css("padding-top")));
         }
     };
 
