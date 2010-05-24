@@ -1,6 +1,6 @@
 /**
  *
- * @module jQuery plugins
+ * @module jQuery
  * @requires AJS, jQuery
  */
 

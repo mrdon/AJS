@@ -1,16 +1,15 @@
 (function($) {
     /**
-     * Creates a new inline dialog
+     * Creates a new inline dialog.
      *
+     * @class InlineDialog
+     * @namespace AJS
+     * @constructor
      * @param items jQuery object - the items that trigger the display of this popup when the user mouses over.
      * @param identifier A unique identifier for this popup. This should be unique across all popups on the page and a valid CSS class.
      * @param url The URL to retrieve popup contents.
-     * @param initCallback
      * @param options Custom options to change default behaviour. See AJS.InlineDialog.opts for default values and valid options.
-     *
-     * @return jQuery object - the popup that was created
      */
-
     AJS.InlineDialog = function(items, identifier, url, options) {
         var opts = $.extend(false, AJS.InlineDialog.opts, options);
         var hash;
@@ -25,7 +24,6 @@
         var arrow = $("#arrow-" + identifier, popup);
         var contents = popup.find(".contents");
 
-//        AJS.log(opts);
         contents.css("width", opts.width + "px");
         contents.mouseover(function(e) {
             clearTimeout(hideDelayTimer);
@@ -340,25 +338,34 @@
         $("body").click(function() {
             hidePopup(0);
         });
-        
-        //Exposed functions
+
+        /**
+         * Show the inline dialog.
+         * @method show
+         */
         popup.show = function (e) {
             if (e) {
                 e.stopPropagation();
             }
             appendPopup();
             initPopup(null, this);
-        }
-        
+        };
+        /**
+         * Hide the inline dialog.
+         * @method hide
+         */
         popup.hide = function () {
             hidePopup(0);
-        }
-        
+        };
+        /**
+         * Repositions the inline dialog if being shown.
+         * @method refresh
+         */
         popup.refresh = function () {
             if (beingShown) {
                getHash().reset(); 
             }
-        }
+        };
         
         return popup;
     };

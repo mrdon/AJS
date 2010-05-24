@@ -211,17 +211,6 @@ AJS.popup = function (options) {
     return res;
 };
 
-// Usage:
-// var popup = new AJS.Dialog(860, 530);
-// popup.addHeader("Insert Macro");
-// popup.addPanel("All", "<p></p>");
-// popup.addButton("Next", function (dialog) {dialog.nextPage();});
-// popup.addButton("Cancel", function (dialog) {dialog.hide();});
-// popup.addPage();
-// popup.page[1].addButton("Cancel", function (dialog) {dialog.hide();});
-// somebutton.click(function () {popup.show();});
-
-
 // Scoping function
 (function () {
     /**
@@ -590,7 +579,22 @@ AJS.popup = function (options) {
 
 
     /**
-     * Class for dialog
+     * Constructor for a Dialog.
+     * A Dialog consists of Pages, where each Page consists of Panels. By default, a new Dialog will have one page.
+     * If there are multiple Panels on a Page, a menu is displayed on the left side of the dialog.
+     * <br><br>
+     * Usage:
+     * <pre>
+     * var dialog = new AJS.Dialog(860, 530);
+     * dialog.addHeader("Insert Macro")
+     * .addPanel("All", "&lt;p&gt;&lt;/p&gt;")
+     * .addButton("Next", function (dialog) {dialog.nextPage();})
+     * .addButton("Cancel", function (dialog) {dialog.hide();})
+     * .addPage();
+     * dialog.getPage(1).addButton("Cancel", function (dialog) {dialog.hide();});
+     *
+     * somebutton.click(function () {dialog.show();});
+     * </pre>
      * @class Dialog
      * @namespace AJS
      * @constructor
@@ -622,7 +626,6 @@ AJS.popup = function (options) {
 
         new Page(this);
     };
-
 
 
     /**
@@ -775,7 +778,7 @@ AJS.popup = function (options) {
 
     /**
      * Shows the dialog, if it is not visible
-     * @method hide
+     * @method show
     */
     AJS.Dialog.prototype.show = function () {
         this.popup.show();

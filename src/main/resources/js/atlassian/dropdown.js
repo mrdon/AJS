@@ -419,12 +419,19 @@ AJS.dropDown = function (obj, usroptions) {
     return result;
 };
 
-// for each item in the drop down get the value of the named additional property. If there is no
-// property with the specified name then null will be returned.
+/**
+ * For the given item in the drop down get the value of the named additional property. If there is no
+ * property with the specified name then null will be returned.
+ *
+ * @method getAdditionalPropertyValue
+ * @namespace AJS.dropDown
+ * @param item {Object} jQuery Object of the drop down item. An LI element is expected.
+ * @param name {String} name of the property to retrieve
+ */
 AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
     var el = item[0];
     if ( !el || (typeof el.tagName != "string") || el.tagName.toLowerCase() != "li" ) {
-        // we are moving the location of the properties and want to deprecate the attachement to the span
+        // we are moving the location of the properties and want to deprecate the attachment to the span
         // but are unsure where and how its being called so for now we just log
         AJS.log("AJS.dropDown.getAdditionalPropertyValue : item passed in should be an LI element wrapped by jQuery");
     }
@@ -432,9 +439,13 @@ AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
     return properties ? properties[name] : null;
 };
 
-// remove all additional properties
+/**
+ * DEPRECATED SINCE 3.0
+ * Only here for backwards compatibility
+ * @method removeAllAdditionalProperties
+ * @namespace AJS.dropDown
+ */
 AJS.dropDown.removeAllAdditionalProperties = function (item) {
-    // only here for backwards compatibility
 };
 
  /**

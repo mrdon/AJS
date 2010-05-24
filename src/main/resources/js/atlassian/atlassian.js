@@ -1,6 +1,15 @@
+
+/**
+ * A collection of Atlassian JavaScript UI components.
+ *
+ * @module AJS
+ * @requires jQuery
+ */
 if (typeof jQuery != "undefined") {
 
     /**
+     * AJS contains utility methods, used by various components. It also provides the namespacing for all AUI components. 
+     *
      * @class AJS
      * @requires jQuery
      */
@@ -28,6 +37,10 @@ if (typeof jQuery != "undefined") {
             */
             $: jQuery,
 
+            /**
+             * Logs the given object to the console.
+             * @param obj object to log
+             */
             log: function(obj) {
                 if (typeof console != "undefined" && console.log)
                     console.log(obj);

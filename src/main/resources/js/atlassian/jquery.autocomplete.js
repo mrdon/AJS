@@ -1,10 +1,6 @@
-/*
-Note: Please ensure that the data in your JSON url is properly HTML encoded.
-
-USAGE:
-    $("#autocompleteTextField").autocomplete("/confluence/json/search.action?q=foobar", 2);
-*/
 (function($){
+    //DEPRECATED. DO NOT USE!
+    //Atlassian jQuery plugin for user autocomplete. This is ancient code accidentally  put in by Confluence.
     $.fn.autocomplete = function (url, minlength, callback) {
         callback = typeof minlength == "function" ? minlength : (typeof callback == "function" ? callback : function () {});
         minlength = !isNaN(Number(minlength)) ? minlength : 3;

@@ -1,8 +1,6 @@
 /**
- * @author Scott Harwood
+ * @module jQuery
  * @namespace jQuery.fn
- * @module jQuery Plugins
- *
  */
 
 /** 
