@@ -1,18 +1,18 @@
 (function () {
-    AJS.Icons = AJS.Icons || {};
-    AJS.Icons.addIcon = function (name, ro) {
-        AJS.Icons[name] = function (context, size) {
+    AJS.icons = AJS.icons || {};
+    AJS.icons.addIcon = function (name, ro) {
+        AJS.icons[name] = function (context, size) {
             return draw(ro, context, size);
         };
     };
-    AJS.Icons.addIcon.init = function () {
+    AJS.icons.addIcon.init = function () {
         var classes = this.className.split(" "),
             len = classes.length,
             size = this.className.match(/(^|\s)size-(\d+)(\s|$)/);
         size = size && +size[2];
         while (len--) {
-            if (classes[len] != "addIcon" && classes[len] in AJS.Icons) {
-                AJS.Icons[classes[len]](this, size);
+            if (classes[len] != "addIcon" && classes[len] in AJS.icons) {
+                AJS.icons[classes[len]](this, size);
             }
         }
     };
@@ -25,13 +25,13 @@
 
 /* Set up icons automatically based on class names*/
 AJS.$(function () {
-    AJS.$(".svg-icon").each(AJS.Icons.addIcon.init);
+    AJS.$(".svg-icon").each(AJS.icons.addIcon.init);
 });
 
 /* -- Icon Descriptions -- */
 
 /* Generic Icon */
-AJS.Icons.addIcon("generic", [{
+AJS.icons.addIcon("generic", [{
         stroke: "none",
         fill: "#999",
         type: "path",
@@ -55,7 +55,7 @@ AJS.Icons.addIcon("generic", [{
 ]);
 
 /* Error Icon */
-AJS.Icons.addIcon("error", [{
+AJS.icons.addIcon("error", [{
         type: "path",
         stroke: "none",
         fill: "#c00",
@@ -85,7 +85,7 @@ AJS.Icons.addIcon("error", [{
 ]);
 
 /* Success Icon */
-AJS.Icons.addIcon("success", [{
+AJS.icons.addIcon("success", [{
         type: "path",
         stroke: "none",
         path: "M22,18.801C22,20.559,20.561,22,18.799,22H5.201C3.439,22,2,20.559,2,18.801V5.199C2,3.44,3.439,2,5.201,2h13.598C20.561,2,22,3.44,22,5.199V18.801z",
@@ -109,7 +109,7 @@ AJS.Icons.addIcon("success", [{
 ]);
 
 /* Hint Icon */
-AJS.Icons.addIcon("hint", [{
+AJS.icons.addIcon("hint", [{
         type: "path",
         path:  "M22.465,8.464c1.944,1.944,1.944,5.126,0,7.07l-6.93,6.93c-1.944,1.945-5.126,1.945-7.07,0l-6.929-6.93c-1.945-1.943-1.945-5.125,0-7.07l6.929-6.93c1.944-1.944,5.126-1.944,7.07,0L22.465,8.464z",
         stroke: "none",
@@ -133,7 +133,7 @@ AJS.Icons.addIcon("hint", [{
 ]);
 
 /* Info Icon */
-AJS.Icons.addIcon("info", [{
+AJS.icons.addIcon("info", [{
         type: "circle",
         cx: 12,
         cy: 12,
@@ -159,7 +159,7 @@ AJS.Icons.addIcon("info", [{
 ]);
 
 /* Warning Icon */
-AJS.Icons.addIcon("warning", [{
+AJS.icons.addIcon("warning", [{
         type: "path",
         path: "M8.595,4.368c1.873-3.245,4.938-3.245,6.811,0c1.873,3.245,4.938,8.554,6.812,11.798c1.874,3.244,0.342,5.898-3.405,5.898c-3.746,0-9.876,0-13.624,0c-3.746,0-5.278-2.654-3.405-5.898C3.656,12.922,6.721,7.613,8.595,4.368z",
         stroke: "none",
@@ -183,7 +183,7 @@ AJS.Icons.addIcon("warning", [{
 ]);
 
 /* Close Icon */
-AJS.Icons.addIcon("close", [{
+AJS.icons.addIcon("close", [{
         type: "path",
         path: "M15.535,12l4.95-4.95c0.977-0.977,0.977-2.559,0-3.536s-2.56-0.977-3.536,0L12,8.464l-4.95-4.95c-0.977-0.977-2.559-0.977-3.536,0s-0.977,2.559,0,3.536L8.464,12l-4.95,4.95c-0.977,0.977-0.977,2.559,0,3.535s2.559,0.977,3.536,0L12,15.535l4.949,4.949c0.977,0.977,2.56,0.977,3.536,0s0.977-2.559,0-3.535L15.535,12z",
         stroke: "none",

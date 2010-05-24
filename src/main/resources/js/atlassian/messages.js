@@ -1,13 +1,13 @@
 (function (){
-    AJS.Messages = {
+    AJS.messages = {
         setup: function () {
-            AJS.Messages.createMessage("generic");
-            AJS.Messages.createMessage("error");
-            AJS.Messages.createMessage("warning");
-            AJS.Messages.createMessage("info");
-            AJS.Messages.createMessage("success");
-            AJS.Messages.createMessage("hint");
-            AJS.Messages.makeCloseable();
+            AJS.messages.createMessage("generic");
+            AJS.messages.createMessage("error");
+            AJS.messages.createMessage("warning");
+            AJS.messages.createMessage("info");
+            AJS.messages.createMessage("success");
+            AJS.messages.createMessage("hint");
+            AJS.messages.makeCloseable();
         },
         makeCloseable: function (message) {
             AJS.$(message || "div.aui-message.closeable").each(function () {
@@ -16,12 +16,12 @@
                         $this.closeMessage();
                     });
                 $this.append($icon);
-                $icon.each(AJS.Icons.addIcon.init);
+                $icon.each(AJS.icons.addIcon.init);
             });
         },
         template: '<div class="aui-message {type} {closeable}"><p class="title"><span class="svg-icon {type} size-18"></span><strong>{title}</strong></p>{body}</div><!-- .aui-message -->',
         createMessage: function (type) {
-            AJS.Messages[type] = function (context, obj) {
+            AJS.messages[type] = function (context, obj) {
                 if (!obj) {
                     obj = context;
                     context = "#aui-message-bar";
@@ -31,8 +31,8 @@
                     closeable: obj.closeable ? "closeable" : "",
                     title: obj.title || "",
                     "body:html": obj.body || ""
-                })).find(".svg-icon:empty").each(AJS.Icons.addIcon.init);
-                obj.closeable && AJS.Messages.makeCloseable(AJS.$(context).find("div.aui-message.closeable"));
+                })).find(".svg-icon:empty").each(AJS.icons.addIcon.init);
+                obj.closeable && AJS.messages.makeCloseable(AJS.$(context).find("div.aui-message.closeable"));
             };
         }
     };
@@ -44,5 +44,5 @@
         }
     };
 
-    AJS.$(function () {AJS.Messages.setup();});
+    AJS.$(function () {AJS.messages.setup();});
 })();

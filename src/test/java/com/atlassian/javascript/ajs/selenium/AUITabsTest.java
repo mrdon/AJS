@@ -83,7 +83,7 @@ public class AUITabsTest extends AUISeleniumTestCase
 
         if (needToCreateObjects)
         {
-            client.getEval("window.AJS.$(window.AJS.Tabs.setup)");
+            client.getEval("window.AJS.$(window.AJS.tabs.setup)");
         }
     }
 

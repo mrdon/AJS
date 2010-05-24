@@ -95,22 +95,22 @@
     AJS.$(function() {
 
         // example of creating a message via JS
-        AJS.Messages.success({
+        AJS.messages.success({
             title: "Success!",
             body: "This message was created by JS",
             closeable: true
         });
 
         // example of creating a message via JS
-        AJS.Messages.info({
+        AJS.messages.info({
             title: "Info",
             body: "You can choose to have messages without Close functionality"
         });
 
         // example of creating a message via JS and sending it to a specific element
-        AJS.Messages.warning("#context",{
+        AJS.messages.warning("#context",{
             title: "Warning!",
-            body: "Using AJS.Messages can lead to extreme awesomeness.",
+            body: "Using AJS.messages can lead to extreme awesomeness.",
             closeable: true
         });
 

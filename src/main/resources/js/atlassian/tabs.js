@@ -5,7 +5,7 @@
         ACTIVE_TAB = "active-tab",
         ACTIVE_PANE = "active-pane";
 
-    AJS.Tabs = {
+    AJS.tabs = {
         setup: function () {
             $tabs = AJS.$("div.aui-tabs");
             for (var i=0, ii = $tabs.length; i < ii; i++) {
@@ -13,7 +13,7 @@
 
                 // Set up click event for tabs
                 AJS.$("a", $tabMenu).click(function (e) {
-                    AJS.Tabs.change(AJS.$(this), e);
+                    AJS.tabs.change(AJS.$(this), e);
                     e && e.preventDefault();
                 });
 
@@ -32,5 +32,5 @@
             });
         }
     };
-    AJS.$(AJS.Tabs.setup);
+    AJS.$(AJS.tabs.setup);
 })();
