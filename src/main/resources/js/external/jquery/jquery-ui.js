@@ -1,4 +1,9 @@
 /*!
+ *
+ * This file has been modified to include a patch to Sortable as referenced here:
+ * http://github.com/jquery/jquery-ui/commit/a4488aff7c62f3e2db6f894b5f24cfd0adb8c6b7
+ * line: 1475
+ *
  * jQuery UI 1.8.1
  *
  * Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
@@ -1467,7 +1472,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 				[ value ? "addClass" : "removeClass"]( "ui-sortable-disabled" );
 		} else {
 			// Don't call widget base _setOption for disable as it adds ui-state-disabled class
-			$.Widget.prototype._setOption.apply(self, arguments);
+			$.Widget.prototype._setOption.apply(this, arguments);
 		}
 	},
 
