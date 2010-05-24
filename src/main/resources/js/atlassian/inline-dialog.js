@@ -261,6 +261,7 @@
             }
             shouldShow = true;
             var doShowPopup = function() {
+                contentLoading = false;
                 contentLoaded = true;
                 opts.initCallback.call({
                     popup: popup,
