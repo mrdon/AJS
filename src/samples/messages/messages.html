@@ -28,11 +28,11 @@
 <body>
     <h1>Message Boxes example</h1>
 
-    <h2>Messages below here are inserted via default AJS.Message calls in the JavaScript.</h2>
+    <h2>Messages below here are inserted via default AJS.messages calls in the JavaScript.</h2>
     <div id="aui-message-bar"></div> <!-- placeholding container for .aui-messages -->
 
     <h2>Messages below here are served as HTML, with the icons and Close functionality added by JS.</h2>
-    <div class="aui-message closeable">
+    <div class="aui-message closeable shadowed">
         <p class="title">
             <span class="svg-icon generic size-18"></span>
             <strong>This is a title in a Default message . <a href="#">Undo.</a></strong>
@@ -40,12 +40,12 @@
         <p>And this is just content in a Default message.</p>
     </div><!-- .aui-message -->
 
-    <div class="aui-message error closeable">
+    <div class="aui-message error closeable shadowed">
         <span class="svg-icon error size-18"></span>
         Text with no wrapping elements in an Error message.
     </div><!-- .aui-message -->
 
-    <div class="aui-message warning closeable">
+    <div class="aui-message warning closeable shadowed">
         <p class="title">
             <span class="svg-icon warning size-18"></span>
             <strong>You can put whatever elements you like in the body of the message.</strong>
@@ -62,7 +62,7 @@
     <div class="aui-message info closeable">
         <p class="title">
             <span class="svg-icon info size-18"></span>
-            <strong>This is a title in a Information message.</strong>
+            <strong>This is a title in a Information message without a dropshadow.</strong>
         </p>
         <p>A paragraph of content.</p>
         <p>Another paragraph of content.</p>
@@ -71,13 +71,13 @@
     <div class="aui-message success">
         <p class="title">
             <span class="svg-icon success size-18"></span>
-            <strong>This is a title in a Success message.</strong>
+            <strong>This is a title in a Success message without a dropshadow.</strong>
         </p>
         <p>Text.</p>
         <p>Text.</p>
     </div><!-- .aui-message -->
 
-    <div class="aui-message hint">
+    <div class="aui-message hint shadowed">
         <p class="title">
             <span class="svg-icon hint size-18"></span>
             <strong>This is a title in a Hint message.</strong>
@@ -86,7 +86,7 @@
         <p>Text.</p>
     </div><!-- .aui-message -->
 
-    <h2>Messages below here are inserted by providing <code>context</code> in the JavaScript.</h2>
+    <h2>Messages below here are inserted by providing a contextual element in the JavaScript.</h2>
     <div id="context"></div>
 
 <script type="text/javascript" src="../common.js"></script>
@@ -97,21 +97,26 @@
         // example of creating a message via JS
         AJS.messages.success({
             title: "Success!",
-            body: "This message was created by JS",
-            closeable: true
+            body: "This message was created by JS with default options."
         });
 
         // example of creating a message via JS
         AJS.messages.info({
             title: "Info",
-            body: "You can choose to have messages without Close functionality"
+            body: "You can choose to have messages without Close functionality.",
+            closeable: false
         });
 
         // example of creating a message via JS and sending it to a specific element
         AJS.messages.warning("#context",{
             title: "Warning!",
-            body: "Using AJS.messages can lead to extreme awesomeness.",
-            closeable: true
+            body: "Using AJS.messages can lead to extreme awesomeness."
+        });
+
+        AJS.messages.hint("#context",{
+            title: "Hint",
+            body: "JS-generated messages have a dropshadow by default, but you can turn that off in the API.",
+            shadowed: false
         });
 
         // example of binding an event to messageClose

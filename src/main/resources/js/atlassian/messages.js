@@ -19,16 +19,19 @@
                 $icon.each(AJS.icons.addIcon.init);
             });
         },
-        template: '<div class="aui-message {type} {closeable}"><p class="title"><span class="svg-icon {type} size-18"></span><strong>{title}</strong></p>{body}</div><!-- .aui-message -->',
+        template: '<div class="aui-message {type} {closeable} {shadowed}"><p class="title"><span class="svg-icon {type} size-18"></span><strong>{title}</strong></p>{body}</div><!-- .aui-message -->',
         createMessage: function (type) {
             AJS.messages[type] = function (context, obj) {
                 if (!obj) {
                     obj = context;
                     context = "#aui-message-bar";
                 }
+                obj.closeable = (obj.closeable == false) ? false : true;
+                obj.shadowed = (obj.shadowed == false) ? false : true;
                 AJS.$(context).append(AJS.template(this.template).fill({
                     type: type,
                     closeable: obj.closeable ? "closeable" : "",
+                    shadowed: obj.shadowed ? "shadowed" : "",
                     title: obj.title || "",
                     "body:html": obj.body || ""
                 })).find(".svg-icon:empty").each(AJS.icons.addIcon.init);
