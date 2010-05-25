@@ -27,188 +27,36 @@
     <style type="text/css">
         body {font-family: sans-serif; font-size: 10pt;}
     </style>
+
+    <script type="text/javascript" src="../common.js"></script>
+    
 </head>
 <body>
 
-    
-    <!-- Testing iframeShim -->
-    <object width="320" height="232" border="0" align="top" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" id="aquarium" classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000">
-    	<param value="http://fishgadget.googlecode.com/svn/trunk/fish.swf" name="movie"/>
-    	<param value="High" name="quality"/>
-    	<param value="true" name="play"/>
-    	<param value="true" name="loop"/>
-    	<param value="true" name="menu"/>
-    	<embed width="320" height="232" type="application/x-shockwave-flash" src="http://fishgadget.googlecode.com/svn/trunk/fish.swf" quality="High" pluginspage="http://www.macromedia.com/go/getflashplayer" play="false" name="aquarium" menu="false" loop="false"/>
-    	</object><br/>
-    
-    <!-- more testing for iframeShim -->
-    <form action="forms.html#" method="post" id="d" class="aui long-label">
-        <h2>Dropdowns and Selects</h2>
-        <fieldset>
-            <legend><span>Dropdowns and Selects</span></legend>
-            <div>
-                <label for="dBase">Database</label>
-                <select class="select medium-field" id="dBase" name="dBase" title="database select">
-                    <option>- Select a Database -</option>
-                    <option>PostgreSQL</option>
-                </select>
-                <span class="description">Medium width select.</span>
-            </div>
-            <div>
-                <label for="multiselect">Multiselect</label>
-                <select class="multi-select" size="4" multiple="multiple" id="multiselect" name="multiselect" title="database select">
-                    <option>option one</option>
-                    <option>option two</option>
-                    <optgroup label="group1">
-                        <option>option three</option>
-                        <option>option four</option>
-                    </optgroup>
-                    <option>option five</option>
-                    <option>option six</option>
-                </select>
-                <span class="description">Multiselect - 250px min width (except ie, variable width).</span>
-            </div>
-        </fieldset>
-        <fieldset class="date-select">
-            <legend><span>Select Date</span></legend>
-            <div>
-                <label for="day">Day</label>
-                <select class="select short-field" id="day" name="day" title="select day">
-                    <option>01</option>
-                    <option>02</option>
-                </select>
-                <label for="month">Month</label>
-                <select class="select short-field" id="month" name="month" title="select month">
-                    <option>Jan</option>
-                    <option>Feb</option>
-                </select>
-                <label for="year">Year</label>
-                <select class="select short-field" id="year" name="year" title="select year">
-                    <option>2008</option>
-                    <option>2007</option>
-                </select>
-                <a class="aui-icon icon-range" href="forms.html#" title="pick a date range"><span>pick a date range</span></a>
-                <span class="error">Date out of range</span>
-                <span class="description">Specific date select fieldset to allow for multiple (hidden) labels</span>
-            </div>
-        </fieldset>
-    </form>
-    <form action="forms.html#" method="post" id="d" class="aui long-label">
-        <h2>Dropdowns and Selects</h2>
-        <fieldset>
-            <legend><span>Dropdowns and Selects</span></legend>
-            <div>
-                <label for="dBase">Database</label>
-                <select class="select medium-field" id="dBase" name="dBase" title="database select">
-                    <option>- Select a Database -</option>
-                    <option>PostgreSQL</option>
-                </select>
-                <span class="description">Medium width select.</span>
-            </div>
-            <div>
-                <label for="multiselect">Multiselect</label>
-                <select class="multi-select" size="4" multiple="multiple" id="multiselect" name="multiselect" title="database select">
-                    <option>option one</option>
-                    <option>option two</option>
-                    <optgroup label="group1">
-                        <option>option three</option>
-                        <option>option four</option>
-                    </optgroup>
-                    <option>option five</option>
-                    <option>option six</option>
-                </select>
-                <span class="description">Multiselect - 250px min width (except ie, variable width).</span>
-            </div>
-        </fieldset>
-        <fieldset class="date-select">
-            <legend><span>Select Date</span></legend>
-            <div>
-                <label for="day">Day</label>
-                <select class="select short-field" id="day" name="day" title="select day">
-                    <option>01</option>
-                    <option>02</option>
-                </select>
-                <label for="month">Month</label>
-                <select class="select short-field" id="month" name="month" title="select month">
-                    <option>Jan</option>
-                    <option>Feb</option>
-                </select>
-                <label for="year">Year</label>
-                <select class="select short-field" id="year" name="year" title="select year">
-                    <option>2008</option>
-                    <option>2007</option>
-                </select>
-                <a class="aui-icon icon-range" href="forms.html#" title="pick a date range"><span>pick a date range</span></a>
-                <span class="error">Date out of range</span>
-                <span class="description">Specific date select fieldset to allow for multiple (hidden) labels</span>
-            </div>
-        </fieldset>
-    </form>
-    <form action="forms.html#" method="post" id="d" class="aui long-label">
-        <h2>Dropdowns and Selects</h2>
-        <fieldset>
-            <legend><span>Dropdowns and Selects</span></legend>
-            <div>
-                <label for="dBase">Database</label>
-                <select class="select medium-field" id="dBase" name="dBase" title="database select">
-                    <option>- Select a Database -</option>
-                    <option>PostgreSQL</option>
-                </select>
-                <span class="description">Medium width select.</span>
-            </div>
-            <div>
-                <label for="multiselect">Multiselect</label>
-                <select class="multi-select" size="4" multiple="multiple" id="multiselect" name="multiselect" title="database select">
-                    <option>option one</option>
-                    <option>option two</option>
-                    <optgroup label="group1">
-                        <option>option three</option>
-                        <option>option four</option>
-                    </optgroup>
-                    <option>option five</option>
-                    <option>option six</option>
-                </select>
-                <span class="description">Multiselect - 250px min width (except ie, variable width).</span>
-            </div>
-        </fieldset>
-        <fieldset class="date-select">
-            <legend><span>Select Date</span></legend>
-            <div>
-                <label for="day">Day</label>
-                <select class="select short-field" id="day" name="day" title="select day">
-                    <option>01</option>
-                    <option>02</option>
-                </select>
-                <label for="month">Month</label>
-                <select class="select short-field" id="month" name="month" title="select month">
-                    <option>Jan</option>
-                    <option>Feb</option>
-                </select>
-                <label for="year">Year</label>
-                <select class="select short-field" id="year" name="year" title="select year">
-                    <option>2008</option>
-                    <option>2007</option>
-                </select>
-                <a class="aui-icon icon-range" href="forms.html#" title="pick a date range"><span>pick a date range</span></a>
-                <span class="error">Date out of range</span>
-                <span class="description">Specific date select fieldset to allow for multiple (hidden) labels</span>
-            </div>
-        </fieldset>
-    </form>
-
-
-    <!-- Dialog sample -->
     <form action="" class="aui">
+    <h2>Popup Sample</h2>
+        <fieldset>
+            <legend>Popup</legend>
+            <input id="popupButton" type="button" class="button" value="Click Me">
+        </fieldset>
+    </form>
+
+    <form action="" class="aui">
+        <h2>Dialog Sample</h2>
         <fieldset>
             <legend>Dialog</legend>
-            <input id="testButton" name="testButton" type="button" class="button" value="Click Me">
+            <input id="dialogButton" name="dialogButton" type="button" class="button" value="Click Me">
         </fieldset>
     </form>
     
-    <script type="text/javascript" src="../common.js"></script>
 
 <script type="text/javascript">
-    AJS.$(function() {
+    AJS.$(function($) {
+
+        var popup = AJS.popup(400, 200, "my-popup");
+        $("#popupButton").click(function(){
+            popup.show();    
+        });
         
         // Testing AJS.warnAboutFirebug
         AJS.warnAboutFirebug();
@@ -219,83 +67,79 @@
         // Testing AJS.dialog
 
         // create a dialog 860px wide x 530px high
-        var popup = new AJS.Dialog(860, 530),
-            popup2 = new AJS.Dialog(1000, 300), 
-            popup3 = new AJS.Dialog(100, 600);
+        var dialog = new AJS.Dialog(860, 530),
+            dialog2 = new AJS.Dialog(1000, 300),
+            dialog3 = new AJS.Dialog(100, 600);
 
         // PAGE 0 (first page)
-
         // adds header for first page
-        popup.addHeader("Dialog - Page 0");
+        dialog.addHeader("Dialog - Page 0");
 
         // add panel 1
-        popup.addPanel("Panel 1", "panel1");
-        popup.getCurrentPanel().html("Some content for panel 1");
+        dialog.addPanel("Panel 1", "<p>Some content for panel 1</p>", "panel-body");
 
         // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
-        popup.addPanel("Panel 2", "panel1");
-        popup.getCurrentPanel().html("Some content for panel 2");
+        dialog.addPanel("Panel 2", "<p>Some content for panel 2</p>", "panel-body");
 
         // add a "Next" button on page 0 (current page)
-        popup.addButton("Next", function (dialog) {
+        dialog.addButton("Next", function (dialog) {
             dialog.nextPage();
         });
 
         // add "Cancel" button on page 0 (current page)
-        popup.addButton("Cancel", function (dialog) {
+        dialog.addButton("Cancel", function (dialog) {
             dialog.hide();
         });
 
-        popup.addButton("testStackingDialogs", function (dialog) {
-            popup2.show();
+        dialog.addButton("testStackingDialogs", function (dialog) {
+            dialog2.show();
         });
 
         // PAGE 1 (second page)
         // adds a new page to dialog
-        popup.addPage();
+        dialog.addPage();
 
         // adds header for second page
-        popup.page[1].addHeader("Dialog - Page 1");
+        dialog.addHeader("Dialog - Page 1");
 
         // adds a single panel on second page (as there is only one panel, no menu will appear on the left side)
-        popup.page[1].addPanel("SinglePanel", "singlePanel");
-        popup.getCurrentPanel().html("Some content for the only panel on Page 1");
+        dialog.addPanel("SinglePanel", "<p>Some content for the only panel on Page 1</p>", "singlePanel");
 
         // add "Previous" button to page 1
-        popup.page[1].addButton("Previous", function(dialog) {
+        dialog.addButton("Previous", function(dialog) {
            dialog.prevPage();
         });
 
         // adds "Cancel" button to page 1
-        popup.page[1].addButton("Cancel", function (dialog) {
+        dialog.addButton("Cancel", function (dialog) {
             dialog.hide();
         });
 
         //Create first stackable Dialog
-        popup2.addPage();
-        popup2.addPanel("PanelStack1", "PanelStack1");
-        popup2.addButton("close", function(dialog){
+        dialog2.addHeader("First Stacking Dialog")
+        .addPanel("PanelStack1", "PanelStack1")
+        .addButton("close", function(dialog){
             dialog.hide();
         })
-        popup2.addButton("testStackingDialogs2", function (dialog) {
-            popup3.show();
+        .addButton("testStackingDialogs2", function (dialog) {
+            dialog3.show();
         });
         //Create second stackable dialog
-        popup3.addPage();
-        popup3.addPanel("PanelStack1", "PanelStack1");
-        popup3.addButton("close", function(dialog){
+        dialog3.addHeader("Second Stacking Dialog")
+        .addPanel("PanelStack1", "PanelStack1")
+        .addButton("close", function(dialog){
             dialog.hide();
-        })
+        });
 
-        AJS.$("#testButton").click(function() {
+        AJS.$("#dialogButton").click(function() {
 
             // PREPARE FOR DISPLAY
             // start first page, first panel
-            popup.gotoPage(0);
-            popup.gotoPanel(0);
+            dialog.gotoPage(0);
+            dialog.gotoPanel(0);
 
             // display the popup
-            popup.show();
+            dialog.show();
         });
     });
 </script>

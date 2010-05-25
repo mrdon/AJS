@@ -1,4 +1,18 @@
 (function (){
+    /**
+     * Utility methods to display different message types to the user.
+     * Usage:
+     * <pre>
+     * AJS.messages.info("#container", {
+     *   title: "Info",
+     *   body: "You can choose to have messages without Close functionality.",
+     *   closeable: false,
+     *   shadowed: false
+     * });
+     * </pre>
+     * @class messages
+     * @namespace AJS
+     */
     AJS.messages = {
         setup: function () {
             AJS.messages.createMessage("generic");

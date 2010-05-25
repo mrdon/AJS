@@ -61,11 +61,11 @@
         <resource type="download" name="tabs.js" location="js/atlassian/tabs.js"/>
         <resource type="download" name="template.js" location="js/atlassian/template.js"/>
 
-        <resource type="download" name="jquery.autocomplete.js" location="js/atlassian/jquery.autocomplete.js"/>
-        <resource type="download" name="jquery.is-dirty.js" location="js/atlassian/jquery.is-dirty.js"/>
-        <resource type="download" name="jquery.progressbar.js" location="js/atlassian/jquery.progressbar.js"/>
-        <resource type="download" name="jquery.selection.js" location="js/atlassian/jquery.selection.js"/>        
-        <resource type="download" name="jquery.throbber.js" location="js/atlassian/jquery.throbber.js"/>
+        <resource type="download" name="jquery.autocomplete.js" location="js/atlassian/jquery/jquery.autocomplete.js"/>
+        <resource type="download" name="jquery.is-dirty.js" location="js/atlassian/jquery/jquery.is-dirty.js"/>
+        <resource type="download" name="jquery.progressbar.js" location="js/atlassian/jquery/jquery.progressbar.js"/>
+        <resource type="download" name="jquery.selection.js" location="js/atlassian/jquery/jquery.selection.js"/>
+        <resource type="download" name="jquery.throbber.js" location="js/atlassian/jquery/jquery.throbber.js"/>
     </web-resource>
     
     <web-resource name="jQuery Compatibility" key="jquery-compatibility">
@@ -74,23 +74,23 @@
     </web-resource>
 	
 	<web-resource name="hotkeys" key="hotkeys">
-		<resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery.hotkeys.js"/>
+		<resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery/jquery.hotkeys.js"/>
 	</web-resource>
 	
 	<web-resource name="stalker" key="stalker">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
 		<dependency>com.atlassian.auiplugin:hotkeys</dependency>
-		<resource type="download" name="jquery.os.js" location="js/atlassian/jquery.os.js"/>
-		<resource type="download" name="jquery.getdocheight.js" location="js/atlassian/jquery.getdocheight.js"/>
-		<resource type="download" name="jquery.offsetanchors.js" location="js/atlassian/jquery.offsetanchors.js"/>
-		<resource type="download" name="jquery.stalker.js" location="js/atlassian/jquery.stalker.js"/>
+		<resource type="download" name="jquery.os.js" location="js/atlassian/jquery/jquery.os.js"/>
+		<resource type="download" name="jquery.getdocheight.js" location="js/atlassian/jquery/jquery.getdocheight.js"/>
+		<resource type="download" name="jquery.offsetanchors.js" location="js/atlassian/jquery/jquery.offsetanchors.js"/>
+		<resource type="download" name="jquery.stalker.js" location="js/atlassian/jquery/jquery.stalker.js"/>
 		<resource type="download" name="containdropdown.js" location="js/atlassian/containdropdown.js"/>
     </web-resource>
 
 	<web-resource name="keyboardshortcuts" key="keyboardshortcuts">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
 		<dependency>com.atlassian.auiplugin:hotkeys</dependency>
-		<resource type="download" name="moveto.js" location="js/atlassian/jquery.moveto.js"/>
+		<resource type="download" name="moveto.js" location="js/atlassian/jquery/jquery.moveto.js"/>
 		<resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>
     </web-resource>
     

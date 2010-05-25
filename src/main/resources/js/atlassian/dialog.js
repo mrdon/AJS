@@ -2,6 +2,8 @@
  * Covers screen with semitransparent DIV
  * @method dim
  * @namespace AJS
+ * @for AJS
+ * @see undim
 */
 AJS.dim = function () {
     if (!AJS.dim.dim) {
@@ -17,7 +19,7 @@ AJS.dim = function () {
             AJS.dim.shim.css({height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
             AJS.$("body").append(AJS.dim.shim);
         }
-        
+
         // IE needs the overflow on the HTML element so scrollbars are hidden
         if (AJS.$.browser.msie && parseInt(AJS.$.browser.version) < 8) {
             AJS.$("html").css("overflow", "hidden");
@@ -30,6 +32,7 @@ AJS.dim = function () {
  * Removes semitransparent DIV
  * @method undim
  * @namespace AJS
+ * @for AJS
  * @see dim
 */
 AJS.undim = function () {
@@ -56,16 +59,21 @@ AJS.undim = function () {
 };
 
 /**
- * Creates a generic popup. Usage:
+ * Creates a generic popup that will be displayed in the center of the screen with a
+ * grey blanket in the background.
+ * Usage:
+ * <pre>
  * new AJS.popup({
  *     width: 800,
  *     height: 400,
- *     id: "image-dialog"
+ *     id: "my-dialog"
  * });
- * @method popup
+ * </pre>
+ * @class popup
+ * @constructor
  * @namespace AJS
- * @param options {object} [optional] Permitted options and defaults are as follows: width (800), height (600), keypressListener (closes dialog on ESC).
- * @return {object} popup object
+ * @param options {object} [optional] Permitted options and defaults are as follows:
+ * width (800), height (600), keypressListener (closes dialog on ESC).
 */
 AJS.popup = function (options) {
     var defaults = {
@@ -119,11 +127,6 @@ AJS.popup = function (options) {
 
     popup.hide();
 
-    /**
-     * Popup object
-     * @class Popup
-     * @static
-    */
     var res = {
 
         changeSize: function (w, h) {
@@ -134,7 +137,7 @@ AJS.popup = function (options) {
         },
 
         /**
-         * Makes popup visible
+         * Shows the popup
          * @method show
         */
         show: function () {
@@ -166,7 +169,7 @@ AJS.popup = function (options) {
             this.show = show;
         },
         /**
-         * Makes popup invisible
+         * Hides the popup.
          * @method hide
         */
         hide: function () {
@@ -579,19 +582,24 @@ AJS.popup = function (options) {
 
 
     /**
-     * Constructor for a Dialog.
-     * A Dialog consists of Pages, where each Page consists of Panels. By default, a new Dialog will have one page.
-     * If there are multiple Panels on a Page, a menu is displayed on the left side of the dialog.
-     * <br><br>
+     * Constructor for a Dialog. A Dialog is a popup which consists of Pages, where each Page can consist of Panels,
+     * Buttons and a Header. The dialog must be constructed in page order as it has a current page state. For example,
+     * calling addButton() will add a button to the 'current' page.
+     * <p>
+     * By default, a new Dialog will have one page. If there are multiple Panels on a Page, a
+     * menu is displayed on the left side of the dialog.
+     * </p>
      * Usage:
      * <pre>
      * var dialog = new AJS.Dialog(860, 530);
      * dialog.addHeader("Insert Macro")
      * .addPanel("All", "&lt;p&gt;&lt;/p&gt;")
+     * .addPanel("Some", "&lt;p&gt;&lt;/p&gt;")
      * .addButton("Next", function (dialog) {dialog.nextPage();})
-     * .addButton("Cancel", function (dialog) {dialog.hide();})
-     * .addPage();
-     * dialog.getPage(1).addButton("Cancel", function (dialog) {dialog.hide();});
+     * .addButton("Cancel", function (dialog) {dialog.hide();});
+     *
+     * dialog.addPage()
+     * .addButton("Cancel", function (dialog) {dialog.hide();});
      *
      * somebutton.click(function () {dialog.show();});
      * </pre>
@@ -663,11 +671,12 @@ AJS.popup = function (options) {
 
 
     /**
-     * Method for adding new panel to the current page
+     * Method for adding new panel to the current page.
      * @method addPanel
      * @param title {string} panel title
      * @param reference {string} or {object} jQuery object or selector for the contents of the Panel
      * @param className {string} [optional] HTML class name
+     * @param panelButtonId {String} [optional] The unique id for the panel's button.
      * @return {object} the dialog
     */
     AJS.Dialog.prototype.addPanel = function (title, reference, className, panelButtonId) {
@@ -675,7 +684,7 @@ AJS.popup = function (options) {
         return this;
     };
     /**
-     * Method for adding new page
+     * Adds a new page to the dialog and sets the new page as the current page
      * @method addPage
      * @param className {string} [optional] HTML class name
      * @return {object} the dialog
@@ -734,7 +743,7 @@ AJS.popup = function (options) {
      * @method getPanel
      * @param pageorpanelId {number} page id or panel id
      * @param panelId {number} panel id
-     * @return {object} the panel
+     * @return {object} the internal Panel object
     */
     AJS.Dialog.prototype.getPanel = function (pageorpanelId, panelId) {
         var pageid = (panelId == null) ? this.curpage : pageorpanelId;
@@ -747,7 +756,7 @@ AJS.popup = function (options) {
      * Returns specified page
      * @method getPage
      * @param pageid {number} page id
-     * @return {object} the page
+     * @return {object} the internal Page Object
     */
     AJS.Dialog.prototype.getPage = function (pageid) {
         return this.page[pageid];
@@ -755,7 +764,7 @@ AJS.popup = function (options) {
     /**
      * Returns current panel at the current page
      * @method getCurrentPanel
-     * @return {object} the panel
+     * @return {object} the internal Panel object
     */
     AJS.Dialog.prototype.getCurrentPanel = function () {
         return this.page[this.curpage].getCurrentPanel();
@@ -779,6 +788,7 @@ AJS.popup = function (options) {
     /**
      * Shows the dialog, if it is not visible
      * @method show
+     * @return {object} the dialog
     */
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
@@ -787,13 +797,14 @@ AJS.popup = function (options) {
     /**
      * Hides the dialog, if it was visible
      * @method hide
+     * @return {object} the dialog
     */
     AJS.Dialog.prototype.hide = function () {
         this.popup.hide();
         return this;
     };
     /**
-     * Removes the dialog
+     * Removes the dialog elements from the DOM
      * @method remove
     */
     AJS.Dialog.prototype.remove = function () {
@@ -914,14 +925,16 @@ AJS.popup = function (options) {
     };
 
     /**
-     * Gets current panel for current page
+     * Returns the current panel.
+     * @deprecated Since 3.0.1 Use getCurrentPanel() instead.
      */
     AJS.Dialog.prototype.getCurPanel = function () {
         return this.getPanel(this.page[this.curpage].curtab);
     };
 
     /**
-     * Gets current button for current panel of current page
+     * Returns the current button panel.
+     * @deprecated Since 3.0.1 Use get() instead.
      */
     AJS.Dialog.prototype.getCurPanelButton = function () {
         return this.getCurPanel().button;

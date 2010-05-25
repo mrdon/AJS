@@ -440,10 +440,10 @@ AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
 };
 
 /**
- * DEPRECATED SINCE 3.0
  * Only here for backwards compatibility
  * @method removeAllAdditionalProperties
  * @namespace AJS.dropDown
+ * @deprecated Since 3.0
  */
 AJS.dropDown.removeAllAdditionalProperties = function (item) {
 };
@@ -454,7 +454,7 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
   * @class Standard
   * @constructor
   * @namespace AJS.dropDown
-  * @param {Object} options
+  * @param {Object} usroptions
   * @return {Object
   */
  AJS.dropDown.Standard = function (usroptions) {

@@ -1,7 +1,11 @@
 /**
- * The Atlassian Event System.
- * Binds and triggers events on the top level window.
- * The try/catch is to handle the case where you don't have permission to access to window.top.
+ * Binds events to the window object. See jQuery bind documentation for more details.
+ * <br>
+ * Exceptions are caught and logged.
+ *
+ * @method bind
+ * @namespace AJS
+ * @for AJS
  */
 AJS.bind = function (eventType, eventData, handler) {
     try {
@@ -11,6 +15,15 @@ AJS.bind = function (eventType, eventData, handler) {
     }
 };
 
+/**
+ * Unbinds event handlers from the window object. See jQuery unbind documentation for more details.
+ * <br>
+ * Exceptions are caught and logged.
+ *
+ * @method unbind
+ * @namespace AJS
+ * @for AJS
+ */
 AJS.unbind = function (eventType, handler) {
     try {
         return jQuery(window).unbind(eventType, handler);
@@ -19,6 +32,15 @@ AJS.unbind = function (eventType, handler) {
     }
 };
 
+/**
+ * Triggers events on the window object. See jQuery trigger documentation for more details.
+ * <br>
+ * Exceptions are caught and logged.
+ *
+ * @method bind
+ * @namespace AJS
+ * @for AJS
+ */
 AJS.trigger = function(eventType, extraParameters) {
     try {
         return jQuery(window).trigger(eventType, extraParameters);

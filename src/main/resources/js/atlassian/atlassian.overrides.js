@@ -1,6 +1,4 @@
-/**
- * Overrides various jquery functions to add AUI-specific behaviour
- */
+//Overrides various jquery functions to add AUI-specific behaviour
 (function($){
 
     var HIDDEN_CLASS = "hidden";

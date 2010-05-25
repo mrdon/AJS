@@ -1,16 +1,12 @@
 /**
-* Firebug notifier - to post a warning note about potential performance issues in our apps if Firebug is enabled
-*
-*   Originally authored by Lachlan Hardy
-*
-*   Version: 0.1
-*
-*   @method warnAboutFirebug
-*   @namespace AJS
-*   @param message {string} [optional] Contents of warning, defaults to English message if not specified
-*
-*/
-
+ * Firebug notifier - to post a warning note about potential performance issues in our apps if Firebug is enabled
+ *
+ * @method warnAboutFirebug
+ * @namespace AJS
+ * @for AJS
+ * @param message {string} [optional] Contents of warning, defaults to English message if not specified
+ *
+ */
 AJS.warnAboutFirebug = function (message) {
     if (!AJS.Cookie.read("COOKIE_FB_WARNING") && window.console && window.console.firebug) {
         if (!message){

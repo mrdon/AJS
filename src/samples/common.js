@@ -27,19 +27,19 @@
         "atlassian/tabs.js",
         "atlassian/template.js",
         "atlassian/whenitype.js",
-
-        "atlassian/jquery.autocomplete.js",
-        "atlassian/jquery.is-dirty.js",
-        "atlassian/jquery.progressbar.js",
-        "atlassian/jquery.selection.js",
-        "atlassian/jquery.os.js",
-        "atlassian/jquery.moveto.js",
-        "atlassian/jquery.offsetanchors.js",
-        "atlassian/jquery.hotkeys.js",
-        "atlassian/jquery.getdocheight.js",
         "atlassian/containdropdown.js",
-        "atlassian/jquery.stalker.js",
-        "atlassian/jquery.throbber.js"
+
+        "atlassian/jquery/jquery.autocomplete.js",
+        "atlassian/jquery/jquery.is-dirty.js",
+        "atlassian/jquery/jquery.progressbar.js",
+        "atlassian/jquery/jquery.selection.js",
+        "atlassian/jquery/jquery.os.js",
+        "atlassian/jquery/jquery.moveto.js",
+        "atlassian/jquery/jquery.offsetanchors.js",
+        "atlassian/jquery/jquery.hotkeys.js",
+        "atlassian/jquery/jquery.getdocheight.js",
+        "atlassian/jquery/jquery.stalker.js",
+        "atlassian/jquery/jquery.throbber.js"
     ];
     
     for (var i = 0, ii = includes.length; i < ii; i++) {

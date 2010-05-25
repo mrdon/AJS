@@ -1,7 +1,12 @@
-/*
-* AJS.template
-* http://confluence.atlassian.com/display/AUI/AJS.template
-*/
+/**
+ * Creates an object with methods for template support.
+ *
+ * See <a href="http://confluence.atlassian.com/display/AUI/AJS.template">CAC Documentation</a>.
+ *
+ * @constructor
+ * @class template
+ * @namespace AJS
+ */
 AJS.template = (function ($) {
     var tokenRegex = /\{([^\}]+)\}/g, // matches "{xxxxx}"
         objNotationRegex = /(?:(?:^|\.)(.+?)(?=\[|\.|$|\()|\[('|")(.+?)\2\])(\(\))?/g, // matches ".xxxxx" or "["xxxxx"]" to run over object properties
@@ -36,25 +41,43 @@ AJS.template = (function ($) {
             }
             return res;
         },
-        // internal function
-        // escapes HTML chars
+        /**
+         * Escapes HTML characters
+         * @private
+         * @method escaper
+         */
         escaper = function (chr) {
             return "&#" + chr.charCodeAt() + ";";
         },
-        // replaces tokens in the template with corresponding values without HTML escaping
+        /**
+         * Replaces tokens in the template with corresponding values without HTML escaping
+         * @method fillHtml
+         * @param obj {Object} to populate the template with
+         * @return {Object} the template object
+         */
         fillHtml = function (obj) {
             this.template = this.template.replace(tokenRegex, function (all, key) {
                 return replacer(all, key, obj, true);
             });
             return this;
         },
-        // replaces tokens in the template with corresponding values with HTML escaping
+        /**
+         * Replaces tokens in the template with corresponding values with HTML escaping
+         * @method fill
+         * @param obj {Object} to populate the template with
+         * @return {Object} the template object
+         */
         fill = function (obj) {
             this.template = this.template.replace(tokenRegex, function (all, key) {
                 return replacer(all, key, obj);
             });
             return this;
         },
+        /**
+         * Returns the current templated string.
+         * @method toString
+         * @return {String} the current template
+         */
         toString = function () {
             return this.template;
         };
@@ -64,6 +87,11 @@ AJS.template = (function ($) {
         function res() {
             return res.template;
         }
+
+        /**
+         * The current templated string
+         * @property template
+         */
         res.template = String(s);
         res.toString = res.valueOf = toString;
         res.fill = fill;
