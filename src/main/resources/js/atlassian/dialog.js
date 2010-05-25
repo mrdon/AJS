@@ -127,6 +127,12 @@ AJS.popup = function (options) {
 
     popup.hide();
 
+    popup.enable();
+    /**
+     * Popup object
+     * @class Popup
+     * @static
+    */
     var res = {
 
         changeSize: function (w, h) {
@@ -189,6 +195,7 @@ AJS.popup = function (options) {
 
 			AJS.$(document).trigger("hideLayer", ["popup", this]);
 			AJS.popup.current = null;
+			this.enable();
         },
         /**
          * jQuery object, representing popup DOM element
@@ -208,6 +215,31 @@ AJS.popup = function (options) {
             }
             popup.remove();
             this.element = null;
+        },
+        /**
+         * disables the popup
+         * @method disable
+        */
+        disable: function() {
+            if(!this.disabled){
+                this.popupBlanket = AJS.$("<div class='dialog-blanket'> </div>").css({
+                    height: popup.height(),
+                    width: popup.width()
+                });
+                popup.append(this.popupBlanket);
+                this.disabled = true;
+            }
+        },
+        /**
+         * enables the popup if it is disabled
+         * @method enable
+        */
+        enable: function() {
+            if(this.disabled) {
+                this.disabled = false;
+                this.popupBlanket.remove();
+                this.popupBlanket=null;
+            }
         }
     };
 
@@ -811,6 +843,22 @@ AJS.popup = function (options) {
         this.popup.hide();
         this.popup.remove();
     };
+    /**
+     * Disables the dialog if enabled
+     * @method disable
+    */
+    AJS.Dialog.prototype.disable = function () {
+        this.popup.disable();
+        return this;
+    }
+    /**
+     * Enables the dialog if disabled
+     * @method disable
+    */
+    AJS.Dialog.prototype.enable = function () {
+        this.popup.enable();
+        return this;
+    }
     /**
      * Gets set of items depending on query
      * @method get

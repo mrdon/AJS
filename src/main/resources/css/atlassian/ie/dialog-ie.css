@@ -21,6 +21,9 @@ without CSS hacks * eg:
     z-index: 2499;
 }
 
+.aui-dialog .dialog-blanket {
+    filter: alpha(opacity = 20);
+}
 /** * Fixes for IE7 and IE6 * - each property *must* be prefixed with
 an asterisk (*) * eg: 
 .dashboard {
