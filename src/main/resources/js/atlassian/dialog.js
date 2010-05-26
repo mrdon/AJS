@@ -511,11 +511,11 @@ AJS.popup = function (options) {
     */
     Page.prototype.recalcSize = function () {
         var headerHeight = this.header ? 43 : 0;
-        var panelHeight = this.buttonpanel ? 43 : 0;
+        var buttonHeight = this.buttonpanel ? 43 : 0;
         for (var i = this.panel.length; i--;) {
-            var newHeight = this.dialog.height - headerHeight - panelHeight - this.panel[i].padding * 2;
-            this.panel[i].body.css("height", newHeight);
-            this.menu.css("height", newHeight + parseFloat(this.menu.css("padding-top")));
+            var dialogComponentsHeight = this.dialog.height - headerHeight - buttonHeight;
+            this.panel[i].body.css("height", dialogComponentsHeight - this.panel[i].padding * 2);
+            this.menu.css("height", dialogComponentsHeight - parseFloat(this.menu.css("padding-top")));
         }
     };
 

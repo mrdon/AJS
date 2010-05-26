@@ -76,21 +76,18 @@
         dialog.addHeader("Dialog - Page 0");
 
         // add panel 1
-        dialog.addPanel("Panel 1", "<p>Some content for panel 1</p>", "panel-body");
+        dialog.addPanel("Panel 1", "<p>Some content for panel 1. This has no padding.</p>", "panel-body");
+        dialog.get("panel:0").setPadding(0);
 
         // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
         dialog.addPanel("Panel 2", "<p>Some content for panel 2</p>", "panel-body");
 
-        // add a "Next" button on page 0 (current page)
         dialog.addButton("Next", function (dialog) {
             dialog.nextPage();
         });
-
-        // add "Cancel" button on page 0 (current page)
         dialog.addButton("Cancel", function (dialog) {
             dialog.hide();
         });
-
         dialog.addButton("testStackingDialogs", function (dialog) {
             dialog2.show();
         });
@@ -109,7 +106,6 @@
         dialog.addButton("Previous", function(dialog) {
            dialog.prevPage();
         });
-
         // adds "Cancel" button to page 1
         dialog.addButton("Cancel", function (dialog) {
             dialog.hide();
@@ -137,8 +133,6 @@
             // start first page, first panel
             dialog.gotoPage(0);
             dialog.gotoPanel(0);
-
-            // display the popup
             dialog.show();
         });
     });
