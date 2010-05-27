@@ -1,107 +1,122 @@
 
 /* AUI Tabs */
-.aui-tabs {
-    margin: 0 0 1em 0;
+.aui-tabs ul.tabs-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 5;
 }
-    .aui-tabs ul.tabs-menu {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        z-index: 5;
-    }
     .aui-tabs ul.tabs-menu li.menu-item {
-        border: 1px solid #bbb;
-        display: block;
-        margin: -1px -1px 0 0;
+        margin: 0;
         padding: 0;
     }
         .aui-tabs ul.tabs-menu li.menu-item a {
-            background-color: #f0f0f0;
+            background: #fff;
             color: #535353;
             display: block;
-            font-weight: 700;
-            overflow: hidden;
-            padding: 0.4em 0.5em 0.2em;
             text-decoration: none;
-            white-space: nowrap;
         }
-        .aui-tabs ul.tabs-menu li.menu-item a:active,
-        .aui-tabs ul.tabs-menu li.menu-item a:visited {
-            background-color: #f0f0f0;
-            color: #535353;
-        }
-        .aui-tabs ul.tabs-menu li.menu-item a:hover,
-        .aui-tabs ul.tabs-menu li.menu-item a:active,
-        .aui-tabs ul.tabs-menu li.menu-item a:focus {
-            background-color: #fff;
-            color: #535353;
+        .aui-tabs ul.tabs-menu li.menu-item strong {
+            display: block;
+            overflow: hidden;
+            padding: 0.4em 0.6em 0.2em 0.6em;
         }
     .aui-tabs ul.tabs-menu li.menu-item.active-tab {
-        background-color: #fff;
+        background: #fff;
     }
-        .aui-tabs ul.tabs-menu li.menu-item.active-tab a {
-            background-color: #fff;
-            color: #000;
-        }
-        .aui-tabs ul.tabs-menu  li.menu-item.active-tab a:focus {
-            outline: none;
-        }
-.aui-tabs ul.tabs-menu li.menu-item.active-tab strong {
-    background-color: transparent;
-    color: #000;
+    .aui-tabs ul.tabs-menu li.menu-item.active-tab strong {
+        background: #fff;
+        color: #000;
+        cursor: default;
+    }
+    .aui-tabs ul.tabs-menu li.menu-item.active-tab a {
+        background: #fff;
+        color: #000;
+    }
+.aui-tabs .tabs-pane {
+    border-top: 1px solid #bbb;
+    display: none;
+    padding: 1em;
 }
-    .aui-tabs .tabs-pane {
-        border: 1px solid #bbb;
-        display: none;
-        padding: 1em;
-    }
-    .aui-tabs .tabs-pane.active-pane {
-        display: block;
-    }
+.aui-tabs .tabs-pane.active-pane {
+    display: block;
+}
 
-/* vertical tabs
-- as used on browse projects */
-.vertical-tabs ul.tabs-menu {
+/* Vertical Tabs */
+.aui-tabs.vertical-tabs ul.tabs-menu {
     float: left;
-    width: 11.1em;
+    width: 11em;
 }
-    .vertical-tabs ul.tabs-menu li.menu-item {
-        margin: -1px 0 0 1em;
+    .aui-tabs.vertical-tabs ul.tabs-menu li.menu-item {
+        border: 1px solid #bbb;
+        border-right: none;
+        margin: -1px 0 0 0;
     }
-    .vertical-tabs ul.tabs-menu li.menu-item.first {
+    .aui-tabs.vertical-tabs ul.tabs-menu li.first.menu-item {
         margin-top: 1em;
-        padding: 0;
     }
-    .vertical-tabs ul.tabs-menu li.menu-item.active-tab {
-        background-color: #fff;
-        border-right-color: #fff;
-        margin-left: 0;
+    .aui-tabs.vertical-tabs ul.tabs-menu li.menu-item.active-tab {
+        background: #fff;
+        margin-left: -0.5em;
     }
-    .vertical-tabs .tabs-pane {
+        .aui-tabs.vertical-tabs li.menu-item a,
+        .aui-tabs.vertical-tabs li.menu-item a:link,
+        .aui-tabs.vertical-tabs li.menu-item a:visited {
+            background: #f0f0f0;
+            color: #535353;
+        }
+        .aui-tabs.vertical-tabs li.menu-item a:hover,
+        .aui-tabs.vertical-tabs li.menu-item a:active,
+        .aui-tabs.vertical-tabs li.menu-item a:focus {
+            background: #fff;
+            color: #535353;
+        }
+        .aui-tabs.vertical-tabs li.menu-item strong {
+            font-weight: 700;
+            white-space: nowrap;
+        }
+    .aui-tabs.vertical-tabs .tabs-pane {
+        border: 1px solid #bbb;
         margin: 0 0 0 11em;
         position: relative;
         z-index: 1;
     }
 
-/* horizontal tabs*/
-.horizontal-tabs ul.tabs-menu {
+/* Horizontal Tabs */
+.aui-tabs.horizontal-tabs ul.tabs-menu {
     overflow: hidden;
-    position: relative;
-    top: 1px;
+    top: 2px;
 }
-    .horizontal-tabs ul.tabs-menu li.menu-item {
+    .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item {
+        border-bottom: 1px solid #bbb;
         float: left;
-        margin: 0 -1px 0 0;
         width: auto;
-        white-space: nowrap;
     }
-    .horizontal-tabs ul.tabs-menu li.menu-item.first {
+    .aui-tabs.horizontal-tabs ul.tabs-menu li.first.menu-item {
         margin-left: 1em;
     }
-    .horizontal-tabs ul.tabs-menu li.menu-item.active-tab {
+        .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item a,
+        .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item a:link,
+        .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item a:visited {
+            border: 1px solid #fff;
+            border-bottom: none;
+        }
+        .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item a:hover,
+        .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item a:active,
+        .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item a:focus {
+            border-color: #ddd;
+        }
+        .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item strong {
+            font-weight: 400;
+        }
+    .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item.active-tab {
         border-bottom-color: #fff;
-        color: #000;
     }
-
-
-/* end tabs */
+        .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item.active-tab a {
+            border: none;
+        }
+        .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item.active-tab strong {
+            border: 1px solid #bbb;
+            border-bottom-color: #fff;
+        }
