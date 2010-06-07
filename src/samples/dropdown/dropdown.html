@@ -32,6 +32,7 @@
         .aui-dd-parent {float: left; margin: 0 0 0 2em; width: auto;}
         #dropDown-left {float: left; margin: 0 0 0 2em; width: auto;}
         #dropDown-right {float: left; margin: 0 0 0 2em; width: auto;}
+        #dropDown-notHidden {float: left; margin: 0 0 0 2em; width: auto;}
         
         #testing {clear: right; float: right; width: 500px;}
             #testing object,
@@ -59,6 +60,17 @@
                     <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
                     <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
                     <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
+                </ul>
+            </li>
+        </div>
+        <div id = "dropDown-notHidden">
+            <li class="aui-dd-parent">
+                <a href="#" class="aui-dd-trigger">A Dropdown</a>
+                <ul class="aui-dropdown">
+                    <li class="dropdown-item"><a href="#" class="item-link">This dropdown should show by default</a></li>
+                    <li class="dropdown-item"><a href="#" class="item-link">This dropdown should show by default</a></li>
+                    <li class="dropdown-item"><a href="#" class="item-link">This dropdown should show by default</a></li>
+                    <li class="dropdown-item"><a href="#" class="item-link">This dropdown should show by default</a></li>
                 </ul>
             </li>
         </div>
@@ -184,6 +196,7 @@
         //Testing dropDown alignment options
          AJS.$("#dropDown-left").dropDown("Standard", {alignment: "left"});
          AJS.$("#dropDown-right").dropDown("Standard", {alignment: "right"});
+         AJS.$("#dropDown-notHidden").dropDown("Standard", {isHiddenByDefault: false, alignment: "left"});
 
         // Testing AJS.inlineHelp
         AJS.inlineHelp();

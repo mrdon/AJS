@@ -23,7 +23,6 @@ AJS.dropDown = function (obj, usroptions) {
         moving = false,
         $doc = AJS.$(document),
         options = {
-            isHiddenByDefault: false,
             item: "li:has(a)",
             activeClass: "active",
             alignment: "right",
@@ -497,6 +496,11 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
 
         //hide dropdown if not already hidden
         $dropdown.addClass("hidden");
+        //console.log(options.isHiddenByDefault);
+        //show the dropdown if isHiddenByDefault is set to false
+        if(options.isHiddenByDefault == false){
+            ddcontrol.show();
+        }
 
         $trigger.click(function (e) {
             if (ddcontrol != AJS.dropDown.current) {
