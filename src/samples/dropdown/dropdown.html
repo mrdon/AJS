@@ -33,6 +33,7 @@
         #dropDown-left {float: left; margin: 0 0 0 2em; width: auto;}
         #dropDown-right {float: left; margin: 0 0 0 2em; width: auto;}
         #dropDown-notHidden {float: left; margin: 0 0 0 2em; width: auto;}
+        #dropDown-unstyled {float: left; margin: 0 0 0 2em; width: auto;}
         
         #testing {clear: right; float: right; width: 500px;}
             #testing object,
@@ -71,6 +72,18 @@
                     <li class="dropdown-item"><a href="#" class="item-link">This dropdown should show by default</a></li>
                     <li class="dropdown-item"><a href="#" class="item-link">This dropdown should show by default</a></li>
                     <li class="dropdown-item"><a href="#" class="item-link">This dropdown should show by default</a></li>
+                </ul>
+            </li>
+        </div>
+
+        <div id = "dropDown-unstyled">
+            <li class="aui-dd-parent">
+                <a href="#" class="aui-dd-trigger-unstyled aui-dd-trigger">An unstyled Dropdown trigger</a>
+                <ul class="aui-dropdown">
+                    <li class="dropdown-item"><a href="#" class="item-link">unstyled</a></li>
+                    <li class="dropdown-item"><a href="#" class="item-link">unstyled</a></li>
+                    <li class="dropdown-item"><a href="#" class="item-link">unstyled</a></li>
+                    <li class="dropdown-item"><a href="#" class="item-link">unstyled</a></li>
                 </ul>
             </li>
         </div>
@@ -197,6 +210,7 @@
          AJS.$("#dropDown-left").dropDown("Standard", {alignment: "left"});
          AJS.$("#dropDown-right").dropDown("Standard", {alignment: "right"});
          AJS.$("#dropDown-notHidden").dropDown("Standard", {isHiddenByDefault: false, alignment: "left"});
+         AJS.$("#dropDown-unstyled").dropDown("Standard", {alignment: "right"});
 
         // Testing AJS.inlineHelp
         AJS.inlineHelp();

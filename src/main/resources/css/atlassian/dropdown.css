@@ -2,11 +2,9 @@
 .aui-dd-parent {
     position: relative;
 }
-.aui-dd-parent span a.aui-dd-trigger {
-    position: absolute;
-    right: 5px;
-    top: 8px;
-}
+
+
+/*Default Styled Trigger*/
 .aui-dd-parent span a.aui-dd-trigger,
 .aui-dd-parent a.aui-dd-trigger {
     background: transparent url(images/icons/aui-icon-tools.gif) no-repeat -13px 0;
@@ -28,6 +26,44 @@
     border: none;
     color: #000;
 }
+
+
+.aui-dd-parent span a.aui-dd-trigger {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+}
+
+/*UNSTYLED TRIGGER*/
+.aui-dd-parent span a.aui-dd-trigger-unstyled,
+.aui-dd-parent a.aui-dd-trigger-unstyled {
+    background: none;
+    border: none;
+    color: auto;
+    display: block;
+    height: auto;
+    padding: auto;
+    text-indent: 0;
+    width: auto;
+
+}
+.aui-dd-parent a.aui-dd-trigger-unstyled:link,
+.aui-dd-parent a.aui-dd-trigger-unstyled:visited {}
+.aui-dd-parent a.aui-dd-trigger-unstyled.active,
+.aui-dd-parent a.aui-dd-trigger-unstyled:hover,
+.aui-dd-parent a.aui-dd-trigger-unstyled:active,
+.aui-dd-parent a.aui-dd-trigger-unstyled:focus {
+    background: none;
+    border: none;
+    color: auto;
+}
+
+.aui-dd-parent span a.aui-dd-trigger-unstyled {
+    position: absolute;
+    right: auto;
+    top: auto;
+}
+
 .aui-dd-parent .aui-dropdown,
 .aui-dropdown,
 .aui-dd-parent .aui-shadow-parent {
