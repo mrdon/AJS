@@ -207,7 +207,7 @@ form.aui .buttons-container {
     clear: both;
     margin-bottom: 5px;
     min-height: 2.7em;
-    overflow: auto;
+    overflow: visible;
 }
 form.aui.unsectioned .buttons-container {
     border: none;
