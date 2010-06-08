@@ -9,15 +9,18 @@ To run the full build, execute:
 
 Contents:
 
-auiplugin/                                 - The AUI plugin itself
-auiplugin/samples                          - Samples show the usage of AUI components
-auiplugin/src/main/resources/              - The contents of the AUI plugin including JS and CSS
-auiplugin-tests/                           - A plugin for tests of all kinds
-auiplugin-tests/src/test/java/             - The Selenium tests
-auiplugin-tests/src/main/resources/js/test - The in-browser tests
+auiplugin/                                            - The AUI plugin itself
+auiplugin/samples                                     - Samples show the usage of AUI components
+auiplugin/src/main/resources/                         - The contents of the AUI plugin including JS and CSS
+auiplugin-tests/                                      - A plugin for tests of all kinds
+auiplugin-tests/src/test/java/                        - The Selenium tests
+auiplugin-tests/src/main/resources/samples            - The samples as used in manual and automated testing
+auiplugin-tests/src/main/resources/js/test            - The in-browser tests
 
 Samples:
-Each component should have a basic sample available in the samples folder.
+Each component should have a basic sample available in the auiplugin/samples folder.  There are two copies of the
+samples folder to allow each to evolve to their needs.  The one in auiplugin/samples is for developer examples
+and the one in auiplugin-tests/src/main/resources/samples is for manual and automated testing.
 
 Tests:
 Run the tests with the following commands. (The browser is automatically installed for your OS):
@@ -41,6 +44,20 @@ Skipping tests
         mvn clean install -Dmaven.test.skip
 
 
-Run/debug AUI in a different product, say, Confluence:
+Run/debug AUI via manual clicking through the samples:
 
+   cd auiplugin-tests
+   mvn refapp:run
+   http://localhost:9999/ajs/plugins/servlet/ajstest/samples/
+
+
+Run/debug AUI in a different product, say, Confluence:
+ 
+   cd auiplugin-tests
    mvn refapp:run -Dproduct=confluence
+
+
+Run/debug AUI in a different product, say, Confluence, and a specific version:
+
+   cd auiplugin-tests
+   mvn refapp:run -Dproduct=confluence -Dproduct.version=3.5-m1
