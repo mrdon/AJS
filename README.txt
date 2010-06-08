@@ -32,7 +32,7 @@ To choose another browser installed on your machine, use:
 To debug, start the webapp in debug mode, then execute Selenium tests from your IDE:
 
    cd auiplugin-tests
-   mvn refapp:debug
+   mvn refapp:run
 
 
 Skipping tests
@@ -43,4 +43,4 @@ Skipping tests
 
 Run/debug AUI in a different product, say, Confluence:
 
-   mvn refapp:debug -Dproduct=confluence
+   mvn refapp:run -Dproduct=confluence
