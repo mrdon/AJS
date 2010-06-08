@@ -253,6 +253,14 @@ form.aui .group .field-value {
 form.aui .group .field-value.checked {
     color: #693;
 }
+form.aui .group .description {
+    padding: 0 0 5px 140px;
+}
+form.aui .group .field-group .description,
+form.aui .group .checkbox .description,
+form.aui .group .radio .description {
+    padding: 0 0 5px 0;
+}
 form.aui .group legend {
     display: block;
 }
@@ -288,6 +296,7 @@ form.aui.long-label .buttons {
 }
 form.aui.long-label .group label,
 form.aui.long-label .group .field-group,
+form.aui.long-label .group .description,
 form.aui.long-label div.checkbox,
 form.aui.long-label div.radio {
     padding: 0 0 5px 0;
