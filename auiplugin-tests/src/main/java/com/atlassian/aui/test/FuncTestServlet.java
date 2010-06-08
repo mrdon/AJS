@@ -1,22 +1,22 @@
 package com.atlassian.aui.test;
 
 
-
 import com.atlassian.plugin.Plugin;
 import com.atlassian.plugin.PluginAccessor;
 import com.atlassian.plugin.webresource.WebResourceManager;
 import org.apache.commons.io.IOUtils;
-import org.osgi.framework.BundleContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Writer;
-import java.util.Enumeration;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 /**
  *
@@ -25,12 +25,10 @@ public class FuncTestServlet extends HttpServlet
 {
     private final WebResourceManager webResourceManager;
     private final Plugin plugin;
-    private final BundleContext bundleContext;
 
-    public FuncTestServlet(WebResourceManager webResourceManager, PluginAccessor pluginAccessor, BundleContext bundleContext)
+    public FuncTestServlet(WebResourceManager webResourceManager, PluginAccessor pluginAccessor)
     {
         this.webResourceManager = webResourceManager;
-        this.bundleContext = bundleContext;
         this.plugin = pluginAccessor.getPlugin("auiplugin-tests");
     }
 
@@ -39,41 +37,66 @@ public class FuncTestServlet extends HttpServlet
     {
         webResourceManager.requireResource("com.atlassian.auiplugin:ajs");
         webResourceManager.requireResource("auiplugin-tests:ajs-tests");
-        resp.setContentType("text/html");
+        webResourceManager.requireResource("auiplugin-tests:qunit");
         if (req.getPathInfo().endsWith("/"))
         {
-            displayIndex(req, resp);
+            try
+            {
+                displayIndex(req, resp);
+            }
+            catch (URISyntaxException e)
+            {
+                throw new IOException(e);
+            }
         }
         else
         {
-            InputStream in = plugin.getResourceAsStream(req.getPathInfo());
+            String path = req.getPathInfo();
+            if (path.endsWith(".html"))
+            {
+                resp.setContentType("text/html");
+            }
+            else if (path.endsWith(".js"))
+            {
+                resp.setContentType("text/javascript");
+            }
+            else if (path.endsWith(".css"))
+            {
+                resp.setContentType("text/css");
+            }
+            InputStream in = plugin.getResourceAsStream(path);
             OutputStream out = resp.getOutputStream();
             IOUtils.copy(in, out);
             out.close();
         }
     }
 
-    private void displayIndex(HttpServletRequest req, HttpServletResponse resp) throws IOException
+    private void displayIndex(HttpServletRequest req, HttpServletResponse resp) throws IOException, URISyntaxException
     {
-        Enumeration<String> e = bundleContext.getBundle().getEntryPaths(req.getPathInfo());
+        resp.setContentType("text/html");
         Writer writer = resp.getWriter();
-        writer.append("<ul>");
-        writer.append("<li><a href=\"../\">..</li>\n");
-
-        while (e.hasMoreElements())
+        URL fileURL = plugin.getResource(req.getPathInfo());
+        if (fileURL == null)
         {
-            String path = e.nextElement();
-            String file = path.substring(req.getPathInfo().length() - 1);
-            if (file.length() > 0)
-            {
-                if (file.contains("/"))
-                {
-                    file = file.substring(0, file.indexOf('/')) + "/";
-                }
-                writer.append("<li><a href=\"" + file + "\">" + file + "</a></li>\n");
-            }
+            resp.sendError(404);
+            return;
         }
-        writer.append("</ul>");
-        writer.close();
+        else if ("file".equals(fileURL.getProtocol().toLowerCase()))
+        {
+            File file = new File(fileURL.toURI());
+            writer.append("<ul>");
+            writer.append("<li><a href=\"../\">..</li>\n");
+            for (File kid : file.listFiles())
+            {
+                String name = kid.getName();
+                if (kid.isDirectory())
+                {
+                    name += "/";
+                }
+                writer.append("<li><a href=\"" + name + "\">" + name + "</a></li>\n");
+            }
+            writer.append("</ul>");
+            writer.close();
+        }
     }
 }
