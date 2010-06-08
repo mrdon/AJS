@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>atlassian-public-pom</artifactId>
+        <groupId>com.atlassian.pom</groupId>
+        <version>22</version>
+    </parent>
+
+    <groupId>com.atlassian.aui</groupId>
+    <artifactId>auiplugin-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>3.0.2-SNAPSHOT</version>
+
+    <name>Atlassian UI Plugin - Parent</name>
+
+    <scm>
+        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/trunk</connection>
+        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/trunk</developerConnection>
+        <url>https://studio.atlassian.com/source/browse/AJS/trunk</url>
+    </scm>
+
+    <issueManagement>
+        <system>Jira</system>
+        <url>https://studio.atlassian.com/browse/AJS</url>
+    </issueManagement>
+
+    <modules>
+     <module>auiplugin</module>
+     <module>auiplugin-tests</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.0-beta-9</version>
+                <configuration>
+                    <remoteTagging>true</remoteTagging>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.4.2</version>
+                    <configuration>
+                        <includes>
+                            <include>**/Test*.java</include>
+                            <include>**/*Test.java</include>
+                        </includes>
+                        <excludes>
+                            <exclude>it/**/*</exclude>
+                            <exclude>selenium/**/*</exclude>
+                            <exclude>**/*$*</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <properties>
+        <context.path>ajs</context.path>
+        <selenium.browser>firefox-3.5</selenium.browser>
+        <amps.version>3.2-m2</amps.version>
+        <http.port>9999</http.port>
+        <jdkLevel>1.5</jdkLevel>
+        <xvfb.enable>true</xvfb.enable>
+
+        <refapp.version>2.5.0.rc1</refapp.version>
+        <confluence.version>3.3-beta2</confluence.version>
+        <confluence.data.version>3.0</confluence.data.version>
+
+        <jira.version>RELEASE</jira.version>
+        <jira.data.version>RELEASE</jira.data.version>
+
+        <fecru.version>RELEASE</fecru.version>
+        <fecru.data.version>RELEASE</fecru.data.version>
+
+        <bamboo.version>RELEASE</bamboo.version>
+        <bamboo.data.version>RELEASE</bamboo.data.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>vmwarevista-ie7</id>
+            <properties>
+                <selenium.browser>*iexplore</selenium.browser>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>
