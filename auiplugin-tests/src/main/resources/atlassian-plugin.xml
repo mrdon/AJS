@@ -1,0 +1,38 @@
+<atlassian-plugin name='${project.name}' key='auiplugin-tests' pluginsVersion="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <version>${project.version}</version>
+    </plugin-info>
+
+    <resource name="js/" type="download" location="js/"/>
+
+    <servlet key="static-resources" class="com.atlassian.aui.test.FuncTestServlet">
+        <url-pattern>/ajstest/*</url-pattern>
+    </servlet>
+    <web-resource key="ajs-tests" name="Atlassian Javascript Tests">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="dialog-content.html"/>
+        <resource type="download" name="ajstest.js" location="js/ajstest.js"/>
+        <resource type="download" name="atlassian-tests.js" location="js/tests/atlassian-tests.js"/>
+        <resource type="download" name="cookie-tests.js" location="js/tests/cookie-tests.js"/>
+        <resource type="download" name="dialog-tests.js" location="js/tests/dialog-tests.js"/>
+        <resource type="download" name="dropdown-tests.js" location="js/tests/dropdown-tests.js"/>
+        <resource type="download" name="firebug-tests.js" location="js/tests/firebug-tests.js"/>
+        <resource type="download" name="inline-dialog-tests.js" location="js/tests/inline-dialog-tests.js"/>
+        <resource type="download" name="jquery.autocomplete-tests.js" location="js/tests/jquery.autocomplete-tests.js"/>
+        <resource type="download" name="jquery.is-dirty-tests.js" location="js/tests/jquery.is-dirty-tests.js"/>
+        <resource type="download" name="jquery.progressbar-tests.js" location="js/tests/jquery.progressbar-tests.js"/>
+        <resource type="download" name="jquery.selection-tests.js" location="js/tests/jquery.selection-tests.js"/>
+        <resource type="download" name="jquery.throbber-tests.js" location="js/tests/jquery.throbber-tests.js"/>
+    </web-resource>
+
+    <web-resource key="qunit" name="Atlassian QUnit Tests">
+        <dependency>auiplugin-tests:ajs-tests</dependency>
+        <resource type="download" name="qunit.js" location="js/external/qunit/qunit.js"/>
+        <resource type="download" name="qunit.css" location="js/external/qunit/qunit.css"/>
+        <resource type="download" name="bootstrap.js" location="js/tests/unit/keyboardshortcuts/bootstrap.js"/>
+        <resource type="download" name="tests.js" location="js/tests/unit/keyboardshortcuts/tests.js"/>
+    </web-resource>
+
+</atlassian-plugin>
