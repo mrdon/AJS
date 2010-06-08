@@ -37,10 +37,9 @@ AJS.whenIType = function (keys) {
             });
 
             // Override browser/plugins
-            jQuery(document).bind('keypress keyup', keys, function (e) {
+            jQuery(document).bind('keyup', keys, function (e) {
                 e.preventDefault();
             });
-
         },
 
         addShortcutTitle = function (selector) {
