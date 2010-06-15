@@ -1,10 +1,5 @@
 /*!
- *
- * This file has been modified to include a patch to Sortable as referenced here:
- * http://github.com/jquery/jquery-ui/commit/a4488aff7c62f3e2db6f894b5f24cfd0adb8c6b7
- * line: 1475
- *
- * jQuery UI 1.8.1
+ * jQuery UI 1.8.2
  *
  * Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
@@ -12,11 +7,20 @@
  *
  * http://docs.jquery.com/UI
  */
-;jQuery.ui || (function($) {
+
+(function($) {
+
+// prevent duplicate loading
+// this is only a problem because we proxy existing functions
+// and we don't want to double proxy them
+$.ui = $.ui || {};
+if ($.ui.version) {
+	return;
+}
 
 //Helper functions and ui object
-$.ui = {
-	version: "1.8.1",
+$.extend($.ui, {
+	version: "1.8.2",
 
 	// $.ui.plugin is deprecated.  Use the proxy pattern instead.
 	plugin: {
@@ -79,6 +83,9 @@ $.ui = {
 		BACKSPACE: 8,
 		CAPS_LOCK: 20,
 		COMMA: 188,
+		COMMAND: 91,
+		COMMAND_LEFT: 91, // COMMAND
+		COMMAND_RIGHT: 93,
 		CONTROL: 17,
 		DELETE: 46,
 		DOWN: 40,
@@ -88,6 +95,7 @@ $.ui = {
 		HOME: 36,
 		INSERT: 45,
 		LEFT: 37,
+		MENU: 93, // COMMAND_RIGHT
 		NUMPAD_ADD: 107,
 		NUMPAD_DECIMAL: 110,
 		NUMPAD_DIVIDE: 111,
@@ -101,9 +109,10 @@ $.ui = {
 		SHIFT: 16,
 		SPACE: 32,
 		TAB: 9,
-		UP: 38
+		UP: 38,
+		WINDOWS: 91 // COMMAND
 	}
-};
+});
 
 //jQuery plugins
 $.fn.extend({
@@ -206,7 +215,7 @@ $.extend($.expr[':'], {
 
 })(jQuery);
 /*!
- * jQuery UI Widget 1.8.1
+ * jQuery UI Widget 1.8.2
  *
  * Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
@@ -442,7 +451,7 @@ $.Widget.prototype = {
 
 })( jQuery );
 /*!
- * jQuery UI Mouse 1.8.1
+ * jQuery UI Mouse 1.8.2
  *
  * Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
@@ -593,7 +602,7 @@ $.widget("ui.mouse", {
 
 })(jQuery);
 /*
- * jQuery UI Draggable 1.8.1
+ * jQuery UI Draggable 1.8.2
  *
  * Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
@@ -1053,7 +1062,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 });
 
 $.extend($.ui.draggable, {
-	version: "1.8.1"
+	version: "1.8.2"
 });
 
 $.ui.plugin.add("draggable", "connectToSortable", {
@@ -1390,7 +1399,7 @@ $.ui.plugin.add("draggable", "zIndex", {
 
 })(jQuery);
 /*
- * jQuery UI Sortable 1.8.1
+ * jQuery UI Sortable 1.8.2
  *
  * Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT (MIT-LICENSE.txt)
@@ -2452,7 +2461,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 });
 
 $.extend($.ui.sortable, {
-	version: "1.8.1"
+	version: "1.8.2"
 });
 
 })(jQuery);

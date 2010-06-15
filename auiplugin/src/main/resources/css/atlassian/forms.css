@@ -1,10 +1,33 @@
 /* CSS Document for form styling - REQUIRES class of 'aui' to form */
-form.aui,form.aui p,form.aui div,form.aui h1,form.aui h2,form.aui h3,form.aui h4,form.aui h5,form.aui h6,
-form.aui img,form.aui ul,form.aui ol,form.aui li,form.aui dl,form.aui dt,form.aui dd,form.aui pre,
-form.aui fieldset,form.aui textarea,form.aui input,form.aui select,form.aui button,form.aui optgroup,form.aui option {
+form.aui,
+form.aui p.aui-form,
+form.aui div.aui-form,
+form.aui div.description,
+form.aui div.error,
+form.aui .field-group,
+form.aui .group,
+form.aui div.buttons-container,
+form.aui div.buttons,
+form.aui div.checkbox,
+form.aui div.radio,
+form.aui div.matrix,
+form.aui h1,
+form.aui h2,
+form.aui h3,
+form.aui h4,
+form.aui h5,
+form.aui h6,
+form.aui fieldset,
+form.aui textarea,
+form.aui input,
+form.aui select,
+form.aui button,
+form.aui optgroup,
+form.aui option {
     margin: 0;
     padding: 0;
 }
+
 form.aui {
     color: #333;
     font-family: arial,tahoma,verdana,sans-serif;
@@ -23,6 +46,7 @@ form.aui pre.aui-form {
     border: 1px solid #ddd;
     font-family: monospace;
     font-size: 13px;
+    margin: 0;
     overflow-x: auto;
     overflow-y: visible;
     padding: 15px;
@@ -207,7 +231,7 @@ form.aui .buttons-container {
     clear: both;
     margin-bottom: 5px;
     min-height: 2.7em;
-    overflow: auto;
+    overflow: visible;
 }
 form.aui.unsectioned .buttons-container {
     border: none;
@@ -253,6 +277,14 @@ form.aui .group .field-value {
 form.aui .group .field-value.checked {
     color: #693;
 }
+form.aui .group .description {
+    padding: 0 0 5px 140px;
+}
+form.aui .group .field-group .description,
+form.aui .group .checkbox .description,
+form.aui .group .radio .description {
+    padding: 0 0 5px 0;
+}
 form.aui .group legend {
     display: block;
 }
@@ -288,6 +320,7 @@ form.aui.long-label .buttons {
 }
 form.aui.long-label .group label,
 form.aui.long-label .group .field-group,
+form.aui.long-label .group .description,
 form.aui.long-label div.checkbox,
 form.aui.long-label div.radio {
     padding: 0 0 5px 0;
@@ -323,7 +356,8 @@ form.aui.top-label .group {
     padding-top: 0.5em;
 }
 form.aui.top-label div.checkbox,
-form.aui.top-label div.radio {
+form.aui.top-label div.radio,
+form.aui.top-label .group .description {
     padding: 0 0 5px 0;
 }
 /* date selects and checkbox / radio groups */
