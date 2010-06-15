@@ -137,6 +137,8 @@
                 </style>
 
                 <code>
+                    // style #test-move-to-and-focus:focus {background:blue; color:#fff;}
+
                     AJS.whenIType("zf").moveToAndFocus("#test-move-to-and-focus");
                 </code>
 
