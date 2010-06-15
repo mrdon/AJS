@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-au">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Atlassian form template</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/basic.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/firebug.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/dropdown.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/forms.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/icons.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/inline-dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/messages.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/tables.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/tabs.css" media="all">
+
+    <!--[if IE]>
+        <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/ie/dialog-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/ie/dropdown-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/ie/forms-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/ie/icons-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/ie/inline-dialog-ie.css" media="all">
+    <![endif]-->
+
+    <style type="text/css">
+        #example-right {
+            background: #eee;
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="forms.html">Forms Home</a></li>
+    <li><a href="default.html">Default Layout</a></li>
+    <li><a href="long-labels.html">Long Labels</a></li>
+    <li><a href="top-labels.html">Top Labels</a></li>
+    <li><a href="inline-form.html">Inline Form</a></li>
+    <li><a href="inline-help.html">Inline Help</a></li>
+</ul>
+<h1>Top Labels</h1>
+
+<form action="#" method="post" id="example-right" class="aui top-label">
+    <p><em>This short form has right-aligned buttons such as you might see in a Dialog. It's .buttons-container has a class of .right and the buttons are thus aligned right. It is shaded only to show the width of the form.</em></p>
+    <div class="field-group">
+        <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text" type="text" id="fname" name="fname" title="first name">
+    </div>
+    <div class="field-group">
+        <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text long-field" type="text" id="lname" name="lname" title="last name">
+    </div>
+    <div class="buttons-container right">
+        <div class="buttons">
+            <input class="button submit" type="submit" value="Save" id="save-btn1">
+            <a class="cancel" href="forms.html#">Cancel</a>
+        </div>
+    </div>
+</form>
+
+<form action="forms.html#" method="post" id="j" class="aui top-label">
+    <h2>Top Labels - add class top-label to form</h2>
+    <fieldset>
+        <legend><span>New Issue</span></legend>
+        <div class="field-group">
+            <label for="issueType">Issue Type</label>
+            <select class="select medium-field" id="issueType" name="issueType" title="select issue type">
+                <option>- Select Issue Type -</option>
+                <option>Bug</option>
+            </select>
+        </div>
+        <div class="field-group">
+            <label for="projectName">Project</label>
+            <select class="select medium-field" id="projectName" name="projectName" title="select project">
+                <option>- Select Project -</option>
+                <option>JIRA</option>
+            </select>
+        </div>
+    </fieldset>
+
+    <div class="buttons-container">
+        <div class="buttons">
+            <input class="button submit" type="submit" value="Save" id="save-new-issue">
+            <a class="cancel" href="forms.html#">Cancel</a>
+        </div>
+    </div>
+
+    <h2>Groups (checkboxes and radios)</h2>
+    <fieldset class="group">
+        <p>The Legend is optional - you may not want it for the single checkbox</p>
+        <legend><span>Checkboxes Legend</span></legend>
+        <div class="checkbox">
+            <input class="checkbox" type="checkbox"  name="cbOne" id="cbthree">
+            <label for="cbthree">Checkbox One</label>
+            <div class="description">You can have a description here</div>
+        </div>
+        <div class="checkbox">
+            <input class="checkbox" type="checkbox"  name="cbTwo" id="cbfour">
+            <label for="cbfour">Checkbox Two</label>
+            <div class="description">You can have a description here</div>
+            <div class="error">and/or an error</div>
+        </div>
+        <div class="field-group">
+            <p>You can also have a description here if you like</p>
+            <div class="error">and/or errors</div>
+        </div>
+        <div class="description">Or, you can have a description here for the <code>fieldset</code> as a whole.</div>
+    </fieldset>
+
+    <h2>One Checkbox</h2>
+    <fieldset class="group">
+        <p>The Legend is optional - you may not want it for the single checkbox</p>
+        <div class="checkbox">
+            <input class="checkbox" type="checkbox"  name="cbOne" id="cbsingle">
+            <label for="cbsingle">Checkbox Single</label>
+            <div class="description">You can have a description here</div>
+        </div>
+        <div class="field-group">
+            <p>You can also have a description here if you like</p>
+        </div>
+    </fieldset>
+
+    <h2>Radio Buttons</h2>
+    <fieldset class="group">
+        <legend><span>Radio Buttons</span></legend>
+        <div class="radio">
+            <input class="radio" type="radio"   checked="checked" name="rads" id="irOne">
+            <label for="irOne">Rad One</label>
+        </div>
+        <div class="radio">
+            <input class="radio" type="radio"  name="rads" id="irTwo">
+            <label for="irTwo">Rad Two</label>
+        </div>
+        <div class="radio">
+            <input class="radio" type="radio"  name="rads" id="irThree">
+            <label for="irThree">Rad Three</label>
+        </div>
+    </fieldset>
+</form>
+
+<script type="text/javascript" src="../common.js"></script>
+
+<script type="text/javascript">
+    AJS.$(function() {
+
+        // Testing AJS.inlineHelp
+        AJS.inlineHelp();
+    });
+</script>
+</body>
+</html>
