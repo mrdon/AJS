@@ -3,9 +3,10 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     
-    <title>Dropdown Example</title>
+    <title>Keyboard Shortcuts Demo</title>
     <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
 
+<<<<<<< HEAD:src/samples/keyboardshortcuts/keyboardshortcuts.html
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/basic.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/firebug.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/dialog.css" media="all">
@@ -16,6 +17,18 @@
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/messages.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/tables.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/tabs.css" media="all">
+=======
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/basic.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/firebug.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/dropdown.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/forms.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/icons.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/inline-dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/tables.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/tabs.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../samplesCommon.css" media="all"> 
+>>>>>>> 6847bfb... AJS-409 applying sample and testing framework to format, icons, inline-dialog, keyboardshortcuts, messages, talker, tables and tabs.:src/samples/keyboardshortcuts/keyboardshortcuts-demo.html
 
     <!--[if IE]>
         <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/ie/dialog-ie.css" media="all">
@@ -30,9 +43,10 @@
         .row {*display:inline-block;}
         .row:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
         .example h2 {color:#3C78B5;}
-         .example .content {padding:15px;}
+        .example .content {padding:15px;}
         .example {list-style-type:none; margin:0 2.5% 20px; background:#fff; border:1px solid #ccc; -moz-border-radius: 10px; width:44%; min-height:250px; float:left; -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);}
         .example:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+        .navigation {margin:0 2.5% 20px;}
     </style>
 
 
@@ -40,9 +54,12 @@
 </head>
 <body>
 
-
+	<div class="navigation">
+        <h2> AUI Format Demo Page </h2>
+        <h4> <a href="../index.html"> Back to AUI Demo </a>
+    </div>
+    
     <div class="row">
-
         <div class="example">
             <div class="content">
                 <h1>method: click</h1>
