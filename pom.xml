@@ -66,7 +66,7 @@
 
         <context.path>ajs</context.path>
         <selenium.browser>firefox-3.5</selenium.browser>
-        <amps.version>3.2-m2</amps.version>
+        <amps.version>3.2-m3</amps.version>
         <http.port>9999</http.port>
         <jdkLevel>1.5</jdkLevel>
         <xvfb.enable>true</xvfb.enable>
