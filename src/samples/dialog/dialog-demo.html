@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-au">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    
+    <title>Dialog Example</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/basic.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/firebug.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/dropdown.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/forms.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/icons.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/inline-dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/tables.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/tabs.css" media="all">
+    
+    <link type="text/css" rel="stylesheet" href="../samplesCommon.css" media="all">
+
+    <!--[if IE]>
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/ie/dialog-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/ie/dropdown-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/ie/forms-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/ie/icons-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../main/resources/css/atlassian/ie/inline-dialog-ie.css" media="all">
+    <![endif]-->
+    <script type="text/javascript" src="../common.js"></script>
+</head>
+<body>
+    <div class="navigation">
+        <h2> AUI Dialog Demo Page </h2>
+        <h4> <a href="../index.html"> Back to AUI Demo </a>
+    </div>
+    
+    <div class = "aui-demo source-required">
+        <h2> Popup </h2>
+        <p>Demo of AJS.popup, shows a blank popup with a shadow</p>
+        
+        <div class="html-code">
+            <form>
+                <input id="popupButton" type="button" class="button" value="Popup - Click Me">
+                <a href="#" id="popupLink"> Popup Link </a>
+            </form>
+        </div>
+        <script type="text/javascript" class="js-code">
+            addSample(function() {
+                var popup = AJS.popup(400, 200, "my-popup");
+                AJS.$("#popupButton").click(function(){
+                    popup.show();    
+                });
+                
+                AJS.$("#popupLink").click(function(){
+                    popup.show(); 
+                });
+            });
+        </script>
+    </div>
+
+    <div class = "aui-demo source-required">
+
+        <h2> Dialog </h2>
+        <p class="description">Demo of AJS.Dialog, shows the following features:
+            <ol class="feature-list">
+                <li>Panels</li>
+                <li>Pages</li>
+                <li>Buttons</li>
+                <li>Stacking Dialogs</li>
+            </ol>
+        </p>
+        <div class="html-code">
+            <form>
+                <input id="dialogButton" name="dialogButton" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="dialogLink"> Dialog Link </a>
+            </form>
+        </div>
+        <script type="text/javascript" class="js-code">
+
+            addSample(function() {
+                        
+                // create a dialog 860px wide x 530px high
+                var dialog = new AJS.Dialog(860, 530),
+                dialog2 = new AJS.Dialog(1000, 300),
+                dialog3 = new AJS.Dialog(100, 600);
+                
+                // PAGE 0 (first page)
+                // adds header for first page
+                dialog.addHeader("Dialog - Page 0");
+                
+                // add panel 1
+                dialog.addPanel("Panel 1", "<p>Some content for panel 1. This has no padding.</p>", "panel-body");
+                dialog.get("panel:0").setPadding(0);
+                
+                // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
+                dialog.addPanel("Panel 2", "<p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p>", "panel-body");
+
+                dialog.addButton("Next", function (dialog) {
+                    dialog.nextPage();
+                });
+                dialog.addButton("Cancel", function (dialog) {
+                    dialog.hide();
+                });
+                dialog.addButton("testStackingDialogs", function (dialog) {
+                    dialog2.show();
+                });
+                
+                // PAGE 1 (second page)
+                // adds a new page to dialog
+                dialog.addPage();
+                
+                // adds header for second page
+                dialog.addHeader("Dialog - Page 1");
+            
+            // adds a single panel on second page (as there is only one panel, no menu will appear on the left side)
+                dialog.addPanel("SinglePanel", "<p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p>", "singlePanel");
+
+                // add "Previous" button to page 1
+                dialog.addButton("Previous", function(dialog) {
+                   dialog.prevPage();
+                });
+                // adds "Cancel" button to page 1
+                dialog.addButton("Cancel", function (dialog) {
+                    dialog.hide();
+                });
+                
+                //Create first stackable Dialog
+                dialog2.addHeader("First Stacking Dialog")
+                .addPanel("PanelStack1", "PanelStack1")
+                .addButton("close", function(dialog){
+                    dialog.hide();
+                })
+                .addButton("testStackingDialogs2", function (dialog) {
+                    dialog3.show();
+                });
+                //Create second stackable dialog
+                dialog3.addHeader("Second Stacking Dialog")
+                .addPanel("PanelStack1", "PanelStack1")
+                .addButton("close", function(dialog){
+                    dialog.hide();
+                });
+                
+                AJS.$("#dialogButton").click(function() {
+                
+                    // PREPARE FOR DISPLAY
+                    // start first page, first panel
+                    dialog.gotoPage(0);
+                    dialog.gotoPanel(0);
+                    dialog.show();
+                });
+            
+                AJS.$("#dialogLink").click(function(){
+                    dialog.gotoPage(0);
+                    dialog.gotoPanel(0);
+                    dialog.show(); 
+                });
+            });
+        </script>
+        
+    </div>
+<script type="text/javascript">
+    
+    createViewSourceLinks();
+    
+    // Testing AJS.warnAboutFirebug
+    AJS.warnAboutFirebug();
+
+    // Testing AJS.inlineHelp
+    AJS.inlineHelp();
+</script>
+    
+</body>
+</html>
