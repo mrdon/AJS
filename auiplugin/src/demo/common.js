@@ -98,7 +98,6 @@ function createViewSourceLinks() {
         
         //add JS source
         var jscode = parent.children(".js-code").html();
-        console.log();
         if (AJS.$.trim(jscode)) {
             jscode = jscode.replace("addSample(function() {", "");
             jscode = AJS.$.trim(jscode);  
