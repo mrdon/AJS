@@ -29,6 +29,9 @@ body {
     background: #fff;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    box-shadow: 0 2px 2px #555;
+    -moz-box-shadow: 0 2px 2px #555;
+    -webkit-box-shadow: 0 2px 2px #555;
 }
 
 .aui-demo {
