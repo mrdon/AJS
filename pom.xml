@@ -89,6 +89,7 @@
             <id>vmwarevista-ie7</id>
             <properties>
                 <selenium.browser>*iexplore</selenium.browser>
+                <xvfb.enable>false</xvfb.enable>
             </properties>
         </profile>
     </profiles>
