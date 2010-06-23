@@ -1,47 +1,46 @@
-//package it.com.atlassian.aui.javascript.selenium;
-//
-//public class AUIDropDownTest extends AbstractAUISeleniumTestCase
-//{
-//
-//    //Test to make sure dropdowns can be created correctly
-//    public void testAUIDropDownCreate()
-//    {
-//        String creationString1 = client.getEval("window.AJS.$('#dropDown1').dropDown('Standard');");    //create dropdown 1
-//        String creationString2 = client.getEval("window.AJS.$('#dropDown2').dropDown('Standard');");    //create dropdown 2
-//
-//        assertTrue("Dropdown1 not created successfully: " + creationString1 , creationString1.length() != 0);
-//        assertTrue("Dropdown2 not created successfully: " + creationString2 , creationString2.length() != 0);
-//    }
-//
-//    //Test to make sure dropdowns show correctly after being clicked, will fail if other dropdown is also showing while the other one is
-//    public void testAUIDropDownShow()
-//    {
-//
-//        client.click("css=div#dropDown1 .aui-dd-trigger");  //click on dropdown 1
-//
-//        assertThat.elementVisible("css=div#dropDown1 .aui-dropdown");
-//        assertThat.elementNotVisible("css=div#dropDown2 .aui-dropdown");
-//
-//        client.click("css=div#dropDown2 .aui-dd-trigger");  //Click on dropdown 2
-//
-//        assertThat.elementVisible("css=div#dropDown2 .aui-dropdown");
-//        assertThat.elementNotVisible("css=div#dropDown1 .aui-dropdown");
-//    }
-//
-//    public void testAUIDropDownHide()
-//    {
-//
-//        client.click("css=div#dropDown1 .aui-dd-trigger");    //click on a dropdown
-//        client.click("css=body");   //click on the body element of the page to hide the dropdown
-//
-//        assertThat.elementNotVisible("css=div#dropDown1 .aui-dropdown");
-//        assertThat.elementNotVisible("css=div#dropDown2 .aui-dropdown");
-//
-//        client.click("css=div#dropDown2 .aui-dd-trigger");    //click on a dropdown
-//        client.click("css=body");   //click on the body element of the page to hide the dropdown
-//
-//        assertThat.elementNotVisible("css=div#dropDown1 .aui-dropdown");
-//        assertThat.elementNotVisible("css=div#dropDown2 .aui-dropdown");
-//    }
-//
-//}
+package it.com.atlassian.aui.javascript.selenium;
+
+public class AUIDropDownTest extends AbstractAUISeleniumTestCase
+{
+    private static final String TEST_PAGE = "test-pages/dropdown/dropdown-test.html";
+
+    //Test to make sure dropdowns show correctly after being clicked.
+    public void testAUIDropDownShow()
+    {
+        openTestPage(TEST_PAGE);
+
+        client.click("css=div#dropDown-standard .aui-dd-trigger");
+        assertThat.elementVisible("css=div#dropDown-standard .aui-dropdown");
+    }
+
+    //test to make sure dropdowns hide after a click on the body
+    public void testAUIDropDownHide()
+    {
+        openTestPage(TEST_PAGE);
+        
+        client.click("css=div#dropDown-standard .aui-dd-trigger");
+        assertThat.elementVisible("css=div#dropDown-standard .aui-dropdown");
+
+        client.click("css=body");
+        assertThat.elementNotVisible("css=div#dropDown-standard .aui-dropdown");
+    }
+
+    public void testDropdownLeftAlign(){
+
+        openTestPage(TEST_PAGE);
+
+        client.click("css=div#dropDown-left .aui-dd-trigger");
+        assertThat.elementVisible("css=div#dropDown-left .aui-dropdown");
+        assertEquals("left-aligned dropdown is not left-aligned", 32, client.getElementPositionLeft("css=div#dropDown-left .aui-dropdown"));
+    }
+
+        public void testDropdownRightAlign(){
+
+        openTestPage(TEST_PAGE);
+
+        client.click("css=div#dropDown-right .aui-dd-trigger");
+        assertThat.elementVisible("css=div#dropDown-right .aui-dropdown");
+        assertEquals("left-aligned dropdown is not right-aligned", -67, client.getElementPositionLeft("css=div#dropDown-right .aui-dropdown"));
+    }
+
+}
