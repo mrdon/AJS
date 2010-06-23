@@ -26,9 +26,9 @@ public abstract class AbstractAUISeleniumTestCase extends TestCase
         config = seleniumConfiguration();
     }
 
-    public void openTestPage()
+    public void openTestPage(String page)
     {
-        client.open("plugins/servlet/ajstest/test.html");
+        client.open("plugins/servlet/ajstest/" + page);
     }
 
     public void addHTMLtoElement(String element, String html)

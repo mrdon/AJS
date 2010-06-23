@@ -40,18 +40,18 @@
         
         <div class="html-code">
             <form>
-                <input id="popupButton" type="button" class="button" value="Popup - Click Me">
-                <a href="#" id="popupLink"> Popup Link </a>
+                <input id="popup-button" type="button" class="button" value="Popup - Click Me">
+                <a href="#" id="popup-link"> Popup Link </a>
             </form>
         </div>
         <script type="text/javascript" class="js-code">
             addSample(function() {
                 var popup = AJS.popup(400, 200, "my-popup");
-                AJS.$("#popupButton").click(function(){
+                AJS.$("#popup-button").click(function(){
                     popup.show();    
                 });
                 
-                AJS.$("#popupLink").click(function(){
+                AJS.$("#popup-link").click(function(){
                     popup.show(); 
                 });
             });
@@ -71,8 +71,8 @@
         </p>
         <div class="html-code">
             <form>
-                <input id="dialogButton" name="dialogButton" type="button" class="button" value="Dialog - Click Me">
-                <a href="#" id="dialogLink"> Dialog Link </a>
+                <input id="dialog-button" name="dialog-button" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="dialog-link"> Dialog Link </a>
             </form>
         </div>
         <script type="text/javascript" class="js-code">
@@ -80,9 +80,9 @@
             addSample(function() {
                         
                 // create a dialog 860px wide x 530px high
-                var dialog = new AJS.Dialog(860, 530),
-                dialog2 = new AJS.Dialog(1000, 300),
-                dialog3 = new AJS.Dialog(100, 600);
+                var dialog = new AJS.Dialog(860, 530, "dialog-test"),
+                dialog2 = new AJS.Dialog(1000, 300, "stack-dialog1"),
+                dialog3 = new AJS.Dialog(100, 600, "stack-dialog2");
                 
                 // PAGE 0 (first page)
                 // adds header for first page
@@ -140,7 +140,7 @@
                     dialog.hide();
                 });
                 
-                AJS.$("#dialogButton").click(function() {
+                AJS.$("#dialog-button").click(function() {
                 
                     // PREPARE FOR DISPLAY
                     // start first page, first panel
@@ -149,14 +149,69 @@
                     dialog.show();
                 });
             
-                AJS.$("#dialogLink").click(function(){
+                AJS.$("#dialog-link").click(function(){
                     dialog.gotoPage(0);
                     dialog.gotoPanel(0);
                     dialog.show(); 
                 });
             });
         </script>
+    </div>
+    
+    <div class = "aui-test source-required">
+        <h2> Dialog - addPanel </h2>
+        <p>test for the addPanel function</p>
         
+        <div class="html-code">
+            <form>
+                <input id="test-add-panel-button" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="test-add-panel-link"> Dialog Link </a>
+            </form>
+        </div>
+        <script type="text/javascript" class="js-code">
+            addSample(function() {
+                var testPanelDialog = new AJS.Dialog(500, 500, "test-panel-dialog");
+                testPanelDialog.addPanel("");
+                
+                AJS.$("#test-add-panel-button").click(function(){
+                    testPanelDialog.show(); 
+                });
+                
+                AJS.$("#test-add-panel-link").click(function(e){
+                    e.preventDefault();
+                    testPanelDialog.show(); 
+                });
+            });
+        </script>
+    </div>
+    
+    <div class = "aui-test source-required">
+        <h2> Dialog - addButton </h2>
+        <p>test for the addButton function</p>
+        
+        <div class="html-code">
+            <form>
+                <input id="test-add-button-button" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="test-add-button-link"> Dialog Link </a>
+            </form>
+        </div>
+        <script type="text/javascript" class="js-code">
+            addSample(function() {
+                var testButtonDialog = new AJS.Dialog(500, 500, "test-button-dialog");
+                testButtonDialog.addPanel("");
+                testButtonDialog.get("panel:0").setPadding(0);
+                testButtonDialog.addButton("this is a button", function(){});
+                
+                AJS.$("#test-add-button-button").click(function(){
+                    testButtonDialog.show(); 
+                });
+                
+                AJS.$("#test-add-button-link").click(function(e){
+                    e.preventDefault();
+                    testButtonDialog.show(); 
+                });
+            });
+        </script>
     </div>
 <script type="text/javascript">
     

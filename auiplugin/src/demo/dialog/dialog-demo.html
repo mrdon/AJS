@@ -39,18 +39,18 @@
         
         <div class="html-code">
             <form>
-                <input id="popupButton" type="button" class="button" value="Popup - Click Me">
-                <a href="#" id="popupLink"> Popup Link </a>
+                <input id="popup-button" type="button" class="button" value="Popup - Click Me">
+                <a href="#" id="popup-link"> Popup Link </a>
             </form>
         </div>
         <script type="text/javascript" class="js-code">
             addSample(function() {
                 var popup = AJS.popup(400, 200, "my-popup");
-                AJS.$("#popupButton").click(function(){
+                AJS.$("#popup-button").click(function(){
                     popup.show();    
                 });
                 
-                AJS.$("#popupLink").click(function(){
+                AJS.$("#popup-link").click(function(){
                     popup.show(); 
                 });
             });
@@ -70,8 +70,8 @@
         </p>
         <div class="html-code">
             <form>
-                <input id="dialogButton" name="dialogButton" type="button" class="button" value="Dialog - Click Me">
-                <a href="#" id="dialogLink"> Dialog Link </a>
+                <input id="dialog-button" name="dialog-button" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="dialog-link"> Dialog Link </a>
             </form>
         </div>
         <script type="text/javascript" class="js-code">
@@ -139,7 +139,7 @@
                     dialog.hide();
                 });
                 
-                AJS.$("#dialogButton").click(function() {
+                AJS.$("#dialog-button").click(function() {
                 
                     // PREPARE FOR DISPLAY
                     // start first page, first panel
@@ -148,14 +148,13 @@
                     dialog.show();
                 });
             
-                AJS.$("#dialogLink").click(function(){
+                AJS.$("#dialog-link").click(function(){
                     dialog.gotoPage(0);
                     dialog.gotoPanel(0);
                     dialog.show(); 
                 });
             });
         </script>
-        
     </div>
 <script type="text/javascript">
     

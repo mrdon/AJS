@@ -2,78 +2,161 @@ package it.com.atlassian.aui.javascript.selenium;
 
 public class AUIDialogTest extends AbstractAUISeleniumTestCase
 {
-    public void setUpTest(boolean needToCreateObjects)
+    private static final String TEST_PAGE = "test-pages/dialog/dialog-test.html";
+    
+    //Test that dims for popups work
+    public void testPopupDim()
     {
-        openTestPage();
-        addHTMLtoElement("body", "    <form action=\"\" class=\"aui\">\n" +
-                "        <fieldset>\n" +
-                "            <legend>Dialog</legend>\n" +
-                "            <input id=\"testButton\" name=\"testButton\" type=\"button\" class=\"button\" value=\"Click Me\">\n" +
-                "        </fieldset>\n" +
-                "    </form>");
+        openTestPage(TEST_PAGE);
+        client.click("popup-button");
 
-        if (needToCreateObjects)
-        {
-            runMultiLineJavascript("window.AJS.$(\"#testButton\").click(function() {\n" +
-                    "    popup = new window.AJS.Dialog(860, 530, 'testClick');\n" +
-                    "    popup.addHeader(\"Dialog - Page 0\");\n" +
-                    "    popup.addPanel(\"Panel 1\", \"panel1\");\n" +
-                    "    popup.getCurrentPanel().html(\"Some content for panel 1\");\n" +
-                    "    popup.addPanel(\"Panel 2\", \"panel1\");\n" +
-                    "    popup.getCurrentPanel().html(\"Some content for panel 2\");\n" +
-                    "    popup.addButton(\"Next\", function (dialog) {\n" +
-                    "        dialog.nextPage();\n" +
-                    "    });\n" +
-                    "    popup.addButton(\"Cancel\", function (dialog) {\n" +
-                    "        dialog.hide();\n" +
-                    "    });\n" +
-                    "    popup.addPage();\n" +
-                    "    popup.page[1].addHeader(\"Dialog - Page 1\");\n" +
-                    "    popup.page[1].addPanel(\"SinglePanel\", \"singlePanel\");\n" +
-                    "    popup.getCurrentPanel().html(\"Some content for the only panel on Page 1\");\n" +
-                    "    popup.page[1].addButton(\"Previous\", function(dialog) {\n" +
-                    "       dialog.prevPage();\n" +
-                    "    });\n" +
-                    "    popup.page[1].addButton(\"Cancel\", function (dialog) {\n" +
-                    "        dialog.hide();\n" +
-                    "    });\n" +
-                    "    popup.gotoPage(0);\n" +
-                    "    popup.gotoPanel(0);\n" +
-                    "    popup.show();\n" +
-                    "});");
-            client.getEval("manualPopup = new window.AJS.Dialog(860, 530, 'test-dialog')");
-        }
-    }
-    //Test if dialogs can be initialises properly
-    public void testDialogInitialisation()
-    {
-        setUpTest(false);
-
-        String creationString1 = client.getEval("var popup = new window.AJS.Dialog(860, 530)");
-
-        assertTrue("Popup not created properly", creationString1 != null);
+        assertThat.elementPresent("css=div.aui-blanket");
+        assertThat.elementPresent("css=div.aui-blanket");
 
     }
-
-    //Test that dialogs are not positioned off-screen
-    public void testDialogBindsToButton()
+    //Test that dims for dialogs work
+    public void testDialogDim()
     {
-        setUpTest(true);
-        client.getEval("manualPopup.show()"); //show the popup
-        client.windowMaximize();    //Maximize the the window
-        client.getEval("document.documentElement.scrollTop = 10000;");  //scroll window to the top
+        openTestPage(TEST_PAGE);
+        client.click("dialog-button");
 
-        String top = client.getEval("window.AJS.$('#test-dialog').offset().top");
-        String scrollTop = client.getEval("document.documentElement.scrollTop");
+        assertThat.elementPresent("css=div.aui-blanket");
+        assertThat.elementVisible("css=div.aui-blanket");
+    }
+   //test that the popup shows correctly
+    public void testPopupShow()
+    {
 
-        assertTrue("Popup is being drawn off the top of the screen", Double.parseDouble(top) > Double.parseDouble(scrollTop));
+        openTestPage(TEST_PAGE);
+        client.click("popup-button");
+
+        assertThat.elementVisible("css=div#my-popup");
     }
 
-        //Test that dialogs are not positioned off-screen
-    public void testDialogPosition()
+    //test that dialogs show correctly
+    public void testDialogShow()
     {
-        setUpTest(true);
-        client.click("testButton");
-        assertThat.elementVisible("testClick");
+        openTestPage(TEST_PAGE);
+        client.click("dialog-button");
+
+        assertThat.elementVisible("css=div#dialog-test");
     }
+
+    //test that popup hides correctly after escape key is hit
+    public void testPopupEscHide()
+    {
+        openTestPage(TEST_PAGE);
+        client.click("popup-button");
+
+        assertThat.elementVisible("css=div#my-popup");
+        
+        client.keyPress("css=body", "\\27");
+
+        assertThat.elementNotVisible("css=div#my-popup");
+    }
+
+    //test that dialog is hidden correctly after escape key is hit
+    public void testDialogEscHide(){
+        openTestPage(TEST_PAGE);
+
+        client.click("dialog-button");
+        assertThat.elementVisible("css=div#dialog-test");
+
+        client.keyPress("css=body", "\\27");
+        assertThat.elementNotVisible("css=div#dialog-test");
+    }
+
+    //test that Dialog hides correctly when pressing a close button
+    public void testDialogButtonHide(){
+        openTestPage(TEST_PAGE);
+
+        client.click("dialog-button");
+        assertThat.elementVisible("css=div#dialog-test");
+
+        client.click("css=div#dialog-test button.button-panel-button:nth-child(2)");
+        assertThat.elementNotVisible("css=div#dialog-test");
+    }
+
+    //test that popups are set to the correct size
+    public void testPopupSize()
+    {
+
+        openTestPage(TEST_PAGE);
+
+        client.click("popup-button");
+
+        assertEquals("Dialog: 'my-popup' Height is not 200px", 200, client.getElementHeight("css=div#my-popup"));
+        assertEquals("Dialog: 'my-popup' Width is not 400px", 400, client.getElementWidth("css=div#my-popup"));
+
+    }
+
+    //test that dialogs are set to the correct size
+    public void testDialogSize()
+    {
+        openTestPage(TEST_PAGE);
+
+        client.click("dialog-button");
+
+        assertEquals("Dialog: 'dialog-test' Height is not 530px + 2px of border", 532, client.getElementHeight("css=div#dialog-test"));
+        assertEquals("Dialog: 'dialog-test' Width is not 860px + 2px of border", 862, client.getElementWidth("css=div#dialog-test"));
+    }
+
+    //test that one stacking dialog works correctly
+    public void testOneStackingDialogShow()
+    {
+        openTestPage(TEST_PAGE);
+
+        client.click("dialog-button");
+        client.click("css=div#dialog-test button.button-panel-button:nth-child(3)");
+
+        assertThat.elementPresent("css=div#dialog-test");
+        assertThat.elementVisible("css=div#dialog-test");
+
+        assertThat.elementPresent("css=div#stack-dialog1");
+        assertThat.elementVisible("css=div#stack-dialog1");
+    }
+
+    //test that 2 stacking dialogs work correctly
+    public void testTwoStackingDialogsShow()
+    {
+        openTestPage(TEST_PAGE);
+
+        client.click("dialog-button");
+        client.click("css=div#dialog-test button.button-panel-button:nth-child(3)");
+        client.click("css=div#stack-dialog1 button.button-panel-button:nth-child(2)");
+
+        assertThat.elementPresent("css=div#dialog-test");
+        assertThat.elementVisible("css=div#dialog-test");
+
+        assertThat.elementPresent("css=div#stack-dialog1");
+        assertThat.elementVisible("css=div#stack-dialog1");
+
+        assertThat.elementPresent("css=div#stack-dialog2");
+        assertThat.elementVisible("css=div#stack-dialog2");
+    }
+
+    //test addPanel
+    public void testAddPanel(){
+        openTestPage(TEST_PAGE);
+
+        client.click("test-add-panel-button");
+
+        assertThat.elementPresent("css=div#test-panel-dialog");
+        assertThat.elementVisible("css=div#test-panel-dialog");
+        assertThat.elementPresent("css=div#test-panel-dialog .dialog-panel-body");
+    }
+
+
+    //test addButton
+    public void testAddButton(){
+        openTestPage(TEST_PAGE);
+
+        client.click("test-add-button-button");
+
+        assertThat.elementPresent("css=div#test-button-dialog");
+        assertThat.elementVisible("css=div#test-button-dialog");
+        assertThat.elementPresent("css=div#test-button-dialog .dialog-button-panel");
+        assertThat.elementPresent("css=div#test-button-dialog .button-panel-button:nth-child(1)");
+    }
+
 }
