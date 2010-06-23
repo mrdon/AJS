@@ -104,12 +104,12 @@ AJS.template = (function ($) {
     // returns template taken form the script tag with given title. Type agnostic, but better put type="text/x-template"
     T.load = function (title) {
         title = String(title);
-        if (cache.hasOwnProperty(title)) {
-            return cache[title];
+        if (!cache.hasOwnProperty(title)) {
+            count.length >= 1e3 && delete cache[count.shift()]; // enforce maximum cache size
+            count.push(title);
+            cache[title] = $("script[title='" + title.replace(apos, "$1\\'") + "']")[0].text;
         }
-        count.length >= 1e3 && delete cache[count.shift()];
-        count.push(title);
-        return cache[title] = this($("script[title='" + title.replace(apos, "$1\\'") + "']")[0].text);
+        return this(cache[title]);
     };
     // escape HTML dangerous characters
     T.escape = function (s) {
