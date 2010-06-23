@@ -75,8 +75,8 @@
         <confluence.version>3.3-beta2</confluence.version>
         <confluence.data.version>3.0</confluence.data.version>
 
-        <jira.version>RELEASE</jira.version>
-        <jira.data.version>RELEASE</jira.data.version>
+        <jira.version>4.2-m6</jira.version>
+        <jira.data.version>4.1.1</jira.data.version>
 
         <fecru.version>RELEASE</fecru.version>
         <fecru.data.version>RELEASE</fecru.data.version>
