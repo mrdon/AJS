@@ -68,13 +68,4 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
         assertThat.elementVisible("css=div#inline-dialog-6");
         assertEquals("right positioned inline-dialog is not positioned correctly", client.getElementPositionLeft("css=a#testFloat2"), client.getElementPositionLeft("css=div#inline-dialog-6"));
     }
-
-    //test right positioned Long trigger
-    public void testRightPositionedLongTrigger(){
-        openTestPage(TEST_PAGE);
-        client.click("css=a#testFloat2");
-        assertThat.elementPresent("css=div#inline-dialog-6");
-        assertThat.elementVisible("css=div#inline-dialog-6");
-        assertEquals("right positioned inline-dialog is not positioned correctly", client.getElementPositionLeft("css=a#testFloat2"), client.getElementPositionLeft("css=div#inline-dialog-6"));
-    }
 }
