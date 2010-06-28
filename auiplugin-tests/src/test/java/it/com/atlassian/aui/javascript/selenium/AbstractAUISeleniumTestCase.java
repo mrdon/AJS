@@ -39,4 +39,8 @@ public abstract class AbstractAUISeleniumTestCase extends TestCase
         return Integer.valueOf(client.getEval("window.AJS.$(window).width()"));
     }
 
+    public String getCss(String attribute, String element){
+        return client.getEval("window.AJS.$('"+ element +"').css('"+ attribute +"')");
+    }
+
 }
