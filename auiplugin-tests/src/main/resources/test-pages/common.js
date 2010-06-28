@@ -43,7 +43,7 @@
     ];
     
     for (var i = 0, ii = includes.length; i < ii; i++) {
-        document.write('<script src="../../../../auiplugin/src/main/resources/js/' + includes[i] + '"></scr' + 'ipt>');
+        document.write('<script src="../../../../../../auiplugin/src/main/resources/js/' + includes[i] + '"></scr' + 'ipt>');
     }
 })();
 
@@ -72,13 +72,13 @@ function addSample(sampleCode){
 }
 
 function createViewSourceLinks() {
-    
+     
     var HTMLLink = AJS.$("<div class='view-html-source-link'><a href='#'> View/Hide HTML Source </a></div>"),
         JSLink = AJS.$("<div class='view-js-source-link'><a href='#'> View/Hide Javascript Source </a></div>");
-    AJS.$(".source-required").append("<p> --------------End of Sample ----------- </p>");
+    AJS.$(".source-required").append("<p>--------------End of Sample -----------</p>");
     AJS.$(".source-required").append(HTMLLink);
     AJS.$(".source-required").append(JSLink);
-            
+    
     AJS.$(".source-required").each(function(){
         //add HTML source
         var parent = AJS.$(this);

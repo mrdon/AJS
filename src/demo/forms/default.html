@@ -5,7 +5,6 @@
 
     <title>Atlassian form template</title>
     <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
-
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/basic.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/firebug.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/dialog.css" media="all">
@@ -13,7 +12,6 @@
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/forms.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/icons.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/inline-dialog.css" media="all">
-    <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/messages.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/tables.css" media="all">
     <link type="text/css" rel="stylesheet" href="../../../auiplugin/src/main/resources/css/atlassian/tabs.css" media="all">
 
@@ -45,23 +43,6 @@
 <h1>Default Layout</h1>
 <form action="#" method="post" id="h" class="aui unsectioned">
     <p><em>This short form is unsectioned. It has a class of .unsectioned and thus no borders on the headings or .buttons element.</em></p>
-    <div class="aui-message error closeable shadowed">
-        <span class="svg-icon error size-18"></span>
-        Text with no wrapping elements in an Error message.
-    </div><!-- .aui-message -->
-    <div class="aui-message warning closeable shadowed">
-        <p class="title">
-            <span class="svg-icon warning size-18"></span>
-            <strong>You can put whatever elements you like in the body of the message.</strong>
-        </p>
-        <ul>
-            <li>list item 1</li>
-            <li>list item 2</li>
-            <li>list item 3</li>
-            <li>list item 4</li>
-            <li>list item 5</li>
-        </ul>
-    </div><!-- .aui-message -->
     <h2>Heading h2</h2>
     <div class="field-group">
         <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
@@ -240,12 +221,9 @@
             <div class="error">and/or an error</div>
         </div>
         <div class="field-group">
-            <div class="description">
-                <p>You can also have a description here if you like</p>
-            </div>
+            <p>You can also have a description here if you like</p>
             <div class="error">and/or errors</div>
         </div>
-        <div class="description">Or, you can have a description here for the <code>fieldset</code> as a whole.</div>
     </fieldset>
 
     <h2>One Checkbox</h2>

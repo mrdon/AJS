@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="decorator" content="atl.general">
+		
+		<title>AUI Format Test Page </title>
+		<link type="text/css" rel="stylesheet" href="../common.css" media="all"> 
+        <script type="text/javascript" src="../common.js"></script>
+	</head>
+
+    <body>
+		<div class="navigation">
+            <h2> AUI Format Test Page </h2>
+            <h4> <a href="../index.html"> Back to AUI Demo </a>
+        </div>
+
+        <div class="aui-demo source-required">
+            <h2> Format</h2>
+            <p class="description"> Demonstrates how AJS.Format can be used </p>
+            <div class="html-code">
+                <div id="testFormat1"> The javascript returns: </div>
+            </div> 
+            <script type="text/javascript" class="js-code">
+                addSample(function() {
+                    AJS.$("#testFormat1").append(AJS.format("{0} {1} {0}", 1, "test"));
+                });        
+            </script>
+        </div>
+        
+		<script>
+            createViewSourceLinks();
+		</script>
+		
+	</body>
+</html>

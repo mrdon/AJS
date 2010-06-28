@@ -5,13 +5,10 @@
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     color: #333;
-    min-height: 1em;
-    position: relative;
-}
-.aui-message,
-form.aui div.aui-message {
     margin: 0 0 1em 0;
-    padding: 1em 1em 1em 2.7em;
+    min-height: 1em;
+    padding: 1em 1em 1em 35px;
+    position: relative;
 }
 .aui-message.shadowed {
     box-shadow: 0 1px 2px #ccc;
@@ -22,9 +19,9 @@ form.aui div.aui-message {
     z-index: 4000;
 }
     .aui-message .svg-icon {
-        left: 0.7em;
+        left: 10px;
         position: absolute;
-        top: 0.7em;
+        top: 10px;
     }
     .aui-message.closeable .svg-icon.close {
         cursor: pointer;
@@ -33,31 +30,25 @@ form.aui div.aui-message {
         right: 6px;
         top: 6px;
     }
-.aui-message.error,
-form.aui .aui-message.error {
+.aui-message.error {
     background: #ffe7e7; 
     border-color: #df9898;
-    color: #333;
 }
 .aui-message.warning {
     background: #ffd;
     border-color: #f7df92;
-    color: #333;
 }
 .aui-message.info {
     background: #e0efff;
     border-color: #9eb6d4;
-    color: #333;
 }
 .aui-message.success {
     background: #ddfade;
     border-color: #93c49f;
-    color: #333;
 }
 .aui-message.hint {
     background: #dff8fb;
     border-color: #93bbbf;
-    color: #333;
 }
     .aui-message p.title {
         font-weight: bold;

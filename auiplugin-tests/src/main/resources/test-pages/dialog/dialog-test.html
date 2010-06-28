@@ -2,38 +2,39 @@
 <html lang="en-au">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="decorator" content="atl.general">
     
-    <title>Dialog Example</title>
+    <title>AUI Dialog Test Page</title>
     <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
     
-    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/basic.css" media="all">
-    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/firebug.css" media="all">
-    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/dialog.css" media="all">
-    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/dropdown.css" media="all">
-    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/forms.css" media="all">
-    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/icons.css" media="all">
-    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/inline-dialog.css" media="all">
-    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/tables.css" media="all">
-    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/tabs.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/basic.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/firebug.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/dropdown.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/forms.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/icons.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/inline-dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/tables.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/tabs.css" media="all">
     
     <link type="text/css" rel="stylesheet" href="../common.css" media="all">
 
     <!--[if IE]>
-        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/dialog-ie.css" media="all">
-        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/dropdown-ie.css" media="all">
-        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/forms-ie.css" media="all">
-        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/icons-ie.css" media="all">
-        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/inline-dialog-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/ie/dialog-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/ie/dropdown-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/ie/forms-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/ie/icons-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/ie/inline-dialog-ie.css" media="all">
     <![endif]-->
     <script type="text/javascript" src="../common.js"></script>
 </head>
 <body>
     <div class="navigation">
-        <h2> AUI Dialog Demo Page </h2>
+        <h2> AUI Dialog Test Page </h2>
         <h4> <a href="../index.html"> Back to AUI Demo </a>
     </div>
     
-    <div class = "aui-demo source-required">
+    <div class = "aui-test source-required">
         <h2> Popup </h2>
         <p>Demo of AJS.popup, shows a blank popup with a shadow</p>
         
@@ -57,7 +58,7 @@
         </script>
     </div>
 
-    <div class = "aui-demo source-required">
+    <div class = "aui-test source-required">
 
         <h2> Dialog </h2>
         <p class="description">Demo of AJS.Dialog, shows the following features:
@@ -79,9 +80,9 @@
             addSample(function() {
                         
                 // create a dialog 860px wide x 530px high
-                var dialog = new AJS.Dialog(860, 530),
-                dialog2 = new AJS.Dialog(1000, 300),
-                dialog3 = new AJS.Dialog(100, 600);
+                var dialog = new AJS.Dialog(860, 530, "dialog-test"),
+                dialog2 = new AJS.Dialog(1000, 300, "stack-dialog1"),
+                dialog3 = new AJS.Dialog(100, 600, "stack-dialog2");
                 
                 // PAGE 0 (first page)
                 // adds header for first page
@@ -152,6 +153,62 @@
                     dialog.gotoPage(0);
                     dialog.gotoPanel(0);
                     dialog.show(); 
+                });
+            });
+        </script>
+    </div>
+    
+    <div class = "aui-test source-required">
+        <h2> Dialog - addPanel </h2>
+        <p>test for the addPanel function</p>
+        
+        <div class="html-code">
+            <form>
+                <input id="test-add-panel-button" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="test-add-panel-link"> Dialog Link </a>
+            </form>
+        </div>
+        <script type="text/javascript" class="js-code">
+            addSample(function() {
+                var testPanelDialog = new AJS.Dialog(500, 500, "test-panel-dialog");
+                testPanelDialog.addPanel("");
+                
+                AJS.$("#test-add-panel-button").click(function(){
+                    testPanelDialog.show(); 
+                });
+                
+                AJS.$("#test-add-panel-link").click(function(e){
+                    e.preventDefault();
+                    testPanelDialog.show(); 
+                });
+            });
+        </script>
+    </div>
+    
+    <div class = "aui-test source-required">
+        <h2> Dialog - addButton </h2>
+        <p>test for the addButton function</p>
+        
+        <div class="html-code">
+            <form>
+                <input id="test-add-button-button" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="test-add-button-link"> Dialog Link </a>
+            </form>
+        </div>
+        <script type="text/javascript" class="js-code">
+            addSample(function() {
+                var testButtonDialog = new AJS.Dialog(500, 500, "test-button-dialog");
+                testButtonDialog.addPanel("");
+                testButtonDialog.get("panel:0").setPadding(0);
+                testButtonDialog.addButton("this is a button", function(){});
+                
+                AJS.$("#test-add-button-button").click(function(){
+                    testButtonDialog.show(); 
+                });
+                
+                AJS.$("#test-add-button-link").click(function(e){
+                    e.preventDefault();
+                    testButtonDialog.show(); 
                 });
             });
         </script>

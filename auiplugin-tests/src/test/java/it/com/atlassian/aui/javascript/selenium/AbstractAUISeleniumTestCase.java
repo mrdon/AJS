@@ -26,22 +26,17 @@ public abstract class AbstractAUISeleniumTestCase extends TestCase
         config = seleniumConfiguration();
     }
 
-    public void openTestPage()
+    public void openTestPage(String page)
     {
-        client.open("plugins/servlet/ajstest/test.html");
+        client.open("plugins/servlet/ajstest/" + page);
     }
 
-    public void addHTMLtoElement(String element, String html)
-    {
-        html = html.replaceAll("\n", "");
-        String runString = "window.AJS.$('" + element + "').append('" + html + "')";
-        client.getEval(runString);
+    public int getWindowHeight(){
+        return Integer.valueOf(client.getEval("window.AJS.$(window).height()"));
     }
 
-    public void runMultiLineJavascript(String runString)
-    {
-        runString = runString.replaceAll("\n", "");
-        client.getEval(runString);
+    public int getWindowWidth(){
+        return Integer.valueOf(client.getEval("window.AJS.$(window).width()"));
     }
 
 }

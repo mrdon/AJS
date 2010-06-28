@@ -10,14 +10,14 @@
     <groupId>com.atlassian.aui</groupId>
     <artifactId>auiplugin-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.1.0-SNAPSHOT</version>
+    <version>3.0.2-SNAPSHOT</version>
 
     <name>Atlassian UI Plugin - Parent</name>
 
     <scm>
         <connection>scm:svn:https://studio.atlassian.com/svn/AJS/trunk</connection>
         <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/trunk</developerConnection>
-        <url>https://studio.atlassian.com/svn/AJS/trunk</url>
+        <url>https://studio.atlassian.com/source/browse/AJS/trunk</url>
     </scm>
 
     <issueManagement>
@@ -63,6 +63,7 @@
     </build>
 
     <properties>
+
         <context.path>ajs</context.path>
         <selenium.browser>firefox-3.5</selenium.browser>
         <amps.version>3.2-m3</amps.version>
@@ -82,6 +83,7 @@
 
         <bamboo.version>RELEASE</bamboo.version>
         <bamboo.data.version>RELEASE</bamboo.data.version>
+
     </properties>
 
     <profiles>
