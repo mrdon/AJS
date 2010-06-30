@@ -20,7 +20,7 @@ auiplugin-tests/src/main/resources/js/tests/unit      - The qunit tests
 
 Key URLS:
 
-http://localhost:9999/ajs/plugins/servlet/ajstest/samples/       - Clickable samples for manual testing
+http://localhost:9999/ajs/plugins/servlet/ajstest/test-pages/index.html       - Clickable samples for manual testing
 http://localhost:9999/ajs/plugins/servlet/ajstest/js/tests/unit/ - QUnit tests
 
 
