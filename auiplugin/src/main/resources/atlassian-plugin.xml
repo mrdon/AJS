@@ -45,7 +45,7 @@
         <resource type="download" name="jquery-ui-1.7-bug-fixes.js" location="js/external/jquery/jquery-ui-1.7-bug-fixes.js"/>
         <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
         <resource type="download" name="jquery.form.js" location="js/external/jquery/plugins/jquery.form.js"/>
-
+		<resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery/jquery.hotkeys.js"/>
         <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
         <resource type="download" name="event.js" location="js/atlassian/event.js"/>
         <resource type="download" name="cookie.js" location="js/atlassian/cookie.js"/>
