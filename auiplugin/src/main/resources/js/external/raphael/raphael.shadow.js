@@ -15,6 +15,7 @@ if (window.Raphael) {
         //     r: 5, radius of placeholder rounded corners
         // }
         options = options || {};
+        //http://james.padolsey.com/javascript/double-bitwise-not/
         var t = ~~(size * .3 + .5),
             size = (options.size || 1) * 10,
             color = options.color || "#fff",

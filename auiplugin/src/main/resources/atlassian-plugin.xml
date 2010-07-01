@@ -20,6 +20,7 @@
         <resource type="download" name="messages.css" location="css/atlassian/messages.css"/>
         <resource type="download" name="tables.css" location="css/atlassian/tables.css"/>
         <resource type="download" name="tabs.css" location="css/atlassian/tabs.css"/>
+   		<resource type="download" name="property-panel.css" location="css/atlassian/property-panel.css"/>
 
         <resource type="download" name="dialog-ie.css" location="css/atlassian/ie/dialog-ie.css">
             <param name="ieonly" value="true"/>
@@ -41,6 +42,7 @@
         <resource type="download" name="raphael.shadow.js" location="js/external/raphael/raphael.shadow.js"/>
         <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
         <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+		<resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery/jquery.hotkeys.js"/>
         <resource type="download" name="jquery-ui.js" location="js/external/jquery/jquery-ui.js"/>
         <resource type="download" name="jquery-ui-1.7-bug-fixes.js" location="js/external/jquery/jquery-ui-1.7-bug-fixes.js"/>
         <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
@@ -60,6 +62,7 @@
         <resource type="download" name="tabs.js" location="js/atlassian/tabs.js"/>
         <resource type="download" name="template.js" location="js/atlassian/template.js"/>
         <resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>
+        <resource type="download" name="property-panel.js" location="js/atlassian/property-panel.js"/> 
 
         <resource type="download" name="jquery.autocomplete.js" location="js/atlassian/jquery/jquery.autocomplete.js"/>
         <resource type="download" name="jquery.is-dirty.js" location="js/atlassian/jquery/jquery.is-dirty.js"/>
@@ -74,6 +77,7 @@
     </web-resource>
 	
 	<web-resource name="hotkeys" key="hotkeys">
+		<dependency>com.atlassian.auiplugin:ajs</dependency>
 		<resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery/jquery.hotkeys.js"/>
 	</web-resource>
 	

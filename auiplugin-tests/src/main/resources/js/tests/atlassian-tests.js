@@ -36,6 +36,7 @@ testAjs.addTest("testRaphaelExists", function () {
 });
 testAjs.addTest("testRaphaelShadowExists", function () {
     return (typeof Raphael.shadow != "undefined" && Raphael.shadow != null);
+    
 });
 
 (function () {

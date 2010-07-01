@@ -33,6 +33,7 @@
         <resource type="download" name="qunit.css" location="js/external/qunit/qunit.css"/>
         <resource type="download" name="bootstrap.js" location="js/tests/unit/keyboardshortcuts/bootstrap.js"/>
         <resource type="download" name="tests.js" location="js/tests/unit/keyboardshortcuts/tests.js"/>
+        <resource type="download" name="proptests.js" location="js/tests/unit/property-panel/tests.js"/>
     </web-resource>
 
 </atlassian-plugin>
