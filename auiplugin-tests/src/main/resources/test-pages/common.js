@@ -29,6 +29,9 @@
         "atlassian/whenitype.js",
         "atlassian/containdropdown.js",
 
+        "atlassian/binders/binder.js",
+        "atlassian/binders/placeholder.js",
+
         "atlassian/jquery/jquery.autocomplete.js",
         "atlassian/jquery/jquery.is-dirty.js",
         "atlassian/jquery/jquery.progressbar.js",
@@ -43,7 +46,7 @@
     ];
     
     for (var i = 0, ii = includes.length; i < ii; i++) {
-        document.write('<script src="../../../../../../auiplugin/src/main/resources/js/' + includes[i] + '"></scr' + 'ipt>');
+        document.write('<script src="../../../../../../auiplugin/src/main/resources/js/' + includes[i] + '"></script>');
     }
 })();
 

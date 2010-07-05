@@ -67,7 +67,13 @@
         <resource type="download" name="jquery.selection.js" location="js/atlassian/jquery/jquery.selection.js"/>
         <resource type="download" name="jquery.throbber.js" location="js/atlassian/jquery/jquery.throbber.js"/>
     </web-resource>
-    
+
+    <web-resource key="binders" name="Atlassian Markup Binder Javascript">
+        <resource type="download" name="binder.js" location="js/atlassian/binders/binder.js"/>
+        <resource type="download" name="placeholder.js" location="js/atlassian/placeholder.js"/>
+        <resource type="download" name="placeholder.css" location="css/atlassian/binders/placeholder.css"/>
+    </web-resource>
+
     <web-resource name="jQuery Compatibility" key="jquery-compatibility">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
