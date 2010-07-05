@@ -70,7 +70,7 @@
 
     <web-resource key="binders" name="Atlassian Markup Binder Javascript">
         <resource type="download" name="binder.js" location="js/atlassian/binders/binder.js"/>
-        <resource type="download" name="placeholder.js" location="js/atlassian/placeholder.js"/>
+        <resource type="download" name="placeholder.js" location="js/atlassian/binders/placeholder.js"/>
         <resource type="download" name="placeholder.css" location="css/atlassian/binders/placeholder.css"/>
     </web-resource>
 
