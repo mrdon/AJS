@@ -5,7 +5,7 @@
  * @for AJS
  * @see undim
 */
-AJS.dim = function () {
+AJS.dim = function (useShim) {
     if (!AJS.dim.dim) {
         AJS.dim.dim = AJS("div").addClass("aui-blanket");
         if (AJS.$.browser.msie) {
@@ -13,8 +13,24 @@ AJS.dim = function () {
         }
         AJS.$("body").append(AJS.dim.dim);
 
+        // Even if we do not want to use a shim, we are going to override it in the case of flash being on the page.
+        // Flash will sit ontop of our blanket unless wmode is set to opaque in the object/embed tag...
+        if (AJS.$.browser.msie && useShim === false) {
+            AJS.$("object, embed, iframe").each(function () {
+                if (this.nodeName.toLowerCase() === "iframe") {
+                    if (AJS.$(this).contents().find("object, embed").length) {
+                        useShim = true;
+                        return false;
+                    }
+                } else {
+                    useShim = true;
+                    return false;
+                }
+            });
+        }
+
         // Add IFrame shim
-        if (AJS.$.browser.msie) {
+        if (AJS.$.browser.msie && useShim !== false) {
             AJS.dim.shim = AJS.$('<iframe frameBorder="0" class="aui-blanket-shim" src="javascript:false;"/>');
             AJS.dim.shim.css({height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
             AJS.$("body").append(AJS.dim.shim);
@@ -39,7 +55,7 @@ AJS.undim = function () {
     if (AJS.dim.dim) {
         AJS.dim.dim.remove();
         AJS.dim.dim = null;
-        if (AJS.$.browser.msie) {
+        if (AJS.dim.shim) {
             AJS.dim.shim.remove();
         }
 
@@ -150,7 +166,7 @@ AJS.popup = function (options) {
 
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
-                AJS.dim();
+                AJS.dim(options.useShim);
                 popup.show();
                 if (!this.shadow && !this.shadowParent) {
                     var shadowSize = 0.5;
@@ -989,3 +1005,4 @@ AJS.popup = function (options) {
     };
 
 })();
+
