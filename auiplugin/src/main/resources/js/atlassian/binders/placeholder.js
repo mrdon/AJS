@@ -21,19 +21,18 @@
         run: function(element) {
             var $ = AJS.$,
                 $this = $(element),
-                defaultText = $this.attr("placeholder"),
                 applyDefaultText = function() {
                     if(!$.trim($this.val()).length) {
-                        $this.val(defaultText)
-                             .addClass("placeholded")
+                        $this.val($this.attr("placeholder"))
+                             .addClass("placeholder-shown")
                              .trigger("reset.placeholder");
                     }
                 };
 
             applyDefaultText();
             $this.blur(applyDefaultText).focus(function() {
-                if($this.hasClass("placeholded")) {
-                    $this.val("").removeClass("placeholded");
+                if($this.hasClass("placeholder-shown")) {
+                    $this.val("").removeClass("placeholder-shown");
                 }
             });
         }

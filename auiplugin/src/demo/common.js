@@ -29,6 +29,9 @@
         "atlassian/whenitype.js",
         "atlassian/containdropdown.js",
 
+        "atlassian/binders/binder.js",
+        "atlassian/binders/placeholder.js",
+
         "atlassian/jquery/jquery.autocomplete.js",
         "atlassian/jquery/jquery.is-dirty.js",
         "atlassian/jquery/jquery.progressbar.js",
