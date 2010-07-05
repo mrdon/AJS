@@ -16,6 +16,7 @@ AJS.dim = function (useShim) {
         // Even if we do not want to use a shim, we are going to override it in the case of flash being on the page.
         // Flash will sit ontop of our blanket unless wmode is set to opaque in the object/embed tag...
         if (AJS.$.browser.msie && typeof AJS.hasFlash === "undefined" && useShim === false) {
+            AJS.hasFlash = false;
             AJS.$("object, embed, iframe").each(function () {
                 if (this.nodeName.toLowerCase() === "iframe") {
                     if (AJS.$(this).contents().find("object, embed").length) {
@@ -27,7 +28,6 @@ AJS.dim = function (useShim) {
                     return false;
                 }
             });
-            AJS.hasFlash = false;
         }
 
         // Add IFrame shim
