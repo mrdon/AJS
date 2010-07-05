@@ -1,4 +1,4 @@
-package it.com.atlassian.aui.javascript.selenium;
+package it.com.atlassian.aui.javascript.integrationTests;
 
 /**
  * Selenium test for events.js

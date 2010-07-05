@@ -1,9 +1,9 @@
-package it.com.atlassian.aui.javascript.selenium;
+package it.com.atlassian.aui.javascript.integrationTests;
 
 public class AUIUnitTest extends AbstractAUISeleniumTestCase
 {
     public void testUnitTests(){
-        openTestPage("js/tests/unit/test.html");
+        openTestPage("/unit-tests/tests/whenitype.html");
 
         client.waitForCondition("selenium.isElementPresent('qunit-testresult')");
         int failedTests = Integer.valueOf(client.getEval("window.AJS.$('li.fail li.fail').size()"));

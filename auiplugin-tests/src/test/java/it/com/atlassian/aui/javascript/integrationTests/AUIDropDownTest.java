@@ -1,4 +1,4 @@
-package it.com.atlassian.aui.javascript.selenium;
+package it.com.atlassian.aui.javascript.integrationTests;
 
 public class AUIDropDownTest extends AbstractAUISeleniumTestCase
 {

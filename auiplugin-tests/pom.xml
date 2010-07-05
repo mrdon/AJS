@@ -67,6 +67,18 @@
 
 
     <build>
+        <!--AMPS does not currently respect the pom resource directories, uncomment and restructure when this is fixed within AMPS-->
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>src/test/unit-tests/</directory>-->
+            <!--</resource>-->
+            <!--<resource>-->
+                <!--<directory>src/test/test-pages/</directory>-->
+            <!--</resource>-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources/</directory>-->
+            <!--</resource>-->
+        <!--</resources>-->
         <plugins>
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
@@ -99,25 +111,25 @@
                                 <include>it/**/*Test.java</include>
                             </includes>
                         </testGroup>
-                        <!--testGroup>
-                            <id>jira</id>
-                            <productIds>
-                                <productId>jira</productId>
-                            </productIds>
-                            <includes>
-                                <include>it/**/*Test.java</include>
-                            </includes>
-                        </testGroup-->
+                        <!--<testGroup>-->
+                        <!--<id>jira</id>-->
+                        <!--<productIds>-->
+                        <!--<productId>jira</productId>-->
+                        <!--</productIds>-->
+                        <!--<includes>-->
+                        <!--<include>it/**/*Test.java</include>-->
+                        <!--</includes>-->
+                        <!--</testGroup>-->
 
-                        <!--testGroup>
-                            <id>confluence</id>
-                            <productIds>
-                                <productId>confluence</productId>
-                            </productIds>
-                            <includes>
-                                <include>it/**/*Test.java</include>
-                            </includes>
-                        </testGroup-->
+                        <!--<testGroup>-->
+                        <!--<id>confluence</id>-->
+                        <!--<productIds>-->
+                        <!--<productId>confluence</productId>-->
+                        <!--</productIds>-->
+                        <!--<includes>-->
+                        <!--<include>it/**/*Test.java</include>-->
+                        <!--</includes>-->
+                        <!--</testGroup>-->
                     </testGroups>
                     <products>
                         <product>
@@ -138,7 +150,6 @@
                         </product>
                     </products>
                 </configuration>
-                
             </plugin>
         </plugins>
     </build>
