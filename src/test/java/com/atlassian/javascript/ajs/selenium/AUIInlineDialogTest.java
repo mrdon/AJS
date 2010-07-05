@@ -48,14 +48,14 @@ public class AUIInlineDialogTest extends AUISeleniumTestCase
 
     public void testAUIInlineDialogStandardClick(){
         setUpTest(true);
-
+		
         client.click("css=a#inlineDialog1");
         assertThat.elementVisible("css=div#inline-dialog-1");
         assertThat.elementNotVisible("css=div#inline-dialog-2");
 
         client.click("css=a#inlineDialog2");
         assertThat.elementVisible("css=div#inline-dialog-2");
-        assertThat.elementNotVisible("css=div#inline-dialog-1");
+		assertThat.elementNotPresentByTimeout("css=div#inline-dialog-1.active", 5000);
 
     }
 
