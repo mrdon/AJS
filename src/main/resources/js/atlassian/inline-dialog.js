@@ -45,16 +45,19 @@
                         showPopup();
                     },
                     reset: function () {
-                        var posx;   //position of the left edge of popup box
-                        var posy;   //position of the top edge of popup box
+                        var popupLeft;    //position of the left edge of popup box from the left of the screen
+                        var popupRight;   //position of the right edge of the popup box fron the right edge of the screen
+                        var popupTop;   //position of the top edge of popup box
                         var arrowOffsetY = -7;    //the offsets of the arrow from the top edge of the popup, default is the height of the arrow above the popup
                         var arrowOffsetX;
+                        var displayAbove;   //determines if popup should be displayed above the the trigger or not
+
                         var targetOffset = targetPosition.target.offset();
                         var padding = parseInt(targetPosition.target.css("padding-left")) + parseInt(targetPosition.target.css("padding-right"));
                         var triggerWidth = targetPosition.target.width() + padding; //The total width of the trigger (including padding)
                         var middleOfTrigger = targetOffset.left + triggerWidth/2;    //The absolute x position of the middle of the Trigger
                         var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
-                        var displayAbove;   //determines if popup should be displayed above the the trigger or not
+                        
 
                         //CONSTANTS
                         var SCREEN_PADDING = 5; //determines how close to the edge the dialog needs to be before it is considered offscreen
@@ -85,56 +88,56 @@
                             }
                             //apply positioning to arrow
                             arrow.css({
+                                position: "absolute",
                                 left: arrowOffsetX,
                                 right: "auto",
                                 top: arrowOffsetY
                             });
                         }
-    
-                        //detect if position of popup should be relative to mouse and calculate the position of the box accordingly
-                        if (opts.isRelativeToMouse) {
-                            //Use position of mouse to calculate position of popup
-                            posx = mousePosition.x + opts.offsetX
-                            posy = mousePosition.y + targetPosition.target.height() + opts.offsetY;
-                        } else {
-                            //use position of trigger to calculate position of popup
-                            posx = targetOffset.left + opts.offsetX;
-                            posy = targetOffset.top + targetPosition.target.height() + opts.offsetY;
-                        }
+
+                        popupTop = targetOffset.top + targetPosition.target.height() + opts.offsetY;
+                        popupLeft = targetOffset.left + opts.offsetX;
 
                         var enoughRoomAbove = targetOffset.top > popup.height();
-                        var enoughRoomBelow = (posy + popup.height()) < bottomOfViewablePage;
+                        var enoughRoomBelow = (popupTop + popup.height()) < bottomOfViewablePage;
 
                         //Check if the popup should be displayed above the trigger or not (if the user has set opts.onTop to true and if theres enough room)
                         displayAbove =  (!enoughRoomBelow && enoughRoomAbove) || (opts.onTop && enoughRoomAbove);
-                        //make calculations if dialog is to be displayed above the trigger
+
+                        //calculate if the popup will be offscreen
+                        var diff = $(window).width() - (popupLeft  + opts.width + SCREEN_PADDING);
+
+                        //check if the popup should be displayed above or below the trigger
                         if (displayAbove) {
-                            posy = targetOffset.top - popup.height() - 8; //calculate the flipped position of the popup (the 8 allows for room for the arrow)
+                            popupTop = targetOffset.top - popup.height() - 8; //calculate the flipped position of the popup (the 8 allows for room for the arrow)
                             arrowOffsetY = popup.height() - 9; //calculate new offset for the arrow, 10 is the height of the shadow
                             if (AJS.$.browser.msie){
                                 arrowOffsetY = popup.height() - 10; //calculate new offset for the arrow, 11 is the height of the shadow in IE
                             }
                         }
-                        //calculate if the popup will be offscreen
-                        var diff = $(window).width() - (posx  + opts.width + SCREEN_PADDING);
-                        //Check if dialog would be offscreen on the right
-                        if (diff<0) {
-                            var leftEdge = $(window).width() - opts.width; 
-                            //determine where the arrow should be drawn
-                            if (opts.isRelativeToMouse) {
-                                arrowOffsetX = mousePosition.x-leftEdge;
-                                drawPopup (popup, "auto", SCREEN_PADDING, posy, arrowOffsetX, arrowOffsetY, displayAbove);    //Calculate arrow x position based on mouse position
+
+                        //check if the popup should show up relative to the mouse
+                        if(opts.isRelativeToMouse){
+                            if(diff < 0){
+                                popupRight = SCREEN_PADDING;
+                                popupLeft = "auto";
+                                arrowOffsetX = mousePosition.x - ($(window).width() - opts.width);
                             } else {
-                                if (triggerWidth < 15) {
-                                    arrowOffsetX = middleOfTrigger-leftEdge-SCREEN_PADDING/2;
-                                } else {
-                                    arrowOffsetX = middleOfTrigger-leftEdge;
-                                }
-                                drawPopup (popup, "auto", SCREEN_PADDING, posy, arrowOffsetX, arrowOffsetY, displayAbove);    //Calculate arrow x position based on middle of trigger
+                                popupLeft = mousePosition.x - 20;
+                                popupRight = "auto";
+                                arrowOffsetX = mousePosition.x - popupLeft;
                             }
                         } else {
-                            drawPopup (popup, posx, "auto", posy, middleOfTrigger-posx, arrowOffsetY, displayAbove);    //Calculate arrow x position baesd on middle of trigger
+                            if(diff < 0){
+                                popupRight = SCREEN_PADDING;
+                                popupLeft = "auto";
+                                arrowOffsetX = middleOfTrigger - ($(window).width() - opts.width);
+                            } else {
+                                arrowOffsetX = middleOfTrigger - popupLeft;
+                            }
                         }
+
+                        drawPopup (popup, popupLeft, popupRight, popupTop, arrowOffsetX, arrowOffsetY, displayAbove);
 
                         // reset position of popup box
                         popup.fadeIn(opts.fadeTime, function() {
