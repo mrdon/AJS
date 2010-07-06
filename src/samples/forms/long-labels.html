@@ -26,7 +26,8 @@
     <![endif]-->
 
     <style type="text/css">
-        #example-right {
+        #example-right,
+        #example-left {
             background: #eee;
             width: 800px;
         }
@@ -45,7 +46,7 @@
 <h1>Long Labels</h1>
 
 <form action="#" method="post" id="example-right" class="aui long-label">
-    <p><em>This short form has right-aligned buttons such as you might see in a Dialog. It's .buttons-container has a class of .right and the buttons are thus aligned right. It is shaded only to show the width of the form.</em></p>
+    <p><em>This short form has right-aligned buttons such as you might see in a Dialog. Its .buttons-container has a class of .right and the buttons are thus aligned right. It is shaded only to show the width of the form.</em></p>
     <div class="field-group">
         <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
         <input class="text" type="text" id="fname" name="fname" title="first name">
@@ -61,6 +62,25 @@
         </div>
     </div>
 </form>
+
+<form action="#" method="post" id="example-left" class="aui long-label">
+    <p><em>This short form has left-aligned buttons. Its .buttons-container has a class of .left and the buttons are thus aligned left. It is shaded only to show the width of the form.</em></p>
+    <div class="field-group">
+        <label for="example-left-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text" type="text" id="example-left-fname" name="fname" title="first name">
+    </div>
+    <div class="field-group">
+        <label for="example-left-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text long-field" type="text" id="example-left-lname" name="lname" title="last name">
+    </div>
+    <div class="buttons-container left">
+        <div class="buttons">
+            <input class="button submit" type="submit" value="Save" id="example-left-save-btn1">
+            <a class="cancel" href="forms.html#">Cancel</a>
+        </div>
+    </div>
+</form>
+
 
 <form action="forms.html#" method="post" id="d" class="aui long-label">
     <h2>Default - Edit State</h2>

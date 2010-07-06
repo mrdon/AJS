@@ -25,7 +25,8 @@
     <![endif]-->
 
     <style type="text/css">
-        #example-right {
+        #example-right,
+        #example-left {
             background: #eee;
             width: 800px;
         }
@@ -80,18 +81,36 @@
 </form>
 
 <form action="#" method="post" id="example-right" class="aui">
-    <p><em>This short form has right-aligned buttons such as you might see in a Dialog. It's .buttons-container has a class of .right and the buttons are thus aligned right. It is shaded only to show the width of the form.</em></p>
+    <p><em>This short form has right-aligned buttons such as you might see in a Dialog. Its .buttons-container has a class of .right and the buttons are thus aligned right. It is shaded only to show the width of the form.</em></p>
     <div class="field-group">
-        <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
-        <input class="text" type="text" id="fname" name="fname" title="first name">
+        <label for="example-right-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text" type="text" id="example-right-fname" name="fname" title="first name">
     </div>
     <div class="field-group">
-        <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
-        <input class="text long-field" type="text" id="lname" name="lname" title="last name">
+        <label for="example-right-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text long-field" type="text" id="example-right-lname" name="lname" title="last name">
     </div>
     <div class="buttons-container right">
         <div class="buttons">
-            <input class="button submit" type="submit" value="Save" id="save-btn1">
+            <input class="button submit" type="submit" value="Save" id="example-right-save-btn1">
+            <a class="cancel" href="forms.html#">Cancel</a>
+        </div>
+    </div>
+</form>
+
+<form action="#" method="post" id="example-left" class="aui">
+    <p><em>This short form has left-aligned buttons. Its .buttons-container has a class of .left and the buttons are thus aligned left. It is shaded only to show the width of the form.</em></p>
+    <div class="field-group">
+        <label for="example-left-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text" type="text" id="example-left-fname" name="fname" title="first name">
+    </div>
+    <div class="field-group">
+        <label for="example-left-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text long-field" type="text" id="example-left-lname" name="lname" title="last name">
+    </div>
+    <div class="buttons-container left">
+        <div class="buttons">
+            <input class="button submit" type="submit" value="Save" id="example-left-save-btn1">
             <a class="cancel" href="forms.html#">Cancel</a>
         </div>
     </div>
@@ -103,13 +122,13 @@
         <legend><span>Text Entry</span></legend>
         <p>Paragraph: Lorem ipsum dolor sit amet, consectetur <span>span text</span> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <div class="field-group">
-            <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
-            <input class="text" type="text" id="fname" name="fname" title="first name">
+            <label for="d-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+            <input class="text" type="text" id="d-fname" name="fname" title="first name">
             <div class="description">Default width input.</div>
         </div>
         <div class="field-group">
-            <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
-            <input class="text long-field" type="text" id="lname" name="lname" title="last name">
+            <label for="d-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+            <input class="text long-field" type="text" id="d-lname" name="lname" title="last name">
             <div class="error">Error message here</div>
             <div class="description">Long width input.</div>
         </div>
@@ -324,7 +343,7 @@
 
     <div class="buttons-container">
         <div class="buttons">
-            <input class="button submit" type="submit" value="Save" id="save-btn1">
+            <input class="button submit" type="submit" value="Save" id="d-save-btn1">
             <a class="cancel" href="forms.html#">Cancel</a>
         </div>
     </div>
