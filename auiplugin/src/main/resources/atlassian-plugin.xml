@@ -20,7 +20,7 @@
         <resource type="download" name="messages.css" location="css/atlassian/messages.css"/>
         <resource type="download" name="tables.css" location="css/atlassian/tables.css"/>
         <resource type="download" name="tabs.css" location="css/atlassian/tabs.css"/>
-        <resource type="download" name="tabs.css" location="css/atlassian/toolbar.css"/>
+        <resource type="download" name="toolbar.css" location="css/atlassian/toolbar.css"/>
 
         <resource type="download" name="dialog-ie.css" location="css/atlassian/ie/dialog-ie.css">
             <param name="ieonly" value="true"/>
@@ -37,7 +37,7 @@
         <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/ie/inline-dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/ie/toolbar-ie.css">
+        <resource type="download" name="toolbar-ie.css" location="css/atlassian/ie/toolbar-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
 
