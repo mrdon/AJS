@@ -28,6 +28,7 @@
         "atlassian/template.js",
         "atlassian/whenitype.js",
         "atlassian/containdropdown.js",
+        "atlassian/toolbar.js",
 
         "atlassian/binders/binder.js",
         "atlassian/binders/placeholder.js",

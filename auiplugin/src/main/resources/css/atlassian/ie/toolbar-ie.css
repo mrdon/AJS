@@ -1,0 +1,31 @@
+.aui-toolbar .toolbar-dropdown .icon-dropdown,
+.aui-toolbar .toolbar-splitbutton .icon-dropdown {
+    *float: none;
+    *height: 10px; /* we do it this way so all icon spacing is attached to the icon */
+}
+
+.aui-toolbar .toolbar-dropdown .icon-dropdown {
+    background-position: -20px 10px;
+}
+
+.aui-toolbar .toolbar-trigger .icon-dropdown {
+    float: left;
+    margin: 0;
+    height: 24px
+}
+
+.toolbar-splitbutton .icon-dropdown {
+    *background-position: -58px -10px;
+    *border: 0;
+}
+.aui-toolbar .toolbar-group .first {
+    border-left: 1px solid #ddd;
+}
+.aui-toolbar .toolbar-group .toolbar-item-link {
+    border-left: none;
+}
+/* disabled controls */
+.aui-toolbar .toolbar-group .disabled {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /*IE8*/
+    filter: alpha(opacity=50); /* IE6-7 */
+}

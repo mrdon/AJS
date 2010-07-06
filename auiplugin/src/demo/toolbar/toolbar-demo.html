@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-au">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Toolbar Example</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/basic.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/firebug.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/dialog.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/dropdown.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/forms.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/icons.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/tables.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/tabs.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/toolbar.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <!--[if IE]>
+        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/dialog-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/dropdown-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/forms-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/icons-ie.css" media="all">
+        <link type="text/css" rel="stylesheet" href="../../../../auiplugin/src/main/resources/css/atlassian/ie/toolbar-ie.css" media="all">
+    <![endif]-->
+
+    <script type="text/javascript" src="../common.js"></script>
+
+    <style type="text/css">
+        .aui-toolbar {
+            padding: 10px;            
+        }
+        .aui-toolbar .icon {
+            text-indent: -9999em;
+            width: 24px;
+            float: left;
+            height: 100%;
+            margin: 0 -5px;
+            display: inline-block;
+            background: transparent url("../../../../auiplugin/src/main/resources/css/atlassian/images/toolbar/aui-toolbar-24px.png") 0 0 no-repeat;            
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="navigation">
+        <h2> AUI Toolbar Demo Page </h2>
+        <a href="../index.html"> Back to AUI Demo </a>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Toolbar </h2>
+        <p class="description"> Demonstrates a toolbar with the various button types. </p>
+        <div class="html-code">
+            <div id="demo-toolbar" class="aui-toolbar">
+
+                <div class="toolbar-split toolbar-split-left">
+                    <!-- Icon button -->
+                    <ul class="toolbar-group">
+                        <li class="toolbar-item">
+                            <a class="toolbar-trigger" href="#" id="labels-button" title='Labels'>
+                                <span class="icon icon-labels">Labels</span>
+                            </a>
+                        </li>
+                        <li class="toolbar-item">
+                            <a class="toolbar-trigger" href="#" id="permission-button" title='Permissions'>
+                                <span class="icon icon-permissions">Permissions</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Icon Text Button -->
+                    <ul class="toolbar-group">
+                        <li class="toolbar-item">
+                            <a class="toolbar-trigger" href="#" id="link-button" title='Link'>
+                                <span class="icon icon-link"></span>
+                                <span class="trigger-text">Link</span>
+                            </a>
+                        </li>
+                        <li class="toolbar-item">
+                            <a class="toolbar-trigger" href="#" id="other-button" title='Other'>
+                                Other
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Active/Inactive Button -->
+                    <ul class="toolbar-group">
+                        <li class="toolbar-item active">
+                            <a class="toolbar-trigger" href="#" id="active-button" title='Active'>
+                                Active
+                            </a>
+                        </li>
+                        <li class="toolbar-item disabled">
+                            <a class="toolbar-trigger" href="#" id="disabled-button" title='Disabled'>
+                                Disabled
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Text Dropdown -->
+                    <ul class="toolbar-group">
+                        <li class="toolbar-item toolbar-dropdown" id="format-dropdown">
+                            <div class="aui-dd-parent">
+                                <a href="#" class="toolbar-trigger aui-dd-trigger" id="format-dropdown-display">
+                                    <span class="dropdown-text">Paragraph</span>
+                                    <span class="icon icon-dropdown"></span>
+                                </a>
+                                <ul class="aui-dropdown">
+                                    <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Heading 2</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Compact Dropdown -->
+                    <ul class="toolbar-group rte-toolbar-group-textformat">
+                        <li class="toolbar-item toolbar-splitbutton" id="action-1b">
+
+                            <a class="toolbar-trigger" href="#" id="action-1a" title='Action One'>
+                                Action 1
+                            </a>
+
+                            <div class="aui-dd-parent">
+                                <a class="toolbar-trigger aui-dd-trigger" href="#" id="rte-button-forecolor" title="Action One Bee">
+                                    <span class="icon icon-dropdown">Action One Bee</span>
+                                </a>
+                                <ul class="aui-dropdown">
+                                    <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Heading 2</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Icon and Text Dropdown example -->
+                    <ul class="toolbar-group">
+                        <li class="toolbar-item toolbar-dropdown" id="new-rte-insert-menu">
+                            <div class="aui-dd-parent">
+                                <a href="#" class="toolbar-trigger aui-dd-trigger" id="rte-button-insert" title='Insert'>
+                                    <span class="icon icon-insert"></span>
+                                    <span class="dropdown-text">Insert</span>
+                                    <span class="icon icon-dropdown"></span>
+                                </a>
+                                <ul class="aui-dropdown">
+                                    <li class="dropdown-item"><a href="#" class="item-link">Macro</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Image</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Table of Contents</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="toolbar-split toolbar-split-right">
+
+                    <!-- Active/Inactive Button -->
+                    <ul class="toolbar-group">
+                        <li class="toolbar-item">
+                            <a class="toolbar-trigger" href="#" id="save-button" title='Save'>
+                                Save
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Link style button -->
+                    <ul class="toolbar-group">
+                        <li class="toolbar-item toolbar-item-link">
+                            <a href="#" class="toolbar-trigger" id="rte-button-cancel">Cancel</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        AJS.$("#format-dropdown").dropDown("Standard", {alignment: "left"});
+        AJS.$("#action-1b").dropDown("Standard", {alignment: "right"});
+        AJS.$("#new-rte-insert-menu").dropDown("Standard", {alignment: "right"});
+    </script>
+</body>
+</html>
