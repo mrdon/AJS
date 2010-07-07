@@ -88,7 +88,7 @@
 }
 
 .aui-toolbar .active, .aui-toolbar .active a {
-    opacity: 1
+    opacity: 1;
 }
 
 .toolbar-group .toolbar-item:first-of-type a,
@@ -168,9 +168,6 @@
     border-left: 1px solid #999;
 }
 
-/* TODOXHTML: definitely some issues with IE7, this pattern may need to be modified.
-This version works in FF so will be used until Summit demo is done. */
-/* dropdown icons/widgets */
 .aui-toolbar .toolbar-dropdown .icon-dropdown,
 .aui-toolbar .toolbar-splitbutton .icon-dropdown {
     background: transparent url("images/toolbar/aui-toolbar-24px.png") 0 0 no-repeat;
@@ -197,7 +194,7 @@ This version works in FF so will be used until Summit demo is done. */
 
 .aui-toolbar .toolbar-splitbutton .aui-dd-parent .aui-dd-trigger {
     min-width: 0;
-    margin:0;
+    margin: 0;
     padding: 0 2px;
     width: 6px;
 }
@@ -207,7 +204,7 @@ This version works in FF so will be used until Summit demo is done. */
     width: 6px;
 }
 
-/* Icons */
+/* Sprite icon mappings */
 .aui-toolbar span.icon-labels {
     background-position: -164px -19px;
 }
@@ -217,6 +214,69 @@ This version works in FF so will be used until Summit demo is done. */
 .aui-toolbar span.icon-link {
     background-position: 4px -18px;
 }
+.aui-toolbar span.icon-image {
+    background-position: -164px 4px;
+}
+.aui-toolbar span.icon-table {
+    background-position: -189px 4px;
+}
 .aui-toolbar span.icon-insert {
     background-position: -212px 5px;
+}
+.aui-toolbar span.icon-settings {
+    background-position: -116px -21px;
+}
+.aui-toolbar span.icon-help {
+    background-position: -139px -20px;
+}
+.aui-toolbar span.icon-italic {
+    background-position: -88px -42px;
+}
+.aui-toolbar span.icon-bold {
+    background-position: -65px -42px;
+}
+.aui-toolbar span.icon-underline {
+    background-position: -112px -42px;
+}
+.aui-toolbar span.icon-strikethrough {
+    background-position: -139px -43px;
+}
+.aui-toolbar span.icon-textcolor {
+    background-position: -161px -42px;
+}
+.aui-toolbar span.icon-sub {
+    background-position: -185px -42px;
+}
+.aui-toolbar span.icon-sup {
+    background-position: -210px -44px;
+}
+.aui-toolbar span.icon-bullist {
+    background-position: -66px 6px;
+}
+.aui-toolbar span.icon-numlist {
+    background-position: -90px 6px;
+}
+.aui-toolbar span.icon-indent {
+    background-position: -114px 6px;
+}
+.aui-toolbar span.icon-outdent {
+    background-position: -139px 6px;
+}
+.aui-toolbar span.icon-undo {
+    background-position: -19px -18px;
+}
+.aui-toolbar span.icon-redo {
+    background-position: -42px -18px;
+}
+.aui-toolbar span.icon-justifyleft {
+    background-position: 6px -41px;
+}
+.aui-toolbar span.icon-justifycenter {
+    background-position: -18px -41px;
+}
+.aui-toolbar span.icon-justifyright {
+    background-position: -42px -41px;
+}
+.aui-toolbar span.icon-source {
+    background-position: -94px -17px;
 }

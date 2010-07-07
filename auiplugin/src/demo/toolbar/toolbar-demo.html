@@ -24,22 +24,6 @@
 
     <script type="text/javascript" src="../common.js"></script>
 
-    <style type="text/css">
-        .aui-toolbar {
-            padding: 10px;            
-        }
-        .aui-toolbar .icon {
-            text-indent: -9999em;
-            width: 24px;
-            float: left;
-            height: 100%;
-            margin: 0 -5px;
-            display: inline-block;
-            background: transparent url("../../../../auiplugin/src/main/resources/css/atlassian/images/toolbar/aui-toolbar-24px.png") 0 0 no-repeat;            
-        }
-
-    </style>
-
 </head>
 <body>
     <div class="navigation">
@@ -51,18 +35,32 @@
         <h2> Toolbar </h2>
         <p class="description"> Demonstrates a toolbar with the various button types. </p>
         <div class="html-code">
+            <style type="text/css">
+                .aui-toolbar {
+                    padding: 10px;
+                }
+                .aui-toolbar .icon {
+                    text-indent: -9999em;
+                    width: 24px;
+                    float: left;
+                    height: 100%;
+                    margin: 0 -5px;
+                    display: inline-block;
+                    background: transparent url("../../../../auiplugin/src/main/resources/css/atlassian/images/toolbar/aui-toolbar-24px.png") 0 0 no-repeat;
+                }
+            </style>
             <div id="demo-toolbar" class="aui-toolbar">
 
                 <div class="toolbar-split toolbar-split-left">
                     <!-- Icon button -->
                     <ul class="toolbar-group">
                         <li class="toolbar-item">
-                            <a class="toolbar-trigger" href="#" id="labels-button" title='Labels'>
+                            <a class="toolbar-trigger" href="#" id="labels-button" title="Labels">
                                 <span class="icon icon-labels">Labels</span>
                             </a>
                         </li>
                         <li class="toolbar-item">
-                            <a class="toolbar-trigger" href="#" id="permission-button" title='Permissions'>
+                            <a class="toolbar-trigger" href="#" id="permission-button" title="Permissions">
                                 <span class="icon icon-permissions">Permissions</span>
                             </a>
                         </li>
@@ -71,29 +69,23 @@
                     <!-- Icon Text Button -->
                     <ul class="toolbar-group">
                         <li class="toolbar-item">
-                            <a class="toolbar-trigger" href="#" id="link-button" title='Link'>
+                            <a class="toolbar-trigger" href="#" id="link-button" title="Link">
                                 <span class="icon icon-link"></span>
                                 <span class="trigger-text">Link</span>
                             </a>
                         </li>
                         <li class="toolbar-item">
-                            <a class="toolbar-trigger" href="#" id="other-button" title='Other'>
-                                Other
-                            </a>
+                            <a class="toolbar-trigger" href="#" id="other-button" title="Other">Other</a>
                         </li>
                     </ul>
 
                     <!-- Active/Inactive Button -->
                     <ul class="toolbar-group">
                         <li class="toolbar-item active">
-                            <a class="toolbar-trigger" href="#" id="active-button" title='Active'>
-                                Active
-                            </a>
+                            <a class="toolbar-trigger" href="#" id="active-button" title="Active">Active</a>
                         </li>
                         <li class="toolbar-item disabled">
-                            <a class="toolbar-trigger" href="#" id="disabled-button" title='Disabled'>
-                                Disabled
-                            </a>
+                            <a class="toolbar-trigger" href="#" id="disabled-button" title="Disabled">Disabled</a>
                         </li>
                     </ul>
 
@@ -115,15 +107,13 @@
                     </ul>
 
                     <!-- Compact Dropdown -->
-                    <ul class="toolbar-group rte-toolbar-group-textformat">
+                    <ul class="toolbar-group">
                         <li class="toolbar-item toolbar-splitbutton" id="action-1b">
 
-                            <a class="toolbar-trigger" href="#" id="action-1a" title='Action One'>
-                                Action 1
-                            </a>
+                            <a class="toolbar-trigger" href="#" id="action-1a" title="Action One">Action 1</a>
 
                             <div class="aui-dd-parent">
-                                <a class="toolbar-trigger aui-dd-trigger" href="#" id="rte-button-forecolor" title="Action One Bee">
+                                <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One Bee">
                                     <span class="icon icon-dropdown">Action One Bee</span>
                                 </a>
                                 <ul class="aui-dropdown">
@@ -137,9 +127,9 @@
 
                     <!-- Icon and Text Dropdown example -->
                     <ul class="toolbar-group">
-                        <li class="toolbar-item toolbar-dropdown" id="new-rte-insert-menu">
+                        <li class="toolbar-item toolbar-dropdown" id="insert-menu">
                             <div class="aui-dd-parent">
-                                <a href="#" class="toolbar-trigger aui-dd-trigger" id="rte-button-insert" title='Insert'>
+                                <a href="#" class="toolbar-trigger aui-dd-trigger" title="Insert">
                                     <span class="icon icon-insert"></span>
                                     <span class="dropdown-text">Insert</span>
                                     <span class="icon icon-dropdown"></span>
@@ -159,27 +149,30 @@
                     <!-- Active/Inactive Button -->
                     <ul class="toolbar-group">
                         <li class="toolbar-item">
-                            <a class="toolbar-trigger" href="#" id="save-button" title='Save'>
-                                Save
-                            </a>
+                            <a class="toolbar-trigger" href="#" id="save-button">Save</a>
                         </li>
                     </ul>
 
                     <!-- Link style button -->
                     <ul class="toolbar-group">
                         <li class="toolbar-item toolbar-item-link">
-                            <a href="#" class="toolbar-trigger" id="rte-button-cancel">Cancel</a>
+                            <a href="#" class="toolbar-trigger" id="cancel-button">Cancel</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
+        <script type="text/javascript" class="js-code">
+            addSample(function() {
+                AJS.$("#format-dropdown").dropDown("Standard", {alignment: "left"});
+                AJS.$("#action-1b").dropDown("Standard", {alignment: "right"});
+                AJS.$("#insert-menu").dropDown("Standard", {alignment: "right"});
+            });
+        </script>
     </div>
 
     <script type="text/javascript">
-        AJS.$("#format-dropdown").dropDown("Standard", {alignment: "left"});
-        AJS.$("#action-1b").dropDown("Standard", {alignment: "right"});
-        AJS.$("#new-rte-insert-menu").dropDown("Standard", {alignment: "right"});
+        createViewSourceLinks();
     </script>
 </body>
 </html>
