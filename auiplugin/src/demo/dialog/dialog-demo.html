@@ -156,6 +156,30 @@
             });
         </script>
     </div>
+    
+    <div class = "aui-demo source-required">
+           <h2> Popup - closeOnClick </h2>
+           <p>Demo of AJS.popup that can be closed when you click outside it</p>
+
+           <div class="html-code">
+               <form>
+                   <input id="popup2-button" type="button" class="button" value="Popup - Click Me">
+                   <a href="#" id="popup2-link"> Popup Link </a>
+               </form>
+           </div>
+           <script type="text/javascript" class="js-code">
+               addSample(function() {
+                   var popup2 = AJS.popup(400, 200, "my-popup2", {closeOnClick: true});
+                   AJS.$("#popup2-button").click(function(){
+                       popup2.show();    
+                   });
+
+                   AJS.$("#popup2-link").click(function(){
+                       popup2.show(); 
+                   });
+               });
+           </script>
+       </div>
 <script type="text/javascript">
     
     createViewSourceLinks();

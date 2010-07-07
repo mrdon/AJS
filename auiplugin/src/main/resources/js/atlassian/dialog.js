@@ -96,6 +96,7 @@ AJS.popup = function (options) {
     var defaults = {
         width: 800,
         height: 600,
+        closeOnClick: false,
         keypressListener: function (e) {
             if (e.keyCode === 27 && popup.is(":visible")) {
                 res.hide();
@@ -109,8 +110,8 @@ AJS.popup = function (options) {
             height: arguments[1],
             id: arguments[2]
         };
+        options = AJS.$.extend({}, options, arguments[3]);
     }
-
     options = AJS.$.extend({}, defaults, options);
 
     var popup = AJS("div").addClass("aui-popup");
@@ -168,6 +169,13 @@ AJS.popup = function (options) {
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
                 AJS.dim();
+                if(AJS.$(".aui-blanket").size()!=0 && options.closeOnClick){
+                    AJS.$(".aui-blanket").click( function(){
+                        if(popup.is(":visible")){
+                            res.hide();
+                        }
+                    });
+                }
                 popup.show();
                 if (!this.shadow && !this.shadowParent) {
                     var shadowSize = 0.5;
@@ -197,6 +205,7 @@ AJS.popup = function (options) {
         */
         hide: function () {
             AJS.$(document).unbind("keydown", options.keypressListener);
+            AJS.$(".aui-blanket").unbind();
             this.element.hide();
             if (this.shadow) {
                 this.shadow.remove();
