@@ -1,10 +1,10 @@
 /* CSS Document for form styling - REQUIRES class of 'aui' to form */
-form.aui,form.aui p,form.aui div,form.aui h1,form.aui h2,form.aui h3,form.aui h4,form.aui h5,form.aui h6,
+/*form.aui,form.aui p,form.aui div,form.aui h1,form.aui h2,form.aui h3,form.aui h4,form.aui h5,form.aui h6,
 form.aui img,form.aui ul,form.aui ol,form.aui li,form.aui dl,form.aui dt,form.aui dd,form.aui pre,
 form.aui fieldset,form.aui textarea,form.aui input,form.aui select,form.aui button,form.aui optgroup,form.aui option {
     margin: 0;
     padding: 0;
-}
+}*/
 form.aui {
     color: #333;
     font-family: arial,tahoma,verdana,sans-serif;
