@@ -35,8 +35,8 @@
 }
 
 /*UNSTYLED TRIGGER*/
-.aui-dd-parent span a.aui-dd-trigger-unstyled,
-.aui-dd-parent a.aui-dd-trigger-unstyled {
+.aui-dd-parent span a.aui-dd-trigger.unstyled,
+.aui-dd-parent a.aui-dd-trigger.unstyled {
     background: none;
     border: none;
     color: auto;
