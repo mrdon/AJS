@@ -167,7 +167,7 @@ AJS.popup = function (options) {
 
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
-                AJS.dim(options.useShim);
+                AJS.dim();
                 popup.show();
                 if (!this.shadow && !this.shadowParent) {
                     var shadowSize = 0.5;
@@ -1006,4 +1006,3 @@ AJS.popup = function (options) {
     };
 
 })();
-

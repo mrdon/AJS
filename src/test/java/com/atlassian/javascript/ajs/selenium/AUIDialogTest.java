@@ -66,7 +66,7 @@ public class AUIDialogTest extends AUISeleniumTestCase
         String top = client.getEval("window.AJS.$('#test-dialog').offset().top");
         String scrollTop = client.getEval("document.documentElement.scrollTop");
 
-        assertTrue("Popup is being drawn off the top of the screen", Integer.parseInt(top) > Integer.parseInt(scrollTop));
+        assertTrue("Popup is being drawn off the top of the screen", Float.parseFloat(top) > Float.parseFloat(scrollTop));
     }
 
         //Test that dialogs are not positioned off-screen

@@ -9,16 +9,16 @@
     <groupId>com.atlassian.aui</groupId>
     <artifactId>auiplugin</artifactId>
     <packaging>jar</packaging>
-    <version>3.0.7-SNAPSHOT</version>
+    <version>3.0.6.2-SNAPSHOT</version>
 
     <name>Atlassian UI Plugin</name>
     <description>An Atlassian plugin that contains the core javascript files used in Atlassian products.</description>
-    <url>https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.x</url>
+    <url>https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.6.x</url>
 
     <scm>
-        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.x</connection>
-        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.x</developerConnection>
-        <url>https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.x</url>
+        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.6.x</connection>
+        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.6.x</developerConnection>
+        <url>https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.6.x</url>
     </scm>
 
     <issueManagement>
