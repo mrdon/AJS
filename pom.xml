@@ -16,9 +16,9 @@
     <url>https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.x</url>
 
     <scm>
-        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/tags/auiplugin-3.0.x</connection>
-        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/tags/auiplugin-3.0.x</developerConnection>
-        <url>https://studio.atlassian.com/svn/AJS/tags/auiplugin-3.0.x</url>
+        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.x</connection>
+        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.x</developerConnection>
+        <url>https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.0.x</url>
     </scm>
 
     <issueManagement>
