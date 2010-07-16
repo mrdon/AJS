@@ -23,6 +23,10 @@
     <![endif]-->
 
     <script type="text/javascript" src="../common.js"></script>
+    
+    <style type="text/css">
+    #active-button { background: #d8e4f0 url("images/toolbar/aui-toolbar-button-active-bg.png") top left repeat-x; } /* fake active for demo purposes. */
+    </style>
 
 </head>
 <body>
@@ -33,7 +37,8 @@
 
     <div class="aui-demo source-required">
         <h2> Toolbar </h2>
-        <p class="description"> Demonstrates a toolbar with the various button types. </p>
+        <p class="description"> Demonstrates a toolbar with the various button types and states.</p>
+        
         <div class="html-code">
             <style type="text/css">
                 .aui-toolbar {
@@ -77,11 +82,14 @@
                         <li class="toolbar-item">
                             <a class="toolbar-trigger" href="#" id="other-button" title="Other">Other</a>
                         </li>
+                        <li class="toolbar-item primary">
+                            <a class="toolbar-trigger" href="#" id="primary-button" title="Other">Primary</a>
+                        </li>
                     </ul>
 
                     <!-- Active/Inactive Button -->
                     <ul class="toolbar-group">
-                        <li class="toolbar-item active">
+                        <li class="toolbar-item">
                             <a class="toolbar-trigger" href="#" id="active-button" title="Active">Active</a>
                         </li>
                         <li class="toolbar-item disabled">
@@ -118,7 +126,7 @@
                                 </a>
                                 <ul class="aui-dropdown">
                                     <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
-                                    <li class="dropdown-item"><a href="#" class="item-link">Heading 2</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item with quite wide text</a></li>
                                     <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
                                 </ul>
                             </div>

@@ -40,6 +40,12 @@
     width: 100%;
 }
 
+/* primary buttons */
+.aui-toolbar .primary .toolbar-trigger {
+    font-weight: bold;
+}
+
+
 /* available/inactive controls */
 .aui-toolbar .toolbar-group a.toolbar-trigger,
 .aui-toolbar .toolbar-group button,
@@ -136,6 +142,10 @@
     border-left: 1px solid #ddd;
 }
 
+.aui-toolbar .toolbar-group .aui-dropdown {
+    border: 1px solid #999;
+}
+
 .aui-toolbar .toolbar-group .aui-dropdown a {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -144,6 +154,7 @@
 }
 
 /* hover/focus controls */
+.aui-toolbar .toolbar-group .active .toolbar-trigger,
 .aui-toolbar .toolbar-splitbutton:hover .toolbar-trigger,
 .aui-toolbar .toolbar-group .toolbar-trigger:focus,
 .aui-toolbar .toolbar-group .toolbar-trigger:hover,
@@ -156,16 +167,15 @@
     outline: 0;
 }
 
-.aui-toolbar .toolbar-group .active .toolbar-trigger,
 .aui-toolbar .aui-dd-parent a.aui-dd-trigger.active,
 .aui-toolbar .aui-dd-parent a.aui-dd-trigger.active {
-    background: #d8e4f0 url("images/toolbar/aui-toolbar-button-active-bg.png") top left repeat-x;
-    border-left: 1px solid #D8E4F0;
+    background: #d8e4f0 url("aui-toolbar-button-active-bg.png") top left repeat-x;
+    border-left:1px solid #D8E4F0;
 }
 
 .aui-toolbar .toolbar-group .toolbar-trigger:active {
-    background: #d8e4f0 url("images/toolbar/aui-toolbar-button-active-bg.png") top left repeat-x;
-    border-left: 1px solid #999;
+    background: #d8e4f0 url("aui-toolbar-button-active-bg.png") top left repeat-x;
+    border: 1px solid #999;
 }
 
 .aui-toolbar .toolbar-dropdown .icon-dropdown,
