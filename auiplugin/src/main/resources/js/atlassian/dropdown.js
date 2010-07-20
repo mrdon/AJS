@@ -32,8 +32,7 @@ AJS.dropDown = function (obj, usroptions) {
                 return false;
             },
             hideHandler: function() {},
-            moveHandler: function(selection,dir) {},
-            useLiveEvents: false
+            moveHandler: function(selection,dir) {}
         };
     AJS.$.extend(options, usroptions);
     options.alignment = {left:"left",right:"right"}[options.alignment.toLowerCase()]  || "left";
@@ -502,26 +501,15 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
         if(options.isHiddenByDefault == false){
             ddcontrol.show();
         }
-        if(options.useLiveEvents){
-            $trigger.live("click", function(e){
-                if (ddcontrol != AJS.dropDown.current) {
-                    $dropdown.css({top: $trigger.outerHeight()});
-                    ddcontrol.show();
-                    e.stopPropagation();
-                }
-                e.preventDefault();
-            });
-        } else {
-            $trigger.click(function (e) {
-                 if (ddcontrol != AJS.dropDown.current) {
-                     $dropdown.css({top: $trigger.outerHeight()});
-                     ddcontrol.show();
-                     e.stopPropagation();
-                 }
-                 e.preventDefault();
-             }); 
-        }
- 
+
+        $trigger.click(function (e) {
+            if (ddcontrol != AJS.dropDown.current) {
+                $dropdown.css({top: $trigger.outerHeight()});
+                ddcontrol.show();
+                e.stopPropagation();
+            }
+            e.preventDefault();
+        });
 
         ddcontrol.addCallback("show", function () {
            $parent.addClass("active");
