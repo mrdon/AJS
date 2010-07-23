@@ -9,7 +9,7 @@ without CSS hacks * eg:
 }
 * **/
 .aui-blanket {
-	background: transparent url(images/bg-000-trans50.png) repeat;
+    background: transparent url(images/bg-000-trans50.png) repeat;
     position: fixed;
 }
 .aui-blanket-shim {
@@ -31,7 +31,7 @@ an asterisk (*) * eg:
 }
 * **/ 
 .aui-blanket {
-    *height: 100px; 
+    *height: 100px;
     *position: absolute;
 }
 
