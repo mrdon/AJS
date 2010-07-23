@@ -9,7 +9,7 @@ without CSS hacks * eg:
 }
 * **/
 .aui-blanket {
-    filter: alpha(opacity = 50);
+	background: transparent url(images/bg-000-trans50.png) repeat;
     position: fixed;
 }
 .aui-blanket-shim {
@@ -22,7 +22,7 @@ without CSS hacks * eg:
 }
 
 .aui-dialog .dialog-blanket {
-    filter: alpha(opacity = 20);
+    background: transparent url(images/bg-000-trans20.png) repeat;
 }
 /** * Fixes for IE7 and IE6 * - each property *must* be prefixed with
 an asterisk (*) * eg: 
