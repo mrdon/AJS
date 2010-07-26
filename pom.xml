@@ -4,7 +4,7 @@
     <parent>
         <artifactId>atlassian-public-pom</artifactId>
         <groupId>com.atlassian.pom</groupId>
-        <version>22</version>
+        <version>24</version>
     </parent>
 
     <groupId>com.atlassian.aui</groupId>
