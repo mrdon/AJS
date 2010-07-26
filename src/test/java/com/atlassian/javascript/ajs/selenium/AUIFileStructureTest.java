@@ -44,6 +44,8 @@ public class AUIFileStructureTest
             "css/atlassian/images/icons/aui-icon-forms.gif",
             "css/atlassian/images/icons/aui-icon-tools.gif",
             "css/atlassian/images/wait.gif",
+            "css/atlassian/images/bg-000-trans50.png",
+            "css/atlassian/images/bg-000-trans20.png",       
             "js/atlassian/atlassian.js",
             "js/atlassian/containdropdown.js",
             "js/atlassian/cookie.js",
