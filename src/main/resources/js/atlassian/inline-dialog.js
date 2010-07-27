@@ -314,21 +314,40 @@
             }
         };
         if (opts.onHover) {
-            $(items).mousemove(function(e) {
-                appendPopup();
-                initPopup(e,this);
-            }).mouseout(function() {
-                hidePopup();
-            });
-        } else {
-            if (!opts.noBind) {   //Check if the noBind option is turned on
-                $(items).click(function(e) {
+            if (opts.useLiveEvents) {
+                $(items).live("mousemove", function(e) {
                     appendPopup();
                     initPopup(e,this);
-                    return false;
+                }).live("mouseout", function() {
+                    hidePopup();
+                });
+            } else {
+                $(items).mousemove(function(e) {
+                    appendPopup();
+                    initPopup(e,this);
                 }).mouseout(function() {
                     hidePopup();
                 });
+            }
+        } else {
+            if (!opts.noBind) {   //Check if the noBind option is turned on
+                if (opts.useLiveEvents) {
+                    $(items).live("click", function(e) {
+                        appendPopup();
+                        initPopup(e,this);
+                        return false;
+                    }).live("mouseout", function() {
+                        hidePopup();
+                    });
+                } else {
+                    $(items).click(function(e) {
+                        appendPopup();
+                        initPopup(e,this);
+                        return false;
+                    }).mouseout(function() {
+                        hidePopup();
+                    });
+                }
             }
         }
         
@@ -380,6 +399,7 @@
         closeOthers: true,
         isRelativeToMouse: false,
         onHover: false,
+        useLiveEvents: false,
         noBind: false,
         fadeTime: 100,
         hideDelay: 10000,
