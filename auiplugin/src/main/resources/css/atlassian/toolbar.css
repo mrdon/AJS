@@ -1,15 +1,19 @@
 .aui-toolbar {
-    position: relative;
-    clear: both;
     background: #f0f0f0;
     border-top: 1px solid #bbb;
+    clear: both;
+    display: inline-block; /* new rendering context */
+    padding-top: 10px;
+    position: relative;
+    width: 100%; /* emulate normal block */
 }
 
 .aui-toolbar .toolbar-group {
     display: inline-block;
     float: left;
-    margin: 0 10px 0 0;
     padding: 0;
+    margin: 0 10px 10px 0;
+    white-space: nowrap;
 }
 
 .aui-toolbar .toolbar-item {
@@ -27,14 +31,14 @@
 /* splits set toolbars into multiple sections, eg. left/right split */
 .aui-toolbar .toolbar-split {
     display: inline-block;
+    margin-left: 10px;
+    float: left;
 }
 
 .aui-toolbar .toolbar-split.toolbar-split-right {
     float: right;
 }
-.aui-toolbar .toolbar-split.toolbar-split-right .toolbar-group:last-child {
-    margin-right: 0;
-}
+
 .aui-toolbar .toolbar-split.toolbar-split-row {
     clear: both;
     width: 100%;
@@ -44,7 +48,6 @@
 .aui-toolbar .primary .toolbar-trigger {
     font-weight: bold;
 }
-
 
 /* available/inactive controls */
 .aui-toolbar .toolbar-group a.toolbar-trigger,
@@ -147,9 +150,9 @@
 }
 
 .aui-toolbar .toolbar-group .aui-dropdown a {
+    border: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
-    border: 0;
     border-radius: 0;
 }
 
@@ -167,12 +170,12 @@
     outline: 0;
 }
 
-.aui-toolbar .aui-dd-parent a.aui-dd-trigger.active,
 .aui-toolbar .aui-dd-parent a.aui-dd-trigger.active {
     background: #d8e4f0 url("aui-toolbar-button-active-bg.png") top left repeat-x;
     border-left:1px solid #D8E4F0;
 }
 
+.aui-toolbar .toolbar-group .active .toolbar-trigger,
 .aui-toolbar .toolbar-group .toolbar-trigger:active {
     background: #d8e4f0 url("aui-toolbar-button-active-bg.png") top left repeat-x;
     border: 1px solid #999;
@@ -211,6 +214,7 @@
 
 .aui-toolbar .toolbar-splitbutton .icon-dropdown {
     background-position: -48px 10px;
+    text-indent: -9999px;
     width: 6px;
 }
 
@@ -290,3 +294,6 @@
 .aui-toolbar span.icon-source {
     background-position: -94px -17px;
 }
+
+
+

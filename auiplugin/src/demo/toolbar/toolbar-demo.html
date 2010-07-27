@@ -25,6 +25,17 @@
     <script type="text/javascript" src="../common.js"></script>
     
     <style type="text/css">
+    /* CSS for demo only. */
+    .aui-toolbar .icon {
+        text-indent: -9999em;
+        width: 24px;
+        float: left;
+        height: 100%;
+        margin: 0 -5px;
+        display: inline-block;
+        background: transparent url("../../../../auiplugin/src/main/resources/css/atlassian/images/toolbar/aui-toolbar-24px.png") 0 0 no-repeat;
+    }
+
     #active-button { background: #d8e4f0 url("images/toolbar/aui-toolbar-button-active-bg.png") top left repeat-x; } /* fake active for demo purposes. */
     </style>
 
@@ -38,22 +49,29 @@
     <div class="aui-demo source-required">
         <h2> Toolbar </h2>
         <p class="description"> Demonstrates a toolbar with the various button types and states.</p>
-        
+
+        <h3>Notes</h3>
+        <p>Button types:</p>
+        <ul>
+            <li>Standard/default</li>
+            <li>Primary - a button with an elevated importance, eg. the "publish" button in an editor. Note: there should only be one primary button per toolbar, otherwise this is meaningless.</li>
+            <li>Dropdown - a button with a dropdown icon, that opens a dropdown menu (one action)</li>
+            <li>Split button - a button with a dropdown icon, where the button performs an action but the dropdown icon opens a menu (two different actions). eg. the "apply colour" button in an editor, which also has a dropdown colour selector.</li>
+        </ul>
+
+        <p>Button states:</p>
+        <ul>
+            <li>Default</li>
+            <li>Active/on - eg. includes buttons which toggle a state, such as the "format: bold" button in an editor</li>
+            <li>Disabled - for buttons which are present/visible but not currently usable</li>
+            <li>Hover/focus</li>
+        </ul>
+
+        <p>All buttons may include text, an icon or both (some buttons may include a second icon to indicate a dropdown). For icon-only buttons the text is hidden in the icon element, so it's still available to screen readers.</p>
+       
+        <h3>Example</h3>
         <div class="html-code">
-            <style type="text/css">
-                .aui-toolbar {
-                    padding: 10px;
-                }
-                .aui-toolbar .icon {
-                    text-indent: -9999em;
-                    width: 24px;
-                    float: left;
-                    height: 100%;
-                    margin: 0 -5px;
-                    display: inline-block;
-                    background: transparent url("../../../../auiplugin/src/main/resources/css/atlassian/images/toolbar/aui-toolbar-24px.png") 0 0 no-repeat;
-                }
-            </style>
+
             <div id="demo-toolbar" class="aui-toolbar">
 
                 <div class="toolbar-split toolbar-split-left">
@@ -118,11 +136,11 @@
                     <ul class="toolbar-group">
                         <li class="toolbar-item toolbar-splitbutton" id="action-1b">
 
-                            <a class="toolbar-trigger" href="#" id="action-1a" title="Action One">Action 1</a>
+                            <a class="toolbar-trigger" href="#" id="action-1a" title="Action One A">Action 1a</a>
 
                             <div class="aui-dd-parent">
-                                <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One Bee">
-                                    <span class="icon icon-dropdown">Action One Bee</span>
+                                <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One B">
+                                    <span class="icon icon-dropdown">Action 1b</span>
                                 </a>
                                 <ul class="aui-dropdown">
                                     <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
@@ -170,13 +188,16 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" class="js-code">
+
+        <script type="text/javascript" id="js-code">
             addSample(function() {
                 AJS.$("#format-dropdown").dropDown("Standard", {alignment: "left"});
                 AJS.$("#action-1b").dropDown("Standard", {alignment: "right"});
                 AJS.$("#insert-menu").dropDown("Standard", {alignment: "right"});
             });
         </script>
+
+
     </div>
 
     <script type="text/javascript">

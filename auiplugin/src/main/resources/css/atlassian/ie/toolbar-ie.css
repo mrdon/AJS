@@ -29,3 +29,16 @@
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /*IE8*/
     filter: alpha(opacity=50); /* IE6-7 */
 }
+
+
+
+
+*+ html .aui-toolbar .toolbar-group {
+    padding-bottom: 10px;
+}
+
+*+ html .aui-toolbar .toolbar-item,
+*+ html .aui-toolbar .toolbar-trigger,
+*+ html .aui-toolbar .toolbar-trigger span {
+    white-space: nowrap;
+}
