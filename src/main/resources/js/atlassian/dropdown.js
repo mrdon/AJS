@@ -354,12 +354,12 @@ AJS.dropDown = function (obj, usroptions) {
                 var shadowSize = 0.6;
                 var shadowXOffset = shadowSize * 10;    //offset the shadow layer to account for the width of the actual shadow
                 if (this.$.is(":visible")) {
-                    this.shadowParent = AJS.$('<div class="aui-shadow-parent"></div>').css({
+                    this.shadowParent = AJS.$('<div class="aui-shadow-parent"></div>').insertBefore(this.$).css({
                         top: this.$.css("top"),
                         left: (this.$.position().left - shadowXOffset), //make sure shadow follows dropdown when alignment changes
                         width: this.$.width(),
                         height: this.$.height()
-                    }).insertBefore(this.$);
+                    });
                     if (AJS.$.browser.msie) {
                         this.shadowParent.css({right: - shadowXOffset});
                     }
@@ -467,27 +467,7 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
      // extend defaults with user options
     AJS.$.extend(options, usroptions);
 
-      // handling for jQuery collections
-    if (this instanceof AJS.$) {
-        dropdownParents = this;
-    // handling for selectors
-    } else {
-        dropdownParents = AJS.$(options.selector);
-    }
-
-    // a series of checks to ensure we are dealing with valid dropdowns
-    dropdownParents = dropdownParents
-            .not(".dd-allocated")
-            .filter(":has(" + options.dropDown + ")")
-            .filter(":has(" + options.trigger + ")");
-
-    dropdownParents.each(function () {
-        var
-        $parent = AJS.$(this),
-        $dropdown = AJS.$(options.dropDown, this),
-        $trigger = AJS.$(options.trigger, this),
-        ddcontrol = AJS.dropDown($dropdown, options)[0];
-
+    var hookUpDropDown = function($trigger, $parent, $dropdown, ddcontrol) {
         // extend to control to have any additional properties/methods
         AJS.$.extend(ddcontrol, {trigger: $trigger});
 
@@ -496,20 +476,11 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
 
         //hide dropdown if not already hidden
         $dropdown.addClass("hidden");
-        //console.log(options.isHiddenByDefault);
+
         //show the dropdown if isHiddenByDefault is set to false
-        if(options.isHiddenByDefault == false){
+        if (options.isHiddenByDefault == false) {
             ddcontrol.show();
         }
-
-        $trigger.click(function (e) {
-            if (ddcontrol != AJS.dropDown.current) {
-                $dropdown.css({top: $trigger.outerHeight()});
-                ddcontrol.show();
-                e.stopPropagation();
-            }
-            e.preventDefault();
-        });
 
         ddcontrol.addCallback("show", function () {
            $parent.addClass("active");
@@ -518,11 +489,99 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
         ddcontrol.addCallback("hide", function () {
            $parent.removeClass("active");
         });
+    };
 
-        // add control to the response
-        res.push(ddcontrol);
+    var handleEvent = function(event, $trigger, $dropdown, ddcontrol) {
+        if (ddcontrol != AJS.dropDown.current) {
+            $dropdown.css({top: $trigger.outerHeight()});
+            ddcontrol.show();
+            event.stopImmediatePropagation();
+        }
+        event.preventDefault();
+    };
 
-    });
+    if (options.useLiveEvents) {
+        // cache arrays so that we don't have to recalculate the dropdowns. Since we can't store objects as keys in a map,
+        // we have two arrays: keysCache stores keys of dropdown triggers; valuesCache stores a map of internally used objects
+        var keysCache = [];
+        var valuesCache = [];
+
+        AJS.$(options.trigger).live("click", function (event) {
+            var $trigger = AJS.$(this);
+            var $parent, $dropdown, ddcontrol;
+
+            // if we're cached, don't recalculate the dropdown and do all that funny shite.
+            var index;
+            if ((index = AJS.$.inArray(this, keysCache)) >= 0) {
+                var val = valuesCache[index];
+                $parent = val['parent'];
+                $dropdown = val['dropdown'];
+                ddcontrol = val['ddcontrol'];
+            } else {
+                $parent = $trigger.closest(options.selector);
+                $dropdown = $parent.find(options.dropDown);
+                // Sanity checking
+                if ($dropdown.length === 0) {
+                    return;
+                }
+
+                ddcontrol =  AJS.dropDown($dropdown, options)[0];
+                // Sanity checking
+                if (!ddcontrol) {
+                    return;
+                }
+
+                // cache
+                keysCache.push(this);
+                val = {
+                    parent : $parent,
+                    dropdown : $dropdown,
+                    ddcontrol : ddcontrol
+                };
+
+                hookUpDropDown($trigger, $parent, $dropdown, ddcontrol);
+
+                valuesCache.push(val);
+            }
+
+            handleEvent(event, $trigger, $dropdown, ddcontrol);
+        });
+    } else {
+          // handling for jQuery collections
+        if (this instanceof AJS.$) {
+            dropdownParents = this;
+        // handling for selectors
+        } else {
+            dropdownParents = AJS.$(options.selector);
+        }
+
+        // a series of checks to ensure we are dealing with valid dropdowns
+        dropdownParents = dropdownParents
+                .not(".dd-allocated")
+                .filter(":has(" + options.dropDown + ")")
+                .filter(":has(" + options.trigger + ")");
+
+        dropdownParents.each(function () {
+            var
+            $parent = AJS.$(this),
+            $dropdown = AJS.$(options.dropDown, this),
+            $trigger = AJS.$(options.trigger, this),
+            ddcontrol = AJS.dropDown($dropdown, options)[0];
+
+            // extend to control to have any additional properties/methods
+            AJS.$.extend(ddcontrol, {trigger: $trigger});
+
+            hookUpDropDown($trigger, $parent, $dropdown, ddcontrol);
+
+            $trigger.click(function (e) {
+                handleEvent(e, $trigger, $dropdown, ddcontrol);
+            });
+
+            // add control to the response
+            res.push(ddcontrol);
+
+        });
+    }
     return res;
 };
 
