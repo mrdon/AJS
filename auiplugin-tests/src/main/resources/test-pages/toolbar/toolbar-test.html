@@ -30,7 +30,7 @@
 <body>
     <div class="navigation">
         <h2> AUI Toolbar Test Page </h2>
-        <h4> <a href="../index.html"> Back to AUI Demo </a>
+        <h4> <a href="../index.html"> Back to AUI Demo </a></h4>
     </div>
     
     <div class="aui-test source-required">
@@ -45,20 +45,16 @@
         <div class="toolbar-split toolbar-split-left">
 
             <ul class="toolbar-group">
-                <li class="toolbar-item toolbar-dropdown">
+                <li class="toolbar-item toolbar-dropdown" id="format-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown<span class="icon icon-dropdown"></span></a>
+                        <a href="#" class="toolbar-trigger aui-dd-trigger" id="format-dropdown-display">
+                            <span class="dropdown-text">Paragraph</span>
+                            <span class="icon icon-dropdown"></span>
+                        </a>
                         <ul class="aui-dropdown aui-dropdown-left">
-                            <li id="blockformats-0"><a href="#">Paragraph</a></li>
-                            <li id="blockformats-1"><a href="#">Heading 1</a></li>
-                            <li id="blockformats-2"><a href="#">Heading 2</a></li>
-                            <li id="blockformats-3"><a href="#">Heading 3</a></li>
-                            <li id="blockformats-4"><a href="#">Heading 4</a></li>
-                            <li id="blockformats-5"><a href="#">Heading 5</a></li>
-                            <li id="blockformats-6"><a href="#">Heading 6</a></li>
-                            <li id="blockformats-7"><a href="#">Panel</a></li>
-                            <li id="blockformats-8"><a href="#">Code</a></li>
-                            <li id="blockformats-9"><a href="#">Preformatted</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Heading 2</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
                         </ul>
                     </div>
                 </li>
@@ -127,34 +123,46 @@
             <ul class="toolbar-group">
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" id="rte-button-image" class="toolbar-trigger aui-dd-trigger"><span class="icon icon-image"></span>Image<span class="icon icon-dropdown"></span></a>
+                        <a href="#" id="rte-button-image" class="toolbar-trigger aui-dd-trigger">
+                            <span class="icon icon-image"></span>
+                            <span class="dropdown-text">Image</span>
+                            <span class="icon icon-dropdown"></span>
+                        </a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" id="rte-button-table" class="toolbar-trigger aui-dd-trigger"><span class="icon icon-table"></span>Table<span class="icon icon-dropdown"></span></a>
+                        <a href="#" id="rte-button-table" class="toolbar-trigger aui-dd-trigger">
+                            <span class="icon icon-image"></span>
+                            <span class="dropdown-text">Table</span>
+                            <span class="icon icon-dropdown"></span>
+                        </a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" id="rte-button-insert" class="toolbar-trigger aui-dd-trigger"><span class="icon icon-insert"></span>Insert<span class="icon icon-dropdown"></span></a>
+                        <a href="#" id="rte-button-insert" class="toolbar-trigger aui-dd-trigger">
+                            <span class="icon icon-image"></span>
+                            <span class="dropdown-text">Insert</span>
+                            <span class="icon icon-dropdown"></span>
+                        </a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -177,7 +185,7 @@
             <ul class="toolbar-group">
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown<span class="icon icon-dropdown"></span></a>
+                        <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">LI Dropdown</span><span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown aui-dropdown-left">
                             <li id="blockformats-0"><a href="#">Paragraph</a></li>
                             <li id="blockformats-1"><a href="#">Heading 1</a></li>
@@ -220,19 +228,19 @@
                             <li class="grouped-dropdown-item">
                                 <span class="assistive">Insert Content</span>
                                 <ul id="command-insert-list">                                    
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>
                             </li>
                             <li class="grouped-dropdown-item">
                                 <span class="assistive">Insert Macro</span>
                                 <ul id="macro-insert-list">
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -244,30 +252,30 @@
             <ul class="toolbar-group">
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown<span class="icon icon-dropdown"></span></a>
+                        <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">LI Dropdown</span><span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown grouped">
                             <li><span class="assistive">Group name</span>
                                 <ul>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>                            
                             </li>
                             <li><span>Group name</span>
                                 <ul>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>                            
                             </li>
                             <li><a href="#">Linked name (dodgy UX but should be covered)</a>
                                 <ul>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>                            
                             </li>
                             <li><a href="#">Single item group</a></li>
@@ -292,12 +300,12 @@
                 </li>
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown<span class="icon icon-dropdown"></span></a>
+                        <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">LI Dropdown</span><span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                             <li><a href="#">Dropdown</a></li>
                             <li><a href="#">Hai</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -308,10 +316,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">DD<span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                             <li><a href="#">Dropdown</a></li>
                             <li><a href="#">Hai</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -322,10 +330,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                             <li><a href="#">Dropdown</a></li>
                             <li><a href="#">Hai</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -342,10 +350,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -363,7 +371,7 @@
             <ul class="toolbar-group">
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown<span class="icon icon-dropdown"></span></a>
+                        <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">LI Dropdown</span><span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown aui-dropdown-left">
                             <li id="blockformats-0"><a href="#">Paragraph</a></li>
                             <li id="blockformats-1"><a href="#">Heading 1</a></li>
@@ -388,19 +396,19 @@
                             <li class="grouped-dropdown-item">
                                 <span class="assistive">Insert Content</span>
                                 <ul id="command-insert-list">                                    
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>
                             </li>
                             <li class="grouped-dropdown-item">
                                 <span class="assistive">Insert Macro</span>
                                 <ul id="macro-insert-list">
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -412,30 +420,30 @@
             <ul class="toolbar-group">
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown<span class="icon icon-dropdown"></span></a>
+                        <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">LI Dropdown</span><span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown grouped">
                             <li><span class="assistive">Group name</span>
                                 <ul>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>                            
                             </li>
                             <li><span>Group name</span>
                                 <ul>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>                            
                             </li>
                             <li><a href="#">Linked name (dodgy UX but should be covered)</a>
                                 <ul>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
-                                    <li><a href="#">Dropdown item</a></li>
+                                    <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                 </ul>                            
                             </li>
                             <li><a href="#">Single item group</a></li>
@@ -601,12 +609,12 @@
                 </li>
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown<span class="icon icon-dropdown"></span></a>
+                        <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">LI Dropdown</span><span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                             <li><a href="#">Dropdown</a></li>
                             <li><a href="#">Hai</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -617,10 +625,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">DD<span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                             <li><a href="#">Dropdown</a></li>
                             <li><a href="#">Hai</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -631,10 +639,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                             <li><a href="#">Dropdown</a></li>
                             <li><a href="#">Hai</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -651,10 +659,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -678,10 +686,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -695,10 +703,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -715,10 +723,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -735,10 +743,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -752,10 +760,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -772,10 +780,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -803,10 +811,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -820,10 +828,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -840,10 +848,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -860,10 +868,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -877,10 +885,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -897,10 +905,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -928,10 +936,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -945,10 +953,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -1025,10 +1033,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -1045,10 +1053,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -1062,10 +1070,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -1142,10 +1150,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -1187,12 +1195,12 @@
                 </li>
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown<span class="icon icon-dropdown"></span></a>
+                        <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">LI Dropdown</span><span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -1200,10 +1208,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">DD<span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -1220,10 +1228,10 @@
                     <div class="aui-dd-parent">
                         <button class="toolbar-trigger aui-dd-trigger">Button Dropdown</button>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1243,10 +1251,10 @@
                     <div class="aui-dd-parent">
                         <button class="toolbar-trigger aui-dd-trigger">Button Dropdown</button>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </span>
@@ -1260,10 +1268,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger">A Dropdown</a>
                         <ul class="aui-dropdown">
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
-                            <li><a href="#">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </span>
