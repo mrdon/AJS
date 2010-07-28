@@ -51,10 +51,11 @@
         <p class="description"> Demonstrates a toolbar with the various button types and states.</p>
 
         <h3>Notes</h3>
+        <p>The structure of the toolbar is: aui-toolbar (container) &rarr; toolbar-split (left/right or rows) &rarr; toolbar-group (contains one set of triggers/buttons) &rarr; toolbar-item (contains one single trigger) &rarr; toolbar-trigger.</p>
         <p>Button types:</p>
         <ul>
             <li>Standard/default</li>
-            <li>Primary - a button with an elevated importance, eg. the "publish" button in an editor. Note: there should only be one primary button per toolbar, otherwise this is meaningless.</li>
+            <li>Primary - a button with an elevated importance, eg. the "publish" button in an editor. Note: there must only be one primary button per toolbar.</li>
             <li>Dropdown - a button with a dropdown icon, that opens a dropdown menu (one action)</li>
             <li>Split button - a button with a dropdown icon, where the button performs an action but the dropdown icon opens a menu (two different actions). eg. the "apply colour" button in an editor, which also has a dropdown colour selector.</li>
         </ul>
@@ -68,8 +69,10 @@
         </ul>
 
         <p>All buttons may include text, an icon or both (some buttons may include a second icon to indicate a dropdown). For icon-only buttons the text is hidden in the icon element, so it's still available to screen readers.</p>
+        <p>The toolbar has been designed to wrap to new lines and increase in height in narrow viewports. Wherever possible, toolbar groups will wrap to new lines as a group (ie. not one button at a time). Left/right split toobars will wrap to two lines when the left/right groups meet; then groups within the left/right splits will wrap to further lines if required.</p>
        
         <h3>Example</h3>
+        <p>This example contains two <code>toolbar-split</code>s, one left and one right.</p>
         <div class="html-code">
 
             <div id="demo-toolbar" class="aui-toolbar">
