@@ -287,6 +287,15 @@ form.aui.long-label div.checkbox,
 form.aui.long-label div.radio {
     padding: 0 0 5px 0;
 }
+
+form.aui.long-label .group label,
+form.aui.long-label .field-group label {
+    left:-200px;
+    margin-right:-190px;
+    width:190px;
+}
+
+
 form.aui.long-label legend span {
     left: 110px;
 }

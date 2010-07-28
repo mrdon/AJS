@@ -45,6 +45,11 @@ form.aui .group .field-value {
     *line-height: 1;
 }
 
+form.aui .field-group label {
+    *line-height: 1.2; /* keeps IE7 from trimming decenders */
+}
+
+
 /**
 * Fixes for IE6 only
 * - each property *must* be prefixed with an underscore (_)
