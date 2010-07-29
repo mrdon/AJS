@@ -12,7 +12,6 @@
     </servlet>
 
     <web-resource key="qunit" name="Atlassian QUnit Tests">
-        <dependency>auiplugin-tests:ajs-tests</dependency>
         <resource type="download" name="all-unit-tests.js" location="unit-tests/tests/all-unit-tests.js"/>
         <resource type="download" name="qunit.js" location="unit-tests/external/qunit/qunit.js"/>
         <resource type="download" name="qunit.css" location="unit-tests/external/qunit/qunit.css"/>
@@ -20,4 +19,13 @@
         <resource type="download" name="whenitype.js" location="unit-tests/tests/js/whenitype-unit-tests.js"/>
     </web-resource>
 
+    <web-item key="demoPages" section="index.links" weight="10" application="refapp">
+        <label>AUI Demo Pages</label>
+        <link linkId="demoPages">/plugins/servlet/ajstest/test-pages/index.html</link>
+    </web-item>
+
+    <web-item key="qunitTests" section="index.links" weight="20" application="refapp">
+        <label>AUI QUnit Tests</label>
+        <link linkId="qunitTests">/plugins/servlet/ajstest/unit-tests/tests/allTests.html</link>
+    </web-item>
 </atlassian-plugin>

@@ -9,25 +9,24 @@ To run the full build, execute:
 
 Contents:
 
-auiplugin/                                            - The AUI plugin itself
-auiplugin/samples                                     - Samples show the usage of AUI components
-auiplugin/src/main/resources/                         - The contents of the AUI plugin including JS and CSS
-auiplugin-tests/                                      - A plugin for tests of all kinds
-auiplugin-tests/src/test/java/                        - The Selenium tests
-auiplugin-tests/src/main/resources/samples            - The samples as used in manual and automated testing
-auiplugin-tests/src/main/resources/js/tests           - The in-browser tests
-auiplugin-tests/src/main/resources/js/tests/unit      - The qunit tests
+auiplugin/                                              - The AUI plugin itself
+auiplugin/src/demo                                      - Samples show the usage of AUI components
+auiplugin/src/main/resources/                           - The contents of the AUI plugin including JS and CSS
+auiplugin-tests/                                        - A plugin for tests of all kinds
+auiplugin-tests/src/test/java/                          - The Selenium tests
+auiplugin-tests/src/main/resources/test-pages           - The samples as used in manual and automated testing
+auiplugin-tests/src/main/resources/unit-tests/tests/js  - The qunit tests
 
 Key URLS:
 
-http://localhost:9999/ajs/plugins/servlet/ajstest/test-pages/index.html       - Clickable samples for manual testing
-http://localhost:9999/ajs/plugins/servlet/ajstest/js/tests/unit/ - QUnit tests
+http://localhost:9999/ajs/plugins/servlet/ajstest/test-pages/index.html          - Clickable samples for manual testing
+http://localhost:9999/ajs/plugins/servlet/ajstest/unit-tests/tests/allTests.html - QUnit tests
 
 
 Samples:
-Each component should have a basic sample available in the auiplugin/samples folder.  There are two copies of the
-samples folder to allow each to evolve to their needs.  The one in auiplugin/samples is for developer examples
-and the one in auiplugin-tests/src/main/resources/samples is for manual and automated testing.
+Each component should have a basic sample available in the auiplugin/test-pages folder.  There are two copies of the
+samples folder to allow each to evolve to their needs.  The one in auiplugin/src/demo is for developer examples
+and the one in auiplugin-tests/src/main/resources/test-pages is for manual and automated testing.
 
 
 Tests:
