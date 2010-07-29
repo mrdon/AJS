@@ -64,17 +64,17 @@
     </div><!-- .aui-message -->
     <h2>Heading h2</h2>
     <div class="field-group">
-        <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
-        <input class="text" type="text" id="fname" name="fname" title="first name">
+        <label for="h-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text" type="text" id="h-fname" name="fname" title="first name">
     </div>
     <h3>Heading h3</h3>
     <div class="field-group">
-        <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
-        <input class="text long-field" type="text" id="lname" name="lname" title="last name">
+        <label for="h-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text long-field" type="text" id="h-lname" name="lname" title="last name">
     </div>
     <div class="buttons-container">
         <div class="buttons">
-            <input class="button submit" type="submit" value="Save" id="save-btn1">
+            <input class="button submit" type="submit" value="Save" id="h-save-btn1">
             <a class="cancel" href="forms.html#">Cancel</a>
         </div>
     </div>
@@ -104,13 +104,13 @@
         <legend><span>Text Entry</span></legend>
         <p>Paragraph: Lorem ipsum dolor sit amet, consectetur <span>span text</span> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <div class="field-group">
-            <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
-            <input class="text" type="text" id="fname" name="fname" title="first name">
+            <label for="d-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+            <input class="text" type="text" id="d-fname" name="d-fname" title="first name">
             <div class="description">Default width input.</div>
         </div>
         <div class="field-group">
-            <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
-            <input class="text long-field" type="text" id="lname" name="lname" title="last name">
+            <label for="d-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+            <input class="text long-field" type="text" id="d-lname" name="d-lname" title="last name">
             <div class="error">Error message here</div>
             <div class="description">Long width input.</div>
         </div>
@@ -250,7 +250,8 @@
 
     <h2>One Checkbox</h2>
     <fieldset class="group">
-        <p>The Legend is optional - you may not want it for the single checkbox</p>
+        <legend class="assistive"><span>Assistive Legend to give context for screen readers. If you don't know what to put in here, ask your nearest frontend developer.</span></legend>
+        <p>The visible legend is optional - you may not want it for the single checkbox. You can make it an assistive legend (view source to see it).</p>
         <div class="checkbox">
             <input class="checkbox" type="checkbox"  name="cbOne" id="cbsingle">
             <label for="cbsingle">Checkbox Single</label>
@@ -325,7 +326,7 @@
 
     <div class="buttons-container">
         <div class="buttons">
-            <input class="button submit" type="submit" value="Save" id="save-btn1">
+            <input class="button submit" type="submit" value="Save" id="d-save-btn1">
             <a class="cancel" href="forms.html#">Cancel</a>
         </div>
     </div>
@@ -360,28 +361,28 @@
     <fieldset class="group">
         <legend><span>Checkboxes View</span></legend>
         <div class="checkbox">
-            <input class="checkbox" type="checkbox" checked="checked" disabled  name="cbOne" id="cbOned">
-            <label for="cbOned">Checkbox One</label>
+            <input class="checkbox" type="checkbox" checked="checked" disabled="disabled" name="cbOne" id="cbOned">
+            <label for="cbOned">Disabled Checkbox One</label>
         </div>
         <div class="checkbox">
-            <input class="checkbox" type="checkbox" disabled  name="cbTwo" id="cbTwod">
-            <label for="cbTwod">Checkbox Two</label>
+            <input class="checkbox" type="checkbox" disabled="disabled" name="cbTwo" id="cbTwod">
+            <label for="cbTwod">Disabled Checkbox Two</label>
         </div>
     </fieldset>
 
     <fieldset class="group">
         <legend><span>Radio Buttons</span></legend>
         <div class="radio">
-            <input class="radio" type="radio" disabled  checked="checked" name="rads" id="irOned">
-            <label for="irOned">Rad One</label>
+            <input class="radio" type="radio" disabled="disabled" checked="checked" name="rads" id="irOned">
+            <label for="irOned">Disabled Radio One</label>
         </div>
         <div class="radio">
-            <input class="radio" type="radio" disabled name="rads" id="irTwod">
-            <label for="irTwod">Rad Two</label>
+            <input class="radio" type="radio" disabled="disabled" name="rads" id="irTwod">
+            <label for="irTwod">Disabled Radio Two</label>
         </div>
         <div class="radio">
-            <input class="radio" type="radio" disabled name="rads" id="irThreed">
-            <label for="irThreed">Rad Three</label>
+            <input class="radio" type="radio" disabled="disabled" name="rads" id="irThreed">
+            <label for="irThreed">Disabled RadioThree</label>
         </div>
     </fieldset>
 
