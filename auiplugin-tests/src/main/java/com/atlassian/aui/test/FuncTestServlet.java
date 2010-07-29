@@ -36,7 +36,6 @@ public class FuncTestServlet extends HttpServlet
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
         webResourceManager.requireResource("com.atlassian.auiplugin:ajs");
-        webResourceManager.requireResource("auiplugin-tests:ajs-tests");
         webResourceManager.requireResource("auiplugin-tests:qunit");
         if (req.getPathInfo().endsWith("/"))
         {
