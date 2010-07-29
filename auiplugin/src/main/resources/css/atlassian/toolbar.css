@@ -31,8 +31,8 @@
 /* splits set toolbars into multiple sections, eg. left/right split */
 .aui-toolbar .toolbar-split {
     display: inline-block;
-    margin-left: 10px;
     float: left;
+    margin-left: 10px;
 }
 
 .aui-toolbar .toolbar-split.toolbar-split-right {
@@ -172,7 +172,7 @@
 
 .aui-toolbar .aui-dd-parent a.aui-dd-trigger.active {
     background: #d8e4f0 url("aui-toolbar-button-active-bg.png") top left repeat-x;
-    border-left:1px solid #D8E4F0;
+    border-left: 1px solid #D8E4F0;
 }
 
 .aui-toolbar .toolbar-group .active .toolbar-trigger,
