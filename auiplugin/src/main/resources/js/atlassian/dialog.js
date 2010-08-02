@@ -96,7 +96,7 @@ AJS.popup = function (options) {
     var defaults = {
         width: 800,
         height: 600,
-        closeOnClick: false,
+        closeOnOutsideClick: false,
         keypressListener: function (e) {
             if (e.keyCode === 27 && popup.is(":visible")) {
                 res.hide();
@@ -151,6 +151,10 @@ AJS.popup = function (options) {
      * @class Popup
      * @static
     */
+    
+    //blanket for reference further down
+    var blanket = AJS.$(".aui-blanket");
+    
     var res = {
 
         changeSize: function (w, h) {
@@ -165,12 +169,13 @@ AJS.popup = function (options) {
          * @method show
         */
         show: function () {
-
+            
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);
                 AJS.dim();
-                if(AJS.$(".aui-blanket").size()!=0 && options.closeOnClick){
-                    AJS.$(".aui-blanket").click( function(){
+                
+                if(blanket.size()!=0 && options.closeOnOutsideClick){
+                    blanket.click( function(){
                         if(popup.is(":visible")){
                             res.hide();
                         }
@@ -205,7 +210,7 @@ AJS.popup = function (options) {
         */
         hide: function () {
             AJS.$(document).unbind("keydown", options.keypressListener);
-            AJS.$(".aui-blanket").unbind();
+            blanket.unbind();
             this.element.hide();
             if (this.shadow) {
                 this.shadow.remove();

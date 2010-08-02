@@ -79,9 +79,9 @@
             addSample(function() {
                         
                 // create a dialog 860px wide x 530px high
-                var dialog = new AJS.Dialog(860, 530),
-                dialog2 = new AJS.Dialog(1000, 300),
-                dialog3 = new AJS.Dialog(100, 600);
+                var dialog = new AJS.Dialog({width:860, height:530}),
+                dialog2 = new AJS.Dialog({width:1000, height:300}),
+                dialog3 = new AJS.Dialog({width:100, height:600});
                 
                 // PAGE 0 (first page)
                 // adds header for first page
@@ -169,7 +169,7 @@
            </div>
            <script type="text/javascript" class="js-code">
                addSample(function() {
-                   var popup2 = AJS.popup(400, 200, "my-popup2", {closeOnClick: true});
+                   var popup2 = AJS.popup({width:400, height:200, id:"my-popup2", closeOnOutsideClick: true});
                    AJS.$("#popup2-button").click(function(){
                        popup2.show();    
                    });
