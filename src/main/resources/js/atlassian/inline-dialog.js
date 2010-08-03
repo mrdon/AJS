@@ -232,6 +232,13 @@
 
         // the trigger is the jquery element that is triggering the popup (i.e., the element that the mousemove event is bound to)
         var initPopup = function(e,trigger) {
+            opts.upfrontCallback.call({
+                popup: popup,
+                hide: function () {hidePopup(0);},
+                id: identifier,
+                show: function () {showPopup();}
+            });
+
             popup.each(function() {
                 if (typeof this.popup != "undefined") {
                     this.popup.hide();
@@ -410,6 +417,7 @@
         container: "body",
         cacheContent : true,
         hideCallback: function(){}, // if defined, this method will be exected after the popup has been faded out.
-        initCallback: function(){} // A function called after the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
+        initCallback: function(){}, // A function called after the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
+        upfrontCallback: function() {} // A function called before the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
     };
 })(jQuery);
