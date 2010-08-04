@@ -85,7 +85,6 @@ AJS.whenIType = function (keys) {
         moveToNextItem: function (selector) {
             executer = function () {
                 var index,
-                    transition = true,
                     items = jQuery(selector),
                     focusedElem = jQuery(selector + ".focused");
 
@@ -98,7 +97,6 @@ AJS.whenIType = function (keys) {
                 }
 
                 if (focusedElem.length === 0) {
-                    transition = false;
                     focusedElem = jQuery(selector).eq(0);
                 } else {
                     focusedElem.removeClass("focused");
@@ -109,12 +107,11 @@ AJS.whenIType = function (keys) {
                     } else {
                         focusedElem.removeClass("focused");
                         focusedElem = jQuery(selector).eq(0);
-                        transition = false;
                     }
                 }
                 if (focusedElem && focusedElem.length > 0) {
                     focusedElem.addClass("focused");
-                    focusedElem.moveTo(transition);
+                    focusedElem.moveTo();
                     focusedElem.find("a:first").focus();
                 }
             };
@@ -129,7 +126,6 @@ AJS.whenIType = function (keys) {
             executer = function () {
 
                 var index,
-                    transition = true,
                     items = jQuery(selector),
                     focusedElem = jQuery(selector + ".focused");
 
@@ -142,7 +138,6 @@ AJS.whenIType = function (keys) {
                 }
 
                 if (focusedElem.length === 0) {
-                    transition = false;
                     focusedElem = jQuery(selector + ":last");
                 } else {
 
@@ -154,12 +149,11 @@ AJS.whenIType = function (keys) {
                     } else {
                         focusedElem.removeClass("focused");
                         focusedElem = jQuery(selector + ":last");
-                        transition = false;
                     }
                 }
                 if (focusedElem && focusedElem.length > 0) {
                     focusedElem.addClass("focused");
-                    focusedElem.moveTo(transition);
+                    focusedElem.moveTo();
                     focusedElem.find("a:first").focus();
                 }
             };

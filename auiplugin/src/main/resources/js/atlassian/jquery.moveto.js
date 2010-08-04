@@ -23,7 +23,6 @@ jQuery.fn.moveTo = function (transition) {
         topOffset = this.offset().top,
         commandBarHeight = jQuery("#stalker").outerHeight() + 35,
         scrollTarget,
-        maxScrollTop = jQuery.getDocHeight(),
         undetachedStalker = jQuery("#stalker.not(.detached)");
 
     if (undetachedStalker.length > 0 && (topOffset <= undetachedStalker.offset().top)) {
@@ -35,11 +34,14 @@ jQuery.fn.moveTo = function (transition) {
             jQuery(window).height() > commandBarHeight) {
 
 
-        if (topOffset - commandBarHeight > maxScrollTop) {
-            scrollTarget = maxScrollTop;
+        if(jQuery(window).scrollTop() + commandBarHeight > topOffset) {
+            //move up
+            scrollTarget = topOffset - (jQuery(window).height() - this.outerHeight()) + 35;
         } else {
+            //move down
             scrollTarget = topOffset - commandBarHeight;
         }
+
         if (!jQuery.fn.moveTo.animating && transition) {
             jQuery(document).trigger("moveToStarted", this);
             jQuery.fn.moveTo.animating = true;
