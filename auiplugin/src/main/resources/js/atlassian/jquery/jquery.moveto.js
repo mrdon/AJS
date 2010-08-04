@@ -34,7 +34,7 @@ jQuery.fn.moveTo = function (transition) {
             jQuery(window).height() > commandBarHeight) {
 
 
-       if(jQuery(window).scrollTop() + commandBarHeight > topOffset) {
+        if(jQuery(window).scrollTop() + commandBarHeight > topOffset) {
             //move up
             scrollTarget = topOffset - (jQuery(window).height() - this.outerHeight()) + 35;
         } else {
