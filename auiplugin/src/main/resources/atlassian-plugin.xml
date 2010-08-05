@@ -22,22 +22,22 @@
         <resource type="download" name="tabs.css" location="css/atlassian/tabs.css"/>
         <resource type="download" name="toolbar.css" location="css/atlassian/toolbar.css"/>
 
-        <resource type="download" name="dialog-ie.css" location="css/atlassian/ie/dialog-ie.css">
+        <resource type="download" name="dialog-ie.css" location="css/atlassian/dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="dropdown-ie.css" location="css/atlassian/ie/dropdown-ie.css">
+        <resource type="download" name="dropdown-ie.css" location="css/atlassian/dropdown-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="forms-ie.css" location="css/atlassian/ie/forms-ie.css">
+        <resource type="download" name="forms-ie.css" location="css/atlassian/forms-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="icons-ie.css" location="css/atlassian/ie/icons-ie.css">
+        <resource type="download" name="icons-ie.css" location="css/atlassian/icons-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/ie/inline-dialog-ie.css">
+        <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/inline-dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="toolbar-ie.css" location="css/atlassian/ie/toolbar-ie.css">
+        <resource type="download" name="toolbar-ie.css" location="css/atlassian/toolbar-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
 
