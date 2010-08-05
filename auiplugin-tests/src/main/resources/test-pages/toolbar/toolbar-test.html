@@ -373,16 +373,10 @@
                     <div class="aui-dd-parent">
                         <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">LI Dropdown</span><span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown aui-dropdown-left">
-                            <li id="blockformats-0"><a href="#">Paragraph</a></li>
-                            <li id="blockformats-1"><a href="#">Heading 1</a></li>
-                            <li id="blockformats-2"><a href="#">Heading 2</a></li>
-                            <li id="blockformats-3"><a href="#">Heading 3</a></li>
-                            <li id="blockformats-4"><a href="#">Heading 4</a></li>
-                            <li id="blockformats-5"><a href="#">Heading 5</a></li>
-                            <li id="blockformats-6"><a href="#">Heading 6</a></li>
-                            <li id="blockformats-7"><a href="#">Panel</a></li>
-                            <li id="blockformats-8"><a href="#">Code</a></li>
-                            <li id="blockformats-9"><a href="#">Preformatted</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                         </ul>
                     </div>
                 </li>
@@ -391,11 +385,11 @@
             <ul class="toolbar-group">
                 <li class="toolbar-item toolbar-dropdown">
                     <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger" id="this-as-id" title="Title goes here"><span class="dropdown-text">Insert</span><span class="icon icon-dropdown"></span></a>
+                        <a href="#" class="toolbar-trigger aui-dd-trigger" id="this-as-id2" title="Title goes here"><span class="dropdown-text">Insert</span><span class="icon icon-dropdown"></span></a>
                         <ul class="aui-dropdown grouped">
                             <li class="grouped-dropdown-item">
                                 <span class="assistive">Insert Content</span>
-                                <ul id="command-insert-list">                                    
+                                <ul id="command-insert-list2">                                    
                                     <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
@@ -404,7 +398,7 @@
                             </li>
                             <li class="grouped-dropdown-item">
                                 <span class="assistive">Insert Macro</span>
-                                <ul id="macro-insert-list">
+                                <ul id="macro-insert-list2">
                                     <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
                                     <li><a href="#">Dropdown</a></li>
                                     <li><a href="#">Hai</a></li>
@@ -918,6 +912,114 @@
     </div><!-- // .aui-toolbar -->
 
 
+<p>Toolbar including submit/cancel controls (a, button, input):</p>
+
+    <div class="aui-toolbar" id="left-right-split-with-cancels">
+        <div class="toolbar-split toolbar-split-left">
+   
+            <ul class="toolbar-group">
+                <li class="toolbar-item">
+                    <a href="#" class="toolbar-trigger">List item</a>
+                </li>
+                <li class="toolbar-item toolbar-dropdown">
+                    <div class="aui-dd-parent">
+                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
+                        <ul class="aui-dropdown">
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="toolbar-item">
+                    <a href="#" class="toolbar-trigger">List item</a>
+                </li>
+            </ul>
+
+            <ul class="toolbar-group">
+                <li class="toolbar-item toolbar-dropdown">
+                    <div class="aui-dd-parent">
+                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
+                        <ul class="aui-dropdown">
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="toolbar-group">
+                <li class="toolbar-item">
+                    <a href="#" class="toolbar-trigger">List item</a>
+                </li>
+                <li class="toolbar-item">
+                    <a href="#" class="toolbar-trigger">List item</a>
+                </li>
+                <li class="toolbar-item toolbar-dropdown">
+                    <div class="aui-dd-parent">
+                        <a href="#" class="toolbar-trigger aui-dd-trigger">LI Dropdown</a>
+                        <ul class="aui-dropdown">
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- // .toolbar-split -->
+
+        <div class="toolbar-split toolbar-split-right">
+
+            <!-- Active/Inactive Button -->
+            <ul class="toolbar-group">
+                <li class="toolbar-item">
+                    <a class="toolbar-trigger" href="#" id="save-button">Save link</a>
+                </li>
+            </ul>
+
+            <!-- Link style button -->
+            <ul class="toolbar-group">
+                <li class="toolbar-item toolbar-item-link">
+                    <a href="#" class="toolbar-trigger" id="cancel-button">Cancel link</a>
+                </li>
+            </ul>
+
+
+            <!-- Active/Inactive Button -->
+            <ul class="toolbar-group">
+                <li class="toolbar-item">
+                    <button class="toolbar-trigger" type="submit" id="save-button-button">Save button</button>
+                </li>
+            </ul>
+
+            <!-- Link style button -->
+            <ul class="toolbar-group">
+                <li class="toolbar-item toolbar-item-link"><button class="toolbar-trigger" type="reset" id="cancel-button-button">Cancel button</button></li>
+            </ul>
+
+
+            <!-- Active/Inactive Button -->
+            <ul class="toolbar-group">
+                <li class="toolbar-item">
+                    <input class="toolbar-trigger" id="save-button-input" type="submit" name="save-button-input" value="Save Input">
+                </li>
+            </ul>
+
+            <!-- Link style button -->
+            <ul class="toolbar-group">
+                <li class="toolbar-item toolbar-item-link">
+                    <input class="toolbar-trigger" id="cancel-button-input" type="reset" name="cancel-button-input" value="Cancel Input">
+                </li>
+            </ul>
+   
+        </div><!-- // .toolbar-split -->
+
+    </div><!-- // .aui-toolbar -->
+
 
 
 
@@ -925,7 +1027,7 @@
 
 <p>Really big left/right toolbar (should be wrapped to second row):</p>
 
-    <div class="aui-toolbar" id="left-right-split">
+    <div class="aui-toolbar" id="big-left-right-split">
         <div class="toolbar-split toolbar-split-left">
    
             <ul class="toolbar-group">
@@ -1170,132 +1272,6 @@
 
 
 
-
-<p>One-of-everything toolbar (note while some of this markup isn't valid, the point is to stress test the pattern):</p>
-
-    <div class="aui-toolbar" id="toolbar">
-        
-        <div class="toolbar-split toolbar-split-left">
-
-            <span class="toolbar-group">
-                <span class="toolbar-item">
-                    <a href="#" class="toolbar-trigger active">Active</a>
-                </span>
-                <span class="toolbar-item">
-                    <a href="#" class="toolbar-trigger">Available</a>
-                </span>
-                <span class="toolbar-item">
-                    <a href="#" class="toolbar-trigger disabled">Disabled</a>
-                </span>
-            </span>
-
-            <ul class="toolbar-group">
-                <li class="toolbar-item">
-                    <a href="#" class="toolbar-trigger">List item</a>
-                </li>
-                <li class="toolbar-item toolbar-dropdown">
-                    <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">LI Dropdown</span><span class="icon icon-dropdown"></span></a>
-                        <ul class="aui-dropdown">
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="toolbar-item toolbar-compactdropdown">
-                    <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">DD<span class="icon icon-dropdown"></span></a>
-                        <ul class="aui-dropdown">
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-
-            <div class="toolbar-group">
-                <div class="toolbar-item">
-                    <button class="toolbar-trigger">Button</button>
-                </div>
-                <div class="toolbar-item">
-                    <button class="toolbar-trigger">Button</button>
-                </div>
-                <div class="toolbar-item toolbar-dropdown">
-                    <div class="aui-dd-parent">
-                        <button class="toolbar-trigger aui-dd-trigger">Button Dropdown</button>
-                        <ul class="aui-dropdown">
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="toolbar-item">
-                    <button class="toolbar-trigger">Button</button>
-                </div>
-            </div>
-        
-            <span class="toolbar-group">
-                <span class="toolbar-item">
-                    <button class="toolbar-trigger">Button</button>
-                </span>
-                <span class="toolbar-item">
-                    <button class="toolbar-trigger">Button</button>
-                </span>
-                <span class="toolbar-item toolbar-dropdown">
-                    <div class="aui-dd-parent">
-                        <button class="toolbar-trigger aui-dd-trigger">Button Dropdown</button>
-                        <ul class="aui-dropdown">
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                        </ul>
-                    </div>
-                </span>
-                <span class="toolbar-item">
-                    <button class="toolbar-trigger">Button</button>
-                </span>
-            </span>
-    
-            <span class="toolbar-group">
-                <span class="toolbar-item toolbar-dropdown">
-                    <div class="aui-dd-parent">
-                        <a href="#" class="toolbar-trigger aui-dd-trigger">A Dropdown</a>
-                        <ul class="aui-dropdown">
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
-                        </ul>
-                    </div>
-                </span>
-            </span>
-
-        </div><!-- .toolbar-split -->
-        <div class="toolbar-split toolbar-split-right">
-
-            <span class="toolbar-group">
-                <span class="toolbar-item">
-                    <a href="#" class="toolbar-trigger">Right Side Link</a>
-                </span>
-                <span class="toolbar-item">
-                    <a href="#" class="toolbar-trigger">Right Side Link</a>
-                </span>
-                <span class="toolbar-item">
-                    <a href="#" class="toolbar-trigger">Right Side Link</a>
-                </span>
-            </span>
-
-        </div><!-- .toolbar-split -->
-
-    </div><!-- // .aui-toolbar -->
-   
    
     </div><!-- aui-test source-required -->
 

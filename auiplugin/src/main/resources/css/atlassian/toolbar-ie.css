@@ -30,15 +30,43 @@
     filter: alpha(opacity=50); /* IE6-7 */
 }
 
-
-
-
-*+ html .aui-toolbar .toolbar-group {
-    padding-bottom: 10px;
+.aui-toolbar .toolbar-group {
+    *padding-bottom: 10px;
 }
 
-*+ html .aui-toolbar .toolbar-item,
-*+ html .aui-toolbar .toolbar-trigger,
-*+ html .aui-toolbar .toolbar-trigger span {
-    white-space: nowrap;
+.aui-toolbar .toolbar-item,
+.aui-toolbar .toolbar-trigger,
+.aui-toolbar .toolbar-trigger span {
+    *white-space: nowrap !important; 
+}
+
+.aui-toolbar .toolbar-group button.toolbar-trigger,
+.aui-toolbar .toolbar-group input.toolbar-trigger {
+    *width: 1%; /* prevent buttons collapsing in ie7 */
+}
+
+/* START IE7 border shenanigins
+   - remove the mysteriously-added black border on buttons
+   - put the border on the item instead
+   - has-buttons added to .toolbar-group containing buttons
+   - multi class selectors purely for human readability, IE7 only reads the last class
+*/
+.aui-toolbar button {
+    *border: 0 !important;
+    *margin: 0;
+    *padding: 0;
+}
+.aui-toolbar .toolbar-item.contains-button {
+    *border: 1px solid #ddd !important;
+    *height: 24px;
+    *padding: 0;
+}
+.aui-toolbar .toolbar-item.toolbar-item-link {
+    *border: 0 !important;
+}
+/* END IE7 border shenanigins */
+
+/* Added by forceRightSplitToRow(), removing float from left split pushes the right split to its own row */
+.toolbar-split-left.force-split {
+    float: none;
 }
