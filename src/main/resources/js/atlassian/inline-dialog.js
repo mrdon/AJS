@@ -232,7 +232,7 @@
             }
         };
 
-        // the trigger is the jquery element that is triggering the popup (i.e., the element that the mousemove event is bound to)
+        // the trigger is the jquery element that is triggering the popup (i.e., the element that the mouseover event is bound to)
         var initPopup = function(e,trigger) {
             opts.upfrontCallback.call({
                 popup: popup,
@@ -324,14 +324,14 @@
         };
         if (opts.onHover) {
             if (opts.useLiveEvents) {
-                $(items).live("mousemove", function(e) {
+                $(items).live("mouseover", function(e) {
                     appendPopup();
                     initPopup(e,this);
                 }).live("mouseout", function() {
                     hidePopup();
                 });
             } else {
-                $(items).mousemove(function(e) {
+                $(items).mouseover(function(e) {
                     appendPopup();
                     initPopup(e,this);
                 }).mouseout(function() {
