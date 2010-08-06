@@ -278,7 +278,7 @@
         <jetty.port>9999</jetty.port>
         <context.path>ajs</context.path>
         <scan.interval.seconds>10</scan.interval.seconds>
-        <selenium.xvfb.skip>true</selenium.xvfb.skip>
+        <selenium.xvfb.skip>false</selenium.xvfb.skip>
         <selenium.browser>*firefox</selenium.browser>
         <selenium.firefox.profile />
         <selenium.server.port>4444</selenium.server.port>
