@@ -329,6 +329,33 @@
                 <selenium.xvfb.skip>true</selenium.xvfb.skip>
             </properties>
         </profile>
+<!--- This section is for testing this project against multiple versions of refapp -->
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.atlassian.refappbuild</groupId>
+                        <artifactId>maven-refapptest-plugin</artifactId>
+                        <version>0.4.1</version>
+                        <executions>
+                            <execution>
+                                <id>execution1</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <refappVersions>
+                                        <refappVersion>2.6.0</refappVersion>
+                                    </refappVersions>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
     
 </project>
