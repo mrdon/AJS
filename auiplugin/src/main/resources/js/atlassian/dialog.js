@@ -673,7 +673,7 @@ AJS.popup = function (options) {
      * @param height {number} dialog height in pixels
      * @param id {number} [optional] dialog id
     */
-    AJS.Dialog = function (width, height, id, usroptions) {
+    AJS.Dialog = function (width, height, id) {
         var options = {};
         if (!+width) {
             options = Object(width);
@@ -688,7 +688,7 @@ AJS.popup = function (options) {
             width: this.width,
             height: this.height,
             id: this.id
-        }, usroptions);
+        });
         this.popup = AJS.popup(options);
 
         this.popup.element.addClass("aui-dialog");
