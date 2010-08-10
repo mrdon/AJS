@@ -95,8 +95,14 @@
     margin: 0 0 0 0.5em;
 }
 
+.aui-dialog .dialog-button-panel a.button-panel-link {
+    font-size: 0.75em;
+    margin-right: 1.65em;
+    margin-top: 2px;
+}
+
 .aui-dialog .dialog-blanket {
-    position:absolute;
+    position: absolute;
     top: 0;
     left: 0;
     opacity: 0.2;

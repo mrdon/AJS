@@ -308,6 +308,37 @@ AJS.popup = function (options) {
         this.id = page.button.length;
         page.button[this.id] = this;
     }
+    
+    /**
+     * @class Link
+     * @constructor Link
+     * @param page {number} page id
+     * @param label {string} button label
+     * @param onclick {function} [optional] click event handler
+     * @param className {string} [optional] class name
+     * @private
+    */
+    function Link(page, label, onclick, className) {
+        if (!page.buttonpanel) {
+            page.addButtonPanel();
+        }
+        this.page = page;
+        this.onclick = onclick;
+        this._onclick = function () {
+            onclick.call(this, page.dialog, page);
+        };
+        this.item = AJS("a", label).attr("href","#").addClass("button-panel-link");
+        if (className) {
+            this.item.addClass(className);
+        }
+        if (typeof onclick == "function") {
+            this.item.click(this._onclick);
+        }
+        page.buttonpanel.append(this.item);
+        this.id = page.button.length;
+        page.button[this.id] = this;
+    }
+    
     function itemMove (leftOrRight, target) {
         var dir = leftOrRight == "left"? -1 : 1;
         return function (step) {
@@ -375,6 +406,58 @@ AJS.popup = function (options) {
      * @return {function} existing event handler if new one is undefined
     */
     Button.prototype.onclick = function (onclick) {
+        if (typeof onclick == "undefined") {
+            return this.onclick;
+        } else {
+            this.item.unbind("click", this._onclick);
+            this._onclick = function () {
+                onclick.call(this, page.dialog, page);
+            };
+            if (typeof onclick == "function") {
+                this.item.click(this._onclick);
+            }
+        }
+    };
+    
+    /**
+     * Moves item left in the hierarchy
+     * @method moveUp
+     * @method moveLeft
+     * @param step {number} how many items to move, default is 1
+     * @return {object} button
+    */
+    Link.prototype.moveUp = Button.prototype.moveLeft = itemMove("left", "button");
+    /**
+     * Moves item right in the hierarchy
+     * @method moveDown
+     * @method moveRight
+     * @param step {number} how many items to move, default is 1
+     * @return {object} button
+    */
+    Link.prototype.moveDown = Button.prototype.moveRight = itemMove("right", "button");
+    /**
+     * Removes item
+     * @method remove
+    */
+    Link.prototype.remove = itemRemove("button");
+
+    /**
+     * Getter and setter for label
+     * @method label
+     * @param label {string} [optional] label of the button
+     * @return {string} label, if nothing is passed in
+     * @return {object} jQuery button object, if label is passed in
+    */
+    Link.prototype.html = function (label) {
+        return this.item.html(label);
+    };
+    /**
+     * Getter and setter of onclick event handler
+     * @method onclick
+     * @param onclick {function} [optional] new event handler, that is going to replace the old one
+     * @return {function} existing event handler if new one is undefined
+    */
+    Link.prototype.onclick = function (onclick) {
         if (typeof onclick == "undefined") {
             return this.onclick;
         } else {
@@ -604,6 +687,20 @@ AJS.popup = function (options) {
         return this;
     };
     /**
+     * Method for adding new link to the page
+     * @method addLink
+     * @param label {string} button label
+     * @param onclick {function} [optional] click event handler
+     * @param className {string} [optional] class name
+     * @return {object} the page
+    */
+    Page.prototype.addLink = function (label, onclick, className) {
+        new Link(this, label, onclick, className);
+        this.recalcSize();
+        return this;
+    };
+    
+    /**
      * Selects corresponding panel
      * @method gotoPanel
      * @param panel {object} panel object
@@ -722,6 +819,44 @@ AJS.popup = function (options) {
         this.page[this.curpage].addButton(label, onclick, className);
         return this;
     };
+    
+    /**
+     * Method for adding new link to the current page
+     * @method addButton
+     * @param label {string} link label
+     * @param onclick {function} [optional] click event handler
+     * @param className {string} [optional] class name
+     * @return {object} the dialog
+    */
+    AJS.Dialog.prototype.addLink = function (label, onclick, className) {
+        this.page[this.curpage].addLink(label, onclick, className);
+        return this;
+    };
+    
+    /**
+        * Method for adding a submit button to the current page
+        * @method addSubmit
+        * @param label {string} link label
+        * @param onclick {function} [optional] click event handler
+        * @return {object} the dialog
+       */
+       AJS.Dialog.prototype.addSubmit = function (label, onclick) {
+           this.page[this.curpage].addButton(label, onclick, "button-panel-submit-button");
+           return this;
+       };
+       
+       /**
+           * Method for adding a cancel link to the current page
+           * @method addCancel
+           * @param label {string} link label
+           * @param onclick {function} [optional] click event handler
+           * @return {object} the dialog
+          */
+          AJS.Dialog.prototype.addCancel= function (label, onclick) {
+              this.page[this.curpage].addLink(label, onclick, "button-panel-cancel-link");
+              console.log("it worked!");
+              return this;
+          };
 
 	/**
      * Method for adding new button panel to the current page
