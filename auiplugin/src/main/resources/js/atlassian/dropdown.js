@@ -61,6 +61,10 @@ AJS.dropDown = function (obj, usroptions) {
                 if (properties.icon) {
                     li.prepend(AJS("img").attr("src", properties.icon));
                 }
+                if (properties.insideSpanIcon){
+                    li.children("a").prepend(AJS("span".attr("class","link-icon")));
+                }
+
                 AJS.$.data(li[0], "properties", properties);
                 ol.append(li);
             }

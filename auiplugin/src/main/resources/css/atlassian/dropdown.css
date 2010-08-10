@@ -105,7 +105,7 @@
 .aui-dropdown a.item-link {
     background: #fff;
     color: #036;
-    display: block;
+    display: inline-block;
     float: none;
     height: auto;
     position: static;
@@ -131,6 +131,13 @@
     background: #f2f2f2;
     color: #036;
     padding: 0.3em 0.5em;
+}
+
+.aui-dd-parent .aui-dropdown li.dropdown-item a.item-link span.icon {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-right: 7px;
 }
 
 div.shim {
