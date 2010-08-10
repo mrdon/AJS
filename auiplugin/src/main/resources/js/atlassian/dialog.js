@@ -418,58 +418,6 @@ AJS.popup = function (options) {
             }
         }
     };
-    
-    /**
-     * Moves item left in the hierarchy
-     * @method moveUp
-     * @method moveLeft
-     * @param step {number} how many items to move, default is 1
-     * @return {object} button
-    */
-    Link.prototype.moveUp = Button.prototype.moveLeft = itemMove("left", "button");
-    /**
-     * Moves item right in the hierarchy
-     * @method moveDown
-     * @method moveRight
-     * @param step {number} how many items to move, default is 1
-     * @return {object} button
-    */
-    Link.prototype.moveDown = Button.prototype.moveRight = itemMove("right", "button");
-    /**
-     * Removes item
-     * @method remove
-    */
-    Link.prototype.remove = itemRemove("button");
-
-    /**
-     * Getter and setter for label
-     * @method label
-     * @param label {string} [optional] label of the button
-     * @return {string} label, if nothing is passed in
-     * @return {object} jQuery button object, if label is passed in
-    */
-    Link.prototype.html = function (label) {
-        return this.item.html(label);
-    };
-    /**
-     * Getter and setter of onclick event handler
-     * @method onclick
-     * @param onclick {function} [optional] new event handler, that is going to replace the old one
-     * @return {function} existing event handler if new one is undefined
-    */
-    Link.prototype.onclick = function (onclick) {
-        if (typeof onclick == "undefined") {
-            return this.onclick;
-        } else {
-            this.item.unbind("click", this._onclick);
-            this._onclick = function () {
-                onclick.call(this, page.dialog, page);
-            };
-            if (typeof onclick == "function") {
-                this.item.click(this._onclick);
-            }
-        }
-    };
 
     /**
      * Class for panels
@@ -854,7 +802,6 @@ AJS.popup = function (options) {
           */
           AJS.Dialog.prototype.addCancel= function (label, onclick) {
               this.page[this.curpage].addLink(label, onclick, "button-panel-cancel-link");
-              console.log("it worked!");
               return this;
           };
 
