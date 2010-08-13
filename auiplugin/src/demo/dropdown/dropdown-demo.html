@@ -28,8 +28,14 @@
     
     <style type="text/css">
         .styled-parent {background: #000;width:10px;height:10px; list-style:none; padding: 1em;}
-
-        #icon-test-1 .aui-dd-parent .aui-dropdown li.dropdown-item a.item-link span.icon {background:#0f0;}
+        
+        /*Icon spans must be styled on product level */
+        #icon-test-1 .aui-dd-parent .aui-dropdown li.dropdown-item a.item-link span.icon {
+            background:#0f0;
+            width: 13px;
+            height: 13px;
+            margin-right: 7px;
+        }
     </style>
 </head>
 <body>
@@ -128,20 +134,20 @@
 
     <div class = "aui-demo source-required" id="icon-test-1">
         <h2> Dropdown with Icons </h2>
-        <p class="description"> Shows a dropdown that has icons inside the item links</p>
-        <div class="html-code">
+        <p class = "description"> Shows a dropdown that has icons inside the item links</p>
+        <div class = "html-code">
             <ul id = "dropDown-icons1" class="styled-parent">
-                <li class="aui-dd-parent">
-                    <a href="#" class="aui-dd-trigger styled-trigger">A Dropdown</a>
-                    <ul class="aui-dropdown">
-                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Right Alignment</a></li>
-                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Right Alignment</a></li>
-                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Right Alignment</a></li>
-                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Right Alignment</a></li>
-                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Right Alignment</a></li>
-                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Right Alignment</a></li>
-                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Right Alignment</a></li>
-                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Right Alignment</a></li>
+                <li class = "aui-dd-parent">
+                    <a href = "#" class="aui-dd-trigger styled-trigger">A Dropdown</a>
+                    <ul class = "aui-dropdown">
+                        <li class = "dropdown-item"><a href = "#" class = "item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class = "dropdown-item"><a href = "#" class = "item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class = "dropdown-item"><a href = "#" class = "item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class = "dropdown-item"><a href = "#" class = "item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class = "dropdown-item"><a href = "#" class = "item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class = "dropdown-item"><a href = "#" class = "item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class = "dropdown-item"><a href = "#" class = "item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class = "dropdown-item"><a href = "#" class = "item-link"><span class="icon"></span>Sprite Icons</a></li>
                     </ul>
                 </li>
             </ul>
