@@ -96,7 +96,7 @@
             </properties>
         </profile>
 
-    <!--- This section is for testing this project against multiple versions of refapp -->
+    <!-- This section is for testing this project against multiple versions of refapp -->
         <profile>
             <id>release</id>
             <build>
