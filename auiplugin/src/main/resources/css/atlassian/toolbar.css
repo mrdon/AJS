@@ -50,9 +50,7 @@
 }
 
 /* available/inactive controls */
-.aui-toolbar .toolbar-group a.toolbar-trigger,
-.aui-toolbar .toolbar-group button,
-.aui-toolbar .aui-dd-parent a.aui-dd-trigger,
+.aui-toolbar .toolbar-group .toolbar-trigger,
 .aui-toolbar .aui-dd-parent a.aui-dd-trigger {
     background: #fff url("images/toolbar/aui-toolbar-button-inactive-bg.png") bottom left repeat-x;
     border: 1px solid #ddd;
@@ -60,13 +58,13 @@
     color: #000;
     display: inline-block;
     float: left;
-    font-size: 14px;
+    font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
     height: 22px;
     line-height: 22px;
     margin: 0;
     min-width: 14px;
-    padding: 0 5px;
+    padding: 0 10px;
     text-align: center;
     text-decoration: none;
     text-indent: 0;
@@ -75,6 +73,7 @@
 
 .aui-toolbar .toolbar-group .toolbar-item.toolbar-item-link .toolbar-trigger {
     border: 0;
+    padding-top: 1px;
 }
 
 .aui-toolbar .toolbar-group .toolbar-item-link:hover .toolbar-trigger,
@@ -83,12 +82,17 @@
     background: transparent;
     text-decoration: none;
     color: #3C78B5;
-    padding: 2px 0 2px 0;
+    padding: 1px 0 2px 0;
 }
 
-.aui-toolbar .toolbar-group button {
+/* adjust height of <button>s and <input>s */
+.aui-toolbar .toolbar-group button.toolbar-trigger {
     height: 24px;
     padding-bottom: 2px;
+}
+.aui-toolbar .toolbar-group input.toolbar-trigger {
+    height: 24px;
+    padding-bottom: 1px;
 }
 
 /* disabled controls */
@@ -101,7 +105,8 @@
 }
 
 .toolbar-group .toolbar-item:first-of-type a,
-.toolbar-group .toolbar-item:first-of-type button {
+.toolbar-group .toolbar-item:first-of-type button,
+.toolbar-group .toolbar-item:first-of-type input {
     -webkit-border-top-left-radius: 3px;
     -webkit-border-bottom-left-radius: 3px;
     -moz-border-radius-topleft: 3px;
@@ -209,91 +214,18 @@
     min-width: 0;
     margin: 0;
     padding: 0 2px;
-    width: 6px;
+    width: 9px;
 }
 
 .aui-toolbar .toolbar-splitbutton .icon-dropdown {
-    background-position: -48px 10px;
+    background-position: -46px 10px;
     text-indent: -9999px;
-    width: 6px;
+    width: 9px;
 }
 
-/* Sprite icon mappings */
-.aui-toolbar span.icon-labels {
-    background-position: -164px -19px;
+.aui-toolbar .toolbar-splitbutton .toolbar-trigger {
+    border-right-style: dotted;
 }
-.aui-toolbar span.icon-permissions {
-    background-position: -188px -19px;
+.aui-toolbar .toolbar-splitbutton .aui-dd-parent .toolbar-trigger {
+    border-right-style: solid;
 }
-.aui-toolbar span.icon-link {
-    background-position: 4px -18px;
-}
-.aui-toolbar span.icon-image {
-    background-position: -164px 4px;
-}
-.aui-toolbar span.icon-table {
-    background-position: -189px 4px;
-}
-.aui-toolbar span.icon-insert {
-    background-position: -212px 5px;
-}
-.aui-toolbar span.icon-settings {
-    background-position: -116px -21px;
-}
-.aui-toolbar span.icon-help {
-    background-position: -139px -20px;
-}
-.aui-toolbar span.icon-italic {
-    background-position: -88px -42px;
-}
-.aui-toolbar span.icon-bold {
-    background-position: -65px -42px;
-}
-.aui-toolbar span.icon-underline {
-    background-position: -112px -42px;
-}
-.aui-toolbar span.icon-strikethrough {
-    background-position: -139px -43px;
-}
-.aui-toolbar span.icon-textcolor {
-    background-position: -161px -42px;
-}
-.aui-toolbar span.icon-sub {
-    background-position: -185px -42px;
-}
-.aui-toolbar span.icon-sup {
-    background-position: -210px -44px;
-}
-.aui-toolbar span.icon-bullist {
-    background-position: -66px 6px;
-}
-.aui-toolbar span.icon-numlist {
-    background-position: -90px 6px;
-}
-.aui-toolbar span.icon-indent {
-    background-position: -114px 6px;
-}
-.aui-toolbar span.icon-outdent {
-    background-position: -139px 6px;
-}
-.aui-toolbar span.icon-undo {
-    background-position: -19px -18px;
-}
-.aui-toolbar span.icon-redo {
-    background-position: -42px -18px;
-}
-.aui-toolbar span.icon-justifyleft {
-    background-position: 6px -41px;
-}
-.aui-toolbar span.icon-justifycenter {
-    background-position: -18px -41px;
-}
-.aui-toolbar span.icon-justifyright {
-    background-position: -42px -41px;
-}
-.aui-toolbar span.icon-source {
-    background-position: -94px -17px;
-}
-
-
-

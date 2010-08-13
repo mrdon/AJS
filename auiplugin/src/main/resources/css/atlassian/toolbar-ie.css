@@ -45,6 +45,11 @@
     *width: 1%; /* prevent buttons collapsing in ie7 */
 }
 
+.aui-toolbar .toolbar-group button.toolbar-trigger,
+.aui-toolbar .toolbar-group input.toolbar-trigger {
+    *width: 1%; /* prevent buttons collapsing in ie7 */
+}
+
 /* START IE7 border shenanigins
    - remove the mysteriously-added black border on buttons
    - put the border on the item instead

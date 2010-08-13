@@ -12,6 +12,11 @@ AJS.toInit(function($) {
 
         // IE7 spoon feeding zone.
         if (parseInt($.browser.version, 10) == 7) {
+
+            // Add a class so we can style button containers
+            function markItemsWithButtons () {
+                $(".aui-toolbar button").closest(".toolbar-item").addClass("contains-button");
+            };
   
             // force right toolbar to new row when it will fit without wrapping
             function forceRightSplitToRow() {
@@ -58,6 +63,7 @@ AJS.toInit(function($) {
 
             // IE7 inits
             simulateNowrapOnGroups();
+            markItemsWithButtons();
             
             // fire forceRightSplitToRow after reload
             var TO = false;
