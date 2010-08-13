@@ -318,16 +318,22 @@ AJS.popup = function (options) {
      * @param className {string} [optional] class name
      * @private
     */
-    function Link(page, label, onclick, className) {
+    function Link(page, label, onclick, className, url) {
         if (!page.buttonpanel) {
             page.addButtonPanel();
         }
+        
+        //if no url is given use # as default
+        if(!url){
+            url = "#";
+        }
+        
         this.page = page;
         this.onclick = onclick;
         this._onclick = function () {
             onclick.call(this, page.dialog, page);
         };
-        this.item = AJS("a", label).attr("href","#").addClass("button-panel-link");
+        this.item = AJS("a", label).attr("href", url).addClass("button-panel-link");
         if (className) {
             this.item.addClass(className);
         }
@@ -642,8 +648,8 @@ AJS.popup = function (options) {
      * @param className {string} [optional] class name
      * @return {object} the page
     */
-    Page.prototype.addLink = function (label, onclick, className) {
-        new Link(this, label, onclick, className);
+    Page.prototype.addLink = function (label, onclick, className, url) {
+        new Link(this, label, onclick, className, url);
         this.recalcSize();
         return this;
     };
@@ -776,34 +782,34 @@ AJS.popup = function (options) {
      * @param className {string} [optional] class name
      * @return {object} the dialog
     */
-    AJS.Dialog.prototype.addLink = function (label, onclick, className) {
-        this.page[this.curpage].addLink(label, onclick, className);
+    AJS.Dialog.prototype.addLink = function (label, onclick, className, url) {
+        this.page[this.curpage].addLink(label, onclick, className, url);
         return this;
     };
     
     /**
-        * Method for adding a submit button to the current page
-        * @method addSubmit
-        * @param label {string} link label
-        * @param onclick {function} [optional] click event handler
-        * @return {object} the dialog
-       */
-       AJS.Dialog.prototype.addSubmit = function (label, onclick) {
-           this.page[this.curpage].addButton(label, onclick, "button-panel-submit-button");
-           return this;
-       };
-       
-       /**
-           * Method for adding a cancel link to the current page
-           * @method addCancel
-           * @param label {string} link label
-           * @param onclick {function} [optional] click event handler
-           * @return {object} the dialog
-          */
-          AJS.Dialog.prototype.addCancel= function (label, onclick) {
-              this.page[this.curpage].addLink(label, onclick, "button-panel-cancel-link");
-              return this;
-          };
+    * Method for adding a submit button to the current page
+    * @method addSubmit
+    * @param label {string} link label
+    * @param onclick {function} [optional] click event handler
+    * @return {object} the dialog
+    */
+    AJS.Dialog.prototype.addSubmit = function (label, onclick) {
+        this.page[this.curpage].addButton(label, onclick, "button-panel-submit-button");
+        return this;
+    };
+    
+    /**
+    * Method for adding a cancel link to the current page
+    * @method addCancel
+    * @param label {string} link label
+    * @param onclick {function} [optional] click event handler
+    * @return {object} the dialog
+    */
+    AJS.Dialog.prototype.addCancel= function (label, onclick) {
+        this.page[this.curpage].addLink(label, onclick, "button-panel-cancel-link");
+        return this;
+    };
 
 	/**
      * Method for adding new button panel to the current page
