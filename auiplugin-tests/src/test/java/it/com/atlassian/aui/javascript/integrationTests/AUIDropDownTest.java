@@ -9,8 +9,8 @@ public class AUIDropDownTest extends AbstractAUISeleniumTestCase
     {
         openTestPage(TEST_PAGE);
 
-        client.click("css=div#dropDown-standard .aui-dd-trigger");
-        assertThat.elementVisible("css=div#dropDown-standard .aui-dropdown");
+        client.click("css=ul#dropDown-standard .aui-dd-trigger");
+        assertThat.elementVisible("css=ul#dropDown-standard .aui-dropdown");
     }
 
     //test to make sure dropdowns hide after a click on the body
@@ -18,29 +18,30 @@ public class AUIDropDownTest extends AbstractAUISeleniumTestCase
     {
         openTestPage(TEST_PAGE);
         
-        client.click("css=div#dropDown-standard .aui-dd-trigger");
-        assertThat.elementVisible("css=div#dropDown-standard .aui-dropdown");
+        client.click("css=ul#dropDown-standard .aui-dd-trigger");
+        assertThat.elementVisible("css=ul#dropDown-standard .aui-dropdown");
 
         client.click("css=body");
-        assertThat.elementNotVisible("css=div#dropDown-standard .aui-dropdown");
+        assertThat.elementNotVisible("css=ul#dropDown-standard .aui-dropdown");
     }
 
     public void testDropdownLeftAlign(){
 
         openTestPage(TEST_PAGE);
 
-        client.click("css=div#dropDown-left .aui-dd-trigger");
+        client.click("css=ul#dropDown-left .aui-dd-trigger");
 
-        assertThat.elementVisible("css=div#dropDown-left .aui-dropdown");
-        assertEquals("left-aligned dropdown is not left-aligned", "0px", getCss("left", "#dropDown-left .aui-dropdown"));
+        assertThat.elementVisible("css=ul#dropDown-left .aui-dropdown");
+        assertEquals(
+                "left-aligned dropdown is not left-aligned", "0px", getCss("left", "#dropDown-left .aui-dropdown"));
     }
 
     public void testDropdownRightAlign(){
 
         openTestPage(TEST_PAGE);
 
-        client.click("css=div#dropDown-right .aui-dd-trigger");
-        assertThat.elementVisible("css=div#dropDown-right .aui-dropdown");
+        client.click("css=ul#dropDown-right .aui-dd-trigger");
+        assertThat.elementVisible("css=ul#dropDown-right .aui-dropdown");
         assertEquals("right-aligned dropdown is not right-aligned", "0px", getCss("right", "#dropDown-right .aui-dropdown"));
     }
 
