@@ -1,7 +1,0 @@
-This folder is deprecated and is only here for compatibility reasons.  
-
-If editing demo pages please use files under "demo" in auiplugin
-
-if editing test pages please us files under auiplugin-test
-
-See README.txt for more details
