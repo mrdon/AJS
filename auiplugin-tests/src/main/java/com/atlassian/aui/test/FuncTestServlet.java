@@ -52,7 +52,21 @@ public class FuncTestServlet extends HttpServlet
             // only include qunit when necessary
             if (req.getPathInfo().contains("unit-tests"))
             {
-                 webResourceManager.requireResource("auiplugin-tests:qunit");
+                webResourceManager.requireResource("auiplugin-tests:qunit");
+
+                String thisPathArray[] = req.getPathInfo().split("/");
+
+                //only require the test resource if we are in a subpath
+                if(thisPathArray.length > 4){
+                    String thisSubPath = thisPathArray[thisPathArray.length-2];
+                    webResourceManager.requireResource("auiplugin-tests:" + thisSubPath);
+                }
+
+                //include all unit test js files if viewing allTests page
+                if(thisPathArray[thisPathArray.length-1].contains("allTests")){
+                    webResourceManager.requireResource("auiplugin-tests:all-unit-tests");
+                }
+
             }
             String path = req.getPathInfo();
             if (path.endsWith(".html"))
