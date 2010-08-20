@@ -161,9 +161,9 @@
                         });
 
                         if (AJS.$.browser.msie) {
-                            // iframeShim, append if it doesnt exist
+                            // iframeShim, prepend if it doesnt exist
                             if($('#inline-dialog-shim-'+identifier).length ==0){
-                                $(popup).append($('<iframe class = "inline-dialog-shim" id="inline-dialog-shim-'+identifier+'" frameBorder="0" src="javascript:false;"></iframe>'));
+                                $(popup).prepend($('<iframe class = "inline-dialog-shim" id="inline-dialog-shim-'+identifier+'" frameBorder="0" src="javascript:false;"></iframe>'));
                             }
                             //addjust height and width of shim according to the popup
                             $('#inline-dialog-shim-'+identifier).css({
