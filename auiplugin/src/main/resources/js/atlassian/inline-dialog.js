@@ -187,6 +187,7 @@
                 }
                 $(items).addClass("active");
                 beingShown = true;
+                bindHideOnExternalClick();
                 AJS.InlineDialog.current = getHash();
                 AJS.$(document).trigger("showLayer", ["inlineDialog", getHash()]);
                 // retrieve the position of the click target. The offsets might be different for different types of targets and therefore
@@ -209,6 +210,7 @@
                 //disable auto-hide if user passes null for hideDelay
                 if (delay != null) {
                     hideDelayTimer = setTimeout(function() {
+                        unbindHideOnExternalClick();
                         $(items).removeClass("active");
                         popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
                         popup.shadow.remove();
@@ -354,13 +356,32 @@
             }
         }
         
-        contents.click(function(e) {
-            e.stopPropagation();
-        });
+        // Be defensive and make sure that we haven't already bound the event
+        var hasBoundOnExternalClick = false;
 
-        $("body").click(function() {
-            hidePopup(0);
-        });
+        /**
+         * Catch click events on the body to see if the click target occurs outside of this popup
+         * If it does, the popup will be hidden
+         */
+        var bindHideOnExternalClick = function () {
+            if (!hasBoundOnExternalClick) {
+                $("body").bind("click.inline-dialog-check", function(e) {
+                    var $target = $(e.target);
+                    // hide the popup if the target of the event is not in the dialog
+                    if ($target.closest('#inline-dialog-' + identifier + ' .contents').length === 0) {
+                        hidePopup(0);
+                    }
+                });
+                hasBoundOnExternalClick = true;
+            }
+        };
+
+        var unbindHideOnExternalClick = function () {
+            if (hasBoundOnExternalClick) {
+                $("body").unbind("click.inline-dialog-check");
+            }
+            hasBoundOnExternalClick = false;
+        };
 
         /**
          * Show the inline dialog.
