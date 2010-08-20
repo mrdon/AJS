@@ -3,7 +3,7 @@ package it.com.atlassian.aui.javascript.integrationTests;
 public class AUIDialogTest extends AbstractAUISeleniumTestCase
 {
     private static final String TEST_PAGE = "test-pages/dialog/dialog-test.html";
-    
+
     //Test that dims for popups work
     public void testPopupDim()
     {
@@ -14,6 +14,7 @@ public class AUIDialogTest extends AbstractAUISeleniumTestCase
         assertThat.elementPresent("css=div.aui-blanket");
 
     }
+
     //Test that dims for dialogs work
     public void testDialogDim()
     {
@@ -23,7 +24,8 @@ public class AUIDialogTest extends AbstractAUISeleniumTestCase
         assertThat.elementPresent("css=div.aui-blanket");
         assertThat.elementVisible("css=div.aui-blanket");
     }
-   //test that the popup shows correctly
+
+    //test that the popup shows correctly
     public void testPopupShow()
     {
 
@@ -49,14 +51,15 @@ public class AUIDialogTest extends AbstractAUISeleniumTestCase
         client.click("popup-button");
 
         assertThat.elementVisible("css=div#my-popup");
-        
+
         client.keyPress("css=body", "\\27");
 
         assertThat.elementNotVisible("css=div#my-popup");
     }
 
     //test that dialog is hidden correctly after escape key is hit
-    public void testDialogEscHide(){
+    public void testDialogEscHide()
+    {
         openTestPage(TEST_PAGE);
 
         client.click("dialog-button");
@@ -67,7 +70,8 @@ public class AUIDialogTest extends AbstractAUISeleniumTestCase
     }
 
     //test that Dialog hides correctly when pressing a close button
-    public void testDialogButtonHide(){
+    public void testDialogButtonHide()
+    {
         openTestPage(TEST_PAGE);
 
         client.click("dialog-button");
@@ -136,7 +140,8 @@ public class AUIDialogTest extends AbstractAUISeleniumTestCase
     }
 
     //test addPanel
-    public void testAddPanel(){
+    public void testAddPanel()
+    {
         openTestPage(TEST_PAGE);
 
         client.click("test-add-panel-button");
@@ -148,7 +153,8 @@ public class AUIDialogTest extends AbstractAUISeleniumTestCase
 
 
     //test addButton
-    public void testAddButton(){
+    public void testAddButton()
+    {
         openTestPage(TEST_PAGE);
 
         client.click("test-add-button-button");

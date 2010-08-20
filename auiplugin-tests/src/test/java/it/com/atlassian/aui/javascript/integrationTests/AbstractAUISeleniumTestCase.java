@@ -5,9 +5,7 @@ import com.atlassian.selenium.SeleniumClient;
 import com.atlassian.selenium.SeleniumConfiguration;
 import junit.framework.TestCase;
 
-import static com.atlassian.selenium.browsers.AutoInstallClient.assertThat;
-import static com.atlassian.selenium.browsers.AutoInstallClient.seleniumClient;
-import static com.atlassian.selenium.browsers.AutoInstallClient.seleniumConfiguration;
+import static com.atlassian.selenium.browsers.AutoInstallClient.*;
 
 public abstract class AbstractAUISeleniumTestCase extends TestCase
 {
@@ -32,19 +30,23 @@ public abstract class AbstractAUISeleniumTestCase extends TestCase
         client.open("plugins/servlet/ajstest/" + page);
     }
 
-    public int getWindowHeight(){
+    public int getWindowHeight()
+    {
         return Integer.valueOf(client.getEval("window.AJS.$(window).height()"));
     }
 
-    public int getWindowWidth(){
+    public int getWindowWidth()
+    {
         return Integer.valueOf(client.getEval("window.AJS.$(window).width()"));
     }
 
-    public String getCss(String attribute, String element){
-        return client.getEval("window.AJS.$('"+ element +"').css('"+ attribute +"')");
+    public String getCss(String attribute, String element)
+    {
+        return client.getEval("window.AJS.$('" + element + "').css('" + attribute + "')");
     }
 
-    public boolean isWithinRange(int num, int min, int max){
+    public boolean isWithinRange(int num, int min, int max)
+    {
         return (num > min && num < max);
     }
 

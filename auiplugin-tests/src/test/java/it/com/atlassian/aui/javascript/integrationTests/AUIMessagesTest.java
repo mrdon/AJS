@@ -8,6 +8,7 @@ public class AUIMessagesTest extends AbstractAUISeleniumTestCase
     private static final String TEST_PAGE = "test-pages/messages/messages-test.html";
 
     //Make sure javascript messages work when no context is supplied
+
     public void testJavascriptMessagesWithNoContext()
     {
         openTestPage(TEST_PAGE);
@@ -16,6 +17,7 @@ public class AUIMessagesTest extends AbstractAUISeleniumTestCase
     }
 
     //Make sure javascript messsages work when a context is supplied
+
     public void testJavscriptMessagesWithContext()
     {
         openTestPage(TEST_PAGE);
@@ -25,6 +27,7 @@ public class AUIMessagesTest extends AbstractAUISeleniumTestCase
     }
 
     //Make sure closeable HTML messages close correctly
+
     public void testHTMLCloseable()
     {
         openTestPage(TEST_PAGE);

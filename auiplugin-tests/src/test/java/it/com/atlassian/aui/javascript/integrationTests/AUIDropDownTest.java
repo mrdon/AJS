@@ -17,7 +17,7 @@ public class AUIDropDownTest extends AbstractAUISeleniumTestCase
     public void testAUIDropDownHide()
     {
         openTestPage(TEST_PAGE);
-        
+
         client.click("css=ul#dropDown-standard .aui-dd-trigger");
         assertThat.elementVisible("css=ul#dropDown-standard .aui-dropdown");
 
@@ -25,7 +25,8 @@ public class AUIDropDownTest extends AbstractAUISeleniumTestCase
         assertThat.elementNotVisible("css=ul#dropDown-standard .aui-dropdown");
     }
 
-    public void testDropdownLeftAlign(){
+    public void testDropdownLeftAlign()
+    {
 
         openTestPage(TEST_PAGE);
 
@@ -36,7 +37,8 @@ public class AUIDropDownTest extends AbstractAUISeleniumTestCase
                 "left-aligned dropdown is not left-aligned", "0px", getCss("left", "#dropDown-left .aui-dropdown"));
     }
 
-    public void testDropdownRightAlign(){
+    public void testDropdownRightAlign()
+    {
 
         openTestPage(TEST_PAGE);
 

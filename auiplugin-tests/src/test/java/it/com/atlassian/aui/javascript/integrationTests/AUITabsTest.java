@@ -64,7 +64,7 @@ public class AUITabsTest extends AbstractAUISeleniumTestCase
     public void testAUITabsFirstMenuItemActiveByDefault()
     {
         openTestPage(TEST_PAGE);
-        
+
         assertThat.attributeContainsValue("css=div#horizontal li.first", "class", "active-tab");
         assertThat.attributeContainsValue("css=div#vertical li.first", "class", "active-tab");
     }
