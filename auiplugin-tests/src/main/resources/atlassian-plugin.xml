@@ -64,6 +64,10 @@
         <resource type="download" name="toolbar-unit-tests.js" location="unit-tests/tests/toolbar-unit-tests/toolbar-unit-tests.js"/>
     </web-resource>
 
+    <web-resource key="events-unit-tests">
+        <resource type="download" name="events-unit-tests.js" location="unit-tests/tests/events-unit-tests/events-unit-tests.js"/>
+    </web-resource>
+
     <!-- Include this resource to run all unit tests-->
     <web-resource key="all-unit-tests">
         <dependency>auiplugin-tests:whenitype-unit-tests</dependency>

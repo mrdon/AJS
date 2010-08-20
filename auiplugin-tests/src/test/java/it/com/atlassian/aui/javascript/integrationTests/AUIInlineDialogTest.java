@@ -48,7 +48,9 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
         client.click("css=a#testFloat");
         assertThat.elementPresent("css=div#inline-dialog-5");
         assertThat.elementVisible("css=div#inline-dialog-5");
-        assertEquals("right positioned inline-dialog is not positioned correctly", getWindowWidth()-5-client.getElementWidth("css=div#inline-dialog-5").intValue(), client.getElementPositionLeft("css=div#inline-dialog-5"));
+        int expectedPosition = getWindowWidth()-5-client.getElementWidth("css=div#inline-dialog-5").intValue();
+        int actualPosition = client.getElementPositionLeft("css=div#inline-dialog-5").intValue();
+        assertTrue("right positioned inline-dialog is not positioned correctly", isWithinRange(actualPosition, expectedPosition - 20, expectedPosition + 20));
     }
 
     //test right positioned medium trigger
@@ -57,7 +59,11 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
         client.click("css=a#testFloat3");
         assertThat.elementPresent("css=div#inline-dialog-7");
         assertThat.elementVisible("css=div#inline-dialog-7");
-        assertEquals("right positioned inline-dialog is not positioned correctly", getWindowWidth()-5-client.getElementWidth("css=div#inline-dialog-7").intValue(), client.getElementPositionLeft("css=div#inline-dialog-7"));
+
+        int expectedPosition = getWindowWidth()-5-client.getElementWidth("css=div#inline-dialog-7").intValue();
+        int actualPosition = client.getElementPositionLeft("css=div#inline-dialog-7").intValue();
+        assertTrue("right positioned inline-dialog is not positioned correctly", isWithinRange(actualPosition, expectedPosition - 20, expectedPosition + 20));
+
     }
 
     //test right positioned Long trigger
@@ -66,6 +72,9 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
         client.click("css=a#testFloat2");
         assertThat.elementPresent("css=div#inline-dialog-6");
         assertThat.elementVisible("css=div#inline-dialog-6");
-        assertEquals("right positioned inline-dialog is not positioned correctly", client.getElementPositionLeft("css=a#testFloat2"), client.getElementPositionLeft("css=div#inline-dialog-6"));
+
+        int expectedPosition = getWindowWidth()-5-client.getElementWidth("css=div#inline-dialog-6").intValue();
+        int actualPosition = client.getElementPositionLeft("css=div#inline-dialog-6").intValue();
+        assertTrue("right positioned inline-dialog is not positioned correctly", isWithinRange(actualPosition, expectedPosition - 20, expectedPosition + 20));
     }
 }

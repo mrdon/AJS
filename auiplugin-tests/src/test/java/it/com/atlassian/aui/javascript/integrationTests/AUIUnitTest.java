@@ -59,6 +59,11 @@ public class AUIUnitTest extends AbstractAUISeleniumTestCase
         runQunitTests("Toolbar");
     }
 
+    public void testEventsUnitTests(){
+        openQunitTestPage("events");
+        runQunitTests("Events");
+    }
+
     //HELPER FUNCTIONS
 
     //runs qunit tests on the page, component argument for reporting purposes only

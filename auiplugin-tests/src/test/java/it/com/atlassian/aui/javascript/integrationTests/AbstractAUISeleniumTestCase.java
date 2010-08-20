@@ -14,6 +14,7 @@ public abstract class AbstractAUISeleniumTestCase extends TestCase
     protected static SeleniumAssertions assertThat;
     protected static SeleniumClient client;
     protected static SeleniumConfiguration config;
+    protected static final int POS_THRESHOLD = 20;  //Used to calculate the threshold range for element positioning
 
     static
     {
@@ -41,6 +42,10 @@ public abstract class AbstractAUISeleniumTestCase extends TestCase
 
     public String getCss(String attribute, String element){
         return client.getEval("window.AJS.$('"+ element +"').css('"+ attribute +"')");
+    }
+
+    public boolean isWithinRange(int num, int min, int max){
+        return (num > min && num < max);
     }
 
 }
