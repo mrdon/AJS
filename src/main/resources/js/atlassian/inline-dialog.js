@@ -362,6 +362,7 @@
         
         // Be defensive and make sure that we haven't already bound the event
         var hasBoundOnExternalClick = false;
+        var externalClickNamespace = identifier + ".inline-dialog-check";
 
         /**
          * Catch click events on the body to see if the click target occurs outside of this popup
@@ -369,7 +370,7 @@
          */
         var bindHideOnExternalClick = function () {
             if (!hasBoundOnExternalClick) {
-                $("body").bind("click.inline-dialog-check", function(e) {
+                $("body").bind("click." + externalClickNamespace, function(e) {
                     var $target = $(e.target);
                     // hide the popup if the target of the event is not in the dialog
                     if ($target.closest('#inline-dialog-' + identifier + ' .contents').length === 0) {
@@ -382,7 +383,7 @@
 
         var unbindHideOnExternalClick = function () {
             if (hasBoundOnExternalClick) {
-                $("body").unbind("click.inline-dialog-check");
+                $("body").unbind("click." + externalClickNamespace);
             }
             hasBoundOnExternalClick = false;
         };
