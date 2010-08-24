@@ -217,7 +217,7 @@ AJS.dropDown = function (obj, usroptions) {
                         }
                     },
                     cleanFocus: function () {
-                        this.cleanActive();
+                        res.cleanActive();
                         cdd.focused = -1;
                     },
                     moveDown: moveDown,
