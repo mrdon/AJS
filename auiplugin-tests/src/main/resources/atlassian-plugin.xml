@@ -19,6 +19,7 @@
 
 
     <!-- Web resources for each component's unit tests, each component test page should have only one of these-->
+    <!-- ComponentTests -->
     <web-resource key="whenitype-unit-tests">
         <resource type="download" name="whenitype.js" location="unit-tests/tests/whenitype-unit-tests/whenitype-unit-tests.js"/>
         <resource type="download" name="bootstrap.js" location="unit-tests/tests/whenitype-unit-tests/bootstrap.js"/>
@@ -70,6 +71,7 @@
 
     <!-- Include this resource to run all unit tests-->
     <web-resource key="all-unit-tests">
+        <!--AllTests-->
         <dependency>auiplugin-tests:whenitype-unit-tests</dependency>
         <dependency>auiplugin-tests:dialog-unit-tests</dependency>
         <dependency>auiplugin-tests:dropdown-unit-tests</dependency>
