@@ -1,0 +1,49 @@
+.blanket {
+    position: fixed;
+    _position: absolute;
+    filter: alpha(opacity = 50);
+    height: 100px;
+}
+.dialog {
+    position: absolute;
+}
+.shadow,
+.popup {
+    position: absolute;
+    top: 0;
+}
+
+.dialog .button-panel {
+    *top: 92%;
+    *bottom: auto;
+    *z-index: 3001;
+}
+
+* html .shadow .tl {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shadow/lt.png', sizingMethod='scale');
+}
+* html .shadow .tr {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shadow/rt.png', sizingMethod='scale');
+}
+* html .shadow .br {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shadow/rb.png', sizingMethod='scale');
+}
+* html .shadow .bl {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shadow/lb.png', sizingMethod='scale');
+}
+* html .shadow .b {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shadow/b.png', sizingMethod='scale');
+}
+* html .shadow .l {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shadow/l.png', sizingMethod='scale');
+}
+* html .shadow .r {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shadow/r.png', sizingMethod='scale');
+}
