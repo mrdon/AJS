@@ -1,0 +1,317 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>atlassian-closedsource-pom</artifactId>
+        <groupId>com.atlassian.pom</groupId>
+        <version>14</version>
+    </parent>
+
+    <groupId>com.atlassian.aui</groupId>
+    <artifactId>auiplugin</artifactId>
+    <packaging>jar</packaging>
+    <version>2.1.2</version>
+
+    <name>Atlassian UI Plugin</name>
+    <description>An Atlassian plugin that contains the core javascript files used in Atlassian products.</description>
+    <url>https://studio.atlassian.com/svn/AJS/trunk</url>
+
+    <scm>
+        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/tags/auiplugin-2.1.2</connection>
+        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/tags/auiplugin-2.1.2</developerConnection>
+        <url>https://studio.atlassian.com/source/browse/AJS/tags/auiplugin-2.1.2</url>
+    </scm>
+
+    <issueManagement>
+        <system>Jira</system>
+        <url>https://studio.atlassian.com/browse/AJS</url>
+    </issueManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.atlassian.selenium</groupId>
+            <artifactId>atlassian-selenium</artifactId>
+            <version>1.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <!-- This filtering strategy is intentionally weird to trick the IDEA plugin into including the directory in the classpath -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>atlassian-plugin.xml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>atlassian-plugin.xml</include>
+                    <include>js/atlassian/atlassian.js</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+	    <plugin>
+		<artifactId>maven-release-plugin</artifactId>
+		<version>2.0-beta-9</version>
+		<configuration>
+		   <remoteTagging>true</remoteTagging>
+		</configuration>
+	    </plugin>
+	    
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-src-into-webapp</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <copy todir="${project.build.directory}/test-classes/webapp">
+                                    <fileset dir="${project.build.directory}/classes" />
+                                </copy>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>selenium-maven-plugin</artifactId>
+                <version>1.0-beta-3</version>
+                <executions>
+                    <execution>
+                        <id>start-xvfb-instance</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>xvfb</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${selenium.xvfb.skip}</skip>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>start-selenium-server</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start-server</goal>
+                        </goals>
+                        <configuration>
+                            <background>true</background>
+                            <port>${selenium.server.port}</port>
+                            <firefoxProfileTemplate>${selenium.firefox.profile}</firefoxProfileTemplate>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-selenium-server</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop-server</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.14</version>
+                <configuration>
+                    <contextPath>${context.path}</contextPath>
+                    <scanIntervalSeconds>${scan.interval.seconds}</scanIntervalSeconds>
+                    <webApp>${project.build.directory}/test-classes/webapp</webApp>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>jetty.port</name>
+                            <value>${jetty.port}</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <stopPort>9998</stopPort>
+                    <stopKey>ajsjettytests</stopKey>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>run-exploded</goal>
+                        </goals>
+                        <configuration>
+                            <scanIntervalSeconds>0</scanIntervalSeconds>
+                            <daemon>true</daemon>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                    <systemProperties>
+                        <property>
+                            <name>baseurl</name>
+                            <value>http://localhost:${jetty.port}/${context.path}</value>
+                        </property>
+                        <property>
+                            <name>selenium.location</name>
+                            <value>${selenium.server.location}</value>
+                        </property>
+                        <property>
+                            <name>selenium.port</name>
+                            <value>${selenium.server.port}</value>
+                        </property>
+                        <property>
+                            <name>selenium.browser</name>
+                            <value>${selenium.browser}</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>run-selenium-tests</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <includes>
+                                <include>com/atlassian/**/*Test.java</include>
+                                <!-- todo why does /javascript not work????? -->
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+		 	<!--START - Support Maven CL plugin for rapid development-->
+			<plugin>
+                <groupId>org.twdata.maven</groupId>
+                <artifactId>maven-cli-plugin</artifactId>
+                <configuration>
+                    <commands>
+                        <pi>clean resources compile jar com.atlassian.maven.plugins:atlassian-pdk:install</pi>
+                        <pu>com.atlassian.maven.plugins:atlassian-pdk:uninstall</pu>
+                    </commands>
+                </configuration>
+            </plugin>
+            <!--END - Support Maven CL plugin for rapid development-->
+            <!--START - Minification -->
+            <plugin>
+                <groupId>net.sf.alchim</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compress</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Everything on one line -->
+                    <linebreakpos>-1</linebreakpos>
+                    <!-- Turning off JSlint warnings -->
+                    <jswarn>false</jswarn>
+                    <excludes>
+                        <exclude>*.xml</exclude>
+                        <exclude>**/src/test/*</exclude>
+                        <exclude>**/src/samples/*</exclude>
+                        <!-- exclude external libraries which have their own minified versions -->
+                        <exclude>**/raphael*</exclude>
+                        <exclude>**/jquery-1.3.2*</exclude>
+                        <exclude>**/jquery-ui-1.7.2*</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <!--END - Minification -->
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.atlassian.maven.plugins</groupId>
+                    <artifactId>atlassian-pdk</artifactId>
+                    <version>2.1.7</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <properties>
+        <jetty.port>9999</jetty.port>
+        <context.path>ajs</context.path>
+        <scan.interval.seconds>10</scan.interval.seconds>
+        <selenium.xvfb.skip>true</selenium.xvfb.skip>
+        <selenium.browser>*firefox</selenium.browser>
+        <selenium.firefox.profile />
+        <selenium.server.port>4444</selenium.server.port>
+        <selenium.server.location>localhost</selenium.server.location>
+        <atlassian.plugin.key>com.atlassian.auiplugin</atlassian.plugin.key>
+        <jdkLevel>1.5</jdkLevel>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>run</id>
+            <build>
+                <defaultGoal>org.mortbay.jetty:maven-jetty-plugin:6.1.12.rc5:run-exploded</defaultGoal>
+                <plugins>
+                    <plugin>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>maven-jetty-plugin</artifactId>
+                        <version>6.1.12.rc5</version>
+                        <goals>
+                            <goal>run-exploded</goal>
+                        </goals>
+                        <configuration>
+                            <contextPath>${context.path}</contextPath>
+                            <scanIntervalSeconds>${scan.interval.seconds}</scanIntervalSeconds>
+                            <webApp>${project.build.directory}/test-classes/webapp</webApp>
+                            <systemProperties>
+                                <systemProperty>
+                                    <name>jetty.port</name>
+                                    <value>${jetty.port}</value>
+                                </systemProperty>
+                            </systemProperties>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>bamboo-firefox</id>
+            <properties>
+                <selenium.browser>*firefox /import/tools/firefox/2.0/firefox-bin</selenium.browser>
+                <selenium.xvfb.skip>false</selenium.xvfb.skip>
+            </properties>
+        </profile>
+        <profile>
+            <id>vmwarevista-ie7</id>
+            <properties>
+                <selenium.browser>*iexplore</selenium.browser>
+                <selenium.xvfb.skip>true</selenium.xvfb.skip>
+            </properties>
+        </profile>
+    </profiles>
+    
+</project>
