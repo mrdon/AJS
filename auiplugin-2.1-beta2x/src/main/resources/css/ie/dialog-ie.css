@@ -1,0 +1,53 @@
+/** * The structure of this file pre-supposes two conditions: * -
+That the file is served via a conditional comment of [if IE] * - That
+de-bugging starts with IE8 and moves down through IE7 to IE6 **/
+
+/** * Fixes for IE8, IE7 and IE6 * - each property should be written
+without CSS hacks * eg: 
+.dashboard {
+    margin: 0 0 2px 1px;
+}
+* **/
+.blanket {
+    filter: alpha(opacity = 50);
+    position: fixed;
+}
+.blanket-shim {
+    filter: alpha(opacity = 0);
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2499;
+}
+.shadow,
+.popup {
+    position: absolute;
+    top: 0;
+}
+
+
+/** * Fixes for IE7 and IE6 * - each property *must* be prefixed with
+an asterisk (*) * eg: 
+.dashboard {
+    *margin: 0 0 4px 2px;
+}
+* **/ 
+.blanket {
+    *height: 100px; 
+    *position: absolute;
+}
+.dialog {
+    *position: absolute;
+}
+
+
+/** * Fixes for IE6 only * - each property *must* be prefixed with an
+underscore (_) * eg: 
+.dashboard {
+    _margin: 0 0 0 1px;
+    _padding: 0 0
+    -3px 0;
+}
+* **/
+.shadow {display:none!important;}
