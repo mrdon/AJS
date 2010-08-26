@@ -1,0 +1,5 @@
+<module>
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.atlassian.aui.gwt.AUI'/>
+    <source path="component/form/client" />
+</module>

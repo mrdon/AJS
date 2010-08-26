@@ -1,0 +1,8 @@
+Add tests functions here. Functions should return true for a passed test; any other value will be converted to string for the failure log.
+
+This means you can write a test line like:
+    return str == "happyFactor" || str;
+and if the str isn't the expected "happyFactor" you can see what it is in the log instead of just "false".
+
+
+CAVEAT-EMPTOR : if your alternate return value's toString is *also* equivalent to "true" you'll get false negatives.

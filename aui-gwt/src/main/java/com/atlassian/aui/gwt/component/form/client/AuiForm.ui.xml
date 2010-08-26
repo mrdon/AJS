@@ -1,0 +1,11 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:aui='urn:import:com.atlassian.aui.gwt.component.form.client'>
+    <aui:AdoptableHTMLPanel>
+        <form class="aui" ui:field="formElement" action="POST">
+            <div ui:field="submitBar">
+                <g:Button styleName="button" ui:field="submitButton">Save</g:Button>
+                <g:Anchor ui:field="cancelLink">Cancel</g:Anchor>
+            </div>
+        </form>
+    </aui:AdoptableHTMLPanel>
+</ui:UiBinder>
