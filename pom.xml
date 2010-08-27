@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>atlassian-public-pom</artifactId>
@@ -26,13 +27,13 @@
     </issueManagement>
 
     <modules>
-     <module>auiplugin</module>
-     <module>auiplugin-tests</module>
-    <module>new-aui-component</module>
-  </modules>
+        <module>maven-auicomponent</module>
+        <module>auiplugin</module>
+        <module>auiplugin-tests</module>
+    </modules>
 
     <build>
-        
+
         <plugins>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
@@ -66,7 +67,7 @@
                     <configuration>
                         <basedirectory>${project.basedir}/</basedirectory>
                     </configuration>
-                    
+
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -105,7 +106,7 @@
             </properties>
         </profile>
 
-    <!-- This section is for testing this project against multiple versions of refapp -->
+        <!-- This section is for testing this project against multiple versions of refapp -->
         <profile>
             <id>release</id>
             <build>
