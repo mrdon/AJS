@@ -68,6 +68,10 @@ public class FuncTestServlet extends HttpServlet
                 }
 
             }
+            if (req.getPathInfo().contains("test-pages"))
+            {
+                webResourceManager.requireResource("auiplugin-tests:test-common");
+            }
             String path = req.getPathInfo();
             if (path.endsWith(".html"))
             {

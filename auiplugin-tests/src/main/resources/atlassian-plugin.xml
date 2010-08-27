@@ -11,6 +11,11 @@
         <url-pattern>/ajstest/*</url-pattern>
     </servlet>
 
+    <web-resource key="test-common">
+        <resource type="download" name="common.js" location="test-pages/common.js"/>
+        <resource type="download" name="common.css" location="test-pages/common.css"/>
+    </web-resource>
+
     <!--Web Resources required for qunit tests to run, these should be required on all pages-->
     <web-resource key="qunit" name="Atlassian QUnit Dependencies">
         <resource type="download" name="qunit.js" location="unit-tests/external/qunit/qunit.js"/>
@@ -47,7 +52,7 @@
     <web-resource key="messages-unit-tests">
         <resource type="download" name="messages-unit-tests.js" location="unit-tests/tests/messages-unit-tests/messages-unit-tests.js"/>
     </web-resource>
-    
+
     <web-resource key="stalker-unit-tests">
         <resource type="download" name="stalker-unit-tests.js" location="unit-tests/tests/stalker-unit-tests/stalker-unit-tests.js"/>
     </web-resource>
