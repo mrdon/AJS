@@ -14,8 +14,8 @@
     </parent>
 
     <groupId>com.atlassian.aui</groupId>
-    <artifactId>new-aui-component</artifactId>
-    <name>Example Maven Plugin</name>
+    <artifactId>maven-auicomponent</artifactId>
+    <name>AUI Component</name>
     <version>1.0</version>
     <packaging>maven-plugin</packaging>
 
@@ -39,7 +39,7 @@
             <plugin>
                 <groupId>org.codehaus.groovy.maven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
-                <version>1.0-rc-3</version>
+                <version>1.0</version>
                 <executions>
                     <execution>
                         <goals>
