@@ -62,7 +62,7 @@
                 </plugin>
                 <plugin>
                     <groupId>com.atlassian.aui</groupId>
-                    <artifactId>new-aui-component</artifactId>
+                    <artifactId>maven-auicomponent</artifactId>
                     <configuration>
                         <basedirectory>${project.basedir}/</basedirectory>
                     </configuration>

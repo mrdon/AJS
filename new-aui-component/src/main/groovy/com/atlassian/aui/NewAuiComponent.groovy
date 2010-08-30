@@ -41,9 +41,30 @@ extends GroovyMojo
 
     println("");
     println("");
-    println("--------------------------------------------------");
-    println("----------------New AUI Component-----------------");
-    println("--------------------------------------------------");
+    println "AAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA........"
+    println ".AAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA......."
+    println "..AAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA......"
+    println "...AAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA....."
+    println "...AAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAAA.......AAAAAAAA........AAAAAAAA....."
+    println "....AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA...."
+    println ".....AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA..."
+    println "......AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA.."
+    println "......AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAAAAAAAAAAAA."
+    println ".....AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAAAAAAAAAAAAAAAAAA."
+    println ".....AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAAAAAAAAAAAAAAAAAA"
+    println "....AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAAAAAAAAAAAAAAAAAA."
+    println "...AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.......AAAAAAAAAAAAAAAAAAAAAAAAA."
+    println "......AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA.."
+    println ".....AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA..."
+    println "....AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA........AAAAAAAA...."
+    println "...AAAAAAAA........AAAAAAAA........AAAAAAAAAAAAAAAAAAAAAAAAA.......AAAAAAAAA...."
+    println "...AAAAAAAA........AAAAAAAA........AAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAA....."
+    println "..AAAAAAAA........AAAAAAAA........AAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAA......"
+    println ".AAAAAAAA........AAAAAAAA........AAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAA......."
+    println "AAAAAAAA........AAAAAAAA........AAAAAAAAAAAAAAAAAAAAAAAA........AAAAAAAA........"
+    println("--------------------------------------------------------------------------------");
+    println("----------------------------------New AUI Component-----------------------------");
+    println("--------------------------------------------------------------------------------");
     println("");
 
     boolean confirm = false
@@ -61,24 +82,24 @@ extends GroovyMojo
 
       if (!componentRequirements[1])
       {
-        println "Does your new component have javascript? (y/n)"
+        println "Does your new component have javascript? (y/n): y"
         needJS = convertStringToBoolean(reader.readLine());
         componentRequirements[1] = true;
       }
       if (!componentRequirements[2])
       {
-        println "Does your new component have CSS? (y/n)"
+        println "Does your new component have CSS? (y/n): y"
         needCSS = convertStringToBoolean(reader.readLine());
         componentRequirements[2] = true;
       }
-      println "--------------------------------------------------"
+      println "-------------------------------------------------------------------------------"
 
       println ""
       println "You are creating a new component named: ${componentName}"
-      println "your component needs Javascript:" + needJS;
+      println "Your component needs Javascript: " + needJS;
       println "Your component needs CSS: " + needCSS;
       println ""
-      println "Is this correct? (y/n)"
+      println "Is this correct? (y/n): y"
       confirm = convertStringToBoolean(reader.readLine());
 
       if (!confirm)
@@ -100,51 +121,52 @@ extends GroovyMojo
 
     if (confirm)
     {
-      println "-----------BEGIN COMPONENT GENERATION----------"
+      println "----------------------------BEGIN COMPONENT GENERATION------------------------"
       println "Adding new Files:"
 
       //Add Javascript files if required
       if (needJS)
       {
         println ""
-        println "--> Adding javascript files..."
-        makeFileFromTemplate("${componentName}.js", "${basedirectory}auiplugin/src/main/resources/js/atlassian/", "main-template.js")
+        println ">>> Adding javascript files..."
+        makeFileFromTemplate("${componentName}.js", "${basedirectory}auiplugin/src/main/resources/js/atlassian/", "main-template.js", "")
+        generateJS(new File("${basedirectory}auiplugin/src/main/resources/js/atlassian/${componentName}.js"))
       }
 
       //Add CSS files if required
       if (needCSS)
       {
         println ""
-        println "--> Adding CSS files..."
-        makeFileFromTemplate("${componentName}.css", "${basedirectory}auiplugin/src/main/resources/css/atlassian/", "main-template.css")
-        makeFileFromTemplate("${componentName}-ie.css", "${basedirectory}auiplugin/src/main/resources/css/atlassian/", "main-template-ie.css")
+        println ">>> Adding CSS files..."
+        makeFileFromTemplate("${componentName}.css", "${basedirectory}auiplugin/src/main/resources/css/atlassian/", "main-template.css", "")
+        makeFileFromTemplate("${componentName}-ie.css", "${basedirectory}auiplugin/src/main/resources/css/atlassian/", "main-template-ie.css", "")
 
       }
 
       println ""
-      println "--> Adding Demo Pages..."
-      makeFileFromTemplate("${componentName}-demo.html", "${basedirectory}auiplugin/src/demo/${componentName}/", "demo-template.html")
+      println ">>> Adding Demo Pages..."
+      makeFileFromTemplate("${componentName}-demo.html", "${basedirectory}auiplugin/src/demo/${componentName}/", "demo-template.html", "")
 
       println ""
-      println "--> Adding Test Pages..."
-      makeFileFromTemplate("${componentName}-test.html", "${basedirectory}auiplugin-tests/src/main/resources/test-pages/${componentName}/", "testpage-template.html")
+      println ">>> Adding Test Pages..."
+      makeFileFromTemplate("${componentName}-test.html", "${basedirectory}auiplugin-tests/src/main/resources/test-pages/${componentName}/", "testpage-template.html", "")
 
       println ""
-      println "--> Adding Unit Tests..."
-      makeFileFromTemplate("${componentName}-unit-tests.js", "${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/", "qunit-tests-template.js")
-      makeFileFromTemplate("${componentName}-unit-tests.html", "${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/", "qunit-testpage-template.html")
-      println "----> Adding Qunit Resource to atlassian-plugin.xml"
-      println "------> Creating temporary atlassian-plugin-temp.xml"
+      println ">>> Adding Unit Tests..."
+      makeFileFromTemplate("${componentName}-unit-tests.js", "${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/", "qunit-tests-template.js", "module(\"${componentName} Unit Tests\");\n")
+      makeFileFromTemplate("${componentName}-unit-tests.html", "${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/", "qunit-testpage-template.html", "")
+      println ">>>>>> Adding Qunit Resource to atlassian-plugin.xml"
+      println ">>>>>>>>> Creating temporary atlassian-plugin-temp.xml"
       File atlassianPlugin = new File("${basedirectory}auiplugin-tests/src/main/resources/atlassian-plugin.xml")
       File newAtlassianPlugin = createNewFileUnderDirectory("${basedirectory}auiplugin-tests/src/main/resources/", "atlassian-plugin-temp.xml")
 
-      println "------> Constructing new atlassian-plugin.xml within atlassian-plugin-temp.xml"
+      println ">>>>>>>>> Constructing new atlassian-plugin.xml within atlassian-plugin-temp.xml"
       atlassianPlugin.eachLine {line ->
         newAtlassianPlugin.append(line + "\n")
         if (line == "    <!-- ComponentTests -->")
         {
           newAtlassianPlugin.append("    <web-resource key='${componentName}-unit-tests'>\n")
-          newAtlassianPlugin.append("        <resource type='download' name='${componentName}-unit-tests.js' location='unit-tests/tests/dropdown-unit-tests/${componentName}-unit-tests.js'/>\n")
+          newAtlassianPlugin.append("        <resource type='download' name='${componentName}-unit-tests.js' location='unit-tests/tests/${componentName}-unit-tests/${componentName}-unit-tests.js'/>\n")
           newAtlassianPlugin.append("    </web-resource>\n\n")
         }
 
@@ -153,13 +175,13 @@ extends GroovyMojo
           newAtlassianPlugin.append("        <dependency>auiplugin-tests:${componentName}-unit-tests</dependency>\n");
         }
       }
-      println "------> Copying atlassian-plugin-temp.xml to atlassian-plugin.xml"
+      println ">>>>>>>>> Copying atlassian-plugin-temp.xml to atlassian-plugin.xml"
       atlassianPlugin.write(newAtlassianPlugin.getText());
-      println "------> Removing atlassian-plugin-temp.xml"
+      println ">>>>>>>>> Removing atlassian-plugin-temp.xml"
       newAtlassianPlugin.delete();
 
       println ""
-      println "------------------COMPLETE-------------------"
+      println "----------------------------------COMPLETE---------------------------------"
       println ""
       println "Template files necessary to include your component '${componentName}' in AUI were successfully created!  Please make sure you modify them appropriately:"
       println ""
@@ -192,7 +214,7 @@ extends GroovyMojo
 
   private boolean convertStringToBoolean(String booleanString)
   {
-    return (booleanString.toLowerCase() == "y");
+    return (booleanString.toLowerCase() != "n");
   }
 
   private File createNewFileUnderDirectory(String parentDirectory, String filename)
@@ -203,13 +225,26 @@ extends GroovyMojo
 
   }
 
-  private void makeFileFromTemplate(String filename, String parentDirectory, String template)
+  private void makeFileFromTemplate(String filename, String parentDirectory, String template, String prepend)
   {
     File newFile = createNewFileUnderDirectory(parentDirectory, filename);
     templatesFolder.eachFileMatch(template) { file ->
-      println "----> creating: " + newFile.absolutePath
+      println ">>>>>> creating: " + newFile.absolutePath
+      newFile.append(prepend);
       newFile.append(file.getText());
-      println "------> DONE!"
+      println ">>>>>>>>> DONE!"
     }
   }
+
+  private void generateJS(File jsFile){
+    jsFile.append("//This is the javascript file for the AUI component ${componentName}\n")
+    jsFile.append("(function () {\n")
+    jsFile.append("    AJS.${componentName} = AJS.${componentName} || {};\n")
+    jsFile.append("    AJS.${componentName}.renameThisFunction = function (options) {\n")
+    jsFile.append("        // options must be an object\n")
+    jsFile.append("        // your code here\n")
+    jsFile.append("    };\n")
+    jsFile.append("})();")
+  }
 }
+
