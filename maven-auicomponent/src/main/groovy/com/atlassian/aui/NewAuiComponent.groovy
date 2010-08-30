@@ -1,13 +1,9 @@
-//
-// Generated from archetype; please customize.
-//
-
 package com.atlassian.aui
 
 import org.codehaus.groovy.maven.mojo.GroovyMojo
 
 /**
- * Example Maven2 Groovy Mojo.
+ * Maven2 mojo for generating a new AUI component
  *
  * @goal generate
  * @aggregator true
@@ -16,13 +12,13 @@ class NewAuiComponent
 extends GroovyMojo
 {
   /**
-   * The hello message to display.
+   * The name of the new component
    * @parameter expression="${componentName}" default-value="NewComponent"
    */
   private String componentName
 
   /**
-   * The hello message to display.
+   * The base directory of the project
    * @parameter expression="${basedirectory}" default-value="/"
    */
   private String basedirectory
