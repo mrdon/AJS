@@ -62,3 +62,7 @@ Run/debug AUI in a different product, say, Confluence, and a specific version:
 
    cd auiplugin-tests
    mvn refapp:run -Dproduct=confluence -Dproduct.version=3.5-m1
+   
+If you want to add a new component into AUI the following command will help you generate the files required
+
+mvn auicomponent:generate
