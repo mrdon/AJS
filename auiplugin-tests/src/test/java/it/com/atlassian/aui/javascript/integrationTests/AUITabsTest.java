@@ -65,8 +65,8 @@ public class AUITabsTest extends AbstractAUISeleniumTestCase
     {
         openTestPage(TEST_PAGE);
 
-        assertThat.attributeContainsValue("css=div#horizontal li.first", "class", "active-tab");
-        assertThat.attributeContainsValue("css=div#vertical li.first", "class", "active-tab");
+        assertThat.attributeContainsValue("css=div#horizontal li:first-child", "class", "active-tab");
+        assertThat.attributeContainsValue("css=div#vertical li:first-child", "class", "active-tab");
     }
 
     // Only one menu item should be active
