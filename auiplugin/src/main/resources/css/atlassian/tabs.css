@@ -53,7 +53,7 @@
         border-right: none;
         margin: -1px 0 0 0;
     }
-    .aui-tabs.vertical-tabs ul.tabs-menu li.first.menu-item {
+    .aui-tabs.vertical-tabs ul.tabs-menu li.menu-item:first-child {
         margin-top: 1em;
     }
     .aui-tabs.vertical-tabs ul.tabs-menu li.menu-item.active-tab {
@@ -93,7 +93,7 @@
         float: left;
         width: auto;
     }
-    .aui-tabs.horizontal-tabs ul.tabs-menu li.first.menu-item {
+    .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item:first-child {
         margin-left: 1em;
     }
         .aui-tabs.horizontal-tabs ul.tabs-menu li.menu-item a,
