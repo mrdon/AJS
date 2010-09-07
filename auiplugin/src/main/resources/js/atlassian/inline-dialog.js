@@ -419,6 +419,10 @@
             }
         };
         
+        popup.getOptions = function(){
+            return opts;
+        }
+        
         return popup;
     };
 

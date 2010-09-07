@@ -1,10 +1,7 @@
 module("Dropdown Unit Tests");
 
-test("Dropdown", function() {
-       ok(true, "Dropdown Test 1");
+test("Dropdown Creation", function() {
+    var testDropdown = AJS.dropDown("test","standard");
+    ok(typeof testDropdown == "object", "dropdown object was created successfully!");
 });
-
-test("Dropdown2", function() {
-       ok(true, "Dropdown Test 2");
-});  
   
