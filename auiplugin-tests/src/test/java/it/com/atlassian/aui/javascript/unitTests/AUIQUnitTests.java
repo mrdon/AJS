@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import sun.org.mozilla.javascript.internal.Function;
 
 import java.util.List;
 
