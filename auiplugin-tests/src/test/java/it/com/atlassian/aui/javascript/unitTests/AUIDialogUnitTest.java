@@ -13,7 +13,7 @@ import webdriver.browsers.WebdriverBrowserAutoInstall;
 
 import static org.junit.Assert.*;
 
-public class AUIDialogUnitTests extends AUIWebDriverTestCase
+public class AUIDialogUnitTest extends AUIWebDriverTestCase
 {
     private static final String TEST_PAGE = "test-pages/dialog/dialog-test.html";
 

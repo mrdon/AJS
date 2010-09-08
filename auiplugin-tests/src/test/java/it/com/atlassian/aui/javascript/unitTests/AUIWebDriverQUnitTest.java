@@ -1,74 +1,97 @@
-package it.com.atlassian.aui.javascript.integrationTests;
+package it.com.atlassian.aui.javascript.unitTests;
 
-public class AUIUnitTest extends AbstractAUISeleniumTestCase
+import com.atlassian.webdriver.AtlassianWebDriver;
+import com.atlassian.webdriver.utils.JavaScriptUtils;
+import com.atlassian.webdriver.utils.element.ElementLocated;
+import com.thoughtworks.selenium.Wait;
+import org.junit.Assert;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+
+public class AUIWebDriverQUnitTest extends AUIWebDriverTestCase
 {
+    @Test
     public void testWhenITypeUnitTests()
     {
         openQunitTestPage("whenitype");
         runQunitTests("WhenIType");
     }
 
+    @Test
     public void testDialogUnitTests()
     {
         openQunitTestPage("dialog");
         runQunitTests("Dialog");
     }
 
-
+    @Test
     public void testDropdownUnitTests()
     {
         openQunitTestPage("dropdown");
         runQunitTests("Dropdown");
     }
 
+    @Test
     public void testFormatUnitTests()
     {
         openQunitTestPage("format");
         runQunitTests("Format");
     }
 
+    @Test
     public void testFormsUnitTests()
     {
         openQunitTestPage("forms");
         runQunitTests("Forms");
+
     }
 
+    @Test
     public void testInlineDialogUnitTests()
     {
         openQunitTestPage("inline-dialog");
         runQunitTests("Inline-Dialog");
     }
 
+    @Test
     public void testMessagesUnitTests()
     {
         openQunitTestPage("messages");
         runQunitTests("Messages");
     }
 
+    @Test
     public void testStalkerUnitTests()
     {
         openQunitTestPage("stalker");
         runQunitTests("Stalker");
     }
 
+    @Test
     public void testTablesUnitTests()
     {
         openQunitTestPage("tables");
         runQunitTests("Tables");
     }
 
+    @Test
     public void testTabsUnitTests()
     {
         openQunitTestPage("tabs");
         runQunitTests("Tabs");
     }
 
+    @Test
     public void testToolbarUnitTests()
     {
         openQunitTestPage("toolbar");
         runQunitTests("Toolbar");
     }
 
+    @Test
     public void testEventsUnitTests()
     {
         openQunitTestPage("events");
@@ -80,35 +103,26 @@ public class AUIUnitTest extends AbstractAUISeleniumTestCase
     //runs qunit tests on the page, component argument for reporting purposes only
     private void runQunitTests(String component)
     {
-        client.waitForCondition("selenium.isElementPresent('qunit-testresult')");
-        int numberOfFailedTests = Integer.valueOf(client.getEval("window.AJS.$('li.fail li.fail').size()"));
+        AtlassianWebDriver.waitUntil(new ElementLocated(By.id("qunit-testresult")));
+
+        //Reveal all failed tests
+        clickAll(driver.findElements(By.cssSelector("li.fail strong")));
+        List<WebElement> failedTests = driver.findElements(By.cssSelector("li.fail li.fail"));
+
+        int numberOfFailedTests = failedTests.size();
+
         if (numberOfFailedTests != 0)
         {
-            String failedTests[] = getFailedAssertionsText();
-            String failedTestListString = "";
+            String failedTestsReport = "";
 
-            for (int i = 0; i < failedTests.length; i++)
+            for (int i = 0; i < failedTests.size(); i++)
             {
 
-                failedTestListString = failedTestListString + "FAILED! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + failedTests[i] + "\n";
+                failedTestsReport = failedTestsReport + "FAILED! >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + failedTests.get(i).getText() + "\n";
             }
 
-            fail("There are " + (numberOfFailedTests) + " failed unit tests for" + component + " \n\n" + failedTestListString);
+            Assert.fail("There are " + (numberOfFailedTests) + " failed unit tests for" + component + " \n\n" + failedTestsReport);
         }
-    }
-
-    //Function to retrive all the failed assertions and place them in an array to be used for reporting
-    private String[] getFailedAssertionsText()
-    {
-
-        String result = client.getEval("var string = \"\";function getText(){window.AJS.$('li.fail li.fail').each( function(){string = string + window.AJS.$(this).text() + \"|\";});return string;} getText();");
-
-        String resultSplit[];
-
-        resultSplit = result.split("\\|");
-
-
-        return resultSplit;
     }
 
     //Opens a qunit test page for the specified component (assumes correct test file structure)
@@ -117,5 +131,9 @@ public class AUIUnitTest extends AbstractAUISeleniumTestCase
         openTestPage("unit-tests/tests/" + component + "-unit-tests/" + component + "-unit-tests.html");
     }
 
-
+    private void clickAll(List<WebElement> find){
+        for(int i=0;i<find.size(); i++){
+            find.get(i).click();
+        }
+    }
 }

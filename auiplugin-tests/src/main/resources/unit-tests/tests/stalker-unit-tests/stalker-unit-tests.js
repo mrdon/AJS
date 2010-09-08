@@ -1,5 +1,5 @@
 module("Stalker Unit Tests");
 
-test("Stalker", function() {
+test("Stalker API Tests", function() {
        ok(true, "Stalker Tests!");
 });
