@@ -18,20 +18,20 @@
         <h4><a href="../index.html"> Back to AUI Demo </a></h4>
     </div>
     
-    <div class = "aui-test source-required">
+    <div class = "aui-test source-required shims-required-left">
         <h2> Standard Inline-Dialog On Click</h2>
         <p class="description"> Shows a standard Inline Dialog on Click </p>
         <div class="html-code">
             <div><a href="inline-dialog.html" id="popupLink">Click Link</a></div>
         </div>
         <script type="text/javascript" class="js-code">
-            addSample(function() {
+            addSample(function() {0
                 AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html");
             });
         </script>    
     </div>
     
-    <div class = "aui-test source-required">
+    <div class = "aui-test source-required shims-required-left">
         <h2> Standard Inline-Dialog On Hover</h2>
         <p class="description"> Shows a standard Inline Dialog on Hover </p>
         <div class="html-code">
@@ -106,7 +106,7 @@
         </script>    
     </div>
     
-    <div class = "aui-test source-required">
+    <div class="aui-test source-required shims-required-right">
         <h2> Right Positioned Inline-Dialog - Medium Trigger</h2>
         <p class="description"> Demonstrates behavior when positioned to the right of the page. </p>
         <div class="html-code">
@@ -145,7 +145,7 @@
         </script>    
     </div>
     
-    <div class = "aui-test source-required">
+    <div class="aui-test source-requiredshims-required-left">
         <h2> relativeToMouse Option</h2>
         <p class="description"> Demonstrates behavior when positioned relativeToMouse option is turned on. </p>
         <div class="html-code">
@@ -178,7 +178,7 @@
          </script>    
      </div>
      
-     <div class="aui-demo html-code" style="position:relative">
+     <div class="aui-test shims-required-left" style="position:relative">
          <h2> Default Flipped Behavior</h2>
          <p class="description"> Demonstrates behavior Long Inline-Dialogs are positioned at the bottom of a page </p>
          <div class="html-code">
@@ -202,7 +202,7 @@
         // Testing AJS.inlineHelp
         AJS.inlineHelp();
         
-        createViewSourceLinks();
+        createViewSourceLinksAndShimTests();
     </script>
 
 </body>

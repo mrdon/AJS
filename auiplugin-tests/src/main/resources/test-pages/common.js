@@ -52,7 +52,7 @@
 
 function viewHTMLSource(target) {
     var parent = AJS.$(target).parent().parent();
-    var source = parent.children(".html-source");
+    var source = parent.children(".sources .html-source");
     if(parent.children(".html-source:visible").size()==0){
         source.fadeIn(200);
     } else {
@@ -62,7 +62,7 @@ function viewHTMLSource(target) {
 
 function viewJSSource(target) {
     var parent = AJS.$(target).parent().parent();
-    var source = parent.children(".js-source");
+    var source = parent.children(".sources .js-source");
     if(parent.children(".js-source:visible").size()==0){
         source.fadeIn(200);
     } else {
@@ -74,23 +74,31 @@ function addSample(sampleCode){
     AJS.$(document).bind("samples", sampleCode);
 }
 
-function createViewSourceLinks() {
-     
+function createViewSourceLinksAndShimTests() {
+    
+    // Add shim testing to the required test cases
+    AJS.$("[class*=shims-required]").append("<div class='shim-test'></div>");
+    AJS.$(".shim-test").append("<p> For Shim Testing, the below flash object should appear below the aui-blanket: </p>");
+    AJS.$(".shim-test").append("<object width='425' height='344'><param name='movie' value='http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='425' height='344'></embed></object>")
+    
+    //Add HTML and JS source links to those that require it
     var HTMLLink = AJS.$("<div class='view-html-source-link'><a href='#'> View/Hide HTML Source </a></div>"),
         JSLink = AJS.$("<div class='view-js-source-link'><a href='#'> View/Hide Javascript Source </a></div>");
-    AJS.$(".source-required").append("<p>--------------End of Sample -----------</p>");
-    AJS.$(".source-required").append(HTMLLink);
-    AJS.$(".source-required").append(JSLink);
+    AJS.$(".source-required").append(AJS.$("<div class=sources></div>"));
+    AJS.$(".source-required .sources").append("<p>--------------End of Sample -----------</p>");
+    AJS.$(".source-required .sources").append(HTMLLink);
+    AJS.$(".source-required .sources").append(JSLink);
     
+    //Add JS and HTML source code
     AJS.$(".source-required").each(function(){
+
         //add HTML source
         var parent = AJS.$(this);
         var htmlcode = parent.children(".html-code").html();
                       
-        var htmlsource = AJS.$("<textarea class='html-source'>");
-            
-        AJS.$(this).children(".view-html-source-link").after(htmlsource);
-      
+        var htmlsource = AJS.$("<textarea class='html-source'>"); 
+        parent.children(".sources").children(".view-html-source-link").after(htmlsource);
+        
         htmlsource.attr({
            cols: 140,
            rows: 20,
@@ -99,7 +107,6 @@ function createViewSourceLinks() {
 
         htmlsource.val(htmlcode);
         htmlsource.hide();
-        
         //add JS source
         var jscode = parent.children(".js-code").html();
         if (AJS.$.trim(jscode)) {
@@ -107,7 +114,7 @@ function createViewSourceLinks() {
             jscode = AJS.$.trim(jscode);  
             jscode = jscode.substring(0, jscode.length-3);
             var jssource = AJS.$("<textarea class='js-source'>");
-            parent.children(".view-js-source-link").after(jssource);
+           parent.children(".sources").children(".view-js-source-link").after(jssource);
             jssource.attr({
                cols: 140,
                rows: 20,
@@ -117,13 +124,15 @@ function createViewSourceLinks() {
             jssource.hide();
         } else {
             parent.children(".view-js-source-link").remove();
-            parent.append("No JS");
+            parent.append("No JS");   
         }
 
         
     });
-    
+    //Execute sample javascript code
     AJS.$(document).trigger("samples");
+    
+    //Assign click events to HTML and JS links
     AJS.$(".view-html-source-link").children().click(function(e){
         e.preventDefault();
         viewHTMLSource(e.target);   //defined in common.js

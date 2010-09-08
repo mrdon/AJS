@@ -26,15 +26,8 @@ body {
     text-decoration: none;
 }
 
-.shim-testing {
-    margin-left: auto; 
-    margin-right:auto; 
-    width: 400px; 
-    text-align: center; 
-    border-top: 1px solid;
-}
-
 .aui-test {
+    clear:both;
     border: solid 1px; 
     margin-bottom: 5px; 
     padding: 10px;
@@ -44,22 +37,16 @@ body {
     box-shadow: 0 2px 2px #555;
     -moz-box-shadow: 0 2px 2px #555;
     -webkit-box-shadow: 0 2px 2px #555;
+/*        overflow:auto;*/
 }
 
-.aui-demo {
-    border: solid 1px; 
-    margin-bottom: 5px; 
-    padding: 10px;
-    background: #fff;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    box-shadow: 0 2px 2px #555;
-    -moz-box-shadow: 0 2px 2px #555;
-    -webkit-box-shadow: 0 2px 2px #555;
-}
 .JSsource,
 .HTMLsource {
     border: 1px dashed;
+}
+
+.sources {
+    clear:both;
 }
 
 .view-html-source-link{
@@ -90,4 +77,30 @@ body {
 .view-js-source-link a:hover{
     color: #000;
     text-decoration: none;
+}
+
+.shim-test {
+    padding:15px;
+    border:1px dashed #333;
+    background-color:#eee;
+}
+
+.shims-required .shim-test,
+.shims-required-left .shim-test {
+    display:inline-block;
+    left:0;
+}
+
+.shims-required-right {
+    overflow:auto;
+}
+
+.shims-required-right .shim-test {
+    float:right;
+}
+
+.shims-required-center .shim-test {
+    width: 500px;
+    margin:0px auto;
+    text-align:center;
 }
