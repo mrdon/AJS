@@ -38,7 +38,7 @@ AJS.dim = function (useShim) {
         }
 
         // IE needs the overflow on the HTML element so scrollbars are hidden
-        if (AJS.$.browser.msie && parseInt(AJS.$.browser.version) < 8) {
+        if (AJS.$.browser.msie && parseInt(AJS.$.browser.version,10) < 8) {
             AJS.$("html").css("overflow", "hidden");
         } else {
             AJS.$("body").css("overflow", "hidden");
@@ -61,7 +61,7 @@ AJS.undim = function () {
         }
 
         // IE needs the overflow on the HTML element so scrollbars are hidden
-        if (AJS.$.browser.msie && parseInt(AJS.$.browser.version) < 8) {
+        if (AJS.$.browser.msie && parseInt(AJS.$.browser.version,10) < 8) {
             AJS.$("html").css("overflow", "");
         } else {
             AJS.$("body").css("overflow", "");
@@ -136,7 +136,7 @@ AJS.popup = function (options) {
             width: width,
             height: height,
             background: "#fff",
-            "z-index": parseInt(highestZIndex) + 2  //+ 2 so that the shadow can be shown on +1 (underneath the popup but above everything else)
+            "z-index": parseInt(highestZIndex,10) + 2  //+ 2 so that the shadow can be shown on +1 (underneath the popup but above everything else)
         });
         return arguments.callee;
     })(options.width, options.height);
@@ -171,9 +171,8 @@ AJS.popup = function (options) {
         show: function () {
             
             var show = function () {
-                AJS.$(document).keydown(options.keypressListener);
-                AJS.dim();
-                
+                AJS.$(document).keydown(options.keypressListener);     
+                AJS.dim();                                         
                 if(blanket.size()!=0 && options.closeOnOutsideClick){
                     blanket.click( function(){
                         if(popup.is(":visible")){
@@ -182,20 +181,14 @@ AJS.popup = function (options) {
                     });
                 }
                 popup.show();
-                if (!this.shadow && !this.shadowParent) {
-                    var shadowSize = 0.5;
-                    this.shadowParent = AJS.$("<div class='aui-dialog-shadow-parent'></div>").css({
-                        marginTop: popup.css("margin-top"),
-                        //shadow div will be the width of the box + the shadow so we need to offset by the shadow size to place it under the dialog
-                        marginLeft: parseInt(popup.css("margin-left")) - (shadowSize * 10)  + "px",
-                        "z-index": popup.css("z-index") - 1 //show the shadow directly below the popup
-                    }).insertBefore(popup);
-
-                    this.shadow = Raphael.shadow(0, 0, options.width, options.height, {
-                        size: shadowSize,
-                        stroke: "none",
-                        target: this.shadowParent[0]
+                if (!this.shadow) {
+                    //as we are pretty close to the first sibling offset should be a cheap call
+                    var offset = popup.offset();
+                    this.shadow = Raphael.shadow(offset.top, offset.left, options.width, options.height, {
+                        target: popup[0],
+                        zindex: (popup.css("z-index") - 1)
                     });
+                    this.shadow.css({position: 'fixed', top: '50%', left: '50%', marginLeft: -(options.width / 2 - 5) + "px",  marginTop: -(options.height / 2 - 5) + "px"});
                 }
 
 				AJS.popup.current = this;
@@ -215,8 +208,6 @@ AJS.popup = function (options) {
             if (this.shadow) {
                 this.shadow.remove();
                 this.shadow = null;
-                this.shadowParent.remove();
-                this.shadowParent = null;
             }
 
             //only undim if no other dialogs are visible
@@ -621,7 +612,7 @@ AJS.popup = function (options) {
         if (this.header) {
             this.header.remove();
         }
-        this.header =  AJS("h2").html(title).addClass("dialog-title");
+        this.header =  AJS("h2").html(title || '').addClass("dialog-title");
         className && this.header.addClass(className);
         this.element.prepend(this.header);
         this.recalcSize();
@@ -969,7 +960,7 @@ AJS.popup = function (options) {
     AJS.Dialog.prototype.disable = function () {
         this.popup.disable();
         return this;
-    }
+    };
     /**
      * Enables the dialog if disabled
      * @method disable
@@ -977,7 +968,7 @@ AJS.popup = function (options) {
     AJS.Dialog.prototype.enable = function () {
         this.popup.enable();
         return this;
-    }
+    };
     /**
      * Gets set of items depending on query
      * @method get

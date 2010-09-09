@@ -1,54 +1,49 @@
-/*!
- * Raphael Shadow plugin 0.3
- *
- * Copyright (c) 2008 - 2009 Dmitry Baranovskiy (http://raphaeljs.com)
- * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
- */
 if (window.Raphael) {
-    Raphael.shadow = function (x, y, w, h, options) {
-        // options format: {
-        //     size: 0..1, shadow size
-        //     color: "#000", placeholder colour
-        //     stroke: "#000", placeholder stroke colour
-        //     shadow: "#000", shadow colour
-        //     target: "someID" | htmlElement
-        //     r: 5, radius of placeholder rounded corners
-        // }
-        options = options || {};
-        var t = ~~(size * .3 + .5),
-            size = (options.size || 1) * 10,
-            color = options.color || "#fff",
-            stroke = options.stroke || color,
-            shadowColor = options.shadow || "#000",
-            target = options.target || null,
-            R = options.r == null ? 3 : options.r,
-            s = size,
-            b = size * 2,
-            r = b + s,
-            rg = this.format("r{0}-{0}", shadowColor),
-            rect = "rect",
-            none = "none",
-            res,
-            set;
-    
-            if (target) {
-                res = this(target, w + (x = s) * 2, h + (y = t) + b);
-            } else {
-                res = this(x - s, y - t, w + (x = s) * 2, h + (y = t) + b);
+    Raphael.shadow = function(x, y, w, h, options) {
+     		options = options || {};
+     		var target = options.target || null,
+     			colour = options.shadow || options.color || "#000", //i saw two usages of aui shadow with the two different methods
+     			size = options.size * 10 || -4, //makes it sane with no size included. just here for backwards compatability
+     			offsetSize = options.offsetSize || 5, //by default we want to offset by 5 pixels for pretty ness
+     			zindex = options.zindex || 1, 
+     			paper,rect, $container = AJS.$("<div id='aui-shadow'></div"), opacity = ".5" , blur = "3";
+
+     		w = w + size; h = h + size;
+            
+     		//from the old api, this meant you wanted a shadow drawn into the element
+     		if(target && x == y && x == 0) {
+     		    x = AJS.$(target).offset().top;
+     		    y = AJS.$(target).offset().left;
+     		}
+     
+     		//ie9 should support svg so should support the opacity, until then tone the colour down
+     		//also as the blur seems a little stronger in ie, we need to counter the offset
+     		
+     	    if (AJS.$.browser.msie && ~~(AJS.$.browser.version) < 9) {
+           	    colour = "#f0f0f0";
+           	    offsetSize = 3;
             }
-    
-            set = res.set(
-                res.rect(x - s, y - t, b + s, h + y + b).attr({stroke: none, fill: this.format("180-{0}-{0}", shadowColor), opacity: 0, "clip-rect": [x - s + 1, y - t + r, b, h + y + b - r * 2 + .9]}),
-                res.rect(x + w - b, y - t, b + s, h + y + b).attr({stroke: none, fill: this.format("0-{0}-{0}", shadowColor), opacity: 0, "clip-rect": [x + w - s + 1, y - t + r, b, h + y + b - r * 2]}),
-                res.rect(x + b - 1, y + h - s, w + b, b + s).attr({stroke: none, fill: this.format("270-{0}-{0}", shadowColor), opacity: 0, "clip-rect": [x + b, y + h - s, w + b - r * 2, b + s]}),
-                res.rect(x + s - 1, y - t, w + b, b + s).attr({stroke: none, fill: this.format("90-{0}-{0}", shadowColor), opacity: 0, "clip-rect": [x + b, y - t, w + b - r * 2, s + t + 1]}),
-                res.circle(x + b, y + h - s, r).attr({stroke: none, fill: rg, opacity: 0, "clip-rect": [x - s, y + h - s + .999, r, r]}),
-                res.circle(x + w - b, y + h - s, r).attr({stroke: none, fill: rg, opacity: 0, "clip-rect": [x + w - b, y + h - s, r, r]}),
-                res.circle(x + b, y - t + r, r).attr({stroke: none, fill: rg, opacity: 0, "clip-rect": [x - s, y - t, r, r]}),
-                res.circle(x + w - b, y - t + r, r).attr({stroke: none, fill: rg, opacity: 0, "clip-rect": [x + w - b, y - t, r, r]}),
-                res.rect(x, y, w, h, R).attr({fill: color, stroke: stroke})
-            );
-    
-        return set[0].paper;
-    };  
+        
+     		$container.css({position:"absolute",top: x +"px", left : y+"px",zIndex: zindex,width: w, height: h});
+     		//still no blur in safari 5.0 so until then, leave off the version number
+     		//apart from growing the target there is no way to add a size, this would have an effect on scroll position
+     		if (navigator.appVersion.indexOf("AppleWebKit") > -1 && navigator.appVersion.indexOf("Chrome") < 0 && target) {
+     		        offsetSize = (options.offsetSize || 3) +"px";
+     		       // target.style.cssText = "-webkit-box-shadow: "+  offsetSize + offsetSize + "5px "+ colour + ";";
+     		}
+     		else {
+     			if(target) {
+     			    $container.insertBefore(target);
+     			    //TODO: find out why this extra 10 seems to make everything happy figured size + offset would be the size
+     				paper = this($container[0],w+offsetSize + 10,h+offsetSize + 10);
+     	        }
+     			else{
+     				paper = this(x,y,w,h);
+     			}
+     			rect = paper.rect(offsetSize,offsetSize,w,h).attr({fill: colour,stroke: colour,blur:blur,opacity:opacity}); //stroke needed to get around an issue with VML and no stroke defaulting to #000
+     			paper.canvas.style.position = "absolute";	
+     		}
+     		return $container;
+     	};
+
 }
