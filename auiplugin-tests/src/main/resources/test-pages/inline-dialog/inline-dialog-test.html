@@ -93,6 +93,20 @@
             });
         </script>    
     </div>
+    
+    <div class = "aui-test source-required">
+        <h2> Really Long Trigger Inline-Dialog</h2>
+        <p class="description">A test to check if the inline-dialog renders correctly if it is shorter than half the width of the trigger </p>
+        <div class="html-code">
+              <div><a href="#" id="longest-trigger">This is the longest trigger ever, the inline-dialog should still render correctly even if the it is less than half the width of this trigger</a></div>
+        </div>
+        <script type="text/javascript" class="js-code">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#longest-trigger"), 20, "dialog-content.html");
+            });
+        </script>    
+    </div>
+    
     <div class = "aui-test source-required">
         <h2> Right Positioned Inline-Dialog - Short Trigger</h2>
         <p class="description"> Demonstrates behavior when positioned to the right of the page. </p>

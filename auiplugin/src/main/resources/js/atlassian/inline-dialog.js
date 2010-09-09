@@ -115,6 +115,7 @@
                                 arrowOffsetY = popup.height() - 10; //calculate new offset for the arrow, 11 is the height of the shadow in IE
                             }
                         }
+                        arrowOffsetX = middleOfTrigger - popupLeft;
 
                         //check if the popup should show up relative to the mouse
                         if(opts.isRelativeToMouse){
@@ -122,18 +123,19 @@
                                 popupRight = SCREEN_PADDING;
                                 popupLeft = "auto";
                                 arrowOffsetX = mousePosition.x - ($(window).width() - opts.width);
-                            } else {
+                            }else{
                                 popupLeft = mousePosition.x - 20;
                                 popupRight = "auto";
                                 arrowOffsetX = mousePosition.x - popupLeft;
                             }
-                        } else {
+                        }else{
                             if(diff < 0){
                                 popupRight = SCREEN_PADDING;
                                 popupLeft = "auto";
                                 arrowOffsetX = middleOfTrigger - ($(window).width() - opts.width);
-                            } else {
-                                arrowOffsetX = middleOfTrigger - popupLeft;
+                            }else if(opts.width <= triggerWidth/2){
+                                arrowOffsetX = opts.width/2;
+                                popupLeft = middleOfTrigger-opts.width/2;
                             }
                         }
 
