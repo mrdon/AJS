@@ -74,7 +74,7 @@ function addSample(sampleCode){
     AJS.$(document).bind("samples", sampleCode);
 }
 
-function createViewSourceLinksAndShimTests() {
+function setupTestPage() {
     
     // Add shim testing to the required test cases
     AJS.$("[class*=shims-required]").append("<div class='shim-test'></div>");
