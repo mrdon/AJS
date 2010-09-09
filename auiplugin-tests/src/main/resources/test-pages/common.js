@@ -79,7 +79,7 @@ function setupTestPage() {
     // Add shim testing to the required test cases
     AJS.$("[class*=shims-required]").append("<div class='shim-test'></div>");
     AJS.$(".shim-test").append("<p> For Shim Testing, the below flash object should appear below the aui-blanket: </p>");
-    AJS.$(".shim-test").append("<object width='425' height='344'><param name='movie' value='http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='http://www.youtube.com/v/AFVlJAi3Cso&amp;hl=en&amp;fs=1&amp;' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='425' height='344'></embed></object>")
+    AJS.$(".shim-test").append("<object width='480' height='385'><param name='movie' value='http://www.youtube.com/v/K-Gwu4LfrpM?fs=1&amp;hl=en_US'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed wmode=transparent src='http://www.youtube.com/v/K-Gwu4LfrpM?fs=1&amp;hl=en_US' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='480' height='385'></embed></object>")
     
     //Add HTML and JS source links to those that require it
     var HTMLLink = AJS.$("<div class='view-html-source-link'><a href='#'> View/Hide HTML Source </a></div>"),
