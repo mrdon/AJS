@@ -305,10 +305,10 @@ AJS.dropDown = function (obj, usroptions) {
             return causer;
         };
         res.addCallback("reset", function () {
-            if (options.firstSelected && this.links[0]) {
-                active(0).call(this.links[0]);
-            }
-        });
+                   if (options.firstSelected && this.links[0]) {
+                       active(0).call(this.links[0]);
+                   }
+               });
 
         if (!AJS.dropDown.iframes) {
             AJS.dropDown.iframes = [];
@@ -327,79 +327,80 @@ AJS.dropDown = function (obj, usroptions) {
         }();
 
         res.addCallback("show", function() {
-            AJS.$(AJS.dropDown.iframes).each(function(){
-                var $this = AJS.$(this);
-                if ($this.is(":visible")) {
-                    var offset = $this.offset();
-                    offset.height = $this.height();
-                    offset.width = $this.width();
-                    this.shim.css({
-                        left: offset.left + "px",
-                        top: offset.top + "px",
-                        height: offset.height + "px",
-                        width: offset.width + "px"
-                    }).removeClass("hidden");
-                }
-            });
-        });
-        res.addCallback("hide", function () {
-            AJS.$(AJS.dropDown.iframes).each(function(){
-                this.shim.addClass("hidden");
-            });
-            options.hideHandler();
-        });
+                         AJS.$(AJS.dropDown.iframes).each(function(){
+                           var $this = AJS.$(this);
+                           if ($this.is(":visible")) {
+                               var offset = $this.offset();
+                               offset.height = $this.height();
+                               offset.width = $this.width();
+                               this.shim.css({
+                                   left: offset.left + "px",
+                                   top: offset.top + "px",
+                                   height: offset.height + "px",
+                                   width: offset.width + "px"
+                               }).removeClass("hidden");
+                           }
+                       });
+                   });
+               res.addCallback("hide", function () {
+                   AJS.$(AJS.dropDown.iframes).each(function(){
+                       this.shim.addClass("hidden");
+                   });
+                   options.hideHandler();
+               });
 
-        // shadow
-        (function () {
-            var refreshShadow = function () {
-                if(this.shadow) {
-                    this.shadow.remove();
-                }
-                if (this.$.is(":visible")) {
-                    this.shadow = Raphael.shadow(this.$.css("top"), this.$.position().left, this.$.outerWidth(true), this.$.outerHeight(true), {
-                        target: this.$[0]
-                    });
-                }
-            };
-            res.addCallback("reset", refreshShadow);
-            res.addCallback("show", refreshShadow);
-            res.addCallback("hide", function () {
-                if (this.shadow) {
-                    this.shadow.remove();
-                }
-            });
-        })();
-
-        // shim to sit over flash and select boxes
-        if (AJS.$.browser.msie) {
-            (function () {
-                var refreshIframeShim = function () {
-                    if (this.$.is(":visible")) {
-                        if (!this.iframeShim) {
-                            this.iframeShim = AJS.$('<iframe class="dropdown-shim" src="javascript:false;" frameBorder="0" />').insertBefore(this.$);
-                        }
-                        this.iframeShim.css({
-                            display: "block",
-                            top: this.$.css("top"),
-                            width: this.$.outerWidth() + "px",
-                            height: this.$.outerHeight() + "px"
-                        });
-                        if(options.alignment=="left"){
-                            this.iframeShim.css({left:"0px"});
-                        } else {
-                            this.iframeShim.css({right:"0px"});
-                        }
-                    }
-                };
-                res.addCallback("reset", refreshIframeShim);
-                res.addCallback("show", refreshIframeShim);
-                res.addCallback("hide", function () {
-                    if (this.iframeShim) {
-                        this.iframeShim.css({display: "none"});
-                    }
-                });
-            })();
-        }
+        //shadow
+                   (function () {
+                       var refreshShadow = function () {
+                           var offset = this.$.offset();
+                           if(this.shadow) {
+                               this.shadow.remove();
+                           }
+                           if (this.$.is(":visible")) {
+                               this.shadow = Raphael.shadow(offset.top, offset.left, this.$.outerWidth(true), this.$.outerHeight(true), {
+                                   target: this.$[0]
+                               });
+                           }
+                       };
+                       res.addCallback("reset", refreshShadow);
+                       res.addCallback("show", refreshShadow);
+                       res.addCallback("hide", function () {
+                           if (this.shadow) {
+                               this.shadow.remove();
+                           }
+                       });
+                   })();
+        
+                   // shim to sit over flash and select boxes
+                  if (AJS.$.browser.msie) {
+                      (function () {
+                          var refreshIframeShim = function () {
+                              if (this.$.is(":visible")) {
+                                  if (!this.iframeShim) {
+                                      this.iframeShim = AJS.$('<iframe class="dropdown-shim" src="javascript:false;" frameBorder="0" />').insertBefore(this.$);
+                                  }
+                                  this.iframeShim.css({
+                                      display: "block",
+                                      top: this.$.css("top"),
+                                      width: this.$.outerWidth() + "px",
+                                      height: this.$.outerHeight() + "px"
+                                  });
+                                  if(options.alignment=="left"){
+                                      this.iframeShim.css({left:"0px"});
+                                  } else {
+                                      this.iframeShim.css({right:"0px"});
+                                  }
+                              }
+                          };
+                          res.addCallback("reset", refreshIframeShim);
+                          res.addCallback("show", refreshIframeShim);
+                          res.addCallback("hide", function () {
+                              if (this.iframeShim) {
+                                  this.iframeShim.css({display: "none"});
+                              }
+                          });
+                      })();
+                  }
         result.push(res);
     });
     return result;
@@ -470,12 +471,12 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
         }
 
         ddcontrol.addCallback("show", function () {
-           $parent.addClass("active");
-        });
-
-        ddcontrol.addCallback("hide", function () {
-           $parent.removeClass("active");
-        });
+                $parent.addClass("active");
+             });
+        
+             ddcontrol.addCallback("hide", function () {
+                $parent.removeClass("active");
+             });
     };
 
     var handleEvent = function(event, $trigger, $dropdown, ddcontrol) {

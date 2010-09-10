@@ -34,7 +34,8 @@ if (window.Raphael) {
      		}
      		else {
      			if(target) {
-     			    $container.insertBefore(target);
+     			    $container.appendTo("body");
+     		        // $container.insertBefore(target);
      			    //TODO: find out why this extra 10 seems to make everything happy figured size + offset would be the size
      				paper = this($container[0],w+offsetSize + 10,h+offsetSize + 10);
      	        }
