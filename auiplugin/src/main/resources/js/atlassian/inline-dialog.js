@@ -150,16 +150,7 @@
                             popup.shadow.remove();
                         }
                         popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
-                            shadow: "#333",
-                            size: 0.5,
                             target: popup[0]
-                        });
-                        
-                        AJS.$(popup.shadow.canvas).css({
-                            position: "absolute",
-                            top: 0,
-                            left: -5,
-                            "z-index": -1
                         });
 
                         if (AJS.$.browser.msie) {

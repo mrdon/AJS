@@ -352,37 +352,20 @@ AJS.dropDown = function (obj, usroptions) {
         // shadow
         (function () {
             var refreshShadow = function () {
-                if (this.shadowParent) {
-                    this.shadowParent.remove();
+                if(this.shadow) {
+                    this.shadow.remove();
                 }
-                var shadowSize = 0.6;
-                var shadowXOffset = shadowSize * 10;    //offset the shadow layer to account for the width of the actual shadow
                 if (this.$.is(":visible")) {
-                    this.shadowParent = AJS.$('<div class="aui-shadow-parent"></div>').insertBefore(this.$).css({
-                        top: this.$.css("top"),
-                        left: (this.$.position().left - shadowXOffset), //make sure shadow follows dropdown when alignment changes
-                        width: this.$.width(),
-                        height: this.$.height()
-                    });
-                    if (AJS.$.browser.msie) {
-                        this.shadowParent.css({right: - shadowXOffset});
-                    }
-
-                    this.shadow = Raphael.shadow(0, 0, this.$.outerWidth(true), this.$.outerHeight(true), {
-                        r: 0.2,
-                        shadow: "#333",
-                        size: shadowSize,
-                        stroke: "none",
-                        color: "none",
-                        target: this.shadowParent[0]
+                    this.shadow = Raphael.shadow(this.$.css("top"), this.$.position().left, this.$.outerWidth(true), this.$.outerHeight(true), {
+                        target: this.$[0]
                     });
                 }
             };
             res.addCallback("reset", refreshShadow);
             res.addCallback("show", refreshShadow);
             res.addCallback("hide", function () {
-                if (this.shadowParent) {
-                    this.shadowParent.remove();
+                if (this.shadow) {
+                    this.shadow.remove();
                 }
             });
         })();
@@ -666,7 +649,7 @@ AJS.dropDown.Ajax = function (usroptions) {
                             }
                         });
                         superMethod.call(ddcontrol);
-                        ddcontrol.shadowParent.hide();
+                        ddcontrol.shadow.hide();
                         if (ddcontrol.iframeShim) {
                             ddcontrol.iframeShim.hide();
                         }
