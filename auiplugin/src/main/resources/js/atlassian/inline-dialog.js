@@ -60,7 +60,7 @@
                         
 
                         //CONSTANTS
-                        var SCREEN_PADDING = 5; //determines how close to the edge the dialog needs to be before it is considered offscreen
+                        var SCREEN_PADDING = 10; //determines how close to the edge the dialog needs to be before it is considered offscreen
 
                         //DRAW POPUP
                         function drawPopup (popup, left, right, top, arrowOffsetX, arrowOffsetY, displayAbove) {
