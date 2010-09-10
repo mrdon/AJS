@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>atlassian-public-pom</artifactId>
@@ -11,14 +10,14 @@
     <groupId>com.atlassian.aui</groupId>
     <artifactId>auiplugin-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.2.0-SNAPSHOT</version>
+    <version>3.2-beta1</version>
 
     <name>Atlassian UI Plugin - Parent</name>
 
     <scm>
-        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/trunk</connection>
-        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/trunk</developerConnection>
-        <url>https://studio.atlassian.com/svn/AJS/trunk</url>
+        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/tags/auiplugin-parent-3.2-beta1</connection>
+        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/tags/auiplugin-parent-3.2-beta1</developerConnection>
+        <url>https://studio.atlassian.com/svn/AJS/tags/auiplugin-parent-3.2-beta1</url>
     </scm>
 
     <issueManagement>
