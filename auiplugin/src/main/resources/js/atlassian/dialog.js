@@ -170,6 +170,10 @@ AJS.popup = function (options) {
         show: function () {
             
             var show = function () {
+                var offsetSize = 5;
+         	    if (AJS.$.browser.msie && ~~(AJS.$.browser.version) < 9) {
+               	    offsetSize = 3;
+                }
                 AJS.$(document).keydown(options.keypressListener);     
                 AJS.dim();
                 blanket = AJS.$(".aui-blanket");
@@ -188,7 +192,7 @@ AJS.popup = function (options) {
                         target: popup[0],
                         zindex: (popup.css("z-index") - 1)
                     });
-                    this.shadow.css({position: 'fixed', top: '50%', left: '50%', marginLeft: -(options.width / 2 - 5) + "px",  marginTop: -(options.height / 2 - 5) + "px"});
+                    this.shadow.css({position: 'fixed', top: '50%', left: '50%', marginLeft: -(options.width / 2 - offsetSize) + "px",  marginTop: -(options.height / 2 - offsetSize) + "px"});
                 }
 
 				AJS.popup.current = this;

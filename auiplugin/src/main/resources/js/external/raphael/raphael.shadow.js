@@ -20,8 +20,9 @@ if (window.Raphael) {
      		//also as the blur seems a little stronger in ie, we need to counter the offset
 
      	    if (AJS.$.browser.msie && ~~(AJS.$.browser.version) < 9) {
-           	    colour = "#f0f0f0";
+                colour = "#f0f0f0";
            	    offsetSize = 3;
+           	    opacity = ".2";
             }
 
      		$container.css({position:"absolute",top: x +"px", left : y+"px",zIndex: zindex,width: w, height: h});
