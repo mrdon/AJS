@@ -113,7 +113,6 @@ AJS.popup = function (options) {
         options = AJS.$.extend({}, options, arguments[3]);
     }
     options = AJS.$.extend({}, defaults, options);
-
     var popup = AJS("div").addClass("aui-popup");
 
     if (options.id) {
@@ -172,7 +171,8 @@ AJS.popup = function (options) {
             
             var show = function () {
                 AJS.$(document).keydown(options.keypressListener);     
-                AJS.dim();                                         
+                AJS.dim();
+                blanket = AJS.$(".aui-blanket");
                 if(blanket.size()!=0 && options.closeOnOutsideClick){
                     blanket.click( function(){
                         if(popup.is(":visible")){

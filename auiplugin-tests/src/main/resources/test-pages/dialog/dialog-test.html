@@ -216,13 +216,14 @@
            </div>
            <script type="text/javascript" class="js-code">
                addSample(function() {
-                   var testCloseOnClickPopup = AJS.popup(400, 200, "test-close-on-click-popup", {closeOnClick: true});
+                   var testCloseOnOutsideClickPopup = AJS.popup(400, 200, "test-close-on-click-popup", {closeOnOutsideClick: true});
                    AJS.$("#test-close-on-click-button").click(function(){
-                       testCloseOnClickPopup.show();    
+                       testCloseOnOutsideClickPopup.show();
                    });
 
-                   AJS.$("#test-close-on-click-link").click(function(){
-                       testCloseOnClickPopup.show(); 
+                   AJS.$("#test-close-on-click-link").click(function(e){
+                       e.preventDefault();
+                       testCloseOnOutsideClickPopup.show(); 
                    });
                });
            </script>
