@@ -42,7 +42,7 @@ public class AUIDialogUnitTest extends AUIWebDriverTestCase
     {
         driver.findElement(By.id("popup-button")).click();
         assertTrue("popup div is visible after showing", Check.elementIsVisible(By.id("my-popup")));
-        assertTrue("shadow-parent div is visible showing", Check.elementIsVisible(By.cssSelector(".aui-dialog-shadow-parent")));
+        assertTrue("shadow-parent div is visible showing", Check.elementIsVisible(By.cssSelector(".aui-shadow")));
     }
 
     @Test
@@ -50,10 +50,10 @@ public class AUIDialogUnitTest extends AUIWebDriverTestCase
     {
         driver.findElement(By.id("popup-button")).click();
         assertTrue("popup div is visible after the button click", Check.elementIsVisible(By.id("my-popup")));
-        assertTrue("shadow-parent div is visible after button click", Check.elementIsVisible(By.cssSelector(".aui-dialog-shadow-parent")));
+        assertTrue("shadow-parent div is visible after button click", Check.elementIsVisible(By.cssSelector(".aui-shadow")));
         driver.findElement(By.cssSelector("body")).sendKeys(Keys.ESCAPE);
         assertTrue("popup div is not visible after the hiding", Check.elementIsVisible(By.id("my-popup"))==false);
-        assertTrue("shadow-parent div is not visible after hiding", Check.elementIsVisible(By.cssSelector(".aui-dialog-shadow-parent"))==false);
+        assertTrue("shadow-parent div is not visible after hiding", Check.elementIsVisible(By.cssSelector(".aui-shadow"))==false);
 
     }
 

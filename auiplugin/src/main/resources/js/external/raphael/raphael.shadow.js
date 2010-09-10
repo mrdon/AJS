@@ -5,31 +5,31 @@ if (window.Raphael) {
      			colour = options.shadow || options.color || "#000", //i saw two usages of aui shadow with the two different methods
      			size = options.size * 10 || -4, //makes it sane with no size included. just here for backwards compatability
      			offsetSize = options.offsetSize || 5, //by default we want to offset by 5 pixels for pretty ness
-     			zindex = options.zindex || 1, 
-     			paper,rect, $container = AJS.$("<div id='aui-shadow'></div"), opacity = ".5" , blur = "3";
+     			zindex = options.zindex || 1,
+     			paper,rect, $container = AJS.$("<div class='aui-shadow'></div"), opacity = ".5" , blur = "3";
 
      		w = w + size; h = h + size;
-            
+
      		//from the old api, this meant you wanted a shadow drawn into the element
      		if(target && x == y && x == 0) {
      		    x = AJS.$(target).offset().top;
      		    y = AJS.$(target).offset().left;
      		}
-     
+
      		//ie9 should support svg so should support the opacity, until then tone the colour down
      		//also as the blur seems a little stronger in ie, we need to counter the offset
-     		
+
      	    if (AJS.$.browser.msie && ~~(AJS.$.browser.version) < 9) {
            	    colour = "#f0f0f0";
            	    offsetSize = 3;
             }
-        
+
      		$container.css({position:"absolute",top: x +"px", left : y+"px",zIndex: zindex,width: w, height: h});
      		//still no blur in safari 5.0 so until then, leave off the version number
      		//apart from growing the target there is no way to add a size, this would have an effect on scroll position
      		if (navigator.appVersion.indexOf("AppleWebKit") > -1 && navigator.appVersion.indexOf("Chrome") < 0 && target) {
      		        offsetSize = (options.offsetSize || 3) +"px";
-     		       // target.style.cssText = "-webkit-box-shadow: "+  offsetSize + offsetSize + "5px "+ colour + ";";
+     		        target.style.cssText += "-webkit-box-shadow: "+  offsetSize + " " + offsetSize + " 5px "+ colour + ";";
      		}
      		else {
      			if(target) {
@@ -41,7 +41,7 @@ if (window.Raphael) {
      				paper = this(x,y,w,h);
      			}
      			rect = paper.rect(offsetSize,offsetSize,w,h).attr({fill: colour,stroke: colour,blur:blur,opacity:opacity}); //stroke needed to get around an issue with VML and no stroke defaulting to #000
-     			paper.canvas.style.position = "absolute";	
+     			paper.canvas.style.position = "absolute";
      		}
      		return $container;
      	};
