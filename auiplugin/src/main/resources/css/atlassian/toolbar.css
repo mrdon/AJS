@@ -41,6 +41,7 @@
 
 .aui-toolbar .toolbar-split.toolbar-split-row {
     clear: both;
+    float: none;
     width: 100%;
 }
 
@@ -127,7 +128,8 @@
 
 .toolbar-group .toolbar-item.toolbar-splitbutton:last-of-type .aui-dd-trigger,
 .toolbar-group .toolbar-item:last-of-type .toolbar-trigger,
-.toolbar-group .toolbar-item:last-of-type button {
+.toolbar-group .toolbar-item:last-of-type button,
+.toolbar-group .toolbar-item:last-of-type input {
     -webkit-border-top-right-radius: 3px;
     -webkit-border-bottom-right-radius: 3px;
     -moz-border-radius-topright: 3px;
