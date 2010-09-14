@@ -84,12 +84,8 @@
     right:0px;
 }
 
-.aui-dd-parent .aui-shadow-parent {
-    background: transparent;
-    border: none;
-    margin: 0;
-    padding: 0;
-    right: 7px;
+.aui-dd-parent .aui-shadow {
+    right: 5px;
 }
 .aui-dd-parent .aui-dropdown li.dropdown-item,
 .aui-dropdown li.dropdown-item  {

@@ -279,6 +279,7 @@ AJS.dropDown = function (obj, usroptions) {
 
         res.reset = methods.reset();
         res.show = function (method) {
+            this.alignment = options.alignment;
             hider();
             AJS.dropDown.current = this;
             this.method = method || this.method || "appear";
@@ -300,7 +301,7 @@ AJS.dropDown = function (obj, usroptions) {
             this.cleanFocus();
             methods[this.method](false);
             $doc.unbind("click", hider).unbind("keydown", moveFocus);
-			 AJS.$(document).trigger("hideLayer", ["dropdown", AJS.dropDown.current]);
+			AJS.$(document).trigger("hideLayer", ["dropdown", AJS.dropDown.current]);
             AJS.dropDown.current = null;
             return causer;
         };
@@ -318,8 +319,8 @@ AJS.dropDown = function (obj, usroptions) {
                var iframe = this;
                 if (!iframe.shim) {
                     iframe.shim = AJS.$("<div />")
-                                                  .addClass("shim hidden")
-                                                  .appendTo("body");
+                                     .addClass("shim hidden")
+                                     .appendTo("body");
                     AJS.dropDown.iframes.push(iframe);
                 }
             });
@@ -350,57 +351,64 @@ AJS.dropDown = function (obj, usroptions) {
                });
 
         //shadow
-                   (function () {
-                       var refreshShadow = function () {
-                           var offset = this.$.offset();
-                           if(this.shadow) {
-                               this.shadow.remove();
-                           }
-                           if (this.$.is(":visible")) {
-                               this.shadow = Raphael.shadow(offset.top, offset.left, this.$.outerWidth(true), this.$.outerHeight(true), {
-                                   target: this.$[0]
-                               });
-                           }
-                       };
-                       res.addCallback("reset", refreshShadow);
-                       res.addCallback("show", refreshShadow);
-                       res.addCallback("hide", function () {
-                           if (this.shadow) {
-                               this.shadow.remove();
-                           }
-                       });
-                   })();
+       (function () {
+           var refreshShadow = function () {
+               var offset = this.$.offset();
+               if(this.shadow) {
+                   this.shadow.remove();
+               }
+               if (this.$.is(":visible")) {
+                   this.shadow = Raphael.shadow(0, 0, this.$.outerWidth(true), this.$.outerHeight(true), {
+                       target: this.$[0]
+                   });
+                   this.shadow.css("top","auto");
+                   if(this.alignment == "right") {
+                        this.shadow.css("left","");
+                   }
+                   else {
+                       this.shadow.css("left","0px");
+                   }
+               }
+           };
+           res.addCallback("reset", refreshShadow);
+           res.addCallback("show", refreshShadow);
+           res.addCallback("hide", function () {
+               if (this.shadow) {
+                   this.shadow.remove();
+               }
+           });
+       })();
         
-                   // shim to sit over flash and select boxes
-                  if (AJS.$.browser.msie) {
-                      (function () {
-                          var refreshIframeShim = function () {
-                              if (this.$.is(":visible")) {
-                                  if (!this.iframeShim) {
-                                      this.iframeShim = AJS.$('<iframe class="dropdown-shim" src="javascript:false;" frameBorder="0" />').insertBefore(this.$);
-                                  }
-                                  this.iframeShim.css({
-                                      display: "block",
-                                      top: this.$.css("top"),
-                                      width: this.$.outerWidth() + "px",
-                                      height: this.$.outerHeight() + "px"
-                                  });
-                                  if(options.alignment=="left"){
-                                      this.iframeShim.css({left:"0px"});
-                                  } else {
-                                      this.iframeShim.css({right:"0px"});
-                                  }
-                              }
-                          };
-                          res.addCallback("reset", refreshIframeShim);
-                          res.addCallback("show", refreshIframeShim);
-                          res.addCallback("hide", function () {
-                              if (this.iframeShim) {
-                                  this.iframeShim.css({display: "none"});
-                              }
-                          });
-                      })();
+       // shim to sit over flash and select boxes
+      if (AJS.$.browser.msie) {
+          (function () {
+              var refreshIframeShim = function () {
+                  if (this.$.is(":visible")) {
+                      if (!this.iframeShim) {
+                          this.iframeShim = AJS.$('<iframe class="dropdown-shim" src="javascript:false;" frameBorder="0" />').insertBefore(this.$);
+                      }
+                      this.iframeShim.css({
+                          display: "block",
+                          top: this.$.css("top"),
+                          width: this.$.outerWidth() + "px",
+                          height: this.$.outerHeight() + "px"
+                      });
+                      if(options.alignment=="left"){
+                          this.iframeShim.css({left:"0px"});
+                      } else {
+                          this.iframeShim.css({right:"0px"});
+                      }
                   }
+              };
+              res.addCallback("reset", refreshIframeShim);
+              res.addCallback("show", refreshIframeShim);
+              res.addCallback("hide", function () {
+                  if (this.iframeShim) {
+                      this.iframeShim.css({display: "none"});
+                  }
+              });
+          })();
+      }
         result.push(res);
     });
     return result;
