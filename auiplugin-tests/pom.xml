@@ -104,6 +104,7 @@
                     <systemPropertyVariables>
                         <selenium.browser>${selenium.browser}</selenium.browser>
                         <xvfb.enable>${xvfb.enable}</xvfb.enable>
+                        <webdriver.browser>${webdriver.browser}</webdriver.browser>
                         <plugin.resource.directories>${basedir}/src/main/resources,${basedir}/../auiplugin/src/main/resources</plugin.resource.directories>
                     </systemPropertyVariables>
                     <testGroups>

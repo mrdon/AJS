@@ -98,10 +98,19 @@
 
     <profiles>
         <profile>
-            <id>vmwarevista-ie7</id>
+            <id>ie</id>
             <properties>
                 <selenium.browser>*iexplore</selenium.browser>
                 <webdriver.browser>ie</webdriver.browser>
+                <xvfb.enable>false</xvfb.enable>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>win7-firefox</id>
+            <properties>
+                <selenium.browser>*firefoxproxy C:\Program Files (x86)\Mozilla Firefox\firefox.exe</selenium.browser>
+                <webdriver.browser>firefox</webdriver.browser>
                 <xvfb.enable>false</xvfb.enable>
             </properties>
         </profile>
