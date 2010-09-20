@@ -25,11 +25,12 @@
         <h2> Standard Inline-Dialog On Click</h2>
         <p class="description"> Shows a standard Inline Dialog on Click </p>
         <div class="html-code">
-            <div><a href="inline-dialog.html" id="popupLink">Click Link</a></div>
+            <div><a href="inline-dialog.html" id="popupLink">Click Link 1</a> <a href="inline-dialog.html" id="popupLink2">Click Link 2</a></div>
         </div>
         <script type="text/javascript" class="js-code">
             addSample(function() {
                 AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html");
+                AJS.InlineDialog(AJS.$("#popupLink2"), 15, "dialog-content.html");
             });
         </script>    
     </div>

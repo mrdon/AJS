@@ -22,11 +22,15 @@
         <h2> Standard Inline-Dialog On Click</h2>
         <p class="description"> Shows a standard Inline Dialog on Click </p>
         <div class="html-code">
-            <div><a href="inline-dialog.html" id="popupLink">Click Link</a></div>
+            <div>
+                <a href="inline-dialog.html" id="popupLink">Click Link 1</a>
+                <a href="inline-dialog.html" id="popupLink2">Click Link 2</a>
+            </div>
         </div>
         <script type="text/javascript" class="js-code">
             addSample(function() {0
                 AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html");
+                AJS.InlineDialog(AJS.$("#popupLink2"), 100, "dialog-content.html");
             });
         </script>    
     </div>
@@ -192,7 +196,7 @@
          </script>    
      </div>
      
-     <div class="aui-test shims-required-left" style="position:relative">
+     <div class="aui-test shims-required-left" style="position:relative; padding-bottom: 30px;"><!-- a little padding so the demo doesn't look shite -->
          <h2> Default Flipped Behavior</h2>
          <p class="description"> Demonstrates behavior Long Inline-Dialogs are positioned at the bottom of a page </p>
          <div class="html-code">
