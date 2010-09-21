@@ -39,7 +39,8 @@ if (window.Raphael) {
      			    $container.insertBefore(target);
      		        // $container.insertBefore(target);
      			    //TODO: find out why this extra 10 seems to make everything happy figured size + offset would be the size
-     				paper = this($container[0],w+offsetSize + 10,h+offsetSize + 10,radius);
+//     				paper = this($container[0],w+offsetSize + 10,h+offsetSize + 10,radius);
+     				paper = this($container[0],w+offsetSize + 5,h+offsetSize + 5,radius);
      	        }
      			else{
      				paper = this(x,y,w,h,radius);
