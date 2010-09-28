@@ -16,6 +16,10 @@
         <resource type="download" name="common.css" location="test-pages/common.css"/>
     </web-resource>
 
+    <web-resource key="live-demo">
+        <resource type="download" name="live-demo.css" location="live-demo/live-demo.css"/>
+    </web-resource>
+
     <!--Web Resources required for qunit tests to run, these should be required on all pages-->
     <web-resource key="qunit" name="Atlassian QUnit Dependencies">
         <resource type="download" name="qunit.js" location="unit-tests/external/qunit/qunit.js"/>

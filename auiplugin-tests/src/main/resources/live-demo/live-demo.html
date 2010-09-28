@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>editor</title>
+        <meta name="decorator" content="atl.general">
+    </head>
+    <body>
+        <div id="toolbar">
+            <div id='aui-logo' class='aui-logo'></div>
+            <button id="dropdown" class="toolbar-button"> Dropdown </button>
+            <button id="dialog" class="toolbar-button"> Dialog </button>
+            <button id="inline-dialog" class="toolbar-button"> Inline-Dialog </button>
+            <button id="tables" class="toolbar-button"> Tables </button>
+            <button id="messages" class="toolbar-button"> Messages </button>
+            <button id="tabs" class="toolbar-button"> Tabs </button>
+        </div>
+        
+        <h2 id="display"> Component Display </h2>
+        <div id="main">
+            
+        </div>
+        
+        <div id="expand-display" class="expand-button"> </div>
+        <div id="expand-editor" class="expand-button"> </div>
+        <h2 id="editor"> HTML Editor </h2>
+        <div id="editor-tools">
+            <button id="refresh"> Refresh </button>
+            <button id="clear"> Clear </button>
+        </div>
+        <textarea id="edit">Enter your HTML here</textarea>
+
+        <script type="text/javascript" class="js-code">
+        // AJS.("document").ready(function(){
+            AJS.drawLogo({scaleFactor: 0.2, stroke: "#000", strokeWidth: 2});
+            AJS.$("#toolbar").hide();
+            AJS.$("#toolbar").fadeIn(700);
+            
+            AJS.$("#edit").keypress(function(){
+                setTimeout("refresh()", 100);
+            });
+            AJS.$("button#refresh").click(function(e){
+                e.preventDefault();
+                refresh();
+            });
+            
+            AJS.$("button#clear").click(function(){
+                AJS.$("#edit").val("");
+                refresh();
+            });
+            
+            var refresh = function(){
+                AJS.$("#main").html(AJS.$("#edit").val()); 
+            }
+            
+            
+            var addComponentTemplate = function(component){
+                AJS.$.get("templates/" + component + "-template.html", function(data){
+                    AJS.$("#edit").val(AJS.$("#edit").val() + "\n" + data);
+                    refresh();
+                });
+            }
+            
+            AJS.$(".toolbar-button").click(function(e){
+                addComponentTemplate(AJS.$(e.target).attr("id"));
+            });
+            
+            AJS.$("#expand-display").click(function(){
+                var main = AJS.$("#main");
+                if(main.hasClass("expanded")){
+                    AJS.$("#main").css("height", "30%");
+                } else {
+                    AJS.$("#main").css("height", "80%");
+                }
+                main.toggleClass("expanded");
+                
+            });
+        // });
+        </script>
+        
+        
+    </body>
+
+</html>

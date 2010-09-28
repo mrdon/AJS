@@ -21,20 +21,17 @@ import java.net.URL;
 /**
  *
  */
-public class FuncTestServlet extends HttpServlet
-{
+public class FuncTestServlet extends HttpServlet {
     private final WebResourceManager webResourceManager;
     private final Plugin plugin;
 
-    public FuncTestServlet(WebResourceManager webResourceManager, PluginAccessor pluginAccessor)
-    {
+    public FuncTestServlet(WebResourceManager webResourceManager, PluginAccessor pluginAccessor) {
         this.webResourceManager = webResourceManager;
         this.plugin = pluginAccessor.getPlugin("auiplugin-tests");
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         webResourceManager.requireResource("com.atlassian.auiplugin:ajs");
         if (req.getPathInfo().endsWith("/"))
         {
@@ -49,6 +46,9 @@ public class FuncTestServlet extends HttpServlet
         }
         else
         {
+            if(req.getPathInfo().contains("live-demo")){
+                webResourceManager.requireResource("auiplugin-tests:live-demo");
+            }
             // only include qunit when necessary
             if (req.getPathInfo().contains("unit-tests"))
             {
@@ -57,13 +57,15 @@ public class FuncTestServlet extends HttpServlet
                 String thisPathArray[] = req.getPathInfo().split("/");
 
                 //only require the test resource if we are in a subpath
-                if(thisPathArray.length > 4){
-                    String thisSubPath = thisPathArray[thisPathArray.length-2];
+                if (thisPathArray.length > 4)
+                {
+                    String thisSubPath = thisPathArray[thisPathArray.length - 2];
                     webResourceManager.requireResource("auiplugin-tests:" + thisSubPath);
                 }
 
                 //include all unit test js files if viewing allTests page
-                if(thisPathArray[thisPathArray.length-1].contains("allTests")){
+                if (thisPathArray[thisPathArray.length - 1].contains("allTests"))
+                {
                     webResourceManager.requireResource("auiplugin-tests:all-unit-tests");
                 }
 
@@ -92,8 +94,7 @@ public class FuncTestServlet extends HttpServlet
         }
     }
 
-    private void displayIndex(HttpServletRequest req, HttpServletResponse resp) throws IOException, URISyntaxException
-    {
+    private void displayIndex(HttpServletRequest req, HttpServletResponse resp) throws IOException, URISyntaxException {
         resp.setContentType("text/html");
         Writer writer = resp.getWriter();
         URL fileURL = plugin.getResource(req.getPathInfo());
