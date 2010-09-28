@@ -4,6 +4,7 @@
         <meta name="decorator" content="atl.general">
     </head>
     <body>
+    <div class="full-width-container">
         <div id="toolbar">
             <div id='aui-logo' class='aui-logo'></div>
             <button id="dropdown" class="toolbar-button"> Dropdown </button>
@@ -14,22 +15,29 @@
             <button id="tabs" class="toolbar-button"> Tabs </button>
         </div>
         
-        <h2 id="display"> Component Display </h2>
-        <div id="main">
-            
-        </div>
         
-        <div id="expand-display" class="expand-button"> </div>
-        <div id="expand-editor" class="expand-button"> </div>
-        <h2 id="editor"> HTML Editor </h2>
-        <div id="editor-tools">
-            <button id="refresh"> Refresh </button>
-            <button id="clear"> Clear </button>
+        <div id="component-display-parent" class="box-parent">
+            <h2 id="display"> Component Display </h2>
+            <div id="main" class="box">
+                
+            </div>
+            <div id="expand-display" class="expand-button"></div>
         </div>
-        <textarea id="edit">Enter your HTML here</textarea>
 
+        
+        
+        <div id="editor-parent" class="box-parent">
+            <h2 id="editor" > HTML Editor </h2>
+            <div id="editor-tools">
+                <button id="refresh"> Refresh </button>
+                <button id="clear"> Clear </button>
+            </div>
+            <textarea id="edit" class="box" >Enter your HTML here</textarea>
+            <div id="expand-editor" class="expand-button"></div></div>
+        </div>
+    </div>
         <script type="text/javascript" class="js-code">
-        // AJS.("document").ready(function(){
+        AJS.$(document).ready(function(){
             AJS.drawLogo({scaleFactor: 0.2, stroke: "#000", strokeWidth: 2});
             AJS.$("#toolbar").hide();
             AJS.$("#toolbar").fadeIn(700);
@@ -37,6 +45,7 @@
             AJS.$("#edit").keypress(function(){
                 setTimeout("refresh()", 100);
             });
+            
             AJS.$("button#refresh").click(function(e){
                 e.preventDefault();
                 refresh();
@@ -63,17 +72,21 @@
                 addComponentTemplate(AJS.$(e.target).attr("id"));
             });
             
-            AJS.$("#expand-display").click(function(){
-                var main = AJS.$("#main");
-                if(main.hasClass("expanded")){
-                    AJS.$("#main").css("height", "30%");
+            AJS.$(".expand-button").click(function(e){
+                var main = AJS.$(e.target).parent(),
+                    box = main.children(".box");
+                    console.log(main);
+                    console.log(box);
+                if(box.hasClass("expanded")){
+                    main.css("height", "40%");
+                    box.css("height", "80%");
                 } else {
-                    AJS.$("#main").css("height", "80%");
+                    main.css("height", "90%");
+                    box.css("height", "90%");
                 }
-                main.toggleClass("expanded");
-                
+                box.toggleClass("expanded");
             });
-        // });
+        });
         </script>
         
         

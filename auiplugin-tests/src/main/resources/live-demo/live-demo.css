@@ -6,42 +6,31 @@ body {
     font-family: verdana, "trebuchet MS", helvetica, sans-serif;
     height:100%;
 }
-h2 {font-size: 18px;}
-
-h2#display {
-    background: #ccc;
-    display: inline-block;
-    margin-bottom: -1px;
-    padding: 5px;
+h2 {
+    font-size: 18px;
+    margin:0;
 }
 
-h2#editor {
-    background: #000;
-    display: inline-block;
-    margin-bottom: -1px;
-    padding: 10px;
-    color: #fff;
-}
-#main {
-    padding: 2px;
-    border: 3px solid #ccc;
-    height: 30%;
-    margin-bottom: 10px;
-    width: 99%;
-    overflow: scroll;
+.full-width-container {
+    height:100%;
+    width:100%;
+    position:absolute;
+    left: 0;
 }
 
-#edit {
-    padding: 2px;
-    height: 40%;
-    width: 99%;
-    border: 3px solid #000;
-}
+/*TOOL BAR*/
 
 #toolbar {
-    width: 99%;
+    width: 100%;
     height: 30px;
-    margin: 0 0;
+    padding: 8px 0px;
+    margin: 0;
+    left: 0;
+    position:relative;
+    background: #002C66;
+    box-shadow: 0 2px 2px #555;
+    -moz-box-shadow: 0 2px 2px #555;
+    -webkit-box-shadow: 0 2px 2px #555;
 }
 
 .aui-logo {
@@ -59,41 +48,61 @@ h2#editor {
     vertical-align:top;
     font-family: verdana, "trebuchet MS", helvetica, sans-serif;
     font-size: 15px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 
-div#editor-tools {
-    border: 1px solid;
-    height: 30px;
+
+/*DISPLAY BOXES*/
+.box-parent {
+    height:50%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.box-parent .box{
+    padding: 2px;
+    border: 3px solid #ccc;
+    height: 80%;
+    width: 99%;
+}
+
+#component-display-parent h2 {
+    background: #ccc;
     display: inline-block;
-    margin: 0 0 0 -5px;
-    vertical-align: middle;
-    padding: 0 7px;
-    background: #444;
+    margin: 0 0 -1px 0;
+    padding: 10px;
+    height: 20px;
 }
-#editor-tools button:hover{
-    background: #aaa;
+
+#component-display-parent .box {
+    border: 3px solid #ccc;
+    overflow: scroll;
 }
-#editor-tools button{
-    margin-top:3px;
-    height: 25px;
-    font-family: verdana, "trebuchet MS", helvetica, sans-serif;
-    font-size: 14px;
+
+#editor-parent h2{
+    background: #000;
+    display: inline-block;
+    margin-bottom: -1px;
+    padding: 10px;
+    color: #fff;
+    position:relative;
+    z-index:5;
 }
-button#refresh{
-    border: 1px solid;
+
+#editor-parent .box {
+    border: 3px solid #000;
 }
-button#clear{
-    border: 1px solid;
-}
+
+/*EXPANDERS*/
 
 .expand-button {
-
     width: 100px;
     height: 20px;
 }
 
 #expand-editor {
-    margin: 0 auto -55px auto;
+    margin: -1px auto 0 auto;
     background: #000;
 }
 
@@ -102,10 +111,44 @@ button#clear{
 }
 
 #expand-display {
-    margin: -10px auto 35px auto;
+    margin: 0px auto 0 auto;
     background: #ccc;  
 }
 
 #expand-display:hover {
     background: #aaa;  
+}
+
+/*EDITOR TOOLS*/
+
+div#editor-tools {
+    border: 1px solid;
+    height: 30px;
+    display: inline-block;
+    margin: 0 0 0 -20px;
+    vertical-align: middle;
+    padding: 0 15px 0 20px;
+    background: #444;
+    z-index:0;
+    position:relative;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+}
+
+#editor-tools button:hover{
+    background: #aaa;
+}
+#editor-tools button{
+    margin-top:3px;
+    height: 25px;
+    font-family: verdana, "trebuchet MS", helvetica, sans-serif;
+    font-size: 14px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+button#refresh{
+    border: 1px solid;
+}
+button#clear{
+    border: 1px solid;
 }
