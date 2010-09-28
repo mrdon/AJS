@@ -46,8 +46,7 @@
         "atlassian/jquery/jquery.throbber.js"
     ];
 
-    for (var i = 0, ii = includes.length; i < ii; i++)
-    {
+    for (var i = 0, ii = includes.length; i < ii; i++) {
         document.write('<script src="../../../../auiplugin/src/main/resources/js/' + includes[i] + '"></scr' + 'ipt>');
     }
 })();
@@ -55,12 +54,10 @@
 function viewHTMLSource(target) {
     var parent = AJS.$(target).parent().parent();
     var source = parent.children(".html-source");
-    if (parent.children(".html-source:visible").size() == 0)
-    {
+    if (parent.children(".html-source:visible").size() == 0) {
         source.fadeIn(200);
     }
-    else
-    {
+    else {
         source.fadeOut(200);
     }
 }
@@ -68,12 +65,10 @@ function viewHTMLSource(target) {
 function viewJSSource(target) {
     var parent = AJS.$(target).parent().parent();
     var source = parent.children(".js-source");
-    if (parent.children(".js-source:visible").size() == 0)
-    {
+    if (parent.children(".js-source:visible").size() == 0) {
         source.fadeIn(200);
     }
-    else
-    {
+    else {
         source.fadeOut(200);
     }
 }
@@ -110,8 +105,7 @@ function createViewSourceLinks() {
 
         //add JS source
         var jscode = parent.children("script").html();
-        if (AJS.$.trim(jscode))
-        {
+        if (AJS.$.trim(jscode)) {
             jscode = jscode.replace("addSample(function() {", "");
             jscode = AJS.$.trim(jscode);
             jscode = jscode.substring(0, jscode.length - 3);
@@ -125,8 +119,7 @@ function createViewSourceLinks() {
             jssource.val(jscode);
             jssource.hide();
         }
-        else
-        {
+        else {
             parent.children(".view-js-source-link").remove();
             parent.append("No JS");
         }
