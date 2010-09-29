@@ -6,43 +6,53 @@
 
     <title>Atlassian form template</title>
     <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all"> 
+    <script type="text/javascript" src="../common.js"></script>
 
 </head>
 
 <body>
-<ul>
-    <li><a href="forms.html">Forms Home</a></li>
-    <li><a href="default.html">Default Layout</a></li>
-    <li><a href="long-labels.html">Long Labels</a></li>
-    <li><a href="top-labels.html">Top Labels</a></li>
-    <li><a href="inline-form.html">Inline Form</a></li>
-    <li><a href="inline-help.html">Inline Help</a></li>
-</ul>
-<h1>Inline Form</h1>
+    <div class="navigation">
+        <h2> AUI Forms Test Page </h2>
+        <ul>
+            <li><a href="forms-test.html">Forms Home</a></li>
+            <li><a href="default.html">Default Layout</a></li>
+            <li><a href="long-labels.html">Long Labels</a></li>
+            <li><a href="top-labels.html">Top Labels</a></li>
+            <li><a href="inline-form.html">Inline Form</a></li>
+            <li><a href="inline-help.html">Inline Help</a></li>
+        </ul>
+    </div>
+    <div class="aui-test">
 
-<form action="forms.html#" method="post" id="g" class="aui">
-    <h2>Inline form - add class inline to fieldset</h2>
-    <fieldset class="inline">
-        <legend><span>Find User to Add</span></legend>
-        <fieldset class="field-group">
-            <label for="addUser">Search users</label>
-            <input class="text" type="text" id="addUser" name="addUser" title="add user">
-            <input class="button submit" type="submit" value="Search" id="search-btn">
-            <a href="forms.html#" title="show all users">Show all users</a>
-            <div class="description"><a href="forms.html#" title="advanced search">Advanced Search</a></div>
-        </fieldset>
-    </fieldset>
-</form>
+        <h1>Inline Form</h1>
+        
+        <form action="forms.html#" method="post" id="g" class="aui">
+            <h2>Inline form - add class inline to fieldset</h2>
+            <fieldset class="inline">
+                <legend><span>Find User to Add</span></legend>
+                <!-- testing field-group as a div -->
+                <div class="field-group">
+                    <label for="addUser">Search users</label>
+                    <input class="text" type="text" id="addUser" name="addUser" title="add user">
+                    <input class="button submit" type="submit" value="Search" id="search-btn">
+                    <a href="forms.html#" title="show all users">Show all users</a>
+                    <div class="description"><a href="forms.html#" title="advanced search">Advanced Search</a></div>
+                </div>
+            </fieldset>
+        </form>
+        
+        <script type="text/javascript">
+            AJS.$(function() {
+                // Testing AJS.inlineHelp
+                AJS.inlineHelp();
+            });
+        </script>
 
-<script type="text/javascript">
-    AJS.$(function() {
+    </div><!-- .aui-test -->
 
-        // Testing AJS.inlineHelp
-        AJS.inlineHelp();
-    });
-</script>
 <div>
-    <a href="../">Back</a>
+    <a href="forms-test.html">Back</a>
 </div>
 </body>
 </html>

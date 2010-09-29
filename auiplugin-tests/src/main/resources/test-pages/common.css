@@ -34,9 +34,10 @@ body {
     background: #fff;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    box-shadow: 0 2px 2px #555;
+    border-radius: 10px;
     -moz-box-shadow: 0 2px 2px #555;
     -webkit-box-shadow: 0 2px 2px #555;
+    box-shadow: 0 2px 2px #555;
 /*        overflow:auto;*/
 }
 
@@ -103,4 +104,42 @@ body {
     width: 500px;
     margin:0px auto;
     text-align:center;
+}
+
+
+/* demo index pages */
+body.demo-index {
+    font-family: sans-serif;
+    font-size: 13pt;
+    background: #ddd;
+}
+
+.demo-index li {
+    margin-top: 5px;
+}
+
+.demo-index a {
+    color: #555;
+    text-decoration: none;
+}
+
+.demo-index a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.demo-index .navigation {
+    margin: auto;
+    margin-top: 50px;
+    border: solid 1px;
+    width: 350px;
+    margin-bottom: 5px;
+    padding: 10px;
+    background: #fff;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow: 0 5px 5px #555;
+    -moz-box-shadow: 0 5px 5px #555;
+    -webkit-box-shadow: 0 5px 5px #555;
+    padding-left: 40px;
 }
