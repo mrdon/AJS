@@ -108,7 +108,7 @@ function setupTestPage() {
         htmlsource.val(htmlcode);
         htmlsource.hide();
         //add JS source
-        var jscode = parent.children(".js-code").html();
+        var jscode = parent.children("script").html();
         if (AJS.$.trim(jscode)) {
             jscode = jscode.replace("addSample(function() {", "");
             jscode = AJS.$.trim(jscode);  
