@@ -4,10 +4,6 @@
 * - That de-bugging starts with IE8 and moves down through IE7 to IE6
 **/
 
-form.aui {
-    *min-height: 0; /* min-height prevents a crash bug in IE7. srsly. */
-}
-
 /**
 * Fixes for IE8, IE7 and IE6
 * - each property should be written without CSS hacks
@@ -32,6 +28,9 @@ form.aui div.checkbox input.checkbox {
 }
 *
 **/
+form.aui {
+    *min-height: 0; /* min-height prevents a crash bug in IE7. srsly. */
+}
 
 form.aui div.radio input.radio,
 form.aui div.checkbox input.checkbox {
