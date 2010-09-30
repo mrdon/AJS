@@ -5,7 +5,7 @@
 **/
 
 form.aui {
-    min-height: 0; /* min-height prevents a crash bug in IE. srsly. */
+    *min-height: 0; /* min-height prevents a crash bug in IE7. srsly. */
 }
 
 /**
