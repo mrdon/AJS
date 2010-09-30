@@ -7,18 +7,11 @@
     <title>Atlassian form template</title>
 
     <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    
     <link type="text/css" rel="stylesheet" href="../common.css" media="all">
     <!--[if IE]>
         <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
     <![endif]-->
-
-    <style type="text/css">
-        #example-right {
-            background: #eee;
-            width: 800px;
-        }
-    </style>
-
     <script type="text/javascript" src="../common.js"></script>
 
 </head>
@@ -57,18 +50,18 @@
             </div><!-- .aui-message -->
             <h2>Heading h2</h2>
             <div class="field-group">
-                <label for="h-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <label for="h-fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                 <input class="text" type="text" id="h-fname" name="fname" title="first name">
             </div>
             <h3>Heading h3</h3>
             <div class="field-group">
-                <label for="h-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <label for="h-lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                 <input class="text long-field" type="text" id="h-lname" name="lname" title="last name">
             </div>
             <div class="buttons-container">
                 <div class="buttons">
                     <input class="button submit" type="submit" value="Save" id="h-save-btn1">
-                    <a class="cancel" href="forms.html#">Cancel</a>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
                 </div>
             </div>
         </form>
@@ -76,39 +69,39 @@
         <form action="#" method="post" id="example-right" class="aui">
             <p><em>This short form has right-aligned buttons such as you might see in a Dialog. Its .buttons-container has a class of .right and the buttons are thus aligned right. It is shaded only to show the width of the form.</em></p>
             <div class="field-group">
-                <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                 <input class="text" type="text" id="fname" name="fname" title="first name">
             </div>
             <div class="field-group">
-                <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                 <input class="text long-field" type="text" id="lname" name="lname" title="last name">
             </div>
             <div class="buttons-container right">
                 <div class="buttons">
                     <input class="button submit" type="submit" value="Save" id="save-btn1">
-                    <a class="cancel" href="forms.html#">Cancel</a>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
                 </div>
             </div>
         </form>
         
-        <form action="forms.html#" method="post" id="d" class="aui">
+        <form action="#" method="post" id="d" class="aui">
             <h2>Default - Edit State</h2>
             <fieldset>
                 <legend><span>Text Entry</span></legend>
                 <p>Paragraph: Lorem ipsum dolor sit amet, consectetur <span>span text</span> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <div class="field-group">
-                    <label for="d-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="d-fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <input class="text" type="text" id="d-fname" name="d-fname" title="first name">
                     <div class="description">Default width input.</div>
                 </div>
                 <div class="field-group">
-                    <label for="d-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="d-lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <input class="text long-field" type="text" id="d-lname" name="d-lname" title="last name">
                     <div class="error">Error message here</div>
                     <div class="description">Long width input.</div>
                 </div>
                 <div class="field-group">
-                    <label for="email1" accesskey="e">Email</label>
+                    <label for="email1">Email</label>
                     <input class="text medium-field" type="text" id="email1" name="email" title="email">
                     <span class="aui-icon icon-help"></span><span class="content">help</span>
                     <div class="description">Medium width input.</div>
@@ -156,8 +149,8 @@
                         <option>option one</option>
                         <option>option two</option>
                         <optgroup label="group1">
-                        <option>option three</option>
-                        <option>option four</option>
+                            <option>option three</option>
+                            <option>option four</option>
                         </optgroup>
                         <option>option five</option>
                         <option>option six</option>
@@ -198,7 +191,7 @@
                     <textarea class="textarea" rows="6" cols="10" name="licenseKey" id="licenseKey"></textarea>
                     <span class="aui-icon icon-users"></span><span class="content">select user</span>
                     <span class="description">Enter your commercial or evaluation license key.<br>
-                    Not got a license? <a href="//TODO">Generate an evaluation license</a></span>
+                    Not got a license? <a href="http://example.com/">Generate an evaluation license</a></span>
                 </div>
             </fieldset>
         
@@ -320,28 +313,28 @@
             <div class="buttons-container">
                 <div class="buttons">
                     <input class="button submit" type="submit" value="Save" id="d-save-btn1">
-                    <a class="cancel" href="forms.html#">Cancel</a>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
                 </div>
             </div>
         </form>
         
         
-        <form action="forms.html#" method="post" id="dfv" class="aui">
+        <form action="#" method="post" id="dfv" class="aui">
             <h2>Field Value State</h2>
             <fieldset>
                 <legend><span>Text Entry</span></legend>
                 <div class="field-group">
-                    <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <span class="field-value">My First Name</span>
                     <div class="description">Descriptive text here.</div>
                 </div>
                 <div class="field-group">
-                    <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <span class="field-value">My Last Name</span>
                     <div class="description">Descriptive text here.</div>
                 </div>
                 <div class="field-group">
-                    <label for="email1" accesskey="e">Email</label>
+                    <label for="email1">Email</label>
                     <span class="field-value">my@email.com</span>
                     <div class="description">Descriptive text here.</div>
                 </div>
@@ -408,7 +401,7 @@
                     <h4>input class="button" vs HTML button</h4>
                     <input class="button submit" type="submit" value="input" id="edit-btn">
                     <button>Button</button>
-                    <a class="cancel" href="forms.html#">Cancel</a>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
                 </div>
             </div>
         </form>

@@ -5,12 +5,16 @@
     <meta name="decorator" content="atl.general">
 
     <title>Atlassian form template</title>
+    
     <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+
     <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <!--[if IE]>
+        <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
     <script type="text/javascript" src="../common.js"></script>
     
 </head>
-
 <body>
     <div class="navigation">
         <h2> AUI Forms Test Page </h2>
@@ -32,12 +36,12 @@
             <p>Paragraph: Lorem ipsum dolor sit amet, consectetur <span>span text</span> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </form>
         
-        <form action="forms.html#" method="post" id="d" class="aui">
+        <form action="#" method="post" id="d" class="aui">
             <h2>Default - Edit State</h2>
             <fieldset>
                 <legend><span>Text Entry</span></legend>
                 <div class="field-group">
-                    <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <input class="text" type="text" id="fname" name="fname" title="first name">
                     <span class="aui-icon icon-inline-help"><span class="content">Help</span></span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui.</span>
@@ -45,7 +49,7 @@
                     <div class="description">Default width input.</div>
                 </div>
                 <div class="field-group">
-                    <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <input class="text long-field" type="text" id="lname" name="lname" title="last name">
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <div class="error">Error message here</div>
@@ -53,7 +57,7 @@
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
                 </div>
                 <div class="field-group">
-                    <label for="email1" accesskey="e">Email</label>
+                    <label for="email1">Email</label>
                     <input class="text medium-field" type="text" id="email1" name="email" title="email">
                     <span class="aui-icon icon-inline-help"></span><span class="content">help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
@@ -160,7 +164,7 @@
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
                     <span class="description">Enter your commercial or evaluation license key.<br>
-                    Not got a license? <a href="//TODO">Generate an evaluation license</a></span>
+                    Not got a license? <a href="http://example.com/">Generate an evaluation license</a></span>
                 </div>
             </fieldset>
         
@@ -303,31 +307,31 @@
             <div class="buttons-container">
                 <div class="buttons">
                     <input class="button submit" type="submit" value="Save" id="save-btn1">
-                    <a class="cancel" href="forms.html#">Cancel</a>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
                 </div>
             </div>
         </form>
         
-        <form action="forms.html#" method="post" id="dfv" class="aui">
+        <form action="#" method="post" id="dfv" class="aui">
             <h2>Field Value State</h2>
             <fieldset>
                 <legend><span>Text Entry</span></legend>
                 <div class="field-group">
-                    <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <span class="field-value">My First Name</span>
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
                     <div class="description">Descriptive text here.</div>
                 </div>
                 <div class="field-group">
-                    <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <span class="field-value">My Last Name</span>
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
                     <div class="description">Descriptive text here.</div>
                 </div>
                 <div class="field-group">
-                    <label for="email1" accesskey="e">Email</label>
+                    <label for="email1">Email</label>
                     <span class="field-value">my@email.com</span>
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
@@ -408,25 +412,25 @@
                     <h4>input class="button" vs HTML button</h4>
                     <input class="button submit" type="submit" value="input" id="edit-btn">
                     <button>Button</button>
-                    <a class="cancel" href="forms.html#">Cancel</a>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
                 </div>
             </div>
         </form>
         <h1>Long Labels</h1>
         
-        <form action="forms.html#" method="post" id="d1" class="aui long-label">
+        <form action="#" method="post" id="d1" class="aui long-label">
             <h2>Default - Edit State</h2>
             <fieldset>
                 <legend><span>Text Entry</span></legend>
                 <div class="field-group">
-                    <label for="fname1" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="fname1">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <input class="text" type="text" id="fname1" name="fname" title="first name">
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
                     <div class="description">Default width input.</div>
                 </div>
                 <div class="field-group">
-                    <label for="lname1" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="lname1">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <input class="text long-field" type="text" id="lname1" name="lname" title="last name">
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
@@ -434,7 +438,7 @@
                     <div class="description">Long width input.</div>
                 </div>
                 <div class="field-group">
-                    <label for="email11" accesskey="e">Email</label>
+                    <label for="email11">Email</label>
                     <input class="text medium-field" type="text" id="email11" name="email" title="email">
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
@@ -541,7 +545,7 @@
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
                     <span class="description">Enter your commercial or evaluation license key.<br>
-                    Not got a license? <a href="//TODO">Generate an evaluation license</a></span>
+                    Not got a license? <a href="http://example.com/">Generate an evaluation license</a></span>
                 </div>
             </fieldset>
         
@@ -678,32 +682,32 @@
             <div class="buttons-container">
                 <div class="buttons">
                     <input class="button submit" type="submit" value="Save" id="save-btn11">
-                    <a class="cancel" href="forms.html#">Cancel</a>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
                 </div>
             </div>
         </form>
         
         
-        <form action="forms.html#" method="post" id="dfv1" class="aui long-label">
+        <form action="#" method="post" id="dfv1" class="aui long-label">
             <h2>Field Value State</h2>
             <fieldset>
                 <legend><span>Text Entry</span></legend>
                 <div class="field-group">
-                    <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <span class="field-value">My First Name</span>
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
                     <div class="description">Descriptive text here.</div>
                 </div>
                 <div class="field-group">
-                    <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
                     <span class="field-value">My Last Name</span>
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
                     <div class="description">Descriptive text here.</div>
                 </div>
                 <div class="field-group">
-                    <label for="email1" accesskey="e">Email</label>
+                    <label for="email1">Email</label>
                     <span class="field-value">my@email.com</span>
                     <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
                     <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
@@ -782,14 +786,14 @@
                     <h4>input class="button" vs HTML button</h4>
                     <input class="button submit" type="submit" value="input" id="edit-btn111">
                     <button>Button</button>
-                    <a class="cancel" href="forms.html#">Cancel</a>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
                 </div>
             </div>
         </form>
         
         <h1>Inline Form</h1>
         
-        <form action="forms.html#" method="post" id="g" class="aui">
+        <form action="#" method="post" id="g" class="aui">
             <h2>Inline form - add class inline to fieldset</h2>
             <fieldset class="inline">
                 <legend><span>Find User to Add</span></legend>
@@ -807,7 +811,7 @@
         
         <h1>Top Labels</h1>
         
-        <form action="forms.html#" method="post" id="j" class="aui top-label">
+        <form action="#" method="post" id="j" class="aui top-label">
             <h2>Top Labels - add class top-label to form</h2>
             <fieldset>
                 <legend><span>New Issue</span></legend>
@@ -834,7 +838,7 @@
             <div class="buttons-container">
                 <div class="buttons">
                     <input class="button submit" type="submit" value="Save" id="save-new-issue">
-                    <a class="cancel" href="forms.html#">Cancel</a>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
                 </div>
             </div>
         
