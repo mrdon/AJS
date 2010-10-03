@@ -1,0 +1,12 @@
+@import url("../../../auiplugin/src/main/resources/css/atlassian/basic.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/firebug.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/dialog.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/dropdown.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/forms.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/icons.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/inline-dialog.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/messages.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/tables.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/tabs.css");
+@import url("../../../auiplugin/src/main/resources/css/atlassian/toolbar.css");
+@import url("../../../auiplugin-tests/src/main/resources/css/test-and-demo-pages.css");

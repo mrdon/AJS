@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>auiplugin-parent</artifactId>
+        <groupId>com.atlassian.aui</groupId>
+        <version>3.3-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>auiplugin</artifactId>
+    <packaging>atlassian-plugin</packaging>
+
+    <name>Atlassian UI Plugin</name>
+    <description>An Atlassian plugin that contains the core javascript files used in Atlassian products.</description>
+    <url>https://studio.atlassian.com/svn/AJS/trunk</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20090211</version>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.plugins</groupId>
+            <artifactId>atlassian-plugins-osgi</artifactId>
+            <version>2.5.0.beta4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.plugins</groupId>
+            <artifactId>atlassian-plugins-webresource</artifactId>
+            <version>2.5.0.beta4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.core</groupId>
+            <artifactId>atlassian-core</artifactId>
+            <version>4.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <atlassian.plugin.key>com.atlassian.auiplugin</atlassian.plugin.key>
+    </properties>
+
+
+    <build>
+        <resources>
+            <!-- This filtering strategy is intentionally weird to trick the IDEA plugin into including the directory in the classpath -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>atlassian-plugin.xml</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>atlassian-plugin.xml</include>
+                    <include>js/atlassian/atlassian.js</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-refapp-plugin</artifactId>
+                <version>${amps.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <productVersion>${refapp.version}</productVersion>
+                </configuration>
+                
+            </plugin>
+    
+            <!--START - Minification -->
+            <plugin>
+                <groupId>net.sf.alchim</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compress</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Everything on one line -->
+                    <linebreakpos>-1</linebreakpos>
+                    <!-- Turning off JSlint warnings -->
+                    <jswarn>false</jswarn>
+                    <excludes>
+                        <exclude>*.xml</exclude>
+                        <exclude>**/src/test/*</exclude>
+                        <exclude>**/src/samples/*</exclude>
+                        <!-- exclude external libraries which have their own minified versions -->
+                        <exclude>**/raphael.js</exclude>
+                        <exclude>**/raphael-min.js</exclude>
+                        <exclude>**/jquery.js</exclude>
+                        <exclude>**/jquery-min.js</exclude>
+                        <exclude>**/jquery-ui.js</exclude>
+                        <exclude>**/jquery-ui-min.js</exclude>
+                        <exclude>**/jquery-ui-other.js</exclude>
+                        <exclude>**/jquery-ui-other-min.js</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <!--END - Minification -->
+        </plugins>
+    </build>
+
+</project>
