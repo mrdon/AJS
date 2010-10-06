@@ -283,7 +283,6 @@ AJS.dropDown = function (obj, usroptions) {
             hider();
             AJS.dropDown.current = this;
             this.method = method || this.method || "appear";
-            methods[this.method](true);
             this.timer = setTimeout(function () {
                 $doc.click(hider);
             }, 0);
@@ -293,6 +292,7 @@ AJS.dropDown = function (obj, usroptions) {
                 active(0).call(this.links[0]);
             }
             AJS.$(cdd.offsetParent).css({zIndex: 2000});
+            methods[this.method](true);
 			AJS.$(document).trigger("showLayer", ["dropdown", AJS.dropDown.current]);
         };
         res.hide = function (causer) {
