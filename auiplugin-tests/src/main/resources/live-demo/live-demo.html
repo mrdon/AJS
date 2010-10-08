@@ -4,89 +4,82 @@
         <meta name="decorator" content="atl.general">
     </head>
     <body>
-    <div class="full-width-container">
-        <div id="toolbar">
-            <div id='aui-logo' class='aui-logo'></div>
-            <button id="dropdown" class="toolbar-button"> Dropdown </button>
-            <button id="dialog" class="toolbar-button"> Dialog </button>
-            <button id="inline-dialog" class="toolbar-button"> Inline-Dialog </button>
-            <button id="tables" class="toolbar-button"> Tables </button>
-            <button id="messages" class="toolbar-button"> Messages </button>
-            <button id="tabs" class="toolbar-button"> Tabs </button>
-        </div>
-        
-        
-        <div id="component-display-parent" class="box-parent">
-            <h2 id="display"> Component Display </h2>
-            <div id="main" class="box">
-                
+            <div id="toolbar">
+                <div id='toolbar-logo' class='aui-logo'></div>
+                <button id="dropdown" class="toolbar-button"> Dropdown </button>
+                <button id="dialog" class="toolbar-button"> Dialog </button>
+                <button id="inline-dialog" class="toolbar-button"> Inline-Dialog </button>
+                <button id="tables" class="toolbar-button"> Tables </button>
+                <button id="messages" class="toolbar-button"> Messages </button>
+                <button id="tabs" class="toolbar-button"> Tabs </button>
             </div>
-            <div id="expand-display" class="expand-button"></div>
-        </div>
-
-        
-        
-        <div id="editor-parent" class="box-parent">
-            <h2 id="editor" > HTML Editor </h2>
-            <div id="editor-tools">
-                <button id="refresh"> Refresh </button>
-                <button id="clear"> Clear </button>
+            <div id="editor-parent" class="box-parent">
+                <h2 id="editor" > HTML Editor </h2>
+                <div id="editor-tools">
+                    <button id="refresh"> Refresh </button>
+                    <button id="clear"> Clear </button>
+                </div>
+                <textarea id="edit" class="box" >Enter your HTML here</textarea>
+                <div id="expand-editor" class="expand-button"></div>
             </div>
-            <textarea id="edit" class="box" >Enter your HTML here</textarea>
-            <div id="expand-editor" class="expand-button"></div></div>
-        </div>
-    </div>
-        <script type="text/javascript" class="js-code">
+            <div id="component-display-parent" class="box-parent">
+                <h2 id="display"> Component Display </h2>
+                <div id="main" class="box"></div>
+                <div id="expand-display" class="expand-button"></div>
+            </div>
+        <script type="text/javascript">
         AJS.$(document).ready(function(){
-            AJS.drawLogo({scaleFactor: 0.2, stroke: "#000", strokeWidth: 2});
-            AJS.$("#toolbar").hide();
-            AJS.$("#toolbar").fadeIn(700);
-            
-            AJS.$("#edit").keypress(function(){
-                setTimeout("refresh()", 100);
-            });
-            
-            AJS.$("button#refresh").click(function(e){
-                e.preventDefault();
-                refresh();
-            });
-            
-            AJS.$("button#clear").click(function(){
-                AJS.$("#edit").val("");
-                refresh();
-            });
-            
-            var refresh = function(){
-                AJS.$("#main").html(AJS.$("#edit").val()); 
-            }
-            
-            
-            var addComponentTemplate = function(component){
-                AJS.$.get("templates/" + component + "-template.html", function(data){
-                    AJS.$("#edit").val(AJS.$("#edit").val() + "\n" + data);
-                    refresh();
+
+                    refresh = function(){
+                        AJS.$("#main").html(AJS.$("#edit").val()); 
+                    }
+                    
+                    //only run page javascript if the full-width-containe he been added (prevents running code twice because of a re-trigger of dom-ready)
+                    if(AJS.$(".full-width-container").size()==0){
+                        AJS.$("body").children().wrapAll("<div class='full-width-container'/>");
+                        AJS.drawLogo({containerID: "toolbar-logo", scaleFactor: 0.2});
+                        AJS.$(".full-width-container").hide();
+                        AJS.$(".full-width-container").fadeIn(500);
+                        AJS.$("#edit").keypress(function(){
+                            setTimeout("refresh()", 100);
+                        });
+                        
+                        AJS.$("button#refresh").click(function(e){
+                            e.preventDefault();
+                            refresh();
+                        });
+                        
+                        AJS.$("button#clear").click(function(){
+                            AJS.$("#edit").val("");
+                            refresh();
+                        });
+                        
+                        var addComponentTemplate = function(component){
+                            AJS.$.get("templates/" + component + "-template.html", function(data){
+                                AJS.$("#edit").val(AJS.$("#edit").val() + "\n" + data);
+                                refresh();
+                            });
+                        }
+                        
+                        AJS.$(".toolbar-button").click(function(e){
+                            addComponentTemplate(AJS.$(e.target).attr("id"));
+                        });
+                        
+                        AJS.$(".expand-button").click(function(e){
+                            var main = AJS.$(e.target).parent(),
+                                box = main.children(".box");
+                        
+                            if(box.hasClass("expanded")){
+                                main.css("height", "40%");
+                                box.css("height", "80%");
+                            } else {
+                                main.css("height", "90%");
+                                box.css("height", "90%");
+                            }
+                            box.toggleClass("expanded");
+                        }); 
+                    }
                 });
-            }
-            
-            AJS.$(".toolbar-button").click(function(e){
-                addComponentTemplate(AJS.$(e.target).attr("id"));
-            });
-            
-            AJS.$(".expand-button").click(function(e){
-                var main = AJS.$(e.target).parent(),
-                    box = main.children(".box");
-                    console.log(main);
-                    console.log(box);
-                if(box.hasClass("expanded")){
-                    main.css("height", "40%");
-                    box.css("height", "80%");
-                } else {
-                    main.css("height", "90%");
-                    box.css("height", "90%");
-                }
-                box.toggleClass("expanded");
-            });
-        });
         </script>
         
         
