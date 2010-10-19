@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>auiplugin-parent</artifactId>
@@ -47,14 +48,26 @@
         <dependency>
             <groupId>com.atlassian.selenium</groupId>
             <artifactId>atlassian-selenium-browsers-auto</artifactId>
-            <version>2.0.0-m8</version>
+            <version>2.0-SNAPSHOT</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>atlassian-browsers</groupId>
+                    <artifactId>atlassian-browsers-auto</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.atlassian.selenium</groupId>
             <artifactId>atlassian-webdriver-browsers-auto</artifactId>
-            <version>2.0.0-m8</version>
+            <version>2.0.0-m10</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>atlassian-browsers</groupId>
+                    <artifactId>atlassian-browsers-auto</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -66,6 +79,12 @@
             <groupId>com.atlassian.core</groupId>
             <artifactId>atlassian-core</artifactId>
             <version>4.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>atlassian-browsers</groupId>
+            <artifactId>atlassian-browsers-auto</artifactId>
+            <version>1.1-beta2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -127,15 +146,15 @@
                         <!--</includes>-->
                         <!--</testGroup>-->
 
-                        <testGroup>
-                            <id>confluence</id>
-                            <productIds>
-                                <productId>confluence</productId>
-                            </productIds>
-                            <includes>
-                                <include>it/**/*Test.java</include>
-                            </includes>
-                        </testGroup>
+                        <!--<testGroup>-->
+                            <!--<id>confluence</id>-->
+                            <!--<productIds>-->
+                                <!--<productId>confluence</productId>-->
+                            <!--</productIds>-->
+                            <!--<includes>-->
+                                <!--<include>it/**/*Test.java</include>-->
+                            <!--</includes>-->
+                        <!--</testGroup>-->
                     </testGroups>
                     <products>
                         <product>

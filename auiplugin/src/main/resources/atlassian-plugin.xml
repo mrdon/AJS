@@ -83,11 +83,11 @@
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
     </web-resource>
-	
+
 	<web-resource name="hotkeys" key="hotkeys">
 		<resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery/jquery.hotkeys.js"/>
 	</web-resource>
-	
+
 	<web-resource name="stalker" key="stalker">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
 		<dependency>com.atlassian.auiplugin:hotkeys</dependency>
@@ -104,7 +104,7 @@
 		<resource type="download" name="moveto.js" location="js/atlassian/jquery/jquery.moveto.js"/>
 		<resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>
     </web-resource>
-    
+
     <!-- Every part of jQuery UI JS that we don't offer by default -->
     <web-resource name="jQuery UI Other" key="jquery-ui-other">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
@@ -115,11 +115,11 @@
     <web-resource key="jquery-all" name="All JQuery">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
-    
+
     <web-resource key="jquery" name="JQuery" i18n-name-key-name-key="web.resources.plugin.jquery.name">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
-    
+
     <web-resource name="jQuery UI" key="jquery-ui">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
@@ -127,15 +127,15 @@
     <web-resource key="jquery-aop" name="jQuery AOP" i18n-name-key="web.resources.plugin.jquery.aop.name">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
-    
+
     <web-resource key="jquery-autocomplete" name="jQuery Autocomplete" i18n-name-key="web.resources.plugin.jquery.autocomplete.name">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
-    
+
     <web-resource key="jquery-form" name="jQuery Form" i18n-name-key="web.resources.plugin.jquery.form.name">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
-    
+
     <web-resource key="jquery-progressbar" name="jQuery Progress Bar Plugin" i18n-name-key="web.resources.plugin.jquery.progressbar.name">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
@@ -143,11 +143,11 @@
     <web-resource key="jquery-selection" name="jQuery Text Selection" i18n-name-key="web.resources.plugin.jquery.selection.name">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
-    
+
     <web-resource key="jquery-throbber" name="jQuery Throbber" i18n-name-key="web.resources.plugin.jquery.throbber.name">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
-    
+
     <web-resource key="aui-css" name="Atlassian UI CSS">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
