@@ -12,11 +12,20 @@ h2 {
     margin:0;
 }
 
+.work-area {
+    height: 100%;
+    width: 100%;
+    margin: 0 5px;
+}
 .full-width-container {
-    height:100%;
-    width:100%;
-    position:absolute;
+    height: 100%;
+    width: 100%;
+    position: absolute;
     left: 0;
+}
+
+#page-heading {
+    text-align: center;
 }
 
 /*TOOL BAR*/
@@ -52,102 +61,99 @@ h2 {
     -webkit-border-radius: 10px;
 }
 
-
-/*DISPLAY BOXES*/
-.box-parent {
-    height:50%;
-    margin-top: 10px;
-    margin-left: 10px;
+/*EDITOR TOOLS*/
+#editor-tools{
+    margin: 5px 10px 0 5px;
+    display: inline-block;
+    float: right;
+}
+a#documentation {
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    line-height: 25px;
+    padding: 5px;
+}
+a#documentation:hover {
+    color:#ddd;
 }
 
-.box-parent .box{
-    padding: 2px;
-    border: 3px solid #ccc;
-    height: 80%;
+/*DISPLAY*/
+.display-parent {
+    height:50%;
+}
+
+.display-parent .display{
+    border: 2px solid #777;
+    border-top:0;
+    height: 100%;
     width: 99%;
     background: #fff;
+    padding: 1px;
+    overflow:scroll;
 }
 
-#component-display-parent h2{
+#display-heading {
+    font-size: 12px;
+    display:inline-block;
+    text-align: center;
+    padding: 5px 1px;
+    border-left: 2px solid #777;
+    border-right: 2px solid #777;
     background: #ccc;
-    display: inline-block;
-    margin-bottom: -1px;
-    padding: 10px;
-    color: #003366;
-}
-#component-display-parent .box {
-    border: 3px solid #ccc;
-    overflow: scroll;
+    width: 99%;
+    color: #555;
 }
 
-#editor-parent h2 {
-    background: #000;
-    display: inline-block;
-    margin: 0 0 -1px 0;
-    padding: 10px;
-    color: #fff;
-    height: 20px;
-} 
-
-#editor-parent .box {
-    border: 3px solid #000;
+/*EDITORS*/
+#editors-parent {
+    height:40%;
+    clear: both;
+    padding-bottom: 3px;
+    margin-left:2px;
 }
 
-/*EXPANDERS*/
-
-.expand-button {
-    width: 100px;
-    height: 20px;
+#hthml-editor {
+    float: none;
 }
 
-#expand-editor {
-    margin: -1px auto 0 auto;
-    background: #000;
-}
-
-#expand-editor:hover {
-    background: #aaa;
-}
-
-#expand-display {
-    margin: 0px auto 0 auto;
-    background: #ccc;  
-}
-
-#expand-display:hover {
-    background: #aaa;  
-}
-
-/*EDITOR TOOLS*/
-
-div#editor-tools {
-    border: 1px solid #222;
-    height: 30px;
-    display: inline-block;
-/*    margin: 0 0 0 -20px;*/
-    vertical-align: middle;
-    padding: 0 15px 0 15px;
-    background: #ddd;
-    z-index:0;
+.editor-parent {
+    height:100%;
+    width:33%;
+    float:left;
     position:relative;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    margin-left:  -2px;
+    border: 2px solid #777;
+    padding-bottom: 1px;
 }
 
-#editor-tools button:hover{
-    background: #aaa;
+.editor-parent .edit-box{
+    height:100%;
+    width: 100%;
+    background: #fff;
+    border:0;
 }
-#editor-tools button{
-    margin-top:3px;
-    height: 25px;
-    font-family: verdana, "trebuchet MS", helvetica, sans-serif;
-    font-size: 14px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
+
+.editor-parent span.heading-span{
+        display: block;
+        width: 80px;
+        height: 15px;
+        right: 5px;
+        position:absolute;
+        top: 5px;
+        padding: 5px;
+        background: #555;
+        z-index: 50;
+        filter:alpha(opacity=80);
+        opacity:0.8;
+        -moz-border-radius: 15px;
+        -webkit-border-radius: 15px;
+        
 }
-button#refresh{
-    border: 1px solid;
-}
-button#clear{
-    border: 1px solid;
+
+.editor-parent h2.editor-heading{
+    text-align:center;
+    font-size: 13px;
+    color: #fff;
 }
