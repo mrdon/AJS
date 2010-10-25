@@ -81,6 +81,15 @@ public class AUISeleniumQUnitTest extends AbstractAUISeleniumTestCase
     private void runQunitTests(String component)
     {
         client.waitForCondition("selenium.isElementPresent('qunit-testresult')");
+        try
+        {
+            client.wait(3000);
+            client.wait();
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
         int numberOfFailedTests = Integer.valueOf(client.getEval("window.AJS.$('li.fail li.fail').size()"));
         if (numberOfFailedTests != 0)
         {
