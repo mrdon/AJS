@@ -86,6 +86,9 @@
             // add panel 1
             dialog.addPanel("Panel 1", "<p>Some content for panel 1. This has no padding.</p>", "panel-body");
             dialog.get("panel:0").setPadding(0);
+            dialog.addCancel("Cancel Link", function(dialog){
+                dialog.hide();
+            });
 
             // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
             dialog.addPanel("Panel 2", "<p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p>", "panel-body");
@@ -115,7 +118,7 @@
                 dialog.prevPage();
             });
             // adds "Cancel" button to page 1
-            dialog.addButton("Cancel", function (dialog) {
+            dialog.addButton("Cancel", function(dialog) {
                 dialog.hide();
             });
 
