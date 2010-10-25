@@ -77,7 +77,7 @@ public class AUIDialogTest extends AbstractAUISeleniumTestCase
         client.click("dialog-button");
         assertThat.elementVisible("css=div#dialog-test");
 
-        client.click("css=div#dialog-test button.button-panel-button:nth-child(2)");
+        client.click("css=div#dialog-test button.button-panel-button:nth-child(3)");
         assertThat.elementNotVisible("css=div#dialog-test");
     }
 
@@ -111,7 +111,7 @@ public class AUIDialogTest extends AbstractAUISeleniumTestCase
         openTestPage(TEST_PAGE);
 
         client.click("dialog-button");
-        client.click("css=div#dialog-test button.button-panel-button:nth-child(3)");
+        client.click("css=div#dialog-test button.button-panel-button:nth-child(4)");
 
         assertThat.elementPresent("css=div#dialog-test");
         assertThat.elementVisible("css=div#dialog-test");
@@ -126,7 +126,7 @@ public class AUIDialogTest extends AbstractAUISeleniumTestCase
         openTestPage(TEST_PAGE);
 
         client.click("dialog-button");
-        client.click("css=div#dialog-test button.button-panel-button:nth-child(3)");
+        client.click("css=div#dialog-test button.button-panel-button:nth-child(4)");
         client.click("css=div#stack-dialog1 button.button-panel-button:nth-child(2)");
 
         assertThat.elementPresent("css=div#dialog-test");
