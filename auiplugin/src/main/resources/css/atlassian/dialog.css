@@ -22,7 +22,7 @@
 }
 .aui-dialog {
     border: 1px solid #666;
-    font-size: 0.9em;
+    font-size: 14px;
     overflow: hidden;
 }
 .aui-dialog h2.dialog-title {
@@ -94,7 +94,7 @@
 }
 
 .aui-dialog .dialog-button-panel a.button-panel-link {
-    font-size: 1.1em;
+    font-size: 1em;
     margin-right: 1.65em;
     margin-top: 2px;
 }
