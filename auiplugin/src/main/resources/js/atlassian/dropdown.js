@@ -16,8 +16,8 @@
  * <li>displayHandler - function to display text in the drop down</li>
  * @return {Array} an array of jQuery objects, referring to the drop down container elements
  */
+ 
 AJS.dropDown = function (obj, usroptions) {
-
     var dd = null,
         result = [],
         moving = false,
@@ -361,7 +361,7 @@ AJS.dropDown = function (obj, usroptions) {
                    this.shadow = Raphael.shadow(0, 0, this.$.outerWidth(true), this.$.outerHeight(true), {
                        target: this.$[0]
                    });
-                   this.shadow.css("top","auto");
+                   this.shadow.css("top",this.$.css("top"));
                    if(this.alignment == "right") {
                         this.shadow.css("left","");
                    }
