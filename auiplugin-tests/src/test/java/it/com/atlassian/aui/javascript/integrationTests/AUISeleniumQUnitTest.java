@@ -81,7 +81,6 @@ public class AUISeleniumQUnitTest extends AbstractAUISeleniumTestCase
     private void runQunitTests(String component)
     {
         client.waitForCondition("selenium.isElementPresent('qunit-testresult')");
-        client.waitForCondition("setTimeout('return true', 3000)");
         int numberOfFailedTests = Integer.valueOf(client.getEval("window.AJS.$('li.fail li.fail').size()"));
         if (numberOfFailedTests != 0)
         {

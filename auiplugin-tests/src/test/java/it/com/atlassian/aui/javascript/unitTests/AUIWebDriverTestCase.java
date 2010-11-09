@@ -5,8 +5,7 @@ import junit.framework.TestCase;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-
-import webdriver.browsers.WebDriverBrowserAutoInstall;
+import webdriver.browsers.WebdriverBrowserAutoInstall;
 
 import static org.junit.Assert.*;
 
@@ -26,7 +25,7 @@ public abstract class AUIWebDriverTestCase
     @BeforeClass
     public static void startWebDriver()
     {
-        driver = WebDriverBrowserAutoInstall.getDriver();
+        driver = WebdriverBrowserAutoInstall.getDriver();
     }
 
     @AfterClass

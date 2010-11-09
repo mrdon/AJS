@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class AUIWebDriverQUnitTestDisabled extends AUIWebDriverTestCase
+public class AUIWebDriverQUnitTest extends AUIWebDriverTestCase
 {
     @Test
     public void testWhenITypeUnitTests()

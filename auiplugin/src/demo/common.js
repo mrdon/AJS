@@ -45,7 +45,7 @@
         "atlassian/jquery/jquery.stalker.js",
         "atlassian/jquery/jquery.throbber.js"
     ];
-
+    
     for (var i = 0, ii = includes.length; i < ii; i++) {
         document.write('<script src="../../../../auiplugin/src/main/resources/js/' + includes[i] + '"></scr' + 'ipt>');
     }
@@ -54,10 +54,9 @@
 function viewHTMLSource(target) {
     var parent = AJS.$(target).parent().parent();
     var source = parent.children(".html-source");
-    if (parent.children(".html-source:visible").size() == 0) {
+    if(parent.children(".html-source:visible").size()==0){
         source.fadeIn(200);
-    }
-    else {
+    } else {
         source.fadeOut(200);
     }
 }
@@ -65,77 +64,74 @@ function viewHTMLSource(target) {
 function viewJSSource(target) {
     var parent = AJS.$(target).parent().parent();
     var source = parent.children(".js-source");
-    if (parent.children(".js-source:visible").size() == 0) {
+    if(parent.children(".js-source:visible").size()==0){
         source.fadeIn(200);
-    }
-    else {
+    } else {
         source.fadeOut(200);
     }
 }
 
-function addSample(sampleCode) {
+function addSample(sampleCode){
     AJS.$(document).bind("samples", sampleCode);
 }
 
 function createViewSourceLinks() {
-
+    
     var HTMLLink = AJS.$("<div class='view-html-source-link'><a href='#'> View/Hide HTML Source </a></div>"),
-            JSLink = AJS.$("<div class='view-js-source-link'><a href='#'> View/Hide Javascript Source </a></div>");
+        JSLink = AJS.$("<div class='view-js-source-link'><a href='#'> View/Hide Javascript Source </a></div>");
     AJS.$(".source-required").append("<p> --------------End of Sample ----------- </p>");
     AJS.$(".source-required").append(HTMLLink);
     AJS.$(".source-required").append(JSLink);
-
-    AJS.$(".source-required").each(function() {
+            
+    AJS.$(".source-required").each(function(){
         //add HTML source
         var parent = AJS.$(this);
         var htmlcode = parent.children(".html-code").html();
-
+                      
         var htmlsource = AJS.$("<textarea class='html-source'>");
-
+            
         AJS.$(this).children(".view-html-source-link").after(htmlsource);
-
+      
         htmlsource.attr({
-            cols: 140,
-            rows: 20,
-            readonly: true
+           cols: 140,
+           rows: 20,
+           readonly: true 
         });
 
         htmlsource.val(htmlcode);
         htmlsource.hide();
-
+        
         //add JS source
-        var jscode = parent.children("script").html();
+        var jscode = parent.children(".js-code").html();
         if (AJS.$.trim(jscode)) {
             jscode = jscode.replace("addSample(function() {", "");
-            jscode = AJS.$.trim(jscode);
-            jscode = jscode.substring(0, jscode.length - 3);
+            jscode = AJS.$.trim(jscode);  
+            jscode = jscode.substring(0, jscode.length-3);
             var jssource = AJS.$("<textarea class='js-source'>");
             parent.children(".view-js-source-link").after(jssource);
             jssource.attr({
-                cols: 140,
-                rows: 20,
-                readonly: true
+               cols: 140,
+               rows: 20,
+               readonly: true 
             });
-            jssource.val(jscode);
+            jssource.val(jscode);   
             jssource.hide();
-        }
-        else {
+        } else {
             parent.children(".view-js-source-link").remove();
             parent.append("No JS");
         }
 
-
+        
     });
-
+    
     AJS.$(document).trigger("samples");
-    AJS.$(".view-html-source-link").children().click(function(e) {
+    AJS.$(".view-html-source-link").children().click(function(e){
         e.preventDefault();
         viewHTMLSource(e.target);   //defined in common.js
     });
 
-    AJS.$(".view-js-source-link").children().click(function(e) {
+    AJS.$(".view-js-source-link").children().click(function(e){
         e.preventDefault();
         viewJSSource(e.target); //defined in common.js
     });
-}
-;
+};

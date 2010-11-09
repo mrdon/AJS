@@ -13,7 +13,7 @@
 
     <web-resource key="test-common">
         <resource type="download" name="common.js" location="test-pages/common.js"/>
-        <resource type="download" name="test-and-demo-pages.css" location="css/test-and-demo-pages.css"/>
+        <resource type="download" name="common.css" location="test-pages/common.css"/>
     </web-resource>
 
     <!--Web Resources required for qunit tests to run, these should be required on all pages-->

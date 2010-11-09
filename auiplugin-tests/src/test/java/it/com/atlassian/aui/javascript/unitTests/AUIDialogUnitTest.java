@@ -9,7 +9,7 @@ import org.openqa.selenium.Keys;
 
 import static org.junit.Assert.assertTrue;
 
-public class AUIDialogUnitTestDisabled extends AUIWebDriverTestCase
+public class AUIDialogUnitTest extends AUIWebDriverTestCase
 {
     private static final String TEST_PAGE = "test-pages/dialog/dialog-test.html";
 

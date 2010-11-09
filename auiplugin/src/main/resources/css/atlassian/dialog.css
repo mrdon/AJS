@@ -22,13 +22,13 @@
 }
 .aui-dialog {
     border: 1px solid #666;
-    font-size: 14px;
+    font-size: 1.2em;
     overflow: hidden;
 }
 .aui-dialog h2.dialog-title {
     background: #f0f0f0;
     color: #666;
-    font-size: 1.5em;
+    font-size: 1.1em;
     height: 43px;
     line-height: 43px;
     margin: 0;
@@ -63,7 +63,7 @@
     border: none;
     color: #666;
     font-family: "segoe ui", helvetica, arial, sans-serif;
-    font-size: 1em;
+    font-size: .8em;
     padding: .4em 1.2em;
     text-align: left;
     width: 100%;
@@ -72,7 +72,9 @@
     overflow: auto;
     padding: 10px;
 }
-
+.aui-dialog .dialog-page-body p {
+    margin: 0;
+}
 .aui-dialog .dialog-button-panel {
     background: #fff;
     border-top: 1px solid #f0f0f0;
@@ -84,7 +86,7 @@
     width: 100%;
 }
 .aui-dialog .dialog-button-panel button.button-panel-button {
-    font-size: 1em;
+    font-size: 0.75em;
     margin-right: 1.65em;
     margin-top: 2px;
 }
@@ -94,7 +96,7 @@
 }
 
 .aui-dialog .dialog-button-panel a.button-panel-link {
-    font-size: 1em;
+    font-size: 0.75em;
     margin-right: 1.65em;
     margin-top: 2px;
 }
