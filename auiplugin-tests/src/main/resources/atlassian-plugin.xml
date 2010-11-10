@@ -90,9 +90,9 @@
         <dependency>auiplugin-tests:toolbar-unit-tests</dependency>
     </web-resource>
 
-    <web-item key="demoPages" section="index.links" weight="10" application="refapp">
-        <label>AUI Demo Pages</label>
-        <link linkId="demoPages">/plugins/servlet/ajstest/test-pages/index.html</link>
+    <web-item key="testPages" section="index.links" weight="10" application="refapp">
+        <label>AUI Test Pages</label>
+        <link linkId="testPages">/plugins/servlet/ajstest/test-pages/index.html</link>
     </web-item>
 
     <web-item key="qunitTests" section="index.links" weight="20" application="refapp">
