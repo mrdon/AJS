@@ -20,8 +20,12 @@
     <web-resource key="qunit" name="Atlassian QUnit Dependencies">
         <resource type="download" name="qunit.js" location="unit-tests/external/qunit/qunit.js"/>
         <resource type="download" name="qunit.css" location="unit-tests/external/qunit/qunit.css"/>
+        <resource type="download" name="qunit-reset.js" location="unit-tests/external/qunit/qunit-reset.js"/>
     </web-resource>
 
+    <web-resource key="qunit-reset" name="Atlassian QUnit.reset override">
+        <resource type="download" name="qunit-reset.js" location="unit-tests/external/qunit/qunit-reset.js"></resource>
+    </web-resource>
 
     <!-- Web resources for each component's unit tests, each component test page should have only one of these-->
     <!-- ComponentTests -->
