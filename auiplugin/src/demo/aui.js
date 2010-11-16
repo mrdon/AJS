@@ -28,6 +28,7 @@
         "atlassian/template.js",
         "atlassian/whenitype.js",
         "atlassian/containdropdown.js",
+        "atlassian/toolbar.js",
 
         "atlassian/binders/binder.js",
         "atlassian/binders/placeholder.js",
@@ -44,8 +45,9 @@
         "atlassian/jquery/jquery.stalker.js",
         "atlassian/jquery/jquery.throbber.js"
     ];
-    
+
     for (var i = 0, ii = includes.length; i < ii; i++) {
-        document.write('<script src="../../../../../../auiplugin/src/main/resources/js/' + includes[i] + '"></script>');
+        document.write('<script src="../../../../auiplugin/src/main/resources/js/' + includes[i] + '" id="wtf"></scr' + 'ipt>');
     }
+    
 })();

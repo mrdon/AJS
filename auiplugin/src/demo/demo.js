@@ -1,56 +1,12 @@
-/**
- * This common javascript file is used to include all javascript modules into the sample html files.
- * Add any new javascript files to this list to ensure they are included in the samples.
- */
-(function () {
+//MAIN CODE RUN ON ALL PAGES
+AJS.$(document).ready(function(){
+    createViewSourceLinks();
+    detectPrototype();
+});
 
-    var includes = [
-        "external/raphael/raphael.js",
-        "external/raphael/raphael.shadow.js",
-        "external/jquery/jquery.js",
-        "external/jquery/jquery-compatibility.js",
-        "external/jquery/jquery-ui.js",
-        "external/jquery/plugins/jquery.aop.js",
-        "external/jquery/plugins/jquery.form.js",
+//HELPER FUNCTIONS
 
-        "atlassian/atlassian.js",
-        "atlassian/cookie.js",
-        "atlassian/dialog.js",
-        "atlassian/dropdown.js",
-        "atlassian/event.js",
-        "atlassian/icons.js",
-        "atlassian/inline-dialog.js",
-        "atlassian/firebug.js",
-        "atlassian/forms.js",
-        "atlassian/messages.js",
-        "atlassian/tables.js",
-        "atlassian/tabs.js",
-        "atlassian/template.js",
-        "atlassian/whenitype.js",
-        "atlassian/containdropdown.js",
-        "atlassian/toolbar.js",
-
-        "atlassian/binders/binder.js",
-        "atlassian/binders/placeholder.js",
-
-        "atlassian/jquery/jquery.autocomplete.js",
-        "atlassian/jquery/jquery.is-dirty.js",
-        "atlassian/jquery/jquery.progressbar.js",
-        "atlassian/jquery/jquery.selection.js",
-        "atlassian/jquery/jquery.os.js",
-        "atlassian/jquery/jquery.moveto.js",
-        "atlassian/jquery/jquery.offsetanchors.js",
-        "atlassian/jquery/jquery.hotkeys.js",
-        "atlassian/jquery/jquery.getdocheight.js",
-        "atlassian/jquery/jquery.stalker.js",
-        "atlassian/jquery/jquery.throbber.js"
-    ];
-
-    for (var i = 0, ii = includes.length; i < ii; i++) {
-        document.write('<script src="../../../../auiplugin/src/main/resources/js/' + includes[i] + '"></scr' + 'ipt>');
-    }
-})();
-
+//event handler for viewing html source
 function viewHTMLSource(target) {
     var parent = AJS.$(target).parent().parent();
     var source = parent.children(".html-source");
@@ -62,6 +18,7 @@ function viewHTMLSource(target) {
     }
 }
 
+//event handler for viewing js source
 function viewJSSource(target) {
     var parent = AJS.$(target).parent().parent();
     var source = parent.children(".js-source");
@@ -73,12 +30,33 @@ function viewJSSource(target) {
     }
 }
 
+//event binding to run sample code only after original source has been captured
 function addSample(sampleCode) {
     AJS.$(document).bind("samples", sampleCode);
 }
 
-function createViewSourceLinks() {
+//detect if demo page is for a prototype component
+function detectPrototype(){
+    var prototypeText = "This component is still in a prototype stage. It is still being evaluated within Atlassian. plugin developers should avoid using it until it has been approved for generalised prototyping. Plugin developers are advised to avoid using this component also as it's stability had not been confirmed.",
+    prototypeStatus = "Prototype!"
+    
+    if(AJS.$("meta[name='status']").attr("content")=="prototype"){
+        if(AJS.$("meta[name='product']").size()>0){
+            prototypeText = "This component is still in an initial prototype stage. It is still being evaluated within Atlassian "+AJS.$("meta[name='product']").attr("content")+", all other Atlassian products should avoid using it until it has been approved for generalised prototyping. Plugin developers are advised to avoid using this component also as it's stability had not been confirmed."
+            prototypeStatus = "Initial Prototype!"
+        }
+        
+        AJS.messages.warning(".navigation", {
+                title: prototypeStatus,
+                body: prototypeText,
+                closeable: false
+            });
+    }
+}
 
+//adds the view source links as required (does not work with components that add markup and js automatically on load like tabs)
+function createViewSourceLinks() {
+    
     var HTMLLink = AJS.$("<div class='view-html-source-link'><a href='#'> View/Hide HTML Source </a></div>"),
             JSLink = AJS.$("<div class='view-js-source-link'><a href='#'> View/Hide Javascript Source </a></div>");
     AJS.$(".source-required").append("<p> --------------End of Sample ----------- </p>");
@@ -106,9 +84,12 @@ function createViewSourceLinks() {
         //add JS source
         var jscode = parent.children("script").html();
         if (AJS.$.trim(jscode)) {
-            jscode = jscode.replace("addSample(function() {", "");
-            jscode = AJS.$.trim(jscode);
-            jscode = jscode.substring(0, jscode.length - 3);
+            if(jscode.indexOf("addSample(function() {") > -1 || jscode.indexOf("addSample(function(){") > -1){
+                jscode = jscode.replace("addSample(function() {", "");
+                jscode = jscode.replace("addSample(function(){", "");
+                jscode = AJS.$.trim(jscode);
+                jscode = jscode.substring(0, jscode.length - 3);
+            }
             var jssource = AJS.$("<textarea class='js-source'>");
             parent.children(".view-js-source-link").after(jssource);
             jssource.attr({
@@ -126,8 +107,8 @@ function createViewSourceLinks() {
 
 
     });
-
     AJS.$(document).trigger("samples");
+    
     AJS.$(".view-html-source-link").children().click(function(e) {
         e.preventDefault();
         viewHTMLSource(e.target);   //defined in common.js
@@ -137,5 +118,6 @@ function createViewSourceLinks() {
         e.preventDefault();
         viewJSSource(e.target); //defined in common.js
     });
-}
-;
+};
+
+

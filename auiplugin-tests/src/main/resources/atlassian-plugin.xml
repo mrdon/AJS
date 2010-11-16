@@ -12,7 +12,7 @@
     </servlet>
 
     <web-resource key="test-common">
-        <resource type="download" name="common.js" location="test-pages/common.js"/>
+        <resource type="download" name="test.js" location="test-pages/test.js"/>
         <resource type="download" name="test-and-demo-pages.css" location="css/test-and-demo-pages.css"/>
     </web-resource>
 
