@@ -21,6 +21,7 @@
         var r = Raphael([context, size + 1, size + 1].concat(ro));
         r.scale(size / 24, size / 24, 0, 0);
     }
+
 })();
 
 /* Set up icons automatically based on class names*/

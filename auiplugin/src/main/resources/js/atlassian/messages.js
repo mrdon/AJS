@@ -26,14 +26,14 @@
         makeCloseable: function (message) {
             AJS.$(message || "div.aui-message.closeable").each(function () {
                 var $this = AJS.$(this),
-                    $icon = AJS.$('<span class="svg-icon close size-16"></span>').click(function () {
+                    $icon = AJS.$('<span class="sprite-icon close size-16"></span>').click(function () {
                         $this.closeMessage();
                     });
                 $this.append($icon);
-                $icon.each(AJS.icons.addIcon.init);
+                // $icon.each(AJS.icons.addIcon.init);
             });
         },
-        template: '<div class="aui-message {type} {closeable} {shadowed}"><p class="title"><span class="svg-icon {type} size-18"></span><strong>{title}</strong></p>{body}</div><!-- .aui-message -->',
+        template: '<div class="aui-message {type} {closeable} {shadowed}"><p class="title"><span class="sprite-icon {type} size-16"></span><strong>{title}</strong></p>{body}</div><!-- .aui-message -->',
         createMessage: function (type) {
             AJS.messages[type] = function (context, obj) {
                 if (!obj) {
