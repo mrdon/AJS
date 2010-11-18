@@ -18,20 +18,18 @@
 .aui-message.closeable {
     z-index: 4000;
 }
-    .aui-message .sprite-icon {
+    .aui-message .svg-icon {
         left: 10px;
         position: absolute;
         top: 10px;
     }
-    
-    .aui-message.closeable .sprite-icon.close {
+    .aui-message.closeable .svg-icon.close {
         cursor: pointer;
         left: auto;
         position: absolute;
         right: 6px;
         top: 6px;
     }
-
 .aui-message.error {
     background: #ffe7e7; 
     border-color: #df9898;

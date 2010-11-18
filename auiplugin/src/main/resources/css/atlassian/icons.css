@@ -32,46 +32,6 @@
     background-position: -39px -13px;
 }
 
-/*SPRITE ICONS*/
-.sprite-icon.size-16 {
-    width: 16px;
-    height: 16px;
-}
-
-.sprite-icon.size-18 {
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-}
-
-.sprite-icon.info {
-    background:url("images/icons/ico_message_information.png") no-repeat 0 0;
-}
-
-.sprite-icon.success {
-    background:url("images/icons/ico_message_success.png") no-repeat 0 0;
-}
-
-.sprite-icon.error {
-    background:url("images/icons/ico_message_error.png") no-repeat 0 0;
-}
-
-.sprite-icon.generic {
-    background:url("images/icons/ico_message_general.png") no-repeat 0 0;
-}
-
-.sprite-icon.hint {
-    background:url("images/icons/ico_message_hint.png") no-repeat 0 0;
-}
-
-.sprite-icon.warning {
-    background:url("images/icons/ico_message_warning.png") no-repeat 0 0;
-}
-
-.sprite-icon.close {
-    background:url("images/icons/ico_message_close.png") no-repeat 0 0;
-}
-
 /* form icons - add aui-icon class together with the icon class "aui-icon icon-help" */
 form.aui .aui-icon {
     background: transparent url(images/icons/aui-icon-forms.gif) no-repeat 0 0;
