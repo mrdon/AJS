@@ -70,4 +70,54 @@
             margin: 0;
             padding: 0;
         }
+/*TEMPORARY ICON CSS FOR MESSAGES, MOVE/REPLACE WHEN AUI ICONS ARE COMPLETED*/
+.aui-message .aui-icon {
+    background: transparent url("images/icons/aui-message-icon-sprite.png") no-repeat 0 0;
+    border: none;
+    display: block;
+    height: 14px;
+    padding: 0;
+    text-indent: -9999px;
+    width: 14px;
+    /*message specific positioning*/
+    left: 10px;
+    position: absolute;
+    top: 0.9em;
+}
 
+.aui-message.closeable .aui-icon.icon-close {
+    cursor: pointer;
+    left: auto;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+}
+
+.aui-message .icon-info {
+    background-position:-96px 0;
+}              
+
+.aui-message .icon-success {
+    background-position:-120px 0;
+}              
+
+.aui-message .icon-error {  
+    background-position:-24px 0;
+}              
+
+.aui-message .icon-generic {
+    background-position:-48px 0;
+}              
+
+.aui-message .icon-hint {   
+    background-position:-72px 0;
+}              
+
+.aui-message .icon-warning {
+    background-position:-144px 0;
+}              
+
+.aui-message .icon-close {  
+    background-position:0 0;
+}
+/*END ICONS*/
