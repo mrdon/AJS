@@ -7,7 +7,7 @@ if (window.Raphael) {
      			offsetSize = options.offsetSize || 5, //by default we want to offset by 5 pixels for pretty ness
      			zindex = options.zindex || 0,
      			radius = options.radius || 0,
-     			paper,rect, $container = AJS.$("<div class='aui-shadow'></div"), opacity = ".5" , blur = "3", absolute = "absolute";
+     			paper,rect, $container = AJS.$('<div class="aui-shadow"></div>'), opacity = ".5" , blur = "3", absolute = "absolute";
 
      		w = w + size; h = h + size;
 
