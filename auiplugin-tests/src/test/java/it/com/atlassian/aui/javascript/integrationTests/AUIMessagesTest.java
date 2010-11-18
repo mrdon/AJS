@@ -32,9 +32,9 @@ public class AUIMessagesTest extends AbstractAUISeleniumTestCase
     {
         openTestPage(TEST_PAGE);
 
-        assertThat.elementPresent("css=div#closeable-html-test .closeable");
+        assertThat.elementPresent("css=div#closeable-html-test .aui-icon.icon-close");
 
-        client.click("css=div#closeable-html-test .closeable span.close");
+        client.click("css=div#closeable-html-test .closeable .aui-icon.icon-close");
         assertThat.elementNotPresent("css=div#closeable-html-test .closeable");
 
     }
@@ -45,7 +45,7 @@ public class AUIMessagesTest extends AbstractAUISeleniumTestCase
 
         assertThat.elementPresent("css=div#closeable-js-test .closeable");
 
-        client.click("css=div#closeable-js-test .closeable span.close");
+        client.click("css=div#closeable-js-test .closeable .aui-icon.icon-close");
         assertThat.elementNotPresent("css=div#closeable-js-test .closeable");
 
     }
