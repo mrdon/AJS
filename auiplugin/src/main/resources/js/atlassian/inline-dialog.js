@@ -146,12 +146,16 @@
                             // once the animation is complete, set the tracker variables
                             // beingShown = false; // is this necessary? Maybe only the shouldShow will have to be reset?
                         });
+
                         if (popup.shadow) {
                             popup.shadow.remove();
                         }
+
                         popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
                             target: popup[0]
-                        });
+                        })
+                        .hide()
+                        .fadeIn(opts.fadeTime);
 
                         if (AJS.$.browser.msie) {
                             // iframeShim, prepend if it doesnt exist
