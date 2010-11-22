@@ -151,7 +151,9 @@
                         }
                         popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
                             target: popup[0]
-                        });
+                        })
+                        .hide()
+                        .fadeIn(opts.fadeTime);
 
                         if (AJS.$.browser.msie) {
                             // iframeShim, prepend if it doesnt exist
