@@ -64,6 +64,8 @@
     top: auto;
 }
 
+.aui-dropdown {list-style-type:none;}
+
 .aui-dd-parent .aui-dropdown,
 .aui-dropdown,
 .aui-dd-parent .aui-shadow-parent {
