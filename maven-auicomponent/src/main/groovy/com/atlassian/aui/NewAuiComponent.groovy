@@ -124,7 +124,7 @@ extends GroovyMojo
       if (needJS)
       {
         println ""
-        println ">>> Adding javascript files..."
+        println "Adding javascript files..."
         makeFileFromTemplate("${componentName}.js", "${basedirectory}auiplugin/src/main/resources/js/atlassian/", "main-template.js", "")
         generateJS(new File("${basedirectory}auiplugin/src/main/resources/js/atlassian/${componentName}.js"))
       }
@@ -133,30 +133,30 @@ extends GroovyMojo
       if (needCSS)
       {
         println ""
-        println ">>> Adding CSS files..."
+        println "Adding CSS files..."
         makeFileFromTemplate("${componentName}.css", "${basedirectory}auiplugin/src/main/resources/css/atlassian/", "main-template.css", "")
         makeFileFromTemplate("${componentName}-ie.css", "${basedirectory}auiplugin/src/main/resources/css/atlassian/", "main-template-ie.css", "")
 
       }
 
       println ""
-      println ">>> Adding Demo Pages..."
+      println "Adding Demo Pages..."
       makeFileFromTemplate("${componentName}-demo.html", "${basedirectory}auiplugin/src/demo/${componentName}/", "demo-template.html", "")
 
       println ""
-      println ">>> Adding Test Pages..."
+      println "Adding Test Pages..."
       makeFileFromTemplate("${componentName}-test.html", "${basedirectory}auiplugin-tests/src/main/resources/test-pages/${componentName}/", "testpage-template.html", "")
 
       println ""
-      println ">>> Adding Unit Tests..."
+      println "  + Adding Unit Tests..."
       makeFileFromTemplate("${componentName}-unit-tests.js", "${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/", "qunit-tests-template.js", "module(\"${componentName} Unit Tests\");\n")
       makeFileFromTemplate("${componentName}-unit-tests.html", "${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/", "qunit-testpage-template.html", "")
-      println ">>>>>> Adding Qunit Resource to atlassian-plugin.xml"
-      println ">>>>>>>>> Creating temporary atlassian-plugin-temp.xml"
+      println "  + Adding Qunit Resource to atlassian-plugin.xml"
+      println "    ...Creating temporary atlassian-plugin-temp.xml"
       File atlassianPlugin = new File("${basedirectory}auiplugin-tests/src/main/resources/atlassian-plugin.xml")
       File newAtlassianPlugin = createNewFileUnderDirectory("${basedirectory}auiplugin-tests/src/main/resources/", "atlassian-plugin-temp.xml")
 
-      println ">>>>>>>>> Constructing new atlassian-plugin.xml within atlassian-plugin-temp.xml"
+      println "    ...Constructing new atlassian-plugin.xml within atlassian-plugin-temp.xml"
       atlassianPlugin.eachLine {line ->
         newAtlassianPlugin.append(line + "\n")
         if (line == "    <!-- ComponentTests -->")
@@ -171,37 +171,46 @@ extends GroovyMojo
           newAtlassianPlugin.append("        <dependency>auiplugin-tests:${componentName}-unit-tests</dependency>\n");
         }
       }
-      println ">>>>>>>>> Copying atlassian-plugin-temp.xml to atlassian-plugin.xml"
+      println "    ...Copying atlassian-plugin-temp.xml to atlassian-plugin.xml"
       atlassianPlugin.write(newAtlassianPlugin.getText());
-      println ">>>>>>>>> Removing atlassian-plugin-temp.xml"
+      println "    ...Removing atlassian-plugin-temp.xml"
       newAtlassianPlugin.delete();
 
       println ""
+
       println "----------------------------------COMPLETE---------------------------------"
       println ""
-      println "Template files necessary to include your component '${componentName}' in AUI were successfully created!  Please make sure you modify them appropriately:"
       println ""
-
+      println "Template files necessary to include your component '${componentName}' in AUI were\nsuccessfully created!  Please make sure you modify them appropriately:"
+      println ""
+      println "---------------------------------------------------------------------------"
+      println "COMPONENT FILES "
+      println "---------------------------------------------------------------------------"
+      println ""
       if (needJS)
       {
-        println "Component Javascript File: ${basedirectory}auiplugin/src/main/resources/js/atlassian/${componentName}.js"
+        println "Component Javascript File:\n${basedirectory}auiplugin/src/main/resources/js/atlassian/${componentName}.js"
         println ""
       }
       if (needCSS)
       {
-        println "Component CSS File: ${basedirectory}auiplugin/src/main/resources/css/atlassian/${componentName}.css"
+        println "Component CSS File:\n${basedirectory}auiplugin/src/main/resources/css/atlassian/${componentName}.css"
         println ""
-        println "Component IE CSS File: ${basedirectory}auiplugin/src/main/resources/css/atlassian/${componentName}-ie.css"
+        println "Component IE CSS File:\n${basedirectory}auiplugin/src/main/resources/css/atlassian/${componentName}-ie.css"
         println ""
       }
 
-      println "Demo Page: ${basedirectory}auiplugin/src/demo/${componentName}/${componentName}-demo.html"
+      println "Demo Page:\n${basedirectory}auiplugin/src/demo/${componentName}/${componentName}-demo.html"
       println ""
-      println "Test Page: ${basedirectory}auiplugin-tests/src/main/resources/test-pages/${componentName}/${componentName}-test.html"
+      println "---------------------------------------------------------------------------"
+      println "TEST FILES"
+      println "---------------------------------------------------------------------------"
       println ""
-      println "Unit Tests: ${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/${componentName}-unit-tests.js"
+      println "Test Page:\n${basedirectory}auiplugin-tests/src/main/resources/test-pages/${componentName}/${componentName}-test.html"
       println ""
-      println "Unit Tests Page: ${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/${componentName}-unit-tests.html"
+      println "Unit Tests:\n${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/${componentName}-unit-tests.js"
+      println ""
+      println "Unit Tests Page:\n${basedirectory}auiplugin-tests/src/main/resources/unit-tests/tests/${componentName}-unit-tests/${componentName}-unit-tests.html << DO NOT MODIFY"
       println ""
 
     }
@@ -225,10 +234,10 @@ extends GroovyMojo
   {
     File newFile = createNewFileUnderDirectory(parentDirectory, filename);
     templatesFolder.eachFileMatch(template) { file ->
-      println ">>>>>> creating: " + newFile.absolutePath
+      println "  + creating: " + newFile.absolutePath
       newFile.append(prepend);
       newFile.append(file.getText());
-      println ">>>>>>>>> DONE!"
+      println "    ...DONE!"
     }
   }
 
