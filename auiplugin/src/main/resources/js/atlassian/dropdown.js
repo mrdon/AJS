@@ -18,7 +18,40 @@
  */
  
 AJS.dropDown = function (obj, usroptions) {
-    init: function (options) {
+    var dd = null,
+        result = [],
+        moving = false,
+        $doc = AJS.$(document),
+        options = {
+            item: "li:has(a)",
+            activeClass: "active",
+            alignment: "right",
+            displayHandler: function(obj) {return obj.name;},
+            escapeHandler: function () {
+                this.hide("escape");
+                return false;
+            },
+            hideHandler: function() {},
+            moveHandler: function(selection,dir) {}
+        };
+    AJS.$.extend(options, usroptions);
+    options.alignment = {left:"left",right:"right"}[options.alignment.toLowerCase()]  || "left";
+    if (obj && obj.jquery) { // if AJS.$
+        dd = obj;
+    } else if (typeof obj == "string") { // if AJS.$ selector
+        dd = AJS.$(obj);
+    } else if (obj && obj.constructor == Array) { // if JSON
+        dd = AJS("div").addClass("aui-dropdown").toggleClass("hidden", !!options.isHiddenByDefault);
+        for (var i = 0, ii = obj.length; i < ii; i++) {
+            var ol = AJS("ol");
+            for (var j = 0, jj = obj[i].length; j < jj; j++) {
+                var li = AJS("li");
+                var properties = obj[i][j];
+                if (properties.href) {
+                    li.append(AJS("a")
+                        .html("<span>" + options.displayHandler(properties) + "</span>")
+                        .attr({href:  properties.href})
+                        .addClass(properties.className));
 
                     // deprecated - use the properties on the li, not the span
                     AJS.$.data(AJS.$("a > span", li)[0], "properties", properties);
@@ -45,54 +78,135 @@ AJS.dropDown = function (obj, usroptions) {
         throw new Error("AJS.dropDown function was called with illegal parameter. Should be AJS.$ object, AJS.$ selector or array.");
     }
 
-        this.options = AJS.$.extend(this._getDefaultOptions(options), options);
-        this.$content = AJS.$(this.options.content);
-        this.$layer = this._render("layer").insertBefore(this.$content);
-        this.$content.appendTo(this.$layer);
-        this._assignEvents("container", document);
-        this._assignEvents("layer", this.$layer);
-        this._assignEvents("win", window);
+    var moveDown = function() {
+        move(+1);
+    };
 
-        if (this._supportsBoxShadow()) {
-            this.$layer.addClass("box-shadow");
-        }
-    },
+     var moveUp = function() {
+        move(-1);
+    };
 
-    hide: function () {
+    var move = function(dir) {
+        var trigger = !moving,
+            cdd = AJS.dropDown.current.$[0],
+            links = AJS.dropDown.current.links,
+            oldFocus = cdd.focused;
+        moving = true;
 
-        if (!this.$content.is(":visible")) {
-            return;
-        }
+        cdd.focused = (typeof cdd.focused == "number" ? cdd.focused : -1);
 
-        this.$scrollableContainer.unbind("scroll.hide-dropdown");
-        this.$layer.removeClass("active").hide();
-        
-        // we need to put it back so that it is cleared when say dialog content is emptied
-        if (this.$offsetTarget) {
-            this.$layer.appendTo(this.$placeholder);
-        }
-        this._resetZIndexes();
-        AJS.Dropdown.current = null;
-    },
-
-    show: function () {
-
-        if (this.$content.is(":visible")) {
-            return;
-        }
-        if (AJS.Dropdown.current) {
-            AJS.Dropdown.current.hide();
+        if (!AJS.dropDown.current) {
+            AJS.log("move - not current, aborting");
+            return true;
         }
 
-        // need to do this here because when we initialise the dropdown, the dropdown content may not be in the DOM
-        if (!this.$offsetTarget) {
-            this.$offsetTarget = this.$layer.prev();
-            this.$placeholder = AJS.$("<div class='ajs-layer-placeholder' />").insertAfter(this.$offsetTarget);
-            this.$scrollableContainer = this.$offsetTarget.closest(".content-body");
-            this.$layer.appendTo("body");
-        } else {
-            this.$layer.appendTo("body");
+        cdd.focused = cdd.focused + dir;
+        if (cdd.focused < 0) {
+            cdd.focused = links.length - 1;
         }
+        if (cdd.focused > links.length - 1) {
+            cdd.focused = 0;
+        }
+
+        options.moveHandler(AJS.$(links[cdd.focused]), dir < 0 ? "up" : "down");
+        if (trigger && links.length) {
+            AJS.$(links[cdd.focused]).addClass(options.activeClass);
+            moving = false;
+        } else if(!links.length) {
+            moving = false;
+        }
+    };
+
+    var moveFocus = function (e) {
+        if (!AJS.dropDown.current) {
+            return true;
+        }
+        var c = e.which,
+            cdd = AJS.dropDown.current.$[0],
+            links = AJS.dropDown.current.links;
+
+        AJS.dropDown.current.cleanActive();
+        switch (c) {
+            case 40: {
+                moveDown();
+                break;
+            }
+            case 38:{
+                moveUp();
+                break;
+            }
+            case 27:{
+                return options.escapeHandler.call(AJS.dropDown.current, e);
+            }
+            case 13:{
+                if (cdd.focused >= 0) {
+                    if(!options.selectionHandler){
+                        if(AJS.$(links[cdd.focused]).attr("nodeName")!='a'){
+                            return AJS.$("a", links[cdd.focused]).trigger("focus");    //focus on the "a" within the parent item elements
+                        } else {
+                            return AJS.$(links[cdd.focused]).trigger("focus");     //focus on the "a"
+                        }
+                    } else {
+                        return options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(links[cdd.focused]));   //call the selection handler
+                    }
+                }
+                return true;
+            }
+            default:{
+                if (links.length) {
+                    AJS.$(links[cdd.focused]).addClass(options.activeClass);
+                }
+                return true;
+            }
+        }
+
+        e.stopPropagation();
+        e.preventDefault();
+        return false;
+    };
+
+    var hider = function (e) {
+        if (!((e && e.which && (e.which == 3)) || (e && e.button && (e.button == 2)) || false)) { // right click check
+            if (AJS.dropDown.current) {
+                AJS.dropDown.current.hide("click");
+            }
+        }
+    };
+    var active = function (i) {
+        return function () {
+            if (!AJS.dropDown.current) {
+                return;
+            }
+            AJS.dropDown.current.cleanFocus();
+            this.originalClass = this.className;
+            AJS.$(this).addClass(options.activeClass);
+            AJS.dropDown.current.$[0].focused = i;
+        };
+    };
+
+    var handleClickSelection = function (e) {
+        if (e.button || e.metaKey || e.ctrlKey || e.shiftKey) {
+            return true;
+        }
+        if (AJS.dropDown.current && options.selectionHandler) {
+            options.selectionHandler.call(AJS.dropDown.current, e, AJS.$(this));
+        }
+    };
+
+	var isEventsBound = function (el) {
+        var bound = false;
+        if (el.data("events")) {
+            AJS.$.each(el.data("events"), function(i, handler){
+                AJS.$.each(handler, function (type, handler) {
+                    if (handleClickSelection === handler) {
+                        bound = true;
+                        return false;
+                    }
+                });
+            });
+        }
+        return bound;
+    };
 
     dd.each(function () {
         var cdd = this, $cdd = AJS.$(this), res;
@@ -151,11 +265,17 @@ AJS.dropDown = function (obj, usroptions) {
             }
         };
 
-        this.$layer.addClass("active").show();
-        this._setZindexes();
-        this.setHeight();
-        this.setWidth();
-        this.setPosition();
+        /**
+         * Uses Aspect Oriented Programming (AOP) to insert callback <em>after</em> the
+         * specified method has returned @see AJS.$.aop
+         * @method addCallback
+         * @param {String} methodName - Name of a public method
+         * @param {Function} callback - Function to be executed
+         * @return {Array} weaved aspect
+         */
+        res.addCallback = function (method, callback) {
+            return AJS.$.aop.after({target: this, method: method}, callback);
+        };
 
         res.reset = methods.reset();
         res.show = function (method) {
@@ -289,51 +409,66 @@ AJS.dropDown = function (obj, usroptions) {
               });
           })();
       }
+        result.push(res);
+    });
+    return result;
+};
 
-        var offset = this.$offsetTarget.offset();
-        var newOffsetTop = offset.top + this.$offsetTarget.outerHeight();
-        var cushion = 20;
-        var scrollTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
-        var maxHeight = AJS.$(window).height() + scrollTop - newOffsetTop - cushion;
+/**
+ * For the given item in the drop down get the value of the named additional property. If there is no
+ * property with the specified name then null will be returned.
+ *
+ * @method getAdditionalPropertyValue
+ * @namespace AJS.dropDown
+ * @param item {Object} jQuery Object of the drop down item. An LI element is expected.
+ * @param name {String} name of the property to retrieve
+ */
+AJS.dropDown.getAdditionalPropertyValue = function (item, name) {
+    var el = item[0];
+    if ( !el || (typeof el.tagName != "string") || el.tagName.toLowerCase() != "li" ) {
+        // we are moving the location of the properties and want to deprecate the attachment to the span
+        // but are unsure where and how its being called so for now we just log
+        AJS.log("AJS.dropDown.getAdditionalPropertyValue : item passed in should be an LI element wrapped by jQuery");
+    }
+    var properties = AJS.$.data(el, "properties");
+    return properties ? properties[name] : null;
+};
 
-        this.$layer.css({
-            left: offset.left,
-            top: newOffsetTop,
-            maxHeight: maxHeight
-        });
-    },
+/**
+ * Only here for backwards compatibility
+ * @method removeAllAdditionalProperties
+ * @namespace AJS.dropDown
+ * @deprecated Since 3.0
+ */
+AJS.dropDown.removeAllAdditionalProperties = function (item) {
+};
 
-    setWidth: function (minWidth) {
+ /**
+  * Base dropdown control. Enables you to identify triggers that when clicked, display dropdown.
+  *
+  * @class Standard
+  * @constructor
+  * @namespace AJS.dropDown
+  * @param {Object} usroptions
+  * @return {Object
+  */
+ AJS.dropDown.Standard = function (usroptions) {
 
-        var availableWidth = AJS.$(window).width() - this.$content.offset().left;
+    var res = [], dropdownParents, options = {
+        selector: ".aui-dd-parent",
+        dropDown: ".aui-dropdown",
+        trigger: ".aui-dd-trigger"
+    };
 
-        minWidth = Math.max(minWidth || 200, this.$offsetTarget.outerWidth());
+     // extend defaults with user options
+    AJS.$.extend(options, usroptions);
 
     var hookUpDropDown = function($trigger, $parent, $dropdown, ddcontrol) {
-    _events: {
-        container : {
-            keydown: function (e) {
-                if (e.keyCode === AJS.$.ui.keyCode.ESCAPE) {
-                    this.hide();
-                }   
-            },
-            click: function (e) {
-                if (e.button !== 2) {
-                    this.hide();
-                }
-            }
-        },
+        // extend to control to have any additional properties/methods
+        AJS.$.extend(ddcontrol, {trigger: $trigger});
 
-        win: {
-            resize: function () {
-                if (!this.$offsetTarget || !this.$layer.is(":visible")) {
-                    return;
-                }
-                this.setPosition();
-                this.setHeight();
-                this.setWidth();
-            }
-        },
+        // flag it to prevent additional dd controls being applied
+        $parent.addClass("dd-allocated");
 
         //hide dropdown if not already hidden
         $dropdown.addClass("hidden");
@@ -446,20 +581,43 @@ AJS.dropDown = function (obj, usroptions) {
     return res;
 };
 
-            this.undoZIndexes = function (undoZIndexes, offsetElement) {
-                return function () {
-                    offsetElement.css("zIndex", "");
-                    if (undoZIndexes) {
-                        undoZIndexes();
-                    }
-                };
-            }(this.undoZIndexes, AJS.$(offsetElement));
 
-            AJS.$(offsetElement).css("zIndex", topIndex);
-            offsetElement = offsetElement.offsetParent;
-            --topIndex;
-        }
-    },
+/**
+ * A NewStandard dropdown, however, with the ability to populate its content's via ajax.
+ *
+ * @class Ajax
+ * @constructor
+ * @namespace AJS.dropDown
+ * @param {Object} options
+ * @return {Object} dropDown instance
+ */
+AJS.dropDown.Ajax = function (usroptions) {
+
+    var dropdowns, options = {cache: true};
+
+     // extend defaults with user options
+    AJS.$.extend(options, usroptions || {});
+
+    // we call with "this" in case we are called in the context of a jQuery collection
+    dropdowns = AJS.dropDown.Standard.call(this, options);
+
+    AJS.$(dropdowns).each(function () {
+
+        var ddcontrol = this;
+
+        AJS.$.extend(ddcontrol, {
+            getAjaxOptions: function (opts) {
+                var success = function (response) {
+                    if (options.formatResults) {
+                        response = options.formatResults(response);
+                    }
+                    if (options.cache) {
+                        ddcontrol.cache.set(ddcontrol.getAjaxOptions(), response);
+                    }
+                    ddcontrol.refreshSuccess(response);
+                };
+                if (options.ajaxOptions) {
+
 
                     if (AJS.$.isFunction(options.ajaxOptions)) {
                         return AJS.$.extend(options.ajaxOptions.call(ddcontrol), {success: success});
@@ -518,4 +676,11 @@ AJS.dropDown = function (obj, usroptions) {
     return dropdowns;
 };
 
-});
+
+AJS.$.fn.dropDown = function (type, options) {
+    type = (type || "Standard").replace(/^([a-z])/, function (match) {
+        return match.toUpperCase();
+    });
+    return AJS.dropDown[type].call(this, options);
+};
+
