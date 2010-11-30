@@ -1,3 +1,10 @@
+/*->
+#name->Dialog
+#javascript->yes
+#css->yes
+#description->this is a dialog 
+<-*/
+
 /**
  * Covers screen with semitransparent DIV
  * @method dim

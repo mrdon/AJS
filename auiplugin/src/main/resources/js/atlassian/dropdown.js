@@ -1,4 +1,11 @@
-/**
+/*->
+#name->Dropdown
+#javascript->yes
+#css->yes
+#description->this is a dropdown
+<-*/
+
+/**->
  * Displays a drop down, typically used for menus.
  * 
  * @class dropDown
@@ -15,7 +22,7 @@
  * <li>isHiddenByDefault - set to true if you would like to hide the drop down on initialisation</li>
  * <li>displayHandler - function to display text in the drop down</li>
  * @return {Array} an array of jQuery objects, referring to the drop down container elements
- */
+ <-*/
  
 AJS.dropDown = function (obj, usroptions) {
     var dd = null,

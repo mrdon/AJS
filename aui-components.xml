@@ -1,0 +1,17 @@
+<aui-components>
+
+    <component>
+        <name>Dialog</name>
+        <javascript>yes</javascript>
+        <css>yes</css>
+        <description>this is a dialog </description>
+    </component>
+
+    <component>
+        <name>Dropdown</name>
+        <javascript>yes</javascript>
+        <css>yes</css>
+        <description>this is a dropdown</description>
+    </component>
+
+</aui-components>
