@@ -31,6 +31,7 @@ AJS.$(document).ready(function(){
         AJS.$.ajax({
            url: "aui-components.xml",
            async: false,
+           dataType: "text",
            success: function(xml){
                components = xml2json.parser(xml);
            }
