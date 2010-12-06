@@ -33,9 +33,12 @@ AJS.$(document).ready(function(){
            async: false,
            success: function(xml){
                components = xml2json.parser(xml);
-           } 
+               console.log(xml);
+               console.log(xml2json.parser(xml));
+           }
+           
         });
-        
+        console.log(components);
         AJS.$.ajax({
            url: "sandbox-help.html",
            async: false,
