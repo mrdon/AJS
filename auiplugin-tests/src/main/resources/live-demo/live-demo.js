@@ -1,6 +1,6 @@
 var components = {};
-
 AJS.$(document).ready(function(){
+    var helpText;
 
     refreshHTML = function(){
         AJS.$("#display #html-code").html(AJS.$("#html-editor").val()); 
@@ -35,6 +35,23 @@ AJS.$(document).ready(function(){
                components = xml2json.parser(xml);
            } 
         });
+        
+        AJS.$.ajax({
+           url: "sandbox-help.html",
+           async: false,
+           success: function(data){
+               helpText = data;
+           } 
+        });
+        
+        AJS.$("#info-display").html(helpText);
+        
+        if(AJS.version!="${project.version}"){
+            AJS.$("#version").html("AUI v" + AJS.version);
+        } else {
+            AJS.$("#version").html("latest AUI Snapshot");
+        }
+        
         AJS.$.each(components.component, function(index, item){
             var $toolbarlogo = AJS.$("#toolbar-logo");
             var thisMenuItem = document.createElement('button');
@@ -139,6 +156,10 @@ AJS.$(document).ready(function(){
             });
             
         }
-
+        
+        AJS.$("#help-icon").click(function(){
+            AJS.$("#info-display").html(helpText);
+        });
+        
     }
 });

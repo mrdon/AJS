@@ -3,9 +3,13 @@ html {
 }
 
 body {
-    font-family: verdana, "trebuchet MS", helvetica, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     height:100%;
 }
+h1, h2, h3, h4, h5, h6 {
+    color: #003366;
+}
+
 h2 {font-size: 18px;}
 
 h2#display {
@@ -29,7 +33,14 @@ h2#display {
 
 #page-heading {
     text-align: center;
-    padding: 15px;
+    padding: 15px 0 0 0;
+    margin: 2px;
+}
+
+#version {
+    text-align: center;
+    display: block;
+    font-size: 14px;
 }
 
 
@@ -84,9 +95,27 @@ h2#display {
     text-shadow: 0.1em 0.1em #000
 }
 
+#help-icon {
+    float:right;
+    height: 30px;
+    width: 30px;
+    padding: 8px;
+    margin: -8px 0 0 0;
+    
+}
+
+#help-icon:hover {
+    background: #224488;
+    cursor: help;
+}
+
+#help-icon .aui-icon-new {
+    margin: 8px 8px;
+}
+
 /*EDITOR TOOLS*/
 #editor-tools{
-    margin: -8px 10px 0 5px;
+    margin: -8px 10px 0 0px;
     display: inline-block;
     float: right;
     height: 100%;
@@ -191,6 +220,7 @@ a#documentation:hover {
     padding: 0 2%;
     font-size: 12px;
     overflow:scroll;
+/*    line-height: 13px;*/
 }
 
 

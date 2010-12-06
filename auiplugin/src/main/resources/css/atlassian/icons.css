@@ -72,5 +72,19 @@ form.aui .icon-inline-help {
     cursor: help;
 }
 
+/*NEW ICON FOR AUI SANDBOX, added here because they may be added at a later point DO NOT USE*/
+.aui-icon-new {
+    background: transparent url("images/icons/aui-message-icon-sprite.png") no-repeat 0 0;
+    border: none;
+    display: inline-block;
+    height: 14px;
+    padding: 0;
+    text-indent: -9999px;
+    width: 14px;
+}
+
+.aui-icon-new.icon-info {
+    background-position: -96px 0;
+}              
 
 
