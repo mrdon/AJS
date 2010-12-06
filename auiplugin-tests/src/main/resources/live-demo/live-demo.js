@@ -25,7 +25,7 @@ AJS.$(document).ready(function(){
         //refresh js
         refreshJS();
     }
-              
+
     //only run page javascript if the full-width-container he been added (prevents running code twice because of a re-trigger of dom-ready)
     if(AJS.$(".full-width-container").size()==0){
         AJS.$.ajax({
@@ -33,12 +33,10 @@ AJS.$(document).ready(function(){
            async: false,
            success: function(xml){
                components = xml2json.parser(xml);
-               console.log(xml);
-               console.log(xml2json.parser(xml));
            }
            
         });
-        console.log(components);
+                     
         AJS.$.ajax({
            url: "sandbox-help.html",
            async: false,
@@ -55,7 +53,7 @@ AJS.$(document).ready(function(){
             AJS.$("#version").html("latest AUI Snapshot");
         }
         
-        AJS.$.each(components.component, function(index, item){
+        AJS.$.each(components.components.component, function(index, item){
             var $toolbarlogo = AJS.$("#toolbar-logo");
             var thisMenuItem = document.createElement('button');
             thisMenuItem.setAttribute("class", "toolbar-button component-button");
