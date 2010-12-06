@@ -1,3 +1,30 @@
+/*->
+#name>Inline-Dialog
+#javascript>yes
+#css>yes
+#description>Creates a popup dialog that is inline with content.
+#option>onHover
+#option>noBind
+#option>fadeTime 
+#option>hideDelay
+#option>showDelay
+#option>width
+#option>offsetX 
+#option>offsetY
+#option>container 
+#option>cacheContent 
+#option>hideCallback 
+#option>initCallback 
+#option>isRelativeToMouse 
+#option>closeOthers
+#option>responseHandler
+#option>onTop
+#option>useLiveEvents 
+#func>show()
+#func>hide()
+#func>refresh()
+<-*/
+
 (function($) {
     /**
      * Creates a new inline dialog.

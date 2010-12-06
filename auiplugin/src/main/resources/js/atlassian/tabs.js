@@ -1,3 +1,14 @@
+/*->
+#name>Tabs
+#javascript>Yes
+#css>Yes
+#description>A set of switchable Tabs styled for Atlassian products
+#func>setup 
+#func>change
+#option>horizontal-tabs
+#option>vertical-tabs 
+<-*/
+
 (function (){
     var $tabs,
         $tabMenu,

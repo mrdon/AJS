@@ -1,3 +1,16 @@
+/*->
+#name>Messages
+#javascript>Yes
+#css>Yes
+#description>Some Standard message types for different purposes used across Atlassian Products
+#option>generic
+#option>error
+#option>warning
+#option>success
+#option>info
+#option>hint
+<-*/
+
 (function (){
     /**
      * Utility methods to display different message types to the user.

@@ -1,4 +1,18 @@
-/**
+/*->
+#name>Dropdown
+#javascript>yes
+#css>yes
+#description>Creates a dropdown menu styled with an Atlassian theme
+#option>alignment
+#option>isHiddenByDefault
+#option>activeClass
+#option>item
+#option>escapeHandler
+#option>hideHandler
+#option>useLiveEvents
+<-*/
+
+/**->
  * Displays a drop down, typically used for menus.
  * 
  * @class dropDown

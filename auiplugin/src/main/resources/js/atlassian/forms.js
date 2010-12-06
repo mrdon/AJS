@@ -1,3 +1,10 @@
+/*->
+#name>Forms
+#javascript>no
+#css>yes
+#description> Standardised form patterns for Atlassian Products
+<-*/
+
 /**
  * Forms: Inline Help - toggles visibility of inline help content.
  *

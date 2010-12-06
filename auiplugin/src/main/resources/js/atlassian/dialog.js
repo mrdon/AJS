@@ -1,3 +1,31 @@
+/*->
+#name>Dialog
+#javascript>Yes
+#css>Yes
+#description>Creates a Modal Dialog that pops up over the screen, also dims the screen. 
+#func>addHeader 
+#func>addButton 
+#func>addLink  
+#func>addSubmit 
+#func>addCancel 
+#func>addButtonPanel 
+#func>addPanel
+#func>addPage
+#func>nextPage 
+#func>prevPage 
+#func>gotoPage 
+#func>getPanel 
+#func>getPage
+#func>getCurrentPanel
+#func>gotoPanel
+#func>show 
+#func>hide 
+#func>remove
+#func>disable 
+#func>enable 
+#func>updateHeight 
+<-*/
+
 /**
  * Covers screen with semitransparent DIV
  * @method dim

@@ -1,0 +1,248 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: verdana, "trebuchet MS", helvetica, sans-serif;
+    height:100%;
+}
+h2 {font-size: 18px;}
+
+h2#display {
+    background: #ccc;
+    display: inline-block;
+    margin-bottom: -1px;
+    padding: 5px;
+}
+
+.work-area {
+    height: 100%;
+    width: 100%;
+    margin: 0 5px;
+}
+.full-width-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+
+#page-heading {
+    text-align: center;
+    padding: 15px;
+}
+
+
+/*TOOL BAR*/
+
+#tool-tip {
+    height: 100px;
+    width: 500px;
+    border:0px solid;
+    position:absolute;
+    top:0;
+    left:0;
+    background: transparent;
+    font-size: 12px;
+    color: #000;
+    font-family: verdana, "trebuchet MS", helvetica, sans-serif;
+}
+
+#toolbar {
+    width: 100%;
+    height: 30px;
+    padding: 8px 0px;
+    margin: 5px 0;
+    left: 0;
+    background: #002C66;
+    box-shadow: 0 2px 2px #555;
+    -moz-box-shadow: 0 2px 2px #555;
+    -webkit-box-shadow: 0 2px 2px #555;
+}
+
+.aui-logo {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.toolbar-button:hover {
+    background: #fff;
+    text-shadow: none;
+    color: #000;
+}
+.toolbar-button {
+    background: #002c66;
+    height: 44px;
+    border: 0px solid #002c66;
+    top:0;
+    color: #fff;
+    margin-top: -7px;
+    margin-left: -1px;
+    vertical-align:top;
+    font-family: verdana, "trebuchet MS", helvetica, sans-serif;
+    font-size: 15px;
+    text-shadow: 0.1em 0.1em #000
+}
+
+/*EDITOR TOOLS*/
+#editor-tools{
+    margin: -8px 10px 0 5px;
+    display: inline-block;
+    float: right;
+    height: 100%;
+    border-left: 1px solid #fff;
+    padding: 8px 15px;
+    
+}
+
+#editor-tools .toolbar-button {
+    height: 30px;
+
+    margin: auto 0 auto 0;
+    background: #fff;
+    color: #000;
+    text-shadow: none;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+
+#editor-tools .toolbar-button:hover {
+    height: 30px;
+    margin: auto 0 auto 0;
+    background: #eee;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+/*    color:#fff;*/
+}
+
+a#documentation {
+    margin: auto 0 auto 0;
+    vertical-align: middle;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    line-height: 25px;
+    padding: 5px
+}
+a#documentation:hover {
+    color:#ddd;
+}
+
+#bottom {
+    margin: 10px 0 0 0;
+    width:99%;
+    height: 50%;
+}
+
+/*DISPLAY*/
+.display-parent {
+    height:100%;
+    width: 80%;
+    float:left;
+    display:inline-block;
+    border:1px solid #777;
+}
+
+.display-parent .display{
+    width: 98%;
+    display:inline-block;
+    height: 92%;
+    padding: 0 1%;
+    font-size: 12px;
+    overflow:scroll;
+}
+
+#display-heading {
+    height: 8%;
+    font-size: 16px;
+    display:inline-block;
+    text-align: center;
+    background: #ccc;
+    width: 100%;
+    color: #555;
+    margin: 0;
+}
+
+/*INFO BOX*/
+#info-parent {
+    height: 100%;
+    width: 20%;
+    float:right;
+    display: inline-block;
+    border: 1px solid #777;
+    margin: 0 -4px 0 0;
+}
+
+#info-heading {
+    height: 8%;
+    font-size: 16px;
+    display:inline-block;
+    text-align: center;
+    background: #ccc;
+    width: 100%;
+    margin:0;
+    color: #555;
+}
+#info-display {
+    width: 96%;
+    display:inline-block;
+    height: 92%;
+    padding: 0 2%;
+    font-size: 12px;
+    overflow:scroll;
+}
+
+
+/*EDITORS*/
+#editors-parent {
+    height:40%;
+    clear: both;
+    padding-bottom: 3px;
+    margin-left:2px;
+}
+
+#html-editor {
+    float: none;
+}
+
+.editor-parent {
+    height:100%;
+    width:33%;
+    float:left;
+    position:relative;
+    margin-left:  -2px;
+    border: 1px solid #777;
+    padding-bottom: 1px;
+}
+
+.editor-parent .edit-box{
+    height:100%;
+    width: 100%;
+    background: #fff;
+    border:0;
+}
+
+.editor-parent span.heading-span{
+    display: block;
+    width: 80px;
+    height: 15px;
+    right: 5px;
+    position:absolute;
+    top: 5px;
+    padding: 5px;
+    background: #555;
+    z-index: 50;
+    filter:alpha(opacity=80);
+    opacity:0.8;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+
+}
+
+.editor-parent h2.editor-heading{
+    text-align:center;
+    font-size: 13px;
+    color: #fff;
+    margin: 0;
+}

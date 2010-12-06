@@ -1,4 +1,9 @@
-
+/*->
+#name>Tables
+#javascript>No
+#css>Yes
+#description> Standards Patterns and Styling for HTML Tables
+<-*/
 (function() {
     AJS.tables = AJS.tables || {};
     AJS.tables.rowStriping = function () {
