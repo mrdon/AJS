@@ -73,6 +73,35 @@
         <resource type="download" name="jquery.throbber.js" location="js/atlassian/jquery/jquery.throbber.js"/>
     </web-resource>
 
+	<web-resource key="ajs-gadgets" name="Mandatory resources for AJS-Gadgets framework">
+
+        <resource type="download" name="basic.css" location="css/atlassian/basic.css"/>
+        <resource type="download" name="dropdown.css" location="css/atlassian/dropdown.css"/>
+        <resource type="download" name="icons.css" location="css/atlassian/icons.css"/>
+        <resource type="download" name="tables.css" location="css/atlassian/tables.css"/>
+        <resource type="download" name="forms.css" location="css/atlassian/forms.css"/>
+
+        <resource type="download" name="dropdown-ie.css" location="css/atlassian/dropdown-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+        <resource type="download" name="forms-ie.css" location="css/atlassian/forms-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+        <resource type="download" name="icons-ie.css" location="css/atlassian/icons-ie.css">
+            <param name="ieonly" value="true"/>
+        </resource>
+
+        <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
+        <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
+        <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
+        <resource type="download" name="icons.js" location="js/atlassian/icons.js"/>
+        <resource type="download" name="template.js" location="js/atlassian/template.js"/>
+        <resource type="download" name="messages.js" location="js/atlassian/messages.js"/>
+        <resource type="download" name="dropdown.js" location="js/atlassian/dropdown.js"/>
+
+    </web-resource>
+
     <web-resource key="binders" name="Atlassian Markup Binder Javascript">
         <resource type="download" name="binder.js" location="js/atlassian/binders/binder.js"/>
         <resource type="download" name="placeholder.js" location="js/atlassian/binders/placeholder.js"/>
