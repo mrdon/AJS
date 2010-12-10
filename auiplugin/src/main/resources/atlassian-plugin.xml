@@ -80,7 +80,8 @@
         <resource type="download" name="icons.css" location="css/atlassian/icons.css"/>
         <resource type="download" name="tables.css" location="css/atlassian/tables.css"/>
         <resource type="download" name="forms.css" location="css/atlassian/forms.css"/>
-
+		<resource type="download" name="messages.css" location="css/atlassian/messages.css"/>
+		
         <resource type="download" name="dropdown-ie.css" location="css/atlassian/dropdown-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
@@ -95,9 +96,6 @@
         <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
         <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
         <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
-        <resource type="download" name="icons.js" location="js/atlassian/icons.js"/>
-        <resource type="download" name="template.js" location="js/atlassian/template.js"/>
-        <resource type="download" name="messages.js" location="js/atlassian/messages.js"/>
         <resource type="download" name="dropdown.js" location="js/atlassian/dropdown.js"/>
 
     </web-resource>
