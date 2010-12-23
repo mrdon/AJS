@@ -8,6 +8,8 @@ import java.io.Writer;
  * Utility methods to escape strings to be used in JavaScript.
  *
  * Copied from the AG project (see com.atlassian.gadgets.dashboard.internal.util.JavaScript.java).
+ * 
+ * @since 3.3.
  */
 public class JavaScriptUtil
 {

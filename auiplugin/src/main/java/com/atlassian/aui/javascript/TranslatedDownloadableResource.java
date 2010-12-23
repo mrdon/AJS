@@ -7,6 +7,15 @@ import com.atlassian.sal.api.message.I18nResolver;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * A DownloadableResource that transforms the content by pattern matching on the text AJS.I18n.getText("key"),
+ * where key can only contain letters, numbers or dots and hyphens. Note that single quotes around key is also
+ * not supported.
+ *
+ * It replaces it with the literal string translation before serving the resource.
+ *
+ * @since 3.3.
+ */
 public class TranslatedDownloadableResource extends AbstractStringTransformedDownloadableResource
 {
     private static final Pattern PATTERN = Pattern.compile("AJS\\.I18n\\.getText\\(\"([\\w.-]+)\"\\)");

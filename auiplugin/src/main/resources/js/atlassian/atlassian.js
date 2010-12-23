@@ -45,7 +45,15 @@ if (typeof jQuery != "undefined") {
                 if (typeof console != "undefined" && console.log)
                     console.log(obj);
             },
-            
+            /**
+             * Placeholder function for i18n which should be translated by the JsI18nTransformer. This has been
+             * added so that for whatever reason if its not translated, the scripts don't blow up.
+             */
+            I18n : {
+                getText: function(key) {
+                    return key;
+                }
+            },
             /**
              * Prevent further handling of an event. Returns false, which you should use as the return value of your event handler:
              *     return AJS.stopEvent(e);

@@ -6,6 +6,12 @@ import com.atlassian.plugin.webresource.transformer.WebResourceTransformer;
 import com.atlassian.sal.api.message.I18nResolver;
 import org.dom4j.Element;
 
+/**
+ * Web resource transformer to translate i18n methods in JavaScript to the literal strings.
+ * 
+ * @see TranslatedDownloadableResource
+ * @since 3.3.
+ */
 public class JsI18nTransformer implements WebResourceTransformer
 {
     private final I18nResolver i18nResolver;
