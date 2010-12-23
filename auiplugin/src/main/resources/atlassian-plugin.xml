@@ -5,6 +5,9 @@
         <version>${project.version}</version>
     </plugin-info>
 
+    <web-resource-transformer key="jsI18n" name="JavaScript I18n Transformer" class="com.atlassian.aui.javascript.JsI18nTransformer"/>
+    <component-import key="i18nResolver" interface="com.atlassian.sal.api.message.I18nResolver" />
+
     <resource name="css/" type="download" location="css/atlassian/"/>
     <resource name="images/" type="download" location="css/atlassian/images/"/>
     <resource name="js/" type="download" location="js/"/>
