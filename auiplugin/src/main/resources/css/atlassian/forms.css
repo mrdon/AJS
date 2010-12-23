@@ -39,9 +39,6 @@ form.aui fieldset {
     padding-bottom: 5px;
     position: relative;
 }
-form.aui input[type='password'] {
-    -webkit-appearance: caps-lock-indicator;
-}
 form.aui input,
 form.aui select {
     margin-right: 5px;
