@@ -54,7 +54,7 @@ AJS.$(document).ready(function(){
             AJS.$("#version").html("latest AUI Snapshot");
         }
         
-        AJS.$.each(components.components.component, function(index, item){
+        AJS.$.each(components.component, function(index, item){
             var $toolbarlogo = AJS.$("#toolbar-logo");
             var thisMenuItem = document.createElement('button');
             thisMenuItem.setAttribute("class", "toolbar-button component-button");

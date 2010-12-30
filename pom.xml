@@ -41,6 +41,7 @@
                     <remoteTagging>true</remoteTagging>
                 </configuration>
             </plugin>
+
         </plugins>
         <pluginManagement>
             <plugins>
@@ -60,9 +61,12 @@
                         </excludes>
                     </configuration>
                 </plugin>
+
+
                 <plugin>
                     <groupId>com.atlassian.maven.plugins</groupId>
                     <artifactId>maven-auicomponent-plugin</artifactId>
+                    <inherited>false</inherited>
                     <configuration>
                         <basedirectory>${project.basedir}/</basedirectory>
                     </configuration>
@@ -94,6 +98,8 @@
 
         <bamboo.version>RELEASE</bamboo.version>
         <bamboo.data.version>RELEASE</bamboo.data.version>
+
+        <parent-basedir>${project.basedir}</parent-basedir>
 
     </properties>
 
