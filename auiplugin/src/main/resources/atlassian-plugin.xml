@@ -37,9 +37,6 @@
         <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/inline-dialog-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
-        <resource type="download" name="tabs-ie.css" location="css/atlassian/tabs-ie.css">
-            <param name="ieonly" value="true"/>
-        </resource>
         <resource type="download" name="toolbar-ie.css" location="css/atlassian/toolbar-ie.css">
             <param name="ieonly" value="true"/>
         </resource>
