@@ -21,7 +21,6 @@
             display: block;
             overflow: hidden;
             padding: 0.4em 0.6em 0.2em 0.6em;
-            cursor: pointer;
         }
     .aui-tabs ul.tabs-menu li.menu-item.active-tab {
         background: #fff;
