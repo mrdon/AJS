@@ -1,5 +1,5 @@
 /* AJS-563 Fix IE7 displaying I-beam cursor on hovering tab */
-*:first-child+html
+*+html
 .aui-tabs ul.tabs-menu li.menu-item strong {
     cursor: pointer;
 }
