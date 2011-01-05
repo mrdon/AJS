@@ -13,7 +13,7 @@ AJS.$(document).ready(function(){
     refreshJS = function(){
         //refresh
         var script = AJS.$("<script type='text/javascript'>");
-        script.append(AJS.$("#js-editor").val());
+        script.text(AJS.$("#js-editor").val());
         AJS.$("#display").append(script);
     }
             
