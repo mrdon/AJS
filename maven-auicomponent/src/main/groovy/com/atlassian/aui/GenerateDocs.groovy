@@ -55,7 +55,7 @@ extends GroovyMojo
 
   void execute()
   {
-    //Generate aui-components.xml File
+    //----- GENERATE AUI-COMPONENTS.XML FILE -----
     def fileList = []
     def tempInformation = []
     def componentList = []
@@ -81,15 +81,21 @@ extends GroovyMojo
     println ""
     println "------------------------------------------------------------------------------------"
 
+
+
+
+    //----- PREPARE FILES FOR UPLOADS -----
+
     //Prepare Sandbox for Upload
+    println "Preparing Sandbox files for upload..."
     File sandboxJs = new File("${basedirectory}/auiplugin-tests/target/classes/sandbox/includeAJS.js")
     File sandboxCss = new File("${basedirectory}/auiplugin-tests/target/classes/sandbox/includeAJS.css");
 
     if(sandboxJs && sandboxCss){
-      println "Preparing Sandbox files for upload..."
+      println "Editing file path strings within demo files to work with docs.atlassian.com file structure..."
       println ""
-      String newJS = sandboxJs.getText().replaceAll("../../../../../auiplugin/src/main/resources/js/", "AUI/js/");
-      String newCSS = sandboxCss.getText().replaceAll("../../../../../auiplugin/src/main/resources/css/", "AUI/css/");
+      String newJS = sandboxJs.getText().replaceAll("../../../../../auiplugin/src/main/resources/js/", "../AUI/js/");
+      String newCSS = sandboxCss.getText().replaceAll("../../../../../auiplugin/src/main/resources/css/", "../AUI/css/");
 
       sandboxJs.write(newJS)
       sandboxCss.write(newCSS)
@@ -98,9 +104,38 @@ extends GroovyMojo
       println "Sandbox has not yet been built! Run this goal after build"
     }
 
-    println "Uploading Sandbox..."
+    //Prepare Demo Pages for Upload
+
+    println "Preparing Demo Page files for upload..."
+    println "Copying demo pages to staging folder..."
+    //copy required files to a staging folder
+    File demoPages = new File("${basedirectory}/auiplugin/src/demo/");
+    File stagingDemoPages = new File ("${basedirectory}/auiplugin/target/classes/demo-pages/");
+    AntBuilder ant = new AntBuilder()
+    ant.delete(dir:stagingDemoPages.getAbsolutePath())
+    stagingDemoPages.mkdir()
+    ant.copy ( todir : stagingDemoPages.getAbsolutePath() ){
+      fileset(dir:demoPages.getAbsolutePath())
+    };
+
+    ant.copy(file:"${basedirectory}/auiplugin-tests/src/main/resources/css/test-and-demo-pages.css", tofile: stagingDemoPages.getAbsolutePath()+"/test-and-demo-pages.css")
+
+    println "Editing file path strings within demo files to work with docs.atlassian.com file structure.."
+    //Replace file paths to work with file structure on docs.atlassian.com
+    File demoJs = new File("${basedirectory}/auiplugin/target/classes/demo-pages/aui.js")
+    File demoCommonCss = new File("${basedirectory}/auiplugin/target/classes/demo-pages/common.css");
+
+    String newDemoJS = demoJs.getText().replaceAll("../../../../auiplugin/src/main/resources/js/", "../../AUI/js/");
+    String newDemoCommonCSS = demoCommonCss.getText().replaceAll("../../../auiplugin/src/main/resources/css/", "../AUI/css/");
+    newDemoCommonCSS = newDemoCommonCSS.replaceAll("../../../auiplugin-tests/src/main/resources/css/", "");
     println ""
-    //Upload Sandbox
+
+
+
+
+
+    //----- UPLOAD DOCUMENTATION ------
+    
     Repository docsAtlassian = new Repository("docs-atlassian", "https://docs.atlassian.com/aui")
     WebDavWagon wagon = new WebDavWagon();
     AuthenticationInfo auth = new AuthenticationInfo();
@@ -109,34 +144,53 @@ extends GroovyMojo
     auth.password = session.settings.getServer("docs-atlassian").getPassword()
     auth.setUserName session.settings.getServer("docs-atlassian").getUsername()
 
+    println "Connecting to https://docs.atlassian.com..."
     //connect to docs.atlassian
     wagon.connect(docsAtlassian, auth);
     wagon.openConnection();
-    println "Connecting to https://docs.atlassian.com..."
-    println ""
+    println "Connected!"
 
-    //upload sandbox files
-    File sandboxDirectory = new File("${basedirectory}/auiplugin-tests/target/classes/sandbox/")
+    //upload AUI Source files
     File auiJsDirectory = new File("${basedirectory}/auiplugin/target/classes/js/")
     File auiCssDirectory = new File("${basedirectory}/auiplugin/target/classes/css/")
 
-
-    println "Uploading Sandbox Files..."
-    uploadDirectory sandboxDirectory, "${currentversion}/sandbox/", wagon
-
     println ""
     println "Uploading AUI JS Files..."
-    uploadDirectory auiJsDirectory, "${currentversion}/sandbox/AUI/js/", wagon
+    uploadDirectory auiJsDirectory, "${currentversion}/AUI/js/", wagon
+    uploadDirectory auiJsDirectory, "latest/AUI/js/", wagon
 
     println ""
     println "Uploading AUI CSS Files..."
-    uploadDirectory auiCssDirectory, "${currentversion}/sandbox/AUI/css/", wagon
+    uploadDirectory auiCssDirectory, "${currentversion}/AUI/css/", wagon
+    uploadDirectory auiCssDirectory, "latest/AUI/css/", wagon
 
-    wagon.closeConnection()
+
+
+    //upload sandbox files
+    File sandboxDirectory = new File("${basedirectory}/auiplugin-tests/target/classes/sandbox/")
+
+    println "Uploading Sandbox Files..."
+    uploadDirectory sandboxDirectory, "${currentversion}/sandbox/", wagon
+    uploadDirectory sandboxDirectory, "latest/sandbox/", wagon
 
     println ""
     println "AUI Sandbox for v${currentversion} was uploaded successfully!"
-    
+    println ""
+    //upload demo page files
+
+    println "Uploading Demo Page Files..."
+    demoJs.write(newDemoJS)
+    demoCommonCss.write(newDemoCommonCSS)
+
+    uploadDirectory stagingDemoPages, "${currentversion}/demo-pages/", wagon
+    uploadDirectory stagingDemoPages, "latest/demo-pages/", wagon
+
+    println ""
+    println "AUI Demo Pages for v${currentversion} was uploaded successfully!"
+    println ""
+
+    //close the wagon connection
+    wagon.closeConnection()
   }
 
   private void uploadDirectory(File directory, String destination, WebDavWagon wagon){
