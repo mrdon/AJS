@@ -93,17 +93,13 @@
     top: 6px;
 }
 
-.aui-message .icon-info {
-    background-position:-96px 0;
-}              
-
-.aui-message .icon-success {
-    background-position:-120px 0;
-}              
-
+.aui-message .icon-close {  
+    background-position:0 0;
+}
+              
 .aui-message .icon-error {  
     background-position:-24px 0;
-}              
+}    
 
 .aui-message .icon-generic {
     background-position:-48px 0;
@@ -113,11 +109,16 @@
     background-position:-72px 0;
 }              
 
+.aui-message .icon-info {
+    background-position:-96px 0;
+}
+
+.aui-message .icon-success {
+    background-position:-120px 0;
+}              
+
 .aui-message .icon-warning {
     background-position:-144px 0;
 }              
 
-.aui-message .icon-close {  
-    background-position:0 0;
-}
 /*END ICONS*/
