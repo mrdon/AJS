@@ -1,8 +1,8 @@
         
 // create a dialog 860px wide x 530px high
-var dialog = new AJS.Dialog({width:860, height:530}),
-dialog2 = new AJS.Dialog({width:1000, height:300}),
-dialog3 = new AJS.Dialog({width:100, height:600});
+var dialog = new AJS.Dialog({width:860, height:530, id:"dialog1"}),
+    dialog2 = new AJS.Dialog({width:1000, height:300, id:"dialog2"}),
+    dialog3 = new AJS.Dialog({width:100, height:600, id:"dialog3"});
 
 // PAGE 0 (first page)
 // adds header for first page
