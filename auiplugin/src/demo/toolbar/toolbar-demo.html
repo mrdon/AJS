@@ -50,6 +50,12 @@
         }
 
         /* fake active for demo purposes. */
+
+        /* example with borders/bg set */
+        #demo-toolbar-with-bg {
+            background: #f0f0f0;
+            border-top: 1px solid #bbb;
+        }
     </style>
 </head>
 <body>
@@ -64,7 +70,7 @@
     <div class="aui-message warning shadowed">
         <p class="title">
             <span class="svg-icon warning size-18"></span>
-            <strong>3.2-m1 is a DRAFT implementation</strong>
+            <strong>3.2.x contains a DRAFT implementation</strong>
         </p>
 
         <p>
@@ -79,6 +85,7 @@
 
     <p>The structure of the toolbar is: aui-toolbar (container) &rarr; toolbar-split (left/right or rows) &rarr; toolbar-group (contains one set of
         triggers/buttons) &rarr; toolbar-item (contains one single trigger) &rarr; toolbar-trigger.</p>
+    <p>Note the background and border surrounding toolbars is <strong>not</strong> included in the toolbar component, it's controlled contextuall in the product. The toolbar provides the buttons and button grouping setup.</p>
 
     <p>Button types:</p>
     <ul>
@@ -256,7 +263,157 @@
                 </ul>
 
             </div>
-        </div>
+        </div><!-- #demo-toolbar -->
+
+        <p>This example shows a common implementation, where a product would add a background and surrounding border:</p>
+
+        <div id="demo-toolbar-with-bg" class="aui-toolbar">
+
+            <div class="toolbar-split toolbar-split-left">
+                <!-- Icon button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="labels-button2" title="Labels">
+                            <span class="icon icon-labels">Labels</span>
+                        </a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="permission-button2" title="Permissions">
+                            <span class="icon icon-permissions">Permissions</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Icon Text Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="link-button2" title="Link">
+                            <span class="icon icon-link"></span>
+                            <span class="trigger-text">Link</span>
+                        </a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="other-button2" title="Other">Other</a>
+                    </li>
+                    <li class="toolbar-item primary">
+                        <a class="toolbar-trigger" href="#" id="primary-button2" title="Other">Primary</a>
+                    </li>
+                </ul>
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="active-button2" title="Active">Active</a>
+                    </li>
+                    <li class="toolbar-item disabled">
+                        <a class="toolbar-trigger" href="#" id="disabled-button2" title="Disabled">Disabled</a>
+                    </li>
+                </ul>
+
+                <!-- Text Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-dropdown" id="format-dropdown2">
+                        <div class="aui-dd-parent">
+                            <a href="#" class="toolbar-trigger aui-dd-trigger" id="format-dropdown-display2">
+                                <span class="dropdown-text">Paragraph</span>
+                                <span class="icon icon-dropdown"></span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 2</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Compact Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-splitbutton" id="action-1b2">
+
+                        <a class="toolbar-trigger" href="#" id="action-1a2" title="Action One A">Action 1a</a>
+
+                        <div class="aui-dd-parent">
+                            <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One B">
+                                <span class="icon icon-dropdown">Action 1b</span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Dropdown item with quite wide text</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Icon and Text Dropdown example -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-dropdown" id="insert-menu2">
+                        <div class="aui-dd-parent">
+                            <a href="#" class="toolbar-trigger aui-dd-trigger" title="Insert">
+                                <span class="icon icon-insert"></span>
+                                <span class="dropdown-text">Insert</span>
+                                <span class="icon icon-dropdown"></span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Macro</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Image</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Table of Contents</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="toolbar-split toolbar-split-right">
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="save-button2">Save</a>
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <a href="#" class="toolbar-trigger" id="cancel-button2">Cancel</a>
+                    </li>
+                </ul>
+
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <button class="toolbar-trigger" type="submit" id="save-button-button2">Save Button</button>
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <button class="toolbar-trigger" type="reset" id="cancel-button-button2">Save Button</button>
+                    </li>
+                </ul>
+
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <input class="toolbar-trigger" id="save-button-input2" type="submit" name="save-button-input" value="Save Input">
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <input class="toolbar-trigger" id="cancel-button-input2" type="reset" name="cancel-button-input" value="Cancel Input">
+                    </li>
+                </ul>
+
+            </div>
+        </div><!-- #demo-toolbar-with-bg -->
+
     </div>
 
     <script type="text/javascript">
@@ -264,6 +421,10 @@
             AJS.$("#format-dropdown").dropDown("Standard", {alignment: "left"});
             AJS.$("#action-1b").dropDown("Standard", {alignment: "right"});
             AJS.$("#insert-menu").dropDown("Standard", {alignment: "right"});
+
+            AJS.$("#format-dropdown2").dropDown("Standard", {alignment: "left"});
+            AJS.$("#action-1b2").dropDown("Standard", {alignment: "right"});
+            AJS.$("#insert-menu2").dropDown("Standard", {alignment: "right"});
         });
     </script>
 

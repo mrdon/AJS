@@ -1,6 +1,4 @@
 .aui-toolbar {
-    background: #f0f0f0;
-    border-top: 1px solid #bbb;
     clear: both;
     display: inline-block; /* new rendering context */
     padding-top: 10px;
