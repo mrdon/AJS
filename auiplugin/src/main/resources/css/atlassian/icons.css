@@ -34,7 +34,8 @@
 
 /* form icons - add aui-icon class together with the icon class "aui-icon icon-help" */
 form.aui .aui-icon {
-    background: transparent url(images/icons/aui-icon-forms.gif) no-repeat 0 0;
+    background-image:url(images/icons/aui-icon-forms.gif);
+    background-repeat: no-repeat;
     display: inline-block;
     height: 16px;
     margin: 0 1px 0 1px;
