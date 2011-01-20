@@ -45,6 +45,14 @@
     width: 100%;
 }
 
+/* Cursor/affordance: looks like a button = pointer, looks like a link = hand */
+.aui-toolbar .toolbar-trigger {
+    cursor: default;
+}
+.aui-toolbar .toolbar-item-link .toolbar-trigger {
+    cursor: pointer;
+}
+
 /* primary buttons */
 .aui-toolbar .primary .toolbar-trigger {
     font-weight: bold;
