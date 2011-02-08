@@ -19,6 +19,7 @@
             <artifactId>auiplugin</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
+            <packaging>atlassian-plugin</packaging>
         </dependency>
         <dependency>
             <groupId>com.atlassian.plugins</groupId>
