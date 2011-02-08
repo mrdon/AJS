@@ -1,0 +1,45 @@
+.aui-list .aui-list-section {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: 1px solid #bbb;
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+}
+
+.aui-list .aui-list-section.aui-last {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.aui-list .aui-list-section.aui-first {
+    border-top: none;
+}
+
+.aui-list .aui-list-item-link {
+    text-decoration: none;
+    padding: 0.3em 0.5em;
+    display: block;
+    color: #333;
+}
+
+.aui-list .aui-iconised-link {
+    padding-left: 25px;
+    background-position: 5px 3px;
+    background-repeat: no-repeat;
+}
+
+.aui-list .aui-list-item.aui-active .aui-list-item-link {
+    background-color: #3C78B5;
+    color: #fff;
+}
+
+.aui-list .aui-section-description {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.aui-list .aui-list-heading {
+    padding: 0.3em 0.5em;
+}

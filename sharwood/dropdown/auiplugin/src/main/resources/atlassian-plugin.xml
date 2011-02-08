@@ -107,6 +107,12 @@
         
     </web-resource>
 
+    <web-resource key="dropdown" name="Common Atlassian Dropdown">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="layer.css" location="css/atlassian/layer.css"/>
+        <resource type="download" name="list.css" location="css/atlassian/list.css"/>
+    </web-resource>
+
     <web-resource key="binders" name="Atlassian Markup Binder Javascript">
         <resource type="download" name="binder.js" location="js/atlassian/binders/binder.js"/>
         <resource type="download" name="placeholder.js" location="js/atlassian/binders/placeholder.js"/>
