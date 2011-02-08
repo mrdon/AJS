@@ -1,0 +1,1 @@
+AJS.tabs.setup();
