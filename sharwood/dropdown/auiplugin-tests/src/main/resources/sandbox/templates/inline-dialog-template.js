@@ -1,0 +1,1 @@
+AJS.InlineDialog(AJS.$("#popupLink"), 1, "templates/inline-dialog-content.html");
