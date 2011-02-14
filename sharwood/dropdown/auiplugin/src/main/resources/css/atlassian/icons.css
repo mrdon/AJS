@@ -18,23 +18,51 @@
     width: 13px;
 }
 
+.aui-list-item-link .aui-icon {
+    background: transparent url(images/icons/aui-icon-menus.png) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 8px;
+    top: 4px;
+}
+
+.aui-list-item-link .aui-icon-radio {
+    background-position: 0 -32px;
+}
+
+.aui-list-item-link:hover .aui-icon-radio {
+    background-position: 0 -48px;
+}
+
+.aui-list-item-link .aui-icon-checked {
+    background-position: 0 0;
+}
+
+.aui-list-item-link:hover .aui-icon-checked {
+    background-position: 0 -16px;
+}
+
 .icon-move {
     background-position: 0 0;
     cursor: move;
 }
+
 .icon-maximize {
     background-position: -52px 0;
 }
+
 .icon-minimize {
     background-position: -39px 0;
 }
+
 .icon-minimize-d {
     background-position: -39px -13px;
 }
 
 /* form icons - add aui-icon class together with the icon class "aui-icon icon-help" */
 form.aui .aui-icon {
-    background-image:url(images/icons/aui-icon-forms.gif);
+    background-image: url(images/icons/aui-icon-forms.gif);
     background-repeat: no-repeat;
     display: inline-block;
     height: 16px;
@@ -48,26 +76,32 @@ form.aui .aui-icon {
 form.aui .icon-date {
     background-position: 0 -20px;
 }
+
 form.aui .icon-range {
     background-position: 0 -40px;
 }
+
 form.aui .icon-help {
     background-position: 0 -60px;
 }
+
 form.aui .icon-required {
     background-position: 0 -80px;
     height: 13px;
     vertical-align: top;
     width: 8px;
 }
+
 form.aui legend span.icon-required {
     left: auto;
     position: relative;
     top: auto;
 }
+
 form.aui .icon-users {
     background-position: 0 -100px;
 }
+
 form.aui .icon-inline-help {
     background-position: 0 -60px;
     cursor: help;

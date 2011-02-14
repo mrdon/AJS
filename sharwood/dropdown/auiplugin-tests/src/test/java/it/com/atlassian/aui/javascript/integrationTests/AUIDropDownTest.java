@@ -2,7 +2,7 @@ package it.com.atlassian.aui.javascript.integrationTests;
 
 public class AUIDropDownTest extends AbstractAUISeleniumTestCase
 {
-    private static final String TEST_PAGE = "test-pages/dropdown/dropdown-test.html";
+    private static final String TEST_PAGE = "test-pages/dropdown/dropdown-deprecated-test.html";
 
     //Test to make sure dropdowns show correctly after being clicked.
     public void testAUIDropDownShow()

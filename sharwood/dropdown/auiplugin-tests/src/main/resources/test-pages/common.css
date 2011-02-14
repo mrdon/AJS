@@ -9,5 +9,6 @@
 @import url("../../../../../auiplugin/src/main/resources/css/atlassian/tables.css");
 @import url("../../../../../auiplugin/src/main/resources/css/atlassian/tabs.css");
 @import url("../../../../../auiplugin/src/main/resources/css/atlassian/toolbar.css");
-@import url("../../../../../auiplugin/src/main/resources/css/atlassian/toolbar.css");
+@import url("../../../../../auiplugin/src/main/resources/css/atlassian/layer.css");
+@import url("../../../../../auiplugin/src/main/resources/css/atlassian/list.css");
 @import url("../css/test-and-demo-pages.css");

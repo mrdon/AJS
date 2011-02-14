@@ -1,45 +1,62 @@
-.aui-list .aui-list-section {
+.aui-list {
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.aui-list-heading {
+    font-size: 13px;
+    line-height: 16px;
+    margin: 0;
+    padding: 4px 8px;
+}
+
+.aui-list-section {
+    border-top: 1px solid #bbb;
+    margin: 4px 0 0 0;
+    padding: 4px 0 0 0;
+}
+
+.aui-list-section:first-child {
+    border-top: 0;
     margin: 0;
     padding: 0;
+}
+
+.aui-list-items {
     list-style: none;
-    border-bottom: 1px solid #bbb;
-    margin-bottom: 4px;
-    padding-bottom: 4px;
+    margin: 0;
+    padding: 0;
 }
 
-.aui-list .aui-list-section.aui-last {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.aui-list .aui-list-section.aui-first {
-    border-top: none;
-}
-
-.aui-list .aui-list-item-link {
-    text-decoration: none;
-    padding: 0.3em 0.5em;
+.aui-list-item-link {
+    background-color: transparent;
+    color: #000;
     display: block;
-    color: #333;
+    padding: 4px 8px;
+    text-decoration: none;
 }
 
-.aui-list .aui-iconised-link {
-    padding-left: 25px;
-    background-position: 5px 3px;
-    background-repeat: no-repeat;
+.aui-list-items.aui-iconised .aui-list-item-link,
+.aui-list-items.aui-checked .aui-list-item-link,
+.aui-list-items.aui-radio .aui-list-item-link {
+    padding-left: 32px;
+    position: relative; /* Absolute positioned icons */
 }
 
-.aui-list .aui-list-item.aui-active .aui-list-item-link {
-    background-color: #3C78B5;
+.aui-list-item.aui-disabled {
+    opacity: 0.5; /* Disabled mode so icons fade out also */
+}
+
+.aui-list-item.aui-active .aui-list-item-link,
+.aui-list-item.aui-active .aui-list-item-desc {
+    background-color: #326CA6;
     color: #fff;
 }
 
-.aui-list .aui-section-description {
-    font-size: 11px;
-    font-weight: normal;
+.aui-list-item-desc {
+    background-color: transparent;
+    color: #505050;
+    float: right;
+    margin-left: 8px;
 }
 
-.aui-list .aui-list-heading {
-    padding: 0.3em 0.5em;
-}
