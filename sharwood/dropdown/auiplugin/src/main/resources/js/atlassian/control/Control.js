@@ -60,9 +60,11 @@ AJS.Control = Class.extend({
 
                 instance._markEventHandler(target, eventType, handler);
 
-                target.bind(eventType, function(event) {
+                handler.wrappedFunction = function(event) {
                     handler.call(instance, event, AJS.$(this));
-                });
+                };
+
+                target.bind(eventType,  handler.wrappedFunction);
             }
 
         });
@@ -103,7 +105,7 @@ AJS.Control = Class.extend({
         AJS.$.each(this._events[group], function(eventType, handler) {
             if (instance._hasEventHandler(target, eventType, handler)) {
                 instance._unmarkEventHandler(target, eventType, handler);
-                target.unbind(eventType, handler);
+                target.unbind(eventType,  handler.wrappedFunction);
             }
 
         });
@@ -134,6 +136,8 @@ AJS.Control = Class.extend({
                 break;
             }
         }
+
+        
 
         return hasEventHandler;
     },
@@ -166,7 +170,7 @@ AJS.Control = Class.extend({
     /**
      * Marks the event handler bound. Used to prevent double bind.
      *
-     * @method _unmarkEventHandler
+     * @method _markEventHandler
      * @param target {Object} - element event is bound to
      * @param eventType {String}
      * @param handler {Function}
