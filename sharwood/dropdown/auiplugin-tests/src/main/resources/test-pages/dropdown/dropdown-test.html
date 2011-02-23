@@ -82,14 +82,126 @@
 
 </div>
 
+<xmp>
+    <div class="aui-list">
+
+        <div class="aui-list-section">
+            <ul class="aui-list-items aui-iconised">
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com"><span class="aui-icon"
+                                                                                                            style="background-image: url(http://jdog.atlassian.com/images/icons/icon-warning.png)"></span>
+                    Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com"><span class="aui-icon"
+                                                                                                            style="background-image: url(http://jdog.atlassian.com/images/icons/icon-warning.png)"></span>
+                    Spot the Dog</a></li>
+            </ul>
+        </div>
+
+        <div class="aui-list-section">
+            <h4 class="aui-list-heading">Header Element</h4>
+            <ul class="aui-list-items">
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+                <li class="aui-list-item aui-disabled"><a class="aui-list-item-link" href="http://www.example.com">Menu
+                    Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+            </ul>
+        </div>
+
+        <div class="aui-list-section">
+            <ul class="aui-list-items">
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com"><span
+                        class="aui-list-item-desc">AUI</span> Menu Item ndfsghdfsg kdfjkglsh kjfgdhkljshdkjlhgdfsklhfkjldghskld</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com"><span
+                        class="aui-list-item-desc">AJS</span> Menu Item</a></li>
+            </ul>
+        </div>
+
+        <div class="aui-list-section">
+            <ul class="aui-list-items aui-checked">
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com"><span
+                        class="aui-icon aui-icon-checked"></span> Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com"><span
+                        class="aui-icon aui-icon-checked"></span> Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+            </ul>
+        </div>
+
+        <div class="aui-list-section">
+            <ul class="aui-list-items aui-radio">
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com"><span
+                        class="aui-icon aui-icon-radio"></span> Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+                <li class="aui-list-item"><a class="aui-list-item-link" href="http://www.example.com">Menu Item</a></li>
+            </ul>
+        </div>
+
+    </div>
+</xmp>
+
 <div id="test"></div>
 
 <script type="text/javascript">
+
+
     AJS.Dropdown.create({
         trigger: jQuery("#my-dropdown-trigger"),
         content: jQuery("#my-dropdown"),
         alignment: AJS.LEFT
     });
+
+
+//    var MyListController = AJS.List.extend({
+//
+//        shiftFocus: function (dir) {
+//            this._super(dir);
+//            console.log("dir:" + dir);
+//        },
+//
+//        keys: {
+//            "left": function(event) {
+//                this.shiftFocus(-1);
+//                event.preventDefault();
+//            },
+//            "right": function(event) {
+//                this.shiftFocus(1);
+//                event.preventDefault();
+//            },
+//            "space": function(e) {
+//                this.items[this.index].trigger("accept");
+//                e.preventDefault();
+//            }
+//        }
+//    });
+//
+//
+//     AJS.Dropdown.create({
+//        trigger: jQuery("#my-dropdown-trigger"),
+//        content: jQuery("#my-dropdown"),
+//        alignment: AJS.LEFT,
+//        listController: new MyListController()
+//    });
+
+
+//    var MyRetriever = AJS.ContentRetriever.extend({
+//        content: function (func) {
+//            func(jQuery(jQuery("xmp").html()));
+//        },
+//        cache: function () {},
+//        isLocked: function () {},
+//        startingRequest: function () {},
+//        finishedRequest: function () {}
+//    });
+//
+//    AJS.Dropdown.create({
+//        trigger: jQuery("#my-dropdown-trigger"),
+//        contentRetriever: new MyRetriever()
+//    });
+
+
 </script>
 
 

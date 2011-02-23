@@ -175,17 +175,15 @@ AJS.Dropdown.create = function (options) {
         options.content = AJS.$(options.content);
 
         AJS.$.each(options.content, function () {
-            var instanceOptions = AJS.copyObject(options);
-            instanceOptions.content = AJS.$(this);
-            dropdowns.push(new AJS.Dropdown(instanceOptions));
+            options.content = AJS.$(this);
+            dropdowns.push(new AJS.Dropdown(options));
         });
     } else if (!options.content && options.trigger) {
         options.trigger = AJS.$(options.trigger);
 
         AJS.$.each(options.trigger, function () {
-            var instanceOptions = AJS.copyObject(options);
-            instanceOptions.trigger = AJS.$(this);
-            dropdowns.push(new AJS.Dropdown(instanceOptions));
+            options.trigger = AJS.$(this);
+            dropdowns.push(new AJS.Dropdown(options));
         });
     } else if (options.content && options.trigger) {
         options.content = AJS.$(options.content);
@@ -193,10 +191,9 @@ AJS.Dropdown.create = function (options) {
 
         if (options.content.length === options.trigger.length) {
             options.trigger.each(function (i) {
-                var instanceOptions = AJS.copyObject(options);
-                instanceOptions.trigger = AJS.$(this);
-                instanceOptions.content = options.content.eq(i);
-                dropdowns.push(new AJS.Dropdown(instanceOptions));
+                options.trigger = AJS.$(this);
+                options.content = options.content.eq(i);
+                dropdowns.push(new AJS.Dropdown(options));
             })
         } else {
             throw new Error("AJS.Dropdown.create: Expected the same number of content elements as trigger elements");

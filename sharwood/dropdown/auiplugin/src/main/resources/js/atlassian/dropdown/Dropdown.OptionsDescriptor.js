@@ -124,7 +124,7 @@ AJS.Dropdown.OptionsDescriptor = AJS.Descriptor.extend({
             this.content(this.trigger().next(AJS.Dropdown.TRIGGER_SELECTOR));
         }
 
-        if (this.trigger() && !this.content()) {
+        if (this.trigger() && !this.content() && !this.contentRetriever()) {
 
             if (!this.ajaxOptions()) {
                 if (this.trigger().attr("href")) {
