@@ -46,13 +46,12 @@ AJS.Control = Class.extend({
         var instance = this;
 
         if (!(target instanceof AJS.$)) {
-
             target = AJS.$(target);
+        }
 
-            if (target.length === 0) {
-                // Warn: No target supplied.
-                return;
-            }
+        if (target.length === 0) {
+            // Warn: No target supplied.
+            return;
         }
 
         AJS.$.each(this._events[group], function(eventType, handler) {
@@ -70,6 +69,15 @@ AJS.Control = Class.extend({
 
     },
 
+    /**
+     * Abstract method for defining default
+     * @method _getDefaultOptions
+     * @return {Object}
+     */
+    _getDefaultOptions: function () {
+        return {};
+    },
+
 
     /**
      * Allows unbinding of multiple events via a group. Event groups are stored under the _events property of the class.
@@ -84,13 +92,12 @@ AJS.Control = Class.extend({
         var instance = this;
 
         if (!(target instanceof AJS.$)) {
-
             target = AJS.$(target);
+        }
 
-            if (target.length === 0) {
-                // Warn: No target supplied.
-                return;
-            }
+        if (target.length === 0) {
+            // Warn: No target supplied.
+            return;
         }
 
         AJS.$.each(this._events[group], function(eventType, handler) {
@@ -124,6 +131,7 @@ AJS.Control = Class.extend({
         for (; i < activeHandlers[eventType].length; i++) {
             if (activeHandlers[eventType][i] === handler) {
                 hasEventHandler = true;
+                break;
             }
         }
 
@@ -144,19 +152,15 @@ AJS.Control = Class.extend({
             activeHandlers = target.data("activeHandlers");
 
         if (!activeHandlers || !activeHandlers[eventType]) {
-              return;
+            return;
         }
 
-        activeHandlers = target.data("activeHandlers");
-
-        for (; i < activeHandlers; i < activeHandlers[eventType].length) {
+        for (; i < activeHandlers[eventType].length; i++) {
             if (activeHandlers[eventType][i] === handler) {
                 activeHandlers[eventType].splice(i, 1);
                 break;
             }
         }
-
-        target.data("activeHandlers", activeHandlers);
     },
 
     /**
@@ -169,23 +173,16 @@ AJS.Control = Class.extend({
      */
     _markEventHandler: function (target, eventType, handler) {
 
-        var activeHandlers = target.data("activeHandlers");
-
-        if (!activeHandlers) {
-            activeHandlers = {};
-        }
+        var activeHandlers = target.data("activeHandlers") || {};
 
         if (!activeHandlers[eventType]) {
-            activeHandlers[eventType] = [handler];
+            activeHandlers[eventType] = [];
         }
 
         activeHandlers[eventType].push(handler);
 
         target.data("activeHandlers", activeHandlers);
     },
-
-
-
 
     /**
      * An abstract method to validate calls to this._handleKeyEvent(e); If this method returns false then the

@@ -90,3 +90,5 @@ AJS.Dropdown.ListItem.SCROLL_INTO_VIEW_OPTIONS = {
         AJS.Dropdown.ListItem.MOTION_DETECTOR.wait();
     }
 };
+
+

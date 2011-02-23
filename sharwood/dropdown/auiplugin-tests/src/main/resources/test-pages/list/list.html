@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <script type="text/javascript" src="../common.js"></script>
+
+    <!--[if IE]>
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/dialog-ie.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/dropdown-ie.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/forms-ie.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/icons-ie.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/inline-dialog-ie.css" media="all">
+    <![endif]-->
+
+    <style type="text/css">
+        body {padding:50px;}
+    </style>
+
+    <script>
+
+        var ListItemGroup = AJS.List.extend({
+            keys: {
+                "up": function(e) {
+                    this.shiftFocus(-1);
+                    e.preventDefault();
+                },
+                "down": function(e) {
+                    this.shiftFocus(1);
+                    e.preventDefault();
+                },
+                "return": function(e) {
+                    this.items[this.index].trigger("accept");
+                }
+            }
+        });
+
+        var MyListItem = AJS.Control.extend({
+
+            init: function (row) {
+                this.$row = AJS.$(row);
+                this._assignEvents("element", this.$row);
+                this._assignEvents("instance", this);
+            },
+
+            _events: {
+
+                instance: {
+                    focus: function(e) {
+                        this.$row.addClass("focused");
+                    },
+                    blur: function(e) {
+                        this.$row.removeClass("focused");
+                    },
+                    accept: function(e) {
+                        alert("Selected: " + this.$row.find("td:first").text());
+                    }
+                },
+
+                element : {
+                    mouseover: function () {
+                         this.trigger("focus");
+                    }
+                }
+            }
+        });
+
+        AJS.$(function () {
+
+            var basicTableGroup = new ListItemGroup();
+
+            AJS.$("#basic tbody tr").each(function () {
+                basicTableGroup.addItem(new MyListItem(this));
+            });
+
+            basicTableGroup.prepareForInput();
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+<table class="aui" id="basic">
+    <thead>
+        <tr>
+            <th id="basic-name">Name</th>
+            <th id="basic-type">Type</th>
+            <th id="basic-order">Order</th>
+            <th id="basic-action">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td headers="basic-name">Default</td>
+            <td headers="basic-type">Internal Directory</td>
+            <td headers="basic-order">
+                <ul class="menu">
+                    <li>
+                        <a class="down" href="#">Down</a>
+                    </li>
+                </ul>
+            </td>
+            <td headers="basic-action">
+                <ul class="menu">
+                    <li>
+                        <a href="#">An Action</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td headers="basic-name">Corporate LDAP</td>
+            <td headers="basic-type">Microsoft Active Directory</td>
+            <td headers="basic-order">
+                <ul class="menu">
+                    <li>
+                        <a class="up" href="#">Up</a>
+                    </li>
+                    <li>
+                        <a class="down" href="#">Down</a>
+                    </li>
+                </ul>
+            </td>
+            <td headers="basic-action">
+                <ul class="menu">
+                    <li>
+                        <a href="#">An Action</a>
+                    </li>
+                    <li>
+                        <a href="#">Another Action</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td headers="basic-name">Corporate LDAP</td>
+            <td headers="basic-type">Microsoft Active Directory</td>
+            <td headers="basic-order">
+                <ul class="menu">
+                    <li>
+                        <a class="up" href="#">Up</a>
+                    </li>
+                    <li>
+                        <a class="down" href="#">Down</a>
+                    </li>
+                </ul>
+            </td>
+            <td headers="basic-action">
+                <ul class="menu">
+                    <li>
+                        <a href="#">An Action</a>
+                    </li>
+                    <li>
+                        <a href="#">Another Action</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td headers="basic-name">Corporate LDAP</td>
+            <td headers="basic-type">Microsoft Active Directory</td>
+            <td headers="basic-order">
+                <ul class="menu">
+                    <li>
+                        <a class="up" href="#">Up</a>
+                    </li>
+                    <li>
+                        <a class="down" href="#">Down</a>
+                    </li>
+                </ul>
+            </td>
+            <td headers="basic-action">
+                <ul class="menu">
+                    <li>
+                        <a href="#">An Action</a>
+                    </li>
+                    <li>
+                        <a href="#">Another Action</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td headers="basic-name">Contractor Directory</td>
+            <td headers="basic-type">Internal Directory</td>
+            <td headers="basic-order">
+                <ul class="menu">
+                    <li>
+                        <a class="up" href="#">Up</a>
+                    </li>
+                </ul>
+            </td>
+            <td headers="basic-action">
+                <ul class="menu">
+                    <li>
+                        <a href="#">An Action</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+</html>

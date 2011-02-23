@@ -467,6 +467,20 @@ else {
     console.show = function(){};
 }
 
+AJS.trigger = function(event, target) {
+    event = new jQuery.Event(event);
+    jQuery(target || window.top.document).trigger(event);
+    return !event.isDefaultPrevented();
+};
+
+
+
+//AJS.hasEvent = function (event, target) {
+//
+//
+//
+//};
+
 // Setting Traditional to handle our default param serialisation
 // See http://api.jquery.com/jQuery.param/ for more
 AJS.$.ajaxSettings.traditional = true;

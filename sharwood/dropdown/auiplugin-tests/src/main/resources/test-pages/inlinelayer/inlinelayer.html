@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <script type="text/javascript" src="../common.js"></script>
+
+    <!--[if IE]>
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/dialog-ie.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/dropdown-ie.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/forms-ie.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/icons-ie.css" media="all">
+    <link type="text/css" rel="stylesheet" href="../../../../../../auiplugin/src/main/resources/css/atlassian/inline-dialog-ie.css" media="all">
+    <![endif]-->
+
+
+    <style type="text/css">
+        body {padding:50px;}
+    </style>
+
+
+</head>
+
+<body>
+
+<h2>JIRA InlineLayer Samples</h2>
+
+<a href="#" id="myTrigger">Open</a>
+
+<script type="text/javascript">
+
+var MyInlineDialog = AJS.InlineLayer.extend({
+    init: function (options) {
+        this._super(options);
+        this._assignEvents("offsetTarget", this.offsetTarget());
+    },
+    _events: {
+        offsetTarget: {
+            click: function (e) {
+                this.show();
+                e.preventDefault();
+            }
+        }
+    }
+});
+
+new MyInlineDialog({
+    offsetTarget: "#myTrigger",
+    content: jQuery("<div>Hello I am content</div>")
+});
+
+</script>
+
+
+
+</body>
+</html>

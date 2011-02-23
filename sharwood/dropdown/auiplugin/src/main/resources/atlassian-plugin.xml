@@ -111,6 +111,29 @@
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <resource type="download" name="layer.css" location="css/atlassian/layer.css"/>
         <resource type="download" name="list.css" location="css/atlassian/list.css"/>
+        <resource type="download" name="Class.js" location="js/atlassian/Class.js"/>
+        <resource type="download" name="const.js" location="js/atlassian/const.js"/>
+        <resource type="download" name="copyObject.js" location="js/atlassian/copyObject.js"/>
+        <resource type="download" name="jquery.scrollIntoView.js" location="js/atlassian/jquery/jquery.scrollIntoView.js"/>
+        <resource type="download" name="jquery.hasFixedParent.js" location="js/atlassian/jquery/jquery.hasFixedParent.js"/>
+        <resource type="download" name="jquery.getOptionsFromAttributes.js" location="js/atlassian/jquery/jquery.getOptionsFromAttributes.js"/>
+        <resource type="download" name="SmartAjax.js" location="js/atlassian/ajax/SmartAjax.js"/>
+        <resource type="download" name="Control.js" location="js/atlassian/control/Control.js"/>
+        <resource type="download" name="Keyboard.js" location="js/atlassian/input/Keyboard.js"/>
+        <resource type="download" name="Mouse.js" location="js/atlassian/input/Mouse.js"/>
+        <resource type="download" name="ContentRetriever.js" location="js/atlassian/contentretriever/ContentRetriever.js"/>
+        <resource type="download" name="AjaxContentRetriever.js" location="js/atlassian/contentretriever/AjaxContentRetriever.js"/>
+        <resource type="download" name="DOMContentRetriever.js" location="js/atlassian/contentretriever/DOMContentRetriever.js"/>
+        <resource type="download" name="Descriptor.js" location="js/atlassian/descriptor/Descriptor.js"/>
+        <resource type="download" name="List.js" location="js/atlassian/list/List.js"/>
+        <resource type="download" name="Dropdown.js" location="js/atlassian/dropdown/Dropdown.js"/>
+        <resource type="download" name="ListItem.js" location="js/atlassian/dropdown/Dropdown.ListItem.js"/>
+        <resource type="download" name="Dropdown.ListItem.js" location="js/atlassian/dropdown/Dropdown.ListItemGroup.js"/>
+        <resource type="download" name="Dropdown.ListItemGroup.js" location="js/atlassian/dropdown/Dropdown.OptionsDescriptor.js"/>
+        <resource type="download" name="Dropdown.OptionsDescriptor.js" location="js/atlassian/inlinelayer/InlineLayer.js"/>
+        <resource type="download" name="InlineLayer.StandardPositioning.js" location="js/atlassian/inlinelayer/InlineLayer.StandardPositioning.js"/>
+        <resource type="download" name="InlineLayer.IframePositioning.js" location="js/atlassian/inlinelayer/InlineLayer.IframePositioning.js"/>
+        <resource type="download" name="InlineLayer.OptionsDescriptor.js" location="js/atlassian/inlinelayer/InlineLayer.OptionsDescriptor.js"/>
     </web-resource>
 
     <web-resource key="binders" name="Atlassian Markup Binder Javascript">
@@ -118,6 +141,7 @@
         <resource type="download" name="placeholder.js" location="js/atlassian/binders/placeholder.js"/>
         <resource type="download" name="placeholder.css" location="css/atlassian/binders/placeholder.css"/>
     </web-resource>
+
 
     <web-resource name="jQuery Compatibility" key="jquery-compatibility">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
