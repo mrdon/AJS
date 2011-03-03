@@ -34,6 +34,14 @@ public class TestTranslatedDownloadableResource extends TestCase
         assertEquals("var label = \"Foo Bar\";\nvar anotherLabel = \"Awesome\";\n" + function, resource.transform(javascript));
     }
 
+    public void testKeyWithSingleQuotes()
+    {
+        String javascript = "var t = AJS.I18n.getText('blah');";
+        stub(i18n.getText("blah")).toReturn("Blah");
+
+        assertEquals("var t = \"Blah\";", resource.transform(javascript));
+    }
+
     public void testKeyWithoutDots()
     {
         String javascript = "var t = AJS.I18n.getText(\"blah\");";
@@ -62,5 +70,25 @@ public class TestTranslatedDownloadableResource extends TestCase
     {
         String javascript = "var s = 0; var t = AJS.I18n;, var u = AJSI18ngetText(\"foo\")";
         assertEquals(javascript, resource.transform(javascript));
+    }
+
+    public void testFormatMessage()
+    {
+        String key = "key.with.format";
+        String translation = "Found {0} out of {1}";
+        String javascript = "var t = AJS.I18n.getText(\"" + key  + "\", results, total);";
+        stub(i18n.getText(key)).toReturn(translation);
+
+        assertEquals("var t = AJS.format(\"" + translation + "\", results, total);", resource.transform(javascript));
+    }
+
+    public void testManuallyFormattedMessageDoesntChange()
+    {
+        String key = "key.with.format";
+        String translation = "Found {0} out of {1}";
+        String javascript = "var t = AJS.format(AJS.I18n.getText(\"" + key  + "\"), results, total);";
+        stub(i18n.getText(key)).toReturn(translation);
+
+        assertEquals("var t = AJS.format(\"" + translation + "\", results, total);", resource.transform(javascript));
     }
 }
