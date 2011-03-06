@@ -70,6 +70,35 @@ public class TestTranslatedDownloadableResource extends TestCase
     {
         String javascript = "var s = 0; var t = AJS.I18n;, var u = AJSI18ngetText(\"foo\")";
         assertEquals(javascript, resource.transform(javascript));
+
+        // mismatched quotes
+        javascript = "var str = AJS.I18n.getText('apos.key\");";
+        assertEquals(javascript, resource.transform(javascript));
+        javascript = "var str = AJS.I18n.getText(\"apos.key');";
+        assertEquals(javascript, resource.transform(javascript));
+    }
+
+    public void testWhitespaceBetweenArgs()
+    {
+        stub(i18n.getText("blah")).toReturn("Blah");
+
+        String javascript = "var t = AJS.I18n.getText( 'blah');";
+        assertEquals("var t = \"Blah\";", resource.transform(javascript));
+
+        javascript = "var t = AJS.I18n.getText('blah' );";
+        assertEquals("var t = \"Blah\";", resource.transform(javascript));
+
+        javascript = "var t = AJS.I18n.getText( 'blah' );";
+        assertEquals("var t = \"Blah\";", resource.transform(javascript));
+
+        javascript = "var t = AJS.I18n.getText('blah',1,2);";
+        assertEquals("var t = AJS.format(\"Blah\",1,2);", resource.transform(javascript));
+
+        javascript = "var t = AJS.I18n.getText('blah', 1,2);";
+        assertEquals("var t = AJS.format(\"Blah\", 1,2);", resource.transform(javascript));
+
+        javascript = "var t = AJS.I18n.getText('blah' , 1,2);";
+        assertEquals("var t = AJS.format(\"Blah\", 1,2);", resource.transform(javascript));
     }
 
     public void testFormatMessage()

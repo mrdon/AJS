@@ -19,9 +19,14 @@ import java.util.regex.Pattern;
  */
 public class TranslatedDownloadableResource extends AbstractStringTransformedDownloadableResource
 {
-    // Not a very sophisticated matcher. Assumes that start and end quotes are the same type and doesn't check
+    // Not a very sophisticated matcher. Doesn't check
     // for variables after the key if a comma has been detected.
-    private static final Pattern PATTERN = Pattern.compile("AJS\\.I18n\\.getText\\(['\"]([\\w.-]+)['\"]([\\),])");
+    private static final Pattern PATTERN = Pattern.compile(
+        "AJS\\.I18n\\.getText" +
+        "\\(\\s*" + // start paren
+        "(['\"])([\\w.-]+)\\1" + // single or double quoted word
+        "\\s*([\\),])" // end paren, or start-of-args
+    );
     private final I18nResolver i18n;
 
     public TranslatedDownloadableResource(DownloadableResource originalResource, I18nResolver i18n)
@@ -37,8 +42,8 @@ public class TranslatedDownloadableResource extends AbstractStringTransformedDow
         StringBuffer output = new StringBuffer();
         while (matcher.find())
         {
-            String key = matcher.group(1);
-            boolean format = ",".equals(matcher.group(2));
+            String key = matcher.group(2);
+            boolean format = ",".equals(matcher.group(3));
 
             // Since we can't pass in escaped quotes to appendReplacement, replace it
             // with empty string and append to buffer after.
