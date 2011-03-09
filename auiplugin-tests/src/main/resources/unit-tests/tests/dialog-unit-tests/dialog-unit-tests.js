@@ -130,7 +130,7 @@ test("test for Dialog.addPanel with id", function() {
 
 test("test for Dialog.addPage", function() {
     testObj.testDialog = new AJS.Dialog({height:500, width: 500, id:"test-dialog"});
-    newPage = testObj.testDialog.addPage("page") 
+    newPage = testObj.testDialog.addPage("page");
     ok(typeof newPage == "object", "a dialog page was added successfully!");
     ok(!AJS.$(newPage.page[1].body).is(":visible"), "the new page that was added is hidden.");
     ok(testObj.testDialog.curpage == 1, "The current page has been changed to the last one added");
@@ -184,6 +184,43 @@ test("test for Dialog.getCurrentPanel", function() {
     testObj.testDialog.addPanel("panel", "some text", "panel-body");
     ok(typeof testObj.testDialog.getCurrentPanel() == "object", "returned the current panel successfully!");
 });
+
+
+test("test no overflow remains at default body", function() {
+    AJS.$("body").css({"overflow": ""});
+    testObj.testDialog = new AJS.Dialog({height:500, width: 500, id:"test-dialog"});
+    testObj.testDialog.show();
+    testObj.testDialog.hide();
+    ok(AJS.$("body").css("overflow") == "visible","Overflow remained at its default");
+});
+
+test("test no overflow remains hidden body", function() {
+    AJS.$("body").css({"overflow": "hidden"});
+    testObj.testDialog = new AJS.Dialog({height:500, width: 500, id:"test-dialog"});
+    testObj.testDialog.show();
+    testObj.testDialog.hide();
+    ok(AJS.$("body").css("overflow") == "hidden","Overflow remained at its default");
+});
+
+test("test no overflow remains at default html", function() {
+    //have to query the dom for the default in this case because ie7 does not adhere to the spec
+    var overrideDefault = AJS.$("html").css("overflow");
+    testObj.testDialog = new AJS.Dialog({height:500, width: 500, id:"test-dialog"});
+    testObj.testDialog.show();
+    testObj.testDialog.hide();
+    ok(AJS.$("html").css("overflow") == overrideDefault,"Overflow is empty");
+});
+
+test("test no overflow remains hidden html", function() {
+    AJS.$("html").css({"overflow": "hidden"});
+    testObj.testDialog = new AJS.Dialog({height:500, width: 500, id:"test-dialog"});
+    testObj.testDialog.show();
+    testObj.testDialog.hide();
+    ok(AJS.$("html").css("overflow") == "hidden","Overflow remained hidden");
+});
+
+
+
 
 test("", function() {
     testObj.testDialog = new AJS.Dialog({height:500, width: 500, id:"test-dialog"});

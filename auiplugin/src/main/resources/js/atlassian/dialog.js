@@ -64,11 +64,13 @@ AJS.dim = function (useShim) {
             AJS.dim.shim.css({height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
             AJS.$("body").append(AJS.dim.shim);
         }
-
+     
         // IE needs the overflow on the HTML element so scrollbars are hidden
         if (AJS.$.browser.msie && parseInt(AJS.$.browser.version,10) < 8) {
+            AJS.dim.cachedOverflow = AJS.$("html").css("overflow");
             AJS.$("html").css("overflow", "hidden");
         } else {
+            AJS.dim.cachedOverflow = AJS.$("body").css("overflow");
             AJS.$("body").css("overflow", "hidden");
         }
     }
@@ -90,9 +92,9 @@ AJS.undim = function () {
 
         // IE needs the overflow on the HTML element so scrollbars are hidden
         if (AJS.$.browser.msie && parseInt(AJS.$.browser.version,10) < 8) {
-            AJS.$("html").css("overflow", "");
+            AJS.$("html").css("overflow",  AJS.dim.cachedOverflow);
         } else {
-            AJS.$("body").css("overflow", "");
+            AJS.$("body").css("overflow",  AJS.dim.cachedOverflow);
         }
 
         // Safari bug workaround
