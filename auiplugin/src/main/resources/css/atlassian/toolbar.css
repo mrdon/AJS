@@ -137,7 +137,9 @@
 .toolbar-group .toolbar-item.toolbar-splitbutton:last-of-type .aui-dd-trigger,
 .toolbar-group .toolbar-item:last-of-type .toolbar-trigger,
 .toolbar-group .toolbar-item:last-of-type button,
-.toolbar-group .toolbar-item:last-of-type input {
+.toolbar-group .toolbar-item:last-of-type input[type="button"],
+.toolbar-group .toolbar-item:last-of-type input[type="reset"],
+.toolbar-group .toolbar-item:last-of-type input[type="submit"] {
     -webkit-border-top-right-radius: 3px;
     -webkit-border-bottom-right-radius: 3px;
     -moz-border-radius-topright: 3px;
