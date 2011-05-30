@@ -1,6 +1,4 @@
 .aui-toolbar {
-    background: #f0f0f0;
-    border-top: 1px solid #bbb;
     clear: both;
     display: inline-block; /* new rendering context */
     padding-top: 10px;
@@ -115,7 +113,9 @@
 
 .toolbar-group .toolbar-item:first-of-type a,
 .toolbar-group .toolbar-item:first-of-type button,
-.toolbar-group .toolbar-item:first-of-type input {
+.toolbar-group .toolbar-item:first-of-type input[type="button"],
+.toolbar-group .toolbar-item:first-of-type input[type="reset"],
+.toolbar-group .toolbar-item:first-of-type input[type="submit"] {
     -webkit-border-top-left-radius: 3px;
     -webkit-border-bottom-left-radius: 3px;
     -moz-border-radius-topleft: 3px;
@@ -186,13 +186,13 @@
 }
 
 .aui-toolbar .aui-dd-parent a.aui-dd-trigger.active {
-    background: #d8e4f0 url("aui-toolbar-button-active-bg.png") top left repeat-x;
+    background: #d8e4f0 url("images/toolbar/aui-toolbar-button-active-bg.png") top left repeat-x;
     border-left: 1px solid #D8E4F0;
 }
 
 .aui-toolbar .toolbar-group .active .toolbar-trigger,
 .aui-toolbar .toolbar-group .toolbar-trigger:active {
-    background: #d8e4f0 url("aui-toolbar-button-active-bg.png") top left repeat-x;
+    background: #d8e4f0 url("images/toolbar/aui-toolbar-button-active-bg.png") top left repeat-x;
     border: 1px solid #999;
 }
 

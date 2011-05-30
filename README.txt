@@ -1,11 +1,28 @@
 AUI Readme:
 
-The AUI build uses the Atlassian Plugin SDK to simply its build and allow tests to be ran in actual products.
+AUI is the Atlassian User Interface library. It is provided as a plugin for use in Atlassian products.
+
+Component documentation and release notes can be found at http://confluence.atlassian.com/display/AUI
+
+The AUI build uses the Atlassian Plugin SDK to simplify its build and allow tests to be run in actual products.
 
 To run the full build, execute:
 
    mvn clean install
 
+...from the root of your AUI checkout.
+
+To run the reference application, execute:
+
+   mvn refapp:run
+
+...from the /auiplugin-tests/ subdirectory.
+
+Key refapp URLS:
+
+http://localhost:9999/ajs/                                                       - Landing page for the AUI refapp
+http://localhost:9999/ajs/plugins/servlet/ajstest/test-pages/index.html          - Clickable samples for manual testing
+http://localhost:9999/ajs/plugins/servlet/ajstest/unit-tests/tests/allTests.html - QUnit tests
 
 Contents:
 
@@ -16,12 +33,6 @@ auiplugin-tests/                                        - A plugin for tests of 
 auiplugin-tests/src/test/java/                          - The Selenium tests
 auiplugin-tests/src/main/resources/test-pages           - The samples as used in manual and automated testing
 auiplugin-tests/src/main/resources/unit-tests/tests/js  - The qunit tests
-
-Key URLS:
-
-http://localhost:9999/ajs/plugins/servlet/ajstest/test-pages/index.html          - Clickable samples for manual testing
-http://localhost:9999/ajs/plugins/servlet/ajstest/unit-tests/tests/allTests.html - QUnit tests
-
 
 Samples:
 Each component should have a basic sample available in the auiplugin/test-pages folder.  There are two copies of the
@@ -64,5 +75,5 @@ Run/debug AUI in a different product, say, Confluence, and a specific version:
    mvn refapp:run -Dproduct=confluence -Dproduct.version=3.5-m1
    
 If you want to add a new component into AUI the following command will help you generate the files required
-
+ 
 mvn auicomponent:generate

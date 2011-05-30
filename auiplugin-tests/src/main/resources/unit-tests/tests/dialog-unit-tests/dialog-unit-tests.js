@@ -9,6 +9,8 @@ module("Dialog Unit Tests", {
         });
         //Set testObj to null to refresh it
         testObj=null;
+        //Ensure test page overflows aren't screwed (so you can still read test results!)
+        AJS.$("body,html").css({"overflow":""});
     }
 });
 
@@ -185,6 +187,21 @@ test("test for Dialog.getCurrentPanel", function() {
     ok(typeof testObj.testDialog.getCurrentPanel() == "object", "returned the current panel successfully!");
 });
 
+test("test for Dialog.updateHeight", function() {
+    testObj.testDialog = new AJS.Dialog({ width: 500, height: 300, id:"test-dialog" });
+    testObj.testDialog.addHeader("Test Dialog");
+    testObj.testDialog.addPanel("", "<div>Foobar</div>");
+    testObj.testDialog.addButtonPanel();
+    testObj.testDialog.addButton("Test Button");
+    testObj.testDialog.addCancel("Cancel", function() {});
+    testObj.testDialog.show();
+    var h0 = document.getElementById("test-dialog").offsetHeight;
+    testObj.testDialog.getCurrentPanel().body.html('<div style="height:500px"></div>');
+    testObj.testDialog.updateHeight();
+    var h1 = document.getElementById("test-dialog").offsetHeight;
+    ok(h1 > h0,  "dialog.updateHeight() increases dialog element height");
+    ok(h1 > 500, "dialog.updateHeight() resizes dialog to fit content");
+});
 
 test("test no overflow remains at default body", function() {
     AJS.$("body").css({"overflow": ""});
@@ -219,10 +236,7 @@ test("test no overflow remains hidden html", function() {
     ok(AJS.$("html").css("overflow") == "hidden","Overflow remained hidden");
 });
 
-
-
-
-test("", function() {
+test("test for dialog .addPanel", function() {
     testObj.testDialog = new AJS.Dialog({height:500, width: 500, id:"test-dialog"});
     testObj.testDialog.addPanel("panel", "some text", "panel-body");
     ok(typeof testObj.testDialog.getCurrentPanel() == "object", "returned the current panel successfully!");

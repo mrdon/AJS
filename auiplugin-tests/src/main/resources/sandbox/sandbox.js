@@ -1,7 +1,8 @@
 var components = {};
 AJS.$(document).ready(function(){
-    var helpText;
-
+    var helpText,
+        localWarning = AJS.$("#sandbox-local-warning");
+    
     refreshHTML = function(){
         AJS.$("#display #html-code").html(AJS.$("#html-editor").val()); 
     }
@@ -28,6 +29,14 @@ AJS.$(document).ready(function(){
 
     //only run page javascript if the full-width-container he been added (prevents running code twice because of a re-trigger of dom-ready)
     if(AJS.$(".full-width-container").size()==0){
+
+        if (window.location.protocol == 'file:') {
+            AJS.$(".work-area").hide();
+            AJS.$("#toolbar").hide();
+        } else {
+            localWarning.hide();
+        };
+
         AJS.$.ajax({
            url: "aui-components.xml",
            async: false,
@@ -51,7 +60,7 @@ AJS.$(document).ready(function(){
         if(AJS.version!="${project.version}"){
             AJS.$("#version").html("AUI v" + AJS.version);
         } else {
-            AJS.$("#version").html("latest AUI Snapshot");
+            AJS.$("#version").html("Local AUI Snapshot");
         }
         
         AJS.$.each(components.component, function(index, item){
@@ -63,22 +72,23 @@ AJS.$(document).ready(function(){
             $toolbarlogo.after(thisMenuItem);
             var information = "<h3>"+ item.name+"</h3><p>" + item.description;
             if(item.option){
-                information = information +  "<p> AUI " + item.name + " has the following options available: <br><ul>"
+                information = information +  "<p> AUI " + item.name + " has the following options available:</p><ul>"
                 AJS.$.each(item.option, function(index, option){
                     information = information + "<li>" + option + "</li>";
                 });
                 information = information + "</ul>";
             }
             if(item.func){
-                information = information + "<p> The AUI " + item.name + " API has the following functions available: <br><ul>"
+                information = information + "<p> The AUI " + item.name + " API has the following functions available:</p><ul>"
                 AJS.$.each(item.func, function(index, func){
                     information = information + "<li>" + func + "</li>";
                 });
                 information = information + "</ul>";
             }
-            information = information + "</ul><p> For more information on how to use the API please refer to the <a href='http://confluence.atlassian.com/display/AUI/AUI+Components'> AUI Documentation </a>"
+            information = information + "</ul><p> For more information on how to use the API please refer to the <a href='http://confluence.atlassian.com/display/AUI/AUI+Components'> AUI Documentation </a></p>"
             AJS.$(thisMenuItem).click(function(e){
                 addComponentTemplate(AJS.$(e.target).attr("id"));
+                e.preventDefault();
             });
             
             AJS.$(thisMenuItem).hover(function(){

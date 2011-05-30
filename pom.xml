@@ -10,7 +10,7 @@
     <groupId>com.atlassian.aui</groupId>
     <artifactId>auiplugin-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.4-SNAPSHOT</version>
+    <version>3.5-SNAPSHOT</version>
 
     <name>Atlassian UI Plugin - Parent</name>
 
@@ -81,21 +81,19 @@
         <context.path>ajs</context.path>
         <selenium.browser>firefox-3.5</selenium.browser>
         <webdriver.browser>firefox-3.5</webdriver.browser>
-        <amps.version>3.2-m3</amps.version>
+        <amps.version>3.3.1</amps.version>
         <http.port>9999</http.port>
         <jdkLevel>1.5</jdkLevel>
         <xvfb.enable>true</xvfb.enable>
 
-        <refapp.version>2.7.0</refapp.version>
-        <confluence.version>3.3-beta2</confluence.version>
-        <confluence.data.version>3.0</confluence.data.version>
+        <refapp.version>2.11.0</refapp.version>
 
-        <jira.version>4.2-m6</jira.version>
-        <jira.data.version>4.1.1</jira.data.version>
-
+        <confluence.version>RELEASE</confluence.version>
+        <confluence.data.version>RELEASE</confluence.data.version>
+        <jira.version>RELEASE</jira.version>
+        <jira.data.version>RELEASE</jira.data.version>
         <fecru.version>RELEASE</fecru.version>
         <fecru.data.version>RELEASE</fecru.data.version>
-
         <bamboo.version>RELEASE</bamboo.version>
         <bamboo.data.version>RELEASE</bamboo.data.version>
 

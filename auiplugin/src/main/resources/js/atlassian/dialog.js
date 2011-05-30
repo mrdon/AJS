@@ -182,13 +182,52 @@ AJS.popup = function (options) {
     */
     
     //blanket for reference further down
-    var blanket = AJS.$(".aui-blanket");
-    
+    var blanket = AJS.$(".aui-blanket"),
+        focusItem = function(item) {
+            var hasFocus = false,
+                input = AJS.$(":input:visible:enabled:first", item),
+                theChildren = item.children(":visible");
+
+            if (input.length && input[0].tabIndex >= 0) {
+                input.focus();
+                return hasFocus = true;
+            }
+
+            if (item.length && item[0].tabIndex >= 0) {
+                item.focus();
+                return hasFocus = true;
+            }
+
+            for(var i=0, ii=theChildren.length; i<ii; i++) {
+                hasFocus = focusItem(jQuery(theChildren[i]));
+                if(hasFocus) {
+                    break;
+                }
+            }
+
+            return hasFocus;
+        },
+        // we try and place focus, by looking in page body, then button panel and finally page menu.
+        focusDialog = function(element) {
+            if (focusItem(AJS.$(".dialog-page-body", element)))
+                return;
+            if (focusItem(AJS.$(".dialog-button-panel", element)))
+                return;
+
+            focusItem(AJS.$(".dialog-page-menu", element));
+        };
+
+
     var res = {
 
         changeSize: function (w, h) {
             if ((w && w != options.width) || (h && h != options.height)) {
                 applySize(w, h);
+                // Remove shadow so show will redisplay it at the correct size.
+                if (this.shadow) {
+                    this.shadow.remove();
+                    this.shadow = null;
+                }
             }
             this.show();
         },
@@ -226,7 +265,8 @@ AJS.popup = function (options) {
                 }
 
 				AJS.popup.current = this;
-				AJS.$(document).trigger("showLayer", ["popup", this]);
+                focusDialog(popup);
+                AJS.$(document).trigger("showLayer", ["popup", this]);
             };
             show.call(this);
             this.show = show;
@@ -320,7 +360,7 @@ AJS.popup = function (options) {
         this.page = page;
         this.onclick = onclick;
         this._onclick = function () {
-            onclick.call(this, page.dialog, page);
+            return onclick.call(this, page.dialog, page) === true;
         };
         this.item = AJS("button", label).addClass("button-panel-button");
         if (className) {
@@ -356,7 +396,7 @@ AJS.popup = function (options) {
         this.page = page;
         this.onclick = onclick;
         this._onclick = function () {
-            onclick.call(this, page.dialog, page);
+            return onclick.call(this, page.dialog, page) === true;
         };
         this.item = AJS("a", label).attr("href", url).addClass("button-panel-link");
         if (className) {
@@ -442,7 +482,7 @@ AJS.popup = function (options) {
         } else {
             this.item.unbind("click", this._onclick);
             this._onclick = function () {
-                onclick.call(this, page.dialog, page);
+                return onclick.call(this, page.dialog, page) === true;
             };
             if (typeof onclick == "function") {
                 this.item.click(this._onclick);
@@ -1099,21 +1139,24 @@ AJS.popup = function (options) {
      * @method updateHeight
      */
     AJS.Dialog.prototype.updateHeight = function () {
-        var height = 0;
+        var height = this.height || 0;
         for (var i=0; this.getPanel(i); i++) {
-            if (this.getPanel(i).body.css({height: "auto", display: "block"}).outerHeight() > height) {
-                height = this.getPanel(i).body.outerHeight();
-            }
-            if (i !== this.page[this.curpage].curtab) {
-                this.getPanel(i).body.css({display:"none"});
+            if (this.getPanel(i).body[0].scrollHeight > height) {
+                height = this.getPanel(i).body[0].scrollHeight;
             }
         }
         for (i=0; this.getPanel(i); i++) {
-            this.getPanel(i).body.css({height: height || this.height});
+            this.getPanel(i).body.outerHeight(height);
+        }
+        this.height = height;
+        if (this.page[0].header) {
+          this.height += this.page[0].header.outerHeight();
+        }
+        if (this.page[0].buttonpanel) {
+          this.height += this.page[0].buttonpanel.outerHeight();
         }
         this.page[0].menu.height(height);
-        this.height = height + 87;
-        this.popup.changeSize(undefined, height + 87);
+        this.popup.changeSize(undefined, this.height);
     };
 
     /**

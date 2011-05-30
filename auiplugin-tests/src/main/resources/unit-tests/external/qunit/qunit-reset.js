@@ -2,7 +2,7 @@
 
 QUnit.reset = function() {
 	if ( window.jQuery ) {
-	    console.log("NEW RESET FUNCTION WOOOORKS");
+	    console.log("QUnit reset disabled due to potential clash with #main");
         // jQuery( "#main, #qunit-fixture" ).html( config.fixture );
 	} else {
 		var main = id( 'main' ) || id( 'qunit-fixture' );

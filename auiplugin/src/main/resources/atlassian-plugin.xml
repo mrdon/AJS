@@ -13,6 +13,8 @@
     <resource name="js/" type="download" location="js/"/>
 
     <web-resource key="ajs" name="Atlassian Javascript">
+        
+        <!-- CSS first -->
         <resource type="download" name="basic.css" location="css/atlassian/basic.css"/>
         <resource type="download" name="firebug.css" location="css/atlassian/firebug.css"/>
         <resource type="download" name="dialog.css" location="css/atlassian/dialog.css"/>
@@ -26,31 +28,37 @@
         <resource type="download" name="toolbar.css" location="css/atlassian/toolbar.css"/>
 
         <resource type="download" name="dialog-ie.css" location="css/atlassian/dialog-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lt IE 9"/>
         </resource>
         <resource type="download" name="dropdown-ie.css" location="css/atlassian/dropdown-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+        <resource type="download" name="dropdown-ie9.css" location="css/atlassian/dropdown-ie9.css">
+            <param name="conditionalComment" value="IE 9"/>
         </resource>
         <resource type="download" name="forms-ie.css" location="css/atlassian/forms-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lt IE 9"/>
         </resource>
         <resource type="download" name="icons-ie.css" location="css/atlassian/icons-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lt IE 9"/>
         </resource>
         <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/inline-dialog-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lte IE 9"/>
         </resource>
         <resource type="download" name="tabs-ie.css" location="css/atlassian/tabs-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lt IE 9"/>
         </resource>
         <resource type="download" name="toolbar-ie.css" location="css/atlassian/toolbar-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lt IE 9"/>
         </resource>
 
+        <!-- JS Second - remember libraries must go first -->
         <resource type="download" name="raphael.js" location="js/external/raphael/raphael.js"/>
         <resource type="download" name="raphael.shadow.js" location="js/external/raphael/raphael.shadow.js"/>
         <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
         <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <resource type="download" name="jquery.os.js" location="js/atlassian/jquery/jquery.os.js"/>
+        <!-- jquery-ui.js contains Core, Widget, Mouse, Draggable, Sortable. Load jquery-ui-other for the rest. -->
         <resource type="download" name="jquery-ui.js" location="js/external/jquery/jquery-ui.js"/>
         <resource type="download" name="jquery-ui-1.7-bug-fixes.js"
                   location="js/external/jquery/jquery-ui-1.7-bug-fixes.js"/>
@@ -90,13 +98,13 @@
         <resource type="download" name="messages.css" location="css/atlassian/messages.css"/>
 
         <resource type="download" name="dropdown-ie.css" location="css/atlassian/dropdown-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lt IE 9"/>
         </resource>
         <resource type="download" name="forms-ie.css" location="css/atlassian/forms-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lt IE 9"/>
         </resource>
         <resource type="download" name="icons-ie.css" location="css/atlassian/icons-ie.css">
-            <param name="ieonly" value="true"/>
+            <param name="conditionalComment" value="lt IE 9"/>
         </resource>
 
         <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
@@ -125,7 +133,6 @@
     <web-resource name="stalker" key="stalker">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <dependency>com.atlassian.auiplugin:hotkeys</dependency>
-        <resource type="download" name="jquery.os.js" location="js/atlassian/jquery/jquery.os.js"/>
         <resource type="download" name="jquery.getdocheight.js" location="js/atlassian/jquery/jquery.getdocheight.js"/>
         <resource type="download" name="jquery.offsetanchors.js"
                   location="js/atlassian/jquery/jquery.offsetanchors.js"/>
@@ -140,7 +147,7 @@
         <resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>
     </web-resource>
 
-    <!-- Every part of jQuery UI JS that we don't offer by default -->
+    <!-- Every part of jQuery UI JS that we don't offer by default, plus jQuery Menu -->
     <web-resource name="jQuery UI Other" key="jquery-ui-other">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <resource type="download" name="jquery-ui-other.js" location="js/external/jquery/jquery-ui-other.js"/>
@@ -191,5 +198,18 @@
         <dependency>com.atlassian.auiplugin:ajs</dependency>
     </web-resource>
     <!-- end AUI 2.0 backwards-compat redirects -->
+
+    <web-resource key="ajs-experimental" name="Prototype Components - use at own risk">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+
+        <!-- Add individual resources for experimental components -->
+        <resource type="download" name="experimental-test.css" location="experimental/css/atlassian/experimental-test.css"/>
+        <resource type="download" name="experimental-test.js" location="experimental/js/atlassian/experimental-test.js"/>
+        
+    </web-resource>
+
+    <web-resource key="ajs-underscorejs" name="Underscore.js library">
+        <resource type="download" name="underscore.js" location="js/external/underscorejs/underscore.js"/>
+    </web-resource>
 
 </atlassian-plugin>

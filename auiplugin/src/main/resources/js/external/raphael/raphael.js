@@ -1,5 +1,6 @@
 /*!
  * Raphael 1.5.2 - JavaScript Vector Library
+ * NB: Atlassian patched version - see line 1101
  *
  * Copyright (c) 2010 Dmitry Baranovskiy (http://raphaeljs.com)
  * Licensed under the MIT (http://raphaeljs.com/license.html) license.
@@ -1097,7 +1098,7 @@
                 }
             } else {
                 el = doc.createElementNS(paperproto.svgns, el);
-                //ie9 does not give style to the filter elements
+                // Atlassian patch: ie9 does not give style to the filter elements
                 if(el.style) {
                     el.style.webkitTapHighlightColor = "rgba(0,0,0,0)";
                 } 

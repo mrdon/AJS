@@ -1,8 +1,5 @@
-        
 // create a dialog 860px wide x 530px high
-var dialog = new AJS.Dialog({width:860, height:530}),
-dialog2 = new AJS.Dialog({width:1000, height:300}),
-dialog3 = new AJS.Dialog({width:100, height:600});
+var dialog = new AJS.Dialog({width:860, height:530, id:"example-dialog", closeOnOutsideClick: true});
 
 // PAGE 0 (first page)
 // adds header for first page
@@ -13,16 +10,13 @@ dialog.addPanel("Panel 1", "<p>Some content for panel 1. This has no padding.</p
 dialog.get("panel:0").setPadding(0);
 
 // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
-dialog.addPanel("Panel 2", "<p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p>", "panel-body");
+dialog.addPanel("Panel 2", "<p>Some content for panel 2 that's long enough to demonstrate scrolling content.</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p>", "panel-body");
 
 dialog.addButton("Next", function (dialog) {
     dialog.nextPage();
 });
 dialog.addButton("Cancel", function (dialog) {
     dialog.hide();
-});
-dialog.addButton("testStackingDialogs", function (dialog) {
-    dialog2.show();
 });
 
 // PAGE 1 (second page)
@@ -44,24 +38,8 @@ dialog.addButton("Cancel", function (dialog) {
     dialog.hide();
 });
 
-//Create first stackable Dialog
-dialog2.addHeader("First Stacking Dialog")
-.addPanel("PanelStack1", "PanelStack1")
-.addButton("close", function(dialog){
-    dialog.hide();
-})
-.addButton("testStackingDialogs2", function (dialog) {
-    dialog3.show();
-});
-//Create second stackable dialog
-dialog3.addHeader("Second Stacking Dialog")
-.addPanel("PanelStack1", "PanelStack1")
-.addButton("close", function(dialog){
-    dialog.hide();
-});
-
+// Add events to dialog trigger elements
 AJS.$("#dialog-button").click(function() {
-
     // PREPARE FOR DISPLAY
     // start first page, first panel
     dialog.gotoPage(0);

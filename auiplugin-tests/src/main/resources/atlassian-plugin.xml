@@ -24,6 +24,7 @@
     <web-resource key="qunit" name="Atlassian QUnit Dependencies">
         <resource type="download" name="qunit.js" location="unit-tests/external/qunit/qunit.js"/>
         <resource type="download" name="qunit.css" location="unit-tests/external/qunit/qunit.css"/>
+        <!-- Atlassian overrides: -->
         <resource type="download" name="qunit-reset.js" location="unit-tests/external/qunit/qunit-reset.js"/>
     </web-resource>
 
@@ -82,9 +83,27 @@
         <resource type="download" name="events-unit-tests.js" location="unit-tests/tests/events-unit-tests/events-unit-tests.js"/>
     </web-resource>
 
+    <web-resource key="template-unit-tests">
+        <resource type="download" name="template-unit-tests.js" location="unit-tests/tests/template-unit-tests/template-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="atlassian-js-unit-tests">
+        <resource type="download" name="atlassian-js-unit-tests.js" location="unit-tests/tests/atlassian-js-unit-tests/atlassian-js-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="ajs-infrastructure-unit-tests">
+        <resource type="download" name="ajs-infrastructure-tests.js" location="unit-tests/tests/ajs-infrastructure-unit-tests/ajs-infrastructure-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="underscorejs-unit-tests">
+        <!-- can't be included in all tests as it needs to be in a specific location (see FuncTestServlet.java) -->
+        <resource type="download" name="underscorejs-tests.js" location="unit-tests/tests/underscorejs-unit-tests/underscorejs-unit-tests.js"/>
+    </web-resource>
+
     <!-- Include this resource to run all unit tests-->
     <web-resource key="all-unit-tests">
         <!--AllTests-->
+        <dependency>auiplugin-tests:ajs-infrastructure-tests</dependency>
         <dependency>auiplugin-tests:whenitype-unit-tests</dependency>
         <dependency>auiplugin-tests:dialog-unit-tests</dependency>
         <dependency>auiplugin-tests:dropdown-unit-tests</dependency>
@@ -96,15 +115,28 @@
         <dependency>auiplugin-tests:tables-unit-tests</dependency>
         <dependency>auiplugin-tests:tabs-unit-tests</dependency>
         <dependency>auiplugin-tests:toolbar-unit-tests</dependency>
+        <dependency>auiplugin-tests:template-unit-tests</dependency>
+        <dependency>auiplugin-tests:atlassian-js-unit-tests</dependency>
     </web-resource>
 
-    <web-item key="testPages" section="index.links" weight="10" application="refapp">
+    <web-item key="aui-test-pages" section="index.links" weight="10" application="refapp">
         <label>AUI Test Pages</label>
-        <link linkId="testPages">/plugins/servlet/ajstest/test-pages/index.html</link>
+        <link linkId="aui-test-pages">/plugins/servlet/ajstest/test-pages/index.html</link>
     </web-item>
 
-    <web-item key="qunitTests" section="index.links" weight="20" application="refapp">
+    <web-item key="aui-qunit-tests" section="index.links" weight="10" application="refapp">
         <label>AUI QUnit Tests</label>
-        <link linkId="qunitTests">/plugins/servlet/ajstest/unit-tests/tests/index.html</link>
+        <link linkId="aui-qunit-tests">/plugins/servlet/ajstest/unit-tests/tests/index.html</link>
     </web-item>
+
+    <web-item key="aui-sandbox" section="index.links" weight="10" application="refapp">
+        <label>AUI Sandbox</label>
+        <link linkId="aui-sandbox">/plugins/servlet/ajstest/sandbox/index.html</link>
+    </web-item>
+
+    <web-item key="aui-bootcamp" section="index.links" weight="10" application="refapp">
+        <label>AUI Bootcamp Exercise</label>
+        <link linkId="aui-bootcamp">/plugins/servlet/ajstest/bootcamp/instructions.html</link>
+    </web-item>
+    
 </atlassian-plugin>

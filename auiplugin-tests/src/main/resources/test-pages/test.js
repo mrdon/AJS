@@ -6,6 +6,11 @@ AJS.$(document).ready(function(){
 
 //HELPER FUNCTIONS
 
+function setupTestPage() {
+    // this is called all through the test pages so we're suppressing the error
+    AJS.log("setupTestPage dummy function called");
+}
+
 //event handler for viewing html source
 function viewHTMLSource(target) {
     var parent = AJS.$(target).parent().parent();

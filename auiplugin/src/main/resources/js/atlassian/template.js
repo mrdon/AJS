@@ -10,7 +10,6 @@
 AJS.template = (function ($) {
     var tokenRegex = /\{([^\}]+)\}/g, // matches "{xxxxx}"
         objNotationRegex = /(?:(?:^|\.)(.+?)(?=\[|\.|$|\()|\[('|")(.+?)\2\])(\(\))?/g, // matches ".xxxxx" or "["xxxxx"]" to run over object properties
-        escapingRegex = /[<>"'&]/g, // matches HTML characters that need to be escaped
         apos = /([^\\])'/g, // matches not escaped apostrophes.
         
         // internal function
@@ -40,14 +39,6 @@ AJS.template = (function ($) {
                 res = T.escape(res);
             }
             return res;
-        },
-        /**
-         * Escapes HTML characters
-         * @private
-         * @method escaper
-         */
-        escaper = function (chr) {
-            return "&#" + chr.charCodeAt() + ";";
         },
         /**
          * Replaces tokens in the template with corresponding values without HTML escaping
@@ -112,8 +103,6 @@ AJS.template = (function ($) {
         return this(cache[title]);
     };
     // escape HTML dangerous characters
-    T.escape = function (s) {
-        return String(s).replace(escapingRegex, escaper);
-    };
+    T.escape = AJS.escapeHtml;
     return T;
 })(window.jQuery);

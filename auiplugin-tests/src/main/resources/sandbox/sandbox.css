@@ -26,9 +26,11 @@ h2#display {
 }
 .full-width-container {
     height: 100%;
-    width: 100%;
-    position: absolute;
     left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
 }
 
 #page-heading {
@@ -133,6 +135,7 @@ h2#display {
     text-shadow: none;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
+    border-radius: 15px;
 }
 
 #editor-tools .toolbar-button:hover {
@@ -141,7 +144,7 @@ h2#display {
     background: #eee;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
-/*    color:#fff;*/
+    border-radius: 15px;
 }
 
 a#documentation {
@@ -173,11 +176,11 @@ a#documentation:hover {
     border:1px solid #777;
 }
 
-.display-parent .display{
+.display-parent .display {
     width: 98%;
     display:inline-block;
     height: 92%;
-    padding: 0 1%;
+    padding: 1%;
     font-size: 12px;
     overflow:scroll;
 }
@@ -267,7 +270,7 @@ a#documentation:hover {
     opacity:0.8;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
-
+    border-radius: 15px;
 }
 
 .editor-parent h2.editor-heading{

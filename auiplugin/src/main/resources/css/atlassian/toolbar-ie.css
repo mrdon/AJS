@@ -18,9 +18,13 @@
     *background-position: -58px -10px;
     *border: 0;
 }
-.aui-toolbar .toolbar-group .first {
+.aui-toolbar .toolbar-group .first .toolbar-trigger {
     border-left: 1px solid #ddd;
 }
+.aui-toolbar .toolbar-group .first .toolbar-trigger:hover {
+    border-left: 1px solid #999;
+}
+
 .aui-toolbar .toolbar-group .toolbar-item-link {
     border-left: none;
 }

@@ -1,9 +1,9 @@
 .aui-message {
     background: #f0f0f0;
     border: 1px solid #bbb;
-    border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 5px;
     color: #333;
     margin: 0 0 1em 0;
     min-height: 1em;
@@ -11,11 +11,12 @@
     position: relative;
 }
 .aui-message.shadowed {
-    box-shadow: 0 1px 2px #ccc;
-    -moz-box-shadow: 0 1px 2px #ccc;
-    -webkit-box-shadow: 0 1px 2px #ccc;
+    -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
 }
-.aui-message.closeable {
+.aui-popup .aui-message.closeable,
+.aui-dialog .aui-message.closeable {
     z-index: 4000;
 }
     .aui-message .svg-icon {
@@ -70,6 +71,7 @@
             margin: 0;
             padding: 0;
         }
+        
 /*TEMPORARY ICON CSS FOR MESSAGES, MOVE/REPLACE WHEN AUI ICONS ARE COMPLETED*/
 form.aui .aui-message .aui-icon, .aui-message .aui-icon {
     background-image: url("images/icons/aui-message-icon-sprite.png");

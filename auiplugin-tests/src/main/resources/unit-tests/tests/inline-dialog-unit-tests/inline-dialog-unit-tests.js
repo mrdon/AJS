@@ -26,6 +26,7 @@ test("Inline Dialog default options", function() {
         },
         closeOthers: true,
         isRelativeToMouse: false,
+        addActiveClass: true,
         onHover: false,
         useLiveEvents: false,
         noBind: false,
@@ -37,9 +38,13 @@ test("Inline Dialog default options", function() {
         offsetY: 10,
         container: "body",
         cacheContent : true,
+        displayShadow: true,
         hideCallback: function(){}, // if defined, this method will be exected after the popup has been faded out.
         initCallback: function(){}, // A function called after the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
-        upfrontCallback: function() {} // A function called before the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
+        upfrontCallback: function() {}, // A function called before the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
+        calculatePositions: function() {},
+        getArrowPath: function() {},
+        getArrowAttributes: function() {}
     };
     ok(typeof testInlineDialog == "object", "Inline Dialog Successfully Created!");
     var isDefault = true;

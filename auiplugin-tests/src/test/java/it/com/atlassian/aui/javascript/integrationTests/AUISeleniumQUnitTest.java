@@ -75,6 +75,30 @@ public class AUISeleniumQUnitTest extends AbstractAUISeleniumTestCase
         runQunitTests("Events");
     }
 
+    public void testTemplateUnitTests()
+    {
+        openQunitTestPage("template");
+        runQunitTests("Template");
+    }
+
+    public void testAtlassianJsUnitTests()
+    {
+        openQunitTestPage("atlassian-js");
+        runQunitTests("Atlassian JS");
+    }
+
+    public void testAjsInfrastructureTests()
+    {
+        openQunitTestPage("ajs-infrastructure");
+        runQunitTests("AJS Infrastructure");
+    }
+
+    public void testUnderscoreTests()
+    {
+        openQunitTestPage("underscorejs");
+        runQunitTests("Underscore Loading Test");
+    }
+
     //HELPER FUNCTIONS
 
     //runs qunit tests on the page, component argument for reporting purposes only

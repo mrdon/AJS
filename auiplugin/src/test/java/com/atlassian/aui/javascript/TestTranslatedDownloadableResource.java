@@ -29,15 +29,15 @@ public class TestTranslatedDownloadableResource extends TestCase
         String javascript = "var label = AJS.I18n.getText(\"" + key + "\");\n" +
             "var anotherLabel = AJS.I18n.getText(\"" + key2 + "\");\n" + function;
 
-        stub(i18n.getText(key)).toReturn("Foo Bar");
-        stub(i18n.getText(key2)).toReturn("Awesome");
+        stub(i18n.getRawText(key)).toReturn("Foo Bar");
+        stub(i18n.getRawText(key2)).toReturn("Awesome");
         assertEquals("var label = \"Foo Bar\";\nvar anotherLabel = \"Awesome\";\n" + function, resource.transform(javascript));
     }
 
     public void testKeyWithSingleQuotes()
     {
         String javascript = "var t = AJS.I18n.getText('blah');";
-        stub(i18n.getText("blah")).toReturn("Blah");
+        stub(i18n.getRawText("blah")).toReturn("Blah");
 
         assertEquals("var t = \"Blah\";", resource.transform(javascript));
     }
@@ -45,7 +45,7 @@ public class TestTranslatedDownloadableResource extends TestCase
     public void testKeyWithoutDots()
     {
         String javascript = "var t = AJS.I18n.getText(\"blah\");";
-        stub(i18n.getText("blah")).toReturn("Blah");
+        stub(i18n.getRawText("blah")).toReturn("Blah");
 
         assertEquals("var t = \"Blah\";", resource.transform(javascript));
     }
@@ -54,7 +54,7 @@ public class TestTranslatedDownloadableResource extends TestCase
     {
         String key = "foo-bar";
         String javascript = "var str = AJS.I18n.getText(\"" + key + "\");";
-        stub(i18n.getText(key)).toReturn("Foo Bar");
+        stub(i18n.getRawText(key)).toReturn("Foo Bar");
         assertEquals("var str = \"Foo Bar\";", resource.transform(javascript));
     }
 
@@ -62,7 +62,7 @@ public class TestTranslatedDownloadableResource extends TestCase
     {
         String key = "apos.key";
         String javascript = "var str = AJS.I18n.getText(\"" + key + "\");";
-        stub(i18n.getText(key)).toReturn("That's Awesome! \"Woot!\"");
+        stub(i18n.getRawText(key)).toReturn("That's Awesome! \"Woot!\"");
         assertEquals("var str = \"That\\'s Awesome! \\\"Woot!\\\"\";", resource.transform(javascript));
     }
 
@@ -80,7 +80,7 @@ public class TestTranslatedDownloadableResource extends TestCase
 
     public void testWhitespaceBetweenArgs()
     {
-        stub(i18n.getText("blah")).toReturn("Blah");
+        stub(i18n.getRawText("blah")).toReturn("Blah");
 
         String javascript = "var t = AJS.I18n.getText( 'blah');";
         assertEquals("var t = \"Blah\";", resource.transform(javascript));
@@ -106,9 +106,20 @@ public class TestTranslatedDownloadableResource extends TestCase
         String key = "key.with.format";
         String translation = "Found {0} out of {1}";
         String javascript = "var t = AJS.I18n.getText(\"" + key  + "\", results, total);";
-        stub(i18n.getText(key)).toReturn(translation);
+        stub(i18n.getRawText(key)).toReturn(translation);
 
         assertEquals("var t = AJS.format(\"" + translation + "\", results, total);", resource.transform(javascript));
+    }
+
+    public void testMessageWithQuotes()
+    {
+        String key = "key.with.quotes";
+        String translation = "Could not find file ''{0}''.";
+        String jsEscapedTranslation = "Could not find file \\'\\'{0}\\'\\'.";
+        String javascript = "var t = AJS.I18n.getText(\"" + key  + "\", results, total);";
+        stub(i18n.getRawText(key)).toReturn(translation);
+
+        assertEquals("var t = AJS.format(\"" + jsEscapedTranslation + "\", results, total);", resource.transform(javascript));
     }
 
     public void testManuallyFormattedMessageDoesntChange()
@@ -116,7 +127,7 @@ public class TestTranslatedDownloadableResource extends TestCase
         String key = "key.with.format";
         String translation = "Found {0} out of {1}";
         String javascript = "var t = AJS.format(AJS.I18n.getText(\"" + key  + "\"), results, total);";
-        stub(i18n.getText(key)).toReturn(translation);
+        stub(i18n.getRawText(key)).toReturn(translation);
 
         assertEquals("var t = AJS.format(\"" + translation + "\", results, total);", resource.transform(javascript));
     }

@@ -33,6 +33,22 @@ public class FuncTestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         webResourceManager.requireResource("com.atlassian.auiplugin:ajs");
+
+        // conditional resource loading for testing
+        if(req.getPathInfo().contains("underscorejs-unit-tests"))
+        {
+            webResourceManager.requireResource("com.atlassian.auiplugin:ajs-underscorejs");
+        }
+
+        if(req.getPathInfo().contains("ajs-experimental-unit-tests"))
+        {
+            webResourceManager.requireResource("com.atlassian.auiplugin:ajs-experimental");
+        }
+
+        if(req.getPathInfo().contains("stalker")){
+            webResourceManager.requireResource("com.atlassian.auiplugin:stalker");
+        }
+
         if (req.getPathInfo().endsWith("/"))
         {
             try
@@ -49,6 +65,7 @@ public class FuncTestServlet extends HttpServlet {
             if(req.getPathInfo().contains("live-demo")){
                 webResourceManager.requireResource("auiplugin-tests:live-demo");
             }
+
             // only include qunit when necessary
             if (req.getPathInfo().contains("unit-tests"))
             {

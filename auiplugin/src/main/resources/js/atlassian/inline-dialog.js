@@ -72,115 +72,48 @@
                         showPopup();
                     },
                     reset: function () {
-                        var popupLeft;    //position of the left edge of popup box from the left of the screen
-                        var popupRight;   //position of the right edge of the popup box fron the right edge of the screen
-                        var popupTop;   //position of the top edge of popup box
-                        var arrowOffsetY = -7;    //the offsets of the arrow from the top edge of the popup, default is the height of the arrow above the popup
-                        var arrowOffsetX;
-                        var displayAbove;   //determines if popup should be displayed above the the trigger or not
 
-                        var targetOffset = targetPosition.target.offset();
-                        var padding = parseInt(targetPosition.target.css("padding-left")) + parseInt(targetPosition.target.css("padding-right"));
-                        var triggerWidth = targetPosition.target.width() + padding; //The total width of the trigger (including padding)
-                        var middleOfTrigger = targetOffset.left + triggerWidth/2;    //The absolute x position of the middle of the Trigger
-                        var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
-                        
-
-                        //CONSTANTS
-                        var SCREEN_PADDING = 10; //determines how close to the edge the dialog needs to be before it is considered offscreen
-
-                        //DRAW POPUP
-                        function drawPopup (popup, left, right, top, arrowOffsetX, arrowOffsetY, displayAbove) {
+                        function drawPopup (popup, positions) {
                             //Position the popup using the left and right parameters
-                            popup.css({
-                                left: left,
-                                right: right,
-                                top: top
-                            });
+                            popup.css(positions.popupCss);
                             //Only draw arrow if raphael exists
                             if (window.Raphael) {
                                 if (!popup.arrowCanvas) {
                                     popup.arrowCanvas = Raphael("arrow-"+identifier, 16, 16);  //create canvas using arrow element
                                 }
-                                var arrowPath = "M0,8L8,0,16,8";
-                                //Detect if arrow should be flipped
-                                if (displayAbove) {
-                                    arrowPath = "M0,8L8,16,16,8";
-                                }
+                                var getArrowPath = opts.getArrowPath,
+                                    arrowPath = $.isFunction(getArrowPath) ?
+                                                    getArrowPath(positions) :
+                                                    getArrowPath;
                                 //draw the arrow
-                                popup.arrowCanvas.path(arrowPath).attr({
-                                    fill : "#fff",
-                                    stroke : "#bbb"
-                                });
+                                popup.arrowCanvas
+                                        .path(arrowPath)
+                                        .attr(opts.getArrowAttributes());
                             }
                             //apply positioning to arrow
-                            arrow.css({
-                                position: "absolute",
-                                left: arrowOffsetX,
-                                right: "auto",
-                                top: arrowOffsetY
-                            });
+                            arrow.css(positions.arrowCss);
                         }
 
-                        popupTop = targetOffset.top + targetPosition.target.height() + opts.offsetY;
-                        popupLeft = targetOffset.left + opts.offsetX;
+                        //DRAW POPUP
+                        var positions = opts.calculatePositions(popup, targetPosition, mousePosition, opts);
 
-                        var enoughRoomAbove = targetOffset.top > popup.height();
-                        var enoughRoomBelow = (popupTop + popup.height()) < bottomOfViewablePage;
-
-                        //Check if the popup should be displayed above the trigger or not (if the user has set opts.onTop to true and if theres enough room)
-                        displayAbove =  (!enoughRoomBelow && enoughRoomAbove) || (opts.onTop && enoughRoomAbove);
-
-                        //calculate if the popup will be offscreen
-                        var diff = $(window).width() - (popupLeft  + opts.width + SCREEN_PADDING);
-
-                        //check if the popup should be displayed above or below the trigger
-                        if (displayAbove) {
-                            popupTop = targetOffset.top - popup.height() - 8; //calculate the flipped position of the popup (the 8 allows for room for the arrow)
-                            arrowOffsetY = popup.height() - 9; //calculate new offset for the arrow, 10 is the height of the shadow
-                            if (AJS.$.browser.msie){
-                                arrowOffsetY = popup.height() - 10; //calculate new offset for the arrow, 11 is the height of the shadow in IE
-                            }
-                        }
-                        arrowOffsetX = middleOfTrigger - popupLeft;
-
-                        //check if the popup should show up relative to the mouse
-                        if(opts.isRelativeToMouse){
-                            if(diff < 0){
-                                popupRight = SCREEN_PADDING;
-                                popupLeft = "auto";
-                                arrowOffsetX = mousePosition.x - ($(window).width() - opts.width);
-                            }else{
-                                popupLeft = mousePosition.x - 20;
-                                popupRight = "auto";
-                                arrowOffsetX = mousePosition.x - popupLeft;
-                            }
-                        }else{
-                            if(diff < 0){
-                                popupRight = SCREEN_PADDING;
-                                popupLeft = "auto";
-                                arrowOffsetX = middleOfTrigger - ($(window).width() - opts.width);
-                            }else if(opts.width <= triggerWidth/2){
-                                arrowOffsetX = opts.width/2;
-                                popupLeft = middleOfTrigger-opts.width/2;
-                            }
-                        }
-
-                        drawPopup (popup, popupLeft, popupRight, popupTop, arrowOffsetX, arrowOffsetY, displayAbove);
+                        drawPopup (popup, positions);
 
                         // reset position of popup box
                         popup.fadeIn(opts.fadeTime, function() {
                             // once the animation is complete, set the tracker variables
                             // beingShown = false; // is this necessary? Maybe only the shouldShow will have to be reset?
                         });
-                        if (popup.shadow) {
-                            popup.shadow.remove();
+                        if (opts.displayShadow) {
+                            if (popup.shadow) {
+                                popup.shadow.remove();
+                            }
+                            popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
+                                    target: popup[0]
+                                })
+                                .hide()
+                                .fadeIn(opts.fadeTime);
                         }
-                        popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
-                            target: popup[0]
-                        })
-                        .hide()
-                        .fadeIn(opts.fadeTime);
 
                         if (AJS.$.browser.msie) {
                             // iframeShim, prepend if it doesnt exist
@@ -207,7 +140,7 @@
                 if (!contentLoaded || !shouldShow) {
                     return;
                 }
-                $(items).addClass("active");
+                opts.addActiveClass && $(items).addClass("active");
                 beingShown = true;
                 bindHideOnExternalClick();
                 AJS.InlineDialog.current = getHash();
@@ -233,10 +166,12 @@
                 if (delay != null) {
                     hideDelayTimer = setTimeout(function() {
                         unbindHideOnExternalClick();
-                        $(items).removeClass("active");
+                        opts.addActiveClass && $(items).removeClass("active");
                         popup.fadeOut(opts.fadeTime, function() { opts.hideCallback.call(popup[0].popup); });
-                        popup.shadow.remove();
-                        popup.shadow = null;
+                        if (opts.displayShadow) {
+                            popup.shadow.remove();
+                            popup.shadow = null;
+                        }
                         popup.arrowCanvas.remove();
                         popup.arrowCanvas = null;
                         beingShown = false;
@@ -443,7 +378,7 @@
         
         popup.getOptions = function(){
             return opts;
-        }
+        };
         
         return popup;
     };
@@ -456,6 +391,7 @@
         },
         closeOthers: true,
         isRelativeToMouse: false,
+        addActiveClass: true, // if false, signifies that the triggers should not have the "active" class applied
         onHover: false,
         useLiveEvents: false,
         noBind: false,
@@ -467,8 +403,109 @@
         offsetY: 10,
         container: "body",
         cacheContent : true,
+        displayShadow: true,
         hideCallback: function(){}, // if defined, this method will be exected after the popup has been faded out.
         initCallback: function(){}, // A function called after the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
-        upfrontCallback: function() {} // A function called before the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
+        upfrontCallback: function() {}, // A function called before the popup contents are loaded. `this` will be the popup jQuery object, and the first argument is the popup identifier.
+        /**
+         * Returns an object with the following attributes:
+         *      popupCss css attributes to apply on the popup element
+         *      arrowCss css attributes to apply on the arrow element
+         *
+         * @param popup
+         * @param targetPosition position of the target element
+         * @param mousePosition current mouse position
+         * @param opts options
+         */
+        calculatePositions: function (popup, targetPosition, mousePosition, opts) {
+            var popupLeft;    //position of the left edge of popup box from the left of the screen
+            var popupRight;   //position of the right edge of the popup box fron the right edge of the screen
+            var popupTop;   //position of the top edge of popup box
+            var arrowOffsetY = -7;    //the offsets of the arrow from the top edge of the popup, default is the height of the arrow above the popup
+            var arrowOffsetX;
+            var displayAbove;   //determines if popup should be displayed above the the trigger or not
+
+            var targetOffset = targetPosition.target.offset();
+            var padding = parseInt(targetPosition.target.css("padding-left")) + parseInt(targetPosition.target.css("padding-right"));
+            var triggerWidth = targetPosition.target.width() + padding; //The total width of the trigger (including padding)
+            var middleOfTrigger = targetOffset.left + triggerWidth/2;    //The absolute x position of the middle of the Trigger
+            var bottomOfViewablePage = (window.pageYOffset || document.documentElement.scrollTop) + $(window).height();
+
+
+            //CONSTANTS
+            var SCREEN_PADDING = 10; //determines how close to the edge the dialog needs to be before it is considered offscreen
+
+            popupTop = targetOffset.top + targetPosition.target.height() + opts.offsetY;
+            popupLeft = targetOffset.left + opts.offsetX;
+
+            var enoughRoomAbove = targetOffset.top > popup.height();
+            var enoughRoomBelow = (popupTop + popup.height()) < bottomOfViewablePage;
+
+            //Check if the popup should be displayed above the trigger or not (if the user has set opts.onTop to true and if theres enough room)
+            displayAbove =  (!enoughRoomBelow && enoughRoomAbove) || (opts.onTop && enoughRoomAbove);
+
+            //calculate if the popup will be offscreen
+            var diff = $(window).width() - (popupLeft  + opts.width + SCREEN_PADDING);
+
+            //check if the popup should be displayed above or below the trigger
+            if (displayAbove) {
+                popupTop = targetOffset.top - popup.height() - 8; //calculate the flipped position of the popup (the 8 allows for room for the arrow)
+                
+                var shadowHeight = opts.displayShadow ?
+                                        (AJS.$.browser.msie ? 10 : 9) :
+                                        0;
+
+                arrowOffsetY = popup.height() - shadowHeight;
+            }
+            arrowOffsetX = middleOfTrigger - popupLeft;
+
+            //check if the popup should show up relative to the mouse
+            if(opts.isRelativeToMouse){
+                if(diff < 0){
+                    popupRight = SCREEN_PADDING;
+                    popupLeft = "auto";
+                    arrowOffsetX = mousePosition.x - ($(window).width() - opts.width);
+                }else{
+                    popupLeft = mousePosition.x - 20;
+                    popupRight = "auto";
+                    arrowOffsetX = mousePosition.x - popupLeft;
+                }
+            }else{
+                if(diff < 0){
+                    popupRight = SCREEN_PADDING;
+                    popupLeft = "auto";
+                    arrowOffsetX = middleOfTrigger - ($(window).width() - opts.width);
+                }else if(opts.width <= triggerWidth/2){
+                    arrowOffsetX = opts.width/2;
+                    popupLeft = middleOfTrigger-opts.width/2;
+                }
+            }
+
+            return {
+                displayAbove: displayAbove,
+                popupCss: {
+                    left: popupLeft,
+                    right: popupRight,
+                    top: popupTop
+                },
+                arrowCss: {
+                    position: "absolute",
+                    left : arrowOffsetX,
+                    right : "auto",
+                    top : arrowOffsetY
+                }
+            }
+        },
+        getArrowPath : function (positions) {
+            return positions.displayAbove ?
+                "M0,8L8,16,16,8" :
+                "M0,8L8,0,16,8"
+        },
+        getArrowAttributes: function () {
+            return {
+                fill : "#fff",
+                stroke : "#bbb"
+            };
+        }
     };
 })(jQuery);

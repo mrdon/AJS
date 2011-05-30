@@ -54,7 +54,7 @@ public class TranslatedDownloadableResource extends AbstractStringTransformedDow
                 output.append("AJS.format(");
             }
 
-            output.append("\"").append(JavaScriptUtil.escape(i18n.getText(key))).append("\"");
+            output.append("\"").append(JavaScriptUtil.escape(i18n.getRawText(key))).append("\"");
 
             if (format)
             {

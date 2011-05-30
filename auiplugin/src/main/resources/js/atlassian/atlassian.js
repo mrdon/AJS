@@ -16,6 +16,17 @@ if (typeof jQuery != "undefined") {
     var AJS = (function () {
         var included = [];
 
+        function escapeHtml_replacement(specialChar) {
+            switch (specialChar) {
+                case "<": return "&lt;";
+                case ">": return "&gt;";
+                case '&': return "&amp;";
+                case "'": return "&#39;";
+                default : return "&quot;";
+            }
+        }
+        var ESCAPE_HTML_SPECIAL_CHARS = /[&"'<>]/g;
+
         var res = {
             /**
              * Version number to allow for rough backwards compatibility via conditionals
@@ -337,10 +348,24 @@ if (typeof jQuery != "undefined") {
                     }
                 }
             },
+            /**
+             * Similar to Javascript's in-built escape() function, but where the built-in escape()
+             * might encode unicode charaters as %uHHHH, this function will leave them as-is.
+             *
+             * NOTE: this function does not do html-escaping, see AJS.escapeHtml()
+             */
             escape: function (string) {
                 return escape(string).replace(/%u\w{4}/gi, function (w) {
                     return unescape(w);
                 });
+            },
+            /**
+             * Sanitise a string for use with innerHTML or as an attribute.
+             *
+             * @param {String} str
+             */
+            escapeHtml: function (str) {
+                return str.replace(ESCAPE_HTML_SPECIAL_CHARS, escapeHtml_replacement);
             },
 
             /**

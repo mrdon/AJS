@@ -1,4 +1,5 @@
-body {
+body,
+body.refapp {
     font-family: sans-serif;
     background: #ddd;
     color: #333;

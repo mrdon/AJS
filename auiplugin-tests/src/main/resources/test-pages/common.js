@@ -4,6 +4,14 @@
  */
 (function () {
 
+    window.onload = function() {
+        if (window.location.protocol == 'file:') {
+            var header = document.getElementById("bootcamp-header");
+            header.innerHTML = 'Error: this page must be viewed via the refapp: <a href="http://localhost:9999/ajs/">http://localhost:9999/ajs</a>';
+            header.style.color = "red";
+        }
+    };
+
     var includes = [
         "external/raphael/raphael.js",
         "external/raphael/raphael.shadow.js",
@@ -48,4 +56,5 @@
     for (var i = 0, ii = includes.length; i < ii; i++) {
         document.write('<script src="../../../../../../auiplugin/src/main/resources/js/' + includes[i] + '"></script>');
     }
+    
 })();
