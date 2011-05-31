@@ -18,16 +18,14 @@
 
     AJS.tabs = {
         setup: function () {
-            $tabs = AJS.$("div.aui-tabs");
+            $tabs = AJS.$("div.aui-tabs:not(.aui-tabs-disabled)");
             for (var i=0, ii = $tabs.length; i < ii; i++) {
                 $tabMenu = AJS.$("ul.tabs-menu", $tabs[i]);
-
                 // Set up click event for tabs
                 AJS.$("a", $tabMenu).click(function (e) {
                     AJS.tabs.change(AJS.$(this), e);
                     e && e.preventDefault();
                 });
-
             };
         },
         change: function ($a, e) {
