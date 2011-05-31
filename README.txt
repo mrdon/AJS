@@ -4,7 +4,7 @@ AUI is the Atlassian User Interface library. It is provided as a plugin for use 
 
 Component documentation and release notes can be found at http://confluence.atlassian.com/display/AUI
 
-The AUI build uses the Atlassian Plugin SDK to simplify its build and allow tests to be run in actual products.
+The AUI build uses the Atlassian reference application (REFAPP) for development and testing. The simplest way to ensure you have the dependencies covered is to install the Atlassian Plugin SDK (http://confluence.atlassian.com/display/DEVNET/Developing+your+Plugin+using+the+Atlassian+Plugin+SDK).
 
 To run the full build, execute:
 
