@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-au">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="decorator" content="atl.general">
+
+    <title>Atlassian form template</title>
+
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <!--[if lte IE 8]>
+        <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+    <script type="text/javascript" src="../aui.js"></script>
+    <script type="text/javascript" src="../demo.js"></script>
+
+</head>
+<body>
+    <div class="navigation">
+        <h2> AUI Forms Test Page </h2>
+        <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+        <ul>
+            <li><a href="default.html">Default Layout</a></li>
+            <li><a href="long-labels.html">Long Labels</a></li>
+            <li><a href="top-labels.html">Top Labels</a></li>
+            <li><a href="inline-form.html">Inline Form</a></li>
+            <li><a href="inline-help.html">Inline Help</a></li>
+            <li><a href="forms-demo.html">Back to Forms Home</a></li>
+        </ul>
+    </div>
+    <div class="aui-demo">
+        <h1>Default Layout</h1>
+        <form action="#" method="post" id="h" class="aui unsectioned">
+            <p><em>This short form is unsectioned. It has a class of .unsectioned and thus no borders on the headings or .buttons element.</em></p>
+            <div class="aui-message error closeable shadowed">
+                <span class="svg-icon error size-18"></span>
+                Text with no wrapping elements in an Error message.
+            </div><!-- .aui-message -->
+            <div class="aui-message warning closeable shadowed">
+                <p class="title">
+                    <span class="svg-icon warning size-18"></span>
+                    <strong>You can put whatever elements you like in the body of the message.</strong>
+                </p>
+                <ul>
+                    <li>list item 1</li>
+                    <li>list item 2</li>
+                    <li>list item 3</li>
+                    <li>list item 4</li>
+                    <li>list item 5</li>
+                </ul>
+            </div><!-- .aui-message -->
+            <h2>Heading h2</h2>
+            <div class="field-group">
+                <label for="h-fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <input class="text" type="text" id="h-fname" name="fname" title="first name">
+            </div>
+            <h3>Heading h3</h3>
+            <div class="field-group">
+                <label for="h-lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <input class="text long-field" type="text" id="h-lname" name="lname" title="last name">
+            </div>
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button submit" type="submit" value="Save" id="h-save-btn1">
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+        <form action="#" method="post" id="example-right" class="aui">
+            <p><em>This short form has right-aligned buttons such as you might see in a Dialog. Its .buttons-container has a class of .right and the buttons are thus aligned right. It is shaded only to show the width of the form.</em></p>
+            <div class="field-group">
+                <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <input class="text" type="text" id="fname" name="fname" title="first name">
+            </div>
+            <div class="field-group">
+                <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <input class="text long-field" type="text" id="lname" name="lname" title="last name">
+            </div>
+            <div class="buttons-container right">
+                <div class="buttons">
+                    <input class="button submit" type="submit" value="Save" id="save-btn1">
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+        <form action="#" method="post" id="d" class="aui">
+            <h2>Default - Edit State</h2>
+            <fieldset>
+                <legend><span>Text Entry</span></legend>
+                <p>Paragraph: Lorem ipsum dolor sit amet, consectetur <span>span text</span> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <div class="field-group">
+                    <label for="d-fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <input class="text" type="text" id="d-fname" name="d-fname" title="first name">
+                    <div class="description">Default width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="d-lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <input class="text long-field" type="text" id="d-lname" name="d-lname" title="last name">
+                    <div class="error">Error message here</div>
+                    <div class="description">Long width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="email1">Email</label>
+                    <input class="text medium-field" type="text" id="email1" name="email" title="email">
+                    <span class="aui-icon icon-help"></span><span class="content">help</span>
+                    <div class="description">Medium width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="timetestmins">Time</label>
+                    <input class="text short-field" type="text" id="timetestmins" name="timetestmins" title="first name"><span class="aui-form">mins</span>
+                    <input class="text short-field" type="text" id="timetestsecs" name="timetestsecs" title="last name"><span class="aui-form">seconds</span>
+                    <span class="aui-icon icon-users"></span><span class="content">select user</span>
+                    <div class="description">Small width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="password1" accesskey="p">Password</label>
+                    <input class="password" type="password" id="password1" name="password" title="password">
+                </div>
+                <div class="field-group">
+                    <label for="confirm1" accesskey="c">Confirm Password with a really long label, far too long</label>
+                    <input class="password" type="password" id="confirm1" name="confirm" title="confirm password">
+                </div>
+            </fieldset>
+        
+            <h2>File Upload</h2>
+            <fieldset>
+                <legend><span>File Upload/</span></legend>
+                <div class="field-group">
+                    <label for="uploadFile">Upload file</label>
+                    <input class="upfile" type="file" id="uploadFile" name="uploadFile" title="upload file">
+                </div>
+            </fieldset>
+        
+            <h2>Dropdowns and Selects</h2>
+            <fieldset>
+                <legend><span>Dropdowns and Selects</span></legend>
+                <div class="field-group">
+                    <label for="dBase">Database</label>
+                    <select class="select medium-field" id="dBase" name="dBase" title="database select">
+                        <option>- Select a Database -</option>
+                        <option>PostgreSQL</option>
+                    </select>
+                    <div class="description">Medium width select.</div>
+                </div>
+                <div class="field-group">
+                    <label for="multiselect">Multiselect</label>
+                    <select class="multi-select" size="4" multiple="multiple" id="multiselect" name="multiselect" title="database select">
+                        <option>option one</option>
+                        <option>option two</option>
+                        <optgroup label="group1">
+                            <option>option three</option>
+                            <option>option four</option>
+                        </optgroup>
+                        <option>option five</option>
+                        <option>option six</option>
+                    </select>
+                    <div class="description">Multiselect - 250px min width (except ie, variable width).</div>
+                </div>
+            </fieldset>
+        
+            <fieldset class="date-select">
+                <legend><span>Select Date</span></legend>
+                <div class="field-group">
+                    <label for="day">Day</label>
+                    <select class="select short-field" id="day" name="day" title="select day">
+                        <option>01</option>
+                        <option>02</option>
+                    </select>
+                    <label for="month">Month</label>
+                    <select class="select short-field" id="month" name="month" title="select month">
+                        <option>Jan</option>
+                        <option>Feb</option>
+                    </select>
+                    <label for="year">Year</label>
+                    <select class="select short-field" id="year" name="year" title="select year">
+                        <option>2008</option>
+                        <option>2007</option>
+                    </select>
+                    <span class="aui-icon icon-range"></span><span class="content">pick a date range</span>
+                    <div class="error">Date out of range</div>
+                    <div class="description">Specific date select fieldset to allow for multiple (hidden) labels</div>
+                </div>
+            </fieldset>
+        
+            <h2>Textarea</h2>
+            <fieldset>
+                <legend><span>Textarea Legend</span></legend>
+                <div class="field-group">
+                    <label for="licenseKey">License Key</label>
+                    <textarea class="textarea" rows="6" cols="10" name="licenseKey" id="licenseKey"></textarea>
+                    <span class="aui-icon icon-users"></span><span class="content">select user</span>
+                    <span class="description">Enter your commercial or evaluation license key.<br>
+                    Not got a license? <a href="http://example.com/">Generate an evaluation license</a></span>
+                </div>
+            </fieldset>
+        
+            <h2>Groups (checkboxes and radios)</h2>
+            <fieldset class="group">
+                <legend><span>Checkboxes Edit</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbOne">
+                    <label for="cbOne">Checkbox One</label>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbTwo" id="cbTwo">
+                    <label for="cbTwo">Checkbox Two</label>
+                </div>
+                <div class="field-group">
+                    <div class="error">You must select one option</div>
+                </div>
+            </fieldset>
+        
+            <h3>More Checkboxes</h3>
+            <fieldset class="group">
+                <legend><span>Checkboxes Legend</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbthree">
+                    <label for="cbthree">Checkbox One</label>
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbTwo" id="cbfour">
+                    <label for="cbfour">Checkbox Two</label>
+                    <div class="description">You can have a description here</div>
+                    <div class="error">and/or an error</div>
+                </div>
+                <div class="field-group">
+                    <div class="description">
+                        <p>You can also have a description here if you like</p>
+                    </div>
+                    <div class="error">and/or errors</div>
+                </div>
+                <div class="description">Or, you can have a description here for the <code>fieldset</code> as a whole.</div>
+            </fieldset>
+        
+            <h2>One Checkbox</h2>
+            <fieldset class="group">
+                <legend class="assistive"><span>Assistive Legend to give context for screen readers. If you don't know what to put in here, ask your nearest frontend developer.</span></legend>
+                <p>The visible legend is optional - you may not want it for the single checkbox. You can make it an assistive legend (view source to see it).</p>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbsingle">
+                    <label for="cbsingle">Checkbox Single</label>
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="field-group">
+                    <p>You can also have a description here if you like</p>
+                </div>
+            </fieldset>
+        
+            <h2>Multi Column checkboxes</h2>
+            <fieldset class="group">
+                <legend><span>Checkbox Matrix</span></legend>
+                <div class="matrix">
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb1" id="cb1">
+                        <label for="cb1">Checkbox One</label>
+                    </div>
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb2" id="cb2">
+                        <label for="cb2">Checkbox Two</label>
+                    </div>
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb3" id="cb3">
+                        <label for="cb3">Checkbox Three</label>
+                    </div>
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb4" id="cb4">
+                        <label for="cb4">Checkbox Four</label>
+                    </div>
+                </div>
+                </fieldset>
+        
+            <h2>Radio Buttons</h2>
+            <fieldset class="group">
+                <legend><span>Radio Buttons<span class="aui-icon icon-required"></span><span class="content"> required</span></span></legend>
+                <div class="radio">
+                    <input class="radio" type="radio"   checked="checked" name="rads" id="irOne">
+                    <label for="irOne">Rad One</label>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irTwo">
+                    <label for="irTwo">Rad Two</label>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irThree">
+                    <label for="irThree">Rad Three</label>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Radio Matrix</span></legend>
+                <div class="matrix">
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmOne" checked="checked" >
+                        <label for="irmOne">Rad One</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmTwo">
+                        <label for="irmTwo">Rad Two</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmThree">
+                        <label for="irmThree">Rad Three</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmFour">
+                        <label for="irmFour">Rad Four</label>
+                    </div>
+                </div>
+            </fieldset>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button submit" type="submit" value="Save" id="d-save-btn1">
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+        
+        <form action="#" method="post" id="dfv" class="aui">
+            <h2>Field Value State</h2>
+            <fieldset>
+                <legend><span>Text Entry</span></legend>
+                <div class="field-group">
+                    <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <span class="field-value">My First Name</span>
+                    <div class="description">Descriptive text here.</div>
+                </div>
+                <div class="field-group">
+                    <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <span class="field-value">My Last Name</span>
+                    <div class="description">Descriptive text here.</div>
+                </div>
+                <div class="field-group">
+                    <label for="email1">Email</label>
+                    <span class="field-value">my@email.com</span>
+                    <div class="description">Descriptive text here.</div>
+                </div>
+                <div class="field-group">
+                    <label>Testing empty field</label>
+                    <span class="field-value"> </span>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Checkboxes View</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" checked="checked" disabled="disabled" name="cbOne" id="cbOned">
+                    <label for="cbOned">Disabled Checkbox One</label>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" disabled="disabled" name="cbTwo" id="cbTwod">
+                    <label for="cbTwod">Disabled Checkbox Two</label>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Radio Buttons</span></legend>
+                <div class="radio">
+                    <input class="radio" type="radio" disabled="disabled" checked="checked" name="rads" id="irOned">
+                    <label for="irOned">Disabled Radio One</label>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio" disabled="disabled" name="rads" id="irTwod">
+                    <label for="irTwod">Disabled Radio Two</label>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio" disabled="disabled" name="rads" id="irThreed">
+                    <label for="irThreed">Disabled RadioThree</label>
+                </div>
+            </fieldset>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button" type="button" value="Edit" id="edit-btn1">
+                </div>
+            </div>
+        
+            <h2>Pre text area</h2>
+            <div class="field-group">
+                <pre class="aui-form">
+        BAM2573-BAMFUNC-18
+        Dependant of BAM2573-HEAD-40
+        ** LONG STRING **
+        100 passedBAM2573-BAMFUNC-17Dependant of BAM2573-HEAD-262 months ago (06:11 PM, Fri, 15 Aug)
+        
+        failedAM2573-BAMFUNC-16Dependant of BAM2573-HEAD-252 months ago (06:08 PM, Thu, 14 Aug)
+        
+        30 minutes3 out of 100 failedAM2573-BAMFUNC-16Dependant of BAM2573-HEAD-252 months ago (06:08 PM, Thu, 14 Aug)
+                </pre>
+            </div>
+        
+            <div class="field-group">
+                <p>Paragraph: <span><strong>span text, in a paragraph the inline-text class is not required</strong></span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <h4>input class="button" vs HTML button</h4>
+                    <input class="button submit" type="submit" value="input" id="edit-btn">
+                    <button>Button</button>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+        <script type="text/javascript">
+            AJS.$(function() {
+        
+                // Testing AJS.inlineHelp
+                AJS.inlineHelp();
+            });
+        </script>
+    </div>
+</body>
+</html>

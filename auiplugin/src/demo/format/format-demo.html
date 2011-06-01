@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>AUI Format Demo</title>
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <script type="text/javascript" src="../aui.js"></script>
+    <script type="text/javascript" src="../demo.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $("#format").click(function () {
+                $("#format-output").val(AJS.format($("#format-input").val(), "foo", "bar", "baz"));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="navigation">
+        <h2> AUI Format Demo Page </h2>
+        <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Format</h2>
+
+        <p class="description"> Demonstrates how AJS.Format can be used </p>
+
+        <p><input id="format-input"> <button id="format">Format</button> <input readonly="readonly" id="format-output"></p>
+
+        <div class="html-code">
+            <div id="testFormat1">AJS.format("{0} {1} {0}", 1, "test") returns:</div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.$("#testFormat1").append(AJS.format("{0} {1} {0}", 1, "test"));
+            });
+        </script>
+    </div>
+
+</body>
+</html>

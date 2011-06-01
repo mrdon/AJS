@@ -1,0 +1,7 @@
+/* dropdown-shim */
+.dropdown-shim {
+    border: none;
+    display: none;
+    position: absolute;
+    z-index: 2000;
+}

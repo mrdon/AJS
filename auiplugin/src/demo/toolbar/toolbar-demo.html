@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-au">
+<head>
+    <meta name="status" content="prototype">
+    <meta name="product" content="Confluence">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Toolbar Example</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+
+    <!--[if lte IE 8]>
+    <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+
+    <script type="text/javascript" src="../aui.js"></script>
+    <script type="text/javascript" src="../demo.js"></script>
+    <style type="text/css">
+        /* CSS for demo only. specific icon mappings are still done at the product level, standard icons will be done in AUI only when finalised. */
+        .aui-toolbar .icon {
+            text-indent: -9999em;
+            width: 24px;
+            float: left;
+            height: 100%;
+            margin: 0 -5px;
+            display: inline-block;
+            background: transparent url("../../../../auiplugin/src/main/resources/css/atlassian/images/toolbar/aui-toolbar-24px.png") 0 0 no-repeat;
+        }
+
+        .aui-toolbar span.icon-labels {
+            background-position: -164px -19px;
+        }
+
+        .aui-toolbar span.icon-permissions {
+            background-position: -188px -19px;
+        }
+
+        .aui-toolbar span.icon-link {
+            background-position: 4px -18px;
+        }
+
+        .aui-toolbar span.icon-insert {
+            background-position: -212px 5px;
+        }
+
+        /* fake active style */
+        #active-button {
+            background: #d8e4f0 url("images/toolbar/aui-toolbar-button-active-bg.png") top left repeat-x;
+        }
+
+        /* fake active for demo purposes. */
+    </style>
+</head>
+<body>
+<div class="navigation">
+    <h2> AUI Toolbar Demo Page </h2>
+    <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+</div>
+
+<div class="aui-demo source-required">
+    <h2> Toolbar </h2>
+
+    <div class="aui-message warning shadowed">
+        <p class="title">
+            <span class="svg-icon warning size-18"></span>
+            <strong>3.2-m1 is a DRAFT implementation</strong>
+        </p>
+
+        <p>
+            There are known issues with toolbar dropdowns in IE; and INPUT/BUTTON support has not been completed.
+        </p>
+    </div>
+    <!-- .aui-message -->
+
+    <p class="description"> Demonstrates a toolbar with the various button types and states.</p>
+
+    <h3>Notes</h3>
+
+    <p>The structure of the toolbar is: aui-toolbar (container) &rarr; toolbar-split (left/right or rows) &rarr; toolbar-group (contains one set of
+        triggers/buttons) &rarr; toolbar-item (contains one single trigger) &rarr; toolbar-trigger.</p>
+
+    <p>Button types:</p>
+    <ul>
+        <li>Standard/default</li>
+        <li>Primary - a button with an elevated importance, eg. the "publish" button in an editor. Note: there must only be one primary button per toolbar.</li>
+        <li>Dropdown - a button with a dropdown icon, that opens a dropdown menu (one action)</li>
+        <li>Split button - a button with a dropdown icon, where the button performs an action but the dropdown icon opens a menu (two different actions). eg.
+            the "apply colour" button in an editor, which also has a dropdown colour selector.
+        </li>
+    </ul>
+
+    <p>Button states:</p>
+    <ul>
+        <li>Default</li>
+        <li>Active/on - eg. includes buttons which toggle a state, such as the "format: bold" button in an editor</li>
+        <li>Disabled - for buttons which are present/visible but not currently usable</li>
+        <li>Hover/focus</li>
+    </ul>
+
+    <p>All buttons may include text, an icon or both (some buttons may include a second icon to indicate a dropdown). For icon-only buttons the text is hidden
+        in the icon element, so it's still available to screen readers.</p>
+
+    <p>The toolbar has been designed to wrap to new lines and increase in height in narrow viewports. Wherever possible, toolbar groups will wrap to new lines
+        as a group (ie. not one button at a time). Left/right split toobars will wrap to two lines when the left/right groups meet; then groups within the
+        left/right splits will wrap to further lines if required.</p>
+
+    <h3>Example</h3>
+
+    <p>This example contains two <code>toolbar-split</code>s, one left and one right.</p>
+
+    <div class="html-code">
+
+        <div id="demo-toolbar" class="aui-toolbar">
+
+            <div class="toolbar-split toolbar-split-left">
+                <!-- Icon button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="labels-button" title="Labels">
+                            <span class="icon icon-labels">Labels</span>
+                        </a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="permission-button" title="Permissions">
+                            <span class="icon icon-permissions">Permissions</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Icon Text Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="link-button" title="Link">
+                            <span class="icon icon-link"></span>
+                            <span class="trigger-text">Link</span>
+                        </a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="other-button" title="Other">Other</a>
+                    </li>
+                    <li class="toolbar-item primary">
+                        <a class="toolbar-trigger" href="#" id="primary-button" title="Other">Primary</a>
+                    </li>
+                </ul>
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="active-button" title="Active">Active</a>
+                    </li>
+                    <li class="toolbar-item disabled">
+                        <a class="toolbar-trigger" href="#" id="disabled-button" title="Disabled">Disabled</a>
+                    </li>
+                </ul>
+
+                <!-- Text Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-dropdown" id="format-dropdown">
+                        <div class="aui-dd-parent">
+                            <a href="#" class="toolbar-trigger aui-dd-trigger" id="format-dropdown-display">
+                                <span class="dropdown-text">Paragraph</span>
+                                <span class="icon icon-dropdown"></span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 2</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Compact Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-splitbutton" id="action-1b">
+
+                        <a class="toolbar-trigger" href="#" id="action-1a" title="Action One A">Action 1a</a>
+
+                        <div class="aui-dd-parent">
+                            <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One B">
+                                <span class="icon icon-dropdown">Action 1b</span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Dropdown item with quite wide text</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Icon and Text Dropdown example -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-dropdown" id="insert-menu">
+                        <div class="aui-dd-parent">
+                            <a href="#" class="toolbar-trigger aui-dd-trigger" title="Insert">
+                                <span class="icon icon-insert"></span>
+                                <span class="dropdown-text">Insert</span>
+                                <span class="icon icon-dropdown"></span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Macro</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Image</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Table of Contents</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="toolbar-split toolbar-split-right">
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="save-button">Save</a>
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <a href="#" class="toolbar-trigger" id="cancel-button">Cancel</a>
+                    </li>
+                </ul>
+
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <button class="toolbar-trigger" type="submit" id="save-button-button">Save Button</button>
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <button class="toolbar-trigger" type="reset" id="cancel-button-button">Save Button</button>
+                    </li>
+                </ul>
+
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <input class="toolbar-trigger" id="save-button-input" type="submit" name="save-button-input" value="Save Input">
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <input class="toolbar-trigger" id="cancel-button-input" type="reset" name="cancel-button-input" value="Cancel Input">
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        addSample(function() {
+            AJS.$("#format-dropdown").dropDown("Standard", {alignment: "left"});
+            AJS.$("#action-1b").dropDown("Standard", {alignment: "right"});
+            AJS.$("#insert-menu").dropDown("Standard", {alignment: "right"});
+        });
+    </script>
+
+
+</div>
+</body>
+</html>

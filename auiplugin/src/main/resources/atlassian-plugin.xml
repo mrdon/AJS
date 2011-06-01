@@ -1,0 +1,198 @@
+<atlassian-plugin name='${project.name}' key='${atlassian.plugin.key}' pluginsVersion="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <version>${project.version}</version>
+    </plugin-info>
+
+    <web-resource-transformer key="jsI18n" name="JavaScript I18n Transformer" class="com.atlassian.aui.javascript.JsI18nTransformer"/>
+    <component-import key="i18nResolver" interface="com.atlassian.sal.api.message.I18nResolver" />
+
+    <resource name="css/" type="download" location="css/atlassian/"/>
+    <resource name="images/" type="download" location="css/atlassian/images/"/>
+    <resource name="js/" type="download" location="js/"/>
+
+    <web-resource key="ajs" name="Atlassian Javascript">
+        <resource type="download" name="basic.css" location="css/atlassian/basic.css"/>
+        <resource type="download" name="firebug.css" location="css/atlassian/firebug.css"/>
+        <resource type="download" name="dialog.css" location="css/atlassian/dialog.css"/>
+        <resource type="download" name="dropdown.css" location="css/atlassian/dropdown.css"/>
+        <resource type="download" name="forms.css" location="css/atlassian/forms.css"/>
+        <resource type="download" name="icons.css" location="css/atlassian/icons.css"/>
+        <resource type="download" name="inline-dialog.css" location="css/atlassian/inline-dialog.css"/>
+        <resource type="download" name="messages.css" location="css/atlassian/messages.css"/>
+        <resource type="download" name="tables.css" location="css/atlassian/tables.css"/>
+        <resource type="download" name="tabs.css" location="css/atlassian/tabs.css"/>
+        <resource type="download" name="toolbar.css" location="css/atlassian/toolbar.css"/>
+
+        <resource type="download" name="dialog-ie.css" location="css/atlassian/dialog-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+        <resource type="download" name="dropdown-ie.css" location="css/atlassian/dropdown-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+        <resource type="download" name="dropdown-ie9.css" location="css/atlassian/dropdown-ie9.css">
+            <param name="conditionalComment" value="IE 9"/>
+        </resource>
+        <resource type="download" name="forms-ie.css" location="css/atlassian/forms-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+        <resource type="download" name="icons-ie.css" location="css/atlassian/icons-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+        <resource type="download" name="inline-dialog-ie.css" location="css/atlassian/inline-dialog-ie.css">
+            <param name="conditionalComment" value="lte IE 9"/>
+        </resource>
+        <resource type="download" name="tabs-ie.css" location="css/atlassian/tabs-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+        <resource type="download" name="toolbar-ie.css" location="css/atlassian/toolbar-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+
+        <resource type="download" name="raphael.js" location="js/external/raphael/raphael.js"/>
+        <resource type="download" name="raphael.shadow.js" location="js/external/raphael/raphael.shadow.js"/>
+        <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
+        <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <resource type="download" name="jquery-ui.js" location="js/external/jquery/jquery-ui.js"/>
+        <resource type="download" name="jquery-ui-1.7-bug-fixes.js"
+                  location="js/external/jquery/jquery-ui-1.7-bug-fixes.js"/>
+        <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
+        <resource type="download" name="jquery.form.js" location="js/external/jquery/plugins/jquery.form.js"/>
+        <resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery/jquery.hotkeys.js"/>
+        <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
+        <resource type="download" name="event.js" location="js/atlassian/event.js"/>
+        <resource type="download" name="cookie.js" location="js/atlassian/cookie.js"/>
+        <resource type="download" name="dialog.js" location="js/atlassian/dialog.js"/>
+        <resource type="download" name="dropdown.js" location="js/atlassian/dropdown.js"/>
+        <resource type="download" name="icons.js" location="js/atlassian/icons.js"/>
+        <resource type="download" name="inline-dialog.js" location="js/atlassian/inline-dialog.js"/>
+        <resource type="download" name="firebug.js" location="js/atlassian/firebug.js"/>
+        <resource type="download" name="forms.js" location="js/atlassian/forms.js"/>
+        <resource type="download" name="messages.js" location="js/atlassian/messages.js"/>
+        <resource type="download" name="tables.js" location="js/atlassian/tables.js"/>
+        <resource type="download" name="tabs.js" location="js/atlassian/tabs.js"/>
+        <resource type="download" name="template.js" location="js/atlassian/template.js"/>
+        <resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>
+        <resource type="download" name="toolbar.js" location="js/atlassian/toolbar.js"/>
+
+        <resource type="download" name="jquery.autocomplete.js" location="js/atlassian/jquery/jquery.autocomplete.js"/>
+        <resource type="download" name="jquery.is-dirty.js" location="js/atlassian/jquery/jquery.is-dirty.js"/>
+        <resource type="download" name="jquery.progressbar.js" location="js/atlassian/jquery/jquery.progressbar.js"/>
+        <resource type="download" name="jquery.selection.js" location="js/atlassian/jquery/jquery.selection.js"/>
+        <resource type="download" name="jquery.throbber.js" location="js/atlassian/jquery/jquery.throbber.js"/>
+    </web-resource>
+
+    <web-resource key="ajs-gadgets" name="Mandatory resources for AJS-Gadgets framework">
+
+        <resource type="download" name="basic.css" location="css/atlassian/basic.css"/>
+        <resource type="download" name="dropdown.css" location="css/atlassian/dropdown.css"/>
+        <resource type="download" name="icons.css" location="css/atlassian/icons.css"/>
+        <resource type="download" name="tables.css" location="css/atlassian/tables.css"/>
+        <resource type="download" name="forms.css" location="css/atlassian/forms.css"/>
+        <resource type="download" name="messages.css" location="css/atlassian/messages.css"/>
+
+        <resource type="download" name="dropdown-ie.css" location="css/atlassian/dropdown-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+        <resource type="download" name="forms-ie.css" location="css/atlassian/forms-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+        <resource type="download" name="icons-ie.css" location="css/atlassian/icons-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+
+        <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
+        <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
+        <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
+        <resource type="download" name="dropdown.js" location="js/atlassian/dropdown.js"/>
+        
+    </web-resource>
+
+    <web-resource key="binders" name="Atlassian Markup Binder Javascript">
+        <resource type="download" name="binder.js" location="js/atlassian/binders/binder.js"/>
+        <resource type="download" name="placeholder.js" location="js/atlassian/binders/placeholder.js"/>
+        <resource type="download" name="placeholder.css" location="css/atlassian/binders/placeholder.css"/>
+    </web-resource>
+
+    <web-resource name="jQuery Compatibility" key="jquery-compatibility">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+    </web-resource>
+
+    <web-resource name="hotkeys" key="hotkeys">
+        <resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery/jquery.hotkeys.js"/>
+    </web-resource>
+
+    <web-resource name="stalker" key="stalker">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.auiplugin:hotkeys</dependency>
+        <resource type="download" name="jquery.os.js" location="js/atlassian/jquery/jquery.os.js"/>
+        <resource type="download" name="jquery.getdocheight.js" location="js/atlassian/jquery/jquery.getdocheight.js"/>
+        <resource type="download" name="jquery.offsetanchors.js"
+                  location="js/atlassian/jquery/jquery.offsetanchors.js"/>
+        <resource type="download" name="jquery.stalker.js" location="js/atlassian/jquery/jquery.stalker.js"/>
+        <resource type="download" name="containdropdown.js" location="js/atlassian/containdropdown.js"/>
+    </web-resource>
+
+    <web-resource name="keyboardshortcuts" key="keyboardshortcuts">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.auiplugin:hotkeys</dependency>
+        <resource type="download" name="moveto.js" location="js/atlassian/jquery/jquery.moveto.js"/>
+        <resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>
+    </web-resource>
+
+    <!-- Every part of jQuery UI JS that we don't offer by default -->
+    <web-resource name="jQuery UI Other" key="jquery-ui-other">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="jquery-ui-other.js" location="js/external/jquery/jquery-ui-other.js"/>
+    </web-resource>
+
+    <!-- Most individual resource keys were made obsolete in AUI 2.0. To provide backwards compatibility, they've been redirected below to call the whole library -->
+    <web-resource key="jquery-all" name="All JQuery">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+
+    <web-resource key="jquery" name="JQuery" i18n-name-key-name-key="web.resources.plugin.jquery.name">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+
+    <web-resource name="jQuery UI" key="jquery-ui">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+
+    <web-resource key="jquery-aop" name="jQuery AOP" i18n-name-key="web.resources.plugin.jquery.aop.name">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+
+    <web-resource key="jquery-autocomplete" name="jQuery Autocomplete"
+                  i18n-name-key="web.resources.plugin.jquery.autocomplete.name">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+
+    <web-resource key="jquery-form" name="jQuery Form" i18n-name-key="web.resources.plugin.jquery.form.name">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+
+    <web-resource key="jquery-progressbar" name="jQuery Progress Bar Plugin"
+                  i18n-name-key="web.resources.plugin.jquery.progressbar.name">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+
+    <web-resource key="jquery-selection" name="jQuery Text Selection"
+                  i18n-name-key="web.resources.plugin.jquery.selection.name">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+
+    <web-resource key="jquery-throbber" name="jQuery Throbber"
+                  i18n-name-key="web.resources.plugin.jquery.throbber.name">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+
+    <web-resource key="aui-css" name="Atlassian UI CSS">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+    <!-- end AUI 2.0 backwards-compat redirects -->
+
+</atlassian-plugin>

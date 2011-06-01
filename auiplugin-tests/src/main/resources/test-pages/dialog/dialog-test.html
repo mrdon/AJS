@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-au">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta name="decorator" content="atl.general">
+
+    <title>AUI Dialog Test Page</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <!--[if lte IE 8]>
+    <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+    <script type="text/javascript" src="../common.js"></script>
+</head>
+<body>
+<div class="navigation">
+    <h2> AUI Dialog Test Page </h2>
+    <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+</div>
+
+<div class="aui-test source-required shims-required-center">
+    <h2> Popup </h2>
+
+    <p>Demo of AJS.popup, shows a blank popup with a shadow</p>
+
+    <div class="html-code">
+        <form action="">
+            <div>
+                <input id="popup-button" type="button" class="button" value="Popup - Click Me">
+                <a href="#" id="popup-link"> Popup Link </a>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        addSample(function() {
+            var popup = AJS.popup(400, 200, "my-popup");
+            AJS.$("#popup-button").click(function() {
+                popup.show();
+            });
+
+            AJS.$("#popup-link").click(function(e) {
+                e.preventDefault()
+                popup.show();
+            });
+        });
+    </script>
+</div>
+
+<div class="aui-test source-required shims-required-center">
+
+    <h2> Dialog </h2>
+    Demo of AJS.Dialog, shows the following features:
+    <ol class="feature-list">
+        <li>Panels</li>
+        <li>Pages</li>
+        <li>Buttons</li>
+        <li>Stacking Dialogs</li>
+    </ol>
+    <div class="html-code">
+        <form action="">
+            <div>
+                <input id="dialog-button" name="dialog-button" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="dialog-link"> Dialog Link </a>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+
+        addSample(function() {
+
+            // create a dialog 860px wide x 530px high
+            var dialog = new AJS.Dialog(860, 530, "dialog-test"),
+                    dialog2 = new AJS.Dialog(1000, 300, "stack-dialog1"),
+                    dialog3 = new AJS.Dialog(100, 600, "stack-dialog2");
+
+            // PAGE 0 (first page)
+            // adds header for first page
+            dialog.addHeader("Dialog - Page 0");
+
+            // add panel 1
+            dialog.addPanel("Panel 1", "<p>Some content for panel 1. This has no padding.</p>", "panel-body");
+            dialog.get("panel:0").setPadding(0);
+            dialog.addCancel("Cancel Link", function(dialog){
+                dialog.hide();
+            });
+
+            // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
+            dialog.addPanel("Panel 2", "<p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p>", "panel-body");
+
+            dialog.addButton("Next", function (dialog) {
+                dialog.nextPage();
+            });
+            dialog.addButton("Cancel", function (dialog) {
+                dialog.hide();
+            });
+            dialog.addButton("testStackingDialogs", function (dialog) {
+                dialog2.show();
+            });
+
+            // PAGE 1 (second page)
+            // adds a new page to dialog
+            dialog.addPage();
+
+            // adds header for second page
+            dialog.addHeader("Dialog - Page 1");
+
+            // adds a single panel on second page (as there is only one panel, no menu will appear on the left side)
+            dialog.addPanel("SinglePanel", "<p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p>", "singlePanel");
+
+            // add "Previous" button to page 1
+            dialog.addButton("Previous", function(dialog) {
+                dialog.prevPage();
+            });
+            // adds "Cancel" button to page 1
+            dialog.addButton("Cancel", function(dialog) {
+                dialog.hide();
+            });
+
+            //Create first stackable Dialog
+            dialog2.addHeader("First Stacking Dialog")
+                    .addPanel("PanelStack1", "PanelStack1")
+                    .addButton("close", function(dialog) {
+                dialog.hide();
+            })
+                    .addButton("testStackingDialogs2", function (dialog) {
+                dialog3.show();
+            });
+            //Create second stackable dialog
+            dialog3.addHeader("Second Stacking Dialog")
+                    .addPanel("PanelStack1", "PanelStack1")
+                    .addButton("close", function(dialog) {
+                dialog.hide();
+            });
+
+            AJS.$("#dialog-button").click(function() {
+
+                // PREPARE FOR DISPLAY
+                // start first page, first panel
+                dialog.gotoPage(0);
+                dialog.gotoPanel(0);
+                dialog.show();
+            });
+
+            AJS.$("#dialog-link").click(function() {
+                dialog.gotoPage(0);
+                dialog.gotoPanel(0);
+                dialog.show();
+            });
+        });
+    </script>
+</div>
+
+<div class="aui-test source-required shims-required-center">
+    <h2> Dialog - addPanel </h2>
+
+    <p>test for the addPanel function</p>
+
+    <div class="html-code">
+        <form action="">
+            <div>
+                <input id="test-add-panel-button" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="test-add-panel-link"> Dialog Link </a>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        addSample(function() {
+            var testPanelDialog = new AJS.Dialog(500, 500, "test-panel-dialog");
+            testPanelDialog.addPanel("");
+
+            AJS.$("#test-add-panel-button").click(function() {
+                testPanelDialog.show();
+            });
+
+            AJS.$("#test-add-panel-link").click(function(e) {
+                e.preventDefault();
+                testPanelDialog.show();
+            });
+        });
+    </script>
+</div>
+
+<div class="aui-test source-required shims-required-center">
+    <h2> Dialog - addButton </h2>
+
+    <p>test for the addButton function</p>
+
+    <div class="html-code">
+        <form action="">
+            <div>
+                <input id="test-add-button-button" type="button" class="button" value="Dialog - Click Me">
+                <a href="#" id="test-add-button-link"> Dialog Link </a>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        addSample(function() {
+            var testButtonDialog = new AJS.Dialog(500, 500, "test-button-dialog");
+            testButtonDialog.addPanel("");
+            testButtonDialog.get("panel:0").setPadding(0);
+            testButtonDialog.addButton("this is a button", function() {
+            });
+
+            AJS.$("#test-add-button-button").click(function() {
+                testButtonDialog.show();
+            });
+
+            AJS.$("#test-add-button-link").click(function(e) {
+                e.preventDefault();
+                testButtonDialog.show();
+            });
+        });
+    </script>
+</div>
+
+<div class="aui-test source-required shims-required-center">
+    <h2> Popup - closeOnClick </h2>
+
+    <p>Demo of AJS.popup that can be closed when you click outside it</p>
+
+    <div class="html-code">
+        <form action="">
+            <div>
+                <input id="test-close-on-click-button" type="button" class="button" value="Popup - Click Me">
+                <a href="#" id="test-close-on-click-link"> Popup Link </a>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        addSample(function() {
+            var testCloseOnOutsideClickPopup = AJS.popup(400, 200, "test-close-on-click-popup", {closeOnOutsideClick: true});
+            AJS.$("#test-close-on-click-button").click(function() {
+                testCloseOnOutsideClickPopup.show();
+            });
+
+            AJS.$("#test-close-on-click-link").click(function(e) {
+                e.preventDefault();
+                testCloseOnOutsideClickPopup.show();
+            });
+        });
+    </script>
+</div>
+<script type="text/javascript">
+
+    setupTestPage();
+
+    // Testing AJS.warnAboutFirebug
+    AJS.warnAboutFirebug();
+
+    // Testing AJS.inlineHelp
+    AJS.inlineHelp();
+</script>
+
+</body>
+</html>

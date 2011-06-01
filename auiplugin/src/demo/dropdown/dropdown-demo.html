@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-au">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Dropdown Example</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+
+    <!--[if lte IE 8]>
+    <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+    <!--[if IE 9]>
+    <link type="text/css" rel="stylesheet" href="../common-ie9.css" media="all">
+    <![endif]-->
+    <script type="text/javascript" src="../aui.js"></script>
+    <script type="text/javascript" src="../demo.js"></script>
+    
+    <style type="text/css">
+        .styled-parent {
+            background: #000;
+            width: 10px;
+            height: 10px;
+            list-style: none;
+            padding: 1em;
+            border-left: 100px solid black;
+        }
+
+        /*Icon spans must be styled on product level */
+        #icon-test-1 .aui-dd-parent .aui-dropdown li.dropdown-item a.item-link span.icon {
+            background: #0f0;
+            width: 13px;
+            height: 13px;
+            margin-right: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <h2> AUI Dropdown Demo Page </h2>
+        <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+    </div>
+    <div class="aui-demo source-required">
+        <h2> Standard Dropdown </h2>
+
+        <p class="description"> Shows a standard dropdown </p>
+
+        <div class="html-code">
+            <ul id="dropDown-standard" class="styled-parent">
+                <li class="aui-dd-parent">
+                    <a href="#" class="aui-dd-trigger">A Standard Dropdown</a>
+                    <ul class="aui-dropdown">
+                        <li class="dropdown-item"><a href="http://www.google.com" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.$("#dropDown-standard").dropDown("Standard");
+            });
+        </script>
+
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Left Aligned Dropdown </h2>
+
+        <p class="description"> Shows a left aligned dropdown </p>
+
+        <div class="html-code">
+            <ul id="dropDown-left" class="styled-parent">
+                <li class="aui-dd-parent">
+                    <a href="#" class="aui-dd-trigger">A Dropdown</a>
+                    <ul class="aui-dropdown">
+                        <li class="dropdown-item"><a href="http://www.google.com" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.$("#dropDown-left").dropDown("Standard", {alignment: "left"});
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Right Aligned Dropdown </h2>
+
+        <p class="description"> Shows a right aligned dropdown </p>
+
+        <div class="html-code">
+            <ul id="dropDown-right" class="styled-parent">
+                <li class="aui-dd-parent">
+                    <a href="#" class="aui-dd-trigger styled-trigger">A Dropdown</a>
+                    <ul class="aui-dropdown">
+                        <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Right Alignment</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.$("#dropDown-right").dropDown("Standard", {alignment: "right"});
+            });
+        </script>
+
+    </div>
+
+    <div class="aui-demo source-required" id="icon-test-1">
+        <h2> Dropdown with Icons </h2>
+
+        <p class="description"> Shows a dropdown that has icons inside the item links (specific icon sprites currently set at the product level)</p>
+
+        <div class="html-code">
+            <ul id="dropDown-icons1" class="styled-parent">
+                <li class="aui-dd-parent">
+                    <a href="#" class="aui-dd-trigger styled-trigger">A Dropdown</a>
+                    <ul class="aui-dropdown">
+                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Sprite Icons</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link"><span class="icon"></span>Sprite Icons</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.$("#dropDown-icons1").dropDown("Standard", {alignment: "left"});
+            });
+        </script>
+
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2>Unstyled Trigger</h2>
+
+        <p class="description">Shows a left aligned dropdown with an unstyled trigger element.</p>
+
+        <div class="html-code">
+            <ul id="dropDown-unstyled" class="unstyled-parent">
+                <li class="aui-dd-parent">
+                    <a href="#" class="aui-dd-trigger unstyled">A Dropdown</a>
+                    <ul class="aui-dropdown">
+                        <li class="dropdown-item"><a href="http://www.google.com" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Left alignment</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.$("#dropDown-unstyled").dropDown("Standard", {alignment: "left"});
+            });
+        </script>
+    </div>
+
+
+    <script type="text/javascript">
+        AJS.$(function() {
+            // Testing AJS.warnAboutFirebug
+            AJS.warnAboutFirebug("A different sample message warning about Firebug.");
+
+            // Testing AJS.inlineHelp
+            AJS.inlineHelp();
+        });
+    </script>
+</body>
+</html>

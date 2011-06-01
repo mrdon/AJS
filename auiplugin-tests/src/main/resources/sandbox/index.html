@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>AUI Sandbox</title>
+        <meta name="decorator" content="atl.general">
+        <script type="text/javascript" src="includeAJS.js"></script>
+        <script type="text/javascript" src="xml2json.js"></script>
+        <link type="text/css" rel="stylesheet" href="sandbox.css" media="all">
+        <link type="text/css" rel="stylesheet" href="includeAJS.css" media="all">
+         
+    </head>
+    <body>
+
+            <h1 id="page-heading"> AUI Sandbox </h1>
+            <p id="version">(version not detected)</p>
+            <div class="aui-message error shadowed" id="sandbox-local-warning">
+                <p class="title"> 
+                    <span class="aui-icon icon-error"></span> 
+                    <strong>Needs server</strong> 
+                </p> 
+                <p>The sandbox must be used either on <a href="http://docs.atlassian.com/aui/latest/sandbox/">docs.atlassian.com/aui/latest/sandbox</a> or <a href="http://localhost:9999/ajs/plugins/servlet/ajstest/sandbox/index.html">via the Atlassian refapp</a> if you are running it locally.</p> 
+            </div><!-- .aui-message -->
+
+            <div id="toolbar">
+                <div id='toolbar-logo' class='aui-logo'></div>
+                <div id="editor-tools">
+                    <button id="refresh" class="toolbar-button"> Refresh </button>
+                    <button id="clear" class="toolbar-button"> Clear </button>
+                    <a href="http://confluence.atlassian.com/display/AUI/AUI+Components" id="documentation"> AUI Documentation </a>
+                </div>
+                <span id="help-icon">
+                 <span class="aui-icon-new icon-info"></span>
+                </span>
+            </div>
+            <div class="work-area">
+                <div id="editors-parent">
+                    <div id="html-parent" class="editor-parent">
+                        <span class="heading-span"><h2 class="editor-heading" >HTML</h2></span>
+                        <textarea id="html-editor" class="edit-box" ></textarea>
+                    </div>
+                    <div id="css-parent" class="editor-parent">
+                        <span class="heading-span"><h2 class="editor-heading" >CSS</h2></span>
+                        <textarea id="css-editor" class="edit-box" ></textarea>
+                    </div>
+                    
+                    <div id="js-parent" class="editor-parent">
+                        <span class="heading-span"><h2 class="editor-heading" >Javascript</h2></span>
+                        <textarea id="js-editor" class="edit-box" ></textarea>
+                    </div>
+                </div>
+                <div id="bottom">
+                    <div id="display-parent" class="display-parent">
+                        <h2 id="display-heading">&#9660; DISPLAY &#9660;</h2>
+                        <div id="display" class="display">
+                            <div id="html-code"></div>
+                            <style type="text/css" id="css-code"></style>
+                            <div id="js-code"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="info-parent">
+                        <h2 id="info-heading">&#9660; Information &#9660;</h2>
+                        <div id="info-display"></div>
+                    </div>
+                </div>
+
+            </div>  
+            <script type="text/javascript" src= "sandbox.js"></script> 
+    </body>
+</html>
