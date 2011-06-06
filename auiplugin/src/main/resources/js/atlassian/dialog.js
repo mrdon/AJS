@@ -1139,24 +1139,21 @@ AJS.popup = function (options) {
      * @method updateHeight
      */
     AJS.Dialog.prototype.updateHeight = function () {
-        var height = this.height || 0;
+        var height = 0;
         for (var i=0; this.getPanel(i); i++) {
-            if (this.getPanel(i).body[0].scrollHeight > height) {
-                height = this.getPanel(i).body[0].scrollHeight;
+            if (this.getPanel(i).body.css({height: "auto", display: "block"}).outerHeight() > height) {
+                height = this.getPanel(i).body.outerHeight();
+            }
+            if (i !== this.page[this.curpage].curtab) {
+                this.getPanel(i).body.css({display:"none"});
             }
         }
         for (i=0; this.getPanel(i); i++) {
-            this.getPanel(i).body.outerHeight(height);
-        }
-        this.height = height;
-        if (this.page[0].header) {
-          this.height += this.page[0].header.outerHeight();
-        }
-        if (this.page[0].buttonpanel) {
-          this.height += this.page[0].buttonpanel.outerHeight();
+            this.getPanel(i).body.css({height: height || this.height});
         }
         this.page[0].menu.height(height);
-        this.popup.changeSize(undefined, this.height);
+        this.height = height + 87;
+        this.popup.changeSize(undefined, height + 87);
     };
 
     /**
