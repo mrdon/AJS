@@ -46,22 +46,38 @@
                 $icon.each(AJS.icons.addIcon.init);
             });
         },
-        template: '<div class="aui-message {type} {closeable} {shadowed}"><p class="title"><span class="aui-icon icon-{type}"></span><strong>{title}</strong></p>{body}</div><!-- .aui-message -->',
+        template: '<div class="aui-message {type} {closeable} {shadowed}" id="{id}"><p class="title"><span class="aui-icon icon-{type}"></span><strong>{title}</strong></p>{body}</div><!-- .aui-message -->',
         createMessage: function (type) {
             AJS.messages[type] = function (context, obj) {
+                var template = this.template;
                 if (!obj) {
                     obj = context;
                     context = "#aui-message-bar";
                 }
+               
+                // Set up our template options
+                if (obj.id) {
+                    // strip crap out so we have a reasonable ID string
+                    var nowihavetwoproblems = new RegExp(/[#'\"\.\s]/g),
+                        messageID = obj.id.replace(nowihavetwoproblems, '');
+                } else {
+                    // strip empty ID from template if not set
+                    template = template.replace(' id="{id}"',"");
+                }
                 obj.closeable = (obj.closeable == false) ? false : true;
                 obj.shadowed = (obj.shadowed == false) ? false : true;
-                AJS.$(context).append(AJS.template(this.template).fill({
+
+                // Append the message using template
+                AJS.$(context).append(AJS.template(template).fill({
                     type: type,
+                    id: obj.id ? messageID : "",
                     closeable: obj.closeable ? "closeable" : "",
                     shadowed: obj.shadowed ? "shadowed" : "",
                     title: obj.title || "",
                     "body:html": obj.body || ""
                 })).find(".svg-icon:empty").each(AJS.icons.addIcon.init);
+
+                // Attach the optional extra behaviours
                 obj.closeable && AJS.messages.makeCloseable(AJS.$(context).find("div.aui-message.closeable"));
             };
         }

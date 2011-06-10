@@ -18,6 +18,10 @@
             font-family: sans-serif;
             font-size: 10pt;
         }
+        #messages-with-ids-test .aui-message:after {
+            content: "(" attr(id) ") found" ;
+            display: block;
+        }
     </style>
     <script type="text/javascript" src="../common.js"></script>
 
@@ -26,6 +30,31 @@
 <div class="navigation">
     <h2> AUI Messages Test Page </h2>
     <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+</div>
+
+<div class="aui-test" id="messages-with-ids-test">
+    <h2> Javascript Messages - ID test</h2>
+
+    <p class="description">  </p>
+
+    <div class="html-code">
+        <div id="aui-id-bar"></div>
+    </div>
+    <script type="text/javascript">
+        addSample(function() {
+            AJS.messages.info("#aui-id-bar", {
+                id: '#test\'-me.s..s.age#-id-full-of-s i l l y-""""things',
+                title: "Test",
+                body: "(test-message-id-full-of-silly-things) expected",
+                closeable:false
+            });
+            AJS.messages.info("#aui-id-bar", {
+                title: "Test",
+                body: "() expected (blank, no ID)",
+                closeable:false
+            });
+        });
+    </script>
 </div>
 
 <div class="aui-test" id="closeable-html-test">
@@ -65,6 +94,7 @@
     <script type="text/javascript">
         addSample(function() {
             AJS.messages.generic("#test-closeable-context", {
+                id: "test-id-without-hash",
                 title: "Should be closeable but have no shadow",
                 body: "JS-generated messages have a dropshadow by default, but you can turn that off in the API.",
                 shadowed: false,
@@ -84,7 +114,6 @@
         //setupTestPage();
     });
 </script>
-
 
 <div class="aui-test">
     <h2> Javascript Messages - no context specified</h2>
@@ -267,62 +296,34 @@
 
 
 <script type="text/javascript">
-// dialog for testing (copied from dialog test page)
-// this is not a dialog proforma. 
-var dialog = new AJS.Dialog(860, 530, "dialog-test"),
-    dialog2 = new AJS.Dialog(1000, 300, "stack-dialog1"),
-    dialog3 = new AJS.Dialog(100, 600, "stack-dialog2");
+// dialog for testing. 
+var dialog = new AJS.Dialog({width:860, height:530, id:"example-dialog", closeOnOutsideClick: true});
 dialog.addHeader("Dialog - Page 0");
-dialog.addPanel("Panel 1", "<p>Some content for panel 1. This has no padding.</p>", "panel-body");
-dialog.get("panel:0").setPadding(0);
-dialog.addCancel("Cancel Link", function(dialog){
-    dialog.hide();
-});
-dialog.addPanel("Panel 2", "<p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p>", "panel-body");
-dialog.addButton("Next", function (dialog) {
-    dialog.nextPage();
-});
+dialog.addPanel("Panel 1", "<p>Some content for panel 1.</p>", "panel-body");
 dialog.addButton("Cancel", function (dialog) {
     dialog.hide();
 });
-dialog.addButton("testStackingDialogs", function (dialog) {
-    dialog2.show();
-});
-dialog.addPage();
-dialog.addHeader("Dialog - Page 1");
-dialog.addPanel("SinglePanel", "<p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p>", "singlePanel");
-dialog.addButton("Previous", function(dialog) {
-    dialog.prevPage();
-});
-dialog.addButton("Cancel", function(dialog) {
-    dialog.hide();
-});
-dialog2.addHeader("First Stacking Dialog")
-        .addPanel("PanelStack1", "PanelStack1")
-        .addButton("close", function(dialog) {
-    dialog.hide();
-})
-        .addButton("testStackingDialogs2", function (dialog) {
-    dialog3.show();
-});
-dialog3.addHeader("Second Stacking Dialog")
-        .addPanel("PanelStack1", "PanelStack1")
-        .addButton("close", function(dialog) {
-    dialog.hide();
-});
-
 AJS.$("#dialog-button").click(function() {
-    dialog.gotoPage(0);
-    dialog.gotoPanel(0);
     dialog.show();
 });
-// dropdown for testing
-AJS.$("#dropDown-standard").dropDown("Standard");
 
-// popup for testing
-var popup = AJS.popup(400, 200, "my-popup");
+// popup for testing. 
+var popup = AJS.popup({ width: 400, height: 200, id: "my-popup", closeOnOutsideClick: true});
+AJS.$("#my-popup").append('<p>Click outside or hit escape to close me.</p>');
 AJS.$("#popup-button").click(function() {
     popup.show();
+});
+
+// dropdown for testing.
+AJS.$("#dropDown-standard").dropDown("Standard");
+
+// being nice to old browsers
+AJS.$(document).ready( function() {
+    if ( AJS.$.browser.msie && ~~(AJS.$.browser.version) < 8 ) {
+        AJS.$("#messages-with-ids-test .aui-message").each( function(index) {
+            AJS.$(this).append('<p>(' + AJS.$(this).attr("id") + ') found</p>');
+        });
+    }
 });
 
 </script>
