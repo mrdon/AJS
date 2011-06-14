@@ -50,8 +50,7 @@
         createMessage: function (type) {
             AJS.messages[type] = function (context, obj) {
                 var template = this.template,
-                    $message,
-                    regexForID = new RegExp(/[#'\"\.\s]/g);
+                    $message;
 
                 if (!obj) {
                     obj = context;
@@ -73,7 +72,7 @@
                 
                 // Add ID if supplied
                 if (obj.id) {
-                    if ( regexForID.test(obj.id) ) {
+                    if ( /[#\'\"\.\s]/g.test(obj.id) ) {
                         // reject IDs that don't comply with style guide (ie. they'll break stuff)
                         AJS.log("AJS.Messages error: ID rejected, must not include spaces, hashes, dots or quotes.");
                     } else {
@@ -84,7 +83,7 @@
                 $message.appendTo(context);
 
                 // Attach the optional extra behaviours
-                obj.closeable && AJS.messages.makeCloseable(AJS.$(context).find("div.aui-message.closeable"));
+                obj.closeable && AJS.messages.makeCloseable($message);
             };
         }
     };

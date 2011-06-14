@@ -31,11 +31,6 @@ test("Messages API", function() {
     ok(typeof AJS.messages.createMessage == "function", "AJS.messages.createMessage exists");
 });
 
-test("Messages ID test: good ID", function() {
-    messagesSetup("test-id-without-hash");
-    ok( AJS.$("#test-id-without-hash").length, "#test-id-without-hash should be found" );
-});
-
 test("Messages ID test: bad ID", function() {
     messagesSetup("#t.e.st-m### e s s a '''\"\"g e-id-full-of-dodgy-crap");
     var checkedNoID = checkNoID(this.messagebar);
@@ -46,4 +41,9 @@ test("Messages ID test: no ID", function() {
     messagesSetup();
     var checkedNoID = checkNoID(this.messagebar);
     equal( checkedNoID.found, checkedNoID.expected, "There should be no ID (no ID supplied)");
+});
+
+test("Messages ID test: good ID", function() {
+    messagesSetup("test-id");
+    ok( AJS.$("#test-id").length, "#test-id should be found" );
 });
