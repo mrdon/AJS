@@ -1,6 +1,8 @@
 module("Unit Tests for atlassian.js");
 
-
+test("AJS.version", function() {
+    ok( typeof AJS.version === "string", " AJS.version should return a string (in REFAPP it will be the generic project.version string)");
+});
 
 test("alphanum", function() {
     function assertAlphaNum(a, b, expected) {

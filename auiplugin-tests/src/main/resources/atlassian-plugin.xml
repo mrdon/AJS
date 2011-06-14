@@ -104,6 +104,7 @@
     <web-resource key="all-unit-tests">
         <!--AllTests-->
         <dependency>auiplugin-tests:ajs-infrastructure-unit-tests</dependency>
+        <dependency>auiplugin-tests:atlassian-js-unit-tests</dependency>
         <dependency>auiplugin-tests:whenitype-unit-tests</dependency>
         <dependency>auiplugin-tests:dialog-unit-tests</dependency>
         <dependency>auiplugin-tests:dropdown-unit-tests</dependency>
@@ -116,7 +117,6 @@
         <dependency>auiplugin-tests:tabs-unit-tests</dependency>
         <dependency>auiplugin-tests:toolbar-unit-tests</dependency>
         <dependency>auiplugin-tests:template-unit-tests</dependency>
-        <dependency>auiplugin-tests:atlassian-js-unit-tests</dependency>
     </web-resource>
 
     <web-item key="aui-test-pages" section="index.links" weight="10" application="refapp">
