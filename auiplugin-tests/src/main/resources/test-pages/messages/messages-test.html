@@ -43,14 +43,15 @@
     <script type="text/javascript">
         addSample(function() {
             AJS.messages.info("#aui-id-bar", {
-                id: '#test\'-me.s..s.age#-id-full-of-s i l l y-""""things',
+                id: 'test-message-id',
                 title: "Test",
-                body: "(test-message-id-full-of-silly-things) expected",
+                body: "(test-message-id) expected",
                 closeable:false
             });
             AJS.messages.info("#aui-id-bar", {
+                id: 'this #should\'not\"work.',
                 title: "Test",
-                body: "() expected (blank, no ID)",
+                body: "() expected (blank, no ID - console should show error message)",
                 closeable:false
             });
         });
