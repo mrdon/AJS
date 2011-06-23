@@ -9,8 +9,7 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
     {
         openTestPage(TEST_PAGE);
 
-        client.click("css=a#popupLink");
-
+        openInlineDialogWithClick("css=a#popupLink", "css=div#inline-dialog-1");
         assertThat.elementPresent("css=div#inline-dialog-1");
         assertThat.elementVisible("css=div#inline-dialog-1");
     }
@@ -20,8 +19,7 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
     {
         openTestPage(TEST_PAGE);
 
-        client.mouseMove("css=a#hoverLink");
-
+        openInlineDialogWithHover("css=a#hoverLink", "css=div#inline-dialog-2");
         assertThat.elementPresent("css=div#inline-dialog-2");
         assertThat.elementVisible("css=div#inline-dialog-2");
     }
@@ -39,7 +37,7 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
     public void testAUIInlineDialogNoBindOptionWithManualBinding()
     {
         openTestPage(TEST_PAGE);
-        client.click("css=a#testNoBind2");
+        openInlineDialogWithClick("css=a#testNoBind2", "css=div#inline-dialog-16");
         assertThat.elementPresent("css=div#inline-dialog-16");
         assertThat.elementVisible("css=div#inline-dialog-16");
     }
@@ -48,7 +46,7 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
     public void testRightPositionedShortTrigger()
     {
         openTestPage(TEST_PAGE);
-        client.click("css=a#testFloat");
+        openInlineDialogWithClick("css=a#testFloat", "css=div#inline-dialog-5");
         assertThat.elementPresent("css=div#inline-dialog-5");
         assertThat.elementVisible("css=div#inline-dialog-5");
         int expectedPosition = getWindowWidth() - 5 - client.getElementWidth("css=div#inline-dialog-5").intValue();
@@ -60,7 +58,7 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
     public void testRightPositionedMediumTrigger()
     {
         openTestPage(TEST_PAGE);
-        client.click("css=a#testFloat3");
+        openInlineDialogWithClick("css=a#testFloat3", "css=div#inline-dialog-7");
         assertThat.elementPresent("css=div#inline-dialog-7");
         assertThat.elementVisible("css=div#inline-dialog-7");
 
@@ -74,12 +72,26 @@ public class AUIInlineDialogTest extends AbstractAUISeleniumTestCase
     public void testRightPositionedLongTrigger()
     {
         openTestPage(TEST_PAGE);
-        client.click("css=a#testFloat2");
+        openInlineDialogWithClick("css=a#testFloat2", "css=div#inline-dialog-6");
         assertThat.elementPresent("css=div#inline-dialog-6");
         assertThat.elementVisible("css=div#inline-dialog-6");
 
         int expectedPosition = client.getElementPositionLeft("css=a#testFloat2").intValue();
         int actualPosition = client.getElementPositionLeft("css=div#inline-dialog-6").intValue();
         assertTrue("right positioned inline-dialog is not positioned correctly", isWithinRange(actualPosition, expectedPosition - 20, expectedPosition + 20));
+    }
+
+    private void openInlineDialogWithHover(String triggerSelector, String inlineDialogSelector)
+    {
+        client.mouseMove(triggerSelector);
+        client.waitForCondition(String.format("selenium.isElementPresent('%s')", inlineDialogSelector));
+        client.waitForCondition(String.format("selenium.isVisible('%s')", inlineDialogSelector));
+    }
+
+    private void openInlineDialogWithClick(String triggerSelector, String inlineDialogSelector)
+    {
+        client.click(triggerSelector);
+        client.waitForCondition(String.format("selenium.isElementPresent('%s')", inlineDialogSelector));
+        client.waitForCondition(String.format("selenium.isVisible('%s')", inlineDialogSelector));
     }
 }
