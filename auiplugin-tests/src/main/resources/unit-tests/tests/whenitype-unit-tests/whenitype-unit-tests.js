@@ -1,5 +1,8 @@
 module("WhenIType Keyboard Shortcuts Unit Tests");
 
+var KEYS = { META: 224, ALT: 18, CTRL: 17 };
+
+
 test("emacs", function() {
 
     var combinations = ["abc", "abcd", "zzz", "p" , "abcdefghijklmnopqrstuwxyz"];
@@ -90,20 +93,21 @@ test("shift keys", function () {
 
 test("modifier keys", function () {
 
-    var combinations = ["ctrl+c", "ctrl+a", "alt+a", "alt+a", "meta+?", "ctrl+?"];
+    var combinations = ["ctrl+c", "ctrl+a", "alt+a", "meta+?", "ctrl+?"];
+    expect(combinations.length);
 
-    jQuery.each(combinations, function(keyCode, name) {
+    jQuery.each(combinations, function(index, keyCombo) {
 
         AJS.whenIType.fromJSON([{
-            "keys":[name],
+            "keys":[keyCombo],
             "context":"global",
             "op":"execute",
-            "param":"emacsTestResults['" + name + "'] = true"
+            "param":"emacsTestResults['" + keyCombo + "'] = true"
         }]);
 
         var event = jQuery.Event("keydown");
 
-        var combination = name;
+        var combination = keyCombo;
 
         while (combination.indexOf("+") !== -1) {
             var modifier = combination.substring(0, combination.indexOf("+"));
@@ -120,177 +124,148 @@ test("modifier keys", function () {
         jQuery(document).trigger(event);
 
 
-        ok(emacsTestResults[name], "modifiers: Expected keyboard combination '" + name + "' to execute function");
+        ok(emacsTestResults[keyCombo], "modifiers: Expected keyboard combination '" + keyCombo + "' to execute function");
     });
 });
 
-asyncTest("modifier keys for quick typers", function () {
+test("modifier keys for quick typers", function () {
 
     var combinations = ["alt+a", "ctrl+c", "meta+p"],
-        modKeys = {"ctrl": 17, "alt" : 18, "meta" : 224},
-        index = 0;
+        modKeys = {"ctrl": KEYS.CTRL, "alt" : KEYS.ALT, "meta" : KEYS.META},
+        event;
 
-    function runTest(combination) {
+    expect(combinations.length);
+
+    jQuery.each(combinations, function(index, keyCombo) {
+
         AJS.whenIType.fromJSON([{
-            "keys":[combination],
+            "keys":[keyCombo],
             "context":"global",
             "op":"execute",
-            "param":"emacsTestResults['" + combination + "'] = true"
+            "param":"emacsTestResults['" + keyCombo + "'] = true"
         }]);
 
+        var modifier = keyCombo.substring(0, keyCombo.indexOf("+")),
+            letter = keyCombo.replace(modifier + "+", "");
 
-        var modifier = combination.substring(0, combination.indexOf("+")),
-            letter = combination.replace(modifier + "+", "");
-
-        var event = jQuery.Event("keydown");
+        event = jQuery.Event("keydown");
         event.which = modKeys[modifier];
-
         jQuery(document).trigger(event);
 
-        window.setTimeout(function () {
-
-            var event = jQuery.Event("keypress");
+        var event = jQuery.Event("keypress");
             event.which = letter.charCodeAt(0);
             jQuery(document).trigger(event);
-            ok(emacsTestResults[combination], "quick modifiers: Expected keyboard combination '" + combination + "' to execute function");
-            index++;
-            if (combinations[index]) {
-                runTest(combinations[index]);
-            } else {
-                start();
-            }
-        }, 200);
-    }
+            ok(emacsTestResults[keyCombo], "quick modifiers: Expected keyboard combination '" + keyCombo + "' to execute function");
 
-    runTest(combinations[index]);
+        // tidy up.
+        event = jQuery.Event("keyup");
+        event.which = modKeys[modifier];
+        jQuery(document).trigger(event);
+
+    });
+
 });
 
-// FLAKY TEST! QUARANTINED, breaks the build.
-// https://studio.atlassian.com/browse/AJS-603
-/*
-asyncTest("keys proceeded with ctrl modifier", function() {
+test("keys proceeded with ctrl modifier", function() {
 
     var combinations = ["c", "?"],
-        index = 0;
+        event;
 
-    function runTest(combination) {
+    expect(combinations.length);
 
+    jQuery.each(combinations, function(index, key) {
 
         AJS.whenIType.fromJSON([{
-            "keys":[combination],
+            "keys":[key],
             "context":"global",
             "op":"execute",
-            "param":"emacsTestResults['" + combination + "'] = true"
+            "param":"ok(false, 'The key \"" + key + "\" should not have fired an event')"
         }]);
 
-        var event = jQuery.Event("keydown");
-        event.which = 17;
+        event = jQuery.Event("keydown");
+        event.which = KEYS.CTRL;
         jQuery(document).trigger(event);
 
-        window.setTimeout(function () {
+        event = jQuery.Event("keypress");
+        event.which = key.charCodeAt(0);
+        jQuery(document).trigger(event);
 
-            var event = jQuery.Event("keypress");
-            event.which = combination.charCodeAt(0);
-            jQuery(document).trigger(event);
+        // tidy up.
+        event = jQuery.Event("keyup");
+        event.which = KEYS.CTRL;
+        jQuery(document).trigger(event);
 
-            ok(!emacsTestResults[combination], "ctrl: Expected keyboard combination '" + combination + "' NOT to execute function");
+        ok(true);
 
-            index++;
-
-            if (combinations[index]) {
-                runTest(combinations[index]);
-            } else {
-                start();
-            }
-        }, 200);
-    }
-
-    runTest(combinations[index]);
-
+    });
 });
-*/
 
-asyncTest("keys proceeded with alt modifier", function() {
+
+test("keys pressed with alt modifier should not execute", function() {
 
     var combinations = ["c", "?", "a"],
-        index = 0;
+        event;
 
-    function runTest(combination) {
+    expect(combinations.length)
 
-
+    jQuery.each(combinations, function(index, key) {
         AJS.whenIType.fromJSON([{
-            "keys":[combination],
+            "keys":[key],
             "context":"global",
             "op":"execute",
-            "param":"emacsTestResults['" + combination + "'] = true"
+            "param":"ok(false, 'The key \"" + key + "\" should not have fired an event')"
         }]);
 
-        var event = jQuery.Event("keydown");
-        event.which = 18;
+        event = jQuery.Event("keydown");
+        event.which = KEYS.ALT;
         jQuery(document).trigger(event);
 
-        window.setTimeout(function () {
 
-            var event = jQuery.Event("keypress");
-            event.which = combination.charCodeAt(0);
-            jQuery(document).trigger(event);
+        event = jQuery.Event("keypress");
+        event.which = key.charCodeAt(0);
+        jQuery(document).trigger(event);
 
-            ok(!emacsTestResults[combination], "alt: Expected keyboard combination '" + combination + "' NOT to execute function");
+        // tidy up.
+        event = jQuery.Event("keyup");
+        event.which = KEYS.ALT;
+        jQuery(document).trigger(event);
 
-            index++;
-
-            if (combinations[index]) {
-                runTest(combinations[index]);
-            } else {
-                start();
-            }
-        }, 200);
-    }
-
-    runTest(combinations[index]);
+        ok(true);
+    });
 
 });
 
-// FLAKY TEST! QUARANTINED, breaks the build constantly.
-// https://studio.atlassian.com/browse/AJS-603
-//asyncTest("keys proceeded with meta modifier", function() {
-//
-//    var combinations = ["c", "?", "a"],
-//        index = 0;
-//
-//    function runTest(combination) {
-//
-//
-//        AJS.whenIType.fromJSON([{
-//            "keys":[combination],
-//            "context":"global",
-//            "op":"execute",
-//            "param":"emacsTestResults['" + combination + "'] = true"
-//        }]);
-//
-//        var event = jQuery.Event("keydown");
-//        event.which = 224;
-//        jQuery(document).trigger(event);
-//
-//        window.setTimeout(function () {
-//
-//            var event = jQuery.Event("keypress");
-//            event.which = combination.charCodeAt(0);
-//            jQuery(document).trigger(event);
-//
-//            ok(!emacsTestResults[combination], "meta: Expected keyboard combination '" + combination + "' NOT to execute function");
-//
-//            index++;
-//
-//            if (combinations[index]) {
-//                runTest(combinations[index]);
-//            } else {
-//                start();
-//            }
-//        }, 200);
-//    }
-//
-//    runTest(combinations[index]);
-//
-//});   
+test("keys pressed with meta modifier should not execute", function() {
+
+    var combinations = ["c", "?", "a"],
+        event;
+
+    expect(combinations.length);
+
+    jQuery.each(combinations, function(index, key) {
+        AJS.whenIType.fromJSON([{
+            "keys": [key],
+            "context":"global",
+            "op":"execute",
+            "param":"ok(false, 'The key \"" + key + "\" should not have fired an event')"
+        }]);
+
+        event = jQuery.Event("keydown");
+        event.which = KEYS.META;
+        jQuery(document).trigger(event);
+
+        event = jQuery.Event("keypress");
+        event.which = key.charCodeAt(0);
+        jQuery(document).trigger(event);
+
+        // tidy up.
+        event = jQuery.Event("keyup");
+        event.which = KEYS.META;
+        jQuery(document).trigger(event);
+
+        ok(true);
+
+    });
+
+});   
     
