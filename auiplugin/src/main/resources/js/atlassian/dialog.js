@@ -1008,6 +1008,7 @@ AJS.popup = function (options) {
     */
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
+        $(AJS).trigger("show.dialog", {dialog: this});
         return this;
     };
     /**
@@ -1017,6 +1018,7 @@ AJS.popup = function (options) {
     */
     AJS.Dialog.prototype.hide = function () {
         this.popup.hide();
+        $(AJS).trigger("hide.dialog", {dialog: this});
         return this;
     };
     /**
@@ -1026,6 +1028,7 @@ AJS.popup = function (options) {
     AJS.Dialog.prototype.remove = function () {
         this.popup.hide();
         this.popup.remove();
+        $(AJS).trigger("remove.dialog", {dialog: this});
     };
     /**
      * Disables the dialog if enabled
