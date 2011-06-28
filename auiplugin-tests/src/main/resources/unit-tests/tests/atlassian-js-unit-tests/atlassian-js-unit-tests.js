@@ -39,3 +39,8 @@ test("escapeHtml", function() {
 
     equals(AJS.escapeHtml("some <input class=\"foo\" value='bar&wombat'> thing"), "some &lt;input class=&quot;foo&quot; value=&#39;bar&amp;wombat&#39;&gt; thing");
 });
+
+test("contextPath", function() {
+    equals(AJS.contextPath(), "/ajs");
+    ok(/http:\/\/[a-z]*(:[0-9]+)?\/ajs/.test(AJS.baseURL()));
+});

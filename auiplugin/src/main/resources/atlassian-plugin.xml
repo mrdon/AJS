@@ -6,14 +6,19 @@
     </plugin-info>
 
     <web-resource-transformer key="jsI18n" name="JavaScript I18n Transformer" class="com.atlassian.aui.javascript.JsI18nTransformer"/>
+    <web-resource-transformer key="jsContextPath" name="JavaScript contextPath Transformer" class="com.atlassian.aui.javascript.ContextPathTransformer"/>
     <component-import key="i18nResolver" interface="com.atlassian.sal.api.message.I18nResolver" />
+    <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties" />
 
     <resource name="css/" type="download" location="css/atlassian/"/>
     <resource name="images/" type="download" location="css/atlassian/images/"/>
     <resource name="js/" type="download" location="js/"/>
 
     <web-resource key="ajs" name="Atlassian Javascript">
-        
+        <transformation extension="cp.js"> <!-- just target our one file that needs it -->
+            <transformer key="jsContextPath"/>
+        </transformation>
+
         <!-- CSS first -->
         <resource type="download" name="basic.css" location="css/atlassian/basic.css"/>
         <resource type="download" name="firebug.css" location="css/atlassian/firebug.css"/>
@@ -66,6 +71,7 @@
         <resource type="download" name="jquery.form.js" location="js/external/jquery/plugins/jquery.form.js"/>
         <resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery/jquery.hotkeys.js"/>
         <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
+        <resource type="download" name="context-path.cp.js" location="js/atlassian/context-path.cp.js"/>
         <resource type="download" name="event.js" location="js/atlassian/event.js"/>
         <resource type="download" name="cookie.js" location="js/atlassian/cookie.js"/>
         <resource type="download" name="dialog.js" location="js/atlassian/dialog.js"/>
