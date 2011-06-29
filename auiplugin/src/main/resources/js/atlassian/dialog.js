@@ -1008,7 +1008,7 @@ AJS.popup = function (options) {
     */
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
-        AJS.$(AJS).trigger("show.dialog", {dialog: this});
+        AJS..trigger("show.dialog", {dialog: this});
         return this;
     };
     /**
@@ -1018,7 +1018,7 @@ AJS.popup = function (options) {
     */
     AJS.Dialog.prototype.hide = function () {
         this.popup.hide();
-        AJS.$(AJS).trigger("hide.dialog", {dialog: this});
+        AJS.trigger("hide.dialog", {dialog: this});
         return this;
     };
     /**
@@ -1028,7 +1028,7 @@ AJS.popup = function (options) {
     AJS.Dialog.prototype.remove = function () {
         this.popup.hide();
         this.popup.remove();
-        AJS.$(AJS).trigger("remove.dialog", {dialog: this});
+        AJS.trigger("remove.dialog", {dialog: this});
     };
     /**
      * Disables the dialog if enabled
