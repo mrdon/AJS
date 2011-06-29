@@ -3,6 +3,8 @@ package com.atlassian.aui.javascript;
 import com.atlassian.sal.api.message.I18nResolver;
 import junit.framework.TestCase;
 
+import java.text.MessageFormat;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.stub;
 
@@ -29,15 +31,15 @@ public class TestJsI18nTransformer extends TestCase
         String javascript = "var label = AJS.I18n.getText(\"" + key + "\");\n" +
             "var anotherLabel = AJS.I18n.getText(\"" + key2 + "\");\n" + function;
 
-        stub(i18n.getRawText(key)).toReturn("Foo Bar");
-        stub(i18n.getRawText(key2)).toReturn("Awesome");
+        stubTranslation(key, "Foo Bar");
+        stubTranslation(key2, "Awesome");
         assertEquals("var label = \"Foo Bar\";\nvar anotherLabel = \"Awesome\";\n" + function, transform(javascript));
     }
 
     public void testKeyWithSingleQuotes()
     {
         String javascript = "var t = AJS.I18n.getText('blah');";
-        stub(i18n.getRawText("blah")).toReturn("Blah");
+        stubTranslation("blah", "Blah");
 
         assertEquals("var t = \"Blah\";", transform(javascript));
     }
@@ -45,7 +47,7 @@ public class TestJsI18nTransformer extends TestCase
     public void testKeyWithoutDots()
     {
         String javascript = "var t = AJS.I18n.getText(\"blah\");";
-        stub(i18n.getRawText("blah")).toReturn("Blah");
+        stubTranslation("blah", "Blah");
 
         assertEquals("var t = \"Blah\";", transform(javascript));
     }
@@ -54,7 +56,7 @@ public class TestJsI18nTransformer extends TestCase
     {
         String key = "foo-bar";
         String javascript = "var str = AJS.I18n.getText(\"" + key + "\");";
-        stub(i18n.getRawText(key)).toReturn("Foo Bar");
+        stubTranslation(key, "Foo Bar");
         assertEquals("var str = \"Foo Bar\";", transform(javascript));
     }
 
@@ -62,7 +64,7 @@ public class TestJsI18nTransformer extends TestCase
     {
         String key = "apos.key";
         String javascript = "var str = AJS.I18n.getText(\"" + key + "\");";
-        stub(i18n.getRawText(key)).toReturn("That's Awesome! \"Woot!\"");
+        stubTranslation(key, "That''s Awesome! \"Woot!\"");
         assertEquals("var str = \"That\\'s Awesome! \\\"Woot!\\\"\";", transform(javascript));
     }
 
@@ -80,7 +82,7 @@ public class TestJsI18nTransformer extends TestCase
 
     public void testWhitespaceBetweenArgs()
     {
-        stub(i18n.getRawText("blah")).toReturn("Blah");
+        stubTranslation("blah", "Blah");
 
         String javascript = "var t = AJS.I18n.getText( 'blah');";
         assertEquals("var t = \"Blah\";", transform(javascript));
@@ -106,7 +108,7 @@ public class TestJsI18nTransformer extends TestCase
         String key = "key.with.format";
         String translation = "Found {0} out of {1}";
         String javascript = "var t = AJS.I18n.getText(\"" + key  + "\", results, total);";
-        stub(i18n.getRawText(key)).toReturn(translation);
+        stubTranslation(key, translation);
 
         assertEquals("var t = AJS.format(\"" + translation + "\", results, total);", transform(javascript));
     }
@@ -117,19 +119,35 @@ public class TestJsI18nTransformer extends TestCase
         String translation = "Could not find file ''{0}''.";
         String jsEscapedTranslation = "Could not find file \\'\\'{0}\\'\\'.";
         String javascript = "var t = AJS.I18n.getText(\"" + key  + "\", results, total);";
-        stub(i18n.getRawText(key)).toReturn(translation);
+        stubTranslation(key, translation);
 
         assertEquals("var t = AJS.format(\"" + jsEscapedTranslation + "\", results, total);", transform(javascript));
     }
 
-    public void testManuallyFormattedMessageDoesntChange()
+    public void testFormattedMessageWithArgs()
     {
         String key = "key.with.format";
         String translation = "Found {0} out of {1}";
-        String javascript = "var t = AJS.format(AJS.I18n.getText(\"" + key  + "\"), results, total);";
-        stub(i18n.getRawText(key)).toReturn(translation);
+        String javascript = "var t = AJS.I18n.getText(\"" + key  + "\", results, total);";
+        stubTranslation(key, translation);
 
         assertEquals("var t = AJS.format(\"" + translation + "\", results, total);", transform(javascript));
+    }
+
+    public void testFormattedMessageNoArgs()
+    {
+        String key = "key.with.format";
+        String translation = "open-curly-zero '{0}' open-curley-one '{1}'";
+        String javascript = "var t = AJS.I18n.getText(\"" + key  + "\");";
+        stubTranslation(key, translation);
+
+        assertEquals("var t = \"open-curly-zero {0} open-curley-one {1}\";", transform(javascript));
+    }
+
+    private void stubTranslation(final String key, final String raw)
+    {
+        stub(i18n.getRawText(key)).toReturn(raw);
+        stub(i18n.getText(key)).toReturn(MessageFormat.format(raw, new Object[0]));
     }
 
     private String transform(String javascript) {

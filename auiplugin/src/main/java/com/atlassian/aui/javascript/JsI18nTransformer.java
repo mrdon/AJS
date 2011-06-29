@@ -52,15 +52,18 @@ public class JsI18nTransformer implements WebResourceTransformer
         boolean format = ",".equals(matcher.group(3));
 
         StringBuilder result = new StringBuilder();
-        if (format) {
+        if (format)
+        {
             result.append("AJS.format(");
-        }
-
-        result.append("\"").append(JavaScriptUtil.escape(i18nResolver.getRawText(key))).append("\"");
-
-        if (format) {
+            result.append("\"").append(JavaScriptUtil.escape(i18nResolver.getRawText(key))).append("\"");
             result.append(",");
         }
+        else
+        {
+            // no need to call AJS.format, format it ourselves by calling getText() instead of getRawText()
+            result.append("\"").append(JavaScriptUtil.escape(i18nResolver.getText(key))).append("\"");
+        }
+
         return result.toString();
     }
 
