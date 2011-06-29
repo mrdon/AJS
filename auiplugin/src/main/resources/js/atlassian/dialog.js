@@ -1008,7 +1008,7 @@ AJS.popup = function (options) {
     */
     AJS.Dialog.prototype.show = function () {
         this.popup.show();
-        AJS..trigger("show.dialog", {dialog: this});
+        AJS.trigger("show.dialog", {dialog: this});
         return this;
     };
     /**
