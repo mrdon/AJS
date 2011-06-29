@@ -42,5 +42,4 @@ test("escapeHtml", function() {
 
 test("contextPath", function() {
     equals(AJS.contextPath(), "/ajs");
-    ok(/http:\/\/[a-z]*(:[0-9]+)?\/ajs/.test(AJS.baseURL()));
 });

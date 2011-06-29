@@ -19,9 +19,8 @@ import java.util.regex.Pattern;
  */
 public class ContextPathTransformer implements WebResourceTransformer
 {
-    private final Pattern PATTERN = Pattern.compile("(AJS_SUBSTITUE_(.*?)_HERE\\s*=\\s*)(false)(\\s*;)");
+    private final Pattern PATTERN = Pattern.compile("(AJS_SUBSTITUTE_(.*?)_HERE\\s*=\\s*)(false)(\\s*;)");
 
-    private final String baseUrl;
     private final String contextPath;
     private final SearchAndReplacer grep;
 
@@ -36,7 +35,7 @@ public class ContextPathTransformer implements WebResourceTransformer
         };
         this.grep = new SearchAndReplacer(PATTERN, fn);
 
-        baseUrl = stripTrailingSlash(appProps.getBaseUrl());
+        String baseUrl = stripTrailingSlash(appProps.getBaseUrl());
         contextPath = new URI(baseUrl).getPath();
     }
 
@@ -56,10 +55,6 @@ public class ContextPathTransformer implements WebResourceTransformer
         if ("CONTEXT_PATH".equals(key))
         {
             result.append("\"").append(JavaScriptUtil.escape(contextPath)).append("\"");
-        }
-        else if ("BASE_URL".equals(key))
-        {
-            result.append("\"").append(JavaScriptUtil.escape(baseUrl)).append("\"");
         }
         else
         {
