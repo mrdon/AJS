@@ -1,10 +1,10 @@
-if ( window.Raphael) {
+if (window.Raphael) {
 	Raphael.shadow = function(x, y, w, h, options) {
 
         options = options || {};
 
         var $target    = jQuery(options.target),
-            $container = jQuery("<div>").addClass("aui-shadow"),
+            $container = jQuery("<div/>", { "class": "aui-shadow" }),
             colour     = options.shadow     || options.color || "#000",
             size       = options.size * 10  || 0, //makes it sane with no size included. just here for backwards compatability
             offsetSize = options.offsetSize || 5, //by default we want to offset by 5 pixels for pretty ness
@@ -21,7 +21,7 @@ if ( window.Raphael) {
         if (Raphael.shadow.BOX_SHADOW_SUPPORT) {
             // If box-shadow is supported, apply a className to use standard box-shadow CSS styles.
             // Note: (x, y, w, h) is ignored.
-            jQuery($target).addClass("aui-box-shadow");
+            $target.addClass("aui-box-shadow");
 
             // Return the unused shadow element to preserve compatibility with legacy API.
             return $container.addClass("hidden");
