@@ -166,7 +166,7 @@ test("modifier keys for quick typers", function () {
 
 });
 
-test("keys proceeded with ctrl modifier", function() {
+test("keys preceded with ctrl modifier", function() {
 
     var combinations = ["c", "?"],
         event;
