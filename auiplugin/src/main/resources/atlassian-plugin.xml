@@ -59,7 +59,7 @@
 
         <!-- JS Second - remember libraries must go first -->
         <resource type="download" name="raphael.js" location="js/external/raphael/raphael.js"/>
-        <resource type="download" name="raphael.shadow.js" location="js/external/raphael/raphael.shadow.js"/>
+        <resource type="download" name="raphael.shadow.js" location="js/atlassian/raphael/raphael.shadow.js"/>
         <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
         <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
         <resource type="download" name="jquery.os.js" location="js/atlassian/jquery/jquery.os.js"/>

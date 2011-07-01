@@ -109,7 +109,7 @@
                                 popup.shadow.remove();
                             }
                             popup.shadow = Raphael.shadow(0, 0, contents.width(), contents.height(), {
-                                    target: popup[0]
+                                    target: contents
                                 })
                                 .hide()
                                 .fadeIn(opts.fadeTime);
