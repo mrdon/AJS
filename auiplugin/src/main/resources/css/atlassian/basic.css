@@ -8,13 +8,16 @@ form.aui fieldset.hidden {
     display: none;
 }
 
-.assistive, legend.assistive span {
-    position: absolute;
-    left: -20000px;
-    width: 4000px;
+.assistive,
+legend.assistive span {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
     overflow: hidden;
-    top: 0;
-    height: 0;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
 .aui-box-shadow {
