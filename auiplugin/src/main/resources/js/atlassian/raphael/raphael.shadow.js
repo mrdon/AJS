@@ -1,17 +1,17 @@
 if (window.Raphael) {
-	Raphael.shadow = function(x, y, w, h, options) {
+    Raphael.shadow = function(x, y, w, h, options) {
 
         options = options || {};
 
-        var $target    = jQuery(options.target),
+        var $target = jQuery(options.target),
             $container = jQuery("<div/>", { "class": "aui-shadow" }),
-            colour     = options.shadow     || options.color || "#000",
-            size       = options.size * 10  || 0, //makes it sane with no size included. just here for backwards compatability
+            colour = options.shadow || options.color || "#000",
+            size = options.size * 10 || 0, //makes it sane with no size included. just here for backwards compatability
             offsetSize = options.offsetSize || 5, //by default we want to offset by 5 pixels for pretty ness
-            zindex     = options.zindex     || 0,
-            radius     = options.radius     || 0,
-            opacity    = "0.4",
-            blur       = "3",
+            zindex = options.zindex || 0,
+            radius = options.radius || 0,
+            opacity = "0.4",
+            blur = "3",
             paper,
             rect;
 
@@ -27,23 +27,23 @@ if (window.Raphael) {
             return $container.addClass("hidden");
         }
 
-		//from the old api, this meant you wanted a shadow drawn into the element
-		//so mimic this
-		if (x === 0 && y === 0 && $target.length > 0) {
+        //from the old api, this meant you wanted a shadow drawn into the element
+        //so mimic this
+        if (x === 0 && y === 0 && $target.length > 0) {
             var offset = $target.offset();
             x = offset.top;
             y = offset.left;
-		}
+        }
 
-		//ie9 should support svg so should support the opacity, until then tone the colour down
-		//also as the blur seems a little stronger in ie, we need to counter the offset
-		if (jQuery.browser.msie && jQuery.browser.version < "9") {
-			colour = "#f0f0f0";
-			opacity = ".2";
+        //ie9 should support svg so should support the opacity, until then tone the colour down
+        //also as the blur seems a little stronger in ie, we need to counter the offset
+        if (jQuery.browser.msie && jQuery.browser.version < "9") {
+            colour = "#f0f0f0";
+            opacity = ".2";
             offsetSize = 3;
-		}
+        }
 
-		$container.css({
+        $container.css({
             position: "absolute",
             top: x,
             left: y,
@@ -68,8 +68,8 @@ if (window.Raphael) {
             opacity: opacity
         });
 
-		return $container;
-	};
+        return $container;
+    };
 
     Raphael.shadow.BOX_SHADOW_SUPPORT = (function() {
         var style = document.documentElement.style;
