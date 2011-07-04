@@ -13,7 +13,8 @@ if (window.Raphael) {
             opacity = "0.4",
             blur = "3",
             paper,
-            rect;
+            rect,
+            offset;
 
         w += size;
         h += size;
@@ -30,7 +31,7 @@ if (window.Raphael) {
         //from the old api, this meant you wanted a shadow drawn into the element
         //so mimic this
         if (x === 0 && y === 0 && $target.length > 0) {
-            var offset = $target.offset();
+            offset = $target.offset();
             x = offset.top;
             y = offset.left;
         }
@@ -52,7 +53,7 @@ if (window.Raphael) {
             zIndex: zindex
         });
 
-        if ($target) {
+        if ($target.length > 0) {
             $container.appendTo(document.body);
             paper = Raphael($container[0], w + offsetSize + 5, h + offsetSize + 5, radius);
         } else {
@@ -73,7 +74,7 @@ if (window.Raphael) {
 
     Raphael.shadow.BOX_SHADOW_SUPPORT = (function() {
         var style = document.documentElement.style;
-        var propertyNames = ["boxShadow", "MozBoxShadow", "WebkitBoxShadow", "msBoxShadow"/*, "OBoxShadow", "KhtmlBoxShadow"*/];
+        var propertyNames = ["boxShadow", "MozBoxShadow", "WebkitBoxShadow", "msBoxShadow"];
         for (var i = 0; i < propertyNames.length; i++) {
             if (propertyNames[i] in style) {
                 return true;
