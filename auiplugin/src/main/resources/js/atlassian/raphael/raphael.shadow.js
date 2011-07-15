@@ -26,6 +26,9 @@ if (window.Raphael) {
 
             // Return the unused shadow element to preserve compatibility with legacy API.
             return $container.addClass("hidden");
+        } else {
+// blunt hack to suppress in m2. https://studio.atlassian.com/browse/AJS-669
+return $container.addClass("hidden");
         }
 
         //from the old api, this meant you wanted a shadow drawn into the element
