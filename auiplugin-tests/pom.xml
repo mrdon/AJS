@@ -3,7 +3,7 @@
     <parent>
         <artifactId>auiplugin-parent</artifactId>
         <groupId>com.atlassian.aui</groupId>
-        <version>3.5-m2</version>
+        <version>3.5-SNAPSHOT</version>
     </parent>
 
     <artifactId>auiplugin-tests</artifactId>
