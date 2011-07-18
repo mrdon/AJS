@@ -81,7 +81,9 @@
         <resource type="download" name="firebug.js" location="js/atlassian/firebug.js"/>
         <resource type="download" name="forms.js" location="js/atlassian/forms.js"/>
         <resource type="download" name="messages.js" location="js/atlassian/messages.js"/>
-        <resource type="download" name="tables.js" location="js/atlassian/tables.js"/>
+        <resource type="download" name="tables.js" location="js/atlassian/tables.js">
+            <param name="conditionalComment" value="lte IE 8"/>
+        </resource>
         <resource type="download" name="tabs.js" location="js/atlassian/tabs.js"/>
         <resource type="download" name="template.js" location="js/atlassian/template.js"/>
         <resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>

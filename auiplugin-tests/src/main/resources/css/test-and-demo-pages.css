@@ -3,7 +3,15 @@ body.refapp {
     font-family: sans-serif;
     background: #ddd;
     color: #333;
-    font-size: 14px;
+    font-size: 13px;
+}
+
+a {
+    color: #326ca6;
+    text-decoration: none;
+}
+a:focus, a:hover, a:active {
+    text-decoration: underline;
 }
 
 .navigation a {
