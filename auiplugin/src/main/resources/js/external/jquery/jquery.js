@@ -1283,7 +1283,10 @@ jQuery.extend({
 		if ( document.defaultView && document.defaultView.getComputedStyle ) {
 			div.style.width = "1px";
 			div.style.marginRight = "0";
-			jQuery.support.reliableMarginRight = ( parseInt(document.defaultView.getComputedStyle(div, null).marginRight, 10) || 0 ) === 0;
+
+            // ATLASSIAN - patching for FF bug http://bugs.jquery.com/ticket/8763
+            // This is fixed in jquery 1.6.1 and our patch can be removed when we upgrade
+			jQuery.support.reliableMarginRight = ( parseInt( ( document.defaultView.getComputedStyle(div, null) || { marginRight: 0 } ).marginRight, 10) || 0 ) === 0;
 		}
 
 		body.removeChild( div ).style.display = "none";
