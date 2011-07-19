@@ -73,7 +73,7 @@ table.aui tr:hover th {
     table.aui.aui-zebra > thead > tr:nth-child(even),
     table.aui.aui-zebra > tbody > tr:nth-child(even),
     table.aui.aui-zebra > tfoot > tr:nth-child(even) {
-        background: #f8f8f8;
+        background: #fafafa;
         color: #111;
     }
     /* must be a separate rule for IE */

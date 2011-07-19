@@ -1,6 +1,6 @@
 /*->
 #name>Tables
-#javascript>IE8 and below
+#javascript>IE8 and below (loads conditionally)
 #css>Yes
 #description> Standards Patterns and Styling for HTML Tables
 <-*/
