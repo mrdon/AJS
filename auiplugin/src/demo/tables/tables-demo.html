@@ -997,7 +997,7 @@
             <p>Note that this style is deprecated and will be removed in a future version of AUI - you should only use this if you have a critical requirement to maintain the striping style in the short term. This design has a performance impact in IE8 and below as it requires Javascript. It is not recommended for large tables.</p> 
         </div><!-- .aui-message -->
     
-        <p class="description">To add zebra striping (and remove the borders) add the class <code>aui-zebra</code> to the table.</p>
+        <p class="description">To add zebra striping (and remove the borders) add the class <code>aui-zebra</code> to the table. Note you must have the TBODY for the striping to work correctly across browsers (you should have it anyway but it will definitely break in IE if you forget it).</p>
     
         <div class="html-code">
             <table class="aui aui-zebra" id="zebra1">
