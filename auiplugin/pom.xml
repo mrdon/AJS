@@ -13,6 +13,10 @@
     <description>An Atlassian plugin that contains the core javascript files used in Atlassian products.</description>
     <url>https://studio.atlassian.com/svn/AJS/trunk</url>
 
+    <properties>
+        <atlassian.plugin.key>com.atlassian.auiplugin</atlassian.plugin.key>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.json</groupId>
@@ -43,6 +47,8 @@
             <version>2.5.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Test dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -62,11 +68,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <properties>
-        <atlassian.plugin.key>com.atlassian.auiplugin</atlassian.plugin.key>
-    </properties>
-
 
     <build>
         <resources>
@@ -95,6 +96,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <productVersion>${refapp.version}</productVersion>
+                    <extractDependencies>true</extractDependencies>
                 </configuration>
                 
             </plugin>

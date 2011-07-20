@@ -59,6 +59,7 @@
                             <exclude>selenium/**/*</exclude>
                             <exclude>**/*$*</exclude>
                         </excludes>
+                        <skipTests>${skipTests}</skipTests>
                     </configuration>
                 </plugin>
 
@@ -99,9 +100,20 @@
 
         <parent-basedir>${project.basedir}</parent-basedir>
 
+        <aui.test.version>0.10-SNAPSHOT</aui.test.version>
+        <skipTests>false</skipTests>
+
     </properties>
 
     <profiles>
+
+        <profile>
+            <id>skipTests</id>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </profile>
+
         <profile>
             <id>ie</id>
             <properties>

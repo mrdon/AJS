@@ -207,17 +207,19 @@
     </web-resource>
     <!-- end AUI 2.0 backwards-compat redirects -->
 
-    <web-resource key="ajs-experimental" name="Prototype Components - use at own risk">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-
-        <!-- Add individual resources for experimental components -->
-        <resource type="download" name="experimental-test.css" location="experimental/css/atlassian/experimental-test.css"/>
-        <resource type="download" name="experimental-test.js" location="experimental/js/atlassian/experimental-test.js"/>
-        
-    </web-resource>
 
     <web-resource key="ajs-underscorejs" name="Underscore.js library">
         <resource type="download" name="underscore.js" location="js/external/underscorejs/underscore.js"/>
+    </web-resource>
+
+
+    <!--
+        Experimental web resources
+        Place all experimental web resource below here.    
+    -->
+    <web-resource key="aui-experimental-example" name="AUI Experimental Example">
+        <resource type="download" name="experimental-example.css" location="experimental/css/atlassian/experimental-example.css" />
+        <resource type="download" name="experimental-example.js" location="experimental/js/atlassian/experimental-example.js" />
     </web-resource>
 
 </atlassian-plugin>

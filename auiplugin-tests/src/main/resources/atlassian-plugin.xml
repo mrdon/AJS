@@ -5,6 +5,8 @@
         <version>${project.version}</version>
     </plugin-info>
 
+    <component-import key="templateRenderer" interface="com.atlassian.templaterenderer.TemplateRenderer" />
+
     <!--<resource name="js/" type="download" location="js/"/>-->
 
     <servlet key="static-resources" class="com.atlassian.aui.test.FuncTestServlet">
@@ -138,5 +140,20 @@
         <label>AUI Bootcamp Exercise</label>
         <link linkId="aui-bootcamp">/plugins/servlet/ajstest/bootcamp/instructions.html</link>
     </web-item>
+
+
+
+    <!-- AUI Experimental Testing below -->
+    <servlet key="experimental-func-test-servlet" class="com.atlassian.aui.test.experimental.ExperimentalFuncTestServlet">
+        <url-pattern>/aui-exprimental-test/*</url-pattern>
+    </servlet>
+
+    <web-resource key="all-experimental-unit-tests">
+        <dependency>auiplugin-tests:experimental-example-unit-tests</dependency>
+    </web-resource>
+
+    <web-resource key="experimental-example-unit-tests">
+        <resource type="download" name="experimental-example-unit-tests.js" location="unit-tests/tests/experimental/experimental-example-unit-tests/experimental-example-unit-tests.js"/>
+    </web-resource>
     
 </atlassian-plugin>

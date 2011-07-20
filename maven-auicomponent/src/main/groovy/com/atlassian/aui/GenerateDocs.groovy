@@ -13,7 +13,7 @@ import org.apache.maven.execution.MavenSession
 import org.apache.maven.plugin.PluginManager
 
 /**
- * Maven2 mojo for generating a new aui-component.xml
+ * Maven2 mojo for generating a new com.atlassian.aui-component.xml
  *
  * @goal generateDocs
  * @aggregator true

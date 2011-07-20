@@ -1,47 +1,50 @@
-package com.atlassian.aui.test;
+package com.atlassian.aui.test.experimental;
 
 
 import com.atlassian.plugin.Plugin;
 import com.atlassian.plugin.PluginAccessor;
 import com.atlassian.plugin.webresource.WebResourceManager;
+import com.atlassian.templaterenderer.TemplateRenderer;
+import com.google.common.collect.ImmutableMap;
 import org.apache.commons.io.IOUtils;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Writer;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Map;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
  */
-public class FuncTestServlet extends HttpServlet {
+public class ExperimentalFuncTestServlet extends HttpServlet {
     private final WebResourceManager webResourceManager;
     private final Plugin plugin;
+    private final TemplateRenderer templateRenderer;
 
-    public FuncTestServlet(WebResourceManager webResourceManager, PluginAccessor pluginAccessor) {
+    public ExperimentalFuncTestServlet(WebResourceManager webResourceManager,
+            PluginAccessor pluginAccessor, TemplateRenderer templateRenderer) {
         this.webResourceManager = webResourceManager;
         this.plugin = pluginAccessor.getPlugin("auiplugin-tests");
+        this.templateRenderer = templateRenderer;
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         webResourceManager.requireResource("com.atlassian.auiplugin:ajs");
-
+        
         // conditional resource loading for testing
-        if(req.getPathInfo().contains("underscorejs-unit-tests"))
+        if(req.getPathInfo().contains("experimental-example-unit-test"))
         {
-            webResourceManager.requireResource("com.atlassian.auiplugin:ajs-underscorejs");
-        }
-
-        if(req.getPathInfo().contains("stalker")){
-            webResourceManager.requireResource("com.atlassian.auiplugin:stalker");
+            webResourceManager.requireResource("com.atlassian.auiplugin:aui-experimental-example");
         }
 
         if (req.getPathInfo().endsWith("/"))
@@ -57,16 +60,34 @@ public class FuncTestServlet extends HttpServlet {
         }
         else
         {
-            if(req.getPathInfo().contains("live-demo")){
-                webResourceManager.requireResource("auiplugin-tests:live-demo");
-            }
+            String thisPathArray[] = req.getPathInfo().split("/");
+
+            if (thisPathArray[thisPathArray.length - 1].contains("index"))
+                {
+                    URL url = plugin.getResource("unit-tests/tests/experimental");
+                    File file = new File(url.getFile());
+                    String[] testPaths = file.list(new FilenameFilter()
+                    {
+                        public boolean accept(final File checkFile, final String s)
+                        {
+                            File f = new File(checkFile, s);
+                            return f.isDirectory() && s.contains("-unit-tests");
+                        }
+                    });
+
+                    Map<String,Object> context = ImmutableMap.<String,Object>of("testPaths", testPaths);
+                    templateRenderer.render("unit-tests/tests/experimental/index.vm",
+                            context, resp.getWriter());
+                    return;
+
+                }
 
             // only include qunit when necessary
             if (req.getPathInfo().contains("unit-tests"))
             {
                 webResourceManager.requireResource("auiplugin-tests:qunit");
 
-                String thisPathArray[] = req.getPathInfo().split("/");
+
 
                 //only require the test resource if we are in a subpath
                 if (thisPathArray.length > 4)
@@ -78,7 +99,7 @@ public class FuncTestServlet extends HttpServlet {
                 //include all unit test js files if viewing allTests page
                 if (thisPathArray[thisPathArray.length - 1].contains("allTests"))
                 {
-                    webResourceManager.requireResource("auiplugin-tests:all-unit-tests");
+                    webResourceManager.requireResource("auiplugin-tests:all-experimental-unit-tests");
                 }
 
             }

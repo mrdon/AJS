@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<meta charset="utf-8">
+    <meta name="decorator" content="atl.general">
+    <title> AUI Test Pages </title>
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            font-size: 13pt;
+            background: #ddd;
+        }
+
+        li {
+            margin-top: 5px;
+        }
+        a{
+            color: #555;
+            text-decoration: none;
+        }
+
+        a:hover{
+            color: #000;
+            text-decoration: none;
+        }
+        .navigation {
+            margin:auto;
+            margin-top: 50px;
+            border: solid 1px;
+            width: 350px;
+            margin-bottom: 5px;
+            padding: 10px;
+            background: #fff;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            box-shadow: 0 5px 5px #555;
+            -moz-box-shadow: 0 5px 5px #555;
+            -webkit-box-shadow: 0 5px 5px #555;
+            padding-left: 40px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navigation">
+        <h2> AUI Experimental Unit Tests (QUnit)  </h2>
+        <p style="font-size: 10pt;"> The following pages are used used for automated unit testing, these are written in Qunit.  Click on the links below to run the corresponding tests.</p>
+
+        <p><a href="allTests.html" id="all-tests-link"> Run ALL Experimetnal TESTS </a></p>
+        <ol>
+            #foreach($testPath in $testPaths)
+                <li><a href="experimental/${testPath}/${testPath}.html">${testPath}</a></li>
+            #end
+        </ol>
+    </div>
+</body>
+</html>
