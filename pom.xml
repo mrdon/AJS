@@ -100,7 +100,6 @@
 
         <parent-basedir>${project.basedir}</parent-basedir>
 
-        <aui.test.version>0.10-SNAPSHOT</aui.test.version>
         <skipTests>false</skipTests>
 
     </properties>
