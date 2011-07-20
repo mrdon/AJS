@@ -10,6 +10,7 @@
 #option>escapeHandler
 #option>hideHandler
 #option>useLiveEvents
+#option>useDisabled
 <-*/
 
 /**->
@@ -46,7 +47,8 @@ AJS.dropDown = function (obj, usroptions) {
                 return false;
             },
             hideHandler: function() {},
-            moveHandler: function(selection,dir) {}
+            moveHandler: function(selection,dir) {},
+            useDisabled: false
         };
 
     AJS.$.extend(options, usroptions);
@@ -357,8 +359,8 @@ AJS.dropDown = function (obj, usroptions) {
 
         /*Stops the dropdown from functioning if a class of disabled
           is placed on the ul of the dropdown */
-        res.addControlProcess("show", function(invocation) {
-            if(this.$.parents('.disabled').is('ul')) {
+        res.addControlProcess('show', function(invocation) {
+            if(options.useDisabled && this.$.parents('.aui-dd-parent').hasClass('disabled')) {
                 return;
             } else {
                 invocation.proceed();
