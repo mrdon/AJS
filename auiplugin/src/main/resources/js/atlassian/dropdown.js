@@ -48,8 +48,10 @@ AJS.dropDown = function (obj, usroptions) {
             hideHandler: function() {},
             moveHandler: function(selection,dir) {}
         };
+
     AJS.$.extend(options, usroptions);
     options.alignment = {left:"left",right:"right"}[options.alignment.toLowerCase()]  || "left";
+
     if (obj && obj.jquery) { // if AJS.$
         dd = obj;
     } else if (typeof obj == "string") { // if AJS.$ selector
@@ -287,28 +289,38 @@ AJS.dropDown = function (obj, usroptions) {
          * @param {Function} callback - Function to be executed
          * @return {Array} weaved aspect
          */
+        res.addControlProcess = function(method, process) {
+            AJS.$.aop.around({target: this, method: method}, process);
+        };
+
         res.addCallback = function (method, callback) {
             return AJS.$.aop.after({target: this, method: method}, callback);
         };
 
         res.reset = methods.reset();
+
         res.show = function (method) {
             this.alignment = options.alignment;
             hider();
             AJS.dropDown.current = this;
             this.method = method || this.method || "appear";
+            
             this.timer = setTimeout(function () {
                 $doc.click(hider);
             }, 0);
 
             $doc.keydown(moveFocus);
+
             if (options.firstSelected && this.links[0]) {
                 active(0).call(this.links[0]);
             }
+
             AJS.$(cdd.offsetParent).css({zIndex: 2000});
             methods[this.method](true);
+
 			AJS.$(document).trigger("showLayer", ["dropdown", AJS.dropDown.current]);
         };
+
         res.hide = function (causer) {
             this.method = this.method || "appear";
             AJS.$($cdd.get(0).offsetParent).css({zIndex: ""});
@@ -319,15 +331,17 @@ AJS.dropDown = function (obj, usroptions) {
             AJS.dropDown.current = null;
             return causer;
         };
+
         res.addCallback("reset", function () {
-                   if (options.firstSelected && this.links[0]) {
-                       active(0).call(this.links[0]);
-                   }
-               });
+           if (options.firstSelected && this.links[0]) {
+               active(0).call(this.links[0]);
+           }
+        });
 
         if (!AJS.dropDown.iframes) {
             AJS.dropDown.iframes = [];
         }
+
         AJS.dropDown.createShims = function () {
             AJS.$("iframe").each(function (idx) {
                var iframe = this;
@@ -341,28 +355,39 @@ AJS.dropDown = function (obj, usroptions) {
             return arguments.callee;
         }();
 
+        /*Stops the dropdown from functioning if a class of disabled
+          is placed on the ul of the dropdown */
+        res.addControlProcess("show", function(invocation) {
+            if(this.$.parents('.disabled').is('ul')) {
+                return;
+            } else {
+                invocation.proceed();
+            }
+        });
+
         res.addCallback("show", function() {
-                         AJS.$(AJS.dropDown.iframes).each(function(){
-                           var $this = AJS.$(this);
-                           if ($this.is(":visible")) {
-                               var offset = $this.offset();
-                               offset.height = $this.height();
-                               offset.width = $this.width();
-                               this.shim.css({
-                                   left: offset.left + "px",
-                                   top: offset.top + "px",
-                                   height: offset.height + "px",
-                                   width: offset.width + "px"
-                               }).removeClass("hidden");
-                           }
-                       });
-                   });
-               res.addCallback("hide", function () {
-                   AJS.$(AJS.dropDown.iframes).each(function(){
-                       this.shim.addClass("hidden");
-                   });
-                   options.hideHandler();
-               });
+            AJS.$(AJS.dropDown.iframes).each(function() {
+               var $this = AJS.$(this);
+               if ($this.is(":visible")) {
+                   var offset = $this.offset();
+                   offset.height = $this.height();
+                   offset.width = $this.width();
+                   this.shim.css({
+                       left: offset.left + "px",
+                       top: offset.top + "px",
+                       height: offset.height + "px",
+                       width: offset.width + "px"
+                   }).removeClass("hidden");
+               }
+            });
+       });
+
+       res.addCallback("hide", function () {
+           AJS.$(AJS.dropDown.iframes).each(function(){
+               this.shim.addClass("hidden");
+           });
+           options.hideHandler();
+       });
 
         //shadow
        (function () {
@@ -493,12 +518,12 @@ AJS.dropDown.removeAllAdditionalProperties = function (item) {
         }
 
         ddcontrol.addCallback("show", function () {
-                $parent.addClass("active");
-             });
+            $parent.addClass("active");
+        });
         
-             ddcontrol.addCallback("hide", function () {
-                $parent.removeClass("active");
-             });
+        ddcontrol.addCallback("hide", function () {
+            $parent.removeClass("active");
+        });
     };
 
     var handleEvent = function(event, $trigger, $dropdown, ddcontrol) {
@@ -641,9 +666,11 @@ AJS.dropDown.Ajax = function (usroptions) {
                 }
                 return AJS.$.extend(opts, {success: success});
             },
+
             refreshSuccess: function (response) {
                 this.$.html(response);
             },
+
             cache: function () {
                 var c = {};
                 return {
@@ -660,6 +687,7 @@ AJS.dropDown.Ajax = function (usroptions) {
                     }
                 };
             }(),
+
             show: function (superMethod) {
                 return function (opts) {
                     if (options.cache && !!ddcontrol.cache.get(ddcontrol.getAjaxOptions())) {
@@ -679,6 +707,7 @@ AJS.dropDown.Ajax = function (usroptions) {
                     }
                 };
             }(ddcontrol.show),
+
             resetCache: function () {
                 ddcontrol.cache.reset();
             }
