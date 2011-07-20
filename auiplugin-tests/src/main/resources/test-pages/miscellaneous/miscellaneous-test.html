@@ -21,7 +21,6 @@
         #firebug-warning-test {
             display: none;
         }
-        #assistive a:focus:after { content: " - has focus"; }
     </style>
     <script type="text/javascript" src="../common.js"></script>
 
@@ -31,18 +30,6 @@
     <h2> AUI Misc Test Page (helper functions, etc) </h2>
     <h4><a href="../index.html"> Back to AUI Demo </a></h4>
 </div>
-
-    <div class="aui-test" id="assistive">
-        <h2><code>assistive</code> and <code>hidden</code> classes</h2>
-        <p class="description"> CSS for removing and visually hiding content. Hidden content should not be available to keyboards/screen readers; assistive should be available for keyboards/screen readers.</p>
-        <div class="html-code">
-            <p>There are two links between the "not hidden" links; one is <code>class=&quot;hidden&quot;</code> and links to example.com/hidden, the other is <code>class=&quot;assistive&quot;</code> and links to example.com/assistive. You should see focus indicators on the Not Hidden links. There should only be one "invisible" keyboard navigation step between the Not Hidden links.</p>
-            <p><a href="http://example.com/nothidden">Not Hidden start</a></p>
-            <p class="assistive"><a href="http://example.com/assistive">Assistive link</a></p>
-            <p class="hidden"><a href="http://example.com/hidden">Hidden</a></p>
-            <p><a href="http://example.com/nothidden">Not Hidden end</a></p>
-        </div>
-    </div>
 
     <div class="aui-test">
         <h2>AJS.log</h2>
