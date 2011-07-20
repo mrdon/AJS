@@ -29,6 +29,7 @@
  * When an object of type Array is passed in, you can also configure:
  * <li>isHiddenByDefault - set to true if you would like to hide the drop down on initialisation</li>
  * <li>displayHandler - function to display text in the drop down</li>
+ * <li>useDisabled - If set to true, the dropdown will not appear if a class of disabled is added to aui-dd-parent</li>
  * @return {Array} an array of jQuery objects, referring to the drop down container elements
  */
  
@@ -48,7 +49,7 @@ AJS.dropDown = function (obj, usroptions) {
             },
             hideHandler: function() {},
             moveHandler: function(selection,dir) {},
-            useDisabled: false
+            useDisabled: false 
         };
 
     AJS.$.extend(options, usroptions);
