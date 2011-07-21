@@ -297,6 +297,14 @@ AJS.dropDown = function (obj, usroptions) {
             AJS.$.aop.around({target: this, method: method}, process);
         };
 
+        /**
+         * Uses Aspect Oriented Programming (AOP) to insert callback <em>after</em> the
+         * specified method has returned @see AJS.$.aop
+         * @method addCallback
+         * @param {String} methodName - Name of a public method
+         * @param {Function} callback - Function to be executed
+         * @return {Array} weaved aspect
+         */
         res.addCallback = function (method, callback) {
             return AJS.$.aop.after({target: this, method: method}, callback);
         };
