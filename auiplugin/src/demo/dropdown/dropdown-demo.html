@@ -137,6 +137,48 @@
 
     </div>
 
+    <div class="aui-test source-required shims-required-left">
+        <h2>A Disabled Dropdown</h2>
+
+        <p class="description">A disabled dropdown: <button id="disabledToggle">Click here to enable</button></p>
+
+        <div class="html-code">
+            <ul id="dropDown-disabled" class="styled-parent">
+                <li class="aui-dd-parent disabled">
+                    <a href="#" class="aui-dd-trigger">A disabled Dropdown</a>
+                    <ul class="aui-dropdown">
+                        <li class="dropdown-item"><a href="http://www.google.com" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Standard</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.$("#dropDown-disabled").dropDown("Standard", {useDisabled: true});
+            });
+            
+            AJS.$(document).delegate('#disabledToggle', 'click', function(e) {
+                var $ddParent = AJS.$('.aui-dd-parent', '#dropDown-disabled').toggleClass('disabled');
+                        
+                if($ddParent.hasClass('disabled')) {
+                    AJS.$(this).text('Click here to enable');
+                } else {
+                    AJS.$(this).text('Click here to disable');
+                }
+            });
+        </script>
+    </div>
+
     <div class="aui-demo source-required" id="icon-test-1">
         <h2> Dropdown with Icons </h2>
 

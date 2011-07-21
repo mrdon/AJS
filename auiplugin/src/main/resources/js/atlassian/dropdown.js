@@ -285,9 +285,10 @@ AJS.dropDown = function (obj, usroptions) {
         };
 
         /**
-         * Uses Aspect Oriented Programming (AOP) to insert callback <em>after</em> the
+         * Uses Aspect Oriented Programming (AOP) to wrap a method around another method 
+         * Allows control of the execution of the wrapped method.
          * specified method has returned @see AJS.$.aop
-         * @method addCallback
+         * @method addControlProcess
          * @param {String} methodName - Name of a public method
          * @param {Function} callback - Function to be executed
          * @return {Array} weaved aspect
@@ -303,6 +304,11 @@ AJS.dropDown = function (obj, usroptions) {
         res.reset = methods.reset();
 
         res.show = function (method) {
+
+            if(options.useDisabled && this.$.closest('.aui-dd-parent').hasClass('disabled')) {
+                return
+            }
+
             this.alignment = options.alignment;
             hider();
             AJS.dropDown.current = this;
@@ -358,20 +364,11 @@ AJS.dropDown = function (obj, usroptions) {
             return arguments.callee;
         }();
 
-        /*Stops the dropdown from functioning if a class of disabled
-          is placed on the ul of the dropdown */
-        res.addControlProcess('show', function(invocation) {
-            if(options.useDisabled && this.$.parents('.aui-dd-parent').hasClass('disabled')) {
-                return;
-            } else {
-                invocation.proceed();
-            }
-        });
-
         res.addCallback("show", function() {
             AJS.$(AJS.dropDown.iframes).each(function() {
-               var $this = AJS.$(this);
-               if ($this.is(":visible")) {
+                var $this = AJS.$(this);
+              
+                if ($this.is(":visible")) {
                    var offset = $this.offset();
                    offset.height = $this.height();
                    offset.width = $this.width();
@@ -381,7 +378,7 @@ AJS.dropDown = function (obj, usroptions) {
                        height: offset.height + "px",
                        width: offset.width + "px"
                    }).removeClass("hidden");
-               }
+                }
             });
        });
 
