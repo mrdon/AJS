@@ -213,11 +213,18 @@
     </web-resource>
 
 
+    <web-resource key="aui-core" name="AUI Core">
+        <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
+        <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
+    </web-resource>
+
     <!--
         Experimental web resources
         Place all experimental web resource below here.    
     -->
     <web-resource key="aui-experimental-example" name="AUI Experimental Example">
+        <dependency>com.atlassian.auiplugin:aui-core</dependency>
         <resource type="download" name="experimental-example.css" location="experimental/css/atlassian/experimental-example.css" />
         <resource type="download" name="experimental-example.js" location="experimental/js/atlassian/experimental-example.js" />
     </web-resource>

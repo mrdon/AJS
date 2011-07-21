@@ -63,24 +63,26 @@ public class ExperimentalFuncTestServlet extends HttpServlet {
             String thisPathArray[] = req.getPathInfo().split("/");
 
             if (thisPathArray[thisPathArray.length - 1].contains("index"))
+            {
+                resp.setContentType("text/html");
+                webResourceManager.requireResource("auiplugin-tests:test-common");
+                URL url = plugin.getResource("unit-tests/tests/experimental");
+                File file = new File(url.getFile());
+                String[] testPaths = file.list(new FilenameFilter()
                 {
-                    URL url = plugin.getResource("unit-tests/tests/experimental");
-                    File file = new File(url.getFile());
-                    String[] testPaths = file.list(new FilenameFilter()
+                    public boolean accept(final File checkFile, final String s)
                     {
-                        public boolean accept(final File checkFile, final String s)
-                        {
-                            File f = new File(checkFile, s);
-                            return f.isDirectory() && s.contains("-unit-tests");
-                        }
-                    });
+                        File f = new File(checkFile, s);
+                        return f.isDirectory() && s.contains("-unit-tests");
+                    }
+                });
 
-                    Map<String,Object> context = ImmutableMap.<String,Object>of("testPaths", testPaths);
-                    templateRenderer.render("unit-tests/tests/experimental/index.vm",
-                            context, resp.getWriter());
-                    return;
+                Map<String,Object> context = ImmutableMap.<String,Object>of("testPaths", testPaths);
+                templateRenderer.render("unit-tests/tests/experimental/index.vm",
+                        context, resp.getWriter());
+                return;
 
-                }
+            }
 
             // only include qunit when necessary
             if (req.getPathInfo().contains("unit-tests"))
@@ -107,6 +109,7 @@ public class ExperimentalFuncTestServlet extends HttpServlet {
             {
                 webResourceManager.requireResource("auiplugin-tests:test-common");
             }
+            
             String path = req.getPathInfo();
             if (path.endsWith(".html"))
             {

@@ -11,6 +11,6 @@ public class AUIExperimentalExampleTest extends AbstractAUISeleniumTestCase
 {
     public void testExample()
     {
-        
+
     }
 }

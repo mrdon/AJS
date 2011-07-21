@@ -121,6 +121,10 @@
         <dependency>auiplugin-tests:template-unit-tests</dependency>
     </web-resource>
 
+    <web-resource key="unit-tests">
+        <resource type="download" name="unit-test.css" location="css/unit-test.css" />
+    </web-resource>
+
     <web-item key="aui-test-pages" section="index.links" weight="10" application="refapp">
         <label>AUI Test Pages</label>
         <link linkId="aui-test-pages">/plugins/servlet/ajstest/test-pages/index.html</link>
@@ -145,7 +149,7 @@
 
     <!-- AUI Experimental Testing below -->
     <servlet key="experimental-func-test-servlet" class="com.atlassian.aui.test.experimental.ExperimentalFuncTestServlet">
-        <url-pattern>/aui-exprimental-test/*</url-pattern>
+        <url-pattern>/aui-experimental-test/*</url-pattern>
     </servlet>
 
     <web-resource key="all-experimental-unit-tests">
