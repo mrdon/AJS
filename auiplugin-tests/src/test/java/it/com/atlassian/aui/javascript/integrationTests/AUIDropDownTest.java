@@ -54,7 +54,7 @@ public class AUIDropDownTest extends AbstractAUISeleniumTestCase
         client.click("css=ul#dropDown-disabled .aui-dd-trigger");
         assertThat.elementNotVisible("css=ul#dropDrown-disabled .aui-dropdown");
 
-        client.click("css=a#disabledToggle");
+        client.click("css=button#disabledToggle");
         client.click("css=ul#dropDown-disabled .aui-dd-trigger");
         assertThat.elementVisible("css=ul#dropDown-disabled .aui-dropdown");
     }
