@@ -408,13 +408,6 @@ AJS.dropDown = function (obj, usroptions) {
                    this.shadow = Raphael.shadow(0, 0, this.$.outerWidth(true), this.$.outerHeight(true), {
                        target: this.$[0]
                    });
-                   this.shadow.css("top",this.$.css("top"));
-                   if(this.alignment == "right") {
-                        this.shadow.css("left","");
-                   }
-                   else {
-                       this.shadow.css("left","0px");
-                   }
                }
            };
            res.addCallback("reset", refreshShadow);
