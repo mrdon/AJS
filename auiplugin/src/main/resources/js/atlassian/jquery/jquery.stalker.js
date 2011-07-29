@@ -22,6 +22,8 @@
 
 jQuery.fn.stalker = function (){
 
+    AJS.log("DEPRECATED: jQuery.fn.stalker - See https://studio.atlassian.com/browse/AJS-676");
+
     function getBrowserVersionAsInt() {
         return parseInt(jQuery.browser.version.replace(/\.*/g,"").substring(0,3), 10);
     }
