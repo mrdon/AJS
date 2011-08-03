@@ -9,7 +9,11 @@
  */
 AJS.bind = function (eventType, eventData, handler) {
     try {
-        return jQuery(window).bind(eventType, eventData, handler);
+    	if (typeof handler === "function") {
+	        return jQuery(window).bind(eventType, eventData, handler);
+    	} else {
+    	    return jQuery(window).bind(eventType, eventData);
+    	}
     } catch (e) {
         AJS.log("error while binding: " + e.message);
     }
