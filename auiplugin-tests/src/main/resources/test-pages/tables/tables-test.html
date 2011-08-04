@@ -597,7 +597,7 @@
 <div class="aui-test source-required">
     <h2>A complex <code>table</code>.</h2>
 
-    <p class="description"></p>
+    <p class="description">Both TH row and column, plus two TBODYs.</p>
 
     <div class="html-code">
         <table class="aui" id="complex">
@@ -717,6 +717,121 @@
                         </ul>
                     </td>
                     <td headers="complex-action complex-fifth-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th id="complex2ndbody-first-row">First Row second body</th>
+                    <td headers="complex-name complex2ndbody-first-row">Default</td>
+                    <td headers="complex-type complex2ndbody-first-row">Internal Directory</td>
+                    <td headers="complex-order complex2ndbody-first-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-first-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex2ndbody-second-row">Second Row</th>
+                    <td headers="complex-name complex2ndbody-second-row">Corporate LDAP</td>
+                    <td headers="complex-type complex2ndbody-second-row">Microsoft Active Directory</td>
+                    <td headers="complex-order complex2ndbody-second-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-second-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex2ndbody-third-row">Third Row</th>
+                    <td headers="complex-name complex2ndbody-third-row">Corporate LDAP</td>
+                    <td headers="complex-type complex2ndbody-third-row">Microsoft Active Directory</td>
+                    <td headers="complex-order complex2ndbody-third-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-third-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex2ndbody-fourth-row">Fourth Row</th>
+                    <td headers="complex-name complex2ndbody-fourth-row">Corporate LDAP</td>
+                    <td headers="complex-type complex2ndbody-fourth-row">Microsoft Active Directory</td>
+                    <td headers="complex-order complex2ndbody-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex2ndbody-fifth-row">Fifth Row</th>
+                    <td headers="complex-name complex2ndbody-fifth-row">Contractor Directory</td>
+                    <td headers="complex-type complex2ndbody-fifth-row">Internal Directory</td>
+                    <td headers="complex-order complex2ndbody-fifth-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-fifth-row">
                         <ul class="menu">
                             <li>
                                 <a href="#">An Action</a>
@@ -1011,24 +1126,24 @@
         <table class="aui aui-zebra" id="zebra1">
             <thead>
                 <tr>
-                    <th id="basic-name">Name</th>
-                    <th id="basic-type">Type</th>
-                    <th id="basic-order">Order</th>
-                    <th id="basic-action">Action</th>
+                    <th id="basic-zebra-name">Name</th>
+                    <th id="basic-zebra-type">Type</th>
+                    <th id="basic-zebra-order">Order</th>
+                    <th id="basic-zebra-action">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td headers="basic-name">Default</td>
-                    <td headers="basic-type">Internal Directory</td>
-                    <td headers="basic-order">
+                    <td headers="basic-zebra-name">Default</td>
+                    <td headers="basic-zebra-type">Internal Directory</td>
+                    <td headers="basic-zebra-order">
                         <ul class="menu">
                             <li>
                                 <a class="down" href="#">Down</a>
                             </li>
                         </ul>
                     </td>
-                    <td headers="basic-action">
+                    <td headers="basic-zebra-action">
                         <ul class="menu">
                             <li>
                                 <a href="#">An Action</a>
@@ -1037,9 +1152,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td headers="basic-name">Corporate LDAP</td>
-                    <td headers="basic-type">Microsoft Active Directory</td>
-                    <td headers="basic-order">
+                    <td headers="basic-zebra-name">Corporate LDAP</td>
+                    <td headers="basic-zebra-type">Microsoft Active Directory</td>
+                    <td headers="basic-zebra-order">
                         <ul class="menu">
                             <li>
                                 <a class="up" href="#">Up</a>
@@ -1049,31 +1164,7 @@
                             </li>
                         </ul>
                     </td>
-                    <td headers="basic-action">
-                        <ul class="menu">
-                            <li>
-                                <a href="#">An Action</a>
-                            </li>
-                            <li>
-                                <a href="#">Another Action</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td headers="basic-name">Corporate LDAP</td>
-                    <td headers="basic-type">Microsoft Active Directory</td>
-                    <td headers="basic-order">
-                        <ul class="menu">
-                            <li>
-                                <a class="up" href="#">Up</a>
-                            </li>
-                            <li>
-                                <a class="down" href="#">Down</a>
-                            </li>
-                        </ul>
-                    </td>
-                    <td headers="basic-action">
+                    <td headers="basic-zebra-action">
                         <ul class="menu">
                             <li>
                                 <a href="#">An Action</a>
@@ -1085,9 +1176,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td headers="basic-name">Corporate LDAP</td>
-                    <td headers="basic-type">Microsoft Active Directory</td>
-                    <td headers="basic-order">
+                    <td headers="basic-zebra-name">Corporate LDAP</td>
+                    <td headers="basic-zebra-type">Microsoft Active Directory</td>
+                    <td headers="basic-zebra-order">
                         <ul class="menu">
                             <li>
                                 <a class="up" href="#">Up</a>
@@ -1097,7 +1188,7 @@
                             </li>
                         </ul>
                     </td>
-                    <td headers="basic-action">
+                    <td headers="basic-zebra-action">
                         <ul class="menu">
                             <li>
                                 <a href="#">An Action</a>
@@ -1109,16 +1200,40 @@
                     </td>
                 </tr>
                 <tr>
-                    <td headers="basic-name">Contractor Directory</td>
-                    <td headers="basic-type">Internal Directory</td>
-                    <td headers="basic-order">
+                    <td headers="basic-zebra-name">Corporate LDAP</td>
+                    <td headers="basic-zebra-type">Microsoft Active Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-zebra-name">Contractor Directory</td>
+                    <td headers="basic-zebra-type">Internal Directory</td>
+                    <td headers="basic-zebra-order">
                         <ul class="menu">
                             <li>
                                 <a class="up" href="#">Up</a>
                             </li>
                         </ul>
                     </td>
-                    <td headers="basic-action">
+                    <td headers="basic-zebra-action">
                         <ul class="menu">
                             <li>
                                 <a href="#">An Action</a>
@@ -1132,25 +1247,25 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th id="complex-name">Name</th>
-                    <th id="complex-type">Type</th>
-                    <th id="complex-order">Order</th>
-                    <th id="complex-action">Action</th>
+                    <th id="complex-zebra-name">Name</th>
+                    <th id="complex-zebra-type">Type</th>
+                    <th id="complex-zebra-order">Order</th>
+                    <th id="complex-zebra-action">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th id="complex-first-row">First Row</th>
-                    <td headers="complex-name complex-first-row">Default</td>
-                    <td headers="complex-type complex-first-row">Internal Directory</td>
-                    <td headers="complex-order complex-first-row">
+                    <th id="complex-zebra-first-row">First Row</th>
+                    <td headers="complex-zebra-name complex-zebra-first-row">Default</td>
+                    <td headers="complex-zebra-type complex-zebra-first-row">Internal Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-first-row">
                         <ul class="menu">
                             <li>
                                 <a class="down" href="#">Down</a>
                             </li>
                         </ul>
                     </td>
-                    <td headers="complex-action complex-first-row">
+                    <td headers="complex-zebra-action complex-zebra-first-row">
                         <ul class="menu">
                             <li>
                                 <a href="#">An Action</a>
@@ -1159,10 +1274,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <th id="complex-second-row">Second Row</th>
-                    <td headers="complex-name complex-second-row">Corporate LDAP</td>
-                    <td headers="complex-type complex-second-row">Microsoft Active Directory</td>
-                    <td headers="complex-order complex-second-row">
+                    <th id="complex-zebra-second-row">Second Row</th>
+                    <td headers="complex-zebra-name complex-zebra-second-row">Corporate LDAP</td>
+                    <td headers="complex-zebra-type complex-zebra-second-row">Microsoft Active Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-second-row">
                         <ul class="menu">
                             <li>
                                 <a class="up" href="#">Up</a>
@@ -1172,32 +1287,7 @@
                             </li>
                         </ul>
                     </td>
-                    <td headers="complex-action complex-second-row">
-                        <ul class="menu">
-                            <li>
-                                <a href="#">An Action</a>
-                            </li>
-                            <li>
-                                <a href="#">Another Action</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <th id="complex-third-row">Third Row</th>
-                    <td headers="complex-name complex-third-row">Corporate LDAP</td>
-                    <td headers="complex-type complex-third-row">Microsoft Active Directory</td>
-                    <td headers="complex-order complex-third-row">
-                        <ul class="menu">
-                            <li>
-                                <a class="up" href="#">Up</a>
-                            </li>
-                            <li>
-                                <a class="down" href="#">Down</a>
-                            </li>
-                        </ul>
-                    </td>
-                    <td headers="complex-action complex-third-row">
+                    <td headers="complex-zebra-action complex-zebra-second-row">
                         <ul class="menu">
                             <li>
                                 <a href="#">An Action</a>
@@ -1209,10 +1299,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <th id="complex-fourth-row">Fourth Row</th>
-                    <td headers="complex-name complex-fourth-row">Corporate LDAP</td>
-                    <td headers="complex-type complex-fourth-row">Microsoft Active Directory</td>
-                    <td headers="complex-order complex-fourth-row">
+                    <th id="complex-zebra-third-row">Third Row</th>
+                    <td headers="complex-zebra-name complex-zebra-third-row">Corporate LDAP</td>
+                    <td headers="complex-zebra-type complex-zebra-third-row">Microsoft Active Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-third-row">
                         <ul class="menu">
                             <li>
                                 <a class="up" href="#">Up</a>
@@ -1222,7 +1312,7 @@
                             </li>
                         </ul>
                     </td>
-                    <td headers="complex-action complex-fourth-row">
+                    <td headers="complex-zebra-action complex-zebra-third-row">
                         <ul class="menu">
                             <li>
                                 <a href="#">An Action</a>
@@ -1234,17 +1324,42 @@
                     </td>
                 </tr>
                 <tr>
-                    <th id="complex-fifth-row">Fifth Row</th>
-                    <td headers="complex-name complex-fifth-row">Contractor Directory</td>
-                    <td headers="complex-type complex-fifth-row">Internal Directory</td>
-                    <td headers="complex-order complex-fifth-row">
+                    <th id="complex-zebra-fourth-row">Fourth Row</th>
+                    <td headers="complex-zebra-name complex-zebra-fourth-row">Corporate LDAP</td>
+                    <td headers="complex-zebra-type complex-zebra-fourth-row">Microsoft Active Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-zebra-action complex-zebra-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex-zebra-fifth-row">Fifth Row</th>
+                    <td headers="complex-zebra-name complex-zebra-fifth-row">Contractor Directory</td>
+                    <td headers="complex-zebra-type complex-zebra-fifth-row">Internal Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-fifth-row">
                         <ul class="menu">
                             <li>
                                 <a class="up" href="#">Up</a>
                             </li>
                         </ul>
                     </td>
-                    <td headers="complex-action complex-fifth-row">
+                    <td headers="complex-zebra-action complex-zebra-fifth-row">
                         <ul class="menu">
                             <li>
                                 <a href="#">An Action</a>

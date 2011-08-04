@@ -46,6 +46,7 @@ table.aui tr:hover th {
         }
     /* Borders on TBODY and TFOOT don't work in IE - whereas these at least work in IE7 & IE8 */
     table.aui > tbody > tr:first-child > td,
+    table.aui > tbody > tr:first-child > th,
     table.aui > tfoot > tr:first-child > td {
         border-top: 1px solid #bbb;
     }
