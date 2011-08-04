@@ -7,12 +7,10 @@
 (function() {
     AJS.tables = AJS.tables || {};
     AJS.tables.rowStriping = function () {
-        var tables = AJS.$("table.aui-zebra");
-        // has to be done this way to restart the count per table       
-        for (var i=0, ii = tables.length; i < ii; i++) {
-            //AJS.$("tbody tr:odd", tables[i]).addClass("aui-zebra");
-            //AJS.$("tbody > tr:odd", tables[i]).addClass("aui-zebra");
-            AJS.$(tables[i]).find('> tbody > tr').filter(':odd').addClass("aui-zebra");
+        // has to be done this way to restart the count per tbody (matches CSS)
+        var tbodys = AJS.$("table.aui-zebra > tbody");
+        for (var i=0, ii = tbodys.length; i < ii; i++) {
+            AJS.$(tbodys[i]).find('> tr').filter(':odd').addClass("aui-zebra");
         };
     };
     AJS.$(AJS.tables.rowStriping);
