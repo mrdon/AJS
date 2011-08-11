@@ -105,5 +105,29 @@ public class AUITabsTest extends AbstractAUISeleniumTestCase
         assertThat.elementNotVisible("css=div#horizontal-fourth");
     }
 
+    // test that nested tabs work (basic event test)
+    public void testNestedAUITabs()
+    {
+        openTestPage(TEST_PAGE);
+        client.waitForPageToLoad();
+
+        // click into nested tab and check the nested horizontal tab is visible
+        client.getEval("window.AJS.$(\"#nested-tabs-horizontal-outer-horizontal\").trigger(\"click\")");
+        client.getEval("window.AJS.$(\"#tabs-nested-example1-inner-horizontal-second-trigger\").trigger(\"click\")");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-outer-first");
+        assertThat.elementVisible("css=div#tabs-nested-example1-outer-second");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-outer-horizontal-third");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-outer-horizontal-fourth");
+
+        // click into nested tab and check the nested vertical tab is visible
+        client.getEval("window.AJS.$(\"#nested-tabs-horizontal-outer-vertical\").trigger(\"click\")");
+        client.getEval("window.AJS.$(\"#tabs-nested-example1-inner-second-trigger\").trigger(\"click\")");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-inner-first");
+        assertThat.elementVisible("css=div#tabs-nested-example1-inner-second");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-inner-third");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-inner-fourth");
+
+    }
+
 
 }
