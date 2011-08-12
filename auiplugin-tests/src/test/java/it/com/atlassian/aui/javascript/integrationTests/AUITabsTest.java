@@ -111,23 +111,36 @@ public class AUITabsTest extends AbstractAUISeleniumTestCase
         openTestPage(TEST_PAGE);
         client.waitForPageToLoad();
 
-        // click into nested tab and check the nested horizontal tab is visible
+        // click "nested horizontal" tab
         client.getEval("window.AJS.$(\"#nested-tabs-horizontal-outer-horizontal\").trigger(\"click\")");
+        // click Tab 2 in the nested tab set
         client.getEval("window.AJS.$(\"#tabs-nested-example1-inner-horizontal-second-trigger\").trigger(\"click\")");
+        // check the correct outer tab is visible
         assertThat.elementNotVisible("css=div#tabs-nested-example1-outer-first");
         assertThat.elementVisible("css=div#tabs-nested-example1-outer-second");
         assertThat.elementNotVisible("css=div#tabs-nested-example1-outer-horizontal-third");
         assertThat.elementNotVisible("css=div#tabs-nested-example1-outer-horizontal-fourth");
+        // check the corrent nested tab is visible
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-inner-horizontal-first");
+        assertThat.elementVisible("css=div#tabs-nested-example1-inner-horizontal-second");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-inner-horizontal-third");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-inner-horizontal-fourth");
 
-        // click into nested tab and check the nested vertical tab is visible
+        // click "nested vertical" tab
         client.getEval("window.AJS.$(\"#nested-tabs-horizontal-outer-vertical\").trigger(\"click\")");
+        // click Tab 2 in the nested tab set
         client.getEval("window.AJS.$(\"#tabs-nested-example1-inner-second-trigger\").trigger(\"click\")");
+        // check the correct outer tab is visible
+        assertThat.elementVisible("css=div#tabs-nested-example1-outer-first");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-outer-second");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-outer-horizontal-third");
+        assertThat.elementNotVisible("css=div#tabs-nested-example1-outer-horizontal-fourth");
+        // check the corrent nested tab is visible
         assertThat.elementNotVisible("css=div#tabs-nested-example1-inner-first");
         assertThat.elementVisible("css=div#tabs-nested-example1-inner-second");
         assertThat.elementNotVisible("css=div#tabs-nested-example1-inner-third");
         assertThat.elementNotVisible("css=div#tabs-nested-example1-inner-fourth");
 
     }
-
 
 }
