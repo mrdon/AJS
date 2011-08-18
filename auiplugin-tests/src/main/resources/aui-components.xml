@@ -1,17 +1,7 @@
 <component>
-    <name> Dialog </name>
+    <name>Example</name>
     <javascript> Yes </javascript>
     <foo> bar </foo>
     <css> Yes </css>
-    <description> Creates a Modal Dialog that pops up over the screen, also dims the screen.  </description>
+    <description>If you see this in the refapp, it actually means the correct file broke.</description>
 </component>
-
-<component>
-    <name> Dropdown </name>
-    <javascript> yes </javascript>
-    <css> yes </css>
-    <description> Creates a dropdown menu styled with an Atlassian theme </description>
-    <lol> test </lol>
-    <option> hello </option>
-</component>
-
