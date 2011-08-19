@@ -52,7 +52,7 @@ AJS.$(document).ready(function(){
         }
 
         AJS.$.ajax({
-           url: "sandbox/aui-components.xml",
+           url: "aui-components.xml",
            async: false,
            dataType: "text",
            success: function(xml){
@@ -62,7 +62,7 @@ AJS.$(document).ready(function(){
         });
                      
         AJS.$.ajax({
-           url: "sandbox/sandbox-help.html",
+           url: "sandbox-help.html",
            async: false,
            success: function(data){
                helpText = data;
@@ -141,12 +141,12 @@ AJS.$(document).ready(function(){
         });
         
         var addComponentTemplate = function(component){
-            AJS.$.get("sandbox/templates/" + component + "-template.html", function(data){
+            AJS.$.get("templates/" + component + "-template.html", function(data){
                 theHTMLeditor.val(theHTMLeditor.val() + "\n" + data);
                 refresh();
             });
             
-            AJS.$.get("sandbox/templates/" + component + "-template.js", function(data){
+            AJS.$.get("templates/" + component + "-template.js", function(data){
                 theJSeditor.val(theJSeditor.val() + "\n" + data);
                 refresh();
             });

@@ -10,7 +10,7 @@
     <!--<resource name="js/" type="download" location="js/"/>-->
 
     <servlet key="sandbox-servlet" class="com.atlassian.aui.test.SandboxServlet">
-        <url-pattern>/ajstest/sandbox</url-pattern>
+        <url-pattern>/ajstest/sandbox/</url-pattern>
     </servlet>
 
     <servlet key="static-resources" class="com.atlassian.aui.test.FuncTestServlet">
@@ -141,7 +141,7 @@
 
     <web-item key="aui-sandbox" section="index.links" weight="10" application="refapp">
         <label>AUI Sandbox</label>
-        <link linkId="aui-sandbox">/plugins/servlet/ajstest/sandbox</link>
+        <link linkId="aui-sandbox">/plugins/servlet/ajstest/sandbox/</link>
     </web-item>
 
     <web-item key="aui-bootcamp" section="index.links" weight="10" application="refapp">
