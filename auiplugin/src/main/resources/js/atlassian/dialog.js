@@ -41,20 +41,24 @@ AJS.dim = function (useShim) {
         }
         AJS.$("body").append(AJS.dim.dim);
 
+        AJS.hasFlash = false;
+        var matchHostname = /^[^:]*:\/*[^/]*|/;
+        var hostname = matchHostname.exec(location.href)[0];
+
         // Even if we do not want to use a shim, we are going to override it in the case of flash being on the page.
         // Flash will sit ontop of our blanket unless wmode is set to opaque in the object/embed tag...
         if (AJS.$.browser.msie && typeof AJS.hasFlash === "undefined" && useShim === false) {
-            AJS.hasFlash = false;
             AJS.$("object, embed, iframe").each(function () {
                 if (this.nodeName.toLowerCase() === "iframe") {
-                    if (AJS.$(this).contents().find("object, embed").length) {
-                        AJS.hasFlash = true;
-                        return false;
+                    // Don't attempt to access $(this).contents() unless the iframe has
+                    // the same hostname as window.location. If not, be pessimistic and
+                    // assume the document contains flash objects.
+                    if (matchHostname.exec(this.src)[0] === hostname && AJS.$(this).contents().find("object, embed").length === 0) {
+                        return true; // continue loop
                     }
-                } else {
-                    AJS.hasFlash = true;
-                    return false;
                 }
+                AJS.hasFlash = true;
+                return false; // break loop
             });
         }
 
