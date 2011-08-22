@@ -292,21 +292,80 @@ if (typeof jQuery != "undefined") {
                 }
                 return 0;
             },
-            dim: function () {
-                if (AJS.dim.dim) {
-                    AJS.dim.dim.remove();
-                    AJS.dim.dim = null;
-                } else {
-                    AJS.dim.dim = AJS("div").css({
-                        width: "100%",
-                        height: AJS.$(document).height(),
-                        background: "#000",
-                        opacity: .5,
-                        position: "absolute",
-                        top: 0,
-                        left: 0
-                    });
-                    AJS.$("body").append(AJS.dim.dim);
+            /**
+             * Covers screen with semitransparent DIV
+             * @param useShim
+             */
+            dim: function (useShim) {
+                if (!AJS.dim.$dim) {
+                    AJS.dim.$dim = AJS("div").addClass("aui-blanket");
+                    if (AJS.$.browser.msie) {
+                        AJS.dim.$dim.css({width: "200%", height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
+                    }
+                    AJS.$("body").append(AJS.dim.$dim);
+
+                    AJS.hasFlash = false;
+                    var matchHostname = /^[^:]*:\/*[^/]*|/;
+                    var hostname = matchHostname.exec(location.href)[0];
+
+                    // Even if we do not want to use a shim, we are going to override it in the case of flash being on the page.
+                    // Flash will sit ontop of our blanket unless wmode is set to opaque in the object/embed tag...
+                    if (AJS.$.browser.msie && typeof AJS.hasFlash === "undefined" && useShim === false) {
+                        AJS.$("object, embed, iframe").each(function () {
+                            if (this.nodeName.toLowerCase() === "iframe") {
+                                // Don't attempt to access $(this).contents() unless the iframe has
+                                // the same hostname as window.location. If not, be pessimistic and
+                                // assume the document contains flash objects.
+                                if (matchHostname.exec(this.src)[0] === hostname && AJS.$(this).contents().find("object, embed").length === 0) {
+                                    return true; // continue loop
+                                }
+                            }
+                            AJS.hasFlash = true;
+                            return false; // break loop
+                        });
+                    }
+
+                    // Add IFrame shim
+                    if (AJS.$.browser.msie && (useShim !== false || AJS.hasFlash)) {
+                        AJS.dim.shim = AJS.$('<iframe frameBorder="0" class="aui-blanket-shim" src="javascript:false;"/>');
+                        AJS.dim.shim.css({height: Math.max(AJS.$(document).height(), AJS.$(window).height()) + "px"});
+                        AJS.$("body").append(AJS.dim.shim);
+                    }
+
+                    // IE needs the overflow on the HTML element so scrollbars are hidden
+                    if (AJS.$.browser.msie && parseInt(AJS.$.browser.version,10) < 8) {
+                        AJS.dim.cachedOverflow = AJS.$("html").css("overflow");
+                        AJS.$("html").css("overflow", "hidden");
+                    } else {
+                        AJS.dim.cachedOverflow = AJS.$("body").css("overflow");
+                        AJS.$("body").css("overflow", "hidden");
+                    }
+                }
+            },
+            /**
+             * Removes semitransparent DIV
+             * @see AJS.dim
+             */
+            undim: function() {
+                if (AJS.dim.$dim) {
+                    AJS.dim.$dim.remove();
+                    AJS.dim.$dim = null;
+                    if (AJS.dim.shim) {
+                        AJS.dim.shim.remove();
+                    }
+
+                    // IE needs the overflow on the HTML element so scrollbars are hidden
+                    if (AJS.$.browser.msie && parseInt(AJS.$.browser.version,10) < 8) {
+                        AJS.$("html").css("overflow",  AJS.dim.cachedOverflow);
+                    } else {
+                        AJS.$("body").css("overflow",  AJS.dim.cachedOverflow);
+                    }
+
+                    // Safari bug workaround
+                    if (AJS.$.browser.safari) {
+                        var top = AJS.$(window).scrollTop();
+                        AJS.$(window).scrollTop(10 + 5 * (top == 10)).scrollTop(top);
+                    }
                 }
             },
             onTextResize: function (f) {
