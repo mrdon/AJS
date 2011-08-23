@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta name="decorator" content="atl.general">
+
+    <title>AUI Misc Test Page</title>
+    <link rel="stylesheet" href="all-in.css" media="all" />
+    
+</head>
+<body>
+<div id="page">
+    <div id="all-in-nav"></div>
+    <div class="all-in-header">
+        <div class="all-in">
+            <h1>AUI, from Atlassian</h1>
+            <p>Strap yourself in.</p>
+        </div>
+    </div>
+    <div class="all-in" id="content">
+
+        <h2 id="about">About AUI</h2>
+        <div class="aui-group">
+            <div class="aui-item">
+                <h3>History</h3>
+                <p>In the early days of Atlassian, devs used whatever was handy to slap a UI together. AUI began as an answer to the challenges of building multiple products rapidly and efficiently.</p>
+                <p>Growing from fedex and 20% projects, AUI includes contributions from all the Atlassian product teams. Since July 2011, AUI development has been led by a dedicated Atlassian team.</p>
+                <p>AUI is production-ready and powers the UI of all Atlassian products.</p>
+            </div>
+            <div class="aui-item">
+                <h3>Browser Support</h3>
+                <p>AUI works in IE8, IE9 and the latest versions of Chrome, Firefox, Safari and Opera.</p>
+
+                <img src="images/browser-support.png" alt="Charlie juggling the browsers." />
+
+            </div>
+            <div class="aui-item">
+                <h3>What's Included</h3>
+                <p>AUI comes complete with CSS, Javascript and example templates.</p>
+                <p>You can test drive these components with the <a href="/ajs/plugins/servlet/ajstest/sandbox/">AUI Sandbox</a> and get proformas from the <a href="http://docs.atlassian.com/aui/latest/demo-pages/">AUI Demo Pages</a>.</p>
+                <p>See the <a href="#getting-started">How can you get your hands on all this awesome?</a> section below for more details on getting started with AUI.</p>
+            </div>
+        </div>
+
+        <h2 id="aui-page-layout">Page Layout</h2>
+        
+        <p>Created in Fedex, dogfooded in Bamboo, refined in JIRA dev speed and being shipped in AUI Experimental, we present the <a href="http://confluence.atlassian.com/display/AUI/AUI+Page+Layout+(Experimental)">AUI Page Layout</a>.</p>
+        
+        <img src="images/page-design.png" alt="Screenshot of simple page layout with Atlassian colours and layout set." />
+        
+        <p>AUI Page Layout will be available in AUI 3.6 (scheduled for September 2011).</p>
+        
+        <h2 id="aui-layout">Layout</h2>
+        
+        <p>Since you probably want to divide up that page for content, AUI is also adding a nice, lean layout system in 3.6. You simply define a group and add items to it.</p>
+
+        <pre>
+&lt;div class="aui-group"&gt;
+    &lt;div class="aui-item"&gt;
+        Item the first
+    &lt;/div&gt;
+    &lt;div class="aui-item"&gt;
+        Another item
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+        <p>Have as many equal-width columns as you want!</p>
+
+        <div class="aui-group aui-group-highlighted">
+            <div class="aui-item">
+                <p>Two</p>
+            </div>
+            <div class="aui-item">
+                <p>cols</p>
+            </div>
+        </div>
+
+        <div class="aui-group aui-group-highlighted">
+            <div class="aui-item">
+                <p>Or</p>
+            </div>
+            <div class="aui-item">
+                <p>three</p>
+            </div>
+            <div class="aui-item">
+                <p>cols</p>
+            </div>
+        </div>
+
+        <div class="aui-group aui-group-highlighted">
+            <div class="aui-item">
+                <p>What</p>
+            </div>
+            <div class="aui-item">
+                <p>about</p>
+            </div>
+            <div class="aui-item">
+                <p>four</p>
+            </div>
+            <div class="aui-item">
+                <p>columns?</p>
+            </div>
+        </div>
+
+        <div class="aui-group aui-group-highlighted">
+            <div class="aui-item">
+                <p>Now</p>
+            </div>
+            <div class="aui-item">
+                <p>I</p>
+            </div>
+            <div class="aui-item">
+                <p>think</p>
+            </div>
+            <div class="aui-item">
+                <p>we</p>
+            </div>
+            <div class="aui-item">
+                <p>might</p>
+            </div>
+            <div class="aui-item">
+                <p>be</p>
+            </div>
+            <div class="aui-item">
+                <p>getting</p>
+            </div>
+            <div class="aui-item">
+                <p>silly.</p>
+            </div>
+        </div>
+        
+        <p>Or, if you want one to be fixed, give it a unique ID/Class and apply a width. The other columns will split the remainder equally amongst themsevles.</p>
+
+        <div class="aui-group aui-group-highlighted fixed-menu">
+            <div class="aui-item">
+                <p>Fixed at 256px</p>
+            </div>
+            <div class="aui-item">
+                <p>...and then the other column fills to full width.</p>
+            </div>
+        </div>
+
+        <p>Often you don't actually want visible cells but you want the layout...</p>
+
+        <div class="aui-group aui-group-highlighted nav-example">
+            <div class="aui-item">
+                For example, maybe you want a 7/10 split?
+            </div>
+            <div class="aui-item">
+                Useful for navigation.
+            </div>
+        </div>
+
+        <p>AUI Page Layout will be available in AUI 3.6 (scheduled for September 2011).</p>
+
+        <h2 id="tables">Tables</h2>
+        <p>Tables! Awesome for tabular data, but tedious to style. So, just add <code>class=&quot;aui&quot;</code> to your tables. Follow correct structure - include THEAD and TBODY, use TH for headers and TD for body... et voila:</p>
+
+        <table class="aui" id="ships">
+            <thead>
+                <tr>
+                    <th id="ships-name">Ship Name</th>
+                    <th id="ships-nickname">Nickname</th>
+                    <th id="ships-type">Type</th>
+                    <th id="ships-misadventure">Misadventure</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td headers="ships-name">Red Dwarf</td>
+                    <td headers="ships-nickname">The Crimson Short One</td>
+                    <td headers="ships-type">Jupiter Mining Corporation space mining vessel</td>
+                    <td headers="ships-misadventure">Duplicated, shrunk, lost, found, rebuilt by nanobots.</td>
+                </tr>
+                <tr>
+                    <td headers="ships-name">Starbug</td>
+                    <td headers="ships-nickname">The Bug</td>
+                    <td headers="ships-type">Jupiter Mining Corporation transport shuttle</td>
+                    <td headers="ships-misadventure">Crashed multiple times, shot at, sunk.</td>
+                </tr>
+                <tr>
+                    <td headers="ships-name">Nova 5</td>
+                    <td headers="ships-nickname">Not known</td>
+                    <td headers="ships-type">Marketing vessel owned by Coca-Cola</td>
+                    <td headers="ships-misadventure">Crashed after the droid Kryten cleaned the mainframe with soapy water.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="forms">Forms</h2>
+        <p>Everyone needs forms, and AUI provides:</p>
+
+        <form action="#" method="post" id="example" class="aui long-label">
+            <h2>Text fields</h2>
+            <div class="field-group">
+                <label for="example-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <input class="text" type="text" id="example-fname" name="fname" title="first name">
+                <div class="error">Inline error message!</div>
+                <div class="description">For a larger error you could use a full AUI Message.</div>
+            </div>
+            <div class="field-group">
+                <label for="h-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <input class="text long-field" type="text" id="h-lname" name="lname" title="last name">
+            </div>
+        
+            <h2>File Upload</h2>
+            <fieldset>
+                <legend><span>File Upload/</span></legend>
+                <div class="field-group">
+                    <label for="uploadFile">Upload file</label>
+                    <input class="upfile" type="file" id="uploadFile" name="uploadFile" title="upload file">
+                </div>
+            </fieldset>
+        
+            <h2>Checkboxes and radio buttons</h2>
+            <fieldset class="group">
+                <legend><span>Checkboxes View</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" checked="checked" name="cbOne" id="cbOned">
+                    <label for="cbOned">Checkbox One</label>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" name="cbTwo" id="cbTwod">
+                    <label for="cbTwod">Checkbox Two</label>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Radio Buttons</span></legend>
+                <div class="radio">
+                    <input class="radio" type="radio" checked="checked" name="rads" id="irOned">
+                    <label for="irOned">Radio One</label>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio" name="rads" id="irTwod">
+                    <label for="irTwod">Radio Two</label>
+                </div>
+            </fieldset>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button submit" type="submit" value="Save" id="h-save-btn1">
+                    <a class="cancel" href="forms.html#">Cancel</a>
+                </div>
+            </div>
+        
+        </form>
+
+        <h2 id="tabs">Tabs</h2>
+
+        <p>OK so now we're getting a lot of content. Maybe we should use some tabs:</p>
+
+        <div class="aui-tabs horizontal-tabs" id="tabs-example">
+            <ul class="tabs-menu">
+                <li class="menu-item active-tab">
+                    <a href="#tabs-example-first"><strong>Tab 1</strong></a>
+                </li>
+                <li class="menu-item">
+                    <a href="#tabs-example-second"><strong>Tab 2</strong></a>
+                </li>
+                <li class="menu-item">
+                    <a href="#tabs-example-third"><strong>Tab 3</strong></a>
+                </li>
+            </ul>
+            <div class="tabs-pane active-pane" id="tabs-example-first">
+                <h2>This is Tab 1</h2>
+                <p>Quidquid latine dictum sit, altum viditur. Sentio aliquos togatos contra me conspirare.</p>
+            </div>
+            <div class="tabs-pane" id="tabs-example-second">
+                <h2>This is Tab 2</h2>
+                <p>Quidquid latine dictum sit, altum viditur. Sentio aliquos togatos contra me conspirare.</p>
+            </div>
+            <div class="tabs-pane" id="tabs-example-third">
+                <h2>This is Spaaaaaartaaaaaa</h2>
+                <p>Quidquid latine dictum sit, altum viditur. Sentio aliquos togatos contra me conspirare.</p>
+            </div>
+        </div> <!-- // .aui-tabs -->
+
+        <p>Wait, I want vertical tabs. Better change <code>class=&quot;horizontal-tabs&quot;</code> to <code>class=&quot;vertical-tabs&quot;</code>:</p>
+
+        <div class="aui-tabs vertical-tabs" id="tabs-example2">
+            <ul class="tabs-menu">
+                <li class="menu-item active-tab">
+                    <a href="#tabs-example2-first"><strong>Tab 1</strong></a>
+                </li>
+                <li class="menu-item">
+                    <a href="#tabs-example2-second"><strong>Tab 2</strong></a>
+                </li>
+                <li class="menu-item">
+                    <a href="#tabs-example2-third"><strong>Tab 3</strong></a>
+                </li>
+            </ul>
+            <div class="tabs-pane active-pane" id="tabs-example2-first">
+                <h2>This is Tab 1</h2>
+                <p>Quidquid latine dictum sit, altum viditur. Sentio aliquos togatos contra me conspirare.</p>
+            </div>
+            <div class="tabs-pane" id="tabs-example2-second">
+                <h2>This is Tab 2</h2>
+                <p>Quidquid latine dictum sit, altum viditur. Sentio aliquos togatos contra me conspirare.</p>
+            </div>
+            <div class="tabs-pane" id="tabs-example2-third">
+                <h2>This is Spaaaaaartaaaaaa</h2>
+                <p>Quidquid latine dictum sit, altum viditur. Sentio aliquos togatos contra me conspirare.</p>
+            </div>
+        </div> <!-- // .aui-tabs -->
+
+
+        <h2 id="messages">Messages and Errors</h2>
+
+        <p>Now that we're getting up to speed, we'll have some messages and states to let the user know how they're doing...</p>
+
+        <div class="aui-message shadowed">
+            <p class="title">
+                <span class="aui-icon icon-generic"></span>
+                <strong>This is a generic message.</strong>
+            </p>
+            <p>It is pitch black. You are likely to be eaten by a grue.</p>
+        </div><!-- .aui-message -->
+
+        <div class="aui-message warning shadowed">
+            <p class="title">
+                <span class="aui-icon icon-warning"></span>
+                <strong>It's dangerous to go alone</strong>
+            </p>
+            <p>Here, take this.</p>
+        </div><!-- .aui-message -->            
+            
+        <div class="aui-message error shadowed">
+            <p class="title">
+                <span class="aui-icon icon-error"></span>
+                <strong>Woah! Something went wrong!</strong>
+            </p>
+            <p>The savepoints are really far apart in this level.</p>
+        </div><!-- .aui-message -->            
+
+        <div class="aui-message success shadowed">
+            <p class="title">
+                <span class="aui-icon icon-success"></span>
+                <strong>Thank you Mario!</strong>
+            </p>
+            <p>But the Princess is in another castle.</p>
+        </div><!-- .aui-message -->            
+
+        <div class="aui-message hint shadowed closeable">
+            <p class="title">
+                <span class="aui-icon icon-hint "></span>
+                <strong>We'll give you a hint to avoid that problem next time.</strong>
+            </p>
+            <p>But first you have to catch the Help Cat with that stupid Wiimote.</p>
+        </div><!-- .aui-message -->            
+        
+        <p>You can simply add these messages in your HTML, you can also make them closeable:</p>
+<pre>        
+&lt;div class="aui-message warning shadowed closeable"&gt;
+    &lt;p class="title"&gt;
+        &lt;span class="aui-icon icon-warning"&gt;&lt;/span&gt;
+        &lt;strong&gt;It's dangerous to go alone&lt;/strong&gt;
+    &lt;/p&gt;
+    &lt;p&gt;Here, take this.&lt;/p&gt;
+&lt;/div&gt;&lt;!-- .aui-message --&gt;            
+</pre>        
+
+        <p>Alternatively you can insert them later with Javascript, they'll be closeable by default:</p>
+
+        <div id="aui-message-bar"></div>
+        <script>
+        addSample(function() {
+             AJS.messages.success({
+                 title: "Success!",
+                 body: "This message was created by JS with default options."
+             });
+        });
+        </script>
+ 
+        <pre>
+AJS.messages.success({
+     title: "Success!",
+     body: "This message was created by JS with default options."
+});
+        </pre>
+        <p>Note this example will append to the default div, <code>&lt;div id="aui-message-bar"&gt;&lt;/div&gt;</code> but you can specify the target element if you need to.</p>
+
+        <h2 id="dropdown">Dropdown</h2>
+        <p>OK, now we have a lot going on. It's time to make some navigation - got a dropdown handy?</p>
+            <div class="html-code">
+                <ul id="dropDown-standard" class="styled-parent">
+                    <li class="aui-dd-parent">
+                        <button class="aui-dd-trigger">Dropdown</button>
+                        <ul class="aui-dropdown">
+                            <li class="dropdown-item"><a href="http://www.google.com" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                            <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <script type="text/javascript">
+                addSample(function() {
+                    AJS.$("#dropDown-standard").dropDown("Standard", {alignment: "left"});
+                });
+            </script>
+        <p>A little admission here: we think this should be much better, so we're replacing it with a much better dropdown in AUI 4.0.</p>
+
+        <h2 id="dialogs">Dialogs</h2>
+        <p>OK, now we need the user to stop everything and really pay attention. They have to do something out of the page and then go back - yep, we need a modal dialog:</p>
+        <form>
+            <input id="dialog-button" name="dialog-button" type="button" class="button" value="Dialog - Click Me! Click Me!">
+        </form>
+        <script type="text/javascript">
+        addSample(function() {
+    
+            AJS.messages.setup()
+            // create a dialog 860px wide x 530px high
+            var dialog = new AJS.Dialog({width:860, height:530, id:"example-dialog", closeOnOutsideClick: true});
+            
+            // PAGE 0 (first page)
+            // adds header for first page
+            dialog.addHeader("Dialog - Page 0");
+            
+            // add panel 1
+            dialog.addPanel("Panel 1", "<p>You can have a single panel, multiple panels, or even a wizard-style set of steps (see the button below).</p>", "panel-body");
+            dialog.get("panel:0").setPadding(0);
+            
+            // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
+            dialog.addPanel("Panel 2", "<p>Quidquid latine dictum sit, altum viditur. Sentio aliquos togatos contra me conspirare.</p>", "panel-body");
+            
+            dialog.addButton("Next", function (dialog) {
+                dialog.nextPage();
+            });
+            dialog.addCancel("Cancel", function (dialog) {
+                dialog.hide();
+            });
+            
+            // PAGE 1 (second page)
+            // adds a new page to dialog
+            dialog.addPage();
+            
+            // adds header for second page
+            dialog.addHeader("Dialog - Page 1");
+            
+            // adds a single panel on second page (as there is only one panel, no menu will appear on the left side)
+            dialog.addPanel("SinglePanel", "<p>Quidquid latine dictum sit, altum viditur. Sentio aliquos togatos contra me conspirare.</p>", "singlePanel");
+            
+            // add "Previous" button to page 1
+            dialog.addButton("Previous", function(dialog) {
+               dialog.prevPage();
+            });
+            // adds "Cancel" button to page 1
+    
+            dialog.addCancel("Cancel", function (dialog) {
+                dialog.hide();
+            });
+            
+            // Add events to dialog trigger elements
+            AJS.$("#dialog-button").click(function() {
+                // PREPARE FOR DISPLAY
+                // start first page, first panel
+                dialog.gotoPage(0);
+                dialog.gotoPanel(0);
+                dialog.show();
+            });
+            
+            AJS.$("#dialog-link").click(function(){
+                dialog.gotoPage(0);
+                dialog.gotoPanel(0);
+                dialog.show(); 
+            });
+    
+        });
+        </script>
+    
+        <p>Dialogs are constructed with Javascript. <a href="http://docs.atlassian.com/aui/latest/sandbox/">Have a go using the Sandbox</a>.</p>
+    
+        <h2 id="inline-dialogs">Inline Dialogs</h2>
+        <p>Maybe you didn't really need a Dialog, you just wanted a little inline popup?</p>
+        
+        <div><a href="inline-dialog.html" id="popupLink">Give me a try, then! Clickety click.</a></div>
+    
+        <script type="text/javascript">
+        addSample(function() {
+            AJS.InlineDialog(AJS.$("#popupLink"), 1, "inline-dialog-content.html");
+        });
+        </script>
+
+        <h2 id="toolbar">Toolbar</h2>
+        <p>How about a toolbar? That's easy too:</p>
+
+        <div id="demo-toolbar" class="aui-toolbar">
+
+            <div class="toolbar-split toolbar-split-left">
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger example-click" href="#" id="toolbar-button1" title="Active">Button 1</a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger example-click" href="#" id="toolbar-button2" title="Active">Button 2</a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger example-click" href="#" id="toolbar-button3" title="Active">Button 3</a>
+                    </li>
+                </ul>
+    
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger example-click" href="#" id="active-button" title="Active">Active</a>
+                    </li>
+                    <li class="toolbar-item disabled">
+                        <a class="toolbar-trigger example-click" href="#" id="disabled-button" title="Disabled">Disabled</a>
+                    </li>
+                </ul>
+
+                <!-- Text Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-dropdown" id="format-dropdown">
+                        <div class="aui-dd-parent">
+                            <a href="#" class="toolbar-trigger aui-dd-trigger" id="format-dropdown-display">
+                                <span class="dropdown-text">Dropdown</span>
+                                <span class="icon icon-dropdown"></span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Drodpown Item 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Drodpown Item 2</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Drodpown Item 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Compact Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-splitbutton" id="action-1b">
+
+                        <a class="toolbar-trigger" href="#" id="action-1a" title="Action One A">Split Button</a>
+
+                        <div class="aui-dd-parent">
+                            <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One B">
+                                <span class="icon icon-dropdown">Action 1b</span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Drodpown Item 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Drodpown Item 2</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Drodpown Item 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="toolbar-split toolbar-split-right">
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger example-click" href="#" id="save-button">Save</a>
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <a href="#" class="toolbar-trigger example-click" id="cancel-button">Cancel</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.$("#format-dropdown").dropDown("Standard", {alignment: "left"});
+                AJS.$(".example-click").click(function() {  alert('Clicked!'); return false; });
+                AJS.$("#action-1a").click(function() {  alert('Clicked! The split button\'s main trigger works separately from its dropdown.'); return false; });
+                AJS.$("#action-1b").dropDown("Standard", {alignment: "right"});
+                AJS.$("#insert-menu").dropDown("Standard", {alignment: "right"});
+            });
+        </script>
+
+        <h2 id="getting-started">Getting Started</h2>
+        <p>How can you get your hands on all this awesome? Chances are you already have it. Open your product, open a Javascript console and run <kbd>AJS.version</kbd> - if you get a version number, you're ready to roll!</p>
+        <p>Otherwise, you can refer to <a href="http://confluence.atlassian.com/display/AUI/Adding+AUI+to+your+application">Adding AUI to your application</a> or run up a local copy of the REFAPP:</p>
+
+        <ol>
+            <li>Set up the <a href="http://confluence.atlassian.com/display/DEVNET/Developing+your+Plugin+using+the+Atlassian+Plugin+SDK">Atlassian Plugin SDK</a>. AUI's an Atlassian plugin.</li>
+            <li>Check out AUI: <kbd>svn checkout https://studio.atlassian.com/svn/AJS/trunk AJS</kbd></li>
+            <li>From the root of your checkout: <kbd>mvn clean install</kbd></li>
+            <li>From auiplugin-tests subdirectory: <kbd>mvn clean install</kbd></li>
+            <li>Go to <kbd>http://localhost:9999/ajs/</kbd> and try the Bootcamp Exercise to get started.</li>
+        </ol>
+
+        <p>You might want to have a look at the <a href="../index.html">more detailed demos for each of these components</a>, <a href="http://docs.atlassian.com/aui/latest/sandbox/">try the Sandbox</a> or <a href="http://confluence.atlassian.com/display/AUI/Forms">view the documentation</a>.</p>
+
+    </div>
+
+    <div class="all-in-footer">
+
+        <div class="aui-group nav-example">
+            <div class="aui-item">
+                <p>Clearly (and respectfully!) we are riffing on Bootstrap, from Twitter. Love your work!</p>
+            </div>
+            <div class="aui-item">
+                <p><a href="#">Back to top</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</div><!-- #page -->
+<script src="all-in.js"></script>
+</body>
+</html>
