@@ -24,7 +24,7 @@ body.refapp {
 
 .all-in-header {
     color: #fff !important;
-    background: #003366;
+    background: #003366 url("images/aui-arrow3.png") repeat 0 0;
     height: 200px;
     padding: 64px 0 0 0;
     text-align: center;
@@ -202,7 +202,7 @@ body.refapp {
 }
 
 .styled-parent .aui-dd-parent {
-    width: 150px;
+
 }
 .styled-parent .aui-dd-parent a.aui-dd-trigger {
     background: white;
@@ -212,6 +212,27 @@ body.refapp {
     /*width: 100px;*/
     color: #000;
 }
+
+#dropDown-standard .aui-dd-parent {
+    display: inline-block;
+}
+
+#dropdown-trigger {
+    border: 0 none;
+    height: 32px;
+    line-height: 32px;
+    /*width: 150px;*/
+    background: #003366;
+    color: white;
+    margin: 0;
+    padding: 0 16px;
+}
+
+#dropDown-standard .aui-dd-parent .aui-dropdown li.dropdown-item.active a {
+    text-decoration: none;
+    
+}
+
 
 #demo-toolbar {
     background: #f0f0f0;

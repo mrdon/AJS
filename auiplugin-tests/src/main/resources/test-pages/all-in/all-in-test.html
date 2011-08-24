@@ -386,7 +386,7 @@ AJS.messages.success({
             <div class="html-code">
                 <ul id="dropDown-standard" class="styled-parent">
                     <li class="aui-dd-parent">
-                        <button class="aui-dd-trigger">Dropdown</button>
+                        <button class="aui-dd-trigger" id="dropdown-trigger">Click me I'm a Dropdown</button>
                         <ul class="aui-dropdown">
                             <li class="dropdown-item"><a href="http://www.google.com" class="item-link">Dropdown item</a></li>
                             <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
@@ -399,7 +399,7 @@ AJS.messages.success({
             </div>
             <script type="text/javascript">
                 addSample(function() {
-                    AJS.$("#dropDown-standard").dropDown("Standard", {alignment: "left"});
+                    AJS.$("#dropDown-standard").dropDown("Standard", {alignment: "right"});
                 });
             </script>
         <p>A little admission here: we think this should be much better, so we're replacing it with a much better dropdown in AUI 4.0.</p>
