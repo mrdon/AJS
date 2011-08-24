@@ -90,18 +90,17 @@ body.refapp {
     height: 32px;
     line-height: 32px;
     text-decoration: none;
-
     padding: 0 0.5em;
-    
     color: #fff;
+    -webkit-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    -o-transition: all 200ms ease-in;
+    transition: all 200ms ease-in;
+
 }
 #all-in-nav li a:focus,
 #all-in-nav li a:hover,
 #all-in-nav li a:active {
-    -webkit-transition: background 200ms ease-in;
-    -moz-transition: background 200ms ease-in;
-    -o-transition: background 200ms ease-in;
-    transition: background 200ms ease-in;
     background: rgba(0,0,0,0.8);
 }
 
@@ -123,18 +122,13 @@ body.refapp {
     -moz-border-radius: 5px;
     border-radius: 5px;
 
-    -webkit-transition: background 500ms ease-in;
-    -moz-transition: background 500ms ease-in;
-    -o-transition: background 500ms ease-in;
-    transition: background 500ms ease-in;
+    -webkit-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    -o-transition: all 200ms ease-in;
+    transition: all 200ms ease-in;
+}
 
-/*    -webkit-transition: color 500ms ease-in;
-    -moz-transition: color 500ms ease-in;
-    -o-transition: color 500ms ease-in;
-    transition: color 500ms ease-in;
-*/}
-
-.aui-group-highlighted .aui-item p:hover,
+.aui-group-highlighted:hover .aui-item p,
 .all-in .nav-example:hover {
     background: #326ca6;
     color: #fff;
@@ -197,9 +191,9 @@ body.refapp {
 }
 
 #ships-name { width: 10%; }
-#ships-nickname { width: 10%; }
-#ships-type { width: 20%; }
-#ships-misadventure { width: 60%;}
+#ships-nickname { width: 20%; }
+#ships-type { width: 30%; }
+#ships-misadventure { width: 40%;}
 
 .styled-parent {
     margin: 0;
