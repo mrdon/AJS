@@ -306,7 +306,7 @@
         </div> <!-- // .aui-tabs -->
 
 
-        <h2 id="messages">Messages and Errors</h2>
+        <h2 id="messages">Messages</h2>
 
         <p>Now that we're getting up to speed, we'll have some messages and states to let the user know how they're doing...</p>
 
@@ -571,6 +571,39 @@ AJS.messages.success({
 
             </div>
         </div>
+
+        <p>You can also use toolbar buttons as free-standing buttons - just don't add a background colour to the toolbar:</p>
+
+        <div id="demo-toolbar2" class="aui-toolbar">
+
+            <div class="toolbar-split toolbar-split-left">
+
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger example-click" href="#">Button</a>
+                    </li>
+                </ul>
+
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger example-click" href="#">Button</a>
+                    </li>
+                </ul>
+
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <a href="#" class="toolbar-trigger example-click">Link</a>
+                    </li>
+                </ul>
+    
+            </div>
+        </div>
+
+        <p>Sneak preview! We're adding a dedicated Buttons component soon, it'll go a little something like this:</p>
+
+        <img src="images/incoming-buttons.png" alt="Sexay buttons!" />
+
+        <p>Note the style is a little more defined, to look better as free-standing buttons.</p>
     
         <script type="text/javascript">
             addSample(function() {
@@ -581,6 +614,15 @@ AJS.messages.success({
                 AJS.$("#insert-menu").dropDown("Standard", {alignment: "right"});
             });
         </script>
+
+        <h2 id="more">More</h2>
+        <p>All this, and more! Beyond the widgets demonstrated here, AUI also provides...</p>
+        <ul>
+            <li>JS for keyboard shortcuts, templating, HTML escaping, Atlassian context path, Atlassian i18n and much more.</li>
+            <li>Helpful CSS like <code>.hidden</code> and <code>.assistive</code></li>
+            <li>Libraries including jQuery, jQuery UI, Raphael and Underscore</li>
+        </ul>
+        <p>AUI is your tailor-made library for producing slick, consistent Atlassian UI features. There is plenty of new stuff in the pipeline and if you have an idea that just can't wait - <a href="https://studio.atlassian.com/wiki/display/AJS/Developing+AUI">be the change you seek</a>.</p>
 
         <h2 id="getting-started">Getting Started</h2>
         <p>How can you get your hands on all this awesome? Chances are you already have it. Open your product, open a Javascript console and run <kbd>AJS.version</kbd> - if you get a version number, you're ready to roll!</p>
