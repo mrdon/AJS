@@ -22,10 +22,11 @@ if (typeof jQuery != "undefined") {
                 case ">": return "&gt;";
                 case '&': return "&amp;";
                 case "'": return "&#39;";
+                case "`": return "&#96;";
                 default : return "&quot;";
             }
         }
-        var ESCAPE_HTML_SPECIAL_CHARS = /[&"'<>]/g;
+        var ESCAPE_HTML_SPECIAL_CHARS = /[&"'<>`]/g;
 
         var res = {
             /**

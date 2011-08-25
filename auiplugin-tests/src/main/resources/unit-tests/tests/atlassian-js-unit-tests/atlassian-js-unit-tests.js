@@ -31,6 +31,7 @@ test("escapeHtml", function() {
     equals(AJS.escapeHtml("a < lessthan"), "a &lt; lessthan");
     equals(AJS.escapeHtml("a > greaterthan"), "a &gt; greaterthan");
     equals(AJS.escapeHtml("a & ampersand"), "a &amp; ampersand");
+	equals(AJS.escapeHtml("a ` accent grave"), "a &#96; accent grave");
 
     equals(AJS.escapeHtml("foo"), "foo");
 
