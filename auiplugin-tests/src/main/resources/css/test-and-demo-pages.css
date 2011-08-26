@@ -6,6 +6,10 @@ body.refapp {
     font-size: 13px;
 }
 
+.refapp-header {
+    display: none;
+}
+
 a {
     color: #326ca6;
     text-decoration: none;
