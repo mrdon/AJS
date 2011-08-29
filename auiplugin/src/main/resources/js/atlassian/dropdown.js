@@ -112,18 +112,24 @@ AJS.dropDown = function (obj, usroptions) {
             oldFocus = cdd.focused;
         moving = true;
 
-        cdd.focused = (typeof cdd.focused == "number" ? cdd.focused : -1);
+        if (links.length === 0) {
+            // Nothing to move focus to. Abort.
+            return;
+        }
+
+        cdd.focused = (typeof oldFocus === "number") ? oldFocus : -dir * links.length;
 
         if (!AJS.dropDown.current) {
             AJS.log("move - not current, aborting");
             return true;
         }
 
-        cdd.focused = cdd.focused + dir;
+        cdd.focused += dir;
+
+        // Resolve out of bounds values:
         if (cdd.focused < 0) {
             cdd.focused = links.length - 1;
-        }
-        if (cdd.focused > links.length - 1) {
+        } else if (cdd.focused >= links.length) {
             cdd.focused = 0;
         }
 
