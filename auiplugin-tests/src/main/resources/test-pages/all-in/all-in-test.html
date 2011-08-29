@@ -53,7 +53,7 @@
         
         <h2 id="aui-layout">Layout</h2>
         
-        <p>Since you probably want to divide up that page for content, AUI is also adding a nice, lean layout system in 3.6. You simply define a group and add items to it.</p>
+        <p>Since you probably want to divide up that page for content, AUI is also adding a nice, lean layout system in 3.6. You simply define a group and add items to it. When you're done, you can put your content into the items.</p>
 
         <pre>
 &lt;div class="aui-group"&gt;
@@ -151,6 +151,8 @@
                 Useful for navigation.
             </div>
         </div>
+
+        <p>Caveat: this system uses <code>display: table</code>, which may be unfamiliar to some developers. The short version is you should treat the items purely as containers and not style them directly - you should style the content you place inside them.</p>
 
         <p>AUI Page Layout will be available in AUI 3.6 (scheduled for September 2011).</p>
 
