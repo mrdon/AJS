@@ -9,11 +9,11 @@ AJS.$(document).ready(function(){
         infoDisplay = AJS.$("#info-display");
     
     refreshHTML = function(){
-        AJS.$("#display #html-code").html(theHTMLeditor.val()); 
+        AJS.$("#html-code").html(theHTMLeditor.val()); 
     }
         
     refreshCSS = function(){
-        AJS.$("#display #css-code").html(theCSSeditor.val());  
+        AJS.$("#css-code").html(theCSSeditor.val());  
     }
     
     refreshJS = function(){
@@ -30,10 +30,10 @@ AJS.$(document).ready(function(){
     }
 
     //only run page javascript once (prevents running code twice because of a re-trigger of dom-ready)
-    if( !theBody.hasClass("sandbox-initialised")) {
+    if (!theBody.hasClass("sandbox-initialised")) {
 
-        var docHeight = jQuery(document).height(),
-            headHeight = jQuery("#header").height();
+        var docHeight = AJS.$(document).height(),
+            headHeight = AJS.$("#header").height();
 
         AJS.$("#sandbox-js-warning").hide(); // use AJS to hide the no-AJS error
 
@@ -41,12 +41,12 @@ AJS.$(document).ready(function(){
             AJS.$(".initially-hidden").removeClass("initially-hidden"); // show stuff that only works if AJS available
         }
 
-        jQuery("#sandbox-page").height(docHeight);
-        jQuery("#work-area").height(docHeight - headHeight);
+        AJS.$("#sandbox-page").height(docHeight);
+        AJS.$("#work-area").height(docHeight - headHeight);
 
-        // force height in px to save Firefox from itself
         if ( jQuery.browser.mozilla ) {
             AJS.$(".display-box").each( function(e){
+                // force height in px to save Firefox from itself
                 AJS.$(this).height( AJS.$(this).height() );
             });
         }
@@ -113,14 +113,14 @@ AJS.$(document).ready(function(){
             });
             
         });
+
+        theBody.addClass("sandbox-initialised");
+        
+        AJS.drawLogo({containerID: "toolbar-logo", scaleFactor: 0.15});
         
         theJSeditor.focusout(function(e){
            refreshJS(); 
         });
-        
-        theBody.addClass("sandbox-initialised");
-        
-        AJS.drawLogo({containerID: "toolbar-logo", scaleFactor: 0.15});
 
         theHTMLeditor.keypress(function(){
             setTimeout("refreshHTML()", 100);
