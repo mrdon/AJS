@@ -99,6 +99,12 @@ public class AUISeleniumQUnitTest extends AbstractAUISeleniumTestCase
         runQunitTests("Underscore Loading Test");
     }
 
+    public void testhtml5shimTests()
+    {
+        openQunitTestPage("html5shim");
+        runQunitTests("HTML5 native and shim support Test");
+    }
+
     //HELPER FUNCTIONS
 
     //runs qunit tests on the page, component argument for reporting purposes only

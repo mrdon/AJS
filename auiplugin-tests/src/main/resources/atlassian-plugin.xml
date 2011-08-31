@@ -106,6 +106,11 @@
         <resource type="download" name="underscorejs-tests.js" location="unit-tests/tests/underscorejs-unit-tests/underscorejs-unit-tests.js"/>
     </web-resource>
 
+    <web-resource key="html5shim-unit-tests">
+        <!-- can't be included in all tests as it needs to be in a specific location (see FuncTestServlet.java) -->
+        <resource type="download" name="html5shim-tests.js" location="unit-tests/tests/html5shim-unit-tests/html5shim-unit-tests.js"/>
+    </web-resource>
+
     <!-- Include this resource to run all unit tests-->
     <web-resource key="all-unit-tests">
         <!--AllTests-->

@@ -40,6 +40,11 @@ public class FuncTestServlet extends HttpServlet {
             webResourceManager.requireResource("com.atlassian.auiplugin:ajs-underscorejs");
         }
 
+        if(req.getPathInfo().contains("html5shim-unit-tests"))
+        {
+            webResourceManager.requireResource("com.atlassian.auiplugin:ajs-html5shim");
+        }
+
         if(req.getPathInfo().contains("stalker")){
             webResourceManager.requireResource("com.atlassian.auiplugin:stalker");
         }

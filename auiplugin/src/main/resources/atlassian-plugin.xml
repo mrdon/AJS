@@ -207,11 +207,15 @@
     </web-resource>
     <!-- end AUI 2.0 backwards-compat redirects -->
 
-
     <web-resource key="ajs-underscorejs" name="Underscore.js library">
         <resource type="download" name="underscore.js" location="js/external/underscorejs/underscore.js"/>
     </web-resource>
 
+    <web-resource key="ajs-html5shim" name="HTML5 shim">
+        <resource type="download" name="html5.js" location="js/external/html5-shim/html5.js">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+    </web-resource>
 
     <web-resource key="aui-core" name="AUI Core">
         <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
