@@ -15,6 +15,9 @@
     <resource name="js/" type="download" location="js/"/>
 
     <web-resource key="ajs" name="Atlassian Javascript">
+
+        <dependency>com.atlassian.auiplugin:ajs-html5shim</dependency>
+
         <transformation extension="cp.js"> <!-- just target our one file that needs it -->
             <transformer key="jsContextPath"/>
         </transformation>
@@ -214,6 +217,9 @@
     <web-resource key="ajs-html5shim" name="HTML5 shim">
         <resource type="download" name="html5.js" location="js/external/html5-shim/html5.js">
             <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+        <resource type="download" name="html5-ie.css" location="css/atlassian/html5-ie.css">
+            <param name="conditionalComment" value="lte IE 9"/>
         </resource>
     </web-resource>
 

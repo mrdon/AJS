@@ -101,20 +101,20 @@
         <resource type="download" name="ajs-infrastructure-tests.js" location="unit-tests/tests/ajs-infrastructure-unit-tests/ajs-infrastructure-unit-tests.js"/>
     </web-resource>
 
+    <web-resource key="html5shim-unit-tests">
+        <resource type="download" name="html5shim-tests.js" location="unit-tests/tests/html5shim-unit-tests/html5shim-unit-tests.js"/>
+    </web-resource>
+
     <web-resource key="underscorejs-unit-tests">
         <!-- can't be included in all tests as it needs to be in a specific location (see FuncTestServlet.java) -->
         <resource type="download" name="underscorejs-tests.js" location="unit-tests/tests/underscorejs-unit-tests/underscorejs-unit-tests.js"/>
-    </web-resource>
-
-    <web-resource key="html5shim-unit-tests">
-        <!-- can't be included in all tests as it needs to be in a specific location (see FuncTestServlet.java) -->
-        <resource type="download" name="html5shim-tests.js" location="unit-tests/tests/html5shim-unit-tests/html5shim-unit-tests.js"/>
     </web-resource>
 
     <!-- Include this resource to run all unit tests-->
     <web-resource key="all-unit-tests">
         <!--AllTests-->
         <dependency>auiplugin-tests:ajs-infrastructure-unit-tests</dependency>
+        <dependency>auiplugin-tests:html5shim-unit-tests</dependency>
         <dependency>auiplugin-tests:atlassian-js-unit-tests</dependency>
         <dependency>auiplugin-tests:whenitype-unit-tests</dependency>
         <dependency>auiplugin-tests:dialog-unit-tests</dependency>
@@ -153,8 +153,6 @@
         <label>AUI Bootcamp Exercise</label>
         <link linkId="aui-bootcamp">/plugins/servlet/ajstest/bootcamp/instructions.html</link>
     </web-item>
-
-
 
     <!-- AUI Experimental Testing below -->
     <servlet key="experimental-func-test-servlet" class="com.atlassian.aui.test.experimental.ExperimentalFuncTestServlet">
