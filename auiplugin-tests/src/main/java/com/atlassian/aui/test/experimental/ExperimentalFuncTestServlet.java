@@ -23,7 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Experimental func test servlet is a simple servelet for listing tests
+ * in the experimental space and serving up the html pages for the tests.
  */
 public class ExperimentalFuncTestServlet extends HttpServlet {
     private final WebResourceManager webResourceManager;

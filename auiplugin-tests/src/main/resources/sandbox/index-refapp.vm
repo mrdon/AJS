@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>AUI Sandbox</title>
-    <meta name="decorator" content="atl.general">
+    <meta name="decorator" content="atl.blank">
 
     $webResourceManager.requireResource("com.atlassian.auiplugin:ajs")
 

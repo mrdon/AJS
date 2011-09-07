@@ -87,7 +87,7 @@
         <jdkLevel>1.5</jdkLevel>
         <xvfb.enable>true</xvfb.enable>
 
-        <refapp.version>2.11.0</refapp.version>
+        <refapp.version>2.13.0-m1</refapp.version>
 
         <confluence.version>RELEASE</confluence.version>
         <confluence.data.version>RELEASE</confluence.data.version>
