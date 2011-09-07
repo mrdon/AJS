@@ -237,4 +237,9 @@
         <resource type="download" name="experimental-example.js" location="experimental/js/atlassian/experimental-example.js" />
     </web-resource>
 
+    <web-resource key="aui-experimental-page-layout" name="AUI Experimental Page and Layout">
+        <dependency>com.atlassian.auiplugin:aui-core</dependency>
+        <resource type="download" name="experimental-example.css" location="experimental/css/atlassian/aui-page-layout.css" />
+    </web-resource>
+
 </atlassian-plugin>

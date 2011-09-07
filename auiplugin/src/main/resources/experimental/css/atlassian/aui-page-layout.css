@@ -1,0 +1,386 @@
+/**
+ * RESET
+ * If this is successful the prefix will be dropped at a later date.
+ */
+
+.aui-reset html, .aui-reset body, .aui-reset p, .aui-reset div, .aui-reset h1, .aui-reset h2, .aui-reset h3, .aui-reset h4, .aui-reset h5, .aui-reset h6, .aui-reset img, .aui-reset ul, .aui-reset ol, .aui-reset li, .aui-reset dl, .aui-reset dt, .aui-reset dd, .aui-reset pre, .aui-reset form, .aui-reset fieldset, .aui-reset textarea, .aui-reset input, .aui-reset select, .aui-reset option, .aui-reset button {
+    margin: 0;
+    padding: 0;
+}
+
+.aui-typography {
+    font-family: Arial,FreeSans,Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 1.308;    
+}
+
+
+
+/**
+ * PAGE LAYOUT
+ */
+
+.aui-layout {
+    margin: 0;
+    padding: 0;
+}
+
+.aui-layout #header {
+    clear: both;
+    float: left;
+    width: 100%;
+}
+
+.aui-layout #header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.aui-style-default #header a {
+    color: #fff;
+}
+
+.aui-layout #header #logo {
+    margin: 0;
+    padding: 0;
+}
+
+.aui-layout #header .global {
+    float: left;
+    width: 100%;
+}
+
+.aui-layout #header .global .primary {
+    float: left;
+}
+
+
+.aui-layout #content {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    margin: 0;
+	padding: 0;
+    position: relative;
+} 
+
+.aui-layout #content > header {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+	margin: 16px 0;
+    position: relative;
+} 
+
+.aui-layout #content > header h1,
+#content > header h2 {
+    margin: 0;
+} 
+
+.aui-layout #content > header + .content-body {
+    margin-top: 0;
+} 
+
+.aui-layout #content > header + .content-container {
+    padding-top: 0;
+} 
+
+.aui-layout #footer {
+    clear: both;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+} 
+
+.aui-layout #footer .footer-body {
+    background-color: transparent;
+    color: #505050;
+    font-size: 11px;
+    line-height: 1.364;
+    margin: 0;
+    padding: 0 16px;
+} 
+
+.aui-layout #footer .footer-body > ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+} 
+
+.aui-layout #footer .footer-body {
+    text-align: center;    
+}
+.aui-layout #footer .footer-body > ul > li {
+    display: inline-block;
+    margin: 0 0 0 16px;
+    padding: 0;
+} 
+.aui-layout #footer .footer-body > ul > li:first-child {
+	margin: 0;
+}
+
+
+/**
+ * PAGE DESIGN
+ */
+
+.aui-style-default {
+    background-color: #F0F0F0;
+    color: #000;
+}
+
+.aui-style-default a,
+.aui-style-default a:link,
+.aui-style-default a:visited {
+    color: #3C78B5;
+    text-decoration: none;
+}
+.aui-style-default a:focus,
+.aui-style-default a:hover,
+.aui-style-default a:active {
+    color: #3C78B5;
+    text-decoration: underline;
+}
+
+.aui-style-default h1, .aui-style-default h2, .aui-style-default h3, .aui-style-default h4, .aui-style-default h5, .aui-style-default h6 {
+    color: #000;
+}
+
+.aui-style-default #header .global {
+    background-color: #003366;
+    color: #fff;
+}
+
+
+.aui-style-default #header .global .primary > ul {
+    float: left;
+    padding: 0 0 0 8px;
+}
+
+.aui-style-default #header .global .primary > ul > li {
+    float: left;
+    margin: 0 8px 0 0;
+}
+
+.aui-style-default #header .global .primary > ul > li > a {
+    display: block;
+    padding: 4px;
+    white-space: nowrap;
+}
+
+.aui-style-default #header .global .secondary {
+    float: right;
+}
+
+.aui-style-default #header .global .secondary > ul {
+    float: right;
+    padding: 0 8px 0 0;
+}
+
+.aui-style-default #header .global .secondary > ul > li {
+    float: right;
+    margin: 0 0 0 8px;
+}
+
+.aui-style-default #header .global .secondary > ul > li > a {
+    display: block;
+    padding: 4px;
+    white-space: nowrap;
+}
+
+.aui-style-default #header .local {
+    background-color: #326ca6;
+    border-top: 1px solid #003366;
+    color: #fff;
+    float: left;
+    width: 100%;
+}
+
+.aui-style-default #header .local .primary {
+    float: left;
+}
+
+.aui-style-default #header .local .primary > ul {
+    float: left;
+    padding: 0 0 0 8px;
+}
+
+.aui-style-default #header .local .primary > ul > li {
+    background-color: #326ca6;
+    color: #fff;
+    float: left;
+    margin: 0 8px 0 0;
+}
+
+.aui-style-default #header .local .primary > ul > li > a {
+    display: block;
+    padding: 4px;
+    white-space: nowrap;
+}
+
+.aui-style-default #header .local .primary > ul > li > a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+.aui-style-default #header .local .primary > ul > li.selected {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.aui-style-default #header .local .secondary {
+    float: right;
+}
+
+.aui-style-default #header .local .secondary > ul {
+    float: right;
+    padding: 0 8px 0 0;
+}
+
+.aui-style-default #header .local .secondary > ul > li {
+    float: right;
+    margin: 0 0 0 8px;
+}
+
+.aui-style-default #header .local .secondary > ul > li > a {
+    display: block;
+    padding: 4px;
+    white-space: nowrap;
+}
+
+
+
+/**
+ * TYPOGRAPHY
+ */
+
+.aui-typography p {
+    margin-bottom: 16px;
+}
+.aui-typography h1, .aui-typography h2, .aui-typography h3, .aui-typography h4, .aui-typography h5, .aui-typography h6 {
+    margin: 0 0 16px;
+}
+.aui-typography h1 {
+    font-size: 24px;
+    line-height: 1.167;
+}
+.aui-typography h2 {
+    font-size: 22px;
+    line-height: 1.182;
+}
+.aui-typography h3 {
+    font-size: 18px;
+    line-height: 1.222;
+}
+.aui-typography h4 {
+    font-size: 16px;
+    line-height: 1.25;
+}
+.aui-typography h5 {
+    font-size: 14px;
+    line-height: 1.286;
+}
+.aui-typography h6 {
+    font-size: 12px;
+}
+
+.aui-typography ul {
+    margin: 0 0 16px;
+    padding: 0 0 0 24px;
+}
+.aui-typography ol {
+    list-style-position: outside;
+    list-style-type: decimal;
+    margin: 0 0 16px;
+    padding: 0 0 0 24px;
+}
+
+
+
+/**
+ * CONTENT PANEL
+ */
+.aui-style-default .content-panel {
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+	margin: 0;
+	padding: 16px;
+}
+
+
+/**
+ * OPTIONAL: spacing system
+ */
+.aui-content-spacing #content {
+    padding: 16px 16px 0 16px;
+}
+
+.aui-content-spacing #content > div,
+.aui-content-spacing #content > section,
+.aui-content-spacing #content > header,
+.aui-content-spacing #content > footer,
+.aui-content-spacing .content-panel > div,
+.aui-content-spacing .content-panel > section,
+.aui-content-spacing .content-panel > header,
+.aui-content-spacing .content-panel > footer,
+.aui-content-spacing .content-panel,
+.aui-content-spacing .aui-group {
+	margin: 0 0 16px 0;
+}
+
+.aui-content-spacing .content-panel:last-child,
+.aui-content-spacing .aui-group:last-child {
+	margin: 0;
+}
+
+
+/**
+ * GROUP/ITEM
+ */
+
+.aui-group {
+    display: table;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.aui-group > .aui-item {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table-cell;
+    padding-left: 16px;
+    vertical-align: top;
+}
+
+.aui-group > .aui-item:first-child {
+    padding-left: 0;
+}
+
+/* defensive header allowance */
+.aui-layout .aui-group > header {
+    display: table-caption;
+}
+
+/* if you make a header into a group/item layout, the last one will be right aligned. two items = 7/10 split */
+.aui-group.aui-group-710split .aui-item:last-child {
+	text-align: right;
+}
+

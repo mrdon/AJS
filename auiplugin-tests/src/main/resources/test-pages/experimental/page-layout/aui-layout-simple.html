@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Individual Page Title | Sitename</title>
+    <meta name="decorator" content="atl.blank">
+</head>
+<body class="aui-reset aui-layout aui-style-default aui-typography aui-content-spacing">
+	<div id="page">
+		<header id="header" role="banner">
+			<nav class="global" role="navigation">
+                <div class="primary">
+                    <h1 id="logo"><a href="http://example.com/">Logo</a></h1>
+                    <ul>
+                        <li><a href="http://example.com/">Project Name</a></li>
+                    </ul>
+                </div>
+                <div class="secondary">
+                    <ul>
+                        <li><a href="http://example.com/">Log in</a></li>
+                    </ul>
+                </div>
+			</nav>
+			<nav class="local" role="navigation">
+                <div class="primary">
+                    <ul>
+                        <li><a href="http://example.com/">Foo 1</a></li>
+                        <li><a href="http://example.com/">Foo 2</a></li>
+                        <li><a href="http://example.com/">Foo 3</a></li>
+                    </ul>
+                </div>                            
+                <div class="secondary">
+                    <ul>
+                        <li><a href="http://example.com/">Hero Action</a></li>
+                        <li>
+                            <form>
+                                <input type="search" placeholder="Search" />
+                            </form>
+                        </li>
+                    </ul>
+                </div>                            
+			</nav>            
+		</header>
+		<section id="content" role="main">
+
+			<header>
+				<h1>Content Heading in unclassed header</h1>
+			</header>
+			
+			
+			<div>
+				<button id="aui-reset" class="toggle">aui-reset</button>
+				<button id="aui-layout" class="toggle">aui-layout</button>
+				<button id="aui-typography" class="toggle">aui-typography</button>
+				<button id="aui-style-default" class="toggle">aui-style-default</button>
+				<button id="aui-content-spacing" class="toggle">aui-content-spacing</button>
+				<p>This level of separate classes is for the Experimental phase only; if the reset is successful we'll bundle it into aui-layout; if the typography is ok we'll bundle it into aui-style-default.</p>
+			</div>
+			
+			<div>Unclassed div.</div>
+			<section>Unclassed section.</section>
+			<p>Unclassed paragraph.</p>
+
+			<div class="content-panel">
+				
+				<p>The white area is a .content-panel - a helper class which provides a white background, round corners, grid-appropriate padding and grid-appropriate bottom margin.</p>
+
+				<div class="aui-group">
+					<div class="aui-item">
+						This content is in a utility CSS pattern for columns. Have as many equal-width columns as you want.
+					</div>
+					<div class="aui-item">
+						Each column will have a grid-measure space between the next.
+					</div>
+					<div class="aui-item">
+						If you want one to be fixed, give it a unique ID/Class and apply a width. The other columns will split the remainder equally amongst themsevles.
+					</div>
+				</div>
+
+			</div>
+		</section><!-- #content -->
+		<footer id="footer" role="contentinfo">
+			<section class="footer-body">
+				<p>Footer content has a container to simplify styling vs messages etc.</p>
+				<ul>
+					<li>List item</li>
+					<li>List item</li>
+					<li>List item</li>
+				</ul>
+			</section>
+		</footer>
+	</div><!-- #page -->
+	<script>
+	(function(){
+	
+		function setClassToggles(options) {
+			var triggers = jQuery(options.triggers),
+				theTarget = jQuery(options.target),
+				theClass;
+	
+			function updateMessage(trigger,target,value) {
+				if ( target.hasClass(value) ) {
+					trigger.text("Turn " + value + " off");
+				} else {
+					trigger.text("Turn " + value + " on");
+				}
+			};
+		  
+			triggers.each( function(i) {
+				// set up button text
+				updateMessage(jQuery(this), theTarget, jQuery(this).attr("id"));
+	
+				// toggle class and text on click
+				jQuery(this).click( function() {
+					theClass = jQuery(this).attr("id");
+					theTarget.toggleClass(theClass);
+					updateMessage(jQuery(this),theTarget,theClass);
+				})
+	
+			});
+			
+		};
+	
+		jQuery(document).ready( function() {
+			setClassToggles({ "triggers": ".toggle", "target": "body" });
+		});
+	
+	})();	
+	</script>
+
+</body>
+</html>

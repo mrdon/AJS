@@ -44,6 +44,10 @@ public class FuncTestServlet extends HttpServlet {
             webResourceManager.requireResource("com.atlassian.auiplugin:stalker");
         }
 
+        if(req.getPathInfo().contains("page-layout")){
+            webResourceManager.requireResource("com.atlassian.auiplugin:aui-experimental-page-layout");
+        }
+
         if (req.getPathInfo().endsWith("/"))
         {
             try
