@@ -37,8 +37,20 @@
     padding: 0;
 }
 
-.aui-style-default #header a {
-    color: #fff;
+.aui-layout #header .global .secondary,
+.aui-layout #header .global .secondary > ul,
+.aui-layout #header .global .secondary > ul > li {
+    float: right;
+}
+
+.aui-layout #header .local {
+    float: left;
+    width: 100%;
+}
+.aui-layout #header .local .primary,
+.aui-layout #header .local .primary > ul,
+.aui-layout #header .local .primary > ul > li {
+    float: left;
 }
 
 .aui-layout #header #logo {
@@ -160,14 +172,19 @@
     color: #fff;
 }
 
+.aui-style-default #header a {
+    color: #fff;
+}
 
-.aui-style-default #header .global .primary > ul {
+.aui-layout #header .global .primary > ul,
+.aui-layout #header .global .primary > ul > li {
     float: left;
+}
+.aui-style-default #header .global .primary > ul {
     padding: 0 0 0 8px;
 }
 
 .aui-style-default #header .global .primary > ul > li {
-    float: left;
     margin: 0 8px 0 0;
 }
 
@@ -177,17 +194,11 @@
     white-space: nowrap;
 }
 
-.aui-style-default #header .global .secondary {
-    float: right;
-}
-
 .aui-style-default #header .global .secondary > ul {
-    float: right;
     padding: 0 8px 0 0;
 }
 
 .aui-style-default #header .global .secondary > ul > li {
-    float: right;
     margin: 0 0 0 8px;
 }
 
@@ -197,27 +208,26 @@
     white-space: nowrap;
 }
 
+
 .aui-style-default #header .local {
     background-color: #326ca6;
     border-top: 1px solid #003366;
     color: #fff;
-    float: left;
-    width: 100%;
 }
 
-.aui-style-default #header .local .primary {
-    float: left;
-}
 
 .aui-style-default #header .local .primary > ul {
-    float: left;
     padding: 0 0 0 8px;
 }
 
 .aui-style-default #header .local .primary > ul > li {
     background-color: #326ca6;
     color: #fff;
-    float: left;
+}
+
+.aui-style-default #header .local .primary > ul > li {
+    background-color: #326ca6;
+    color: #fff;
     margin: 0 8px 0 0;
 }
 
@@ -232,22 +242,29 @@
     color: #333;
 }
 
-.aui-style-default #header .local .primary > ul > li.selected {
+.aui-style-default #header .local .primary > ul > li.selected,
+.aui-style-default #header .local .primary > ul > li.selected a {
     background: #f0f0f0;
     color: #333;
 }
 
-.aui-style-default #header .local .secondary {
+.aui-layout #header .local .secondary {
+    float: right;
+}
+
+.aui-layout #header .local .secondary > ul {
+    float: right;
+}
+
+.aui-layout #header .local .secondary > ul > li {
     float: right;
 }
 
 .aui-style-default #header .local .secondary > ul {
-    float: right;
     padding: 0 8px 0 0;
 }
 
 .aui-style-default #header .local .secondary > ul > li {
-    float: right;
     margin: 0 0 0 8px;
 }
 

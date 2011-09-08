@@ -24,7 +24,7 @@
 			<nav class="local" role="navigation">
                 <div class="primary">
                     <ul>
-                        <li><a href="http://example.com/">Foo 1</a></li>
+                        <li class="selected"><a href="#">Foo 1</a></li>
                         <li><a href="http://example.com/">Foo 2</a></li>
                         <li><a href="http://example.com/">Foo 3</a></li>
                     </ul>
@@ -48,15 +48,6 @@
 			</header>
 			
 			
-			<div>
-				<button id="aui-reset" class="toggle">aui-reset</button>
-				<button id="aui-layout" class="toggle">aui-layout</button>
-				<button id="aui-typography" class="toggle">aui-typography</button>
-				<button id="aui-style-default" class="toggle">aui-style-default</button>
-				<button id="aui-content-spacing" class="toggle">aui-content-spacing</button>
-				<p>This level of separate classes is for the Experimental phase only; if the reset is successful we'll bundle it into aui-layout; if the typography is ok we'll bundle it into aui-style-default.</p>
-			</div>
-			
 			<div>Unclassed div.</div>
 			<section>Unclassed section.</section>
 			<p>Unclassed paragraph.</p>
@@ -73,11 +64,67 @@
 						Each column will have a grid-measure space between the next.
 					</div>
 					<div class="aui-item">
-						If you want one to be fixed, give it a unique ID/Class and apply a width. The other columns will split the remainder equally amongst themsevles.
+						If you want one to be fixed, give it a unique ID/Class and apply a width.
 					</div>
 				</div>
 
 			</div>
+			
+			<div class="content-panel">
+				<p>Toggles for testing:</p>
+				<div>
+					<button id="aui-reset" class="toggle">aui-reset</button>
+					<button id="aui-layout" class="toggle">aui-layout</button>
+					<button id="aui-typography" class="toggle">aui-typography</button>
+					<button id="aui-style-default" class="toggle">aui-style-default</button>
+					<button id="aui-content-spacing" class="toggle">aui-content-spacing</button>
+					<button id="all-on">all on</button>
+					<button id="all-off">all off</button>
+				</div>
+
+				<p><strong>Don't panic!</strong> This level of separate classes is for the first dogfooding step in the Experimental phase ONLY! If the reset is successful we'll bundle it into aui-layout; if the typography is ok we'll bundle it into aui-style-default. Content spacing remains optional.</p>
+
+			</div>
+
+			<div class="content-panel">
+				<h2>h2 Typography</h2>
+				<p>Sona si Latine loqueris. Si Hoc Legere Scis Nimium Eruditionis Habes. Sentio aliquos togatos contra me conspirare. Non calor sed umor est qui nobis incommodat.<p>
+				<h3>h3 Typography</h3>
+				<p>Sona si Latine loqueris. Si Hoc Legere Scis Nimium Eruditionis Habes. Sentio aliquos togatos contra me conspirare. Non calor sed umor est qui nobis incommodat.<p>
+				<h4>h4 Typography</h4>
+				<p>Sona si Latine loqueris. Si Hoc Legere Scis Nimium Eruditionis Habes. Sentio aliquos togatos contra me conspirare. Non calor sed umor est qui nobis incommodat.<p>
+				<h5>h2 Typography</h5>
+				<p>Sona si Latine loqueris. Si Hoc Legere Scis Nimium Eruditionis Habes. Sentio aliquos togatos contra me conspirare. Non calor sed umor est qui nobis incommodat.<p>
+				<h6>h6 Typography</h6>
+				<p>Sona si Latine loqueris. Si Hoc Legere Scis Nimium Eruditionis Habes. Sentio aliquos togatos contra me conspirare. Non calor sed umor est qui nobis incommodat.<p>
+				<h2>Lists</h2>
+				<ul>
+					<li>Sona si Latine loqueris.</li>
+					<li>Si Hoc Legere Scis Nimium Eruditionis Habes.</li>
+					<li>Sentio aliquos togatos contra me conspirare.</li>
+				</ul>
+				<ol>
+					<li>Sona si Latine loqueris.</li>
+					<li>Si Hoc Legere Scis Nimium Eruditionis Habes.</li>
+					<li>Sentio aliquos togatos contra me conspirare.</li>
+				</ol>
+			
+			</div>
+
+			
+			<div class="content-panel">
+				<h2>Why is a reset problematic?</h2>
+
+				<div class="aui-message error shadowed">
+					<p class="title"> 
+				        <span class="aui-icon icon-error"></span> 
+						<strong>Because</strong> 
+					</p> 
+					<p>Stuff like this happens.</p>
+				</div><!-- .aui-message -->
+				
+			</div>
+			
 		</section><!-- #content -->
 		<footer id="footer" role="contentinfo">
 			<section class="footer-body">
@@ -105,6 +152,12 @@
 					trigger.text("Turn " + value + " on");
 				}
 			};
+
+			function resetMessages() {
+				triggers.each( function(i) {
+					updateMessage(jQuery(this), theTarget, jQuery(this).attr("id"));
+				});
+			};
 		  
 			triggers.each( function(i) {
 				// set up button text
@@ -116,8 +169,16 @@
 					theTarget.toggleClass(theClass);
 					updateMessage(jQuery(this),theTarget,theClass);
 				})
-	
 			});
+			
+			jQuery("#all-on").click( function() {
+				theTarget.attr("class", "aui-reset aui-layout aui-style-default aui-typography aui-content-spacing");
+				resetMessages();
+			})
+			jQuery("#all-off").click( function() {
+				theTarget.attr("class", "");
+				resetMessages();
+			})
 			
 		};
 	
