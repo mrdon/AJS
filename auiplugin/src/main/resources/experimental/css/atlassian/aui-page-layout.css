@@ -108,7 +108,7 @@
     clear: both;
     float: left;
     margin: 0;
-    padding: 0;
+    padding: 0 0 16px 0;
     width: 100%;
 } 
 
@@ -334,6 +334,10 @@
 	padding: 16px;
 }
 
+.aui-style-default .content-panel *:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
 
 /**
  * OPTIONAL: spacing system
