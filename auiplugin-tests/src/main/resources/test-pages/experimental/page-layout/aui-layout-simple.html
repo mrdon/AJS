@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <title>Individual Page Title | Sitename</title>
     <meta name="decorator" content="atl.blank">
+	<style>
+	.aui-item { outline: 1px dotted #333; }
+	</style>
 </head>
 <body class="aui-reset aui-layout aui-style-default aui-typography aui-content-spacing">
 	<div id="page">
@@ -43,10 +46,10 @@
 		</header>
 		<section id="content" role="main">
 
+			
 			<header>
 				<h1>Content Heading in unclassed header</h1>
 			</header>
-			
 			
 			<div>Unclassed div.</div>
 			<section>Unclassed section.</section>
@@ -56,17 +59,34 @@
 				
 				<p>The white area is a .content-panel - a helper class which provides a white background, round corners, grid-appropriate padding and grid-appropriate bottom margin.</p>
 
+			</div>
+			
+			<div class="content-panel">
+				<h2>Groups and Items</h2>
+				<p>Borders added for demo only:</p>
+
 				<div class="aui-group">
 					<div class="aui-item">
-						This content is in a utility CSS pattern for columns. Have as many equal-width columns as you want.
+					    Have as many equal-width columns as you want.
 					</div>
 					<div class="aui-item">
-						Each column will have a grid-measure space between the next.
+					    Each column will have a grid-measure space between the next.
 					</div>
 					<div class="aui-item">
-						If you want one to be fixed, give it a unique ID/Class and apply a width.
+					    You can fix widths with classes/IDs.
 					</div>
 				</div>
+				
+				<p>Helper class for the 7/10 split (needs a better name):</p>
+				    <div class="aui-group aui-group-710split">
+					<div class="aui-item">
+					    This one goes left
+					</div>
+					<div class="aui-item">
+					    This one goes right
+					</div>
+				</div>
+
 
 			</div>
 			

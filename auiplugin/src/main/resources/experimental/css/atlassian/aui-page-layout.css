@@ -3,7 +3,7 @@
  * If this is successful the prefix will be dropped at a later date.
  */
 
-.aui-reset html, .aui-reset body, .aui-reset p, .aui-reset div, .aui-reset h1, .aui-reset h2, .aui-reset h3, .aui-reset h4, .aui-reset h5, .aui-reset h6, .aui-reset img, .aui-reset ul, .aui-reset ol, .aui-reset li, .aui-reset dl, .aui-reset dt, .aui-reset dd, .aui-reset pre, .aui-reset form, .aui-reset fieldset, .aui-reset textarea, .aui-reset input, .aui-reset select, .aui-reset option, .aui-reset button {
+.aui-reset html, .aui-reset body, .aui-reset p, .aui-reset div, .aui-reset h1, .aui-reset h2, .aui-reset h3, .aui-reset h4, .aui-reset h5, .aui-reset h6, .aui-reset img, .aui-reset ul, .aui-reset ol, .aui-reset li, .aui-reset dl, .aui-reset dt, .aui-reset dd, .aui-reset pre, .aui-reset form, .aui-reset fieldset {
     margin: 0;
     padding: 0;
 }
