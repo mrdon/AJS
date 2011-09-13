@@ -128,8 +128,16 @@ AJS.popup = function (options) {
 
             return hasFocus;
         },
-        // we try and place focus, by looking in page body, then button panel and finally page menu.
+        // we try and place focus, in the configured element or by looking in page body, then button panel and finally page menu.
         focusDialog = function(element) {
+            var focusElement = element.attr("data-focus-element");
+            if (focusElement) {
+                focusElement = AJS.$(focusElement);
+                if (focusElement.length && focusElement[0].tabIndex >= 0) {
+                    focusElement.focus();
+                }
+                return;
+            }
             if (focusItem(AJS.$(".dialog-page-body", element)))
                 return;
             if (focusItem(AJS.$(".dialog-button-panel", element)))
