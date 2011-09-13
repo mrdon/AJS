@@ -1,34 +1,24 @@
 /**
  * RESET
- * If this is successful the prefix will be dropped at a later date.
  */
 
-.aui-reset html, .aui-reset body, .aui-reset p, .aui-reset div, .aui-reset h1, .aui-reset h2, .aui-reset h3, .aui-reset h4, .aui-reset h5, .aui-reset h6, .aui-reset img, .aui-reset ul, .aui-reset ol, .aui-reset li, .aui-reset dl, .aui-reset dt, .aui-reset dd, .aui-reset pre, .aui-reset form, .aui-reset fieldset {
+html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, form, fieldset {
     margin: 0;
     padding: 0;
 }
-
-.aui-typography {
-    font-family: Arial,FreeSans,Helvetica,sans-serif;
-    font-size: 13px;
-    line-height: 1.308;    
-}
-
-
 
 /**
  * PAGE LAYOUT
  */
-
-.aui-layout {
-    margin: 0;
-    padding: 0;
-}
-
 .aui-layout #header {
     clear: both;
     float: left;
     width: 100%;
+}
+
+.aui-layout #header input[type='search'] {
+    margin: 2px 0 0 0;
+    padding: 0;
 }
 
 .aui-layout #header ul {
@@ -37,20 +27,24 @@
     padding: 0;
 }
 
-.aui-layout #header .global .secondary,
-.aui-layout #header .global .secondary > ul,
-.aui-layout #header .global .secondary > ul > li {
-    float: right;
-}
-
-.aui-layout #header .local {
-    float: left;
-    width: 100%;
-}
+.aui-layout #header .global,
+.aui-layout #header .global .primary,
+.aui-layout #header .global .primary > ul,
+.aui-layout #header .global .primary > ul > li,
+.aui-layout #header .local,
 .aui-layout #header .local .primary,
 .aui-layout #header .local .primary > ul,
 .aui-layout #header .local .primary > ul > li {
     float: left;
+}
+
+.aui-layout #header .global .secondary,
+.aui-layout #header .global .secondary > ul,
+.aui-layout #header .global .secondary > ul > li,
+.aui-layout #header .local .secondary,
+.aui-layout #header .local .secondary > ul,
+.aui-layout #header .local .secondary > ul > li {
+    float: right;
 }
 
 .aui-layout #header #logo {
@@ -58,13 +52,9 @@
     padding: 0;
 }
 
+.aui-layout #header .local,
 .aui-layout #header .global {
-    float: left;
     width: 100%;
-}
-
-.aui-layout #header .global .primary {
-    float: left;
 }
 
 
@@ -145,176 +135,163 @@
  * PAGE DESIGN
  */
 
-.aui-style-default {
+.aui-theme-default {
     background-color: #F0F0F0;
     color: #000;
 }
 
-.aui-style-default a,
-.aui-style-default a:link,
-.aui-style-default a:visited {
+.aui-theme-default a,
+.aui-theme-default a:link,
+.aui-theme-default a:visited {
     color: #3C78B5;
     text-decoration: none;
 }
-.aui-style-default a:focus,
-.aui-style-default a:hover,
-.aui-style-default a:active {
+.aui-theme-default a:focus,
+.aui-theme-default a:hover,
+.aui-theme-default a:active {
     color: #3C78B5;
     text-decoration: underline;
 }
 
-.aui-style-default h1, .aui-style-default h2, .aui-style-default h3, .aui-style-default h4, .aui-style-default h5, .aui-style-default h6 {
+.aui-theme-default h1, .aui-theme-default h2, .aui-theme-default h3, .aui-theme-default h4, .aui-theme-default h5, .aui-theme-default h6 {
     color: #000;
 }
 
-.aui-style-default #header .global {
+.aui-theme-default #header .global {
     background-color: #003366;
     color: #fff;
 }
 
-.aui-style-default #header a {
+.aui-theme-default #header a {
     color: #fff;
 }
 
-.aui-layout #header .global .primary > ul,
-.aui-layout #header .global .primary > ul > li {
-    float: left;
-}
-.aui-style-default #header .global .primary > ul {
+.aui-theme-default #header .global .primary > ul {
     padding: 0 0 0 8px;
 }
 
-.aui-style-default #header .global .primary > ul > li {
+.aui-theme-default #header .global .primary > ul > li {
     margin: 0 8px 0 0;
 }
 
-.aui-style-default #header .global .primary > ul > li > a {
+.aui-theme-default #header .global .primary > ul > li > a {
     display: block;
     padding: 4px;
     white-space: nowrap;
 }
 
-.aui-style-default #header .global .secondary > ul {
+.aui-theme-default #header .global .secondary > ul {
     padding: 0 8px 0 0;
 }
 
-.aui-style-default #header .global .secondary > ul > li {
+.aui-theme-default #header .global .secondary > ul > li {
     margin: 0 0 0 8px;
 }
 
-.aui-style-default #header .global .secondary > ul > li > a {
+.aui-theme-default #header .global .secondary > ul > li > a {
     display: block;
     padding: 4px;
     white-space: nowrap;
 }
 
 
-.aui-style-default #header .local {
+.aui-theme-default #header .local {
     background-color: #326ca6;
     border-top: 1px solid #003366;
     color: #fff;
 }
 
 
-.aui-style-default #header .local .primary > ul {
+.aui-theme-default #header .local .primary > ul {
     padding: 0 0 0 8px;
 }
 
-.aui-style-default #header .local .primary > ul > li {
+.aui-theme-default #header .local .primary > ul > li {
     background-color: #326ca6;
     color: #fff;
 }
 
-.aui-style-default #header .local .primary > ul > li {
+.aui-theme-default #header .local .primary > ul > li {
     background-color: #326ca6;
     color: #fff;
     margin: 0 8px 0 0;
 }
 
-.aui-style-default #header .local .primary > ul > li > a {
+.aui-theme-default #header .local .primary > ul > li > a {
     display: block;
     padding: 4px;
     white-space: nowrap;
 }
 
-.aui-style-default #header .local .primary > ul > li > a:hover {
+.aui-theme-default #header .local .primary > ul > li > a:hover {
     background-color: #fff;
     color: #333;
 }
 
-.aui-style-default #header .local .primary > ul > li.selected,
-.aui-style-default #header .local .primary > ul > li.selected a {
+.aui-theme-default #header .local .primary > ul > li.selected,
+.aui-theme-default #header .local .primary > ul > li.selected a {
     background: #f0f0f0;
     color: #333;
 }
 
-.aui-layout #header .local .secondary {
-    float: right;
-}
-
-.aui-layout #header .local .secondary > ul {
-    float: right;
-}
-
-.aui-layout #header .local .secondary > ul > li {
-    float: right;
-}
-
-.aui-style-default #header .local .secondary > ul {
+.aui-theme-default #header .local .secondary > ul {
     padding: 0 8px 0 0;
 }
 
-.aui-style-default #header .local .secondary > ul > li {
+.aui-theme-default #header .local .secondary > ul > li {
     margin: 0 0 0 8px;
 }
 
-.aui-style-default #header .local .secondary > ul > li > a {
+.aui-theme-default #header .local .secondary > ul > li > a {
     display: block;
     padding: 4px;
     white-space: nowrap;
 }
-
 
 
 /**
  * TYPOGRAPHY
  */
-
-.aui-typography p {
+.aui-theme-default {
+    font-family: Arial,FreeSans,Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 1.308;    
+}
+.aui-theme-default p {
     margin-bottom: 16px;
 }
-.aui-typography h1, .aui-typography h2, .aui-typography h3, .aui-typography h4, .aui-typography h5, .aui-typography h6 {
+.aui-theme-default h1, .aui-theme-default h2, .aui-theme-default h3, .aui-theme-default h4, .aui-theme-default h5, .aui-theme-default h6 {
     margin: 0 0 16px;
 }
-.aui-typography h1 {
+.aui-theme-default h1 {
     font-size: 24px;
     line-height: 1.167;
 }
-.aui-typography h2 {
+.aui-theme-default h2 {
     font-size: 22px;
     line-height: 1.182;
 }
-.aui-typography h3 {
+.aui-theme-default h3 {
     font-size: 18px;
     line-height: 1.222;
 }
-.aui-typography h4 {
+.aui-theme-default h4 {
     font-size: 16px;
     line-height: 1.25;
 }
-.aui-typography h5 {
+.aui-theme-default h5 {
     font-size: 14px;
     line-height: 1.286;
 }
-.aui-typography h6 {
+.aui-theme-default h6 {
     font-size: 12px;
 }
 
-.aui-typography ul {
+.aui-theme-default ul {
     margin: 0 0 16px;
     padding: 0 0 0 24px;
 }
-.aui-typography ol {
+.aui-theme-default ol {
     list-style-position: outside;
     list-style-type: decimal;
     margin: 0 0 16px;
@@ -326,7 +303,7 @@
 /**
  * CONTENT PANEL
  */
-.aui-style-default .content-panel {
+.aui-theme-default .content-panel {
     background: white;
     border: 1px solid #bbb;
     border-radius: 5px;
@@ -334,33 +311,76 @@
 	padding: 16px;
 }
 
-.aui-style-default .content-panel *:last-child {
+.aui-theme-default .content-panel *:last-child {
     padding-bottom: 0;
     margin-bottom: 0;
 }
 
 /**
- * OPTIONAL: spacing system
+ * PAGE TABS
  */
-.aui-content-spacing #content {
+.aui-theme-default #content > .aui-tabs.vertical-tabs .tabs-pane {
+    background: #fff;
+    border-radius: 5px;
+}
+
+.aui-theme-default #content > .aui-tabs.vertical-tabs > ul.tabs-menu li.menu-item.active-tab {
+    margin-right: -1px;
+}
+
+.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item,
+/*.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item.active-tab,
+.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item.active-tab a,*/
+.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item a {
+    background: inherit;
+    border-top-color: #f0f0f0;
+    border-right-color: #f0f0f0;
+    border-left-color: #f0f0f0;
+}
+
+/*.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item.active-tab,*/
+/*.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item.active-tab a strong {*/
+/*    background: inherit;*/
+/*    border-bottom-color: #f0f0f0;*/
+/*}*/
+
+.aui-theme-default #content > .aui-tabs.horizontal-tabs .tabs-pane {
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+	margin: 0;
+	padding: 16px;
+}
+
+.aui-theme-default #content > .aui-tabs.horizontal-tabs .tabs-pane *:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+
+
+/**
+ * Spacing system
+ */
+.aui-theme-default #content {
     padding: 16px 16px 0 16px;
 }
 
-.aui-content-spacing #content > div,
-.aui-content-spacing #content > section,
-.aui-content-spacing #content > header,
-.aui-content-spacing #content > footer,
-.aui-content-spacing .content-panel > div,
-.aui-content-spacing .content-panel > section,
-.aui-content-spacing .content-panel > header,
-.aui-content-spacing .content-panel > footer,
-.aui-content-spacing .content-panel,
-.aui-content-spacing .aui-group {
+.aui-theme-default #content > div,
+.aui-theme-default #content > section,
+.aui-theme-default #content > header,
+.aui-theme-default #content > footer,
+.aui-theme-default .content-panel > div,
+.aui-theme-default .content-panel > section,
+.aui-theme-default .content-panel > header,
+.aui-theme-default .content-panel > footer,
+.aui-theme-default .content-panel,
+.aui-theme-default .aui-group {
 	margin: 0 0 16px 0;
 }
 
-.aui-content-spacing .content-panel:last-child,
-.aui-content-spacing .aui-group:last-child {
+.aui-theme-default .content-panel:last-child,
+.aui-theme-default .aui-group:last-child {
 	margin: 0;
 }
 
@@ -400,8 +420,22 @@
     display: table-caption;
 }
 
-/* if you make a header into a group/item layout, the last one will be right aligned. two items = 7/10 split */
-.aui-group.aui-group-710split .aui-item:last-child {
+/* .aui-group-split: two items; alignmnet is left, then right (splits the layout). */
+.aui-group.aui-group-split > .aui-item {
+	text-align: right;
+}
+.aui-group.aui-group-split > .aui-item:first-child {
+	text-align: left;
+}
+
+/* .aui-group-trio: three items; alignment is left, center, right */
+.aui-group.aui-group-trio > .aui-item {
+	text-align: left;
+}
+.aui-group.aui-group-trio > .aui-item + .aui-item {
+	text-align: center;
+}
+.aui-group.aui-group-trio > .aui-item + .aui-item + .aui-item {
 	text-align: right;
 }
 

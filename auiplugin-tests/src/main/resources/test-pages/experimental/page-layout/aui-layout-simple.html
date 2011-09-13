@@ -8,7 +8,7 @@
 	.aui-item { outline: 1px dotted #333; }
 	</style>
 </head>
-<body class="aui-reset aui-layout aui-style-default aui-typography aui-content-spacing">
+<body class="aui-layout aui-theme-default">
 	<div id="page">
 		<header id="header" role="banner">
 			<nav class="global" role="navigation">
@@ -27,8 +27,8 @@
 			<nav class="local" role="navigation">
                 <div class="primary">
                     <ul>
-                        <li class="selected"><a href="#">Foo 1</a></li>
-                        <li><a href="http://example.com/">Foo 2</a></li>
+                        <li class="selected"><a href="./aui-layout-simple.html">Simple Layout</a></li>
+                        <li><a href="./aui-layout-tabs.html">Tabs</a></li>
                         <li><a href="http://example.com/">Foo 3</a></li>
                     </ul>
                 </div>                            
@@ -46,6 +46,7 @@
 		</header>
 		<section id="content" role="main">
 
+			<div id="toggles">Toggles for testing:</div>
 			
 			<header>
 				<h1>Content Heading in unclassed header</h1>
@@ -77,8 +78,8 @@
 					</div>
 				</div>
 				
-				<p>Helper class for the 7/10 split (needs a better name):</p>
-				    <div class="aui-group aui-group-710split">
+				<p>Helper class aui-group-split (split to either side, much the same way as Toolbar splits work):</p>
+				<div class="aui-group aui-group-split">
 					<div class="aui-item">
 					    This one goes left
 					</div>
@@ -86,21 +87,43 @@
 					    This one goes right
 					</div>
 				</div>
+				<div class="aui-group aui-group-split">
+					<div class="aui-item">
+					    This one goes left
+					</div>
+					<div class="aui-item">
+					    extra one
+					</div>
+					<div class="aui-item">
+					    This one goes right
+					</div>
+				</div>
+
+				<p>Helper class aui-group-trio left/centre/right:</p>
+				<div class="aui-group aui-group-trio">
+					<div class="aui-item">
+					    This one goes left
+					</div>
+					<div class="aui-item">
+					    This one is centred
+					</div>
+					<div class="aui-item">
+					    This one goes right
+					</div>
+				</div>
+				<div class="aui-group aui-group-trio">
+					<div class="aui-item">
+					    one
+					</div>
+					<div class="aui-item">
+					    two
+					</div>
+				</div>
 
 
 			</div>
 			
 			<div class="content-panel">
-				<p>Toggles for testing:</p>
-				<div>
-					<button id="aui-reset" class="toggle">aui-reset</button>
-					<button id="aui-layout" class="toggle">aui-layout</button>
-					<button id="aui-typography" class="toggle">aui-typography</button>
-					<button id="aui-style-default" class="toggle">aui-style-default</button>
-					<button id="aui-content-spacing" class="toggle">aui-content-spacing</button>
-					<button id="all-on">all on</button>
-					<button id="all-off">all off</button>
-				</div>
 
 				<p><strong>Don't panic!</strong> This level of separate classes is for the first dogfooding step in the Experimental phase ONLY! If the reset is successful we'll bundle it into aui-layout; if the typography is ok we'll bundle it into aui-style-default. Content spacing remains optional.</p>
 
@@ -161,9 +184,18 @@
 	(function(){
 	
 		function setClassToggles(options) {
-			var triggers = jQuery(options.triggers),
-				theTarget = jQuery(options.target),
-				theClass;
+			var theTarget = jQuery(options.target),
+				classes = theTarget.attr('class').split(/\s+/),
+				theClass,
+				triggerWrap = jQuery(options.triggerWrap),
+				triggers = [],
+				trigger;
+
+			jQuery.each(classes, function(i) {
+				trigger = jQuery("<button></button>").attr("id",classes[i]).text(classes[i]);
+				triggerWrap.append(trigger);
+				triggers.push(trigger);
+			});
 	
 			function updateMessage(trigger,target,value) {
 				if ( target.hasClass(value) ) {
@@ -172,17 +204,17 @@
 					trigger.text("Turn " + value + " on");
 				}
 			};
-
+			
 			function resetMessages() {
 				triggers.each( function(i) {
 					updateMessage(jQuery(this), theTarget, jQuery(this).attr("id"));
 				});
 			};
-		  
-			triggers.each( function(i) {
+			 
+			jQuery.each(triggers, function(i) {
 				// set up button text
 				updateMessage(jQuery(this), theTarget, jQuery(this).attr("id"));
-	
+			
 				// toggle class and text on click
 				jQuery(this).click( function() {
 					theClass = jQuery(this).attr("id");
@@ -190,20 +222,20 @@
 					updateMessage(jQuery(this),theTarget,theClass);
 				})
 			});
-			
-			jQuery("#all-on").click( function() {
-				theTarget.attr("class", "aui-reset aui-layout aui-style-default aui-typography aui-content-spacing");
-				resetMessages();
-			})
-			jQuery("#all-off").click( function() {
-				theTarget.attr("class", "");
-				resetMessages();
-			})
+			//
+			//jQuery("#all-on").click( function() {
+			//	theTarget.attr("class", "aui-reset aui-layout aui-style-default aui-typography aui-content-spacing");
+			//	resetMessages();
+			//})
+			//jQuery("#all-off").click( function() {
+			//	theTarget.attr("class", "");
+			//	resetMessages();
+			//})
 			
 		};
-	
+
 		jQuery(document).ready( function() {
-			setClassToggles({ "triggers": ".toggle", "target": "body" });
+			setClassToggles({ "triggerWrap": "#toggles", "target": "body" });
 		});
 	
 	})();	
