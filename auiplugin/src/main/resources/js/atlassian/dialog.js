@@ -104,48 +104,28 @@ AJS.popup = function (options) {
     
     //blanket for reference further down
     var blanket = AJS.$(".aui-blanket"),
-        focusItem = function(item) {
-            var hasFocus = false,
-                input = AJS.$(":input:visible:enabled:first", item),
-                theChildren = item.children(":visible");
-
-            if (input.length && input[0].tabIndex >= 0) {
-                input.focus();
-                return hasFocus = true;
-            }
-
+        focusItem = function(selector, element) {
+            var item = AJS.$(selector, element);
             if (item.length && item[0].tabIndex >= 0) {
                 item.focus();
-                return hasFocus = true;
+                return true;
             }
-
-            for(var i=0, ii=theChildren.length; i<ii; i++) {
-                hasFocus = focusItem(jQuery(theChildren[i]));
-                if(hasFocus) {
-                    break;
-                }
-            }
-
-            return hasFocus;
+            return false;
         },
-        // we try and place focus, in the configured element or by looking in page body, then button panel and finally page menu.
+        // we try and place focus, in the configured element or by looking for the first input
+        // in page body, then button panel and finally page menu.
         focusDialog = function(element) {
-            var focusElement = element.attr("data-focus-element");
-            if (focusElement) {
-                focusElement = AJS.$(focusElement);
-                if (focusElement.length && focusElement[0].tabIndex >= 0) {
-                    focusElement.focus();
-                }
-                return;
+            if (options.focusSelector) {
+                return focusItem(options.focusSelector, element);
             }
-            if (focusItem(AJS.$(".dialog-page-body", element)))
+            var defaultFocusSelector = ":input:visible:enabled:first";
+            if (focusItem(defaultFocusSelector, AJS.$(".dialog-page-body", element)))
                 return;
-            if (focusItem(AJS.$(".dialog-button-panel", element)))
+            if (focusItem(defaultFocusSelector, AJS.$(".dialog-button-panel", element)))
                 return;
 
-            focusItem(AJS.$(".dialog-page-menu", element));
+            focusItem(defaultFocusSelector, AJS.$(".dialog-page-menu", element));
         };
-
 
     var res = {
 
@@ -717,9 +697,11 @@ AJS.popup = function (options) {
      * @param width {number} dialog width in pixels, or an object containing the Dialog parameters
      * @param height {number} dialog height in pixels
      * @param id {number} [optional] dialog id
+     * @param options {object} [optional] currently supported options are:
+     * 'focusSelector' - an element selector to give focus to when the dialog is shown
     */
-    AJS.Dialog = function (width, height, id) {
-        var options = {};
+    AJS.Dialog = function (width, height, id, options) {
+        options = options || {};
         if (!+width) {
             options = Object(width);
             width = options.width;
