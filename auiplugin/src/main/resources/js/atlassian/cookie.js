@@ -3,14 +3,15 @@
     // Cookie handling functions
 
     var COOKIE_NAME = "AJS.conglomerate.cookie",
-            UNESCAPE_COOKIE_REGEX = /(\\|^"|"$)/g,
-            CONSECUTIVE_PIPE_CHARS_REGEX = /\|\|+/g,
-            ANY_QUOTE_REGEX = /"/g;
+        UNESCAPE_COOKIE_REGEX = /(\\|^"|"$)/g,
+        CONSECUTIVE_PIPE_CHARS_REGEX = /\|\|+/g,
+        ANY_QUOTE_REGEX = /"/g,
+        REGEX_SPECIAL_CHARS = /[.*+?|^$()[\]{\\]/g;
 
     function getValueFromConglomerate(name, cookieValue) {
         // a null cookieValue is just the first time through so create it
         cookieValue = cookieValue || "";
-        var reg = new RegExp(name + "=([^|]+)"),
+        var reg = new RegExp(regexEscape(name) + "=([^|]+)"),
             res = cookieValue.match(reg);
         return res && res[1];
     }
@@ -19,7 +20,7 @@
     function addOrAppendToValue(name, value, cookieValue) {
         //A cookie name follows after any amount of white space mixed with any amount of '|' characters
         //A cookie value is preceded by '=', then anything except for '|'
-        var reg = new RegExp("(\\s|\\|)*\\b" + name + "=[^|]*[|]*");
+        var reg = new RegExp("(\\s|\\|)*\\b" + regexEscape(name) + "=[^|]*[|]*");
 
         cookieValue = cookieValue || "";
         cookieValue = cookieValue.replace(reg, "|");
@@ -37,7 +38,7 @@
     }
 
     function getCookieValue(name) {
-        var reg = new RegExp("\\b" + name + "=(.+?[^\\\\])(;|$)"),
+        var reg = new RegExp("\\b" + regexEscape(name) + "=((?:[^\\\\;]+|\\\\.)*)(?:;|$)"),
             res = document.cookie.match(reg);
         return res && unescapeCookieValue(res[1]);
     }
@@ -53,6 +54,10 @@
             ex = "; expires=" + d.toGMTString();
         }
         document.cookie = name + "=" + quotedValue + ex + ";path=/";
+    }
+
+    function regexEscape(str) {
+        return str.replace(REGEX_SPECIAL_CHARS, "\\$&");
     }
 
     /**
