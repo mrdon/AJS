@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Layout: Groups and Items</title>
+    <meta name="decorator" content="atl.blank">
+	<style>
+	/* demo page style */
+	.aui-item p { background: #eee; outline: 1px solid #ccc; padding: 16px; }
+	.aui-group > header { background: #ccc; padding: 16px 16px 0 16px; }
+
+	.one-set-demo .aui-item:first-child {
+		width: 256px;
+	}
+	</style>
+</head>
+<body class="aui-layout aui-theme-default">
+	<div id="page">
+		<header id="header" role="banner">
+			<nav class="global" role="navigation">
+                <div class="primary">
+                    <h1 id="logo"><a href="http://example.com/">Logo</a></h1>
+                    <ul>
+                        <li><a href="http://example.com/">Project Name</a></li>
+                    </ul>
+                </div>
+                <div class="secondary">
+                    <ul>
+                        <li><a href="http://example.com/">Log in</a></li>
+                    </ul>
+                </div>
+			</nav>
+			<nav class="local" role="navigation">
+                <div class="primary">
+                    <ul>
+                        <li><a href="./aui-layout-simple.html">Simple Layout</a></li>
+                        <li><a href="./aui-layout-tabs.html">Tabs</a></li>
+                        <li class="selected"><a href="./aui-layout-groups.html">Group and Item</a></li>
+                    </ul>
+                </div>                            
+                <div class="secondary">
+                    <ul>
+                        <li><a href="http://example.com/">Hero Action</a></li>
+                        <li>
+                            <form>
+                                <input type="search" placeholder="Search" />
+                            </form>
+                        </li>
+                    </ul>
+                </div>                            
+			</nav>            
+		</header>
+		<section id="content" role="main">
+
+			<div id="toggles">Toggles for testing:</div>
+			
+			<header>
+				<h1>Group + Item Layout</h1>
+			</header>
+
+			<div class="aui-panel">
+				
+				<p><strong>NB:</strong> the grey boxes are purely for the purposes of this demo. In production the groups and items will not have any visual style applied.</p>
+
+				<h2>Unset widths = even spacing</h2>
+
+				<div class="aui-group">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+
+				<div class="aui-group">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+
+				<div class="aui-group">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+				<div class="aui-group">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+				<div class="aui-group">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+				<div class="aui-group">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+				<div class="aui-group">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>			
+
+				<h2>Presets</h2>
+				<p>Split group (add <code>aui-group-split</code> to <code>aui-group</code>): two items only, aligment is left|right. Very common pattern in headers, where you want a heading on the left and nav/actions on the right.</p>
+				<div class="aui-group aui-group aui-group-split">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+
+				<p>Trio group (add <code>aui-group-trio</code> to <code>aui-group</code>): three items only, alignment is left|centre|right. Useful for footers:</p>
+				<div class="aui-group aui-group-trio">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+				
+
+
+				<h2>Set one width, the rest space evenly</h2>
+				
+				<p>The first item has a set with of 256px:</p>				
+				<div class="aui-group one-set-demo">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+
+				<div class="aui-group one-set-demo">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+
+				<div class="aui-group one-set-demo">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+				<div class="aui-group one-set-demo">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+				<div class="aui-group one-set-demo">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+				<div class="aui-group one-set-demo">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>
+				<div class="aui-group one-set-demo">
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+					<div class="aui-item">
+						<p>Content goes here.</p>
+					</div>
+				</div>			
+
+				
+
+			</div><!-- .content-panel -->			
+		</section><!-- #content -->
+		<footer id="footer" role="contentinfo">
+			<section class="footer-body">
+				<p>Footer content has a container to simplify styling vs messages etc.</p>
+				<ul>
+					<li>List item</li>
+					<li>List item</li>
+					<li>List item</li>
+				</ul>
+			</section>
+		</footer>
+	</div><!-- #page -->
+	<script>
+	(function(){
+	
+		function setClassToggles(options) {
+			var theTarget = jQuery(options.target),
+				classes = theTarget.attr('class').split(/\s+/),
+				theClass,
+				triggerWrap = jQuery(options.triggerWrap),
+				triggers = [],
+				trigger;
+
+			jQuery.each(classes, function(i) {
+				trigger = jQuery("<button></button>").attr("id",classes[i]).text(classes[i]);
+				triggerWrap.append(trigger);
+				triggers.push(trigger);
+			});
+	
+			function updateMessage(trigger,target,value) {
+				if ( target.hasClass(value) ) {
+					trigger.text("Turn " + value + " off");
+				} else {
+					trigger.text("Turn " + value + " on");
+				}
+			};
+			
+			function resetMessages() {
+				triggers.each( function(i) {
+					updateMessage(jQuery(this), theTarget, jQuery(this).attr("id"));
+				});
+			};
+			 
+			jQuery.each(triggers, function(i) {
+				// set up button text
+				updateMessage(jQuery(this), theTarget, jQuery(this).attr("id"));
+			
+				// toggle class and text on click
+				jQuery(this).click( function() {
+					theClass = jQuery(this).attr("id");
+					theTarget.toggleClass(theClass);
+					updateMessage(jQuery(this),theTarget,theClass);
+				})
+			});
+			//
+			//jQuery("#all-on").click( function() {
+			//	theTarget.attr("class", "aui-reset aui-layout aui-style-default aui-typography aui-content-spacing");
+			//	resetMessages();
+			//})
+			//jQuery("#all-off").click( function() {
+			//	theTarget.attr("class", "");
+			//	resetMessages();
+			//})
+			
+		};
+
+		jQuery(document).ready( function() {
+			setClassToggles({ "triggerWrap": "#toggles", "target": "body" });
+		});
+	
+	})();	
+	</script>
+
+</body>
+</html>

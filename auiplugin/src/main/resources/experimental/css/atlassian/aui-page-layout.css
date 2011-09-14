@@ -1,7 +1,6 @@
 /**
  * RESET
  */
-
 html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, form, fieldset {
     margin: 0;
     padding: 0;
@@ -65,10 +64,9 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     clear: both;
-    margin: 0;
-	padding: 0;
     position: relative;
 } 
+
 
 .aui-layout #content > header {
     -moz-box-sizing: border-box;
@@ -77,7 +75,6 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     clear: both;
-	margin: 16px 0;
     position: relative;
 } 
 
@@ -132,9 +129,25 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 
 
 /**
+ * DEFAULT THEME SPACING
+ */
+.aui-theme-default #content {
+    margin: 0;
+	padding: 16px;    
+}
+
+.aui-theme-default #content > *,
+.aui-theme-default .aui-panel,
+.aui-theme-default .aui-group {
+    margin: 16px 0 0 0;
+}
+.aui-theme-default #content > *:first-child {
+	margin-top: 0;
+}
+
+/**
  * PAGE DESIGN
  */
-
 .aui-theme-default {
     background-color: #F0F0F0;
     color: #000;
@@ -257,11 +270,11 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     font-size: 13px;
     line-height: 1.308;    
 }
-.aui-theme-default p {
-    margin-bottom: 16px;
-}
+.aui-theme-default p,
+.aui-theme-default ul,
+.aui-theme-default ol,
 .aui-theme-default h1, .aui-theme-default h2, .aui-theme-default h3, .aui-theme-default h4, .aui-theme-default h5, .aui-theme-default h6 {
-    margin: 0 0 16px;
+    margin: 16px 0 0 0;
 }
 .aui-theme-default h1 {
     font-size: 24px;
@@ -286,38 +299,32 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 .aui-theme-default h6 {
     font-size: 12px;
 }
-
 .aui-theme-default ul {
-    margin: 0 0 16px;
     padding: 0 0 0 24px;
 }
 .aui-theme-default ol {
     list-style-position: outside;
     list-style-type: decimal;
-    margin: 0 0 16px;
     padding: 0 0 0 24px;
 }
-
 
 
 /**
  * CONTENT PANEL
  */
-.aui-theme-default .content-panel {
+.aui-theme-default .aui-panel {
     background: white;
     border: 1px solid #bbb;
     border-radius: 5px;
-	margin: 0;
 	padding: 16px;
 }
 
-.aui-theme-default .content-panel *:last-child {
-    padding-bottom: 0;
-    margin-bottom: 0;
+.aui-theme-default .aui-panel > *:first-child {
+    margin-top: 0;
 }
 
 /**
- * PAGE TABS
+ * TABS AS FIRST CHILD IN CONTENT
  */
 .aui-theme-default #content > .aui-tabs.vertical-tabs .tabs-pane {
     background: #fff;
@@ -328,21 +335,17 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     margin-right: -1px;
 }
 
-.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item,
-/*.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item.active-tab,
-.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item.active-tab a,*/
 .aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item a {
     background: inherit;
-    border-top-color: #f0f0f0;
-    border-right-color: #f0f0f0;
-    border-left-color: #f0f0f0;
+    border-color: #f0f0f0;
 }
 
-/*.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item.active-tab,*/
-/*.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item.active-tab a strong {*/
-/*    background: inherit;*/
-/*    border-bottom-color: #f0f0f0;*/
-/*}*/
+.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item a:focus,
+.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item a:hover {
+    background: #fff;
+    border-color: #bbb;
+    border-bottom-color: #fff;
+}
 
 .aui-theme-default #content > .aui-tabs.horizontal-tabs .tabs-pane {
     background: white;
@@ -355,33 +358,6 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 .aui-theme-default #content > .aui-tabs.horizontal-tabs .tabs-pane *:last-child {
     padding-bottom: 0;
     margin-bottom: 0;
-}
-
-
-
-/**
- * Spacing system
- */
-.aui-theme-default #content {
-    padding: 16px 16px 0 16px;
-}
-
-.aui-theme-default #content > div,
-.aui-theme-default #content > section,
-.aui-theme-default #content > header,
-.aui-theme-default #content > footer,
-.aui-theme-default .content-panel > div,
-.aui-theme-default .content-panel > section,
-.aui-theme-default .content-panel > header,
-.aui-theme-default .content-panel > footer,
-.aui-theme-default .content-panel,
-.aui-theme-default .aui-group {
-	margin: 0 0 16px 0;
-}
-
-.aui-theme-default .content-panel:last-child,
-.aui-theme-default .aui-group:last-child {
-	margin: 0;
 }
 
 
