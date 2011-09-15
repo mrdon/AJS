@@ -38,7 +38,7 @@ jQuery.fn.moveTo = function (options) {
         commandBarHeight = $stalker.outerHeight() + opts.scrollOffset,
         scrollTarget;
 
-    if (!$stalker.hasClass("detached") && (topOffset <= $stalker.offset().top)) {
+    if ($stalker.length === 0 || (!$stalker.hasClass("detached") && (topOffset <= $stalker.offset().top))) {
         commandBarHeight = 0;
     }
 

@@ -73,6 +73,7 @@
         <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
         <resource type="download" name="jquery.form.js" location="js/external/jquery/plugins/jquery.form.js"/>
         <resource type="download" name="jquery.hotkeys.js" location="js/atlassian/jquery/jquery.hotkeys.js"/>
+        <resource type="download" name="jquery.moveto.js" location="js/atlassian/jquery/jquery.moveto.js"/>
         <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
         <resource type="download" name="context-path.cp.js" location="js/atlassian/context-path.cp.js"/>
         <resource type="download" name="event.js" location="js/atlassian/event.js"/>
@@ -154,7 +155,7 @@
     <web-resource name="keyboardshortcuts" key="keyboardshortcuts">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
         <dependency>com.atlassian.auiplugin:hotkeys</dependency>
-        <resource type="download" name="moveto.js" location="js/atlassian/jquery/jquery.moveto.js"/>
+        <resource type="download" name="jquery.moveto.js" location="js/atlassian/jquery/jquery.moveto.js"/>
         <resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>
     </web-resource>
 

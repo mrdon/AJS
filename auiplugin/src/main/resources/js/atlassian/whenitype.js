@@ -201,9 +201,9 @@ AJS.whenIType = function (keys) {
             addShortcutTitle(selector);
 
             executer = function () {
-                var elem = jQuery(selector);
-                if (elem.length > 0 && elem.attr("nodeName").toLowerCase() === "a") {
-                    window.location.href = elem.attr("href");
+                var elem = jQuery(selector)[0];
+                if (elem && elem.nodeName.toLowerCase() === "a") {
+                    window.location.href = elem.href;
                 }
             };
         },
