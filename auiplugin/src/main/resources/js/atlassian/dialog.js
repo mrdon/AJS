@@ -106,7 +106,7 @@ AJS.popup = function (options) {
     var blanket = AJS.$(".aui-blanket"),
         focusItem = function(selector, element) {
             var item = AJS.$(selector, element);
-            if (item.length && item[0].tabIndex >= 0) {
+            if (item.length) {
                 item.focus();
                 return true;
             }
@@ -697,11 +697,9 @@ AJS.popup = function (options) {
      * @param width {number} dialog width in pixels, or an object containing the Dialog parameters
      * @param height {number} dialog height in pixels
      * @param id {number} [optional] dialog id
-     * @param options {object} [optional] currently supported options are:
-     * 'focusSelector' - an element selector to give focus to when the dialog is shown
     */
-    AJS.Dialog = function (width, height, id, options) {
-        options = options || {};
+    AJS.Dialog = function (width, height, id) {
+        var options = {};
         if (!+width) {
             options = Object(width);
             width = options.width;
