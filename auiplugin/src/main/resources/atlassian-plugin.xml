@@ -79,7 +79,7 @@
         <resource type="download" name="jquery.throbber.js" location="js/atlassian/jquery/jquery.throbber.js"/>
     </web-resource>
 
-    <web-resource key="ajs-gadgets-base">
+    <web-resource key="ajs-gadgets-base" name="Minimal resource list for AJS-Gadgets framework">
         <resource type="download" name="basic.css" location="css/atlassian/basic.css"/>
         <resource type="download" name="dropdown.css" location="css/atlassian/dropdown.css"/>
         <resource type="download" name="icons.css" location="css/atlassian/icons.css"/>
