@@ -111,7 +111,6 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 .aui-layout #footer .footer-body > ul {
     display: block;
     list-style: none;
-    margin: 0;
     padding: 0;
 } 
 
@@ -127,6 +126,61 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 	margin: 0;
 }
 
+/**
+ * GROUP/ITEM
+ */
+
+.aui-group {
+    display: table;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-spacing: 0;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.aui-group > .aui-item {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table-cell;
+    margin: 0;
+    padding: 0 0 0 16px;
+    vertical-align: top;
+}
+
+.aui-group > .aui-item:first-child {
+    padding-left: 0;
+}
+
+/* defensive header allowance */
+.aui-layout .aui-group > header {
+    display: table-caption;
+}
+
+/* .aui-group-split: two items; alignment is left, then right (splits the layout). */
+.aui-group.aui-group-split > .aui-item {
+	text-align: right;
+}
+.aui-group.aui-group-split > .aui-item:first-child {
+	text-align: left;
+}
+
+/* .aui-group-trio: three items; alignment is left, center, right */
+.aui-group.aui-group-trio > .aui-item {
+	text-align: left;
+}
+.aui-group.aui-group-trio > .aui-item + .aui-item {
+	text-align: center;
+}
+.aui-group.aui-group-trio > .aui-item + .aui-item + .aui-item {
+	text-align: right;
+}
 
 /**
  * DEFAULT THEME SPACING
@@ -138,10 +192,14 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 
 .aui-theme-default #content > *,
 .aui-theme-default .aui-panel,
-.aui-theme-default .aui-group {
+.aui-theme-default .aui-panel > *,
+.aui-theme-default .aui-group,
+.aui-theme-default .aui-message {
     margin: 16px 0 0 0;
 }
-.aui-theme-default #content > *:first-child {
+.aui-theme-default #content > *:first-child,
+.aui-theme-default .aui-panel > *:first-child,
+.aui-theme-default .aui-item > *:first-child {
 	margin-top: 0;
 }
 
@@ -206,7 +264,6 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     padding: 4px;
     white-space: nowrap;
 }
-
 
 .aui-theme-default #header .local {
     background-color: #326ca6;
@@ -325,18 +382,18 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 
 /**
  * TABS AS FIRST CHILD IN CONTENT
+ * Explicitly sets bg to white, changes horizontal hovers to work on grey.
+ * Remember these extend the standard component styles.
  */
-.aui-theme-default #content > .aui-tabs.vertical-tabs .tabs-pane {
+.aui-theme-default #content > .aui-tabs .tabs-pane {
     background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     border-radius: 5px;
 }
 
-.aui-theme-default #content > .aui-tabs.vertical-tabs > ul.tabs-menu li.menu-item.active-tab {
-    margin-right: -1px;
-}
-
 .aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item a {
-    background: inherit;
+    background: #f0f0f0;
     border-color: #f0f0f0;
 }
 
@@ -348,9 +405,7 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 }
 
 .aui-theme-default #content > .aui-tabs.horizontal-tabs .tabs-pane {
-    background: white;
     border: 1px solid #bbb;
-    border-radius: 5px;
 	margin: 0;
 	padding: 16px;
 }
@@ -360,58 +415,12 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     margin-bottom: 0;
 }
 
-
 /**
- * GROUP/ITEM
+ * Some spacing tweaks required for the switch to top spacing.
+ * If/when this goes into core, these may shift out to their respective components.
  */
 
-.aui-group {
-    display: table;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    table-layout: fixed;
-    width: 100%;
-}
-
-.aui-group > .aui-item {
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    display: table-cell;
-    padding-left: 16px;
-    vertical-align: top;
-}
-
-.aui-group > .aui-item:first-child {
-    padding-left: 0;
-}
-
-/* defensive header allowance */
-.aui-layout .aui-group > header {
-    display: table-caption;
-}
-
-/* .aui-group-split: two items; alignmnet is left, then right (splits the layout). */
-.aui-group.aui-group-split > .aui-item {
-	text-align: right;
-}
-.aui-group.aui-group-split > .aui-item:first-child {
-	text-align: left;
-}
-
-/* .aui-group-trio: three items; alignment is left, center, right */
-.aui-group.aui-group-trio > .aui-item {
-	text-align: left;
-}
-.aui-group.aui-group-trio > .aui-item + .aui-item {
-	text-align: center;
-}
-.aui-group.aui-group-trio > .aui-item + .aui-item + .aui-item {
-	text-align: right;
+.aui-theme-default .aui-message {
+    margin: 16px 0 0 0;
 }
 

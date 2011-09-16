@@ -46,7 +46,9 @@
 		</header>
 		<section id="content" role="main">
 
-			<div id="toggles">Toggles for testing:</div>
+			<div class="aui-panel">
+				<div id="toggles">Hey check it out, there's nav up there. Toggles for testing:</div>
+			</div>
 			
 			<header>
 				<h1>Content Heading in unclassed header</h1>
@@ -119,16 +121,8 @@
 					    two
 					</div>
 				</div>
-
-
 			</div>
 			
-			<div class="aui-panel">
-
-				<p><strong>Don't panic!</strong> This level of separate classes is for the first dogfooding step in the Experimental phase ONLY! If the reset is successful we'll bundle it into aui-layout; if the typography is ok we'll bundle it into aui-style-default. Content spacing remains optional.</p>
-
-			</div>
-
 			<div class="aui-panel">
 				<h2>h2 Typography</h2>
 				<p>Sona si Latine loqueris. Si Hoc Legere Scis Nimium Eruditionis Habes. Sentio aliquos togatos contra me conspirare. Non calor sed umor est qui nobis incommodat.<p>
@@ -156,15 +150,319 @@
 
 			
 			<div class="aui-panel">
-				<h2>Why is a reset problematic?</h2>
+				<h2>Testing existing in-content components</h2>
 
 				<div class="aui-message error shadowed">
 					<p class="title"> 
 				        <span class="aui-icon icon-error"></span> 
-						<strong>Because</strong> 
+						<strong>Foo</strong> 
 					</p> 
-					<p>Stuff like this happens.</p>
+					<p>Sentio aliquos togatos contra me conspirare.</p>
 				</div><!-- .aui-message -->
+
+				<div class="aui-message warning">
+					<p class="title"> 
+				        <span class="aui-icon icon-warning"></span> 
+						<strong>Foo</strong> 
+					</p> 
+					<p>Sentio aliquos togatos contra me conspirare.</p>
+				</div><!-- .aui-message -->
+
+			<div class="aui-tabs vertical-tabs" id="tabs-example">
+				<ul class="tabs-menu">
+					<li class="menu-item active-tab">
+						<a href="#tabs-example-first"><strong>Tab 1 - Active</strong></a>
+					</li>
+					<li class="menu-item">
+						<a href="#tabs-example-second"><strong>Tab 2</strong></a>
+					</li>
+					<li class="menu-item">
+						<a href="#tabs-example-third"><strong>Tab 3 has a very long tab name</strong></a>
+					</li>
+					<li class="menu-item">
+						<a href="#tabs-example-fourth"><strong>Tab4hasaveryverylongnonspacedname</strong></a>
+					</li>
+				</ul>
+				<div class="tabs-pane active-pane" id="tabs-example-first">
+					<h2>This is Tab 1</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor volutpat posuere. Nunc non lacinia ligula. In convallis iaculis interdum. Sed quis risus gravida enim adipiscing semper. In magna tortor, scelerisque vel lobortis sed, tincidunt quis mauris. Sed libero neque, hendrerit ac sagittis eget, rhoncus vel augue. Proin eget blandit ligula. Praesent placerat, nisl a laoreet ultrices, mi sem suscipit nisl, non ornare neque massa nec augue. Integer consectetur elementum posuere. Integer feugiat aliquam rutrum. Praesent sapien lectus, pharetra quis pharetra vel, mattis ut orci. In vehicula nibh et enim lacinia interdum. Sed aliquam vehicula risus, vitae commodo sapien vulputate eu. Phasellus vulputate tempor aliquet.</p>
+				</div>
+				<div class="tabs-pane" id="tabs-example-second">
+					<h2>This is Tab 2</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor volutpat posuere. Nunc non lacinia ligula. In convallis iaculis interdum. Sed quis risus gravida enim adipiscing semper. In magna tortor, scelerisque vel lobortis sed, tincidunt quis mauris. Sed libero neque, hendrerit ac sagittis eget, rhoncus vel augue. Proin eget blandit ligula. Praesent placerat, nisl a laoreet ultrices, mi sem suscipit nisl, non ornare neque massa nec augue. Integer consectetur elementum posuere. Integer feugiat aliquam rutrum. Praesent sapien lectus, pharetra quis pharetra vel, mattis ut orci. In vehicula nibh et enim lacinia interdum. Sed aliquam vehicula risus, vitae commodo sapien vulputate eu. Phasellus vulputate tempor aliquet.</p>
+				</div>
+				<div class="tabs-pane" id="tabs-example-third">
+					<h2>This is Tab 3</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor volutpat posuere. Nunc non lacinia ligula. In convallis iaculis interdum. Sed quis risus gravida enim adipiscing semper. In magna tortor, scelerisque vel lobortis sed, tincidunt quis mauris. Sed libero neque, hendrerit ac sagittis eget, rhoncus vel augue. Proin eget blandit ligula. Praesent placerat, nisl a laoreet ultrices, mi sem suscipit nisl, non ornare neque massa nec augue. Integer consectetur elementum posuere. Integer feugiat aliquam rutrum. Praesent sapien lectus, pharetra quis pharetra vel, mattis ut orci. In vehicula nibh et enim lacinia interdum. Sed aliquam vehicula risus, vitae commodo sapien vulputate eu. Phasellus vulputate tempor aliquet.</p>
+				</div>
+				<div class="tabs-pane" id="tabs-example-fourth">
+					<h2>This is Tab 4</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor volutpat posuere. Nunc non lacinia ligula. In convallis iaculis interdum. Sed quis risus gravida enim adipiscing semper. In magna tortor, scelerisque vel lobortis sed, tincidunt quis mauris. Sed libero neque, hendrerit ac sagittis eget, rhoncus vel augue. Proin eget blandit ligula. Praesent placerat, nisl a laoreet ultrices, mi sem suscipit nisl, non ornare neque massa nec augue. Integer consectetur elementum posuere. Integer feugiat aliquam rutrum. Praesent sapien lectus, pharetra quis pharetra vel, mattis ut orci. In vehicula nibh et enim lacinia interdum. Sed aliquam vehicula risus, vitae commodo sapien vulputate eu. Phasellus vulputate tempor aliquet.</p>
+				</div>
+			</div> <!-- // .aui-tabs -->
+
+			<table class="aui">
+				<thead>
+					<tr>
+						<th id="basic-name">Name</th>
+						<th id="basic-type">Type</th>
+						<th id="basic-order">Order</th>
+						<th id="basic-action">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td headers="basic-name">Default</td>
+						<td headers="basic-type">Internal Directory</td>
+						<td headers="basic-order">
+							<ul class="menu">
+								<li>
+									<a class="down" href="#">Down</a>
+								</li>
+							</ul>
+						</td>
+						<td headers="basic-action">
+							<ul class="menu">
+								<li>
+									<a href="#">An Action</a>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td headers="basic-name">Corporate LDAP</td>
+						<td headers="basic-type">Microsoft Active Directory</td>
+						<td headers="basic-order">
+							<ul class="menu">
+								<li>
+									<a class="up" href="#">Up</a>
+								</li>
+								<li>
+									<a class="down" href="#">Down</a>
+								</li>
+							</ul>
+						</td>
+						<td headers="basic-action">
+							<ul class="menu">
+								<li>
+									<a href="#">An Action</a>
+								</li>
+								<li>
+									<a href="#">Another Action</a>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td headers="basic-name">Corporate LDAP</td>
+						<td headers="basic-type">Microsoft Active Directory</td>
+						<td headers="basic-order">
+							<ul class="menu">
+								<li>
+									<a class="up" href="#">Up</a>
+								</li>
+								<li>
+									<a class="down" href="#">Down</a>
+								</li>
+							</ul>
+						</td>
+						<td headers="basic-action">
+							<ul class="menu">
+								<li>
+									<a href="#">An Action</a>
+								</li>
+								<li>
+									<a href="#">Another Action</a>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td headers="basic-name">Corporate LDAP</td>
+						<td headers="basic-type">Microsoft Active Directory</td>
+						<td headers="basic-order">
+							<ul class="menu">
+								<li>
+									<a class="up" href="#">Up</a>
+								</li>
+								<li>
+									<a class="down" href="#">Down</a>
+								</li>
+							</ul>
+						</td>
+						<td headers="basic-action">
+							<ul class="menu">
+								<li>
+									<a href="#">An Action</a>
+								</li>
+								<li>
+									<a href="#">Another Action</a>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td headers="basic-name">Contractor Directory</td>
+						<td headers="basic-type">Internal Directory</td>
+						<td headers="basic-order">
+							<ul class="menu">
+								<li>
+									<a class="up" href="#">Up</a>
+								</li>
+							</ul>
+						</td>
+						<td headers="basic-action">
+							<ul class="menu">
+								<li>
+									<a href="#">An Action</a>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="aui-tabs horizontal-tabs" id="tabs-example-horizontal">
+				<ul class="tabs-menu">
+					<li class="menu-item active-tab">
+						<a href="#tabs-example-horizontal-first"><strong>Tab 1 - Active</strong></a>
+					</li>
+					<li class="menu-item">
+						<a href="#tabs-example-horizontal-second"><strong>Tab 2</strong></a>
+					</li>
+					<li class="menu-item">
+						<a href="#tabs-example-horizontal-third"><strong>Tab 3 has a very long tab name</strong></a>
+					</li>
+					<li class="menu-item">
+						<a href="#tabs-example-horizontal-fourth"><strong>Tab4hasaveryverylongnonspacedname</strong></a>
+					</li>
+				</ul>
+				<div class="tabs-pane active-pane" id="tabs-example-horizontal-first">
+					<h2>This is Tab 1</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor volutpat posuere. Nunc non lacinia ligula. In convallis iaculis interdum. Sed quis risus gravida enim adipiscing semper. In magna tortor, scelerisque vel lobortis sed, tincidunt quis mauris. Sed libero neque, hendrerit ac sagittis eget, rhoncus vel augue. Proin eget blandit ligula. Praesent placerat, nisl a laoreet ultrices, mi sem suscipit nisl, non ornare neque massa nec augue. Integer consectetur elementum posuere. Integer feugiat aliquam rutrum. Praesent sapien lectus, pharetra quis pharetra vel, mattis ut orci. In vehicula nibh et enim lacinia interdum. Sed aliquam vehicula risus, vitae commodo sapien vulputate eu. Phasellus vulputate tempor aliquet.</p>
+				</div>
+				<div class="tabs-pane" id="tabs-example-horizontal-second">
+					<h2>This is Tab 2</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor volutpat posuere. Nunc non lacinia ligula. In convallis iaculis interdum. Sed quis risus gravida enim adipiscing semper. In magna tortor, scelerisque vel lobortis sed, tincidunt quis mauris. Sed libero neque, hendrerit ac sagittis eget, rhoncus vel augue. Proin eget blandit ligula. Praesent placerat, nisl a laoreet ultrices, mi sem suscipit nisl, non ornare neque massa nec augue. Integer consectetur elementum posuere. Integer feugiat aliquam rutrum. Praesent sapien lectus, pharetra quis pharetra vel, mattis ut orci. In vehicula nibh et enim lacinia interdum. Sed aliquam vehicula risus, vitae commodo sapien vulputate eu. Phasellus vulputate tempor aliquet.</p>
+				</div>
+				<div class="tabs-pane" id="tabs-example-horizontal-third">
+					<h2>This is Tab 3</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor volutpat posuere. Nunc non lacinia ligula. In convallis iaculis interdum. Sed quis risus gravida enim adipiscing semper. In magna tortor, scelerisque vel lobortis sed, tincidunt quis mauris. Sed libero neque, hendrerit ac sagittis eget, rhoncus vel augue. Proin eget blandit ligula. Praesent placerat, nisl a laoreet ultrices, mi sem suscipit nisl, non ornare neque massa nec augue. Integer consectetur elementum posuere. Integer feugiat aliquam rutrum. Praesent sapien lectus, pharetra quis pharetra vel, mattis ut orci. In vehicula nibh et enim lacinia interdum. Sed aliquam vehicula risus, vitae commodo sapien vulputate eu. Phasellus vulputate tempor aliquet.</p>
+				</div>
+				<div class="tabs-pane" id="tabs-example-horizontal-fourth">
+					<h2>This is Tab 4</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor volutpat posuere. Nunc non lacinia ligula. In convallis iaculis interdum. Sed quis risus gravida enim adipiscing semper. In magna tortor, scelerisque vel lobortis sed, tincidunt quis mauris. Sed libero neque, hendrerit ac sagittis eget, rhoncus vel augue. Proin eget blandit ligula. Praesent placerat, nisl a laoreet ultrices, mi sem suscipit nisl, non ornare neque massa nec augue. Integer consectetur elementum posuere. Integer feugiat aliquam rutrum. Praesent sapien lectus, pharetra quis pharetra vel, mattis ut orci. In vehicula nibh et enim lacinia interdum. Sed aliquam vehicula risus, vitae commodo sapien vulputate eu. Phasellus vulputate tempor aliquet.</p>
+				</div>
+			</div> <!-- // .aui-tabs -->
+
+
+
+
+<form action="#" method="post" id="h" class="aui unsectioned">
+    <h2>Heading h2</h2>
+    <div class="field-group">
+        <label for="h-fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text" type="text" id="h-fname" name="fname" title="first name">
+    </div>
+    <h3>Heading h3</h3>
+    <div class="field-group">
+        <label for="h-lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+        <input class="text long-field" type="text" id="h-lname" name="lname" title="last name">
+    </div>
+    <div class="buttons-container">
+        <div class="buttons">
+            <input class="button submit" type="submit" value="Save" id="h-save-btn1">
+            <a class="cancel" href="forms.html#">Cancel</a>
+        </div>
+    </div>
+</form>
+
+<form action="forms.html#" method="post" id="dfv" class="aui">
+    <h2>Field Value State</h2>
+    <fieldset>
+        <legend><span>Text Entry</span></legend>
+        <div class="field-group">
+            <label for="fname" accesskey="e">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+            <span class="field-value">My First Name</span>
+            <div class="description">Descriptive text here.</div>
+        </div>
+        <div class="field-group">
+            <label for="lname" accesskey="e">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+            <span class="field-value">My Last Name</span>
+            <div class="description">Descriptive text here.</div>
+        </div>
+        <div class="field-group">
+            <label for="email1" accesskey="e">Email</label>
+            <span class="field-value">my@email.com</span>
+            <div class="description">Descriptive text here.</div>
+        </div>
+        <div class="field-group">
+            <label>Testing empty field</label>
+            <span class="field-value"> </span>
+        </div>
+    </fieldset>
+
+    <fieldset class="group">
+        <legend><span>Checkboxes View</span></legend>
+        <div class="checkbox">
+            <input class="checkbox" type="checkbox" checked="checked" disabled="disabled" name="cbOne" id="cbOned">
+            <label for="cbOned">Disabled Checkbox One</label>
+        </div>
+        <div class="checkbox">
+            <input class="checkbox" type="checkbox" disabled="disabled" name="cbTwo" id="cbTwod">
+            <label for="cbTwod">Disabled Checkbox Two</label>
+        </div>
+    </fieldset>
+
+    <fieldset class="group">
+        <legend><span>Radio Buttons</span></legend>
+        <div class="radio">
+            <input class="radio" type="radio" disabled="disabled" checked="checked" name="rads" id="irOned">
+            <label for="irOned">Disabled Radio One</label>
+        </div>
+        <div class="radio">
+            <input class="radio" type="radio" disabled="disabled" name="rads" id="irTwod">
+            <label for="irTwod">Disabled Radio Two</label>
+        </div>
+        <div class="radio">
+            <input class="radio" type="radio" disabled="disabled" name="rads" id="irThreed">
+            <label for="irThreed">Disabled RadioThree</label>
+        </div>
+    </fieldset>
+
+    <div class="buttons-container">
+        <div class="buttons">
+            <input class="button" type="button" value="Edit" id="edit-btn1">
+        </div>
+    </div>
+
+    <h2>Pre text area</h2>
+    <div class="field-group">
+        <pre class="aui-form">
+BAM2573-BAMFUNC-18
+Dependant of BAM2573-HEAD-40
+** LONG STRING **
+100 passedBAM2573-BAMFUNC-17Dependant of BAM2573-HEAD-262 months ago (06:11 PM, Fri, 15 Aug)
+
+failedAM2573-BAMFUNC-16Dependant of BAM2573-HEAD-252 months ago (06:08 PM, Thu, 14 Aug)
+
+30 minutes3 out of 100 failedAM2573-BAMFUNC-16Dependant of BAM2573-HEAD-252 months ago (06:08 PM, Thu, 14 Aug)
+        </pre>
+    </div>
+
+    <div class="field-group">
+        <p>Paragraph: <span><strong>span text, in a paragraph the inline-text class is not required</strong></span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    </div>
+
+    <div class="buttons-container">
+        <div class="buttons">
+            <h4>input class="button" vs HTML button</h4>
+            <input class="button submit" type="submit" value="input" id="edit-btn">
+            <button>Button</button>
+            <a class="cancel" href="forms.html#">Cancel</a>
+        </div>
+    </div>
+</form>
+
 				
 			</div>
 			
@@ -180,66 +478,6 @@
 			</section>
 		</footer>
 	</div><!-- #page -->
-	<script>
-	(function(){
-	
-		function setClassToggles(options) {
-			var theTarget = jQuery(options.target),
-				classes = theTarget.attr('class').split(/\s+/),
-				theClass,
-				triggerWrap = jQuery(options.triggerWrap),
-				triggers = [],
-				trigger;
-
-			jQuery.each(classes, function(i) {
-				trigger = jQuery("<button></button>").attr("id",classes[i]).text(classes[i]);
-				triggerWrap.append(trigger);
-				triggers.push(trigger);
-			});
-	
-			function updateMessage(trigger,target,value) {
-				if ( target.hasClass(value) ) {
-					trigger.text("Turn " + value + " off");
-				} else {
-					trigger.text("Turn " + value + " on");
-				}
-			};
-			
-			function resetMessages() {
-				triggers.each( function(i) {
-					updateMessage(jQuery(this), theTarget, jQuery(this).attr("id"));
-				});
-			};
-			 
-			jQuery.each(triggers, function(i) {
-				// set up button text
-				updateMessage(jQuery(this), theTarget, jQuery(this).attr("id"));
-			
-				// toggle class and text on click
-				jQuery(this).click( function() {
-					theClass = jQuery(this).attr("id");
-					theTarget.toggleClass(theClass);
-					updateMessage(jQuery(this),theTarget,theClass);
-				})
-			});
-			//
-			//jQuery("#all-on").click( function() {
-			//	theTarget.attr("class", "aui-reset aui-layout aui-style-default aui-typography aui-content-spacing");
-			//	resetMessages();
-			//})
-			//jQuery("#all-off").click( function() {
-			//	theTarget.attr("class", "");
-			//	resetMessages();
-			//})
-			
-		};
-
-		jQuery(document).ready( function() {
-			setClassToggles({ "triggerWrap": "#toggles", "target": "body" });
-		});
-	
-	})();	
-	</script>
-
+	<script src="./aui-layout-test.js"></script>
 </body>
 </html>
