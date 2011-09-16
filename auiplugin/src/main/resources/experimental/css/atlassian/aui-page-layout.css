@@ -56,7 +56,6 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     width: 100%;
 }
 
-
 .aui-layout #content {
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -99,24 +98,12 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     width: 100%;
 } 
 
-.aui-layout #footer .footer-body {
-    background-color: transparent;
-    color: #505050;
-    font-size: 11px;
-    line-height: 1.364;
-    margin: 0;
-    padding: 0 16px;
-} 
-
 .aui-layout #footer .footer-body > ul {
     display: block;
     list-style: none;
     padding: 0;
 } 
 
-.aui-layout #footer .footer-body {
-    text-align: center;    
-}
 .aui-layout #footer .footer-body > ul > li {
     display: inline-block;
     margin: 0 0 0 16px;
@@ -198,6 +185,8 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     margin: 16px 0 0 0;
 }
 .aui-theme-default #content > *:first-child,
+.aui-theme-default #footer > *:first-child,
+.aui-theme-default #footer .footer-body > *:first-child,
 .aui-theme-default .aui-panel > *:first-child,
 .aui-theme-default .aui-item > *:first-child {
 	margin-top: 0;
@@ -318,6 +307,18 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     white-space: nowrap;
 }
 
+.aui-theme-default #footer .footer-body {
+    background-color: transparent;
+    color: #505050;
+    font-size: 11px;
+    line-height: 1.364;
+    margin: 0;
+    padding: 0 16px;
+} 
+
+.aui-theme-default #footer .footer-body {
+    text-align: center;    
+}
 
 /**
  * TYPOGRAPHY
