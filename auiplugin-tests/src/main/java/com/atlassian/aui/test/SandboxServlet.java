@@ -28,7 +28,6 @@ public class SandboxServlet extends HttpServlet
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
     {
         Map context = ImmutableMap.of("webResourceManager", webResourceManager);
-        webResourceManager.requireResource("com.atlassian.auiplugin:ajs");
 
         res.setContentType("text/html");
         render("sandbox/index-refapp.vm", context, res.getWriter());
