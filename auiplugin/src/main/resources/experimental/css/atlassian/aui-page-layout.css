@@ -353,7 +353,7 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-	padding: 16px;
+    padding: 16px;
 }
 
 .aui-theme-default .aui-panel > *:first-child {
@@ -365,29 +365,29 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
  * Explicitly sets bg to white, changes horizontal hovers to work on grey.
  * Remember these extend the standard component styles.
  */
-.aui-theme-default #content > .aui-tabs .tabs-pane {
+.aui-theme-default #content > .aui-tabs > .tabs-pane {
     background: #fff;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
 
-.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item a {
+.aui-theme-default #content > .aui-tabs.horizontal-tabs > .tabs-menu > li.menu-item a {
     background: #f0f0f0;
     border-color: #f0f0f0;
 }
 
-.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item a:focus,
-.aui-theme-default #content > .aui-tabs.horizontal-tabs li.menu-item a:hover {
+.aui-theme-default #content > .aui-tabs.horizontal-tabs > .tabs-menu > li.menu-item a:focus,
+.aui-theme-default #content > .aui-tabs.horizontal-tabs > .tabs-menu > li.menu-item a:hover {
     background: #fff;
     border-color: #bbb;
     border-bottom-color: #fff;
 }
 
-.aui-theme-default #content > .aui-tabs.horizontal-tabs .tabs-pane {
+.aui-theme-default #content > .aui-tabs.horizontal-tabs > .tabs-pane {
     border: 1px solid #bbb;
-	margin: 0;
-	padding: 16px;
+    margin: 0;
+    padding: 16px;
 }
 
 /**
