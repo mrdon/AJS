@@ -23,7 +23,6 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 .aui-layout #header ul {
     list-style: none;
     margin: 0;
-    padding: 0;
 }
 
 .aui-layout #header .global,
@@ -46,7 +45,7 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     float: right;
 }
 
-.aui-layout #header #logo {
+.aui-layout #logo {
     margin: 0;
     padding: 0;
 }
@@ -56,17 +55,7 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     width: 100%;
 }
 
-.aui-layout #content {
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    clear: both;
-    position: relative;
-} 
-
-
+.aui-layout #content,
 .aui-layout #content > header {
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -101,16 +90,14 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 .aui-layout #footer .footer-body > ul {
     display: block;
     list-style: none;
-    padding: 0;
 } 
 
 .aui-layout #footer .footer-body > ul > li {
     display: inline-block;
-    margin: 0 0 0 16px;
     padding: 0;
 } 
-.aui-layout #footer .footer-body > ul > li:first-child {
-	margin: 0;
+.aui-layout #footer .footer-body > ul > li + li {
+    margin-left: 16px;
 }
 
 /**
@@ -137,12 +124,11 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     box-sizing: border-box;
     display: table-cell;
     margin: 0;
-    padding: 0 0 0 16px;
     vertical-align: top;
 }
 
-.aui-group > .aui-item:first-child {
-    padding-left: 0;
+.aui-group > .aui-item + .aui-item {
+    padding-left: 16px;
 }
 
 /* defensive header allowance */
@@ -177,6 +163,7 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 	padding: 16px;    
 }
 
+/* Star selectors non-ideal, but alternate solutions had their own problems. */
 .aui-theme-default #content > *,
 .aui-theme-default .aui-panel,
 .aui-theme-default .aui-panel > *,
@@ -196,20 +183,17 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
  * PAGE DESIGN
  */
 .aui-theme-default {
-    background-color: #F0F0F0;
+    background: #F0F0F0;
     color: #000;
 }
 
-.aui-theme-default a,
-.aui-theme-default a:link,
-.aui-theme-default a:visited {
-    color: #3C78B5;
+.aui-theme-default a {
+    color: #326ca6;
     text-decoration: none;
 }
 .aui-theme-default a:focus,
 .aui-theme-default a:hover,
 .aui-theme-default a:active {
-    color: #3C78B5;
     text-decoration: underline;
 }
 
@@ -218,7 +202,7 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 }
 
 .aui-theme-default #header .global {
-    background-color: #003366;
+    background: #036;
     color: #fff;
 }
 
@@ -255,8 +239,8 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 }
 
 .aui-theme-default #header .local {
-    background-color: #326ca6;
-    border-top: 1px solid #003366;
+    background: #326ca6;
+    border-top: 1px solid #036;
     color: #fff;
 }
 
@@ -266,13 +250,6 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 }
 
 .aui-theme-default #header .local .primary > ul > li {
-    background-color: #326ca6;
-    color: #fff;
-}
-
-.aui-theme-default #header .local .primary > ul > li {
-    background-color: #326ca6;
-    color: #fff;
     margin: 0 8px 0 0;
 }
 
@@ -283,7 +260,7 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 }
 
 .aui-theme-default #header .local .primary > ul > li > a:hover {
-    background-color: #fff;
+    background: #fff;
     color: #333;
 }
 
@@ -308,7 +285,7 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
 }
 
 .aui-theme-default #footer .footer-body {
-    background-color: transparent;
+    background: transparent;
     color: #505050;
     font-size: 11px;
     line-height: 1.364;
@@ -371,8 +348,10 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
  * CONTENT PANEL
  */
 .aui-theme-default .aui-panel {
-    background: white;
+    background: #fff;
     border: 1px solid #bbb;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     border-radius: 5px;
 	padding: 16px;
 }
@@ -409,11 +388,6 @@ html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, fo
     border: 1px solid #bbb;
 	margin: 0;
 	padding: 16px;
-}
-
-.aui-theme-default #content > .aui-tabs.horizontal-tabs .tabs-pane *:last-child {
-    padding-bottom: 0;
-    margin-bottom: 0;
 }
 
 /**
