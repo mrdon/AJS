@@ -173,7 +173,7 @@ if (typeof jQuery != "undefined") {
                     try {
                         func.apply(this, arguments);
                     } catch(ex) {
-                        ajs.log("Failed to run init function: " + ex);
+                        ajs.log("Failed to run init function: " + ex + "\n" + func.toString());
                     }
                 });
                 return this;
