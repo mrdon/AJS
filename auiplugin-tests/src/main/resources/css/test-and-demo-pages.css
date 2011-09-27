@@ -1,3 +1,4 @@
+body.demo-page,
 body.demo-index,
 body.refapp {
     font-family: sans-serif;
@@ -10,11 +11,13 @@ body.refapp {
     display: none;
 }
 
+.demo-page a,
 .demo-index a,
 .refapp a {
     color: #326ca6;
     text-decoration: none;
 }
+.demo-page a:focus, .demo-page a:hover, .demo-page a:active,
 .demo-index a:focus, .demo-index a:hover, .demo-index a:active,
 .refapp a:focus, .refapp a:hover, .refapp a:active {
     text-decoration: underline;
