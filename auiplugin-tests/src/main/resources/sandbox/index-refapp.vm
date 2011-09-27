@@ -94,7 +94,7 @@
                 <div id="display" class="display-box">
                     <div id="html-code"></div>
                     <style type="text/css" id="css-code"></style>
-                    <!--<div id="js-code"></div>-->
+                    <div id="js-code"></div>
                 </div>
             </div>
             <div id="info-parent" class="item">

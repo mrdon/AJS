@@ -6,10 +6,10 @@
 
     var includes = [
         "external/raphael/raphael.js",
-        "external/raphael/raphael.shadow.js",
+        "atlassian/raphael/raphael.shadow.js",
         "external/jquery/jquery.js",
         "external/jquery/jquery-compatibility.js",
-        "external/jquery/jquery.os.js",
+        "atlassian/jquery/jquery.os.js",
         "external/jquery/jquery-ui.js",
         "external/jquery/plugins/jquery.aop.js",
         "external/jquery/plugins/jquery.form.js",

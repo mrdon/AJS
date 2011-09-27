@@ -10,7 +10,7 @@ dialog.addPanel("Panel 1", "<p>Some content for panel 1. This has no padding.</p
 dialog.get("panel:0").setPadding(0);
 
 // add panel 2 (this will create a menu on the left side for selecting panels within page 0)
-dialog.addPanel("Panel 2", "<p>Some content for panel 2 that's long enough to demonstrate scrolling content.</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p><p>Some content for panel 2</p>", "panel-body");
+dialog.addPanel("Panel 2", "<p>Some content for panel 2.</p><div style=\"height: 2000px;\">(forced-height element to demonstrate scrolling content)</div><p>End.</p>", "panel-body");
 
 dialog.addButton("Next", function (dialog) {
     dialog.nextPage();
@@ -27,7 +27,7 @@ dialog.addPage();
 dialog.addHeader("Dialog - Page 1");
 
 // adds a single panel on second page (as there is only one panel, no menu will appear on the left side)
-dialog.addPanel("SinglePanel", "<p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p><p>Some content for the only panel on Page 1</p>", "singlePanel");
+dialog.addPanel("SinglePanel", "<p>Some content for the only panel on Page 1</p>", "singlePanel");
 
 // add "Previous" button to page 1
 dialog.addButton("Previous", function(dialog) {

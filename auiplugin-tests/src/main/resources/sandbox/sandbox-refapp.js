@@ -6,21 +6,33 @@ AJS.$(document).ready(function(){
         theHTMLeditor = AJS.$("#html-editor"),
         theCSSeditor = AJS.$("#css-editor"),
         theJSeditor = AJS.$("#js-editor"),
-        infoDisplay = AJS.$("#info-display");
+        infoDisplay = AJS.$("#info-display"),
+        htmlCode = AJS.$("#html-code"),
+        cssCode = AJS.$("#css-code"),
+        jsCode = AJS.$("#js-code");
+
+    resetElements = function(){
+        // keep the context divs but avoid duplicate messages
+        AJS.$("#aui-message-bar, #custom-context").empty();
+        // avoid spamming the dom with duplicates
+        AJS.$("#example-dialog").remove();
+    }
     
     refreshHTML = function(){
-        AJS.$("#html-code").html(theHTMLeditor.val()); 
+        htmlCode.html(theHTMLeditor.val()); 
     }
         
     refreshCSS = function(){
-        AJS.$("#css-code").html(theCSSeditor.val());  
+        cssCode.html(theCSSeditor.val());  
     }
     
     refreshJS = function(){
+        resetElements();
         //refresh
         var script = AJS.$("<script type='text/javascript'></script>");
         script.text(theJSeditor.val());
-        AJS.$("#display").append(script);
+        jsCode.empty();
+        jsCode.append(script);
     }
             
     var refresh = function(){
@@ -119,7 +131,7 @@ AJS.$(document).ready(function(){
         AJS.drawLogo({containerID: "toolbar-logo", scaleFactor: 0.15});
         
         theJSeditor.focusout(function(e){
-           refreshJS(); 
+            refreshJS(); 
         });
 
         theHTMLeditor.keypress(function(){
