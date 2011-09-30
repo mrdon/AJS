@@ -1,0 +1,1 @@
+ AJS.$("#dropDown-standard").dropDown("Standard", {alignment: "left"});

@@ -1,0 +1,61 @@
+/**
+* The structure of this file pre-supposes two conditions:
+* - That the file is served via a conditional comment of [if lte IE 8] or [if lt IE 9]
+* - That de-bugging starts with IE8 and moves down through IE7 to IE6
+**/
+
+/**
+* Fixes for IE8, IE7 and IE6
+* - each property should be written without CSS hacks
+* eg: 
+.dashboard {
+    margin: 0 0 2px 1px;
+}
+*
+**/
+
+/* dropdown-shim */
+.dropdown-shim {
+    border: none;
+    display: none;
+    position: absolute;
+    z-index: 2000;
+}
+
+/**
+* Fixes for IE7 and IE6
+* - each property *must* be prefixed with an asterisk (*)
+* eg: 
+.dashboard {
+    *margin: 0 0 4px 2px;
+}
+*
+**/
+
+.aui-dd-parent .aui-dropdown {
+    *margin: 0;
+}
+
+/**
+* Fixes for IE6 only
+* - each property *must* be prefixed with an underscore (_)
+* eg: 
+.dashboard {
+    _margin: 0 0 0 1px;
+    _padding: 0 0 -3px 0;
+}
+*
+**/
+/* IE6 spits out screwy heights on the LIs without the zoom for hasLayout - which then blows out the width unless constrained on the parent - and then the hover effects look lame. This remedies all that - somewhat */
+.aui-dd-parent .aui-dropdown {
+    _width: 1%;
+}
+.aui-dd-parent .aui-dropdown li.dropdown-item a.item-link {
+    _zoom: 1;
+}
+.aui-dd-parent .aui-dropdown li.dropdown-item a.item-link:hover,
+.aui-dd-parent .aui-dropdown li.dropdown-item a.item-link:active,
+.aui-dd-parent .aui-dropdown li.dropdown-item a.item-link focus {
+    _background: #fff;
+    _text-decoration: none;
+}
