@@ -7,6 +7,6 @@ if (jQuery.browser.msie && jQuery.browser.version < "9") {
        });
 } else {
        test("Tables !IE8 and below Test", function() {
-              //ok(typeof AJS.tables=="undefined", "Tables JS should not have loaded");
+              ok(typeof AJS.tables=="undefined", "Tables JS should not have loaded");
        });
 }

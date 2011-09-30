@@ -51,11 +51,11 @@ public class AUISeleniumQUnitTest extends AbstractAUISeleniumTestCase
         runQunitTests("Stalker");
     }
 
-    public void testTablesUnitTests()
-    {
-        openQunitTestPage("tables");
-        runQunitTests("Tables");
-    }
+//    public void testTablesUnitTests()
+//    {
+//        openQunitTestPage("tables");
+//        runQunitTests("Tables");
+//    }
 
     public void testTabsUnitTests()
     {
