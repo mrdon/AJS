@@ -10,19 +10,26 @@ AJS = AJS || {};
      *
      * Example values: "", "/jira", "/some/large/context"
      *
+     * @return {?string} -- A null return value indicates that no context path
+     *                      information was discovered.
      * @since 3.5
      */
     AJS.contextPath = function() {
-        var result = AJS_SUBSTITUTE_CONTEXT_PATH_HERE ||
-                // fallback to product-specific constants
-                window.contextPath || // JIRA
-                (window.Confluence && Confluence.getContextPath())|| // confluence
-                (window.BAMBOO && BAMBOO.contextPath) || // bamboo
-                (window.FECRU && FECRU.pageContext); // fisheye/crucible
-
-        AJS.contextPath = function() { return result; }; // self-replace
-        
-        return result;
+        var contextPath = null;
+        var paths = [
+            AJS_SUBSTITUTE_CONTEXT_PATH_HERE,
+            window.contextPath, // JIRA
+            window.Confluence && Confluence.getContextPath(), // Confluence
+            window.BAMBOO && BAMBOO.contextPath, // Bamboo
+            window.FECRU && FECRU.pageContext // FishEye/Crucible
+        ];
+        for (var i = 0; i < paths.length; i++) {
+            if (typeof paths[i] === "string") {
+                contextPath = paths[i];
+                break;
+            }
+        }
+        return contextPath;
     };
 
 })();
