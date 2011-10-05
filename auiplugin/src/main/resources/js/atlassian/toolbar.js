@@ -1,28 +1,27 @@
-AJS.toInit(function($) {
-
-    if ($.browser.msie) {
+AJS.setUpToolbars = function () {
+    if (jQuery.browser.msie) {
         
-        var toolbarGroups = $(".aui-toolbar .toolbar-group");
+        var toolbarGroups = jQuery(".aui-toolbar .toolbar-group");
        
         // Fix left,right borders on first, last toolbar items
         toolbarGroups.each(function (i, group) {
-            $(group).children(":first").addClass("first");
-            $(group).children(":last").addClass("last");
+            jQuery(group).children(":first").addClass("first");
+            jQuery(group).children(":last").addClass("last");
         });
 
         // IE7 spoon feeding zone.
-        if (parseInt($.browser.version, 10) == 7) {
+        if (parseInt(jQuery.browser.version, 10) == 7) {
 
             // Add a class so we can style button containers
             function markItemsWithButtons () {
-                $(".aui-toolbar button").closest(".toolbar-item").addClass("contains-button");
+                jQuery(".aui-toolbar button").closest(".toolbar-item").addClass("contains-button");
             };
   
             // force right toolbar to new row when it will fit without wrapping
             function forceRightSplitToRow() {
-                $(".aui-toolbar .toolbar-split-right").each(function(i, right) {
+                jQuery(".aui-toolbar .toolbar-split-right").each(function(i, right) {
     
-                    var splitRight = $(right),
+                    var splitRight = jQuery(right),
                         splitToolbar = splitRight.closest(".aui-toolbar"),
                         splitLeft = splitToolbar.find(".toolbar-split-left"),
                         leftWidth = splitToolbar.data("leftWidth"),
@@ -34,8 +33,8 @@ AJS.toInit(function($) {
                     }
                     if (!rightWidth) {
                         rightWidth = 0;
-                        $(".toolbar-item", right).each(function (i, item) {
-                            rightWidth += $(item).outerWidth();
+                        jQuery(".toolbar-item", right).each(function (i, item) {
+                            rightWidth += jQuery(item).outerWidth();
                         });
                         splitToolbar.data("rightWidth", rightWidth);
                     }
@@ -54,10 +53,10 @@ AJS.toInit(function($) {
             function simulateNowrapOnGroups () {
                 toolbarGroups.each(function (i, group) {
                     var groupWidth = 0;
-                    $(group).children(".toolbar-item").each(function (i, items) {
-                        groupWidth += $(this).outerWidth();
+                    jQuery(group).children(".toolbar-item").each(function (i, items) {
+                        groupWidth += jQuery(this).outerWidth();
                     });
-                    $(this).width(groupWidth);
+                    jQuery(this).width(groupWidth);
                 });
             };
 
@@ -67,14 +66,15 @@ AJS.toInit(function($) {
             
             // fire forceRightSplitToRow after reload
             var TO = false;
-            $(window).resize(function(){
+            jQuery(window).resize(function(){
                 if(TO !== false)
                     clearTimeout(TO);
                     TO = setTimeout(forceRightSplitToRow, 200);
             });
-
         }
-
     }
-    
+};
+
+AJS.toInit(function() {
+    AJS.setUpToolbars();    
 });

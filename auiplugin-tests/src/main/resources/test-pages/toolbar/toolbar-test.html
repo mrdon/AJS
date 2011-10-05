@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-au">
 <head>
-    <meta name="status" content="prototype">
-    <meta name="product" content="Confluence">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
     <meta name="decorator" content="atl.general">
@@ -14,7 +12,7 @@
     <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
     <![endif]-->
 
-    <script type="text/javascript" src="../common.js"></script>
+    <!--<script type="text/javascript" src="../common.js"></script>-->
 
 </head>
 <body>
@@ -24,7 +22,6 @@
 </div>
 
 <div class="aui-test source-required">
-
 
 <h2>examples</h2>
 
@@ -93,8 +90,11 @@
             <li class="toolbar-item">
                 <a class="toolbar-trigger" href="#" id="rte-button-justifyleft" title="Align Left"><span class="icon">Align Left</span></a>
             </li>
+            <li class="toolbar-item disabled">
+                <a class="toolbar-trigger" href="#" id="rte-button-justifycenter" title="Align Centre"><span class="icon">Disabled</span></a>
+            </li>
             <li class="toolbar-item">
-                <a class="toolbar-trigger" href="#" id="rte-button-justifycenter" title="Align Centre"><span class="icon">Align Centre</span></a>
+                <a class="toolbar-trigger disabled" href="#" id="rte-button-justifycenter2" title="Align Centre"><span class="icon">Disabled (misplaced class)</span></a>
             </li>
             <li class="toolbar-item">
                 <a class="toolbar-trigger" href="#" id="rte-button-justifyright" title="Align Right"><span class="icon">Align Right</span></a>
@@ -164,10 +164,8 @@
             </li>
         </ul>
 
-    </div>
-    <!-- // .toolbar-split -->
-</div>
-<!-- // .aui-toolbar -->
+    </div><!-- // .toolbar-split -->
+</div><!-- // .aui-toolbar -->
 
 <p>Toolbar with some non-button groups/elements (examples from Confluence savebar). Check that we don't get stray borders or rounded corners on the text input:</p>
 
@@ -490,6 +488,253 @@
     </div><!-- // .toolbar-split -->
 </div><!-- // .aui-toolbar #really-big-toolbar -->
 
+<p>Disabled buttons (dropdowns disabled as well). Test hovers and clicking the dropdowns including split buttons, to ensure they don't become active:</p>
+
+<div class="aui-toolbar" id="disabled-dropdowns-toolbar">
+    <div class="toolbar-split toolbar-split-left">
+
+        <ul class="toolbar-group">
+            <li class="toolbar-item toolbar-dropdown disabled">
+                <div class="aui-dd-parent disabled"><!-- note this disables the dropdown but should not affect toolbar -->
+                    <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">DD Off (item)</span><span class="icon icon-dropdown"></span></a>
+                    <ul class="aui-dropdown aui-dropdown-left">
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="toolbar-item toolbar-splitbutton disabled" id="action-itemdisabled-disabled1b">
+                <a class="toolbar-trigger" href="#" id="action-itemdisabled-disabled1a" title="Action One A">Split DD Off (item)</a>
+                <div class="aui-dd-parent disabled"><!-- note this disables the dropdown but should not affect toolbar -->
+                    <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One B">
+                        <span class="icon icon-dropdown">Action 1b</span>
+                    </a>
+                    <ul class="aui-dropdown">
+                        <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item with quite wide text</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    
+        <ul class="toolbar-group">
+            <li class="toolbar-item toolbar-dropdown">
+                <div class="aui-dd-parent disabled"><!-- note this disables the dropdown but should not affect toolbar -->
+                    <a href="#" class="toolbar-trigger aui-dd-trigger disabled"><span class="dropdown-text">DD Off (trigger)</span><span class="icon icon-dropdown"></span></a>
+                    <ul class="aui-dropdown aui-dropdown-left">
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="toolbar-item toolbar-splitbutton" id="action-disabled1b">
+                <a class="toolbar-trigger disabled" href="#" id="action-disabled1a" title="Action One A">Split DD Off (trigger)</a>
+                <div class="aui-dd-parent disabled"><!-- note this disables the dropdown but should not affect toolbar -->
+                    <a class="toolbar-trigger disabled aui-dd-trigger" href="#" title="Action One B">
+                        <span class="icon icon-dropdown">Action 1b</span>
+                    </a>
+                    <ul class="aui-dropdown">
+                        <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item with quite wide text</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        
+        <ul class="toolbar-group disabled">
+            <li class="toolbar-item toolbar-dropdown">
+                <div class="aui-dd-parent disabled"><!-- note this disables the dropdown but should not affect toolbar -->
+                    <a href="#" class="toolbar-trigger aui-dd-trigger"><span class="dropdown-text">DD Off (group)</span><span class="icon icon-dropdown"></span></a>
+                    <ul class="aui-dropdown aui-dropdown-left">
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="toolbar-item toolbar-splitbutton" id="action-groupdisabled-disabled1b">
+                <a class="toolbar-trigger" href="#" id="action-groupdisabled-disabled1a" title="Action One A">Split DD Off (group)</a>
+                <div class="aui-dd-parent disabled"><!-- note this disables the dropdown but should not affect toolbar -->
+                    <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One B">
+                        <span class="icon icon-dropdown">Action 1b</span>
+                    </a>
+                    <ul class="aui-dropdown">
+                        <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Dropdown item with quite wide text</a></li>
+                        <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div><!-- // .toolbar-split -->
+</div><!-- // .aui-toolbar #disabled-dropdowns-toolbar -->
+
+<p>Although we recommend disabling on triggers, we testing that disabled works whether applied to group, item or trigger (or all three - check for opacity multiplication):</p>
+
+<div class="aui-toolbar" id="disabled-buttons-toolbar">
+    <div class="toolbar-split toolbar-split-left">
+        
+        <ul class="toolbar-group">
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off (items)</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+        </ul>
+
+        <ul class="toolbar-group">
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger disabled">Off (triggers)</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger disabled">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger disabled">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger disabled">Off</a>
+            </li>
+        </ul>
+
+        <ul class="toolbar-group disabled">
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">Off (whole group)</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+        </ul>
+
+        <ul class="toolbar-group disabled">
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger disabled">Off (group, item and trigger)</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger disabled">Off</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger disabled">Off</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger disabled">Off</a>
+            </li>
+        </ul>
+        
+    </div><!-- // .toolbar-split -->
+</div><!-- // .aui-toolbar #disabled-dropdowns-toolbar -->
+
+<p>Checking combinations of disabled/enabled:</p>
+
+<div class="aui-toolbar" id="disabled-buttons-toolbar2">
+    <div class="toolbar-split toolbar-split-left">
+        
+        <ul class="toolbar-group">
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Of</a>
+            </li>
+        </ul>
+
+        <ul class="toolbar-group">
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+        </ul>
+
+        <ul class="toolbar-group">
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+        </ul>
+
+        <ul class="toolbar-group">
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+        </ul>
+
+        <ul class="toolbar-group">
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+        </ul>
+
+        <ul class="toolbar-group">
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+        </ul>
+
+        <ul class="toolbar-group">
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+            <li class="toolbar-item">
+                <a href="#" class="toolbar-trigger">On</a>
+            </li>
+            <li class="toolbar-item disabled">
+                <a href="#" class="toolbar-trigger">Off</a>
+            </li>
+        </ul>
+    
+    </div><!-- // .toolbar-split -->
+</div><!-- // .aui-toolbar #disabled-buttons-toolbar -->
 
 <p>Two-row toolbar (fixed/set rows):</p>
 
@@ -1101,7 +1346,7 @@
 <script type="text/javascript" src="../../../../../../auiplugin/src/main/resources/js/atlassian/toolbar.js"></script>
 <script type="text/javascript">
     AJS.$(document).ready(function() {
-        AJS.$(".aui-dd-parent").dropDown("Standard", { alignment: "left"});
+        AJS.$(".aui-dd-parent").dropDown("Standard", { alignment: "left", useDisabled: true});
     });
 </script>
 </body>

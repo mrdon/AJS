@@ -70,7 +70,9 @@
         <resource type="download" name="tabs.js" location="js/atlassian/tabs.js"/>
         <resource type="download" name="template.js" location="js/atlassian/template.js"/>
         <resource type="download" name="whenitype.js" location="js/atlassian/whenitype.js"/>
-        <resource type="download" name="toolbar.js" location="js/atlassian/toolbar.js"/>
+        <resource type="download" name="toolbar.js" location="js/atlassian/toolbar.js">
+            <param name="conditionalComment" value="lte IE 8"/>
+        </resource>
 
         <resource type="download" name="jquery.autocomplete.js" location="js/atlassian/jquery/jquery.autocomplete.js"/>
         <resource type="download" name="jquery.is-dirty.js" location="js/atlassian/jquery/jquery.is-dirty.js"/>

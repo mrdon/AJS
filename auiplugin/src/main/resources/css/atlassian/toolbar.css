@@ -102,15 +102,6 @@
     padding-bottom: 1px;
 }
 
-/* disabled controls */
-.aui-toolbar .disabled, .aui-toolbar.disabled a {
-    opacity: 0.5;
-}
-
-.aui-toolbar .active, .aui-toolbar .active a {
-    opacity: 1;
-}
-
 .toolbar-group .toolbar-item:first-of-type a,
 .toolbar-group .toolbar-item:first-of-type button,
 .toolbar-group .toolbar-item:first-of-type input[type="button"],
@@ -240,4 +231,45 @@
 }
 .aui-toolbar .toolbar-splitbutton .aui-dd-parent .toolbar-trigger {
     border-right-style: solid;
+}
+
+/* disabled controls */
+.aui-toolbar .toolbar-group.disabled .toolbar-trigger,
+.aui-toolbar .toolbar-item.disabled .toolbar-trigger,
+.aui-toolbar .toolbar-trigger.disabled {
+    opacity: 0.5;
+}
+
+/* Prevent border highlighting and use normal cursor when disabled.
+   .active classes are to counter a clash with dropdown states. */
+.aui-toolbar .disabled .active .toolbar-trigger:hover,
+.aui-toolbar .toolbar-group.disabled .toolbar-trigger,
+.aui-toolbar .toolbar-group.disabled .toolbar-trigger:focus,
+.aui-toolbar .toolbar-group.disabled .toolbar-trigger:hover,
+.aui-toolbar .toolbar-group.disabled .toolbar-trigger:active,
+.aui-toolbar .toolbar-group .disabled .toolbar-trigger,
+.aui-toolbar .toolbar-group .disabled .toolbar-trigger:focus,
+.aui-toolbar .toolbar-group .disabled .toolbar-trigger:hover,
+.aui-toolbar .toolbar-group .disabled .toolbar-trigger:active,
+.aui-toolbar .toolbar-group .toolbar-trigger.disabled,
+.aui-toolbar .toolbar-group .toolbar-trigger.disabled:focus,
+.aui-toolbar .toolbar-group .toolbar-trigger.disabled:hover,
+.aui-toolbar .toolbar-group .toolbar-trigger.disabled:active {
+    background: #fff url("images/toolbar/aui-toolbar-button-inactive-bg.png") bottom left repeat-x;
+    border-color: #ddd;
+    border-left: 1px solid #f9f9f9; /* inner buttons need this to avoid inappropriate hover/click */
+    cursor: default;
+}
+
+.aui-toolbar .toolbar-group.disabled .toolbar-item:first-child .toolbar-trigger,
+.aui-toolbar .toolbar-group .disabled.toolbar-item:first-child .toolbar-trigger,
+.aui-toolbar .toolbar-group .toolbar-item:first-child .disabled.toolbar-trigger {
+    border-left: 1px solid #ddd;
+}
+
+/* prevent disabled split buttons jumping if dropdown clicked */
+.aui-toolbar .toolbar-group.disabled .toolbar-item .aui-dd-trigger,
+.aui-toolbar .toolbar-group .disabled.toolbar-item .aui-dd-trigger,
+.aui-toolbar .toolbar-group .toolbar-item .disabled.aui-dd-trigger {
+    border-left: 0;
 }

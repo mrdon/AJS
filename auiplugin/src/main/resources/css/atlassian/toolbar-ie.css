@@ -28,11 +28,6 @@
 .aui-toolbar .toolbar-group .toolbar-item-link {
     border-left: none;
 }
-/* disabled controls */
-.aui-toolbar .toolbar-group .disabled {
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /*IE8*/
-    filter: alpha(opacity=50); /* IE6-7 */
-}
 
 .aui-toolbar .toolbar-group {
     *padding-bottom: 10px;
@@ -79,3 +74,18 @@
 .toolbar-split-left.force-split {
     float: none;
 }
+
+/* disabled triggers - IE8 screws up without this */
+.aui-toolbar .disabled .toolbar-trigger,
+.aui-toolbar .toolbar-trigger.disabled {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /*IE8*/
+    filter: alpha(opacity=50); /* IE6-7 */
+}
+
+.aui-toolbar .disabled .first .toolbar-trigger,
+.aui-toolbar .disabled .toolbar-item.first .toolbar-trigger,
+.aui-toolbar .toolbar-group .disabled.first .toolbar-trigger,
+.aui-toolbar .toolbar-group .first .disabled.toolbar-trigger {
+    border-left: 1px solid #ddd;
+}
+
