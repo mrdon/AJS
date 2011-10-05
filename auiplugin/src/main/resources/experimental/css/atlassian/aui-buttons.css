@@ -1,0 +1,92 @@
+
+/* reset for aui-buttons in aui forms */
+form.aui input.aui-button {margin-right:0;padding: 4px 8px;}
+
+/* Base styling
+**
+^ there are some additional styles to make existing aui-form .buttons look like the new shiny .aui-buttons
+**
+*/
+form.aui .buttons input.button,
+form.aui .buttons button.button,
+.aui-button {
+	background:#eee;
+	border:1px solid #aaa;
+	color: #000000;
+    display: inline-block;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    height: 25px;
+    line-height: 17px !important;
+    margin:0;
+    min-width: 14px;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    width: auto;
+    cursor:default;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+	text-shadow: 0 1px 0 #ffffff;
+}
+
+/* gradient bg (same for disabled)^ */
+form.aui .buttons input.button,
+form.aui .buttons input.button[disabled]:active,
+form.aui .buttons button.button,
+form.aui .buttons button.button[disabled]:active,
+.aui-button,
+.aui-button[disabled],
+.aui-button[disabled]:active {
+ 	background-image: -moz-linear-gradient(100% 100% 90deg, #dfdfdf, #ffffff);
+ 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#dfdfdf));
+ 	background-image: -webkit-linear-gradient(#ffffff, #dfdfdf);
+ 	background-image: -o-linear-gradient(#ffffff, #dfdfdf);
+ 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dfdfdf',GradientType=0 );
+}
+/* active gradient bg^ */
+form.aui .buttons input.button:active,
+form.aui .buttons button.button:active,
+.aui-button:active {
+	background-image: -moz-linear-gradient(100% 100% 90deg, #d8e4f0, #cad5e0);
+ 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#cad5e0), to(#d8e4f0));
+ 	background-image: -webkit-linear-gradient(#cad5e0, #d8e4f0);
+ 	background-image: -o-linear-gradient(#cad5e0, #d8e4f0);
+ 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#CAD5E0', endColorstr='#D8E4F0',GradientType=0 );
+}
+/* state changes */
+.aui-button:hover,
+.aui-button:focus,
+.aui-button:active {border-color:#666;}
+.aui-button[disabled] {opacity: 0.5;}
+.aui-button[disabled]:hover,
+.aui-button[disabled]:focus,
+.aui-button[disabled]:active {border-color:#aaa;}
+/* give them a little breathing space when positioned together */
+.aui-button + .aui-button,
+.aui-button + .cancel,
+form.aui .buttons .aui-button + .cancel {margin-left:8px;}
+
+/* required to make aui-form .buttons work like .aui-buttons */
+form.aui .buttons .button:hover,
+form.aui .buttons .button:focus,
+form.aui .buttons .button:active {border-color:#666;}
+form.aui .buttons .button[disabled] {opacity: 0.5;}
+form.aui .buttons .button[disabled]:hover,
+form.aui .buttons .button[disabled]:focus,
+form.aui .buttons .button[disabled]:active {border-color:#aaa;}
+
+/* so we don't break existing form button placement 
+- be nice to remove this margining and replace with padding on buttons-container 
+*/
+form.aui .buttons-container input.button,
+form.aui .buttons-container button.button {margin:10px 8px 0 0;}
+form.aui .buttons-container input.aui-button,
+form.aui .buttons-container button.aui-button {margin-top:10px;margin-right:0;}

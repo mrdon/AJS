@@ -227,5 +227,14 @@
         <dependency>com.atlassian.auiplugin:aui-core</dependency>
         <resource type="download" name="experimental-example.css" location="experimental/css/atlassian/aui-page-layout.css" />
     </web-resource>
+    
+    <!-- this is being built in-situ and is not ready for prime time. -->
+    <web-resource key="aui-experimental-buttons" name="AUI experimental buttons">
+        <dependency>com.atlassian.auiplugin:aui-experimental-page-layout</dependency>        
+        <resource type="download" name="aui-buttons.css" location="experimental/css/atlassian/aui-buttons.css" />
+        <resource type="download" name="aui-buttons-ie.css" location="experimental/css/atlassian/aui-buttons-ie.css">
+            <param name="conditionalComment" value="lt IE 9"/>
+        </resource>
+    </web-resource>    
 
 </atlassian-plugin>

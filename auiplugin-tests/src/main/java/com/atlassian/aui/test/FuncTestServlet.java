@@ -47,6 +47,10 @@ public class FuncTestServlet extends HttpServlet {
         if(req.getPathInfo().contains("page-layout")){
             webResourceManager.requireResource("com.atlassian.auiplugin:aui-experimental-page-layout");
         }
+        
+        if(req.getPathInfo().contains("buttons")){
+            webResourceManager.requireResource("com.atlassian.auiplugin:aui-experimental-buttons");
+        }
 
         if (req.getPathInfo().endsWith("/"))
         {
