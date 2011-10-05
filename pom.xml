@@ -10,14 +10,14 @@
     <groupId>com.atlassian.aui</groupId>
     <artifactId>auiplugin-parent</artifactId>
     <packaging>pom</packaging>
-    <version>3.6.0</version>
+    <version>3.6.1-SNAPSHOT</version>
 
     <name>Atlassian UI Plugin - Parent</name>
 
     <scm>
-        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/tags/auiplugin-3.6.0</connection>
-        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/tags/auiplugin-3.6.0</developerConnection>
-        <url>https://studio.atlassian.com/svn/AJS/tags/auiplugin-3.6.0</url>
+        <connection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.6.x</connection>
+        <developerConnection>scm:svn:https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.6.x</developerConnection>
+        <url>https://studio.atlassian.com/svn/AJS/branches/auiplugin-3.6.x</url>
     </scm>
 
     <issueManagement>
