@@ -9,7 +9,7 @@
     <parent>
         <artifactId>auiplugin-parent</artifactId>
         <groupId>com.atlassian.aui</groupId>
-        <version>3.5.2</version>
+        <version>3.5.3-SNAPSHOT</version>
     </parent>
 
     <groupId>com.atlassian.maven.plugins</groupId>
