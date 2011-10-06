@@ -1,0 +1,401 @@
+/**
+ * RESET
+ */
+html, body, p, div, h1, h2, h3, h4, h5, h6, img, ul, ol, li, dl, dt, dd, pre, form, fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+/**
+ * PAGE LAYOUT
+ */
+.aui-layout #header {
+    clear: both;
+    float: left;
+    width: 100%;
+}
+
+.aui-layout #header input[type='search'] {
+    margin: 2px 0 0 0;
+    padding: 0;
+}
+
+.aui-layout #header ul {
+    list-style: none;
+    margin: 0;
+}
+
+.aui-layout #header .global,
+.aui-layout #header .global .primary,
+.aui-layout #header .global .primary > ul,
+.aui-layout #header .global .primary > ul > li,
+.aui-layout #header .local,
+.aui-layout #header .local .primary,
+.aui-layout #header .local .primary > ul,
+.aui-layout #header .local .primary > ul > li {
+    float: left;
+}
+
+.aui-layout #header .global .secondary,
+.aui-layout #header .global .secondary > ul,
+.aui-layout #header .global .secondary > ul > li,
+.aui-layout #header .local .secondary,
+.aui-layout #header .local .secondary > ul,
+.aui-layout #header .local .secondary > ul > li {
+    float: right;
+}
+
+.aui-layout #logo {
+    margin: 0;
+    padding: 0;
+}
+
+.aui-layout #header .local,
+.aui-layout #header .global {
+    width: 100%;
+}
+
+.aui-layout #content,
+.aui-layout #content > header {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    position: relative;
+} 
+
+.aui-layout #content > header h1,
+#content > header h2 {
+    margin: 0;
+} 
+
+.aui-layout #content > header + .content-body {
+    margin-top: 0;
+} 
+
+.aui-layout #content > header + .content-container {
+    padding-top: 0;
+} 
+
+.aui-layout #footer {
+    clear: both;
+    float: left;
+    margin: 0;
+    padding: 0 0 16px 0;
+    width: 100%;
+} 
+
+.aui-layout #footer .footer-body > ul {
+    display: block;
+    list-style: none;
+} 
+
+.aui-layout #footer .footer-body > ul > li {
+    display: inline-block;
+    padding: 0;
+} 
+.aui-layout #footer .footer-body > ul > li + li {
+    margin-left: 16px;
+}
+
+/**
+ * GROUP/ITEM
+ */
+
+.aui-group {
+    display: table;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-spacing: 0;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.aui-group > .aui-item {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table-cell;
+    margin: 0;
+    vertical-align: top;
+}
+
+.aui-group > .aui-item + .aui-item {
+    padding-left: 16px;
+}
+
+/* defensive header allowance */
+.aui-layout .aui-group > header {
+    display: table-caption;
+}
+
+/* .aui-group-split: two items; alignment is left, then right (splits the layout). */
+.aui-group.aui-group-split > .aui-item {
+	text-align: right;
+}
+.aui-group.aui-group-split > .aui-item:first-child {
+	text-align: left;
+}
+
+/* .aui-group-trio: three items; alignment is left, center, right */
+.aui-group.aui-group-trio > .aui-item {
+	text-align: left;
+}
+.aui-group.aui-group-trio > .aui-item + .aui-item {
+	text-align: center;
+}
+.aui-group.aui-group-trio > .aui-item + .aui-item + .aui-item {
+	text-align: right;
+}
+
+/**
+ * DEFAULT THEME SPACING
+ */
+.aui-theme-default #content {
+    margin: 0;
+	padding: 16px;    
+}
+
+/* Star selectors non-ideal, but alternate solutions had their own problems. */
+.aui-theme-default #content > *,
+.aui-theme-default .aui-panel,
+.aui-theme-default .aui-panel > *,
+.aui-theme-default .aui-group,
+.aui-theme-default .aui-message {
+    margin: 16px 0 0 0;
+}
+.aui-theme-default #content > *:first-child,
+.aui-theme-default #footer > *:first-child,
+.aui-theme-default #footer .footer-body > *:first-child,
+.aui-theme-default .aui-panel > *:first-child,
+.aui-theme-default .aui-item > *:first-child {
+	margin-top: 0;
+}
+
+/**
+ * PAGE DESIGN
+ */
+.aui-theme-default {
+    background: #F0F0F0;
+    color: #000;
+}
+
+.aui-theme-default a {
+    color: #326ca6;
+    text-decoration: none;
+}
+.aui-theme-default a:focus,
+.aui-theme-default a:hover,
+.aui-theme-default a:active {
+    text-decoration: underline;
+}
+
+.aui-theme-default h1, .aui-theme-default h2, .aui-theme-default h3, .aui-theme-default h4, .aui-theme-default h5, .aui-theme-default h6 {
+    color: #000;
+}
+
+.aui-theme-default #header .global {
+    background: #036;
+    color: #fff;
+}
+
+.aui-theme-default #header a {
+    color: #fff;
+}
+
+.aui-theme-default #header .global .primary > ul {
+    padding: 0 0 0 8px;
+}
+
+.aui-theme-default #header .global .primary > ul > li {
+    margin: 0 8px 0 0;
+}
+
+.aui-theme-default #header .global .primary > ul > li > a {
+    display: block;
+    padding: 4px;
+    white-space: nowrap;
+}
+
+.aui-theme-default #header .global .secondary > ul {
+    padding: 0 8px 0 0;
+}
+
+.aui-theme-default #header .global .secondary > ul > li {
+    margin: 0 0 0 8px;
+}
+
+.aui-theme-default #header .global .secondary > ul > li > a {
+    display: block;
+    padding: 4px;
+    white-space: nowrap;
+}
+
+.aui-theme-default #header .local {
+    background: #326ca6;
+    border-top: 1px solid #036;
+    color: #fff;
+}
+
+
+.aui-theme-default #header .local .primary > ul {
+    padding: 0 0 0 8px;
+}
+
+.aui-theme-default #header .local .primary > ul > li {
+    margin: 0 8px 0 0;
+}
+
+.aui-theme-default #header .local .primary > ul > li > a {
+    display: block;
+    padding: 4px;
+    white-space: nowrap;
+}
+
+.aui-theme-default #header .local .primary > ul > li > a:hover {
+    background: #fff;
+    color: #333;
+}
+
+.aui-theme-default #header .local .primary > ul > li.selected,
+.aui-theme-default #header .local .primary > ul > li.selected a {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.aui-theme-default #header .local .secondary > ul {
+    padding: 0 8px 0 0;
+}
+
+.aui-theme-default #header .local .secondary > ul > li {
+    margin: 0 0 0 8px;
+}
+
+.aui-theme-default #header .local .secondary > ul > li > a {
+    display: block;
+    padding: 4px;
+    white-space: nowrap;
+}
+
+.aui-theme-default #footer .footer-body {
+    background: transparent;
+    color: #505050;
+    font-size: 11px;
+    line-height: 1.364;
+    margin: 0;
+    padding: 0 16px;
+} 
+
+.aui-theme-default #footer .footer-body {
+    text-align: center;    
+}
+
+/**
+ * TYPOGRAPHY
+ */
+.aui-theme-default {
+    font-family: Arial,FreeSans,Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 1.308;    
+}
+.aui-theme-default p,
+.aui-theme-default ul,
+.aui-theme-default ol,
+.aui-theme-default h1, .aui-theme-default h2, .aui-theme-default h3, .aui-theme-default h4, .aui-theme-default h5, .aui-theme-default h6 {
+    margin: 16px 0 0 0;
+}
+.aui-theme-default h1 {
+    font-size: 24px;
+    line-height: 1.167;
+}
+.aui-theme-default h2 {
+    font-size: 22px;
+    line-height: 1.182;
+}
+.aui-theme-default h3 {
+    font-size: 18px;
+    line-height: 1.222;
+}
+.aui-theme-default h4 {
+    font-size: 16px;
+    line-height: 1.25;
+}
+.aui-theme-default h5 {
+    font-size: 14px;
+    line-height: 1.286;
+}
+.aui-theme-default h6 {
+    font-size: 12px;
+}
+.aui-theme-default ul {
+    padding: 0 0 0 24px;
+}
+.aui-theme-default ol {
+    list-style-position: outside;
+    list-style-type: decimal;
+    padding: 0 0 0 24px;
+}
+
+
+/**
+ * CONTENT PANEL
+ */
+.aui-theme-default .aui-panel {
+    background: #fff;
+    border: 1px solid #bbb;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 16px;
+}
+
+.aui-theme-default .aui-panel > *:first-child {
+    margin-top: 0;
+}
+
+/**
+ * TABS AS FIRST CHILD IN CONTENT
+ * Explicitly sets bg to white, changes horizontal hovers to work on grey.
+ * Remember these extend the standard component styles.
+ */
+.aui-theme-default #content > .aui-tabs > .tabs-pane {
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.aui-theme-default #content > .aui-tabs.horizontal-tabs > .tabs-menu > li.menu-item a {
+    background: #f0f0f0;
+    border-color: #f0f0f0;
+}
+
+.aui-theme-default #content > .aui-tabs.horizontal-tabs > .tabs-menu > li.menu-item a:focus,
+.aui-theme-default #content > .aui-tabs.horizontal-tabs > .tabs-menu > li.menu-item a:hover {
+    background: #fff;
+    border-color: #bbb;
+    border-bottom-color: #fff;
+}
+
+.aui-theme-default #content > .aui-tabs.horizontal-tabs > .tabs-pane {
+    border: 1px solid #bbb;
+    margin: 0;
+    padding: 16px;
+}
+
+/**
+ * Some spacing tweaks required for the switch to top spacing.
+ * If/when this goes into core, these may shift out to their respective components.
+ */
+
+.aui-theme-default .aui-message {
+    margin: 16px 0 0 0;
+}
+
