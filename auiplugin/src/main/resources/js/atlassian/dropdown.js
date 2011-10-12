@@ -234,10 +234,10 @@ AJS.dropDown = function (obj, usroptions) {
     };
 
     dd.each(function () {
-        var cdd = this, $cdd = AJS.$(this), res;
+        var cdd = this, $cdd = AJS.$(this), res = {};
         var methods = {
             reset: function () {
-                res = AJS.$.extend(res || {}, {
+                res = AJS.$.extend(res, {
                     $: $cdd,
                     links: AJS.$(options.item || "li:has(a)", cdd),
                     cleanActive: function () {
@@ -263,8 +263,7 @@ AJS.dropDown = function (obj, usroptions) {
                         $this.click(handleClickSelection);
                     }
                 });
-                return arguments.callee;
-            }(),
+            },
             appear: function (dir) {
                 if (dir) {
                     $cdd.removeClass("hidden");
@@ -290,6 +289,9 @@ AJS.dropDown = function (obj, usroptions) {
             }
         };
 
+        res.reset = methods.reset;
+        res.reset();
+
         /**
          * Uses Aspect Oriented Programming (AOP) to wrap a method around another method 
          * Allows control of the execution of the wrapped method.
@@ -314,8 +316,6 @@ AJS.dropDown = function (obj, usroptions) {
         res.addCallback = function (method, callback) {
             return AJS.$.aop.after({target: this, method: method}, callback);
         };
-
-        res.reset = methods.reset();
 
         res.show = function (method) {
 
