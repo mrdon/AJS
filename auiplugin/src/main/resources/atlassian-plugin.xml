@@ -82,6 +82,8 @@
     </web-resource>
 
     <web-resource key="ajs-gadgets-base" name="Minimal resource list for AJS-Gadgets framework">
+        <dependency>com.atlassian.auiplugin:aui-core</dependency>
+
         <resource type="download" name="basic.css" location="css/atlassian/basic.css"/>
         <resource type="download" name="dropdown.css" location="css/atlassian/dropdown.css"/>
         <resource type="download" name="icons.css" location="css/atlassian/icons.css"/>
@@ -102,9 +104,6 @@
             <param name="conditionalComment" value="lt IE 9"/>
         </resource>
 
-        <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
-        <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
-        <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
         <resource type="download" name="jquery.aop.js" location="js/external/jquery/plugins/jquery.aop.js"/>
         <resource type="download" name="dropdown.js" location="js/atlassian/dropdown.js"/>
     </web-resource>
@@ -120,8 +119,12 @@
         <resource type="download" name="placeholder.css" location="css/atlassian/binders/placeholder.css"/>
     </web-resource>
 
+    <web-resource name="jQuery" key="jquery-lib">
+        <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
+    </web-resource>
+
     <web-resource name="jQuery Compatibility" key="jquery-compatibility">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-lib</dependency>
         <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
     </web-resource>
 
@@ -210,8 +213,8 @@
     </web-resource>
 
     <web-resource key="aui-core" name="AUI Core">
-        <resource type="download" name="jquery.js" location="js/external/jquery/jquery.js"/>
-        <resource type="download" name="jquery-compatibility.js" location="js/external/jquery/jquery-compatibility.js"/>
+        <dependency>com.atlassian.auiplugin:jquery-lib</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-compatibility</dependency>
         <resource type="download" name="atlassian.js" location="js/atlassian/atlassian.js"/>
     </web-resource>
 
