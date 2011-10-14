@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta charset="utf-8">
+    <title>AUI Sandbox</title>
+
+    <!-- This file should only work on docs.atlassian.com, where it loads AUI with includeAJS.* -->
+    <link type="text/css" rel="stylesheet" href="includeAJS.css" media="all">
+    <link type="text/css" rel="stylesheet" href="sandbox-refapp.css" media="all">
+    <script type="text/javascript" src="includeAJS.js"></script>
+    <script type="text/javascript" src="xml2json.js"></script>
+    
+    <style>
+    .sandbox-error { background: #ffe7e7; border: 1px solid #df9898; color: #000; padding: 0 1em; }
+    .initially-hidden { display: none; }
+    </style>
+    <!--[if lte IE 8]>
+    <style>
+    #sandbox-page { overflow: auto; }
+    #display { min-height: 15em; height: auto; }
+    </style>
+    <![endif]-->
+</head>
+<body>
+<div id="sandbox-page" class="full-width-container">
+
+    <div id="header">
+
+        <div id="aui-sandbox-header" class="group">
+            <div class="item">
+                <h1 id="page-heading"><span id="toolbar-logo" class="aui-logo"></span> AUI Sandbox <span id="version">(version not detected)</span></h1>
+            </div>
+            <div class="item">
+                    <a href="http://confluence.atlassian.com/display/AUI/" id="documentation"> AUI Documentation </a>
+            </div>
+        </div>
+
+        <div id="toolbar" class="group initially-hidden">
+            <div class="item">
+                <span id="components"></span>
+                <span id="editor-tools">
+                    <button id="refresh">Refresh Display</button>
+                    <button id="clear">Remove All</button>
+                </span>
+                <!--<span id="help-icon">-->
+                <!--    <span class="aui-icon-new icon-info"></span>-->
+                <!--</span>-->
+            </div>
+        </div><!-- // #toolbar -->
+
+    </div><!-- #header -->
+
+    <div id="work-area" class="work-area">
+
+        <div class="sandbox-error" id="sandbox-local-warning">
+            <p class="title"><strong>ERROR: Needs server</strong></p>
+            <p>The sandbox must be used either on <a href="http://docs.atlassian.com/aui/latest/sandbox/">docs.atlassian.com/aui/latest/sandbox</a> or <a href="http://localhost:9999/ajs/">via the Atlassian refapp</a> if you are running it locally.</p>
+        </div><!-- .aui-message -->
+
+        <div id="editors-parent" class="group initially-hidden">
+
+            <div id="html-parent" class="editor-parent item">
+                <h2 class="editor-heading">HTML</h2>
+                <textarea id="html-editor" class="edit-box" ></textarea>
+            </div>
+
+            <div id="css-parent" class="editor-parent item">
+                <h2 class="editor-heading" >CSS</h2>
+                <textarea id="css-editor" class="edit-box" ></textarea>
+            </div>
+
+            <div id="js-parent" class="editor-parent item">
+                <h2 class="editor-heading" >Javascript</h2>
+                <textarea id="js-editor" class="edit-box" ></textarea>
+            </div>
+
+        </div>
+        <div id="bottom" class="group initially-hidden">
+            <div id="display-parent" class="display-parent item">
+                <h2 id="display-heading" class="display-heading">Display</h2>
+                <div id="display" class="display-box">
+                    <div id="html-code"></div>
+                    <style type="text/css" id="css-code"></style>
+                    <div id="js-code"></div>
+                </div>
+            </div>
+            <div id="info-parent" class="item">
+                <h2 id="info-heading" class="display-heading">Information</h2>
+                <div id="info-display" class="display-box"></div>
+            </div>
+        </div>
+    </div><!-- // #work-area -->
+</div>
+<script type="text/javascript" src="sandbox-refapp.js"></script>
+<script>
+if (window.location.protocol != 'file:') {
+    document.getElementById("sandbox-local-warning").style.display = "none";
+};
+</script>
+</body>
+</html>

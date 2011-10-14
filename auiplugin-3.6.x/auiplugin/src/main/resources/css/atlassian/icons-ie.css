@@ -1,0 +1,34 @@
+/**
+* The structure of this file pre-supposes two conditions:
+* - That the file is served via a conditional comment of [if lte IE 8] or [if lt IE 9]
+* - That de-bugging starts with IE8 and moves down through IE7 to IE6
+**/
+
+/** * Fixes for IE8, IE7 and IE6 * - each property should be written
+without CSS hacks * eg:
+.dashboard {
+    margin: 0 0 2px 1px;
+}
+* **/
+
+
+/** * Fixes for IE7 and IE6 * - each property *must* be prefixed with
+an asterisk (*) * eg:
+.dashboard {
+    *margin: 0 0 4px 2px;
+}
+* **/
+
+span.svg-icon div {
+    *display: inline !important;
+}
+
+
+/** * Fixes for IE6 only * - each property *must* be prefixed with an
+underscore (_) * eg:
+.dashboard {
+    _margin: 0 0 0 1px;
+    _padding: 0 0
+    -3px 0;
+}
+* **/

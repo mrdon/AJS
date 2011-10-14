@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta charset="utf-8">
+    <meta name="decorator" content="atl.general">
+
+    <title>Atlassian form template</title>
+
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <!--[if lte IE 8]>
+        <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+    <script type="text/javascript" src="../aui.js"></script>
+    <script type="text/javascript" src="../demo.js"></script>
+
+</head>
+<body class="demo-page">
+    <div class="navigation">
+        <h2> AUI Forms Demo Page </h2>
+        <ul>
+            <li><a href="default.html">Default Layout</a></li>
+            <li><a href="long-labels.html">Long Labels</a></li>
+            <li><a href="top-labels.html">Top Labels</a></li>
+            <li><a href="inline-form.html">Inline Form</a></li>
+            <li><a href="inline-help.html">Inline Help</a></li>
+            <li><a href="forms-demo.html">Back to Forms Home</a></li>
+        </ul>
+    </div>
+    <div class="aui-demo">
+
+        <h1>Top Labels</h1>
+        
+        <form action="#" method="post" id="example-right" class="aui top-label">
+            <p><em>This short form has right-aligned buttons such as you might see in a Dialog. Its .buttons-container has a class of .right and the buttons are thus aligned right. It is shaded only to show the width of the form.</em></p>
+            <div class="field-group">
+                <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <input class="text" type="text" id="fname" name="fname" title="first name">
+            </div>
+            <div class="field-group">
+                <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                <input class="text long-field" type="text" id="lname" name="lname" title="last name">
+            </div>
+            <div class="buttons-container right">
+                <div class="buttons">
+                    <input class="button submit" type="submit" value="Save" id="save-btn1">
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+        <form action="#" method="post" id="j" class="aui top-label">
+            <h2>Top Labels - add class top-label to form</h2>
+            <fieldset>
+                <legend><span>New Issue</span></legend>
+                <div class="field-group">
+                    <label for="issueType">Issue Type</label>
+                    <select class="select medium-field" id="issueType" name="issueType" title="select issue type">
+                        <option>- Select Issue Type -</option>
+                        <option>Bug</option>
+                    </select>
+                </div>
+                <div class="field-group">
+                    <label for="projectName">Project</label>
+                    <select class="select medium-field" id="projectName" name="projectName" title="select project">
+                        <option>- Select Project -</option>
+                        <option>JIRA</option>
+                    </select>
+                </div>
+            </fieldset>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button submit" type="submit" value="Save" id="save-new-issue">
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        
+            <h2>Groups (checkboxes and radios)</h2>
+            <fieldset class="group">
+                <legend><span>Checkboxes Legend</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbthree">
+                    <label for="cbthree">Checkbox One</label>
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbTwo" id="cbfour">
+                    <label for="cbfour">Checkbox Two</label>
+                    <div class="description">You can have a description here</div>
+                    <div class="error">and/or an error</div>
+                </div>
+                <div class="field-group">
+                    <p>You can also have a description here if you like</p>
+                    <div class="error">and/or errors</div>
+                </div>
+                <div class="description">Or, you can have a description here for the <code>fieldset</code> as a whole.</div>
+            </fieldset>
+        
+            <h2>One Checkbox</h2>
+            <fieldset class="group">
+                <legend class="assistive"><span>Assistive Legend to give context for screen readers. If you don't know what to put in here, ask your nearest frontend developer.</span></legend>
+                <p>The visible legend is optional - you may not want it for the single checkbox. You can make it an assistive legend (view source to see it).</p>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbsingle">
+                    <label for="cbsingle">Checkbox Single</label>
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="field-group">
+                    <p>You can also have a description here if you like</p>
+                </div>
+            </fieldset>
+        
+            <h2>Radio Buttons</h2>
+            <fieldset class="group">
+                <legend><span>Radio Buttons</span></legend>
+                <div class="radio">
+                    <input class="radio" type="radio"   checked="checked" name="rads" id="irOne">
+                    <label for="irOne">Rad One</label>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irTwo">
+                    <label for="irTwo">Rad Two</label>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irThree">
+                    <label for="irThree">Rad Three</label>
+                </div>
+            </fieldset>
+        </form>
+        
+        <script type="text/javascript">
+            AJS.$(function() {
+        
+                // Testing AJS.inlineHelp
+                AJS.inlineHelp();
+            });
+        </script>
+    </div>
+</body>
+</html>

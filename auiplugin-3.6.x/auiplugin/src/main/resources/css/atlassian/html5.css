@@ -1,0 +1,12 @@
+/* Solution from https://github.com/necolas/normalize.css/blob/master/normalize.css */
+/* Corrects block display not defined in IE6/7/8/9 & FF3 */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
+
+/* Corrects inline-block display not defined in IE6/7/8/9 & FF3 */
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}

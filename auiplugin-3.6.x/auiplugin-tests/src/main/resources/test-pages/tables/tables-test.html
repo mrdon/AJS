@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta name="decorator" content="atl.general">
+
+    <title> AUI Tables Test Page</title>
+
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <script type="text/javascript" src="../common.js"></script>
+</head>
+<body>
+<div class="navigation">
+    <h2> AUI Tables Test Page </h2>
+    <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+</div>
+
+<div class="aui-test source-required">
+    <h2>Basic <code>table</code>.</h2>
+
+    <p class="description"></p>
+
+    <div class="html-code">
+        <table class="aui" id="basic">
+            <thead>
+                <tr>
+                    <th id="basic-name">Name</th>
+                    <th id="basic-type">Type</th>
+                    <th id="basic-order">Order</th>
+                    <th id="basic-action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td headers="basic-name">Default</td>
+                    <td headers="basic-type">Internal Directory</td>
+                    <td headers="basic-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-name">Corporate LDAP</td>
+                    <td headers="basic-type">Microsoft Active Directory</td>
+                    <td headers="basic-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-name">Corporate LDAP</td>
+                    <td headers="basic-type">Microsoft Active Directory</td>
+                    <td headers="basic-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-name">Corporate LDAP</td>
+                    <td headers="basic-type">Microsoft Active Directory</td>
+                    <td headers="basic-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-name">Contractor Directory</td>
+                    <td headers="basic-type">Internal Directory</td>
+                    <td headers="basic-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+    </script>
+</div>
+
+<div class="aui-test source-required">
+<h2><code>Table</code> with two <code>tbody</code> elements.</h2>
+
+<p class="description"></p>
+
+<div class="html-code">
+<table class="aui" id="tbody-double">
+<thead>
+    <tr>
+        <th id="tbody-double-name">Name</th>
+        <th id="tbody-double-type">Type</th>
+        <th id="tbody-double-order">Order</th>
+        <th id="tbody-double-action">Action</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td headers="tbody-double-name">Default</td>
+        <td headers="tbody-double-type">Internal Directory</td>
+        <td headers="tbody-double-order">
+            <ul class="menu">
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="tbody-double-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="tbody-double-name">Corporate LDAP</td>
+        <td headers="tbody-double-type">Microsoft Active Directory</td>
+        <td headers="tbody-double-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="tbody-double-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="tbody-double-name">Corporate LDAP</td>
+        <td headers="tbody-double-type">Microsoft Active Directory</td>
+        <td headers="tbody-double-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="tbody-double-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="tbody-double-name">Corporate LDAP</td>
+        <td headers="tbody-double-type">Microsoft Active Directory</td>
+        <td headers="tbody-double-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="tbody-double-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="tbody-double-name">Contractor Directory</td>
+        <td headers="tbody-double-type">Internal Directory</td>
+        <td headers="tbody-double-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="tbody-double-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</tbody>
+<tbody>
+    <tr>
+        <td headers="tbody-double-name">Corporate LDAP</td>
+        <td headers="tbody-double-type">Microsoft Active Directory</td>
+        <td headers="tbody-double-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="tbody-double-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="tbody-double-name">Default</td>
+        <td headers="tbody-double-type">Internal Directory</td>
+        <td headers="tbody-double-order">
+            <ul class="menu">
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="tbody-double-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="tbody-double-name">Corporate LDAP</td>
+        <td headers="tbody-double-type">Microsoft Active Directory</td>
+        <td headers="tbody-double-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="tbody-double-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="tbody-double-name">Contractor Directory</td>
+        <td headers="tbody-double-type">Internal Directory</td>
+        <td headers="tbody-double-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="tbody-double-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</tbody>
+</table>
+</div>
+<script type="text/javascript">
+</script>
+</div>
+
+<div class="aui-test source-required">
+<h2><code>Table</code> with a <code>caption</code> and a <code>tfoot</code>.</h2>
+
+<p class="description"></p>
+
+<div class="html-code">
+<table class="aui" id="has-caption">
+<caption>This is a CAPTION. It's super cool.</caption>
+<thead>
+    <tr>
+        <th id="has-caption-name">Name</th>
+        <th id="has-caption-type">Type</th>
+        <th id="has-caption-order">Order</th>
+        <th id="has-caption-action">Action</th>
+    </tr>
+</thead>
+<tfoot>
+    <tr>
+        <td colspan="3">This is a TFOOT. It is for metadata goodness, like pagination =></td>
+        <td>
+            <ul class="menu">
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+            </ul>
+        </td>
+    </tr>
+</tfoot>
+<tbody>
+    <tr>
+        <td headers="has-caption-name">Default</td>
+        <td headers="has-caption-type">Internal Directory</td>
+        <td headers="has-caption-order">
+            <ul class="menu">
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="has-caption-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="has-caption-name">Corporate LDAP</td>
+        <td headers="has-caption-type">Microsoft Active Directory</td>
+        <td headers="has-caption-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="has-caption-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="has-caption-name">Corporate LDAP</td>
+        <td headers="has-caption-type">Microsoft Active Directory</td>
+        <td headers="has-caption-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="has-caption-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="has-caption-name">Corporate LDAP</td>
+        <td headers="has-caption-type">Microsoft Active Directory</td>
+        <td headers="has-caption-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="has-caption-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="has-caption-name">Contractor Directory</td>
+        <td headers="has-caption-type">Internal Directory</td>
+        <td headers="has-caption-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="has-caption-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</tbody>
+<tbody>
+    <tr>
+        <td headers="has-caption-name">Corporate LDAP</td>
+        <td headers="has-caption-type">Microsoft Active Directory</td>
+        <td headers="has-caption-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="has-caption-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="has-caption-name">Default</td>
+        <td headers="has-caption-type">Internal Directory</td>
+        <td headers="has-caption-order">
+            <ul class="menu">
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="has-caption-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="has-caption-name">Corporate LDAP</td>
+        <td headers="has-caption-type">Microsoft Active Directory</td>
+        <td headers="has-caption-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+                <li>
+                    <a class="down" href="#">Down</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="has-caption-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+                <li>
+                    <a href="#">Another Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td headers="has-caption-name">Contractor Directory</td>
+        <td headers="has-caption-type">Internal Directory</td>
+        <td headers="has-caption-order">
+            <ul class="menu">
+                <li>
+                    <a class="up" href="#">Up</a>
+                </li>
+            </ul>
+        </td>
+        <td headers="has-caption-action">
+            <ul class="menu">
+                <li>
+                    <a href="#">An Action</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</tbody>
+</table>
+</div>
+<script type="text/javascript">
+</script>
+</div>
+
+<div class="aui-test source-required">
+    <h2>A complex <code>table</code>.</h2>
+
+    <p class="description">Both TH row and column, plus two TBODYs.</p>
+
+    <div class="html-code">
+        <table class="aui" id="complex">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th id="complex-name">Name</th>
+                    <th id="complex-type">Type</th>
+                    <th id="complex-order">Order</th>
+                    <th id="complex-action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th id="complex-first-row">First Row</th>
+                    <td headers="complex-name complex-first-row">Default</td>
+                    <td headers="complex-type complex-first-row">Internal Directory</td>
+                    <td headers="complex-order complex-first-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex-first-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex-second-row">Second Row</th>
+                    <td headers="complex-name complex-second-row">Corporate LDAP</td>
+                    <td headers="complex-type complex-second-row">Microsoft Active Directory</td>
+                    <td headers="complex-order complex-second-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex-second-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex-third-row">Third Row</th>
+                    <td headers="complex-name complex-third-row">Corporate LDAP</td>
+                    <td headers="complex-type complex-third-row">Microsoft Active Directory</td>
+                    <td headers="complex-order complex-third-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex-third-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex-fourth-row">Fourth Row</th>
+                    <td headers="complex-name complex-fourth-row">Corporate LDAP</td>
+                    <td headers="complex-type complex-fourth-row">Microsoft Active Directory</td>
+                    <td headers="complex-order complex-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex-fifth-row">Fifth Row</th>
+                    <td headers="complex-name complex-fifth-row">Contractor Directory</td>
+                    <td headers="complex-type complex-fifth-row">Internal Directory</td>
+                    <td headers="complex-order complex-fifth-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex-fifth-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th id="complex2ndbody-first-row">First Row second body</th>
+                    <td headers="complex-name complex2ndbody-first-row">Default</td>
+                    <td headers="complex-type complex2ndbody-first-row">Internal Directory</td>
+                    <td headers="complex-order complex2ndbody-first-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-first-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex2ndbody-second-row">Second Row</th>
+                    <td headers="complex-name complex2ndbody-second-row">Corporate LDAP</td>
+                    <td headers="complex-type complex2ndbody-second-row">Microsoft Active Directory</td>
+                    <td headers="complex-order complex2ndbody-second-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-second-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex2ndbody-third-row">Third Row</th>
+                    <td headers="complex-name complex2ndbody-third-row">Corporate LDAP</td>
+                    <td headers="complex-type complex2ndbody-third-row">Microsoft Active Directory</td>
+                    <td headers="complex-order complex2ndbody-third-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-third-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex2ndbody-fourth-row">Fourth Row</th>
+                    <td headers="complex-name complex2ndbody-fourth-row">Corporate LDAP</td>
+                    <td headers="complex-type complex2ndbody-fourth-row">Microsoft Active Directory</td>
+                    <td headers="complex-order complex2ndbody-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex2ndbody-fifth-row">Fifth Row</th>
+                    <td headers="complex-name complex2ndbody-fifth-row">Contractor Directory</td>
+                    <td headers="complex-type complex2ndbody-fifth-row">Internal Directory</td>
+                    <td headers="complex-order complex2ndbody-fifth-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-action complex2ndbody-fifth-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+    </script>
+</div>
+
+<div class="aui-test source-required">
+<h2>Nested <code>table</code> example</h2>
+
+<p class="description">The nested table should be unstyled.</p>
+
+<div class="html-code">
+<table class="aui" id="nested">
+<thead>
+    <tr>
+        <th id="nested-name">Name</th>
+        <th id="nested-type">Type</th>
+        <th id="nested-order">Order</th>
+        <th id="nested-action">Action</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td headers="nested-name">Default</td>
+    <td headers="nested-type">Internal Directory</td>
+    <td headers="nested-order">
+        <ul class="menu">
+            <li>
+                <a class="down" href="#">Down</a>
+            </li>
+        </ul>
+    </td>
+    <td headers="nested-action">
+        <ul class="menu">
+            <li>
+                <a href="#">An Action</a>
+            </li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td headers="nested-name">Corporate LDAP</td>
+    <td headers="nested-type">Microsoft Active Directory</td>
+    <td headers="nested-order">
+        <ul class="menu">
+            <li>
+                <a class="up" href="#">Up</a>
+            </li>
+            <li>
+                <a class="down" href="#">Down</a>
+            </li>
+        </ul>
+    </td>
+    <td headers="nested-action">
+        <ul class="menu">
+            <li>
+                <a href="#">An Action</a>
+            </li>
+            <li>
+                <a href="#">Another Action</a>
+            </li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td colspan="4">
+        <table class="not-an-aui-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Order</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Default</td>
+                    <td>Internal Directory</td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Corporate LDAP</td>
+                    <td>Microsoft Active Directory</td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Corporate LDAP</td>
+                    <td>Microsoft Active Directory</td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Corporate LDAP</td>
+                    <td>Microsoft Active Directory</td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Contractor Directory</td>
+                    <td>Internal Directory</td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td headers="nested-name">Corporate LDAP</td>
+    <td headers="nested-type">Microsoft Active Directory</td>
+    <td headers="nested-order">
+        <ul class="menu">
+            <li>
+                <a class="up" href="#">Up</a>
+            </li>
+            <li>
+                <a class="down" href="#">Down</a>
+            </li>
+        </ul>
+    </td>
+    <td headers="nested-action">
+        <ul class="menu">
+            <li>
+                <a href="#">An Action</a>
+            </li>
+            <li>
+                <a href="#">Another Action</a>
+            </li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td headers="nested-name">Corporate LDAP</td>
+    <td headers="nested-type">Microsoft Active Directory</td>
+    <td headers="nested-order">
+        <ul class="menu">
+            <li>
+                <a class="up" href="#">Up</a>
+            </li>
+            <li>
+                <a class="down" href="#">Down</a>
+            </li>
+        </ul>
+    </td>
+    <td headers="nested-action">
+        <ul class="menu">
+            <li>
+                <a href="#">An Action</a>
+            </li>
+            <li>
+                <a href="#">Another Action</a>
+            </li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td headers="nested-name">Corporate LDAP</td>
+    <td headers="nested-type">Microsoft Active Directory</td>
+    <td headers="nested-order">
+        <ul class="menu">
+            <li>
+                <a class="up" href="#">Up</a>
+            </li>
+            <li>
+                <a class="down" href="#">Down</a>
+            </li>
+        </ul>
+    </td>
+    <td headers="nested-action">
+        <ul class="menu">
+            <li>
+                <a href="#">An Action</a>
+            </li>
+            <li>
+                <a href="#">Another Action</a>
+            </li>
+        </ul>
+    </td>
+</tr>
+</tbody>
+</table>
+</div>
+<script type="text/javascript">
+</script>
+</div>
+
+<div class="aui-test source-required">
+    <h2>Zebra <code>table</code> (legacy, deprecated).</h2>
+
+    <div class="aui-message error shadowed">
+        <p class="title"> 
+            <span class="aui-icon icon-error"></span> 
+            <strong>Deprecated</strong> 
+        </p> 
+        <p>Note that this style is deprecated and will be removed in a future version of AUI - you should only use this if you have a critical requirement to maintain the striping style in the short term.</p> 
+    </div><!-- .aui-message -->
+
+
+    <p class="description">To add zebra striping (and remove the borders) add the class <code>aui-zebra</code> to the table.</p>
+    <p>Test note: striping should start on the second row in each tbody.</p>
+    <div class="html-code">
+        <table class="aui aui-zebra" id="zebra1">
+            <thead>
+                <tr>
+                    <th id="basic-zebra-name">Name</th>
+                    <th id="basic-zebra-type">Type</th>
+                    <th id="basic-zebra-order">Order</th>
+                    <th id="basic-zebra-action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td headers="basic-zebra-name">Default</td>
+                    <td headers="basic-zebra-type">Internal Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-zebra-name">Corporate LDAP</td>
+                    <td headers="basic-zebra-type">Microsoft Active Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-zebra-name">Corporate LDAP</td>
+                    <td headers="basic-zebra-type">Microsoft Active Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-zebra-name">Corporate LDAP</td>
+                    <td headers="basic-zebra-type">Microsoft Active Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-zebra-name">Contractor Directory</td>
+                    <td headers="basic-zebra-type">Internal Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td headers="basic-zebra-name">Default</td>
+                    <td headers="basic-zebra-type">Internal Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-zebra-name">Corporate LDAP</td>
+                    <td headers="basic-zebra-type">Microsoft Active Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-zebra-name">Corporate LDAP</td>
+                    <td headers="basic-zebra-type">Microsoft Active Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-zebra-name">Corporate LDAP</td>
+                    <td headers="basic-zebra-type">Microsoft Active Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td headers="basic-zebra-name">Contractor Directory</td>
+                    <td headers="basic-zebra-type">Internal Directory</td>
+                    <td headers="basic-zebra-order">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="basic-zebra-action">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="aui aui-zebra" id="complex-zebra">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th id="complex-zebra-name">Name</th>
+                    <th id="complex-zebra-type">Type</th>
+                    <th id="complex-zebra-order">Order</th>
+                    <th id="complex-zebra-action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th id="complex-zebra-first-row">First Row</th>
+                    <td headers="complex-zebra-name complex-zebra-first-row">Default</td>
+                    <td headers="complex-zebra-type complex-zebra-first-row">Internal Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-first-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-zebra-action complex-zebra-first-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex-zebra-second-row">Second Row</th>
+                    <td headers="complex-zebra-name complex-zebra-second-row">Corporate LDAP</td>
+                    <td headers="complex-zebra-type complex-zebra-second-row">Microsoft Active Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-second-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-zebra-action complex-zebra-second-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex-zebra-third-row">Third Row</th>
+                    <td headers="complex-zebra-name complex-zebra-third-row">Corporate LDAP</td>
+                    <td headers="complex-zebra-type complex-zebra-third-row">Microsoft Active Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-third-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-zebra-action complex-zebra-third-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex-zebra-fourth-row">Fourth Row</th>
+                    <td headers="complex-zebra-name complex-zebra-fourth-row">Corporate LDAP</td>
+                    <td headers="complex-zebra-type complex-zebra-fourth-row">Microsoft Active Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                            <li>
+                                <a class="down" href="#">Down</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-zebra-action complex-zebra-fourth-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                            <li>
+                                <a href="#">Another Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th id="complex-zebra-fifth-row">Fifth Row</th>
+                    <td headers="complex-zebra-name complex-zebra-fifth-row">Contractor Directory</td>
+                    <td headers="complex-zebra-type complex-zebra-fifth-row">Internal Directory</td>
+                    <td headers="complex-zebra-order complex-zebra-fifth-row">
+                        <ul class="menu">
+                            <li>
+                                <a class="up" href="#">Up</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td headers="complex-zebra-action complex-zebra-fifth-row">
+                        <ul class="menu">
+                            <li>
+                                <a href="#">An Action</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <script type="text/javascript">
+    </script>
+</div><!-- end of zebra test -->
+
+
+
+<script type="text/javascript">
+    setupTestPage();
+</script>
+
+</body>
+</html>

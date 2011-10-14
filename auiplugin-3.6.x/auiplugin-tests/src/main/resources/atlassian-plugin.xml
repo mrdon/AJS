@@ -1,0 +1,170 @@
+<atlassian-plugin name='${project.name}' key='auiplugin-tests' pluginsVersion="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <version>${project.version}</version>
+    </plugin-info>
+
+    <component-import key="templateRenderer" interface="com.atlassian.templaterenderer.TemplateRenderer" />
+
+    <!--<resource name="js/" type="download" location="js/"/>-->
+
+    <servlet key="sandbox-servlet" class="com.atlassian.aui.test.SandboxServlet">
+        <url-pattern>/ajstest/sandbox/</url-pattern>
+    </servlet>
+
+    <servlet key="static-resources" class="com.atlassian.aui.test.FuncTestServlet">
+        <url-pattern>/ajstest/*</url-pattern>
+    </servlet>
+
+    <web-resource key="test-common">
+        <resource type="download" name="test.js" location="test-pages/test.js"/>
+        <resource type="download" name="test-and-demo-pages.css" location="css/test-and-demo-pages.css"/>
+    </web-resource>
+
+    <web-resource key="live-demo">
+        <resource type="download" name="live-demo.css" location="live-demo/live-demo.css"/>
+    </web-resource>
+
+    <!--Web Resources required for qunit tests to run, these should be required on all pages-->
+    <web-resource key="qunit" name="Atlassian QUnit Dependencies">
+        <resource type="download" name="qunit.js" location="unit-tests/external/qunit/qunit.js"/>
+        <resource type="download" name="qunit.css" location="unit-tests/external/qunit/qunit.css"/>
+        <!-- Atlassian overrides: -->
+        <resource type="download" name="qunit-reset.js" location="unit-tests/external/qunit/qunit-reset.js"/>
+    </web-resource>
+
+    <web-resource key="qunit-reset" name="Atlassian QUnit.reset override">
+        <resource type="download" name="qunit-reset.js" location="unit-tests/external/qunit/qunit-reset.js"></resource>
+    </web-resource>
+
+    <!-- Web resources for each component's unit tests, each component test page should have only one of these-->
+    <!-- ComponentTests -->
+    <web-resource key="whenitype-unit-tests">
+        <resource type="download" name="whenitype.js" location="unit-tests/tests/whenitype-unit-tests/whenitype-unit-tests.js"/>
+        <resource type="download" name="bootstrap.js" location="unit-tests/tests/whenitype-unit-tests/bootstrap.js"/>
+    </web-resource>
+
+    <web-resource key="dialog-unit-tests">
+        <resource type="download" name="dialog-unit-tests.js" location="unit-tests/tests/dialog-unit-tests/dialog-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="dropdown-unit-tests">
+        <resource type="download" name="dropdown-unit-tests.js" location="unit-tests/tests/dropdown-unit-tests/dropdown-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="format-unit-tests">
+        <resource type="download" name="format-unit-tests.js" location="unit-tests/tests/format-unit-tests/format-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="forms-unit-tests">
+        <resource type="download" name="forms-unit-tests.js" location="unit-tests/tests/forms-unit-tests/forms-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="inline-dialog-unit-tests">
+        <resource type="download" name="inline-dialog-unit-tests.js" location="unit-tests/tests/inline-dialog-unit-tests/inline-dialog-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="messages-unit-tests">
+        <resource type="download" name="messages-unit-tests.js" location="unit-tests/tests/messages-unit-tests/messages-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="stalker-unit-tests">
+        <resource type="download" name="stalker-unit-tests.js" location="unit-tests/tests/stalker-unit-tests/stalker-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="tables-unit-tests">
+        <resource type="download" name="tables-unit-tests.js" location="unit-tests/tests/tables-unit-tests/tables-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="tabs-unit-tests">
+        <resource type="download" name="tabs-unit-tests.js" location="unit-tests/tests/tabs-unit-tests/tabs-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="toolbar-unit-tests">
+        <resource type="download" name="toolbar-unit-tests.js" location="unit-tests/tests/toolbar-unit-tests/toolbar-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="events-unit-tests">
+        <resource type="download" name="events-unit-tests.js" location="unit-tests/tests/events-unit-tests/events-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="template-unit-tests">
+        <resource type="download" name="template-unit-tests.js" location="unit-tests/tests/template-unit-tests/template-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="atlassian-js-unit-tests">
+        <resource type="download" name="atlassian-js-unit-tests.js" location="unit-tests/tests/atlassian-js-unit-tests/atlassian-js-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="ajs-infrastructure-unit-tests">
+        <resource type="download" name="ajs-infrastructure-tests.js" location="unit-tests/tests/ajs-infrastructure-unit-tests/ajs-infrastructure-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="html5shim-unit-tests">
+        <resource type="download" name="html5shim-tests.js" location="unit-tests/tests/html5shim-unit-tests/html5shim-unit-tests.js"/>
+    </web-resource>
+
+    <web-resource key="underscorejs-unit-tests">
+        <!-- can't be included in all tests as it needs to be in a specific location (see FuncTestServlet.java) -->
+        <resource type="download" name="underscorejs-tests.js" location="unit-tests/tests/underscorejs-unit-tests/underscorejs-unit-tests.js"/>
+    </web-resource>
+
+    <!-- Include this resource to run all unit tests-->
+    <web-resource key="all-unit-tests">
+        <!--AllTests-->
+        <dependency>auiplugin-tests:ajs-infrastructure-unit-tests</dependency>
+        <dependency>auiplugin-tests:html5shim-unit-tests</dependency>
+        <dependency>auiplugin-tests:atlassian-js-unit-tests</dependency>
+        <dependency>auiplugin-tests:whenitype-unit-tests</dependency>
+        <dependency>auiplugin-tests:dialog-unit-tests</dependency>
+        <dependency>auiplugin-tests:dropdown-unit-tests</dependency>
+        <dependency>auiplugin-tests:format-unit-tests</dependency>
+        <dependency>auiplugin-tests:forms-unit-tests</dependency>
+        <dependency>auiplugin-tests:inline-dialog-unit-tests</dependency>
+        <dependency>auiplugin-tests:messages-unit-tests</dependency>
+        <dependency>auiplugin-tests:stalker-unit-tests</dependency>
+        <dependency>auiplugin-tests:tables-unit-tests</dependency>
+        <dependency>auiplugin-tests:tabs-unit-tests</dependency>
+        <dependency>auiplugin-tests:toolbar-unit-tests</dependency>
+        <dependency>auiplugin-tests:template-unit-tests</dependency>
+    </web-resource>
+
+    <web-resource key="unit-tests">
+        <resource type="download" name="unit-test.css" location="css/unit-test.css" />
+    </web-resource>
+
+    <web-item key="aui-test-pages" section="index.links" weight="10" application="refapp">
+        <label>AUI Test Pages</label>
+        <link linkId="aui-test-pages">/plugins/servlet/ajstest/test-pages/index.html</link>
+    </web-item>
+
+    <web-item key="aui-qunit-tests" section="index.links" weight="10" application="refapp">
+        <label>AUI QUnit Tests</label>
+        <link linkId="aui-qunit-tests">/plugins/servlet/ajstest/unit-tests/tests/index.html</link>
+    </web-item>
+
+    <web-item key="aui-sandbox" section="index.links" weight="10" application="refapp">
+        <label>AUI Sandbox</label>
+        <link linkId="aui-sandbox">/plugins/servlet/ajstest/sandbox/</link>
+    </web-item>
+
+    <web-item key="aui-bootcamp" section="index.links" weight="10" application="refapp">
+        <label>AUI Bootcamp Exercise</label>
+        <link linkId="aui-bootcamp">/plugins/servlet/ajstest/bootcamp/instructions.html</link>
+    </web-item>
+
+    <!-- AUI Experimental Testing below -->
+    <servlet key="experimental-func-test-servlet" class="com.atlassian.aui.test.experimental.ExperimentalFuncTestServlet">
+        <url-pattern>/aui-experimental-test/*</url-pattern>
+    </servlet>
+
+    <web-resource key="all-experimental-unit-tests">
+        <dependency>auiplugin-tests:experimental-example-unit-tests</dependency>
+    </web-resource>
+
+    <web-resource key="experimental-example-unit-tests">
+        <resource type="download" name="experimental-example-unit-tests.js" location="unit-tests/tests/experimental/experimental-example-unit-tests/experimental-example-unit-tests.js"/>
+    </web-resource>
+    
+</atlassian-plugin>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta name="status" content="prototype">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta charset="utf-8">
+    <title>Toolbar Example</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+
+    <!--[if lte IE 8]>
+    <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+
+    <script type="text/javascript" src="../aui.js"></script>
+    <script type="text/javascript" src="../demo.js"></script>
+    <style type="text/css">
+        /* CSS for demo only. specific icon mappings are still done at the product level, standard icons will be done in AUI only when finalised. */
+        .aui-toolbar .icon {
+            text-indent: -9999em;
+            width: 24px;
+            float: left;
+            height: 100%;
+            margin: 0 -5px;
+            display: inline-block;
+            background: transparent url(data:image/png;base64,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) 0 0 no-repeat;
+    	}
+
+        .aui-toolbar span.icon-labels {
+            background-position: -164px -19px;
+        }
+
+        .aui-toolbar span.icon-permissions {
+            background-position: -188px -19px;
+        }
+
+        .aui-toolbar span.icon-link {
+            background-position: 4px -18px;
+        }
+
+        .aui-toolbar span.icon-insert {
+            background-position: -212px 5px;
+        }
+
+        /* fake active for demo purposes. */
+        #active-button {
+            background: #d8e4f0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAB4CAYAAAAzOJiAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEpJREFUeNrskaEVwDAQQoH9J6uviIvJAF3gaM9eTCLqgvjvI1DgurtFCpKIalRWcjJ8WQVs7y0OfkUbj/cWjoAibyxmZw1XewUYANAZKRZqDKmIAAAAAElFTkSuQmCC) top left repeat-x;
+        }
+
+        /* example with borders/bg set */
+        #demo-toolbar-with-bg {
+            background: #f0f0f0;
+            border-top: 1px solid #bbb;
+        }
+    </style>
+</head>
+<body class="demo-page">
+<div class="navigation">
+    <h2> AUI Toolbar Demo Page </h2>
+    <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+</div>
+
+<div class="aui-demo source-required">
+    <h2> Toolbar </h2>
+
+    <div class="aui-message warning shadowed">
+        <p class="title">
+            <span class="svg-icon warning size-18"></span>
+            <strong>3.2.x contains a DRAFT implementation</strong>
+        </p>
+
+        <p>
+            There are known issues with toolbar dropdowns in IE; and INPUT/BUTTON support has not been completed.
+        </p>
+    </div>
+    <!-- .aui-message -->
+
+    <p class="description"> Demonstrates a toolbar with the various button types and states.</p>
+
+    <h3>Notes</h3>
+
+    <p>The structure of the toolbar is: aui-toolbar (container) &rarr; toolbar-split (left/right or rows) &rarr; toolbar-group (contains one set of
+        triggers/buttons) &rarr; toolbar-item (contains one single trigger) &rarr; toolbar-trigger.</p>
+    <p>Note the background and border surrounding toolbars is <strong>not</strong> included in the toolbar component, it's controlled contextuall in the product. The toolbar provides the buttons and button grouping setup.</p>
+
+    <p>Button types:</p>
+    <ul>
+        <li>Standard/default</li>
+        <li>Primary - a button with an elevated importance, eg. the "publish" button in an editor. Note: there must only be one primary button per toolbar.</li>
+        <li>Dropdown - a button with a dropdown icon, that opens a dropdown menu (one action)</li>
+        <li>Split button - a button with a dropdown icon, where the button performs an action but the dropdown icon opens a menu (two different actions). eg.
+            the "apply colour" button in an editor, which also has a dropdown colour selector.
+        </li>
+    </ul>
+
+    <p>Button states:</p>
+    <ul>
+        <li>Default</li>
+        <li>Active/on - eg. includes buttons which toggle a state, such as the "format: bold" button in an editor</li>
+        <li>Disabled - for buttons which are present/visible but not currently usable. Notes:
+            <ul>
+                <li>the disabled class should go on the toolbar-item</li>
+                <li>the disabled class is purely for style and does not disable events- to disable Dropdowns, see instructions for the Dropdown component</li>
+            </ul>
+        </li>
+        <li>Hover/focus</li>
+    </ul>
+
+    <p>All buttons may include text, an icon or both (some buttons may include a second icon to indicate a dropdown). For icon-only buttons the text is hidden
+        in the icon element, so it's still available to screen readers.</p>
+
+    <p>The toolbar has been designed to wrap to new lines and increase in height in narrow viewports. Wherever possible, toolbar groups will wrap to new lines
+        as a group (ie. not one button at a time). Left/right split toobars will wrap to two lines when the left/right groups meet; then groups within the
+        left/right splits will wrap to further lines if required.</p>
+
+    <h3>Example</h3>
+
+    <p>This example contains two <code>toolbar-split</code>s, one left and one right.</p>
+
+    <div class="html-code">
+
+        <div id="demo-toolbar" class="aui-toolbar">
+
+            <div class="toolbar-split toolbar-split-left">
+                <!-- Icon button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="labels-button" title="Labels">
+                            <span class="icon icon-labels">Labels</span>
+                        </a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="permission-button" title="Permissions">
+                            <span class="icon icon-permissions">Permissions</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Icon Text Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="link-button" title="Link">
+                            <span class="icon icon-link"></span>
+                            <span class="trigger-text">Link</span>
+                        </a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="other-button" title="Other">Other</a>
+                    </li>
+                    <li class="toolbar-item primary">
+                        <a class="toolbar-trigger" href="#" id="primary-button" title="Other">Primary</a>
+                    </li>
+                </ul>
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="active-button" title="Active">Active</a>
+                    </li>
+                    <li class="toolbar-item disabled">
+                        <a class="toolbar-trigger" href="#" id="disabled-button" title="Disabled">Disabled</a>
+                    </li>
+                </ul>
+
+                <!-- Text Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-dropdown" id="format-dropdown">
+                        <div class="aui-dd-parent">
+                            <a href="#" class="toolbar-trigger aui-dd-trigger" id="format-dropdown-display">
+                                <span class="dropdown-text">Paragraph</span>
+                                <span class="icon icon-dropdown"></span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 2</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Compact Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-splitbutton" id="action-1b">
+
+                        <a class="toolbar-trigger" href="#" id="action-1a" title="Action One A">Action 1a</a>
+
+                        <div class="aui-dd-parent">
+                            <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One B">
+                                <span class="icon icon-dropdown">Action 1b</span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Dropdown item with quite wide text</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Icon and Text Dropdown example -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-dropdown" id="insert-menu">
+                        <div class="aui-dd-parent">
+                            <a href="#" class="toolbar-trigger aui-dd-trigger" title="Insert">
+                                <span class="icon icon-insert"></span>
+                                <span class="dropdown-text">Insert</span>
+                                <span class="icon icon-dropdown"></span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Macro</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Image</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Table of Contents</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="toolbar-split toolbar-split-right">
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="save-button">Save</a>
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <a href="#" class="toolbar-trigger" id="cancel-button">Cancel</a>
+                    </li>
+                </ul>
+
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <button class="toolbar-trigger" type="submit" id="save-button-button">Save Button</button>
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <button class="toolbar-trigger" type="reset" id="cancel-button-button">Save Button</button>
+                    </li>
+                </ul>
+
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <input class="toolbar-trigger" id="save-button-input" type="submit" name="save-button-input" value="Save Input">
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <input class="toolbar-trigger" id="cancel-button-input" type="reset" name="cancel-button-input" value="Cancel Input">
+                    </li>
+                </ul>
+
+            </div>
+        </div><!-- #demo-toolbar -->
+
+        <p>This example shows a common implementation, where a product would add a background and surrounding border:</p>
+
+        <div id="demo-toolbar-with-bg" class="aui-toolbar">
+
+            <div class="toolbar-split toolbar-split-left">
+                <!-- Icon button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="labels-button2" title="Labels">
+                            <span class="icon icon-labels">Labels</span>
+                        </a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="permission-button2" title="Permissions">
+                            <span class="icon icon-permissions">Permissions</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Icon Text Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="link-button2" title="Link">
+                            <span class="icon icon-link"></span>
+                            <span class="trigger-text">Link</span>
+                        </a>
+                    </li>
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="other-button2" title="Other">Other</a>
+                    </li>
+                    <li class="toolbar-item primary">
+                        <a class="toolbar-trigger" href="#" id="primary-button2" title="Other">Primary</a>
+                    </li>
+                </ul>
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="active-button2" title="Active">Active</a>
+                    </li>
+                    <li class="toolbar-item disabled">
+                        <a class="toolbar-trigger" href="#" id="disabled-button2" title="Disabled">Disabled</a>
+                    </li>
+                </ul>
+
+                <!-- Text Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-dropdown" id="format-dropdown2">
+                        <div class="aui-dd-parent">
+                            <a href="#" class="toolbar-trigger aui-dd-trigger" id="format-dropdown-display2">
+                                <span class="dropdown-text">Paragraph</span>
+                                <span class="icon icon-dropdown"></span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 2</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Compact Dropdown -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-splitbutton" id="action-1b2">
+
+                        <a class="toolbar-trigger" href="#" id="action-1a2" title="Action One A">Action 1a</a>
+
+                        <div class="aui-dd-parent">
+                            <a class="toolbar-trigger aui-dd-trigger" href="#" title="Action One B">
+                                <span class="icon icon-dropdown">Action 1b</span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 1</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Dropdown item with quite wide text</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Heading 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Icon and Text Dropdown example -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-dropdown" id="insert-menu2">
+                        <div class="aui-dd-parent">
+                            <a href="#" class="toolbar-trigger aui-dd-trigger" title="Insert">
+                                <span class="icon icon-insert"></span>
+                                <span class="dropdown-text">Insert</span>
+                                <span class="icon icon-dropdown"></span>
+                            </a>
+                            <ul class="aui-dropdown">
+                                <li class="dropdown-item"><a href="#" class="item-link">Macro</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Image</a></li>
+                                <li class="dropdown-item"><a href="#" class="item-link">Table of Contents</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="toolbar-split toolbar-split-right">
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <a class="toolbar-trigger" href="#" id="save-button2">Save</a>
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <a href="#" class="toolbar-trigger" id="cancel-button2">Cancel</a>
+                    </li>
+                </ul>
+
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <button class="toolbar-trigger" type="submit" id="save-button-button2">Save Button</button>
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <button class="toolbar-trigger" type="reset" id="cancel-button-button2">Save Button</button>
+                    </li>
+                </ul>
+
+
+                <!-- Active/Inactive Button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item">
+                        <input class="toolbar-trigger" id="save-button-input2" type="submit" name="save-button-input" value="Save Input">
+                    </li>
+                </ul>
+
+                <!-- Link style button -->
+                <ul class="toolbar-group">
+                    <li class="toolbar-item toolbar-item-link">
+                        <input class="toolbar-trigger" id="cancel-button-input2" type="reset" name="cancel-button-input" value="Cancel Input">
+                    </li>
+                </ul>
+
+            </div>
+        </div><!-- #demo-toolbar-with-bg -->
+
+    </div>
+
+    <script type="text/javascript">
+        addSample(function() {
+            AJS.$("#format-dropdown").dropDown("Standard", {alignment: "left"});
+            AJS.$("#action-1b").dropDown("Standard", {alignment: "right"});
+            AJS.$("#insert-menu").dropDown("Standard", {alignment: "right"});
+
+            AJS.$("#format-dropdown2").dropDown("Standard", {alignment: "left"});
+            AJS.$("#action-1b2").dropDown("Standard", {alignment: "right"});
+            AJS.$("#insert-menu2").dropDown("Standard", {alignment: "right"});
+        });
+    </script>
+
+
+</div>
+</body>
+</html>

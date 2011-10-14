@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta charset="utf-8">
+
+    <title>Inline Dialog Example</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+
+    <!--[if lte IE 8]>
+    <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+
+    <script type="text/javascript" src="../aui.js"></script>
+    <script type="text/javascript" src="../demo.js"></script>
+
+</head>
+<body class="demo-page">
+    <div class="navigation">
+        <h2> AUI Inline-Dialog Demo Page </h2>
+        <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Standard Inline-Dialog On Click</h2>
+
+        <p class="description"> Shows a standard Inline Dialog on Click </p>
+
+        <div class="html-code">
+            <div><a href="inline-dialog.html" id="popupLink">Click Link 1</a> <a href="inline-dialog.html" id="popupLink2">Click Link 2</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#popupLink"), 1, "dialog-content.html");
+                AJS.InlineDialog(AJS.$("#popupLink2"), 15, "dialog-content.html");
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Standard Inline-Dialog On Hover</h2>
+
+        <p class="description"> Shows a standard Inline Dialog on Hover </p>
+
+        <div class="html-code">
+            <div><a href="#" id="hoverLink">Hover Link</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#hoverLink"), 2, "dialog-content.html", {onHover:true});
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> noBind Inline-Dialog</h2>
+
+        <p class="description"> Demonstrates the noBind option for Inline-Dialog, nothing will be displayed here. </p>
+
+        <div class="html-code">
+            <div><a href="#" id="noBind">noBind Test Link</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#noBind"), 3, "dialog-content.html", {noBind:true});
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> noBind Inline-Dialog with Manual Binding</h2>
+
+        <p class="description"> Demonstrates the noBind option for Inline-Dialog, an inline-dialog is bound to this manually after the initialisations (see
+            code). </p>
+
+        <div class="html-code">
+            <div><a href="inline-dialog.html" id="testNoBind2">noBind Test Link</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                noBind2 = AJS.InlineDialog(AJS.$("#testNoBind2"), 16, "dialog-content.html", {noBind:true});
+                AJS.$("#testNoBind2").click(function(e) {
+                    e.preventDefault();
+                    noBind2.show(e);
+                });
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> noBind Inline-Dialog</h2>
+
+        <p class="description"> Demonstrates how to pass a function into the "url" argument of Inline-Dialog, check the console for results. </p>
+
+        <div class="html-code">
+            <div><a href="#" id="functionPass">Function Argument Test Link</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#functionPass"), 4, function(content, trigger, showPopup) {
+                    console.log("Content: ");
+                    console.log(content);
+                    console.log("Trigger:");
+                    console.log(trigger);
+                    console.log("showPopup: " + showPopup);
+                    AJS.$(trigger).append("<div id='testFunction'> </div>");
+                });
+            });
+        </script>
+    </div>
+    <div class="aui-demo source-required">
+        <h2> Right Positioned Inline-Dialog - Short Trigger</h2>
+
+        <p class="description"> Demonstrates behavior when positioned to the right of the page. </p>
+
+        <div class="html-code">
+            <div>Link on the right of page -------> <a href="inline-dialog.html" id="testFloat" style="float:right;">T</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#testFloat"), 5, "dialog-content.html");
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Right Positioned Inline-Dialog - Medium Trigger</h2>
+
+        <p class="description"> Demonstrates behavior when positioned to the right of the page. </p>
+
+        <div class="html-code">
+            <div>Link on the right of page -------><a href="inline-dialog.html" id="testFloat3" style="float:right; clear: both;">TestingMedLengthLink</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#testFloat3"), 7, "dialog-content.html");
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Right Positioned Inline-Dialog - Long Trigger</h2>
+
+        <p class="description"> Demonstrates behavior when positioned to the right of the page. </p>
+
+        <div class="html-code">
+            <div>Link on the right of page -------> <a href="inline-dialog.html" id="testFloat2" style="float:right; clear: both;">TestingVeryVeryVeryVeryVeryVeryVeryLongLinkPositioning</a>
+            </div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#testFloat2"), 6, "dialog-content.html");
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Centered Inline-Dialog</h2>
+
+        <p class="description"> Demonstrates behavior when positioned in the center. </p>
+
+        <div class="html-code">
+            <div style="margin:auto; width: 200px;"><a href="inline-dialog.html" id="testMiddle">TestingMiddle</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#testMiddle"), 8, "dialog-content.html");
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> relativeToMouse Option</h2>
+
+        <p class="description"> Demonstrates behavior when positioned relativeToMouse option is turned on. </p>
+
+        <div class="html-code">
+            <div><a href="inline-dialog.html" id="testMouse" style="">TestingMouseRelativePos</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#testMouse"), 9, "dialog-content.html", {isRelativeToMouse: true});
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo source-required">
+        <h2> Exposed Inline-Dialog Functions</h2>
+
+        <p class="description"> Demonstrates some of the exposed functions of inline-dialog that you can call. </p>
+        <ul>
+            <li> .show()
+            <li> .hide()
+        </ul>
+        To call execute in the console using the DOM object "test"
+
+
+        <div class="html-code">
+            <div><a href="inline-dialog.html" id="testExposed" style="left:800px; position:absolute;">TestingExposedFunctions</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                test = AJS.InlineDialog(AJS.$("#testExposed"), 10, "dialog-content.html");
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo html-code" style="position:relative">
+        <h2> Default Flipped Behavior</h2>
+
+        <p class="description"> Demonstrates behavior Long Inline-Dialogs are positioned at the bottom of a page </p>
+
+        <div class="html-code">
+            <div><a href="inline-dialog.html" id="testBottom1" style="bottom: 0px; position:absolute;">TestingBottom</a></div>
+            <div><a href="inline-dialog.html" id="testBottom2" style="bottom: 0px; position:absolute;right:1px;">TestingBottomRight</a></div>
+            <div><a href="inline-dialog.html" id="testBottom3" style="bottom: 0px; position:absolute;left: 500px;">TestingBottomHeight (shouldn't flip if dialog
+                is taller than screen)</a></div>
+            <div><a href="inline-dialog.html" id="testBottom4" style="bottom: 0px; position:absolute;left: 1000px;">TestingBottomHeight2</a></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.InlineDialog(AJS.$("#testBottom1"), 11, "dialog-content.html");
+                AJS.InlineDialog(AJS.$("#testBottom2"), 12, "dialog-content.html");
+                AJS.InlineDialog(AJS.$("#testBottom3"), 13, "dialog-content-tall.html");
+                AJS.InlineDialog(AJS.$("#testBottom4"), 14, "dialog-content-tall2.html");
+            });
+        </script>
+    </div>
+
+    <script type="text/javascript">
+
+        // Testing AJS.inlineHelp
+        AJS.inlineHelp();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta charset="utf-8">
+    <meta name="decorator" content="atl.general">
+
+    <title>Atlassian form template</title>
+
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <!--[if lte IE 8]>
+        <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+    <script type="text/javascript" src="../aui.js"></script>
+    <script type="text/javascript" src="../demo.js"></script>
+
+</head>
+<body class="demo-page">
+    <div class="navigation">
+        <h2> AUI Forms Demo Page </h2>
+        <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+        <ul>
+            <li><a href="default.html">Default Layout</a></li>
+            <li><a href="long-labels.html">Long Labels</a></li>
+            <li><a href="top-labels.html">Top Labels</a></li>
+            <li><a href="inline-form.html">Inline Form</a></li>
+            <li><a href="inline-help.html">Inline Help</a></li>
+            <li><a href="forms-demo.html">Back to Forms Home</a></li>
+        </ul>
+    </div>
+    <div class="aui-demo">
+
+        <h1>Default Layout with Inline Help</h1>
+        <form action="#" method="post" id="h" class="aui">
+            <h2>Heading h2</h2>
+            <h3>Heading h3</h3>
+            <p>Paragraph: Lorem ipsum dolor sit amet, consectetur <span>span text</span> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </form>
+        
+        <form action="#" method="post" id="d" class="aui">
+            <h2>Default - Edit State</h2>
+            <fieldset>
+                <legend><span>Text Entry</span></legend>
+                <div class="field-group">
+                    <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <input class="text" type="text" id="fname" name="fname" title="first name">
+                    <span class="aui-icon icon-inline-help"><span class="content">Help</span></span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui.</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui.</span>
+                    <div class="description">Default width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <input class="text long-field" type="text" id="lname" name="lname" title="last name">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <div class="error">Error message here</div>
+                    <div class="description">Long width input.</div>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="field-group">
+                    <label for="email1">Email</label>
+                    <input class="text medium-field" type="text" id="email1" name="email" title="email">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Medium width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="timetestmins">Time</label>
+                    <input class="text short-field" type="text" id="timetestmins" name="timetestmins" title="first name"><span class="aui-form">mins</span>
+                    <input class="text short-field" type="text" id="timetestsecs" name="timetestsecs" title="last name"><span class="aui-form">seconds</span>
+                    <span class="aui-icon icon-users"></span><span class="content">select user</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Small width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="password1" accesskey="p">Password</label>
+                    <input class="password" type="password" id="password1" name="password" title="password">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="field-group">
+                    <label for="confirm1" accesskey="c">Confirm Password with a really long label, far too long</label>
+                    <input class="password" type="password" id="confirm1" name="confirm" title="confirm password">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <h2>File Upload</h2>
+            <fieldset>
+                <legend><span>File Upload/</span></legend>
+                <div class="field-group">
+                    <label for="uploadFile">Upload file</label>
+                    <input class="upfile" type="file" id="uploadFile" name="uploadFile" title="upload file">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <h2>Dropdowns and Selects</h2>
+            <fieldset>
+                <legend><span>Dropdowns and Selects</span></legend>
+                <div class="field-group">
+                    <label for="dBase">Database</label>
+                    <select class="select medium-field" id="dBase" name="dBase" title="database select">
+                        <option>- Select a Database -</option>
+                        <option>PostgreSQL</option>
+                    </select>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Medium width select.</div>
+                </div>
+                <div class="field-group">
+                    <label for="multiselect">Multiselect</label>
+                    <select class="multi-select" size="4" multiple="multiple" id="multiselect" name="multiselect" title="database select">
+                        <option>option one</option>
+                        <option>option two</option>
+                        <optgroup label="group1">
+                        <option>option three</option>
+                        <option>option four</option>
+                        </optgroup>
+                        <option>option five</option>
+                        <option>option six</option>
+                    </select>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Multiselect - 250px min width (except ie, variable width).</div>
+                </div>
+            </fieldset>
+        
+            <fieldset class="date-select">
+                <legend><span>Select Date</span></legend>
+                <div class="field-group">
+                    <label for="day">Day</label>
+                    <select class="select short-field" id="day" name="day" title="select day">
+                        <option>01</option>
+                        <option>02</option>
+                    </select>
+                    <label for="month">Month</label>
+                    <select class="select short-field" id="month" name="month" title="select month">
+                        <option>Jan</option>
+                        <option>Feb</option>
+                    </select>
+                    <label for="year">Year</label>
+                    <select class="select short-field" id="year" name="year" title="select year">
+                        <option>2008</option>
+                        <option>2007</option>
+                    </select>
+                    <span class="aui-icon icon-range"></span><span class="content">pick a date range</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="error">Date out of range</div>
+                    <div class="description">Specific date select fieldset to allow for multiple (hidden) labels</div>
+                </div>
+            </fieldset>
+        
+            <h2>Textarea</h2>
+            <fieldset>
+                <legend><span>Textarea Legend</span></legend>
+                <div class="field-group">
+                    <label for="licenseKey">License Key</label>
+                    <textarea class="textarea" rows="6" cols="10" name="licenseKey" id="licenseKey"></textarea>
+                    <span class="aui-icon icon-users"></span><span class="content">select user</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <span class="description">Enter your commercial or evaluation license key.<br>
+                    Not got a license? <a href="http://example.com/">Generate an evaluation license</a></span>
+                </div>
+            </fieldset>
+        
+            <h2>Groups (checkboxes and radios)</h2>
+            <fieldset class="group">
+                <legend><span>Checkboxes Edit</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbOne">
+                    <label for="cbOne">Checkbox One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbTwo" id="cbTwo">
+                    <label for="cbTwo">Checkbox Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="field-group">
+                    <div class="error">You must select one option</div>
+                </div>
+            </fieldset>
+        
+            <h3>More Checkboxes</h3>
+            <fieldset class="group">
+                <legend><span>Checkboxes Legend</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbthree">
+                    <label for="cbthree">Checkbox One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbTwo" id="cbfour">
+                    <label for="cbfour">Checkbox Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">You can have a description here</div>
+                    <div class="error">and/or an error</div>
+                </div>
+                <div class="field-group">
+                    <p>You can also have a description here if you like</p>
+                    <div class="error">and/or errors</div>
+                </div>
+            </fieldset>
+        
+            <h2>One Checkbox</h2>
+            <fieldset class="group">
+                <legend class="assistive"><span>Assistive Legend to give context for screen readers. If you don't know what to put in here, ask your nearest frontend developer.</span></legend>
+                <p>The visible legend is optional - you may not want it for the single checkbox. You can make it an assistive legend (view source to see it).</p>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbsingle">
+                    <label for="cbsingle">Checkbox Single</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>            
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="field-group">
+                    <p>You can also have a description here if you like</p>
+                </div>
+            </fieldset>
+        
+            <h2>Multi Column checkboxes</h2>
+            <fieldset class="group">
+                <legend><span>Checkbox Matrix</span></legend>
+                <div class="field-group">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="matrix">
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb1" id="cb1">
+                        <label for="cb1">Checkbox One</label>
+                    </div>
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb2" id="cb2">
+                        <label for="cb2">Checkbox Two</label>
+                    </div>
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb3" id="cb3">
+                        <label for="cb3">Checkbox Three</label>
+                    </div>
+                        <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb4" id="cb4">
+                        <label for="cb4">Checkbox Four</label>
+                    </div>
+                </div>
+            </fieldset>
+        
+            <h2>Radio Buttons</h2>
+            <fieldset class="group">
+                <legend><span>Radio Buttons</span></legend>
+                <div class="radio">
+                    <input class="radio" type="radio"   checked="checked" name="rads" id="irOne">
+                    <label for="irOne">Rad One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irTwo">
+                    <label for="irTwo">Rad Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irThree">
+                    <label for="irThree">Rad Three</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Radio Matrix</span></legend>
+                <div class="field-group">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="matrix">
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmOne" checked="checked" >
+                        <label for="irmOne">Rad One</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmTwo">
+                        <label for="irmTwo">Rad Two</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmThree">
+                        <label for="irmThree">Rad Three</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmFour">
+                        <label for="irmFour">Rad Four</label>
+                    </div>
+                </div>
+            </fieldset>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button submit" type="submit" value="Save" id="save-btn1">
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+        <form action="#" method="post" id="dfv" class="aui">
+            <h2>Field Value State</h2>
+            <fieldset>
+                <legend><span>Text Entry</span></legend>
+                <div class="field-group">
+                    <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <span class="field-value">My First Name</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Descriptive text here.</div>
+                </div>
+                <div class="field-group">
+                    <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <span class="field-value">My Last Name</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Descriptive text here.</div>
+                </div>
+                <div class="field-group">
+                    <label for="email1">Email</label>
+                    <span class="field-value">my@email.com</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Descriptive text here.</div>
+                </div>
+                <div class="field-group">
+                    <label>Testing empty field</label>
+                    <span class="field-value"> </span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Checkboxes View</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" checked="checked" disabled  name="cbOne" id="cbOned">
+                    <label for="cbOned">Checkbox One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" disabled  name="cbTwo" id="cbTwod">
+                    <label for="cbTwod">Checkbox Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Radio Buttons</span></legend>
+                <div class="radio">
+                    <input class="radio" type="radio" disabled  checked="checked" name="rads" id="irOned">
+                    <label for="irOned">Rad One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio" disabled name="rads" id="irTwod">
+                    <label for="irTwod">Rad Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio" disabled name="rads" id="irThreed">
+                    <label for="irThreed">Rad Three</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button" type="button" value="Edit" id="edit-btn1">
+                </div>
+            </div>
+        
+            <h2>Pre text area</h2>
+            <div class="field-group">
+                <pre class="aui-form">
+        BAM2573-BAMFUNC-18
+        Dependant of BAM2573-HEAD-40
+        ** LONG STRING **
+        100 passedBAM2573-BAMFUNC-17Dependant of BAM2573-HEAD-262 months ago (06:11 PM, Fri, 15 Aug)
+        
+        failedAM2573-BAMFUNC-16Dependant of BAM2573-HEAD-252 months ago (06:08 PM, Thu, 14 Aug)
+        
+        30 minutes3 out of 100 failedAM2573-BAMFUNC-16Dependant of BAM2573-HEAD-252 months ago (06:08 PM, Thu, 14 Aug)
+                </pre>
+            </div>
+        
+            <div class="field-group">
+                <p>Paragraph: <span><strong>span text, in a paragraph the inline-text class is not required</strong></span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <h4>input class="button" vs HTML button</h4>
+                    <input class="button submit" type="submit" value="input" id="edit-btn">
+                    <button>Button</button>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        </form>
+        <h1>Long Labels</h1>
+        
+        <form action="#" method="post" id="d1" class="aui long-label">
+            <h2>Default - Edit State</h2>
+            <fieldset>
+                <legend><span>Text Entry</span></legend>
+                <div class="field-group">
+                    <label for="fname1">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <input class="text" type="text" id="fname1" name="fname" title="first name">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Default width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="lname1">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <input class="text long-field" type="text" id="lname1" name="lname" title="last name">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="error">Error message here</div>
+                    <div class="description">Long width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="email11">Email</label>
+                    <input class="text medium-field" type="text" id="email11" name="email" title="email">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Medium width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="timetestmins1">Time</label>
+                    <input class="text short-field" type="text" id="timetestmins1" name="timetestmins" title="first name"><span class="aui-form">mins</span>
+                    <input class="text short-field" type="text" id="timetestsecs1" name="timetestsecs" title="last name"><span class="aui-form">seconds</span>
+                    <span class="aui-icon icon-users"></span><span class="content">select user</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Small width input.</div>
+                </div>
+                <div class="field-group">
+                    <label for="password11" accesskey="p">Password</label>
+                    <input class="password" type="password" id="password11" name="password" title="password">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="field-group">
+                    <label for="confirm11" accesskey="c">Confirm Password with a really long label, far too long</label>
+                    <input class="password" type="password" id="confirm11" name="confirm" title="confirm password">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <h2>File Upload</h2>
+            <fieldset>
+                <legend><span>File Upload/</span></legend>
+                <div class="field-group">
+                    <label for="uploadFile1">Upload file</label>
+                    <input class="upfile" type="file" id="uploadFile1" name="uploadFile" title="upload file">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <h2>Dropdowns and Selects</h2>
+            <fieldset>
+                <legend><span>Dropdowns and Selects</span></legend>
+                <div class="field-group">
+                    <label for="dBase1">Database</label>
+                    <select class="select medium-field" id="dBase1" name="dBase" title="database select">
+                        <option>- Select a Database -</option>
+                        <option>PostgreSQL</option>
+                    </select>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Medium width select.</div>
+                </div>
+                <div class="field-group">
+                    <label for="multiselect1">Multiselect</label>
+                    <select class="multi-select" size="4" multiple="multiple" id="multiselect1" name="multiselect" title="database select">
+                        <option>option one</option>
+                        <option>option two</option>
+                        <optgroup label="group1">
+                        <option>option three</option>
+                        <option>option four</option>
+                        </optgroup>
+                        <option>option five</option>
+                        <option>option six</option>
+                    </select>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Multiselect - 250px min width (except ie, variable width).</div>
+                </div>
+            </fieldset>
+        
+            <fieldset class="date-select">
+                <legend><span>Select Date</span></legend>
+                <div class="field-group">
+                    <label for="day1">Day</label>
+                    <select class="select short-field" id="day1" name="day" title="select day">
+                        <option>01</option>
+                        <option>02</option>
+                    </select>
+                    <label for="month1">Month</label>
+                    <select class="select short-field" id="month1" name="month" title="select month">
+                        <option>Jan</option>
+                        <option>Feb</option>
+                    </select>
+                    <label for="year1">Year</label>
+                    <select class="select short-field" id="year1" name="year" title="select year">
+                        <option>2008</option>
+                        <option>2007</option>
+                    </select>
+                    <span class="aui-icon icon-range"></span><span class="content">pick a date range</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="error">Date out of range</div>
+                    <div class="description">Specific date select fieldset to allow for multiple (hidden) labels</div>
+                </div>
+            </fieldset>
+        
+            <h2>Textarea</h2>
+            <fieldset>
+                <legend><span>Textarea Legend</span></legend>
+                <div class="field-group">
+                    <label for="licenseKey1">License Key</label>
+                    <textarea class="textarea" rows="6" cols="10" name="licenseKey" id="licenseKey1"></textarea>
+                    <span class="aui-icon icon-users"></span><span class="content">select user</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <span class="description">Enter your commercial or evaluation license key.<br>
+                    Not got a license? <a href="http://example.com/">Generate an evaluation license</a></span>
+                </div>
+            </fieldset>
+        
+            <h2>Groups (checkboxes and radios)</h2>
+            <fieldset class="group">
+                <legend><span>Checkboxes Edit</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbOne1">
+                    <label for="cbOne1">Checkbox One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbTwo" id="cbTwo1">
+                    <label for="cbTwo1">Checkbox Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="field-group">
+                    <div class="error">You must select one option</div>
+                </div>
+            </fieldset>
+        
+            <h3>More Checkboxes</h3>
+            <fieldset class="group">
+                <legend><span>Checkboxes Legend</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbthree1">
+                    <label for="cbthree1">Checkbox One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbTwo" id="cbfour1">
+                    <label for="cbfour1">Checkbox Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">You can have a description here</div>
+                    <div class="error">and/or an error</div>
+                </div>
+                <div class="field-group">
+                    <p>You can also have a description here if you like</p>
+                    <div class="error">and/or errors</div>
+                </div>
+            </fieldset>
+        
+            <h2>One Checkbox</h2>
+            <fieldset class="group">
+                <legend class="assistive"><span>Assistive Legend to give context for screen readers. If you don't know what to put in here, ask your nearest frontend developer.</span></legend>
+                <p>The visible legend is optional - you may not want it for the single checkbox. You can make it an assistive legend (view source to see it).</p>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbsingle1">
+                    <label for="cbsingle1">Checkbox Single</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="field-group">
+                    <p>You can also have a description here if you like</p>
+                </div>
+            </fieldset>
+        
+            <h2>Multi Column checkboxes</h2>
+            <fieldset class="group">
+                <legend><span>Checkbox Matrix</span></legend>
+                <div class="field-group">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="matrix">
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb1" id="cb11">
+                        <label for="cb11">Checkbox One</label>
+                    </div>
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb2" id="cb21">
+                        <label for="cb21">Checkbox Two</label>
+                    </div>
+                    <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb3" id="cb31">
+                        <label for="cb31">Checkbox Three</label>
+                    </div>
+                        <div class="checkbox">
+                        <input class="checkbox" type="checkbox"  name="cb4" id="cb41">
+                        <label for="cb41">Checkbox Four</label>
+                    </div>
+                </div>
+            </fieldset>
+        
+            <h2>Radio Buttons</h2>
+            <fieldset class="group">
+                <legend><span>Radio Buttons</span></legend>
+                <div class="radio">
+                    <input class="radio" type="radio"   checked="checked" name="rads" id="irOne1">
+                    <label for="irOne1">Rad One</label>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irTwo1">
+                    <label for="irTwo1">Rad Two</label>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irThree1">
+                    <label for="irThree1">Rad Three</label>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Radio Matrix</span></legend>
+                <div class="field-group">
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="matrix">
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmOne1" checked="checked" >
+                        <label for="irmOne1">Rad One</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmTwo1">
+                        <label for="irmTwo1">Rad Two</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmThree1">
+                        <label for="irmThree1">Rad Three</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="rads" id="irmFour1">
+                        <label for="irmFour1">Rad Four</label>
+                    </div>
+                </div>
+            </fieldset>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button submit" type="submit" value="Save" id="save-btn11">
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+        
+        <form action="#" method="post" id="dfv1" class="aui long-label">
+            <h2>Field Value State</h2>
+            <fieldset>
+                <legend><span>Text Entry</span></legend>
+                <div class="field-group">
+                    <label for="fname">First Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <span class="field-value">My First Name</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Descriptive text here.</div>
+                </div>
+                <div class="field-group">
+                    <label for="lname">Last Name<span class="aui-icon icon-required"></span><span class="content"> required</span></label>
+                    <span class="field-value">My Last Name</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Descriptive text here.</div>
+                </div>
+                <div class="field-group">
+                    <label for="email1">Email</label>
+                    <span class="field-value">my@email.com</span>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">Descriptive text here.</div>
+                </div>
+                <div class="field-group">
+                    <label>Testing empty field</label>
+                    <span class="field-value"> </span>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Checkboxes View</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" checked="checked" disabled  name="cbOne" id="cbOned1">
+                    <label for="cbOned1">Checkbox One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox" disabled  name="cbTwo" id="cbTwod1">
+                    <label for="cbTwod1">Checkbox Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <fieldset class="group">
+                <legend><span>Radio Buttons</span></legend>
+                <div class="radio">
+                    <input class="radio" type="radio" disabled  checked="checked" name="rads" id="irOned1">
+                    <label for="irOned1">Rad One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio" disabled name="rads" id="irTwod1">
+                    <label for="irTwod1">Rad Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio" disabled name="rads" id="irThreed1">
+                    <label for="irThreed1">Rad Three</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button" type="button" value="Edit" id="edit-btn11">
+                </div>
+            </div>
+        
+            <h2>Pre text area</h2>
+            <div class="field-group">
+                <pre class="aui-form">
+        BAM2573-BAMFUNC-18
+        Dependant of BAM2573-HEAD-40
+        ** LONG STRING **
+        100 passedBAM2573-BAMFUNC-17Dependant of BAM2573-HEAD-262 months ago (06:11 PM, Fri, 15 Aug)
+        
+        failedAM2573-BAMFUNC-16Dependant of BAM2573-HEAD-252 months ago (06:08 PM, Thu, 14 Aug)
+        
+        30 minutes3 out of 100 failedAM2573-BAMFUNC-16Dependant of BAM2573-HEAD-252 months ago (06:08 PM, Thu, 14 Aug)
+                </pre>
+            </div>
+        
+            <div class="field-group">
+                <p>Paragraph: <span><strong>span text, in a paragraph the inline-text class is not required</strong></span> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <h4>input class="button" vs HTML button</h4>
+                    <input class="button submit" type="submit" value="input" id="edit-btn111">
+                    <button>Button</button>
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        </form>
+        
+        <h1>Inline Form</h1>
+        
+        <form action="#" method="post" id="g" class="aui">
+            <h2>Inline form - add class inline to fieldset</h2>
+            <fieldset class="inline">
+                <legend><span>Find User to Add</span></legend>
+                <div class="field-group">
+                    <label for="addUser">Search users</label>
+                    <input class="text" type="text" id="addUser" name="addUser" title="add user">
+                    <input class="button submit" type="submit" value="Search" id="search-btn">
+                    <a href="forms.html#" title="show all users">Show all users</a>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description"><a href="forms.html#" title="advanced search">Advanced Search</a></div>
+                </div>
+            </fieldset>
+        </form>
+        
+        <h1>Top Labels</h1>
+        
+        <form action="#" method="post" id="j" class="aui top-label">
+            <h2>Top Labels - add class top-label to form</h2>
+            <fieldset>
+                <legend><span>New Issue</span></legend>
+                <div class="field-group">
+                    <label for="issueType">Issue Type</label>
+                    <select class="select medium-field" id="issueType" name="issueType" title="select issue type">
+                        <option>- Select Issue Type -</option>
+                        <option>Bug</option>
+                    </select>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="field-group">
+                    <label for="projectName">Project</label>
+                    <select class="select medium-field" id="projectName" name="projectName" title="select project">
+                        <option>- Select Project -</option>
+                        <option>JIRA</option>
+                    </select>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        
+            <div class="buttons-container">
+                <div class="buttons">
+                    <input class="button submit" type="submit" value="Save" id="save-new-issue">
+                    <a class="cancel" href="http://example.com/">Cancel</a>
+                </div>
+            </div>
+        
+            <h2>Groups (checkboxes and radios)</h2>
+            <fieldset class="group">
+                <legend><span>Checkboxes Legend</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbthree11">
+                    <label for="cbthree11">Checkbox One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbTwo" id="cbfour111">
+                    <label for="cbfour111">Checkbox Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">You can have a description here</div>
+                    <div class="error">and/or an error</div>
+                </div>
+                <div class="field-group">
+                    <p>You can also have a description here if you like</p>
+                    <div class="error">and/or errors</div>
+                </div>
+            </fieldset>
+        
+            <h2>One Checkbox</h2>
+            <fieldset class="group">
+                <legend><span>Checkbox Legend</span></legend>
+                <div class="checkbox">
+                    <input class="checkbox" type="checkbox"  name="cbOne" id="cbsingleq">
+                    <label for="cbsingleq">Checkbox Single</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                    <div class="description">You can have a description here</div>
+                </div>
+                <div class="field-group">
+                    <p>You can also have a description here if you like</p>
+                </div>
+            </fieldset>
+        
+            <h2>Radio Buttons</h2>
+            <fieldset class="group">
+                <legend><span>Radio Buttons</span></legend>
+                <div class="radio">
+                    <input class="radio" type="radio"   checked="checked" name="rads" id="irOneq">
+                    <label for="irOneq">Rad One</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irTwoq">
+                    <label for="irTwoq">Rad Two</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+                <div class="radio">
+                    <input class="radio" type="radio"  name="rads" id="irThreeq">
+                    <label for="irThreeq">Rad Three</label>
+                    <span class="aui-icon icon-inline-help"></span><span class="content">Help</span>
+                    <span class="field-help hidden">Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor. Morbi egestas, urna non consequat tempus, nunc arcu mollis enim, eu aliquam erat nulla non nibh. Duis consectetuer malesuada velit. Nam ante nulla, interdum vel, tristique ac, condimentum non, tellus. Proin ornare feugiat nisl. Suspendisse dolor nisl, ultrices at, eleifend vel, consequat at, dolor.</span>
+                </div>
+            </fieldset>
+        </form>
+        
+        <script type="text/javascript">
+            AJS.$(function() {
+        
+                // Testing AJS.inlineHelp
+                AJS.inlineHelp();
+            });
+        </script>
+    </div>
+</body>
+</html>

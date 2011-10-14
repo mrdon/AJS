@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AUI Page (minimal example)</title>
+    <meta name="decorator" content="atl.blank">
+	<style>
+	.aui-item { outline: 1px dotted #333; }
+	</style>
+</head>
+<body class="aui-layout aui-theme-default">
+	<div id="page">
+		<header id="header" role="banner">
+			<nav class="global" role="navigation">
+                <div class="primary">
+                    <h1 id="logo"><a href="http://example.com/">Logo</a></h1>
+                    <ul>
+                        <li><a href="http://example.com/">Project Name</a></li>
+                    </ul>
+                </div>
+                <div class="secondary">
+                    <ul>
+                        <li><a href="http://example.com/">Log in</a></li>
+                    </ul>
+                </div>
+			</nav>
+			<nav class="local" role="navigation">
+                <div class="primary">
+                    <ul>
+                        <li class="selected"><a href="./aui-layout-simple.html">Simple Layout</a></li>
+                        <li><a href="./aui-layout-test-content.html">Layout with Test Content</a></li>
+                        <li><a href="./aui-layout-tabs.html">Tabs</a></li>
+                        <li><a href="./aui-layout-groups.html">Group and Item</a></li>
+                    </ul>
+                </div>                            
+                <div class="secondary">
+                    <ul>
+                        <li><a href="http://example.com/">Hero Action</a></li>
+                        <li>
+                            <form>
+                                <input type="search" placeholder="Search" />
+                            </form>
+                        </li>
+                    </ul>
+                </div>                            
+			</nav>            
+		</header>
+		<section id="content" role="main">
+
+			<header>
+				<h1>Content Heading in unclassed header</h1>
+			</header>
+			<div class="aui-panel">
+				<p>Hey check it out, there's nav up there in the navbar.</p>
+				<div id="toggles">Toggles for testing:</div>
+			</div>
+			
+		</section><!-- #content -->
+		<footer id="footer" role="contentinfo">
+			<section class="footer-body">
+				<ul>
+					<li>Footer content has a container to simplify styling vs messages etc.</li>
+					<li>List item</li>
+					<li>List item</li>
+				</ul>
+			</section>
+		</footer>
+	</div><!-- #page -->
+	<script src="./aui-layout-test.js"></script>
+</body>
+</html>

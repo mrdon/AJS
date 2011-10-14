@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta name="decorator" content="atl.general">
+
+    <title>AUI Misc Test Page</title>
+
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+    <!--[if lte IE 8]>
+    <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+
+    <style type="text/css">
+        body {
+            color: #333;
+            font-family: sans-serif;
+            font-size: 10pt;
+        }
+        #firebug-warning-test {
+            display: none;
+        }
+        #assistive a:focus:after { content: " - has focus"; }
+        </style>
+    <script type="text/javascript" src="../common.js"></script>
+
+</head>
+<body>
+<div class="navigation">
+    <h2> AUI Misc Test Page (helper functions, etc) </h2>
+    <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+</div>
+
+    <div class="aui-test" id="assistive">
+        <h2><code>assistive</code> and <code>hidden</code> classes</h2>
+        <p class="description"> CSS for removing and visually hiding content. Hidden content should not be available to keyboards/screen readers; assistive should be available for keyboards/screen readers.</p>
+        <div class="html-code">
+            <p>There are two links between the "not hidden" links; one is <code>class=&quot;hidden&quot;</code> and links to example.com/hidden, the other is <code>class=&quot;assistive&quot;</code> and links to example.com/assistive. You should see focus indicators on the Not Hidden links. There should only be one "invisible" keyboard navigation step between the Not Hidden links.</p>
+            <p><a href="http://example.com/nothidden">Not Hidden start</a></p>
+            <p class="assistive"><a href="http://example.com/assistive">Assistive link</a></p>
+            <p class="hidden"><a href="http://example.com/hidden">Hidden</a></p>
+            <p><a href="http://example.com/nothidden">Not Hidden end</a></p>
+        </div>
+    </div>
+
+    <div class="aui-test">
+        <h2>AJS.log</h2>
+        <p class="description"> Check console, should have the message &quot;AJS.log is working&quot;.</p>
+        <div class="html-code">
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.log("AJS.log is working.");
+            });
+        </script>
+    </div>
+
+    <div class="aui-test" id="firebug-warning-test">
+        <h2>Firebug warning</h2>
+        <p class="description">Open Firebug and reload - you should get a warning at the top of the page. Bonus test! You can test clearing cookies by closing the message and refreshing the page - you should always get the message.</p>
+        <div class="html-code">
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.Cookie.erase("COOKIE_FB_WARNING");
+                AJS.warnAboutFirebug();
+            });
+        </script>
+    </div>
+
+    <div class="aui-test">
+        <h2>Format</h2>
+
+        <p class="description"> Should return 1</p>
+
+        <div class="html-code">
+            <div id="testFormat1"> The javascript returns:</div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.$("#testFormat1").append(AJS.format("{0} {1} {0}", 1, "test"));
+            });
+        </script>
+    </div>
+
+    <div class="aui-test" id="os-test">
+        <h2>jQuery.os</h2>
+    
+        <p class="description">Check object for correct detection and no false positives: <span id="os">undetected</span></p>
+    
+        <div class="html-code">
+        </div>
+        <script type="text/javascript">
+        AJS.$(document).ready( function() {
+            AJS.$("#os").text(JSON.stringify( AJS.$.os ));
+        });
+        </script>
+    </div>
+
+<script type="text/javascript">
+if ( AJS.$.browser.mozilla ) {
+    AJS.$("#firebug-warning-test").show();
+}
+</script>
+</body>
+</html>

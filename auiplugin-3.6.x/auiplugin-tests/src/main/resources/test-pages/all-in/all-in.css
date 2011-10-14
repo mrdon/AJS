@@ -1,0 +1,239 @@
+body.refapp {
+    color: #000 !important;
+    background: #fff !important;
+    font-family: sans-serif;
+    font-size: 10pt;
+    padding: 0;
+    margin: 0;
+}
+#page {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.all-in {
+    color: #000 !important;
+    background: transparent !important;
+    border: 0;
+    margin: 0 auto;
+    padding: 0;
+    width: 960px;
+    text-align: left;
+}
+
+.all-in-header {
+    color: #fff !important;
+    background: #003366 url("images/aui-arrow3.png") repeat 0 0;
+    height: 200px;
+    padding: 64px 0 0 0;
+    text-align: center;
+}
+
+.all-in-header h1 {
+    color: #fff;
+    font-size: 5em;
+    margin: 32px 0 0 0;
+    padding: 0;
+    text-shadow: 2px 2px 2px #333333;
+}
+.all-in-header p {
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+.all-in-footer {
+    color: #fff !important;
+    background: #003366;
+    margin: 128px 0 0 0;
+    padding: 16px;
+    font-size: 12px;
+}
+.all-in-footer .aui-group {
+    margin: 0 auto;
+    width: 960px;   
+}
+.all-in-footer p {
+    margin: 0;
+    padding: 0;
+}
+.all-in-footer a {
+    color: #fff;
+}
+
+
+
+#all-in-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: #333;
+    background: rgba(0,0,0,0.8);
+}
+#all-in-nav ul {
+    padding: 0;
+    list-style: none;
+    margin: 0 auto;
+    width: 960px;
+    text-align: left
+}
+#all-in-nav li {
+    display: inline-block;
+}
+#all-in-nav li a {
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    text-decoration: none;
+    padding: 0 0.5em;
+    color: #fff;
+    -webkit-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    -o-transition: all 200ms ease-in;
+    transition: all 200ms ease-in;
+
+}
+#all-in-nav li a:focus,
+#all-in-nav li a:hover,
+#all-in-nav li a:active {
+    background: rgba(0,0,0,0.8);
+}
+
+.refapp-header, .refapp-footer { display: none; }
+
+.all-in > h2 {
+    border-bottom: 1px solid #bbb;
+    color: #000;
+    padding-top: 64px;
+    font-size: 2em;
+}
+/*.all-in > h2:first-child {*/
+/*    margin-top: 0;*/
+/*}*/
+
+.aui-group-highlighted .aui-item p,
+.all-in .nav-example {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    -webkit-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    -o-transition: all 200ms ease-in;
+    transition: all 200ms ease-in;
+}
+
+.aui-group-highlighted:hover .aui-item p,
+.all-in .nav-example:hover {
+    background: #326ca6;
+    color: #fff;
+}
+
+/* don't borrow from here, it'll be in AUI soon enough. */
+
+.aui-group {
+    display: table;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    table-layout: fixed;
+    width: 100%;
+
+    margin-bottom: 16px; /* this is just for the demo at this stage */
+}
+
+.aui-group > .aui-item {
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: top;
+    padding-left: 16px;
+}
+
+.aui-group > .aui-item:first-child {
+    padding-left: 0;
+}
+
+.aui-group-highlighted .aui-item p {
+    background: #f0f0f0;
+    padding: 16px;
+    margin: 0;
+}
+.fixed-menu > .aui-item:first-child {
+    width: 256px;
+}
+
+.all-in .nav-example {
+    background: #eee;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 16px;
+}
+.nav-example > .aui-item {
+    vertical-align: middle;           
+}
+.nav-example > .aui-item:first-child {
+    text-align: left;
+}
+.nav-example > .aui-item:last-child {
+    text-align: right;
+}
+
+#ships-name { width: 10%; }
+#ships-nickname { width: 20%; }
+#ships-type { width: 30%; }
+#ships-misadventure { width: 40%;}
+
+.styled-parent {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.styled-parent .aui-dd-parent {
+
+}
+.styled-parent .aui-dd-parent a.aui-dd-trigger {
+    background: white;
+    list-style: none;
+    padding: 0;
+    text-indent: 0;
+    /*width: 100px;*/
+    color: #000;
+}
+
+#dropDown-standard .aui-dd-parent {
+    display: inline-block;
+}
+
+#dropdown-trigger {
+    border: 0 none;
+    height: 32px;
+    line-height: 32px;
+    /*width: 150px;*/
+    background: #003366;
+    color: white;
+    margin: 0;
+    padding: 0 16px;
+}
+
+#dropDown-standard .aui-dd-parent .aui-dropdown li.dropdown-item.active a {
+    text-decoration: none;
+    
+}
+
+
+#demo-toolbar {
+    background: #f0f0f0;
+}

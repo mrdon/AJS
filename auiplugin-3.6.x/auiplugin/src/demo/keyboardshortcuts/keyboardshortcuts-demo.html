@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta charset="utf-8">
+
+    <title>Keyboard Shortcuts Demo</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+
+    <!--[if lte IE 8]>
+    <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            font-size: 10pt;
+            background: #eee;
+            padding-top: 30px;
+        }
+
+        .row {
+            *display: inline-block;
+        }
+
+        .row:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .example h2 {
+            color: #3C78B5;
+        }
+
+        .example .content {
+            padding: 15px;
+        }
+
+        .example {
+            list-style-type: none;
+            margin: 0 2.5% 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            -moz-border-radius: 10px;
+            width: 44%;
+            min-height: 250px;
+            float: left;
+            -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .example:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .navigation {
+            margin: 0 2.5% 20px;
+        }
+
+        #test-move-to-and-focus:focus {
+            background: blue;
+            color: #fff;
+        }
+
+        .action-block.focused {
+            background: #eee;
+        }
+    </style>
+
+
+</head>
+<body class="demo-page">
+
+    <div class="navigation">
+        <h2> AUI Format Demo Page </h2>
+        <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+    </div>
+
+    <div class="row">
+        <div class="example">
+            <div class="content">
+                <h1>method: click</h1>
+                <code>
+                    jQuery("#test-click").click(function (e) {
+                    alert("clicked link with id " + this.id);
+                    });
+
+                    AJS.whenIType("gh").click("#test-click");
+                </code>
+
+                <h2>Mock HTML</h2>
+
+                <a id="test-click" href="#">I am a link with id <strong>test-click</strong></a>
+            </div>
+        </div>
+
+
+        <div class="example">
+            <div class="content">
+                <h1>method: execute</h1>
+                <code>
+                    AJS.whenIType("ze").execute(function () {alert("I have executed");});
+                </code>
+                <p><strong>NOTE:</strong> this test used to use ctrl+e however that combination is deprecated and should not be used (it simply doesn't work across browsers).</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="example">
+            <div class="content">
+                <h1>method: followLink</h1>
+                <code>
+                    AJS.whenIType("r").followLink("a.test-follow-link");
+                </code>
+
+                <h2>Mock HTML</h2>
+
+                <a class="test-follow-link" href="http://www.realsurf.com">I am a link that goes to http://www.realsurf.com</a>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="content">
+                <h1>method: goTo</h1>
+                <code>
+                    AJS.whenIType("?").goTo("http://www.example.com");
+                </code>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="example">
+            <div class="content">
+                <h1>method: moveToAndClick</h1>
+
+                <code>
+                    jQuery("#test-move-to-and-click").click(function () {
+                    this.innerHTML = "I HAVE BEEN CLICKED";
+                    });
+                    AJS.whenIType("zz").moveToAndClick("#test-move-to-and-click");
+                </code>
+
+                <h2>Mock HTML</h2>
+
+                <div>
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <button id="test-move-to-and-click" type="button">Click me</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <div class="content">
+                <h1>method: moveToAndFocus</h1>
+
+                <code>
+                    AJS.whenIType("zf").moveToAndFocus("#test-move-to-and-focus");
+                </code>
+
+                <h2>Mock HTML</h2>
+
+                <div>
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open water,
+                        called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by the
+                        strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on coastlines
+                        exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low pressure
+                            systems</a>.</p>
+
+                    <button id="test-move-to-and-focus" type="button">Click me</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="example">
+            <div class="content">
+                <h1>method: moveToNextItem and moveToPrevItem</h1>
+                <code>
+                    AJS.whenIType("n").moveToNextItem(".action-block");
+                </code>
+                <br/>
+                <code>
+                    AJS.whenIType("p").moveToPrevItem(".action-block");
+                </code>
+
+                <h2>Mock HTML</h2>
+
+                <div>
+                    <div class="action-block">
+                        <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open
+                            water, called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by
+                            the strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on
+                            coastlines exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low
+                                pressure systems</a>.</p>
+                    </div>
+                    <div class="action-block">
+                        <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open
+                            water, called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by
+                            the strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on
+                            coastlines exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low
+                                pressure systems</a>.</p>
+                    </div>
+                    <div class="action-block">
+                        <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open
+                            water, called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by
+                            the strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on
+                            coastlines exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low
+                                pressure systems</a>.</p>
+                    </div>
+                    <div class="action-block">
+                        <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open
+                            water, called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by
+                            the strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on
+                            coastlines exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low
+                                pressure systems</a>.</p>
+                    </div>
+                    <div class="action-block">
+                        <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open
+                            water, called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by
+                            the strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on
+                            coastlines exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low
+                                pressure systems</a>.</p>
+                    </div>
+                    <div class="action-block">
+                        <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open
+                            water, called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by
+                            the strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on
+                            coastlines exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low
+                                pressure systems</a>.</p>
+                    </div>
+                    <div class="action-block">
+                        <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open
+                            water, called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by
+                            the strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on
+                            coastlines exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low
+                                pressure systems</a>.</p>
+                    </div>
+                    <div class="action-block">
+                        <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open
+                            water, called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by
+                            the strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on
+                            coastlines exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low
+                                pressure systems</a>.</p>
+                    </div>
+                    <div class="action-block">
+                        <p><a title="Swell (ocean)" href="/wiki/Swell_(ocean)">Swell</a> is generated when wind blows consistently over a large area of open
+                            water, called the wind's <a title="Fetch (geography)" href="/wiki/Fetch_(geography)">fetch</a>. The size of a swell is determined by
+                            the strength of the wind and the length of its fetch and duration. Accordingly, surf tends to be larger and more prevalent on
+                            coastlines exposed to large expanses of ocean traversed by intense <a title="Low-pressure area" href="/wiki/Low-pressure_area">low
+                                pressure systems</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../common.js"></script>
+
+    <script type="text/javascript">
+        jQuery(function () {
+            jQuery("code").each(function () {
+                console.log("eval");
+                eval(this.innerHTML);
+            });
+        });
+    </script>
+</body>
+</html>

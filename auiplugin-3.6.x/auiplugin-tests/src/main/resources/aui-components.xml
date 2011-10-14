@@ -1,0 +1,7 @@
+<component>
+    <name>Example</name>
+    <javascript> Yes </javascript>
+    <foo> bar </foo>
+    <css> Yes </css>
+    <description>If you see this in the refapp, it actually means the correct file broke.</description>
+</component>

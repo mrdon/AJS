@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta charset="utf-8">
+    <title>Message Boxes example</title>
+    <link type="image/x-icon" rel="shortcut icon" href="http://www.atlassian.com/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="../common.css" media="all">
+
+    <!--[if lte IE 8]>
+    <link type="text/css" rel="stylesheet" href="../common-ie.css" media="all">
+    <![endif]-->
+    <script type="text/javascript" src="../aui.js"></script>
+    <script type="text/javascript" src="../demo.js"></script>
+    <style type="text/css">
+        body {
+            color: #333;
+            font-family: sans-serif;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body class="demo-page">
+    <div class="navigation">
+        <h2> AUI Messages Demo Page </h2>
+        <h4><a href="../index.html"> Back to AUI Demo </a></h4>
+    </div>
+
+    <div class="aui-demo">
+        <h2> Javascript Messages - no context specified</h2>
+
+        <p class="description"> Shows a success message and an info message called using javascript without specifying a context </p>
+
+        <div class="html-code">
+            <div id="aui-message-bar"></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                AJS.messages.success({
+                    title: "Success!",
+                    body: "This message was created by JS with default options."
+                });
+
+                AJS.messages.info({
+                    title: "Info",
+                    body: "You can choose to have messages without Close functionality.",
+                    closeable: false
+                });
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo">
+        <h2> Javascript Messages - Context Supplied</h2>
+
+        <p class="description"> Demonstrates how to display a message while supply a context </p>
+
+        <div class="html-code">
+            <div id="context"></div>
+        </div>
+        <script type="text/javascript">
+            addSample(function() {
+                //example of creating a message via JS and sending it to a specific element
+                AJS.messages.warning("#context", {
+                    title: "Warning!",
+                    body: "Using AJS.messages can lead to extreme awesomeness."
+                });
+
+                AJS.messages.hint("#context", {
+                    title: "Hint",
+                    body: "JS-generated messages have a dropshadow by default, but you can turn that off in the API.",
+                    shadowed: false
+                });
+            });
+        </script>
+    </div>
+
+    <div class="aui-demo">
+        <h2> HTML Message </h2>
+
+        <p class="description"> Shows a default message rendered using HTML</p>
+
+        <div class="html-code">
+            <div class="aui-message closeable shadowed">
+                <p class="title">
+                    <span class="aui-icon icon-generic"></span>
+                    <strong>This is a title in a Default message . <a href="#">Undo.</a></strong>
+                </p>
+
+                <p>And this is just content in a Default message.</p>
+            </div>
+            <!-- .aui-message -->
+        </div>
+        <script type="text/javascript">
+        </script>
+    </div>
+
+    <div class="aui-demo">
+        <h2> HTML Messages - Error</h2>
+
+        <p class="description"> Shows an error message rendered using HTML </p>
+
+        <div class="html-code">
+            <div class="aui-message error closeable shadowed">
+                <span class="aui-icon icon-error "></span>
+                Text with no wrapping elements in an Error message.
+            </div>
+            <!-- .aui-message -->
+        </div>
+        <script type="text/javascript">
+        </script>
+    </div>
+
+    <div class="aui-demo">
+        <h2> HTML Messages - Warning</h2>
+
+        <p class="description"> Shows a warning message rendered using HTML </p>
+
+        <div class="html-code">
+            <div class="aui-message warning closeable shadowed">
+                <p class="title">
+                    <span class="aui-icon icon-warning "></span>
+                    <strong>You can put whatever elements you like in the body of the message.</strong>
+                </p>
+                <ul>
+                    <li>list item 1</li>
+                    <li>list item 2</li>
+                    <li>list item 3</li>
+                    <li>list item 4</li>
+                    <li>list item 5</li>
+                </ul>
+            </div>
+            <!-- .aui-message -->
+        </div>
+        <script type="text/javascript">
+        </script>
+    </div>
+
+    <div class="aui-demo">
+        <h2> HTML Messages - Info</h2>
+
+        <p class="description"> Shows a info message rendered using HTML </p>
+
+        <div class="html-code">
+            <div class="aui-message info closeable">
+                <p class="title">
+                    <span class="aui-icon icon-info "></span>
+                    <strong>This is a title in a Information message without a dropshadow.</strong>
+                </p>
+
+                <p>A paragraph of content.</p>
+
+                <p>Another paragraph of content.</p>
+            </div>
+            <!-- .aui-message -->
+        </div>
+        <script type="text/javascript">
+        </script>
+    </div>
+
+    <div class="aui-demo">
+        <h2> HTML Messages - Sucess</h2>
+
+        <p class="description"> Shows a success message rendered using HTML </p>
+
+        <div class="html-code">
+            <div class="aui-message success">
+                <p class="title">
+                    <span class="aui-icon icon-success "></span>
+                    <strong>This is a title in a Success message without a dropshadow.</strong>
+                </p>
+
+                <p>Text.</p>
+
+                <p>Text.</p>
+            </div>
+            <!-- .aui-message -->
+        </div>
+        <script type="text/javascript">
+        </script>
+    </div>
+
+    <div class="aui-demo">
+        <h2> HTML Messages - Hint</h2>
+
+        <p class="description"> Shows a hint message rendered using HTML </p>
+
+        <div class="html-code">
+            <div class="aui-message hint shadowed">
+                <p class="title">
+                    <span class="aui-icon icon-hint "></span>
+                    <strong>This is a title in a Hint message.</strong>
+                </p>
+
+                <p>Text.</p>
+
+                <p>Text.</p>
+            </div>
+            <!-- .aui-message -->
+        </div>
+        <script type="text/javascript">
+        </script>
+    </div>
+
+    <script type="text/javascript">
+
+        AJS.$(function() {
+
+            // example of binding an event to messageClose
+            AJS.$(document).bind("messageClose", function () {
+                AJS.log(arguments);
+            });
+        });
+    </script>
+</body>
+</html>

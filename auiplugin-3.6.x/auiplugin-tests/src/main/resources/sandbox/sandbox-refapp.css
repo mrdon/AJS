@@ -1,0 +1,170 @@
+body {
+    font-size: 13px;
+    font-family: Arial, FreeSans, Helvetica, sans-serif;
+}
+#sandbox-page {
+    background: #f0f0f0;
+}
+
+html, body, div, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;    
+}
+
+.group {
+    display: table;
+    box-sizing: border-box;
+    table-layout: fixed;    
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+}
+.row {
+    display: table-row;
+    vertical-align: top;
+}
+.item {
+    display: table-cell;
+    box-sizing: border-box;
+    width: auto;
+    margin: 0;
+    padding: 0 10px;
+}
+
+/* page layout */
+html,
+body,
+.refapp-content,
+.full-width-container {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#info-parent,
+#display-parent,
+#work-area,
+.editor-parent {
+    height: 100%;
+}
+
+#display-parent {
+    width: 80%;
+}
+
+#info-parent {
+    width: 20%;
+}
+
+#display,
+#info-display {
+    height: 85%;
+    overflow: auto;
+}
+
+#editors-parent {
+    height: 30%;
+}
+#bottom {
+    height: 65%;
+}
+
+.editor-parent .edit-box {
+    height:85%;
+    width: 97%;
+    display: block;
+    margin: 0;
+    padding-right: 0;
+}
+
+h2, h3, h4, h5, h6 {
+    color: #003366;
+}
+#header h1 {
+    color: #fff;
+}
+h2.display-heading,
+h2.editor-heading {
+    font-size: 13px;
+    padding: 2px 0 2px 5px;
+    color: #333;
+}
+
+.hidden { display: none; }
+
+/* refapp-specific styles */
+.refapp-header, .refapp-footer {
+    display: none;
+}
+
+#header {
+    background: #003366;
+    color: #fff;
+}
+#header a {
+    color: #fff;
+}
+
+#aui-sandbox-header {
+    padding: 10px 0 0 0;
+}
+
+#aui-sandbox-header .item:last-child {
+    text-align: right;
+}
+#aui-sandbox-header .item:first-child {
+    text-align: left;
+}
+
+#version {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.editor-parent .edit-box,
+#display,
+#info-display {
+    border: 1px solid #bbb;
+}
+
+.edit-box,
+.display-box {
+    background: #fff;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 16px;    
+}
+
+/*TOOL BAR*/
+#toolbar {
+    background: #326ca6;
+    color: #fff;
+    padding: 0;
+    -webkit-box-shadow: 0 2px 2px #999;
+    -moz-box-shadow: 0 2px 2px #999;
+    box-shadow: 0 2px 2px #999;
+}
+
+.toolbar-button:hover {
+    background: #fff;
+    color: #000;
+}
+.toolbar-button {
+    background: #326ca6;
+    height: 32px;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+}
+
+#editor-tools{
+    border-left: 1px solid #fff;
+    padding: 0 15px;
+    margin-left: 5px;
+}
+

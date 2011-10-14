@@ -1,0 +1,28 @@
+.clear {
+    clear: both;
+}
+.hidden,
+form.aui .hidden,
+form.aui .field-group.hidden,
+form.aui fieldset.hidden {
+    display: none;
+}
+
+.assistive,
+legend.assistive span {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.aui-box-shadow {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}
