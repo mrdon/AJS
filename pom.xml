@@ -149,7 +149,7 @@
                                 </goals>
                                 <configuration>
                                     <refappVersions>
-                                        <refappVersion>${refapp.version}</refappVersion>
+                                        <refappVersion>2.7</refappVersion>
                                     </refappVersions>
                                 </configuration>
                             </execution>
