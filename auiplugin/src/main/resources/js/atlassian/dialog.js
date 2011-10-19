@@ -418,7 +418,7 @@ AJS.popup = function (options) {
         this.dialog = page.dialog;
         this.page = page;
         this.id = page.panel.length;
-        this.button = AJS("button").html(title).addClass("item-button");
+        this.button = AJS("button").html(title || '').addClass("item-button");
 
         if (panelButtonId) {
             this.button[0].id = panelButtonId;
